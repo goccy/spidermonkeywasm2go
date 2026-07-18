@@ -16,6 +16,8 @@ func init() {
 	if !gcasmKeepAlive {
 		return
 	}
+	(EnvImports)(nil).Go_host_call(nil, 0, 0, 0, 0, 0, 0, 0)
+	(EnvImports)(nil).Go_host_result(nil, 0)
 	(Wasi_snapshot_preview1Imports)(nil).Clock_time_get(nil, 0, 0, 0)
 	(Wasi_snapshot_preview1Imports)(nil).Environ_get(nil, 0, 0)
 	(Wasi_snapshot_preview1Imports)(nil).Environ_sizes_get(nil, 0, 0)
@@ -28,8 +30,11 @@ func init() {
 	(Wasi_snapshot_preview1Imports)(nil).Fd_seek(nil, 0, 0, 0, 0)
 	(Wasi_snapshot_preview1Imports)(nil).Fd_write(nil, 0, 0, 0, 0)
 	(Wasi_snapshot_preview1Imports)(nil).Path_open(nil, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+	(Wasi_snapshot_preview1Imports)(nil).Path_readlink(nil, 0, 0, 0, 0, 0, 0)
 	(Wasi_snapshot_preview1Imports)(nil).Path_remove_directory(nil, 0, 0, 0)
 	(Wasi_snapshot_preview1Imports)(nil).Path_unlink_file(nil, 0, 0, 0)
+	(Wasi_snapshot_preview1Imports)(nil).Poll_oneoff(nil, 0, 0, 0, 0)
 	(Wasi_snapshot_preview1Imports)(nil).Proc_exit(nil, 0)
 	(Wasi_snapshot_preview1Imports)(nil).Random_get(nil, 0, 0)
+	(Wasi_snapshot_preview1Imports)(nil).Sched_yield(nil)
 }

@@ -16,7 +16,7 @@ API you want.
 
 ## License
 
-This bundle (`base/`, `p0/`–`p4/`, `data.bin`, and the generated Go glue) is a
+This bundle (`base/`, `p0/`–`p7/`, `data.bin`, and the generated Go glue) is a
 derivative work of SpiderMonkey, so it is distributed under SpiderMonkey's
 license — the Mozilla Public License, Version 2.0 — reproduced in full in
 [LICENSE](./LICENSE). SpiderMonkey is part of mozilla-central and is

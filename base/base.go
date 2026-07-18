@@ -1,6 +1,7 @@
 package base
 
 import (
+	"bytes"
 	"context"
 	"crypto/rand"
 	"encoding/binary"
@@ -19,6 +20,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"sync/atomic"
 	"syscall"
 	"time"
 	"unsafe"
@@ -37,10 +39,17 @@ type Wasi_snapshot_preview1Imports interface {
 	Fd_read(m *Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 	Fd_seek(m *Module, l0 int32, l1 int64, l2 int32, l3 int32) int32
 	Path_open(m *Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int64, l6 int64, l7 int32, l8 int32) int32
+	Path_readlink(m *Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 	Path_remove_directory(m *Module, l0 int32, l1 int32, l2 int32) int32
 	Path_unlink_file(m *Module, l0 int32, l1 int32, l2 int32) int32
+	Poll_oneoff(m *Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 	Proc_exit(m *Module, l0 int32)
+	Sched_yield(m *Module) int32
 	Random_get(m *Module, l0 int32, l1 int32) int32
+}
+type EnvImports interface {
+	Go_host_call(m *Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int64, l5 int32, l6 int32) int32
+	Go_host_result(m *Module, l0 int32)
 }
 type Module struct {
 	Memory                 []byte
@@ -48,8 +57,16 @@ type Module struct {
 	M                      unsafe.Pointer
 	T0                     []any
 	G0                     int32
+	G1                     int32
 	Wasi_snapshot_preview1 Wasi_snapshot_preview1Imports
-	MemMu                  sync.Mutex
+	Env                    EnvImports
+	MemMu                  *sync.Mutex
+	MemSize                *atomic.Uint64
+	DataSegs               [][]byte
+	DataEnd                uint32
+	MemShared              bool
+	Threads                *ThreadPool
+	ThreadStart            func(*Module, int32, int32)
 }
 
 func I32(x int32) int32 { return x }
@@ -109,6 +126,9 @@ func Wasm_trap_memfill_oob() { panic("wasm: memory.fill out of bounds") }
 //go:noinline
 func Wasm_trap_memcopy_oob() { panic("wasm: memory.copy out of bounds") }
 
+//go:noinline
+func Wasm_trap_meminit_oob() { panic("wasm: memory.init out of bounds") }
+
 func I32_div_s(x, y int32) int32 {
 	if y == -1 && x == math.MinInt32 {
 		Wasm_trap_int_overflow()
@@ -148,6 +168,7 @@ func I32_rem_s(x, y int32) int32 {
 		Wasm_trap_div_zero()
 	}
 	if y == -1 {
+
 		return 0
 	}
 	return x % y
@@ -183,9 +204,25 @@ func I32_rotr(x, y int32) int32 { return int32(bits.RotateLeft32(uint32(x), -int
 
 func I64_rotl(x, y int64) int64 { return int64(bits.RotateLeft64(uint64(x), int(y&63))) }
 
-func F64_abs(x float64) float64 { return math.Float64frombits(math.Float64bits(x) &^ (1 << 63)) }
+func F32_abs(x float32) float32 {
+	return math.Float32frombits(math.Float32bits(x) &^ (1 << 31))
+}
 
-func F64_neg(x float64) float64 { return math.Float64frombits(math.Float64bits(x) ^ (1 << 63)) }
+func F64_abs(x float64) float64 {
+	return math.Float64frombits(math.Float64bits(x) &^ (1 << 63))
+}
+
+func F32_neg(x float32) float32 {
+	return math.Float32frombits(math.Float32bits(x) ^ (1 << 31))
+}
+
+func F64_neg(x float64) float64 {
+	return math.Float64frombits(math.Float64bits(x) ^ (1 << 63))
+}
+
+func F32_copysign(x, y float32) float32 {
+	return float32(math.Copysign(float64(x), float64(y)))
+}
 
 func F64_copysign(x, y float64) float64 { return math.Copysign(x, y) }
 
@@ -260,7 +297,9 @@ func I64_trunc_sat_f64_u(x float64) int64 {
 
 // memorySize returns the current size of m.memory in wasm pages (each
 // page is 64 KiB).
-func MemorySize(m *Module) int32 { return int32(len(m.Memory) >> 16) }
+func MemorySize(m *Module) int32 {
+	return int32(m.MemSize.Load() >> 16)
+}
 
 // memoryGrow grows m.memory by n wasm pages (64 KiB each). Returns the
 // previous page count, or -1 if the new size would exceed maxMem. n may be 0,
@@ -277,24 +316,33 @@ func MemoryGrow(m *Module, n int32) int32 {
 
 	m.MemMu.Lock()
 	defer m.MemMu.Unlock()
-	prev := int32(len(m.Memory) >> 16)
+	cur := m.MemSize.Load()
+	prev := int32(cur >> 16)
 	if n == 0 {
 		return prev
 	}
 	if n < 0 {
 		return -1
 	}
-
-	want := uint64(len(m.Memory)) + uint64(n)*65536
+	want := cur + uint64(n)*65536
 	if m.MaxMem != 0 && want > m.MaxMem {
 		return -1
 	}
 	if want > 1<<32 {
 		return -1
 	}
+	if m.MemShared {
+
+		if want > uint64(len(m.Memory)) {
+			return -1
+		}
+		m.MemSize.Store(want)
+		return prev
+	}
 	if want <= uint64(cap(m.Memory)) {
 
 		m.Memory = m.Memory[:want]
+		m.MemSize.Store(want)
 		return prev
 	}
 
@@ -308,10 +356,10 @@ func MemoryGrow(m *Module, n int32) int32 {
 	if newCap > 1<<32 {
 		newCap = 1 << 32
 	}
-
 	grown := make([]byte, want, newCap)
 	copy(grown, m.Memory)
 	m.Memory = grown
+	m.MemSize.Store(want)
 
 	m.M = unsafe.Pointer(unsafe.SliceData(m.Memory))
 	return prev
@@ -336,13 +384,19 @@ func MemoryGrow(m *Module, n int32) int32 {
 //     the point of an eval-breaker-style flag) are exchanged with
 //     plain single-word accesses; keep such shared words
 //     word-aligned and word-sized.
-func AccessMemory(m *Module, f func(mem []byte)) { m.MemMu.Lock(); defer m.MemMu.Unlock(); f(m.Memory) }
+func AccessMemory(m *Module, f func(mem []byte)) {
+	m.MemMu.Lock()
+	defer m.MemMu.Unlock()
+	f(m.Memory)
+}
 
 func I32_div_u_s(x, y int32) int32 { return int32(I32_div_u(uint32(x), uint32(y))) }
 func I32_rem_u_s(x, y int32) int32 { return int32(I32_rem_u(uint32(x), uint32(y))) }
 func I64_div_u_s(x, y int64) int64 { return int64(I64_div_u(uint64(x), uint64(y))) }
 func I64_rem_u_s(x, y int64) int64 { return int64(I64_rem_u(uint64(x), uint64(y))) }
 
+func F32_add(x, y float32) float32 { return x + y }
+func F32_sub(x, y float32) float32 { return x - y }
 func F32_mul(x, y float32) float32 { return x * y }
 func F32_div(x, y float32) float32 { return x / y }
 func F64_add(x, y float64) float64 { return x + y }
@@ -386,21 +440,18 @@ func F32_eq(x, y float32) int32 {
 	}
 	return 0
 }
-
 func F32_ne(x, y float32) int32 {
 	if x != y {
 		return 1
 	}
 	return 0
 }
-
 func F32_lt(x, y float32) int32 {
 	if x < y {
 		return 1
 	}
 	return 0
 }
-
 func F32_gt(x, y float32) int32 {
 	if x > y {
 		return 1
@@ -421,35 +472,30 @@ func F64_eq(x, y float64) int32 {
 	}
 	return 0
 }
-
 func F64_ne(x, y float64) int32 {
 	if x != y {
 		return 1
 	}
 	return 0
 }
-
 func F64_lt(x, y float64) int32 {
 	if x < y {
 		return 1
 	}
 	return 0
 }
-
 func F64_gt(x, y float64) int32 {
 	if x > y {
 		return 1
 	}
 	return 0
 }
-
 func F64_le(x, y float64) int32 {
 	if x <= y {
 		return 1
 	}
 	return 0
 }
-
 func F64_ge(x, y float64) int32 {
 	if x >= y {
 		return 1
@@ -462,7 +508,9 @@ func I64_extend_i32_s(x int32) int64   { return int64(x) }
 func I64_extend_i32_u(x int32) int64   { return int64(uint32(x)) }
 func F32_demote_f64(x float64) float32 { return float32(x) }
 func F64_promote_f32(x float32) float64 {
+
 	if math.IsNaN(float64(x)) {
+
 		return float64(x)
 	}
 	return float64(x)
@@ -487,25 +535,155 @@ func I64_extend8_s(x int64) int64  { return int64(int8(x)) }
 func I64_extend16_s(x int64) int64 { return int64(int16(x)) }
 func I64_extend32_s(x int64) int64 { return int64(int32(x)) }
 
+// memoryInit implements memory.init: copy n bytes from passive data segment
+// seg at src into memory at dst. Out-of-bounds on either side traps, as does
+// naming a dropped (or active) segment with n > 0. The bounds check consults
+// memSize (not len(m.M)) so a shared memory's reserved-but-ungrown tail stays
+// out of reach, mirroring memoryFill/memoryCopy.
+// Shared-memory plain access helpers. wasm's threads memory model gives
+// NON-atomic loads/stores hardware-like coherence between agents; Go's
+// compiler, free of any such contract, may CSE or hoist a plain *ptr access
+// (musl's __unlock skips the futex wake when its plain read of the waiters
+// word looks stale — stranding the waiter forever). noinline forces every
+// executed access to really touch memory; CPU cache coherence supplies the
+// cross-goroutine freshness, exactly as it does for native threads.
+//
+// Signatures stick to the gcasm marshaller's vocabulary (int32/uint32/
+// int64/float32/float64 plus *Module): sub-word widths are widened here,
+// not at the call site.
+//
+//go:noinline
+func MemLoad8(m *Module, ea uint32) uint32 {
+	return uint32(*(*uint8)(unsafe.Add(m.M, uintptr(ea))))
+}
+
+//go:noinline
+func MemLoad8S(m *Module, ea uint32) int32 {
+	return int32(*(*int8)(unsafe.Add(m.M, uintptr(ea))))
+}
+
+//go:noinline
+func MemLoad16(m *Module, ea uint32) uint32 {
+	return uint32(*(*uint16)(unsafe.Add(m.M, uintptr(ea))))
+}
+
+//go:noinline
+func MemLoad16S(m *Module, ea uint32) int32 {
+	return int32(*(*int16)(unsafe.Add(m.M, uintptr(ea))))
+}
+
+//go:noinline
+func MemLoad32(m *Module, ea uint32) int32 {
+	return *(*int32)(unsafe.Add(m.M, uintptr(ea)))
+}
+
+//go:noinline
+func MemLoad32U(m *Module, ea uint32) uint32 {
+	return *(*uint32)(unsafe.Add(m.M, uintptr(ea)))
+}
+
+//go:noinline
+func MemLoad64(m *Module, ea uint32) int64 {
+	return *(*int64)(unsafe.Add(m.M, uintptr(ea)))
+}
+
+//go:noinline
+func MemLoadF32(m *Module, ea uint32) float32 {
+	return *(*float32)(unsafe.Add(m.M, uintptr(ea)))
+}
+
+//go:noinline
+func MemLoadF64(m *Module, ea uint32) float64 {
+	return *(*float64)(unsafe.Add(m.M, uintptr(ea)))
+}
+
+//go:noinline
+func MemStore8(m *Module, ea uint32, v uint32) {
+	*(*uint8)(unsafe.Add(m.M, uintptr(ea))) = uint8(v)
+}
+
+//go:noinline
+func MemStore16(m *Module, ea uint32, v uint32) {
+	*(*uint16)(unsafe.Add(m.M, uintptr(ea))) = uint16(v)
+}
+
+//go:noinline
+func MemStore32(m *Module, ea uint32, v int32) {
+	*(*int32)(unsafe.Add(m.M, uintptr(ea))) = v
+}
+
+//go:noinline
+func MemStore32U(m *Module, ea uint32, v uint32) {
+	*(*uint32)(unsafe.Add(m.M, uintptr(ea))) = v
+}
+
+//go:noinline
+func MemStore64(m *Module, ea uint32, v int64) {
+	*(*int64)(unsafe.Add(m.M, uintptr(ea))) = v
+}
+
+//go:noinline
+func MemStoreF32(m *Module, ea uint32, v float32) {
+	*(*float32)(unsafe.Add(m.M, uintptr(ea))) = v
+}
+
+//go:noinline
+func MemStoreF64(m *Module, ea uint32, v float64) {
+	*(*float64)(unsafe.Add(m.M, uintptr(ea))) = v
+}
+
+//go:noinline
+func MemoryInit(m *Module, seg int, dst int32, src int32, n int32) {
+	data := m.DataSegs[seg]
+	if n == 0 {
+		return
+	}
+	if data == nil ||
+		uint64(uint32(src))+uint64(uint32(n)) > uint64(len(data)) ||
+		uint64(uint32(dst))+uint64(uint32(n)) > m.MemSize.Load() {
+		Wasm_trap_meminit_oob()
+	}
+
+	if end := uint32(dst) + uint32(n); end > m.DataEnd {
+		m.DataEnd = end
+	}
+	d := m.Memory[uint32(dst) : uint32(dst)+uint32(n)]
+	s := data[uint32(src) : uint32(src)+uint32(n)]
+
+	if bytes.Equal(d, s) {
+		return
+	}
+	copy(d, s)
+}
+
+// dataDrop implements data.drop: discard passive segment seg. A later
+// memory.init naming it traps (nil view); double-drop is a no-op per spec.
+// dataDrop stays out of line: inlined into a gcasm-transformed function, the
+// pointer write (a nil store into dataSegs) would drag runtime.gcWriteBarrier
+// into the asm body, which the transformer rejects.
+//
+//go:noinline
+func DataDrop(m *Module, seg int) {
+	m.DataSegs[seg] = nil
+}
+
 func MemoryFill(m *Module, dst int32, val int32, n int32) {
 	if n == 0 {
 		return
 	}
-
 	end := uint64(uint32(dst)) + uint64(uint32(n))
-	if end > uint64(len(m.Memory)) {
+	if end > m.MemSize.Load() {
 		Wasm_trap_memfill_oob()
 	}
-
 	b := m.Memory[uint32(dst):uint32(end)]
 	v := byte(val)
+
 	if v == 0 {
 		for k := range b {
 			b[k] = 0
 		}
 		return
 	}
-
 	b[0] = v
 	for filled := 1; filled < len(b); filled *= 2 {
 		copy(b[filled:], b[:filled])
@@ -516,14 +694,504 @@ func MemoryCopy(m *Module, dst int32, src int32, n int32) {
 	if n == 0 {
 		return
 	}
-
 	srcEnd := uint64(uint32(src)) + uint64(uint32(n))
 	dstEnd := uint64(uint32(dst)) + uint64(uint32(n))
-	if srcEnd > uint64(len(m.Memory)) || dstEnd > uint64(len(m.Memory)) {
+	if size := m.MemSize.Load(); srcEnd > size || dstEnd > size {
 		Wasm_trap_memcopy_oob()
 	}
-
 	copy(m.Memory[uint32(dst):uint32(dstEnd)], m.Memory[uint32(src):uint32(srcEnd)])
+}
+
+//go:noinline
+func Wasm_trap_atomic_oob() { panic("wasm: atomic access out of bounds") }
+
+//go:noinline
+func Wasm_trap_atomic_unaligned() { panic("wasm: unaligned atomic access") }
+
+//go:noinline
+func Wasm_trap_atomic_wait_forever() {
+	panic("wasm: blocking atomic wait with no other agents (wasi-threads not enabled)")
+}
+
+// atomicEA bounds- and alignment-checks an atomic access and returns the
+// effective address.
+// Atomic and thread helpers are all //go:noinline: several take func-literal
+// operands (the subword CAS loops, the RMW families), and if the compiler
+// inlines such a helper into a gcasm-transformed generated function the
+// closure becomes a cross-package symbol ("pN.FnX.AtomicRmwOr32.func4") the
+// asm bundler cannot represent. Out-of-line, the closure stays homed in base.
+//
+//go:noinline
+func AtomicEA(m *Module, addr int32, offset int32, size uint64) uint64 {
+	ea := uint64(uint32(addr)) + uint64(uint32(offset))
+
+	if ea+size > m.MemSize.Load() {
+		Wasm_trap_atomic_oob()
+	}
+	if ea&(size-1) != 0 {
+		Wasm_trap_atomic_unaligned()
+	}
+	return ea
+}
+
+//go:noinline
+func AtomicPtr32(m *Module, addr int32, offset int32) *uint32 {
+	ea := AtomicEA(m, addr, offset, 4)
+	return (*uint32)(unsafe.Pointer(&m.Memory[ea]))
+}
+
+//go:noinline
+func AtomicPtr64(m *Module, addr int32, offset int32) *uint64 {
+	ea := AtomicEA(m, addr, offset, 8)
+	return (*uint64)(unsafe.Pointer(&m.Memory[ea]))
+}
+
+// atomicSubword32 runs op on the byte lanes [shift, shift+bits) of the
+// aligned 32-bit word containing ea, via a CAS loop; returns the OLD lane
+// value zero-extended. Little-endian lane math.
+//
+//go:noinline
+func AtomicSubword32(m *Module, ea uint64, bits uint, op func(old uint32) uint32) uint32 {
+	word := (*uint32)(unsafe.Pointer(&m.Memory[ea&^3]))
+	shift := uint(ea&3) * 8
+	mask := uint32(1)<<bits - 1
+	for {
+		cur := atomic.LoadUint32(word)
+		lane := (cur >> shift) & mask
+		next := (cur &^ (mask << shift)) | ((op(lane) & mask) << shift)
+		if atomic.CompareAndSwapUint32(word, cur, next) {
+			return lane
+		}
+	}
+}
+
+//go:noinline
+func AtomicLoad32(m *Module, addr int32, offset int32) int32 {
+	return int32(atomic.LoadUint32(AtomicPtr32(m, addr, offset)))
+}
+
+//go:noinline
+func AtomicLoad64(m *Module, addr int32, offset int32) int64 {
+	return int64(atomic.LoadUint64(AtomicPtr64(m, addr, offset)))
+}
+
+//go:noinline
+func AtomicLoad32_8u(m *Module, addr int32, offset int32) int32 {
+	ea := AtomicEA(m, addr, offset, 1)
+	return int32(AtomicSubword32(m, ea, 8, func(old uint32) uint32 { return old }))
+}
+
+//go:noinline
+func AtomicLoad64_8u(m *Module, addr int32, offset int32) int64 {
+	ea := AtomicEA(m, addr, offset, 1)
+	return int64(AtomicSubword32(m, ea, 8, func(old uint32) uint32 { return old }))
+}
+
+//go:noinline
+func AtomicLoad64_16u(m *Module, addr int32, offset int32) int64 {
+	ea := AtomicEA(m, addr, offset, 2)
+	return int64(AtomicSubword32(m, ea, 16, func(old uint32) uint32 { return old }))
+}
+
+//go:noinline
+func AtomicLoad64_32u(m *Module, addr int32, offset int32) int64 {
+	return int64(atomic.LoadUint32(AtomicPtr32(m, addr, offset)))
+}
+
+//go:noinline
+func AtomicStore32(m *Module, addr int32, offset int32, v int32) int32 {
+	atomic.StoreUint32(AtomicPtr32(m, addr, offset), uint32(v))
+	return 0
+}
+
+//go:noinline
+func AtomicStore64(m *Module, addr int32, offset int32, v int64) int32 {
+	atomic.StoreUint64(AtomicPtr64(m, addr, offset), uint64(v))
+	return 0
+}
+
+//go:noinline
+func AtomicStore32_8(m *Module, addr int32, offset int32, v int32) int32 {
+	ea := AtomicEA(m, addr, offset, 1)
+	AtomicSubword32(m, ea, 8, func(uint32) uint32 { return uint32(v) })
+	return 0
+}
+
+//go:noinline
+func AtomicStore32_16(m *Module, addr int32, offset int32, v int32) int32 {
+	ea := AtomicEA(m, addr, offset, 2)
+	AtomicSubword32(m, ea, 16, func(uint32) uint32 { return uint32(v) })
+	return 0
+}
+
+//go:noinline
+func AtomicRmw32(m *Module, addr int32, offset int32, op func(old uint32) uint32) int32 {
+	p := AtomicPtr32(m, addr, offset)
+	for {
+		cur := atomic.LoadUint32(p)
+		if atomic.CompareAndSwapUint32(p, cur, op(cur)) {
+			return int32(cur)
+		}
+	}
+}
+
+//go:noinline
+func AtomicRmw64(m *Module, addr int32, offset int32, op func(old uint64) uint64) int64 {
+	p := AtomicPtr64(m, addr, offset)
+	for {
+		cur := atomic.LoadUint64(p)
+		if atomic.CompareAndSwapUint64(p, cur, op(cur)) {
+			return int64(cur)
+		}
+	}
+}
+
+//go:noinline
+func AtomicRmwAdd32(m *Module, addr, offset, v int32) int32 {
+	return int32(atomic.AddUint32(AtomicPtr32(m, addr, offset), uint32(v)) - uint32(v))
+}
+
+//go:noinline
+func AtomicRmwSub32(m *Module, addr, offset, v int32) int32 {
+	return int32(atomic.AddUint32(AtomicPtr32(m, addr, offset), -uint32(v)) + uint32(v))
+}
+
+//go:noinline
+func AtomicRmwAnd32(m *Module, addr, offset, v int32) int32 {
+	return AtomicRmw32(m, addr, offset, func(o uint32) uint32 { return o & uint32(v) })
+}
+
+//go:noinline
+func AtomicRmwOr32(m *Module, addr, offset, v int32) int32 {
+	return AtomicRmw32(m, addr, offset, func(o uint32) uint32 { return o | uint32(v) })
+}
+
+//go:noinline
+func AtomicRmwXor32(m *Module, addr, offset, v int32) int32 {
+	return AtomicRmw32(m, addr, offset, func(o uint32) uint32 { return o ^ uint32(v) })
+}
+
+//go:noinline
+func AtomicRmwXchg32(m *Module, addr, offset, v int32) int32 {
+	return int32(atomic.SwapUint32(AtomicPtr32(m, addr, offset), uint32(v)))
+}
+
+//go:noinline
+func AtomicRmwCmpxchg32(m *Module, addr, offset, expected, replacement int32) int32 {
+	p := AtomicPtr32(m, addr, offset)
+	for {
+		cur := atomic.LoadUint32(p)
+		if cur != uint32(expected) {
+			return int32(cur)
+		}
+		if atomic.CompareAndSwapUint32(p, cur, uint32(replacement)) {
+			return int32(cur)
+		}
+	}
+}
+
+//go:noinline
+func AtomicRmwAdd64(m *Module, addr, offset int32, v int64) int64 {
+	return int64(atomic.AddUint64(AtomicPtr64(m, addr, offset), uint64(v)) - uint64(v))
+}
+
+//go:noinline
+func AtomicRmwSub64(m *Module, addr, offset int32, v int64) int64 {
+	return int64(atomic.AddUint64(AtomicPtr64(m, addr, offset), -uint64(v)) + uint64(v))
+}
+
+//go:noinline
+func AtomicRmwAnd64(m *Module, addr, offset int32, v int64) int64 {
+	return AtomicRmw64(m, addr, offset, func(o uint64) uint64 { return o & uint64(v) })
+}
+
+//go:noinline
+func AtomicRmwOr64(m *Module, addr, offset int32, v int64) int64 {
+	return AtomicRmw64(m, addr, offset, func(o uint64) uint64 { return o | uint64(v) })
+}
+
+//go:noinline
+func AtomicRmwXor64(m *Module, addr, offset int32, v int64) int64 {
+	return AtomicRmw64(m, addr, offset, func(o uint64) uint64 { return o ^ uint64(v) })
+}
+
+//go:noinline
+func AtomicRmwXchg64(m *Module, addr, offset int32, v int64) int64 {
+	return int64(atomic.SwapUint64(AtomicPtr64(m, addr, offset), uint64(v)))
+}
+
+//go:noinline
+func AtomicRmwCmpxchg64(m *Module, addr, offset int32, expected, replacement int64) int64 {
+	p := AtomicPtr64(m, addr, offset)
+	for {
+		cur := atomic.LoadUint64(p)
+		if cur != uint64(expected) {
+			return int64(cur)
+		}
+		if atomic.CompareAndSwapUint64(p, cur, uint64(replacement)) {
+			return int64(cur)
+		}
+	}
+}
+
+//go:noinline
+func AtomicRmwSubword(m *Module, addr, offset int32, size uint64, bits uint, op func(old uint32) uint32) uint32 {
+	ea := AtomicEA(m, addr, offset, size)
+	return AtomicSubword32(m, ea, bits, op)
+}
+
+//go:noinline
+func AtomicRmwAdd32_8u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 1, 8, func(o uint32) uint32 { return o + uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwAdd32_16u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 2, 16, func(o uint32) uint32 { return o + uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwSub32_8u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 1, 8, func(o uint32) uint32 { return o - uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwSub32_16u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 2, 16, func(o uint32) uint32 { return o - uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwAnd32_8u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 1, 8, func(o uint32) uint32 { return o & uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwAnd32_16u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 2, 16, func(o uint32) uint32 { return o & uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwOr32_8u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 1, 8, func(o uint32) uint32 { return o | uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwOr32_16u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 2, 16, func(o uint32) uint32 { return o | uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwXor32_8u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 1, 8, func(o uint32) uint32 { return o ^ uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwXor32_16u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 2, 16, func(o uint32) uint32 { return o ^ uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwXchg32_8u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 1, 8, func(uint32) uint32 { return uint32(v) }))
+}
+
+//go:noinline
+func AtomicRmwXchg32_16u(m *Module, addr, offset, v int32) int32 {
+	return int32(AtomicRmwSubword(m, addr, offset, 2, 16, func(uint32) uint32 { return uint32(v) }))
+}
+
+//go:noinline
+func AtomicCmpxchgSubword(m *Module, addr, offset int32, size uint64, bits uint, expected, replacement uint32) uint32 {
+	ea := AtomicEA(m, addr, offset, size)
+	word := (*uint32)(unsafe.Pointer(&m.Memory[ea&^3]))
+	shift := uint(ea&3) * 8
+	mask := uint32(1)<<bits - 1
+	for {
+		cur := atomic.LoadUint32(word)
+		lane := (cur >> shift) & mask
+		if lane != expected&mask {
+			return lane
+		}
+		next := (cur &^ (mask << shift)) | ((replacement & mask) << shift)
+		if atomic.CompareAndSwapUint32(word, cur, next) {
+			return lane
+		}
+	}
+}
+
+//go:noinline
+func AtomicRmwCmpxchg32_8u(m *Module, addr, offset, expected, replacement int32) int32 {
+	return int32(AtomicCmpxchgSubword(m, addr, offset, 1, 8, uint32(expected), uint32(replacement)))
+}
+
+//go:noinline
+func AtomicRmwCmpxchg32_16u(m *Module, addr, offset, expected, replacement int32) int32 {
+	return int32(AtomicCmpxchgSubword(m, addr, offset, 2, 16, uint32(expected), uint32(replacement)))
+}
+
+// atomicNotify wakes up to count agents waiting on the address and reports
+// how many it woke (0 when none are parked, which is also the single-agent
+// answer).
+//
+//go:noinline
+func AtomicNotify(m *Module, addr int32, offset int32, count int32) int32 {
+	ea := AtomicEA(m, addr, offset, 4)
+	return m.Threads.wake(ea, count)
+}
+
+// atomicWait32/64 implement memory.atomic.wait: compare-and-park. The compare
+// happens under the parking-lot lock a notifier must also take, so a notify
+// that lands between the compare and the park cannot be missed.
+//
+// Returns 0 = woken, 1 = not-equal, 2 = timed-out. A negative timeout means
+// wait forever; with no other agent able to notify, that is a guaranteed
+// deadlock, so it traps rather than hanging the process.
+//
+//go:noinline
+func AtomicWait32(m *Module, addr int32, offset int32, expected int32, timeout int64) int32 {
+	ea := AtomicEA(m, addr, offset, 4)
+	p := (*uint32)(unsafe.Pointer(&m.Memory[ea]))
+	return AtomicWait(m, ea, timeout, func() bool {
+		return int32(atomic.LoadUint32(p)) == expected
+	})
+}
+
+//go:noinline
+func AtomicWait(m *Module, ea uint64, timeout int64, stillEqual func() bool) int32 {
+	if !m.MemShared {
+
+		return 1
+	}
+	m.Threads.parkMu.Lock()
+	if !stillEqual() {
+		m.Threads.parkMu.Unlock()
+		return 1
+	}
+	ch := make(chan struct{})
+	if m.Threads.parked == nil {
+		m.Threads.parked = make(map[uint64][]chan struct{})
+	}
+	m.Threads.parked[ea] = append(m.Threads.parked[ea], ch)
+	m.Threads.parkMu.Unlock()
+
+	unpark := func() {
+		m.Threads.parkMu.Lock()
+		defer m.Threads.parkMu.Unlock()
+		waiters := m.Threads.parked[ea]
+		for i, c := range waiters {
+			if c == ch {
+				m.Threads.parked[ea] = append(waiters[:i], waiters[i+1:]...)
+				break
+			}
+		}
+		if len(m.Threads.parked[ea]) == 0 {
+			delete(m.Threads.parked, ea)
+		}
+	}
+
+	if timeout < 0 {
+		if m.Threads.nextTID.Load() == 0 {
+
+			unpark()
+			Wasm_trap_atomic_wait_forever()
+		}
+		<-ch
+		return 0
+	}
+
+	timer := time.NewTimer(time.Duration(timeout) + time.Millisecond)
+	defer timer.Stop()
+	select {
+	case <-ch:
+		return 0
+	case <-timer.C:
+		unpark()
+		return 2
+	}
+}
+
+// threadSpawn implements the wasi_thread_spawn import: run the guest's thread
+// entry on a goroutine, return the new TID (negative means "cannot spawn").
+//
+//go:noinline
+func ThreadSpawn(m *Module, arg int32) int32 {
+	start := m.ThreadStart
+	if start == nil {
+		return -1
+	}
+	tid := m.Threads.nextTID.Add(1)
+	m.Threads.wg.Add(1)
+
+	child := new(Module)
+	*child = *m
+	go func() {
+		defer m.Threads.wg.Done()
+
+		defer func() {
+			if r := recover(); r != nil {
+				println("wasm2go: wasi thread", tid, "trapped:")
+				switch v := r.(type) {
+				case error:
+					println("  ", v.Error())
+				case string:
+					println("  ", v)
+				}
+				panic(r)
+			}
+		}()
+		start(child, tid, arg)
+	}()
+	return tid
+}
+
+type ThreadPool struct {
+	nextTID atomic.Int32
+	wg      sync.WaitGroup
+
+	parkMu sync.Mutex
+	parked map[uint64][]chan struct{}
+}
+
+// wake releases up to count waiters on ea and reports how many it woke.
+func (p *ThreadPool) wake(ea uint64, count int32) int32 {
+	p.parkMu.Lock()
+	defer p.parkMu.Unlock()
+	waiters := p.parked[ea]
+	n := int32(len(waiters))
+	if count >= 0 && count < n {
+		n = count
+	}
+	for _, ch := range waiters[:n] {
+		close(ch)
+	}
+	if int(n) == len(waiters) {
+		delete(p.parked, ea)
+	} else {
+		p.parked[ea] = waiters[n:]
+	}
+	return n
+}
+
+// SaveGlobals returns the module's mutable globals, in a form that can be handed back
+// to RestoreGlobals. It is how a snapshot of an instance captures the state that does not
+// live in linear memory.
+func SaveGlobals(m *Module) []uint64 {
+	g := make([]uint64, 2)
+	g[0] = uint64(uint32(m.G0))
+	g[1] = uint64(uint32(m.G1))
+	return g
+}
+
+// RestoreGlobals puts a snapshot's globals back. A snapshot from a different module (or a
+// different build of the same one) has a different global count; rather than
+// index out of bounds, take what fits and leave the rest at their declared
+// initializers.
+func RestoreGlobals(m *Module, g []uint64) {
+	if len(g) != 2 {
+		return
+	}
+	m.G0 = int32(uint32(g[0]))
+	m.G1 = int32(uint32(g[1]))
 }
 
 // WasiExitError is the sentinel that the recover layer of SafeInvokeExport
@@ -531,7 +1199,9 @@ func MemoryCopy(m *Module, dst int32, src int32, n int32) {
 // host process and the caller can read the exit code instead.
 type WasiExitError struct{ Code int32 }
 
-func (e *WasiExitError) Error() string { return "wasi: proc_exit(" + itoa32(e.Code) + ")" }
+func (e *WasiExitError) Error() string {
+	return "wasi: proc_exit(" + itoa32(e.Code) + ")"
+}
 
 // itoa32 is a tiny dependency-free strconv replacement so this file
 // doesn't drag in fmt for its sole error path.
@@ -539,13 +1209,11 @@ func itoa32(v int32) string {
 	if v == 0 {
 		return "0"
 	}
-
 	neg := false
 	if v < 0 {
 		v = -v
 		neg = true
 	}
-
 	var buf [12]byte
 	i := len(buf)
 	for v > 0 {
@@ -611,7 +1279,6 @@ func (o osFS) join(name string) string {
 	}
 	return filepath.Join(o.root, name)
 }
-
 func (o osFS) OpenFile(name string, flag int, perm os.FileMode) (File, error) {
 	f, err := os.OpenFile(o.join(name), flag, perm)
 	if err != nil {
@@ -619,7 +1286,6 @@ func (o osFS) OpenFile(name string, flag int, perm os.FileMode) (File, error) {
 	}
 	return f, nil
 }
-
 func (o osFS) Mkdir(name string, perm os.FileMode) error { return os.Mkdir(o.join(name), perm) }
 func (o osFS) Remove(name string) error                  { return os.Remove(o.join(name)) }
 func (o osFS) Rename(a, b string) error                  { return os.Rename(o.join(a), o.join(b)) }
@@ -658,7 +1324,6 @@ func memSplit(name string) []string {
 	if name == "" {
 		return nil
 	}
-
 	raw := strings.Split(name, "/")
 	out := make([]string, 0, len(raw))
 	for _, p := range raw {
@@ -669,7 +1334,6 @@ func memSplit(name string) []string {
 				out = out[:len(out)-1]
 			}
 		default:
-
 			out = append(out, p)
 		}
 	}
@@ -683,12 +1347,10 @@ func (fsys *MemFS) lookup(name string) (*memNode, error) {
 		if !n.dir {
 			return nil, fs.ErrNotExist
 		}
-
 		c, ok := n.children[part]
 		if !ok {
 			return nil, fs.ErrNotExist
 		}
-
 		n = c
 	}
 	return n, nil
@@ -700,14 +1362,12 @@ func (fsys *MemFS) lookupParent(name string) (*memNode, string, error) {
 	if len(parts) == 0 {
 		return nil, "", fs.ErrInvalid
 	}
-
 	n := fsys.root
 	for _, part := range parts[:len(parts)-1] {
 		c, ok := n.children[part]
 		if !ok || !c.dir {
 			return nil, "", fs.ErrNotExist
 		}
-
 		n = c
 	}
 	return n, parts[len(parts)-1], nil
@@ -721,12 +1381,10 @@ func (fsys *MemFS) OpenFile(name string, flag int, perm os.FileMode) (File, erro
 		if flag&os.O_CREATE == 0 {
 			return nil, &fs.PathError{Op: "open", Path: name, Err: fs.ErrNotExist}
 		}
-
 		parent, base, perr := fsys.lookupParent(name)
 		if perr != nil {
 			return nil, &fs.PathError{Op: "open", Path: name, Err: perr}
 		}
-
 		node = &memNode{name: base, mode: perm & 0o777, modTime: time.Now()}
 		parent.children[base] = node
 	} else {
@@ -738,7 +1396,6 @@ func (fsys *MemFS) OpenFile(name string, flag int, perm os.FileMode) (File, erro
 			node.modTime = time.Now()
 		}
 	}
-
 	f := &memFile{fsys: fsys, node: node}
 	if flag&os.O_APPEND != 0 {
 		f.off = int64(len(node.data))
@@ -756,7 +1413,6 @@ func (fsys *MemFS) Mkdir(name string, perm os.FileMode) error {
 	if _, ok := parent.children[base]; ok {
 		return &fs.PathError{Op: "mkdir", Path: name, Err: fs.ErrExist}
 	}
-
 	parent.children[base] = &memNode{name: base, dir: true, mode: os.ModeDir | (perm & 0o777), modTime: time.Now(), children: map[string]*memNode{}}
 	return nil
 }
@@ -768,7 +1424,6 @@ func (fsys *MemFS) Remove(name string) error {
 	if err != nil {
 		return &fs.PathError{Op: "remove", Path: name, Err: err}
 	}
-
 	n, ok := parent.children[base]
 	if !ok {
 		return &fs.PathError{Op: "remove", Path: name, Err: fs.ErrNotExist}
@@ -776,7 +1431,6 @@ func (fsys *MemFS) Remove(name string) error {
 	if n.dir && len(n.children) > 0 {
 		return &fs.PathError{Op: "remove", Path: name, Err: fs.ErrInvalid}
 	}
-
 	delete(parent.children, base)
 	return nil
 }
@@ -788,17 +1442,14 @@ func (fsys *MemFS) Rename(oldName, newName string) error {
 	if err != nil {
 		return &fs.PathError{Op: "rename", Path: oldName, Err: err}
 	}
-
 	node, ok := op.children[ob]
 	if !ok {
 		return &fs.PathError{Op: "rename", Path: oldName, Err: fs.ErrNotExist}
 	}
-
 	np, nb, err := fsys.lookupParent(newName)
 	if err != nil {
 		return &fs.PathError{Op: "rename", Path: newName, Err: err}
 	}
-
 	delete(op.children, ob)
 	node.name = nb
 	np.children[nb] = node
@@ -832,7 +1483,6 @@ func (fsys *MemFS) Chtimes(name string, _ time.Time, mtime time.Time) error {
 	if err != nil {
 		return &fs.PathError{Op: "chtimes", Path: name, Err: err}
 	}
-
 	n.modTime = mtime
 	return nil
 }
@@ -851,7 +1501,6 @@ func (fsys *MemFS) MkdirAll(name string, perm os.FileMode) error {
 		} else if !c.dir {
 			return &fs.PathError{Op: "mkdir", Path: name, Err: fs.ErrExist}
 		}
-
 		n = c
 	}
 	return nil
@@ -865,14 +1514,12 @@ func (fsys *MemFS) WriteFile(name string, data []byte, perm os.FileMode) error {
 			return err
 		}
 	}
-
 	fsys.mu.Lock()
 	defer fsys.mu.Unlock()
 	parent, base, err := fsys.lookupParent(name)
 	if err != nil {
 		return &fs.PathError{Op: "writefile", Path: name, Err: err}
 	}
-
 	cp := make([]byte, len(data))
 	copy(cp, data)
 	parent.children[base] = &memNode{name: base, mode: perm & 0o777, modTime: time.Now(), data: cp}
@@ -910,7 +1557,6 @@ func (e memDirEntry) Type() os.FileMode {
 	}
 	return 0
 }
-
 func (e memDirEntry) Info() (os.FileInfo, error) { return e.n.info(), nil }
 
 // memFile is an open handle into a MemFS node.
@@ -940,7 +1586,6 @@ func (f *memFile) Read(p []byte) (int, error) {
 	if f.off >= int64(len(f.node.data)) {
 		return 0, io.EOF
 	}
-
 	n := copy(p, f.node.data[f.off:])
 	f.off += int64(n)
 	return n, nil
@@ -952,7 +1597,6 @@ func (f *memFile) ReadAt(p []byte, off int64) (int, error) {
 	if off >= int64(len(f.node.data)) {
 		return 0, io.EOF
 	}
-
 	n := copy(p, f.node.data[off:])
 	if n < len(p) {
 		return n, io.EOF
@@ -968,7 +1612,6 @@ func (f *memFile) writeAt(p []byte, off int64) int {
 		copy(grown, f.node.data)
 		f.node.data = grown
 	}
-
 	copy(f.node.data[off:], p)
 	f.node.modTime = time.Now()
 	return len(p)
@@ -1008,12 +1651,10 @@ func (f *memFile) Truncate(size int64) error {
 	if size <= int64(len(f.node.data)) {
 		f.node.data = f.node.data[:size]
 	} else {
-
 		grown := make([]byte, size)
 		copy(grown, f.node.data)
 		f.node.data = grown
 	}
-
 	f.node.modTime = time.Now()
 	return nil
 }
@@ -1024,12 +1665,10 @@ func (f *memFile) ReadDir(n int) ([]os.DirEntry, error) {
 	if !f.node.dir {
 		return nil, &fs.PathError{Op: "readdir", Path: f.node.name, Err: fs.ErrInvalid}
 	}
-
 	names := make([]string, 0, len(f.node.children))
 	for name := range f.node.children {
 		names = append(names, name)
 	}
-
 	sort.Strings(names)
 	if f.dirOff >= len(names) {
 		if n <= 0 {
@@ -1037,17 +1676,14 @@ func (f *memFile) ReadDir(n int) ([]os.DirEntry, error) {
 		}
 		return nil, io.EOF
 	}
-
 	end := len(names)
 	if n > 0 && f.dirOff+n < end {
 		end = f.dirOff + n
 	}
-
 	out := make([]os.DirEntry, 0, end-f.dirOff)
 	for _, name := range names[f.dirOff:end] {
 		out = append(out, memDirEntry{f.node.children[name]})
 	}
-
 	f.dirOff = end
 	return out, nil
 }
@@ -1144,7 +1780,8 @@ type wasiProc struct {
 // Wasi_snapshot_preview1Imports implementation) and pass it to
 // NewWithWASI.
 func DefaultWASI() *WasiStubs {
-	return &WasiStubs{stdin: os.Stdin,
+	return &WasiStubs{
+		stdin:      os.Stdin,
 		stdout:     os.Stdout,
 		stderr:     os.Stderr,
 		fdTable:    map[int32]*wasiOpen{},
@@ -1155,7 +1792,8 @@ func DefaultWASI() *WasiStubs {
 		preopenDir: "/",
 		fsys:       osFS{root: "/"},
 		procs:      map[int32]*wasiProc{},
-		nextPID:    1000}
+		nextPID:    1000,
+	}
 }
 
 // SetPreopenDir scopes the default (os-backed) filesystem to a host directory.
@@ -1168,7 +1806,6 @@ func (w *WasiStubs) SetPreopenDir(dir string) {
 	if dir == "" {
 		dir = "/"
 	}
-
 	w.preopenDir = dir
 	w.fsys = osFS{root: dir}
 }
@@ -1184,7 +1821,6 @@ func (w *WasiStubs) SetFS(fsys FS) {
 	if fsys == nil {
 		fsys = osFS{root: w.preopenDir}
 	}
-
 	w.fsys = fsys
 }
 
@@ -1253,13 +1889,11 @@ func (w *WasiStubs) readCStr(m *Module, ptr int32) (s string, ok bool) {
 	if ptr == 0 {
 		return "", true
 	}
-
 	mem := m.Memory
 	lo := uint64(uint32(ptr))
 	if lo > uint64(len(mem)) {
 		return "", false
 	}
-
 	rest := mem[lo:]
 	for i := 0; i < len(rest); i++ {
 		if rest[i] == 0 {
@@ -1280,17 +1914,14 @@ func (w *WasiStubs) readCStrArray(m *Module, ptr int32) (out []string, ok bool) 
 		if b == nil {
 			return nil, false
 		}
-
 		p := int32(binary.LittleEndian.Uint32(b))
 		if p == 0 {
 			break
 		}
-
 		s, sok := w.readCStr(m, p)
 		if !sok {
 			return nil, false
 		}
-
 		out = append(out, s)
 	}
 	return out, true
@@ -1310,17 +1941,14 @@ func (w *WasiStubs) Proc_spawn(m *Module, pathPtr, argvPtr, envpPtr, stdinFd, st
 	if !ok || path == "" {
 		return -_wasiEINVAL
 	}
-
 	argv, ok := w.readCStrArray(m, argvPtr)
 	if !ok {
 		return -_wasiEFAULT
 	}
-
 	env, ok := w.readCStrArray(m, envpPtr)
 	if !ok {
 		return -_wasiEFAULT
 	}
-
 	out := w.memSlice(m, pidOutPtr, 4)
 	if out == nil {
 		return -_wasiEFAULT
@@ -1340,7 +1968,6 @@ func (w *WasiStubs) Proc_spawn(m *Module, pathPtr, argvPtr, envpPtr, stdinFd, st
 	if len(argv) > 0 {
 		cmd.Args = argv
 	} else {
-
 		cmd.Args = []string{path}
 	}
 
@@ -1375,7 +2002,6 @@ func (w *WasiStubs) Proc_spawn(m *Module, pathPtr, argvPtr, envpPtr, stdinFd, st
 	if w.nextPID == 0 {
 		w.nextPID = 1000
 	}
-
 	pid := w.nextPID
 	w.nextPID++
 	w.procs[pid] = proc
@@ -1420,12 +2046,10 @@ func (w *WasiStubs) Pipe(m *Module, fdsOutPtr int32) int32 {
 	if out == nil {
 		return -_wasiEFAULT
 	}
-
 	r, wr, err := os.Pipe()
 	if err != nil {
 		return -mapOSError(err)
 	}
-
 	w.mu.Lock()
 	if w.fdTable == nil {
 		w.fdTable = map[int32]*wasiOpen{}
@@ -1433,7 +2057,6 @@ func (w *WasiStubs) Pipe(m *Module, fdsOutPtr int32) int32 {
 	if w.nextFD < 4 {
 		w.nextFD = 4
 	}
-
 	rfd := w.nextFD
 	w.nextFD++
 	wfd := w.nextFD
@@ -1458,14 +2081,12 @@ func (w *WasiStubs) Proc_wait(m *Module, pid, options, statusOutPtr int32) int32
 	if out == nil {
 		return -_wasiEFAULT
 	}
-
 	w.mu.Lock()
 	proc := w.procs[pid]
 	w.mu.Unlock()
 	if proc == nil {
 		return -_wasiECHILD
 	}
-
 	const wnohang = 1
 	if options&wnohang != 0 {
 		select {
@@ -1477,7 +2098,6 @@ func (w *WasiStubs) Proc_wait(m *Module, pid, options, statusOutPtr int32) int32
 	} else {
 		<-proc.done
 	}
-
 	w.mu.Lock()
 	delete(w.procs, pid)
 	w.mu.Unlock()
@@ -1499,7 +2119,6 @@ func encodeWaitStatus(st *os.ProcessState) int32 {
 		}
 		return int32(ws.ExitStatus()&0xff) << 8
 	}
-
 	code := st.ExitCode()
 	if code < 0 {
 		code = 127
@@ -1532,10 +2151,8 @@ func (w *WasiStubs) Sock_getaddrinfo(m *Module, nodePtr, nodeLen, outPtr int32) 
 		if b == nil {
 			return -_wasiEFAULT
 		}
-
 		host = string(b)
 	}
-
 	out := w.memSlice(m, outPtr, 4)
 	if out == nil {
 		return -_wasiEFAULT
@@ -1544,13 +2161,13 @@ func (w *WasiStubs) Sock_getaddrinfo(m *Module, nodePtr, nodeLen, outPtr int32) 
 		binary.LittleEndian.PutUint32(out, 0)
 		return _wasiESUCCESS
 	}
-
 	w.mu.Lock()
 	hook := w.resolveHook
 	w.mu.Unlock()
 	if hook != nil && !hook(host) {
 		return -_wasiEACCES
 	}
+
 	if ip := net.ParseIP(host); ip != nil {
 		if v4 := ip.To4(); v4 != nil {
 			out[0], out[1], out[2], out[3] = v4[0], v4[1], v4[2], v4[3]
@@ -1558,17 +2175,14 @@ func (w *WasiStubs) Sock_getaddrinfo(m *Module, nodePtr, nodeLen, outPtr int32) 
 		}
 		return -_wasiEAFNOSUPPORT
 	}
-
 	ips, err := net.DefaultResolver.LookupIP(context.Background(), "ip4", host)
 	if err != nil || len(ips) == 0 {
 		return -_wasiENOENT
 	}
-
 	v4 := ips[0].To4()
 	if v4 == nil {
 		return -_wasiEAFNOSUPPORT
 	}
-
 	out[0], out[1], out[2], out[3] = v4[0], v4[1], v4[2], v4[3]
 	return _wasiESUCCESS
 }
@@ -1736,22 +2350,18 @@ func (w *WasiStubs) Args_get(m *Module, argv, argvBuf int32) int32 {
 	if argvBytes64 > 0x7fffffff {
 		return _wasiEFAULT
 	}
-
 	argvSlice := w.memSlice(m, argv, int32(argvBytes64))
 	if argvSlice == nil {
 		return _wasiEFAULT
 	}
-
 	total, ok := totalBytesPlusNul(w.args)
 	if !ok {
 		return _wasiEFAULT
 	}
-
 	argvBufSlice := w.memSlice(m, argvBuf, total)
 	if argvBufSlice == nil {
 		return _wasiEFAULT
 	}
-
 	bufOff := uint32(0)
 	for i, a := range w.args {
 		binary.LittleEndian.PutUint32(argvSlice[i*4:], uint32(argvBuf)+bufOff)
@@ -1759,7 +2369,6 @@ func (w *WasiStubs) Args_get(m *Module, argv, argvBuf int32) int32 {
 		if n < len(a) {
 			return _wasiEFAULT
 		}
-
 		bufOff += uint32(n)
 		argvBufSlice[bufOff] = 0
 		bufOff++
@@ -1775,12 +2384,10 @@ func (w *WasiStubs) Args_sizes_get(m *Module, argcPtr, argvBufLenPtr int32) int3
 	if argcSlice == nil || bufLenSlice == nil {
 		return _wasiEFAULT
 	}
-
 	total, ok := totalBytesPlusNul(w.args)
 	if !ok {
 		return _wasiEFAULT
 	}
-
 	binary.LittleEndian.PutUint32(argcSlice, uint32(len(w.args)))
 	binary.LittleEndian.PutUint32(bufLenSlice, uint32(total))
 	return _wasiESUCCESS
@@ -1793,22 +2400,18 @@ func (w *WasiStubs) Environ_get(m *Module, envv, envBuf int32) int32 {
 	if envvBytes64 > 0x7fffffff {
 		return _wasiEFAULT
 	}
-
 	envvSlice := w.memSlice(m, envv, int32(envvBytes64))
 	if envvSlice == nil {
 		return _wasiEFAULT
 	}
-
 	total, ok := totalBytesPlusNul(w.env)
 	if !ok {
 		return _wasiEFAULT
 	}
-
 	envBufSlice := w.memSlice(m, envBuf, total)
 	if envBufSlice == nil {
 		return _wasiEFAULT
 	}
-
 	bufOff := uint32(0)
 	for i, e := range w.env {
 		binary.LittleEndian.PutUint32(envvSlice[i*4:], uint32(envBuf)+bufOff)
@@ -1816,7 +2419,6 @@ func (w *WasiStubs) Environ_get(m *Module, envv, envBuf int32) int32 {
 		if n < len(e) {
 			return _wasiEFAULT
 		}
-
 		bufOff += uint32(n)
 		envBufSlice[bufOff] = 0
 		bufOff++
@@ -1832,12 +2434,10 @@ func (w *WasiStubs) Environ_sizes_get(m *Module, envcPtr, envBufLenPtr int32) in
 	if envcSlice == nil || bufLenSlice == nil {
 		return _wasiEFAULT
 	}
-
 	total, ok := totalBytesPlusNul(w.env)
 	if !ok {
 		return _wasiEFAULT
 	}
-
 	binary.LittleEndian.PutUint32(envcSlice, uint32(len(w.env)))
 	binary.LittleEndian.PutUint32(bufLenSlice, uint32(total))
 	return _wasiESUCCESS
@@ -1849,7 +2449,6 @@ func (w *WasiStubs) Clock_res_get(m *Module, clockID int32, resPtr int32) int32 
 	if out == nil {
 		return _wasiEFAULT
 	}
-
 	binary.LittleEndian.PutUint64(out, 1)
 	return _wasiESUCCESS
 }
@@ -1859,7 +2458,6 @@ func (w *WasiStubs) Clock_time_get(m *Module, clockID int32, precision int64, ti
 	if out == nil {
 		return _wasiEFAULT
 	}
-
 	var nanos uint64
 	switch clockID {
 	case 0:
@@ -1871,7 +2469,6 @@ func (w *WasiStubs) Clock_time_get(m *Module, clockID int32, precision int64, ti
 	default:
 		return _wasiEINVAL
 	}
-
 	binary.LittleEndian.PutUint64(out, nanos)
 	return _wasiESUCCESS
 }
@@ -1900,7 +2497,6 @@ func (w *WasiStubs) Fd_close(m *Module, fd int32) int32 {
 	if op == nil {
 		return _wasiEBADF
 	}
-
 	closeErr := closeWasiOpen(op)
 	delete(w.fdTable, fd)
 	if closeErr != nil {
@@ -1915,7 +2511,6 @@ func (w *WasiStubs) Fd_fdstat_get(m *Module, fd, ptr int32) int32 {
 	if out == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	defer w.mu.Unlock()
 	var ftype byte = 4 // regular file
@@ -1930,14 +2525,12 @@ func (w *WasiStubs) Fd_fdstat_get(m *Module, fd, ptr int32) int32 {
 		} else if op.listener != nil {
 			ftype = 6
 		}
-
 		fdflags = uint16(op.fdflags)
 	} else if fd == 3 {
 		ftype = 3
 	} else if fd >= 4 {
 		return _wasiEBADF
 	}
-
 	out[0] = ftype
 	out[1] = 0
 	binary.LittleEndian.PutUint16(out[2:], fdflags)
@@ -1963,7 +2556,6 @@ func (w *WasiStubs) Fd_fdstat_set_flags(m *Module, fd, flags int32) int32 {
 	if op != nil {
 		op.fdflags = flags
 	}
-
 	w.mu.Unlock()
 
 	_ = op
@@ -1993,14 +2585,15 @@ func (w *WasiStubs) Fd_filestat_get(m *Module, fd, ptr int32) int32 {
 	if out == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	op := w.fdTable[fd]
 	w.mu.Unlock()
 	if op == nil || op.f == nil {
+
 		for i := range out {
 			out[i] = 0
 		}
+
 		switch fd {
 		case 0, 1, 2:
 			out[16] = 2
@@ -2009,12 +2602,10 @@ func (w *WasiStubs) Fd_filestat_get(m *Module, fd, ptr int32) int32 {
 		}
 		return _wasiESUCCESS
 	}
-
 	st, err := op.f.Stat()
 	if err != nil {
 		return mapOSError(err)
 	}
-
 	writeFilestat(out, st)
 	return _wasiESUCCESS
 }
@@ -2041,11 +2632,11 @@ func (w *WasiStubs) Fd_filestat_set_times(m *Module, fd int32, atim, mtim int64,
 	if op == nil || op.f == nil {
 		return _wasiEBADF
 	}
-
 	atime, mtime, err := resolveFiletimes(uint64(atim), uint64(mtim), fstFlags, op.f)
 	if err != nil {
 		return mapOSError(err)
 	}
+
 	if cf, ok := fsys.(chtimesFS); ok {
 		if err := cf.Chtimes(op.path, atime, mtime); err != nil {
 			return mapOSError(err)
@@ -2057,7 +2648,9 @@ func (w *WasiStubs) Fd_filestat_set_times(m *Module, fd int32, atim, mtim int64,
 // combine64 reconstructs an unsigned 64-bit time value from a pair of
 // 32-bit args. WASI signature uses two i32s for the nanosecond timestamp
 // in fd_filestat_set_times.
-func combine64(hi, lo int32) uint64 { return (uint64(uint32(hi)) << 32) | uint64(uint32(lo)) }
+func combine64(hi, lo int32) uint64 {
+	return (uint64(uint32(hi)) << 32) | uint64(uint32(lo))
+}
 
 // resolveFiletimes decides the (atime, mtime) pair to apply given a
 // fstFlags bitmask. Bits 0x2 (ATIME_NOW) and 0x8 (MTIME_NOW) override the
@@ -2075,7 +2668,6 @@ func resolveFiletimes(atimNs, mtimNs uint64, fstFlags int32, f File) (time.Time,
 		if err != nil {
 			return time.Time{}, time.Time{}, err
 		}
-
 		atime = st.ModTime()
 		mtime = st.ModTime()
 	}
@@ -2095,6 +2687,7 @@ func resolveFiletimes(atimNs, mtimNs uint64, fstFlags int32, f File) (time.Time,
 }
 
 func (w *WasiStubs) Fd_prestat_get(m *Module, fd, ptr int32) int32 {
+
 	if fd != 3 {
 		return _wasiEBADF
 	}
@@ -2103,7 +2696,6 @@ func (w *WasiStubs) Fd_prestat_get(m *Module, fd, ptr int32) int32 {
 	if out == nil {
 		return _wasiEFAULT
 	}
-
 	out[0] = 0
 	binary.LittleEndian.PutUint32(out[4:], 1)
 	return _wasiESUCCESS
@@ -2116,12 +2708,10 @@ func (w *WasiStubs) Fd_prestat_dir_name(m *Module, fd, buf, buflen int32) int32 
 	if buflen < 1 {
 		return _wasiESUCCESS
 	}
-
 	out := w.memSlice(m, buf, buflen)
 	if out == nil {
 		return _wasiEFAULT
 	}
-
 	out[0] = '/'
 	return _wasiESUCCESS
 }
@@ -2138,13 +2728,11 @@ func (w *WasiStubs) Fd_read(m *Module, fd, iovs, iovsLen, nreadPtr int32) int32 
 	if iovBytes > 0x7fffffff {
 		return _wasiEFAULT
 	}
-
 	iovecs := w.memSlice(m, iovs, int32(iovBytes))
 	nreadSlice := w.memSlice(m, nreadPtr, 4)
 	if iovecs == nil || nreadSlice == nil {
 		return _wasiEFAULT
 	}
-
 	_ = op
 	var total uint32
 	for i := int32(0); i < iovsLen; i++ {
@@ -2154,21 +2742,18 @@ func (w *WasiStubs) Fd_read(m *Module, fd, iovs, iovsLen, nreadPtr int32) int32 
 		if buf == nil {
 			return _wasiEFAULT
 		}
-
 		n, err := src.Read(buf)
 		total += uint32(n)
 		if err != nil {
 			if errors.Is(err, io.EOF) {
 				break
 			}
-
 			break
 		}
 		if n < int(bufLen) {
 			break
 		}
 	}
-
 	binary.LittleEndian.PutUint32(nreadSlice, total)
 	return _wasiESUCCESS
 }
@@ -2180,7 +2765,6 @@ func (w *WasiStubs) fdSrcLocked(fd int32) (io.Reader, *wasiOpen) {
 	case 0:
 		return w.stdin, nil
 	}
-
 	op := w.fdTable[fd]
 	if op == nil {
 		return nil, nil
@@ -2203,7 +2787,6 @@ func (w *WasiStubs) fdDstLocked(fd int32) (io.Writer, *wasiOpen) {
 	case 2:
 		return w.stderr, nil
 	}
-
 	op := w.fdTable[fd]
 	if op == nil {
 		return nil, nil
@@ -2224,18 +2807,15 @@ func (w *WasiStubs) Fd_pread(m *Module, fd, iovs, iovsLen int32, offset int64, n
 	if op == nil || op.f == nil {
 		return _wasiEBADF
 	}
-
 	iovBytes := uint64(uint32(iovsLen)) * 8
 	if iovBytes > 0x7fffffff {
 		return _wasiEFAULT
 	}
-
 	iovecs := w.memSlice(m, iovs, int32(iovBytes))
 	nreadSlice := w.memSlice(m, nreadPtr, 4)
 	if iovecs == nil || nreadSlice == nil {
 		return _wasiEFAULT
 	}
-
 	var total uint32
 	curOff := offset
 	for i := int32(0); i < iovsLen; i++ {
@@ -2245,7 +2825,6 @@ func (w *WasiStubs) Fd_pread(m *Module, fd, iovs, iovsLen int32, offset int64, n
 		if buf == nil {
 			return _wasiEFAULT
 		}
-
 		n, err := op.f.ReadAt(buf, curOff)
 		total += uint32(n)
 		curOff += int64(n)
@@ -2253,14 +2832,12 @@ func (w *WasiStubs) Fd_pread(m *Module, fd, iovs, iovsLen int32, offset int64, n
 			if errors.Is(err, io.EOF) {
 				break
 			}
-
 			break
 		}
 		if n < int(bufLen) {
 			break
 		}
 	}
-
 	binary.LittleEndian.PutUint32(nreadSlice, total)
 	return _wasiESUCCESS
 }
@@ -2272,18 +2849,15 @@ func (w *WasiStubs) Fd_pwrite(m *Module, fd, iovs, iovsLen int32, offset int64, 
 	if op == nil || op.f == nil {
 		return _wasiEBADF
 	}
-
 	iovBytes := uint64(uint32(iovsLen)) * 8
 	if iovBytes > 0x7fffffff {
 		return _wasiEFAULT
 	}
-
 	iovecs := w.memSlice(m, iovs, int32(iovBytes))
 	nwSlice := w.memSlice(m, nwrittenPtr, 4)
 	if iovecs == nil || nwSlice == nil {
 		return _wasiEFAULT
 	}
-
 	var total uint32
 	curOff := offset
 	for i := int32(0); i < iovsLen; i++ {
@@ -2293,7 +2867,6 @@ func (w *WasiStubs) Fd_pwrite(m *Module, fd, iovs, iovsLen int32, offset int64, 
 		if buf == nil {
 			return _wasiEFAULT
 		}
-
 		n, err := op.f.WriteAt(buf, curOff)
 		total += uint32(n)
 		curOff += int64(n)
@@ -2301,7 +2874,6 @@ func (w *WasiStubs) Fd_pwrite(m *Module, fd, iovs, iovsLen int32, offset int64, 
 			break
 		}
 	}
-
 	binary.LittleEndian.PutUint32(nwSlice, total)
 	return _wasiESUCCESS
 }
@@ -2311,19 +2883,16 @@ func (w *WasiStubs) Fd_seek(m *Module, fd int32, offset int64, whence, newOffPtr
 	if out == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	op := w.fdTable[fd]
 	w.mu.Unlock()
 	if op == nil || op.f == nil {
 		return _wasiEBADF
 	}
-
 	n, err := op.f.Seek(offset, int(whence))
 	if err != nil {
 		return _wasiEINVAL
 	}
-
 	binary.LittleEndian.PutUint64(out, uint64(n))
 	return _wasiESUCCESS
 }
@@ -2333,19 +2902,16 @@ func (w *WasiStubs) Fd_tell(m *Module, fd, offsetPtr int32) int32 {
 	if out == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	op := w.fdTable[fd]
 	w.mu.Unlock()
 	if op == nil || op.f == nil {
 		return _wasiEBADF
 	}
-
 	n, err := op.f.Seek(0, 1)
 	if err != nil {
 		return _wasiEIO
 	}
-
 	binary.LittleEndian.PutUint64(out, uint64(n))
 	return _wasiESUCCESS
 }
@@ -2358,7 +2924,6 @@ func (w *WasiStubs) Fd_write(m *Module, fd, iovs, iovsLen, nwrittenPtr int32) in
 	if iovBytes > 0x7fffffff {
 		return _wasiEFAULT
 	}
-
 	iovecs := w.memSlice(m, iovs, int32(iovBytes))
 	nwrittenSlice := w.memSlice(m, nwrittenPtr, 4)
 	if iovecs == nil || nwrittenSlice == nil {
@@ -2368,7 +2933,6 @@ func (w *WasiStubs) Fd_write(m *Module, fd, iovs, iovsLen, nwrittenPtr int32) in
 		binary.LittleEndian.PutUint32(nwrittenSlice, 0)
 		return _wasiEBADF
 	}
-
 	var total uint32
 	for i := int32(0); i < iovsLen; i++ {
 		bufPtr := binary.LittleEndian.Uint32(iovecs[i*8:])
@@ -2377,14 +2941,12 @@ func (w *WasiStubs) Fd_write(m *Module, fd, iovs, iovsLen, nwrittenPtr int32) in
 		if buf == nil {
 			return _wasiEFAULT
 		}
-
 		n, err := dst.Write(buf)
 		total += uint32(n)
 		if err != nil {
 			break
 		}
 	}
-
 	binary.LittleEndian.PutUint32(nwrittenSlice, total)
 	return _wasiESUCCESS
 }
@@ -2409,6 +2971,7 @@ func (w *WasiStubs) Fd_datasync(m *Module, fd int32) int32 {
 	if op == nil || op.f == nil {
 		return _wasiEBADF
 	}
+
 	if err := op.f.Sync(); err != nil {
 		return mapOSError(err)
 	}
@@ -2434,6 +2997,7 @@ func (w *WasiStubs) Fd_allocate(m *Module, fd int32, offset, length int64) int32
 	if op == nil || op.f == nil {
 		return _wasiEBADF
 	}
+
 	if err := op.f.Truncate(offset + length); err != nil {
 		return mapOSError(err)
 	}
@@ -2444,22 +3008,20 @@ func (w *WasiStubs) Fd_renumber(m *Module, from, to int32) int32 {
 	w.mu.Lock()
 	defer w.mu.Unlock()
 	if from == to {
+
 		if _, ok := w.fdTable[from]; ok {
 			return _wasiESUCCESS
 		}
 		return _wasiEBADF
 	}
-
 	src, ok := w.fdTable[from]
 	if !ok {
 		return _wasiEBADF
 	}
-
 	var closeErr error
 	if dst, ok2 := w.fdTable[to]; ok2 {
 		closeErr = closeWasiOpen(dst)
 	}
-
 	w.fdTable[to] = src
 	delete(w.fdTable, from)
 	if closeErr != nil {
@@ -2480,7 +3042,6 @@ func (op *wasiOpen) readDirCached() ([]os.DirEntry, error) {
 	if _, err := op.f.Seek(0, 0); err != nil {
 		return nil, err
 	}
-
 	entries, err := op.f.ReadDir(-1)
 	if err != nil {
 		return nil, err
@@ -2500,16 +3061,19 @@ func (op *wasiOpen) readDirCached() ([]os.DirEntry, error) {
 // dotEntry produces a synthetic os.DirEntry for "." and "..". Its
 // Info() returns the stat of the parent directory (good enough for
 // guest-side d_type detection).
-func dotEntry(parent, name string) os.DirEntry { return &dotDirEntry{name: name, parent: parent} }
+func dotEntry(parent, name string) os.DirEntry {
+	return &dotDirEntry{name: name, parent: parent}
+}
 
 type dotDirEntry struct {
 	name, parent string
 }
 
-func (d *dotDirEntry) Name() string      { return d.name }
-func (d *dotDirEntry) IsDir() bool       { return true }
-func (d *dotDirEntry) Type() os.FileMode { return os.ModeDir }
-
+func (d *dotDirEntry) Name() string { return d.name }
+func (d *dotDirEntry) IsDir() bool  { return true }
+func (d *dotDirEntry) Type() os.FileMode {
+	return os.ModeDir
+}
 func (d *dotDirEntry) Info() (os.FileInfo, error) {
 	if d.name == "." {
 		return os.Stat(d.parent)
@@ -2524,26 +3088,23 @@ func (w *WasiStubs) Fd_readdir(m *Module, fd, buf, buflen int32, cookie int64, b
 	if op == nil || op.f == nil || !op.isDir {
 		return _wasiEBADF
 	}
-
 	bufSlice := w.memSlice(m, buf, buflen)
 	bufusedSlice := w.memSlice(m, bufusedPtr, 4)
 	if bufSlice == nil || bufusedSlice == nil {
 		return _wasiEFAULT
 	}
+
 	if cookie == 0 {
 		op.dirCache = nil
 	}
-
 	entries, err := op.readDirCached()
 	if err != nil {
 		return mapOSError(err)
 	}
-
 	startIdx := int(cookie)
 	if startIdx < 0 {
 		startIdx = 0
 	}
-
 	written := 0
 	for i := startIdx; i < len(entries); i++ {
 		e := entries[i]
@@ -2551,9 +3112,8 @@ func (w *WasiStubs) Fd_readdir(m *Module, fd, buf, buflen int32, cookie int64, b
 		// dirent header: d_next u64 + d_ino u64 + d_namlen u32 + d_type u8 + 3 pad = 24 bytes.
 		const headerLen = 24
 		// os.FileInfo does not expose inode portably; report 0.
-		var dtype byte = 4
-		if // regular file
-		e.IsDir() {
+		var dtype byte = 4 // regular file
+		if e.IsDir() {
 			dtype = 3
 		} else if e.Type()&os.ModeSymlink != 0 {
 			dtype = 7
@@ -2562,7 +3122,6 @@ func (w *WasiStubs) Fd_readdir(m *Module, fd, buf, buflen int32, cookie int64, b
 		} else if e.Type()&os.ModeSocket != 0 {
 			dtype = 6
 		}
-
 		// Assemble the fixed header, then copy header+name into the buffer.
 		// When a record does not fully fit we copy as much as fits so that
 		// bufused == buflen, which is the wasi-libc signal for "more entries
@@ -2582,7 +3141,6 @@ func (w *WasiStubs) Fd_readdir(m *Module, fd, buf, buflen int32, cookie int64, b
 			written = len(bufSlice)
 			break
 		}
-
 		n = copy(bufSlice[written:], nameBytes)
 		written += n
 		if n < len(nameBytes) {
@@ -2590,7 +3148,6 @@ func (w *WasiStubs) Fd_readdir(m *Module, fd, buf, buflen int32, cookie int64, b
 			break
 		}
 	}
-
 	binary.LittleEndian.PutUint32(bufusedSlice, uint32(written))
 	return _wasiESUCCESS
 }
@@ -2607,13 +3164,11 @@ func (w *WasiStubs) Path_open(m *Module, dirFd, dirflags, pathPtr, pathLen, ofla
 	if dirFd != 3 {
 		return _wasiEBADF
 	}
-
 	pathSlice := w.memSlice(m, pathPtr, pathLen)
 	outSlice := w.memSlice(m, openedFdPtr, 4)
 	if pathSlice == nil || outSlice == nil {
 		return _wasiEFAULT
 	}
-
 	rel := string(pathSlice)
 	w.mu.Lock()
 	fsys := w.fsys
@@ -2628,9 +3183,9 @@ func (w *WasiStubs) Path_open(m *Module, dirFd, dirflags, pathPtr, pathLen, ofla
 	case canWrite && !canRead:
 		flag = os.O_WRONLY
 	default:
-
 		flag = os.O_RDONLY
 	}
+
 	if oflags&0x1 != 0 {
 		flag |= os.O_CREATE
 	}
@@ -2640,6 +3195,7 @@ func (w *WasiStubs) Path_open(m *Module, dirFd, dirflags, pathPtr, pathLen, ofla
 	if oflags&0x8 != 0 {
 		flag |= os.O_TRUNC
 	}
+
 	if fdflags&0x1 != 0 {
 		flag |= os.O_APPEND
 	}
@@ -2654,26 +3210,25 @@ func (w *WasiStubs) Path_open(m *Module, dirFd, dirflags, pathPtr, pathLen, ofla
 
 	requireDir := oflags&0x2 != 0
 	noFollow := dirflags&0x1 == 0
+
 	if requireDir {
 
 		flag = os.O_RDONLY
 	}
+
 	if noFollow {
 		if li, lerr := fsys.Lstat(rel); lerr == nil && (li.Mode()&os.ModeSymlink) != 0 {
 			return _wasiENOENT
 		}
 	}
-
 	f, err := fsys.OpenFile(rel, flag, 0o644)
 	if err != nil {
 		return mapOSError(err)
 	}
-
 	st, statErr := f.Stat()
 	if statErr != nil {
 		return mapOSError(errors.Join(statErr, f.Close()))
 	}
-
 	isDir := st.IsDir()
 	if requireDir && !isDir {
 		if cerr := f.Close(); cerr != nil {
@@ -2681,7 +3236,6 @@ func (w *WasiStubs) Path_open(m *Module, dirFd, dirflags, pathPtr, pathLen, ofla
 		}
 		return _wasiENOTDIR
 	}
-
 	w.mu.Lock()
 	fd := w.nextFD
 	w.nextFD++
@@ -2695,7 +3249,6 @@ func (w *WasiStubs) Path_create_directory(m *Module, dirFd, pathPtr, pathLen int
 	if dirFd != 3 {
 		return _wasiEBADF
 	}
-
 	pathSlice := w.memSlice(m, pathPtr, pathLen)
 	if pathSlice == nil {
 		return _wasiEFAULT
@@ -2703,7 +3256,6 @@ func (w *WasiStubs) Path_create_directory(m *Module, dirFd, pathPtr, pathLen int
 	if !w.checkFS(string(pathSlice), true) {
 		return _wasiEACCES
 	}
-
 	w.mu.Lock()
 	fsys := w.fsys
 	w.mu.Unlock()
@@ -2717,7 +3269,6 @@ func (w *WasiStubs) Path_unlink_file(m *Module, dirFd, pathPtr, pathLen int32) i
 	if dirFd != 3 {
 		return _wasiEBADF
 	}
-
 	pathSlice := w.memSlice(m, pathPtr, pathLen)
 	if pathSlice == nil {
 		return _wasiEFAULT
@@ -2725,7 +3276,6 @@ func (w *WasiStubs) Path_unlink_file(m *Module, dirFd, pathPtr, pathLen int32) i
 	if !w.checkFS(string(pathSlice), true) {
 		return _wasiEACCES
 	}
-
 	w.mu.Lock()
 	fsys := w.fsys
 	w.mu.Unlock()
@@ -2747,12 +3297,10 @@ func (w *WasiStubs) Path_remove_directory(m *Module, dirFd, pathPtr, pathLen int
 	if dirFd != 3 {
 		return _wasiEBADF
 	}
-
 	pathSlice := w.memSlice(m, pathPtr, pathLen)
 	if pathSlice == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	fsys := w.fsys
 	w.mu.Unlock()
@@ -2774,13 +3322,11 @@ func (w *WasiStubs) Path_rename(m *Module, oldFd, oldPathPtr, oldPathLen, newFd,
 	if oldFd != 3 || newFd != 3 {
 		return _wasiEBADF
 	}
-
 	oldSlice := w.memSlice(m, oldPathPtr, oldPathLen)
 	newSlice := w.memSlice(m, newPathPtr, newPathLen)
 	if oldSlice == nil || newSlice == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	fsys := w.fsys
 	w.mu.Unlock()
@@ -2794,13 +3340,11 @@ func (w *WasiStubs) Path_filestat_get(m *Module, dirFd, flags, pathPtr, pathLen,
 	if dirFd != 3 {
 		return _wasiEBADF
 	}
-
 	pathSlice := w.memSlice(m, pathPtr, pathLen)
 	out := w.memSlice(m, outPtr, 64)
 	if pathSlice == nil || out == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	fsys := w.fsys
 	w.mu.Unlock()
@@ -2810,13 +3354,11 @@ func (w *WasiStubs) Path_filestat_get(m *Module, dirFd, flags, pathPtr, pathLen,
 	if flags&0x1 != 0 {
 		st, err = fsys.Stat(rel)
 	} else {
-
 		st, err = fsys.Lstat(rel)
 	}
 	if err != nil {
 		return mapOSError(err)
 	}
-
 	writeFilestat(out, st)
 	return _wasiESUCCESS
 }
@@ -2825,12 +3367,10 @@ func (w *WasiStubs) Path_filestat_set_times(m *Module, dirFd, flags, pathPtr, pa
 	if dirFd != 3 {
 		return _wasiEBADF
 	}
-
 	pathSlice := w.memSlice(m, pathPtr, pathLen)
 	if pathSlice == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	fsys := w.fsys
 	w.mu.Unlock()
@@ -2842,13 +3382,11 @@ func (w *WasiStubs) Path_filestat_set_times(m *Module, dirFd, flags, pathPtr, pa
 	if follow {
 		st, statErr = fsys.Stat(rel)
 	} else {
-
 		st, statErr = fsys.Lstat(rel)
 	}
 	if statErr != nil {
 		return mapOSError(statErr)
 	}
-
 	atime := st.ModTime()
 	mtime := st.ModTime()
 	if fstFlags&0x1 != 0 {
@@ -2863,6 +3401,7 @@ func (w *WasiStubs) Path_filestat_set_times(m *Module, dirFd, flags, pathPtr, pa
 	if fstFlags&0x8 != 0 {
 		mtime = now
 	}
+
 	if cf, ok := fsys.(chtimesFS); ok {
 		if err := cf.Chtimes(rel, atime, mtime); err != nil {
 			return mapOSError(err)
@@ -2884,13 +3423,11 @@ func (w *WasiStubs) Path_link(m *Module, oldFd, oldFlags, oldPathPtr, oldPathLen
 	if oldFd != 3 || newFd != 3 {
 		return _wasiEBADF
 	}
-
 	oldSlice := w.memSlice(m, oldPathPtr, oldPathLen)
 	newSlice := w.memSlice(m, newPathPtr, newPathLen)
 	if oldSlice == nil || newSlice == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	fsys := w.fsys
 	w.mu.Unlock()
@@ -2904,13 +3441,11 @@ func (w *WasiStubs) Path_symlink(m *Module, targetPtr, targetLen, dirFd, linkPat
 	if dirFd != 3 {
 		return _wasiEBADF
 	}
-
 	targetSlice := w.memSlice(m, targetPtr, targetLen)
 	linkSlice := w.memSlice(m, linkPathPtr, linkPathLen)
 	if targetSlice == nil || linkSlice == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	fsys := w.fsys
 	w.mu.Unlock()
@@ -2924,14 +3459,12 @@ func (w *WasiStubs) Path_readlink(m *Module, dirFd, pathPtr, pathLen, buf, bufle
 	if dirFd != 3 {
 		return _wasiEBADF
 	}
-
 	pathSlice := w.memSlice(m, pathPtr, pathLen)
 	bufSlice := w.memSlice(m, buf, buflen)
 	bufused := w.memSlice(m, bufusedPtr, 4)
 	if pathSlice == nil || bufSlice == nil || bufused == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	fsys := w.fsys
 	w.mu.Unlock()
@@ -2939,7 +3472,6 @@ func (w *WasiStubs) Path_readlink(m *Module, dirFd, pathPtr, pathLen, buf, bufle
 	if err != nil {
 		return mapOSError(err)
 	}
-
 	n := copy(bufSlice, target)
 	binary.LittleEndian.PutUint32(bufused, uint32(n))
 	return _wasiESUCCESS
@@ -2950,7 +3482,6 @@ func (w *WasiStubs) Random_get(m *Module, buf, bufLen int32) int32 {
 	if slice == nil {
 		return _wasiEFAULT
 	}
-
 	_, err := rand.Read(slice)
 	if err != nil {
 		return _wasiEIO
@@ -2958,7 +3489,10 @@ func (w *WasiStubs) Random_get(m *Module, buf, bufLen int32) int32 {
 	return _wasiESUCCESS
 }
 
-func (w *WasiStubs) Sched_yield(m *Module) int32 { runtime.Gosched(); return _wasiESUCCESS }
+func (w *WasiStubs) Sched_yield(m *Module) int32 {
+	runtime.Gosched()
+	return _wasiESUCCESS
+}
 
 // Poll_oneoff decodes the WASI subscription_u records and reproduces the
 // requested events.
@@ -2984,13 +3518,11 @@ func (w *WasiStubs) Poll_oneoff(m *Module, inPtr, outPtr, nsubs, neventsPtr int3
 	if subsTotal > 0x7fffffff {
 		return _wasiEFAULT
 	}
-
 	subs := w.memSlice(m, inPtr, int32(subsTotal))
 	evTotal := uint64(uint32(nsubs)) * 32
 	if evTotal > 0x7fffffff {
 		return _wasiEFAULT
 	}
-
 	events := w.memSlice(m, outPtr, int32(evTotal))
 	nev := w.memSlice(m, neventsPtr, 4)
 	if subs == nil || events == nil || nev == nil {
@@ -3025,7 +3557,6 @@ func (w *WasiStubs) Poll_oneoff(m *Module, inPtr, outPtr, nsubs, neventsPtr int3
 			if minClockNs < 0 || ns < minClockNs {
 				minClockNs = ns
 			}
-
 			clockEvents = append(clockEvents, pollItem{userdata: userdata, etype: 0})
 		case 1, 2:
 			fd := int32(binary.LittleEndian.Uint32(subs[base+16:]))
@@ -3035,6 +3566,7 @@ func (w *WasiStubs) Poll_oneoff(m *Module, inPtr, outPtr, nsubs, neventsPtr int3
 			clockEvents = append(clockEvents, pollItem{userdata: userdata, etype: etype})
 		}
 	}
+
 	if minClockNs > 0 {
 		time.Sleep(time.Duration(minClockNs))
 	}
@@ -3053,8 +3585,10 @@ func (w *WasiStubs) Poll_oneoff(m *Module, inPtr, outPtr, nsubs, neventsPtr int3
 		if op == nil {
 			errno = _wasiEBADF
 		} else if op.f != nil {
+
 			if ev.isRead {
 				if st, err := op.f.Stat(); err == nil {
+
 					if cur, err := op.f.Seek(0, 1); err == nil && st.Size() > cur {
 						nbytes = uint64(st.Size() - cur)
 					}
@@ -3064,7 +3598,6 @@ func (w *WasiStubs) Poll_oneoff(m *Module, inPtr, outPtr, nsubs, neventsPtr int3
 
 			_ = minClockNs
 		}
-
 		writeEvent(events[written:written+32], ev.userdata, ev.etype, uint16(errno), nbytes)
 		written += 32
 	}
@@ -3077,14 +3610,16 @@ func writeEvent(dst []byte, userdata uint64, etype byte, errno uint16, nbytes ui
 	for i := range dst {
 		dst[i] = 0
 	}
-
 	binary.LittleEndian.PutUint64(dst[0:], userdata)
 	binary.LittleEndian.PutUint16(dst[8:], errno)
 	binary.LittleEndian.PutUint16(dst[10:], uint16(etype))
 	binary.LittleEndian.PutUint64(dst[16:], nbytes)
 }
 
-func (w *WasiStubs) Proc_exit(m *Module, code int32) { panic(&WasiExitError{Code: code}) }
+func (w *WasiStubs) Proc_exit(m *Module, code int32) {
+
+	panic(&WasiExitError{Code: code})
+}
 
 func (w *WasiStubs) Proc_raise(m *Module, sig int32) int32 {
 	p, err := os.FindProcess(os.Getpid())
@@ -3135,26 +3670,23 @@ func (w *WasiStubs) Sock_connect(m *Module, fd, ipBE, port int32) int32 {
 	if op.conn != nil {
 		return -_wasiEISCONN
 	}
-
 	u := uint32(ipBE)
 	ip := fmt.Sprintf("%d.%d.%d.%d", u&0xff, (u>>8)&0xff, (u>>16)&0xff, (u>>24)&0xff)
 	p := int(uint16(port))
 	if hook != nil && !hook("tcp", ip, p) {
 		return -_wasiEACCES
 	}
-
 	conn, err := net.DialTimeout("tcp", net.JoinHostPort(ip, strconv.Itoa(p)), 30*time.Second)
 	if err != nil {
 		return -_wasiECONNREFUSED
 	}
-
 	w.mu.Lock()
+
 	if cur := w.fdTable[fd]; cur == op {
 		op.conn = conn
 		w.mu.Unlock()
 		return _wasiESUCCESS
 	}
-
 	w.mu.Unlock()
 	if cerr := conn.Close(); cerr != nil {
 		return mapOSError(cerr)
@@ -3170,24 +3702,20 @@ func (w *WasiStubs) Sock_accept(m *Module, fd, flags, fdOutPtr int32) int32 {
 	if !w.checkNet("accept") {
 		return _wasiEACCES
 	}
-
 	out := w.memSlice(m, fdOutPtr, 4)
 	if out == nil {
 		return _wasiEFAULT
 	}
-
 	w.mu.Lock()
 	op := w.fdTable[fd]
 	w.mu.Unlock()
 	if op == nil || op.listener == nil {
 		return _wasiENOTSOCK
 	}
-
 	conn, err := op.listener.Accept()
 	if err != nil {
 		return mapOSError(err)
 	}
-
 	w.mu.Lock()
 	newFD := w.nextFD
 	w.nextFD++
@@ -3201,19 +3729,16 @@ func (w *WasiStubs) Sock_recv(m *Module, fd, riData, riDataLen, riFlags, roDataL
 	if !w.checkNet("recv") {
 		return _wasiEACCES
 	}
-
 	w.mu.Lock()
 	op := w.fdTable[fd]
 	w.mu.Unlock()
 	if op == nil || op.conn == nil {
 		return _wasiENOTSOCK
 	}
-
 	iovBytes := uint64(uint32(riDataLen)) * 8
 	if iovBytes > 0x7fffffff {
 		return _wasiEFAULT
 	}
-
 	iovecs := w.memSlice(m, riData, int32(iovBytes))
 	lenOut := w.memSlice(m, roDataLenPtr, 4)
 
@@ -3221,7 +3746,6 @@ func (w *WasiStubs) Sock_recv(m *Module, fd, riData, riDataLen, riFlags, roDataL
 	if iovecs == nil || lenOut == nil || flagsOut == nil {
 		return _wasiEFAULT
 	}
-
 	var total uint32
 	for i := int32(0); i < riDataLen; i++ {
 		bufPtr := binary.LittleEndian.Uint32(iovecs[i*8:])
@@ -3230,14 +3754,12 @@ func (w *WasiStubs) Sock_recv(m *Module, fd, riData, riDataLen, riFlags, roDataL
 		if buf == nil {
 			return _wasiEFAULT
 		}
-
 		n, err := op.conn.Read(buf)
 		total += uint32(n)
 		if err != nil {
 			break
 		}
 	}
-
 	binary.LittleEndian.PutUint16(flagsOut, 0)
 	binary.LittleEndian.PutUint32(lenOut, total)
 	return _wasiESUCCESS
@@ -3247,25 +3769,21 @@ func (w *WasiStubs) Sock_send(m *Module, fd, siData, siDataLen, siFlags, soDataL
 	if !w.checkNet("send") {
 		return _wasiEACCES
 	}
-
 	w.mu.Lock()
 	op := w.fdTable[fd]
 	w.mu.Unlock()
 	if op == nil || op.conn == nil {
 		return _wasiENOTSOCK
 	}
-
 	iovBytes := uint64(uint32(siDataLen)) * 8
 	if iovBytes > 0x7fffffff {
 		return _wasiEFAULT
 	}
-
 	iovecs := w.memSlice(m, siData, int32(iovBytes))
 	lenOut := w.memSlice(m, soDataLenPtr, 4)
 	if iovecs == nil || lenOut == nil {
 		return _wasiEFAULT
 	}
-
 	var total uint32
 	for i := int32(0); i < siDataLen; i++ {
 		bufPtr := binary.LittleEndian.Uint32(iovecs[i*8:])
@@ -3274,14 +3792,12 @@ func (w *WasiStubs) Sock_send(m *Module, fd, siData, siDataLen, siFlags, soDataL
 		if buf == nil {
 			return _wasiEFAULT
 		}
-
 		n, err := op.conn.Write(buf)
 		total += uint32(n)
 		if err != nil {
 			break
 		}
 	}
-
 	binary.LittleEndian.PutUint32(lenOut, total)
 	return _wasiESUCCESS
 }
@@ -3293,19 +3809,18 @@ func (w *WasiStubs) Sock_shutdown(m *Module, fd, how int32) int32 {
 	if op == nil || op.conn == nil {
 		return _wasiENOTSOCK
 	}
-
 	type shutdowner interface {
 		CloseRead() error
 		CloseWrite() error
 	}
 	sh, ok := op.conn.(shutdowner)
 	if !ok {
+
 		if err := op.conn.Close(); err != nil {
 			return mapOSError(err)
 		}
 		return _wasiESUCCESS
 	}
-
 	var shErr error
 	if how&0x1 != 0 {
 		shErr = errors.Join(shErr, sh.CloseRead())
@@ -3343,7 +3858,6 @@ func writeFilestat(out []byte, st os.FileInfo) {
 	case mode&os.ModeCharDevice != 0:
 		ftype = 2
 	}
-
 	out[16] = ftype
 	binary.LittleEndian.PutUint64(out[24:], 1)
 	binary.LittleEndian.PutUint64(out[32:], uint64(st.Size()))
