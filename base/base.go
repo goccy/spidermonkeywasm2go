@@ -540,98 +540,7 @@ func I64_extend32_s(x int64) int64 { return int64(int32(x)) }
 // naming a dropped (or active) segment with n > 0. The bounds check consults
 // memSize (not len(m.M)) so a shared memory's reserved-but-ungrown tail stays
 // out of reach, mirroring memoryFill/memoryCopy.
-// Shared-memory plain access helpers. wasm's threads memory model gives
-// NON-atomic loads/stores hardware-like coherence between agents; Go's
-// compiler, free of any such contract, may CSE or hoist a plain *ptr access
-// (musl's __unlock skips the futex wake when its plain read of the waiters
-// word looks stale — stranding the waiter forever). noinline forces every
-// executed access to really touch memory; CPU cache coherence supplies the
-// cross-goroutine freshness, exactly as it does for native threads.
 //
-// Signatures stick to the gcasm marshaller's vocabulary (int32/uint32/
-// int64/float32/float64 plus *Module): sub-word widths are widened here,
-// not at the call site.
-//
-//go:noinline
-func MemLoad8(m *Module, ea uint32) uint32 {
-	return uint32(*(*uint8)(unsafe.Add(m.M, uintptr(ea))))
-}
-
-//go:noinline
-func MemLoad8S(m *Module, ea uint32) int32 {
-	return int32(*(*int8)(unsafe.Add(m.M, uintptr(ea))))
-}
-
-//go:noinline
-func MemLoad16(m *Module, ea uint32) uint32 {
-	return uint32(*(*uint16)(unsafe.Add(m.M, uintptr(ea))))
-}
-
-//go:noinline
-func MemLoad16S(m *Module, ea uint32) int32 {
-	return int32(*(*int16)(unsafe.Add(m.M, uintptr(ea))))
-}
-
-//go:noinline
-func MemLoad32(m *Module, ea uint32) int32 {
-	return *(*int32)(unsafe.Add(m.M, uintptr(ea)))
-}
-
-//go:noinline
-func MemLoad32U(m *Module, ea uint32) uint32 {
-	return *(*uint32)(unsafe.Add(m.M, uintptr(ea)))
-}
-
-//go:noinline
-func MemLoad64(m *Module, ea uint32) int64 {
-	return *(*int64)(unsafe.Add(m.M, uintptr(ea)))
-}
-
-//go:noinline
-func MemLoadF32(m *Module, ea uint32) float32 {
-	return *(*float32)(unsafe.Add(m.M, uintptr(ea)))
-}
-
-//go:noinline
-func MemLoadF64(m *Module, ea uint32) float64 {
-	return *(*float64)(unsafe.Add(m.M, uintptr(ea)))
-}
-
-//go:noinline
-func MemStore8(m *Module, ea uint32, v uint32) {
-	*(*uint8)(unsafe.Add(m.M, uintptr(ea))) = uint8(v)
-}
-
-//go:noinline
-func MemStore16(m *Module, ea uint32, v uint32) {
-	*(*uint16)(unsafe.Add(m.M, uintptr(ea))) = uint16(v)
-}
-
-//go:noinline
-func MemStore32(m *Module, ea uint32, v int32) {
-	*(*int32)(unsafe.Add(m.M, uintptr(ea))) = v
-}
-
-//go:noinline
-func MemStore32U(m *Module, ea uint32, v uint32) {
-	*(*uint32)(unsafe.Add(m.M, uintptr(ea))) = v
-}
-
-//go:noinline
-func MemStore64(m *Module, ea uint32, v int64) {
-	*(*int64)(unsafe.Add(m.M, uintptr(ea))) = v
-}
-
-//go:noinline
-func MemStoreF32(m *Module, ea uint32, v float32) {
-	*(*float32)(unsafe.Add(m.M, uintptr(ea))) = v
-}
-
-//go:noinline
-func MemStoreF64(m *Module, ea uint32, v float64) {
-	*(*float64)(unsafe.Add(m.M, uintptr(ea))) = v
-}
-
 //go:noinline
 func MemoryInit(m *Module, seg int, dst int32, src int32, n int32) {
 	data := m.DataSegs[seg]
@@ -737,13 +646,25 @@ func AtomicEA(m *Module, addr int32, offset int32, size uint64) uint64 {
 //go:noinline
 func AtomicPtr32(m *Module, addr int32, offset int32) *uint32 {
 	ea := AtomicEA(m, addr, offset, 4)
-	return (*uint32)(unsafe.Pointer(&m.Memory[ea]))
+
+	return (*uint32)(unsafe.Add(m.M, uintptr(ea)))
 }
 
 //go:noinline
 func AtomicPtr64(m *Module, addr int32, offset int32) *uint64 {
 	ea := AtomicEA(m, addr, offset, 8)
-	return (*uint64)(unsafe.Pointer(&m.Memory[ea]))
+	return (*uint64)(unsafe.Add(m.M, uintptr(ea)))
+}
+
+// atomicsContended reports whether more than the main agent can touch the
+// memory — i.e. at least one wasi thread has been spawned. Until that happens
+// the engine's own atomic ops (interrupt-flag reads, GC bookkeeping) have no
+// peer to race, so store/RMW helpers take an ordinary read-modify-write
+// instead of a LOCKed one. The 0->1 transition happens inside threadSpawn on
+// the sole agent, and the `go` statement that starts the child publishes
+// every prior non-atomic write to it, so the fast path is race-free.
+func AtomicsContended(m *Module) bool {
+	return m.Threads != nil && m.Threads.nextTID.Load() != 0
 }
 
 // atomicSubword32 runs op on the byte lanes [shift, shift+bits) of the
@@ -752,9 +673,15 @@ func AtomicPtr64(m *Module, addr int32, offset int32) *uint64 {
 //
 //go:noinline
 func AtomicSubword32(m *Module, ea uint64, bits uint, op func(old uint32) uint32) uint32 {
-	word := (*uint32)(unsafe.Pointer(&m.Memory[ea&^3]))
+	word := (*uint32)(unsafe.Add(m.M, uintptr(ea&^3)))
 	shift := uint(ea&3) * 8
 	mask := uint32(1)<<bits - 1
+	if !AtomicsContended(m) {
+		cur := *word
+		lane := (cur >> shift) & mask
+		*word = (cur &^ (mask << shift)) | ((op(lane) & mask) << shift)
+		return lane
+	}
 	for {
 		cur := atomic.LoadUint32(word)
 		lane := (cur >> shift) & mask
@@ -800,13 +727,23 @@ func AtomicLoad64_32u(m *Module, addr int32, offset int32) int64 {
 
 //go:noinline
 func AtomicStore32(m *Module, addr int32, offset int32, v int32) int32 {
-	atomic.StoreUint32(AtomicPtr32(m, addr, offset), uint32(v))
+	p := AtomicPtr32(m, addr, offset)
+	if AtomicsContended(m) {
+		atomic.StoreUint32(p, uint32(v))
+	} else {
+		*p = uint32(v)
+	}
 	return 0
 }
 
 //go:noinline
 func AtomicStore64(m *Module, addr int32, offset int32, v int64) int32 {
-	atomic.StoreUint64(AtomicPtr64(m, addr, offset), uint64(v))
+	p := AtomicPtr64(m, addr, offset)
+	if AtomicsContended(m) {
+		atomic.StoreUint64(p, uint64(v))
+	} else {
+		*p = uint64(v)
+	}
 	return 0
 }
 
@@ -827,6 +764,11 @@ func AtomicStore32_16(m *Module, addr int32, offset int32, v int32) int32 {
 //go:noinline
 func AtomicRmw32(m *Module, addr int32, offset int32, op func(old uint32) uint32) int32 {
 	p := AtomicPtr32(m, addr, offset)
+	if !AtomicsContended(m) {
+		cur := *p
+		*p = op(cur)
+		return int32(cur)
+	}
 	for {
 		cur := atomic.LoadUint32(p)
 		if atomic.CompareAndSwapUint32(p, cur, op(cur)) {
@@ -838,6 +780,11 @@ func AtomicRmw32(m *Module, addr int32, offset int32, op func(old uint32) uint32
 //go:noinline
 func AtomicRmw64(m *Module, addr int32, offset int32, op func(old uint64) uint64) int64 {
 	p := AtomicPtr64(m, addr, offset)
+	if !AtomicsContended(m) {
+		cur := *p
+		*p = op(cur)
+		return int64(cur)
+	}
 	for {
 		cur := atomic.LoadUint64(p)
 		if atomic.CompareAndSwapUint64(p, cur, op(cur)) {
@@ -848,12 +795,24 @@ func AtomicRmw64(m *Module, addr int32, offset int32, op func(old uint64) uint64
 
 //go:noinline
 func AtomicRmwAdd32(m *Module, addr, offset, v int32) int32 {
-	return int32(atomic.AddUint32(AtomicPtr32(m, addr, offset), uint32(v)) - uint32(v))
+	p := AtomicPtr32(m, addr, offset)
+	if !AtomicsContended(m) {
+		old := *p
+		*p = old + uint32(v)
+		return int32(old)
+	}
+	return int32(atomic.AddUint32(p, uint32(v)) - uint32(v))
 }
 
 //go:noinline
 func AtomicRmwSub32(m *Module, addr, offset, v int32) int32 {
-	return int32(atomic.AddUint32(AtomicPtr32(m, addr, offset), -uint32(v)) + uint32(v))
+	p := AtomicPtr32(m, addr, offset)
+	if !AtomicsContended(m) {
+		old := *p
+		*p = old - uint32(v)
+		return int32(old)
+	}
+	return int32(atomic.AddUint32(p, -uint32(v)) + uint32(v))
 }
 
 //go:noinline
@@ -873,12 +832,25 @@ func AtomicRmwXor32(m *Module, addr, offset, v int32) int32 {
 
 //go:noinline
 func AtomicRmwXchg32(m *Module, addr, offset, v int32) int32 {
-	return int32(atomic.SwapUint32(AtomicPtr32(m, addr, offset), uint32(v)))
+	p := AtomicPtr32(m, addr, offset)
+	if !AtomicsContended(m) {
+		old := *p
+		*p = uint32(v)
+		return int32(old)
+	}
+	return int32(atomic.SwapUint32(p, uint32(v)))
 }
 
 //go:noinline
 func AtomicRmwCmpxchg32(m *Module, addr, offset, expected, replacement int32) int32 {
 	p := AtomicPtr32(m, addr, offset)
+	if !AtomicsContended(m) {
+		cur := *p
+		if cur == uint32(expected) {
+			*p = uint32(replacement)
+		}
+		return int32(cur)
+	}
 	for {
 		cur := atomic.LoadUint32(p)
 		if cur != uint32(expected) {
@@ -892,12 +864,24 @@ func AtomicRmwCmpxchg32(m *Module, addr, offset, expected, replacement int32) in
 
 //go:noinline
 func AtomicRmwAdd64(m *Module, addr, offset int32, v int64) int64 {
-	return int64(atomic.AddUint64(AtomicPtr64(m, addr, offset), uint64(v)) - uint64(v))
+	p := AtomicPtr64(m, addr, offset)
+	if !AtomicsContended(m) {
+		old := *p
+		*p = old + uint64(v)
+		return int64(old)
+	}
+	return int64(atomic.AddUint64(p, uint64(v)) - uint64(v))
 }
 
 //go:noinline
 func AtomicRmwSub64(m *Module, addr, offset int32, v int64) int64 {
-	return int64(atomic.AddUint64(AtomicPtr64(m, addr, offset), -uint64(v)) + uint64(v))
+	p := AtomicPtr64(m, addr, offset)
+	if !AtomicsContended(m) {
+		old := *p
+		*p = old - uint64(v)
+		return int64(old)
+	}
+	return int64(atomic.AddUint64(p, -uint64(v)) + uint64(v))
 }
 
 //go:noinline
@@ -917,12 +901,25 @@ func AtomicRmwXor64(m *Module, addr, offset int32, v int64) int64 {
 
 //go:noinline
 func AtomicRmwXchg64(m *Module, addr, offset int32, v int64) int64 {
-	return int64(atomic.SwapUint64(AtomicPtr64(m, addr, offset), uint64(v)))
+	p := AtomicPtr64(m, addr, offset)
+	if !AtomicsContended(m) {
+		old := *p
+		*p = uint64(v)
+		return int64(old)
+	}
+	return int64(atomic.SwapUint64(p, uint64(v)))
 }
 
 //go:noinline
 func AtomicRmwCmpxchg64(m *Module, addr, offset int32, expected, replacement int64) int64 {
 	p := AtomicPtr64(m, addr, offset)
+	if !AtomicsContended(m) {
+		cur := *p
+		if cur == uint64(expected) {
+			*p = uint64(replacement)
+		}
+		return int64(cur)
+	}
 	for {
 		cur := atomic.LoadUint64(p)
 		if cur != uint64(expected) {
@@ -1050,7 +1047,7 @@ func AtomicNotify(m *Module, addr int32, offset int32, count int32) int32 {
 //go:noinline
 func AtomicWait32(m *Module, addr int32, offset int32, expected int32, timeout int64) int32 {
 	ea := AtomicEA(m, addr, offset, 4)
-	p := (*uint32)(unsafe.Pointer(&m.Memory[ea]))
+	p := (*uint32)(unsafe.Add(m.M, uintptr(ea)))
 	return AtomicWait(m, ea, timeout, func() bool {
 		return int32(atomic.LoadUint32(p)) == expected
 	})

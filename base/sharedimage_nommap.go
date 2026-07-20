@@ -1,4 +1,4 @@
-//go:build !unix && !purego
+//go:build !unix
 
 package base
 
