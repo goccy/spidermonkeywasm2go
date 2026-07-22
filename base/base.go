@@ -404,20 +404,6 @@ func F64_sub(x, y float64) float64 { return x - y }
 func F64_mul(x, y float64) float64 { return x * y }
 func F64_div(x, y float64) float64 { return x / y }
 
-func I32_eqz(x int32) int32 {
-	if x == 0 {
-		return 1
-	}
-	return 0
-}
-
-func I64_eqz(x int64) int32 {
-	if x == 0 {
-		return 1
-	}
-	return 0
-}
-
 func I32_clz(x int32) int32    { return int32(bits.LeadingZeros32(uint32(x))) }
 func I32_ctz(x int32) int32    { return int32(bits.TrailingZeros32(uint32(x))) }
 func I32_popcnt(x int32) int32 { return int32(bits.OnesCount32(uint32(x))) }
@@ -693,16 +679,6 @@ func AtomicSubword32(m *Module, ea uint64, bits uint, op func(old uint32) uint32
 }
 
 //go:noinline
-func AtomicLoad32(m *Module, addr int32, offset int32) int32 {
-	return int32(atomic.LoadUint32(AtomicPtr32(m, addr, offset)))
-}
-
-//go:noinline
-func AtomicLoad64(m *Module, addr int32, offset int32) int64 {
-	return int64(atomic.LoadUint64(AtomicPtr64(m, addr, offset)))
-}
-
-//go:noinline
 func AtomicLoad32_8u(m *Module, addr int32, offset int32) int32 {
 	ea := AtomicEA(m, addr, offset, 1)
 	return int32(AtomicSubword32(m, ea, 8, func(old uint32) uint32 { return old }))
@@ -723,28 +699,6 @@ func AtomicLoad64_16u(m *Module, addr int32, offset int32) int64 {
 //go:noinline
 func AtomicLoad64_32u(m *Module, addr int32, offset int32) int64 {
 	return int64(atomic.LoadUint32(AtomicPtr32(m, addr, offset)))
-}
-
-//go:noinline
-func AtomicStore32(m *Module, addr int32, offset int32, v int32) int32 {
-	p := AtomicPtr32(m, addr, offset)
-	if AtomicsContended(m) {
-		atomic.StoreUint32(p, uint32(v))
-	} else {
-		*p = uint32(v)
-	}
-	return 0
-}
-
-//go:noinline
-func AtomicStore64(m *Module, addr int32, offset int32, v int64) int32 {
-	p := AtomicPtr64(m, addr, offset)
-	if AtomicsContended(m) {
-		atomic.StoreUint64(p, uint64(v))
-	} else {
-		*p = uint64(v)
-	}
-	return 0
 }
 
 //go:noinline
