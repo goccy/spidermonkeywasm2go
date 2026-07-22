@@ -61,9 +61,6 @@ func Fn88(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 //go:linkname Fn90 github.com/goccy/spidermonkeywasm2go/p7.Fn90
 func Fn90(m *base.Module, l0 int32)
 
-//go:linkname Fn91 github.com/goccy/spidermonkeywasm2go/p7.Fn91
-func Fn91(m *base.Module, l0 int32)
-
 //go:linkname Fn92 github.com/goccy/spidermonkeywasm2go/p7.Fn92
 func Fn92(m *base.Module, l0 int32, l1 int32)
 
@@ -115,20 +112,11 @@ func Fn145(m *base.Module, l0 int32)
 //go:linkname Fn146 github.com/goccy/spidermonkeywasm2go/p7.Fn146
 func Fn146(m *base.Module)
 
-//go:linkname Fn147 github.com/goccy/spidermonkeywasm2go/p7.Fn147
-func Fn147(m *base.Module, l0 int32, l1 int32)
-
 //go:linkname Fn148 github.com/goccy/spidermonkeywasm2go/p0.Fn148
 func Fn148(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn155 github.com/goccy/spidermonkeywasm2go/p6.Fn155
 func Fn155(m *base.Module, l0 int32, l1 int32, l2 int32)
-
-//go:linkname Fn156 github.com/goccy/spidermonkeywasm2go/p7.Fn156
-func Fn156(m *base.Module, l0 int32)
-
-//go:linkname Fn157 github.com/goccy/spidermonkeywasm2go/p7.Fn157
-func Fn157(m *base.Module, l0 int32)
 
 //go:linkname Fn160 github.com/goccy/spidermonkeywasm2go/p7.Fn160
 func Fn160(m *base.Module, l0 int32, l1 int32) int32
@@ -148,9 +136,6 @@ func Fn165(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn168 github.com/goccy/spidermonkeywasm2go/p3.Fn168
 func Fn168(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn173 github.com/goccy/spidermonkeywasm2go/p4.Fn173
-func Fn173(m *base.Module, l0 float64) float64
-
 //go:linkname Fn174 github.com/goccy/spidermonkeywasm2go/p3.Fn174
 func Fn174(m *base.Module, l0 float64) float64
 
@@ -162,9 +147,6 @@ func Fn179(m *base.Module, l0 int32) float64
 
 //go:linkname Fn182 github.com/goccy/spidermonkeywasm2go/p3.Fn182
 func Fn182(m *base.Module, l0 float64, l1 int32) int32
-
-//go:linkname Fn191 github.com/goccy/spidermonkeywasm2go/p6.Fn191
-func Fn191(m *base.Module, l0 int32) int32
 
 //go:linkname Fn192 github.com/goccy/spidermonkeywasm2go/p7.Fn192
 func Fn192(m *base.Module, l0 int32, l1 int32, l2 int32)
@@ -181,23 +163,11 @@ func Fn204(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn205 github.com/goccy/spidermonkeywasm2go/p7.Fn205
 func Fn205(m *base.Module, l0 int32)
 
-//go:linkname Fn209 github.com/goccy/spidermonkeywasm2go/p7.Fn209
-func Fn209(m *base.Module, l0 int32, l1 int32, l2 int32)
-
 //go:linkname Fn214 github.com/goccy/spidermonkeywasm2go/p6.Fn214
 func Fn214(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn224 github.com/goccy/spidermonkeywasm2go/p7.Fn224
 func Fn224(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn241 github.com/goccy/spidermonkeywasm2go/p7.Fn241
-func Fn241(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn242 github.com/goccy/spidermonkeywasm2go/p7.Fn242
-func Fn242(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn243 github.com/goccy/spidermonkeywasm2go/p7.Fn243
-func Fn243(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn252 github.com/goccy/spidermonkeywasm2go/p7.Fn252
 func Fn252(m *base.Module, l0 int32) int32
@@ -238,12 +208,6 @@ func Fn296(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 //go:linkname Fn311 github.com/goccy/spidermonkeywasm2go/p2.Fn311
 func Fn311(m *base.Module, l0 int32, l1 float64)
 
-//go:linkname Fn347 github.com/goccy/spidermonkeywasm2go/p7.Fn347
-func Fn347(m *base.Module, l0 float64, l1 float64) float64
-
-//go:linkname Fn349 github.com/goccy/spidermonkeywasm2go/p6.Fn349
-func Fn349(m *base.Module, l0 float64, l1 float64) float64
-
 //go:linkname Fn374 github.com/goccy/spidermonkeywasm2go/p7.Fn374
 func Fn374(m *base.Module, l0 int32, l1 int32, l2 int32)
 
@@ -277,7 +241,7 @@ func Fn395(m *base.Module, l0 int32)
 //go:linkname Fn396 github.com/goccy/spidermonkeywasm2go/p7.Fn396
 func Fn396(m *base.Module, l0 int32)
 
-//go:linkname Fn397 github.com/goccy/spidermonkeywasm2go/p7.Fn397
+//go:linkname Fn397 github.com/goccy/spidermonkeywasm2go/p1.Fn397
 func Fn397(m *base.Module, l0 int32)
 
 //go:linkname Fn399 github.com/goccy/spidermonkeywasm2go/p7.Fn399
@@ -319,9 +283,6 @@ func Fn561(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 //go:linkname Fn573 github.com/goccy/spidermonkeywasm2go/p7.Fn573
 func Fn573(m *base.Module, l0 int32)
 
-//go:linkname Fn660 github.com/goccy/spidermonkeywasm2go/p7.Fn660
-func Fn660(m *base.Module, l0 int32, l1 int32) int32
-
 //go:linkname Fn661 github.com/goccy/spidermonkeywasm2go/p7.Fn661
 func Fn661(m *base.Module)
 
@@ -361,9 +322,6 @@ func Fn690(m *base.Module, l0 int32) int32
 //go:linkname Fn693 github.com/goccy/spidermonkeywasm2go/p6.Fn693
 func Fn693(m *base.Module, l0 int32)
 
-//go:linkname Fn694 github.com/goccy/spidermonkeywasm2go/p7.Fn694
-func Fn694(m *base.Module, l0 int32) int32
-
 //go:linkname Fn699 github.com/goccy/spidermonkeywasm2go/p7.Fn699
 func Fn699(m *base.Module, l0 int32, l1 int32) int32
 
@@ -376,9 +334,6 @@ func Fn702(m *base.Module, l0 int32) int64
 //go:linkname Fn705 github.com/goccy/spidermonkeywasm2go/p7.Fn705
 func Fn705(m *base.Module, l0 int32)
 
-//go:linkname Fn715 github.com/goccy/spidermonkeywasm2go/p7.Fn715
-func Fn715(m *base.Module, l0 int32) int32
-
 //go:linkname Fn719 github.com/goccy/spidermonkeywasm2go/p7.Fn719
 func Fn719(m *base.Module, l0 float64) float64
 
@@ -387,12 +342,6 @@ func Fn723(m *base.Module, l0 float64) float64
 
 //go:linkname Fn725 github.com/goccy/spidermonkeywasm2go/p7.Fn725
 func Fn725(m *base.Module, l0 float64) float64
-
-//go:linkname Fn728 github.com/goccy/spidermonkeywasm2go/p6.Fn728
-func Fn728(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn731 github.com/goccy/spidermonkeywasm2go/p6.Fn731
-func Fn731(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn732 github.com/goccy/spidermonkeywasm2go/p7.Fn732
 func Fn732(m *base.Module, l0 int32)
@@ -409,7 +358,7 @@ func Fn742(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn745 github.com/goccy/spidermonkeywasm2go/p6.Fn745
 func Fn745(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn746 github.com/goccy/spidermonkeywasm2go/p2.Fn746
+//go:linkname Fn746 github.com/goccy/spidermonkeywasm2go/p7.Fn746
 func Fn746(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn754 github.com/goccy/spidermonkeywasm2go/p6.Fn754
@@ -427,12 +376,6 @@ func Fn762(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 //go:linkname Fn763 github.com/goccy/spidermonkeywasm2go/p3.Fn763
 func Fn763(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn770 github.com/goccy/spidermonkeywasm2go/p7.Fn770
-func Fn770(m *base.Module, l0 int32) int32
-
-//go:linkname Fn771 github.com/goccy/spidermonkeywasm2go/p7.Fn771
-func Fn771(m *base.Module, l0 int32, l1 int32)
-
 //go:linkname Fn772 github.com/goccy/spidermonkeywasm2go/p6.Fn772
 func Fn772(m *base.Module, l0 int32, l1 int32, l2 int32)
 
@@ -442,53 +385,23 @@ func Fn775(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 //go:linkname Fn780 github.com/goccy/spidermonkeywasm2go/p7.Fn780
 func Fn780(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn781 github.com/goccy/spidermonkeywasm2go/p6.Fn781
-func Fn781(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn782 github.com/goccy/spidermonkeywasm2go/p7.Fn782
-func Fn782(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
 //go:linkname Fn784 github.com/goccy/spidermonkeywasm2go/p7.Fn784
 func Fn784(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn786 github.com/goccy/spidermonkeywasm2go/p7.Fn786
-func Fn786(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn787 github.com/goccy/spidermonkeywasm2go/p6.Fn787
-func Fn787(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn789 github.com/goccy/spidermonkeywasm2go/p7.Fn789
 func Fn789(m *base.Module, l0 int32) int32
 
-//go:linkname Fn790 github.com/goccy/spidermonkeywasm2go/p7.Fn790
-func Fn790(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn791 github.com/goccy/spidermonkeywasm2go/p6.Fn791
-func Fn791(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
 //go:linkname Fn793 github.com/goccy/spidermonkeywasm2go/p7.Fn793
 func Fn793(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn797 github.com/goccy/spidermonkeywasm2go/p7.Fn797
-func Fn797(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
 //go:linkname Fn800 github.com/goccy/spidermonkeywasm2go/p6.Fn800
 func Fn800(m *base.Module, l0 int32)
-
-//go:linkname Fn801 github.com/goccy/spidermonkeywasm2go/p7.Fn801
-func Fn801(m *base.Module, l0 int32)
-
-//go:linkname Fn803 github.com/goccy/spidermonkeywasm2go/p6.Fn803
-func Fn803(m *base.Module, l0 int32, l1 int32, l2 int32)
 
 //go:linkname Fn805 github.com/goccy/spidermonkeywasm2go/p7.Fn805
 func Fn805(m *base.Module, l0 int32) int32
 
 //go:linkname Fn806 github.com/goccy/spidermonkeywasm2go/p7.Fn806
 func Fn806(m *base.Module, l0 int32) int32
-
-//go:linkname Fn807 github.com/goccy/spidermonkeywasm2go/p7.Fn807
-func Fn807(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn808 github.com/goccy/spidermonkeywasm2go/p7.Fn808
 func Fn808(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
@@ -508,9 +421,6 @@ func Fn816(m *base.Module, l0 int32) int32
 //go:linkname Fn817 github.com/goccy/spidermonkeywasm2go/p6.Fn817
 func Fn817(m *base.Module)
 
-//go:linkname Fn819 github.com/goccy/spidermonkeywasm2go/p7.Fn819
-func Fn819(m *base.Module)
-
 //go:linkname Fn829 github.com/goccy/spidermonkeywasm2go/p7.Fn829
 func Fn829(m *base.Module, l0 int32, l1 int32) float64
 
@@ -525,9 +435,6 @@ func Fn833(m *base.Module, l0 int32)
 
 //go:linkname Fn834 github.com/goccy/spidermonkeywasm2go/p7.Fn834
 func Fn834(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn836 github.com/goccy/spidermonkeywasm2go/p4.Fn836
-func Fn836(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn838 github.com/goccy/spidermonkeywasm2go/p6.Fn838
 func Fn838(m *base.Module, l0 int32) int32
@@ -585,9 +492,6 @@ func Fn894(m *base.Module, l0 int32) int32
 
 //go:linkname Fn895 github.com/goccy/spidermonkeywasm2go/p0.Fn895
 func Fn895(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn898 github.com/goccy/spidermonkeywasm2go/p7.Fn898
-func Fn898(m *base.Module, l0 int32) int32
 
 //go:linkname Fn912 github.com/goccy/spidermonkeywasm2go/p6.Fn912
 func Fn912(m *base.Module, l0 int32, l1 int32, l2 int32)
@@ -652,14 +556,8 @@ func Fn1217(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 //go:linkname Fn1289 github.com/goccy/spidermonkeywasm2go/p4.Fn1289
 func Fn1289(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1290 github.com/goccy/spidermonkeywasm2go/p6.Fn1290
-func Fn1290(m *base.Module, l0 int32, l1 int32) int32
-
 //go:linkname Fn1306 github.com/goccy/spidermonkeywasm2go/p0.Fn1306
 func Fn1306(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn1314 github.com/goccy/spidermonkeywasm2go/p6.Fn1314
-func Fn1314(m *base.Module, l0 int32, l1 int32, l2 int32)
 
 //go:linkname Fn1322 github.com/goccy/spidermonkeywasm2go/p6.Fn1322
 func Fn1322(m *base.Module, l0 int32, l1 int32)
@@ -730,9 +628,6 @@ func Fn1471(m *base.Module, l0 int32)
 //go:linkname Fn1473 github.com/goccy/spidermonkeywasm2go/p6.Fn1473
 func Fn1473(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1474 github.com/goccy/spidermonkeywasm2go/p7.Fn1474
-func Fn1474(m *base.Module, l0 int32, l1 int32)
-
 //go:linkname Fn1476 github.com/goccy/spidermonkeywasm2go/p6.Fn1476
 func Fn1476(m *base.Module, l0 int32, l1 int32)
 
@@ -744,15 +639,6 @@ func Fn1480(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn1481 github.com/goccy/spidermonkeywasm2go/p0.Fn1481
 func Fn1481(m *base.Module, l0 int32, l1 int32, l2 int32)
-
-//go:linkname Fn1486 github.com/goccy/spidermonkeywasm2go/p7.Fn1486
-func Fn1486(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn1487 github.com/goccy/spidermonkeywasm2go/p7.Fn1487
-func Fn1487(m *base.Module, l0 int32)
-
-//go:linkname Fn1499 github.com/goccy/spidermonkeywasm2go/p6.Fn1499
-func Fn1499(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn1503 github.com/goccy/spidermonkeywasm2go/p0.Fn1503
 func Fn1503(m *base.Module, l0 int32, l1 int32, l2 int32)
@@ -766,206 +652,188 @@ func Fn1505(m *base.Module, l0 int32, l1 int32) int32
 //go:linkname Fn1506 github.com/goccy/spidermonkeywasm2go/p0.Fn1506
 func Fn1506(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn1509 github.com/goccy/spidermonkeywasm2go/p7.Fn1509
-func Fn1509(m *base.Module, l0 int32) int32
-
 //go:linkname Fn1510 github.com/goccy/spidermonkeywasm2go/p7.Fn1510
 func Fn1510(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn1512 github.com/goccy/spidermonkeywasm2go/p7.Fn1512
-func Fn1512(m *base.Module, l0 int32)
 
 //go:linkname Fn1514 github.com/goccy/spidermonkeywasm2go/p6.Fn1514
 func Fn1514(m *base.Module, l0 int32) int32
 
-//go:linkname Fn1517 github.com/goccy/spidermonkeywasm2go/p7.Fn1517
-func Fn1517(m *base.Module, l0 int32) int32
+//go:linkname Fn1518 github.com/goccy/spidermonkeywasm2go/p7.Fn1518
+func Fn1518(m *base.Module, l0 int32) int32
 
-//go:linkname Fn1519 github.com/goccy/spidermonkeywasm2go/p7.Fn1519
-func Fn1519(m *base.Module) float64
+//go:linkname Fn1520 github.com/goccy/spidermonkeywasm2go/p7.Fn1520
+func Fn1520(m *base.Module) float64
 
-//go:linkname Fn1598 github.com/goccy/spidermonkeywasm2go/p3.Fn1598
-func Fn1598(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1599 github.com/goccy/spidermonkeywasm2go/p3.Fn1599
+func Fn1599(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1623 github.com/goccy/spidermonkeywasm2go/p6.Fn1623
-func Fn1623(m *base.Module, l0 int32)
+//go:linkname Fn1624 github.com/goccy/spidermonkeywasm2go/p6.Fn1624
+func Fn1624(m *base.Module, l0 int32)
 
-//go:linkname Fn1624 github.com/goccy/spidermonkeywasm2go/p2.Fn1624
-func Fn1624(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1625 github.com/goccy/spidermonkeywasm2go/p2.Fn1625
+func Fn1625(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn1627 github.com/goccy/spidermonkeywasm2go/p4.Fn1627
-func Fn1627(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn1628 github.com/goccy/spidermonkeywasm2go/p0.Fn1628
+//go:linkname Fn1628 github.com/goccy/spidermonkeywasm2go/p4.Fn1628
 func Fn1628(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1631 github.com/goccy/spidermonkeywasm2go/p6.Fn1631
-func Fn1631(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1629 github.com/goccy/spidermonkeywasm2go/p0.Fn1629
+func Fn1629(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1634 github.com/goccy/spidermonkeywasm2go/p6.Fn1634
-func Fn1634(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1632 github.com/goccy/spidermonkeywasm2go/p6.Fn1632
+func Fn1632(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn1635 github.com/goccy/spidermonkeywasm2go/p7.Fn1635
-func Fn1635(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1635 github.com/goccy/spidermonkeywasm2go/p6.Fn1635
+func Fn1635(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1638 github.com/goccy/spidermonkeywasm2go/p6.Fn1638
-func Fn1638(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1636 github.com/goccy/spidermonkeywasm2go/p7.Fn1636
+func Fn1636(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1640 github.com/goccy/spidermonkeywasm2go/p0.Fn1640
-func Fn1640(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1639 github.com/goccy/spidermonkeywasm2go/p6.Fn1639
+func Fn1639(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1650 github.com/goccy/spidermonkeywasm2go/p6.Fn1650
-func Fn1650(m *base.Module, l0 int32, l1 float64, l2 int32) int32
+//go:linkname Fn1641 github.com/goccy/spidermonkeywasm2go/p0.Fn1641
+func Fn1641(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1652 github.com/goccy/spidermonkeywasm2go/p0.Fn1652
-func Fn1652(m *base.Module, l0 int32, l1 float64, l2 int32) int32
+//go:linkname Fn1651 github.com/goccy/spidermonkeywasm2go/p6.Fn1651
+func Fn1651(m *base.Module, l0 int32, l1 float64, l2 int32) int32
 
-//go:linkname Fn1660 github.com/goccy/spidermonkeywasm2go/p0.Fn1660
-func Fn1660(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1653 github.com/goccy/spidermonkeywasm2go/p0.Fn1653
+func Fn1653(m *base.Module, l0 int32, l1 float64, l2 int32) int32
 
-//go:linkname Fn1661 github.com/goccy/spidermonkeywasm2go/p6.Fn1661
-func Fn1661(m *base.Module, l0 int32, l1 int32) float64
+//go:linkname Fn1661 github.com/goccy/spidermonkeywasm2go/p0.Fn1661
+func Fn1661(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1664 github.com/goccy/spidermonkeywasm2go/p6.Fn1664
-func Fn1664(m *base.Module, l0 int32, l1 int32, l2 int32) float64
+//go:linkname Fn1662 github.com/goccy/spidermonkeywasm2go/p6.Fn1662
+func Fn1662(m *base.Module, l0 int32, l1 int32) float64
 
-//go:linkname Fn1668 github.com/goccy/spidermonkeywasm2go/p0.Fn1668
-func Fn1668(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1665 github.com/goccy/spidermonkeywasm2go/p6.Fn1665
+func Fn1665(m *base.Module, l0 int32, l1 int32, l2 int32) float64
 
-//go:linkname Fn1671 github.com/goccy/spidermonkeywasm2go/p0.Fn1671
-func Fn1671(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1669 github.com/goccy/spidermonkeywasm2go/p0.Fn1669
+func Fn1669(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn1672 github.com/goccy/spidermonkeywasm2go/p0.Fn1672
-func Fn1672(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn1672(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1680 github.com/goccy/spidermonkeywasm2go/p4.Fn1680
-func Fn1680(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn1673 github.com/goccy/spidermonkeywasm2go/p0.Fn1673
+func Fn1673(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1723 github.com/goccy/spidermonkeywasm2go/p7.Fn1723
-func Fn1723(m *base.Module, l0 int32)
+//go:linkname Fn1681 github.com/goccy/spidermonkeywasm2go/p4.Fn1681
+func Fn1681(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn1725 github.com/goccy/spidermonkeywasm2go/p6.Fn1725
-func Fn1725(m *base.Module, l0 int32)
+//go:linkname Fn1724 github.com/goccy/spidermonkeywasm2go/p7.Fn1724
+func Fn1724(m *base.Module, l0 int32)
 
-//go:linkname Fn1726 github.com/goccy/spidermonkeywasm2go/p7.Fn1726
-func Fn1726(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1727 github.com/goccy/spidermonkeywasm2go/p7.Fn1727
+func Fn1727(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1728 github.com/goccy/spidermonkeywasm2go/p4.Fn1728
-func Fn1728(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1729 github.com/goccy/spidermonkeywasm2go/p4.Fn1729
+func Fn1729(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1729 github.com/goccy/spidermonkeywasm2go/p7.Fn1729
-func Fn1729(m *base.Module, l0 int32)
+//go:linkname Fn1730 github.com/goccy/spidermonkeywasm2go/p7.Fn1730
+func Fn1730(m *base.Module, l0 int32)
 
-//go:linkname Fn1730 github.com/goccy/spidermonkeywasm2go/p6.Fn1730
-func Fn1730(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1731 github.com/goccy/spidermonkeywasm2go/p6.Fn1731
+func Fn1731(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn1732 github.com/goccy/spidermonkeywasm2go/p6.Fn1732
-func Fn1732(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1733 github.com/goccy/spidermonkeywasm2go/p6.Fn1733
+func Fn1733(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1752 github.com/goccy/spidermonkeywasm2go/p0.Fn1752
-func Fn1752(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn1753 github.com/goccy/spidermonkeywasm2go/p0.Fn1753
+func Fn1753(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn1758 github.com/goccy/spidermonkeywasm2go/p0.Fn1758
-func Fn1758(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1759 github.com/goccy/spidermonkeywasm2go/p0.Fn1759
+func Fn1759(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1761 github.com/goccy/spidermonkeywasm2go/p0.Fn1761
-func Fn1761(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1762 github.com/goccy/spidermonkeywasm2go/p0.Fn1762
+func Fn1762(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1767 github.com/goccy/spidermonkeywasm2go/p6.Fn1767
-func Fn1767(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1768 github.com/goccy/spidermonkeywasm2go/p6.Fn1768
+func Fn1768(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn1770 github.com/goccy/spidermonkeywasm2go/p7.Fn1770
-func Fn1770(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1771 github.com/goccy/spidermonkeywasm2go/p7.Fn1771
+func Fn1771(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1779 github.com/goccy/spidermonkeywasm2go/p6.Fn1779
-func Fn1779(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1780 github.com/goccy/spidermonkeywasm2go/p6.Fn1780
+func Fn1780(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn1794 github.com/goccy/spidermonkeywasm2go/p0.Fn1794
-func Fn1794(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1795 github.com/goccy/spidermonkeywasm2go/p0.Fn1795
+func Fn1795(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn1798 github.com/goccy/spidermonkeywasm2go/p6.Fn1798
-func Fn1798(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1799 github.com/goccy/spidermonkeywasm2go/p6.Fn1799
+func Fn1799(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1813 github.com/goccy/spidermonkeywasm2go/p7.Fn1813
-func Fn1813(m *base.Module, l0 int32) int32
-
-//go:linkname Fn1814 github.com/goccy/spidermonkeywasm2go/p6.Fn1814
+//go:linkname Fn1814 github.com/goccy/spidermonkeywasm2go/p7.Fn1814
 func Fn1814(m *base.Module, l0 int32) int32
 
 //go:linkname Fn1815 github.com/goccy/spidermonkeywasm2go/p6.Fn1815
 func Fn1815(m *base.Module, l0 int32) int32
 
-//go:linkname Fn1835 github.com/goccy/spidermonkeywasm2go/p0.Fn1835
-func Fn1835(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1816 github.com/goccy/spidermonkeywasm2go/p6.Fn1816
+func Fn1816(m *base.Module, l0 int32) int32
 
-//go:linkname Fn1854 github.com/goccy/spidermonkeywasm2go/p0.Fn1854
-func Fn1854(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1836 github.com/goccy/spidermonkeywasm2go/p0.Fn1836
+func Fn1836(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1855 github.com/goccy/spidermonkeywasm2go/p7.Fn1855
-func Fn1855(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn1855 github.com/goccy/spidermonkeywasm2go/p0.Fn1855
+func Fn1855(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1857 github.com/goccy/spidermonkeywasm2go/p0.Fn1857
-func Fn1857(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn1856 github.com/goccy/spidermonkeywasm2go/p7.Fn1856
+func Fn1856(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn1863 github.com/goccy/spidermonkeywasm2go/p6.Fn1863
-func Fn1863(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1858 github.com/goccy/spidermonkeywasm2go/p0.Fn1858
+func Fn1858(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn1875 github.com/goccy/spidermonkeywasm2go/p6.Fn1875
-func Fn1875(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn1864 github.com/goccy/spidermonkeywasm2go/p6.Fn1864
+func Fn1864(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn1876 github.com/goccy/spidermonkeywasm2go/p6.Fn1876
 func Fn1876(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn1878 github.com/goccy/spidermonkeywasm2go/p3.Fn1878
-func Fn1878(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1877 github.com/goccy/spidermonkeywasm2go/p6.Fn1877
+func Fn1877(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn1886 github.com/goccy/spidermonkeywasm2go/p4.Fn1886
-func Fn1886(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1879 github.com/goccy/spidermonkeywasm2go/p3.Fn1879
+func Fn1879(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1889 github.com/goccy/spidermonkeywasm2go/p4.Fn1889
-func Fn1889(m *base.Module, l0 int32)
+//go:linkname Fn1887 github.com/goccy/spidermonkeywasm2go/p4.Fn1887
+func Fn1887(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1891 github.com/goccy/spidermonkeywasm2go/p6.Fn1891
-func Fn1891(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1890 github.com/goccy/spidermonkeywasm2go/p4.Fn1890
+func Fn1890(m *base.Module, l0 int32)
 
-//go:linkname Fn1892 github.com/goccy/spidermonkeywasm2go/p7.Fn1892
-func Fn1892(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1892 github.com/goccy/spidermonkeywasm2go/p6.Fn1892
+func Fn1892(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1894 github.com/goccy/spidermonkeywasm2go/p4.Fn1894
-func Fn1894(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn1893 github.com/goccy/spidermonkeywasm2go/p7.Fn1893
+func Fn1893(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1896 github.com/goccy/spidermonkeywasm2go/p7.Fn1896
-func Fn1896(m *base.Module, l0 int32) int32
+//go:linkname Fn1895 github.com/goccy/spidermonkeywasm2go/p4.Fn1895
+func Fn1895(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn1899 github.com/goccy/spidermonkeywasm2go/p7.Fn1899
-func Fn1899(m *base.Module, l0 int32) int32
+//go:linkname Fn1900 github.com/goccy/spidermonkeywasm2go/p7.Fn1900
+func Fn1900(m *base.Module, l0 int32) int32
 
-//go:linkname Fn1914 github.com/goccy/spidermonkeywasm2go/p6.Fn1914
-func Fn1914(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1915 github.com/goccy/spidermonkeywasm2go/p6.Fn1915
+func Fn1915(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1916 github.com/goccy/spidermonkeywasm2go/p6.Fn1916
-func Fn1916(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1917 github.com/goccy/spidermonkeywasm2go/p6.Fn1917
+func Fn1917(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn1921 github.com/goccy/spidermonkeywasm2go/p0.Fn1921
-func Fn1921(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1922 github.com/goccy/spidermonkeywasm2go/p0.Fn1922
+func Fn1922(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1943 github.com/goccy/spidermonkeywasm2go/p0.Fn1943
-func Fn1943(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1944 github.com/goccy/spidermonkeywasm2go/p0.Fn1944
+func Fn1944(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn1948 github.com/goccy/spidermonkeywasm2go/p7.Fn1948
-func Fn1948(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1951 github.com/goccy/spidermonkeywasm2go/p0.Fn1951
+func Fn1951(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1950 github.com/goccy/spidermonkeywasm2go/p0.Fn1950
-func Fn1950(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn1964 github.com/goccy/spidermonkeywasm2go/p0.Fn1964
+func Fn1964(m *base.Module, l0 int32, l1 int64, l2 int32) int32
 
-//go:linkname Fn1963 github.com/goccy/spidermonkeywasm2go/p0.Fn1963
-func Fn1963(m *base.Module, l0 int32, l1 int64, l2 int32) int32
-
-//go:linkname Fn1964 github.com/goccy/spidermonkeywasm2go/p6.Fn1964
-func Fn1964(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn1967 github.com/goccy/spidermonkeywasm2go/p0.Fn1967
-func Fn1967(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn1965 github.com/goccy/spidermonkeywasm2go/p6.Fn1965
+func Fn1965(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn1968 github.com/goccy/spidermonkeywasm2go/p0.Fn1968
 func Fn1968(m *base.Module, l0 int32, l1 int32, l2 int32) int32
@@ -976,1322 +844,1211 @@ func Fn1969(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 //go:linkname Fn1970 github.com/goccy/spidermonkeywasm2go/p0.Fn1970
 func Fn1970(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn1983 github.com/goccy/spidermonkeywasm2go/p0.Fn1983
-func Fn1983(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1971 github.com/goccy/spidermonkeywasm2go/p0.Fn1971
+func Fn1971(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn1984 github.com/goccy/spidermonkeywasm2go/p0.Fn1984
 func Fn1984(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn1985 github.com/goccy/spidermonkeywasm2go/p0.Fn1985
-func Fn1985(m *base.Module, l0 int32, l1 int32) int32
+func Fn1985(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn1986 github.com/goccy/spidermonkeywasm2go/p0.Fn1986
 func Fn1986(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn1987 github.com/goccy/spidermonkeywasm2go/p0.Fn1987
-func Fn1987(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+func Fn1987(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn1990 github.com/goccy/spidermonkeywasm2go/p0.Fn1990
-func Fn1990(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn1988 github.com/goccy/spidermonkeywasm2go/p0.Fn1988
+func Fn1988(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn1991 github.com/goccy/spidermonkeywasm2go/p0.Fn1991
-func Fn1991(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn1991(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2033 github.com/goccy/spidermonkeywasm2go/p7.Fn2033
-func Fn2033(m *base.Module, l0 int32) int32
+//go:linkname Fn1992 github.com/goccy/spidermonkeywasm2go/p0.Fn1992
+func Fn1992(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2041 github.com/goccy/spidermonkeywasm2go/p7.Fn2041
-func Fn2041(m *base.Module, l0 int32) int32
+//go:linkname Fn2034 github.com/goccy/spidermonkeywasm2go/p7.Fn2034
+func Fn2034(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2042 github.com/goccy/spidermonkeywasm2go/p6.Fn2042
-func Fn2042(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2042 github.com/goccy/spidermonkeywasm2go/p7.Fn2042
+func Fn2042(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2044 github.com/goccy/spidermonkeywasm2go/p6.Fn2044
-func Fn2044(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2043 github.com/goccy/spidermonkeywasm2go/p6.Fn2043
+func Fn2043(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2048 github.com/goccy/spidermonkeywasm2go/p7.Fn2048
-func Fn2048(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2045 github.com/goccy/spidermonkeywasm2go/p6.Fn2045
+func Fn2045(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn2049 github.com/goccy/spidermonkeywasm2go/p6.Fn2049
+//go:linkname Fn2049 github.com/goccy/spidermonkeywasm2go/p7.Fn2049
 func Fn2049(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn2052 github.com/goccy/spidermonkeywasm2go/p7.Fn2052
-func Fn2052(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2050 github.com/goccy/spidermonkeywasm2go/p6.Fn2050
+func Fn2050(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn2063 github.com/goccy/spidermonkeywasm2go/p0.Fn2063
-func Fn2063(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2053 github.com/goccy/spidermonkeywasm2go/p7.Fn2053
+func Fn2053(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn2068 github.com/goccy/spidermonkeywasm2go/p0.Fn2068
-func Fn2068(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2064 github.com/goccy/spidermonkeywasm2go/p0.Fn2064
+func Fn2064(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2070 github.com/goccy/spidermonkeywasm2go/p6.Fn2070
-func Fn2070(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2069 github.com/goccy/spidermonkeywasm2go/p0.Fn2069
+func Fn2069(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2071 github.com/goccy/spidermonkeywasm2go/p6.Fn2071
-func Fn2071(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2072 github.com/goccy/spidermonkeywasm2go/p6.Fn2072
+func Fn2072(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn2081 github.com/goccy/spidermonkeywasm2go/p7.Fn2081
-func Fn2081(m *base.Module, l0 int32) int32
+//go:linkname Fn2082 github.com/goccy/spidermonkeywasm2go/p7.Fn2082
+func Fn2082(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2091 github.com/goccy/spidermonkeywasm2go/p2.Fn2091
-func Fn2091(m *base.Module, l0 int32) int32
+//go:linkname Fn2092 github.com/goccy/spidermonkeywasm2go/p2.Fn2092
+func Fn2092(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2092 github.com/goccy/spidermonkeywasm2go/p7.Fn2092
-func Fn2092(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2093 github.com/goccy/spidermonkeywasm2go/p7.Fn2093
+func Fn2093(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2093 github.com/goccy/spidermonkeywasm2go/p6.Fn2093
-func Fn2093(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2094 github.com/goccy/spidermonkeywasm2go/p6.Fn2094
+func Fn2094(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2098 github.com/goccy/spidermonkeywasm2go/p6.Fn2098
-func Fn2098(m *base.Module, l0 int32) int32
+//go:linkname Fn2099 github.com/goccy/spidermonkeywasm2go/p6.Fn2099
+func Fn2099(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2101 github.com/goccy/spidermonkeywasm2go/p4.Fn2101
-func Fn2101(m *base.Module, l0 int32)
-
-//go:linkname Fn2104 github.com/goccy/spidermonkeywasm2go/p6.Fn2104
-func Fn2104(m *base.Module, l0 int32) int32
+//go:linkname Fn2102 github.com/goccy/spidermonkeywasm2go/p4.Fn2102
+func Fn2102(m *base.Module, l0 int32)
 
 //go:linkname Fn2105 github.com/goccy/spidermonkeywasm2go/p6.Fn2105
-func Fn2105(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int32) int32
+func Fn2105(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2108 github.com/goccy/spidermonkeywasm2go/p7.Fn2108
-func Fn2108(m *base.Module, l0 int32, l1 int64, l2 int32) int32
+//go:linkname Fn2106 github.com/goccy/spidermonkeywasm2go/p6.Fn2106
+func Fn2106(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int32) int32
 
-//go:linkname Fn2112 github.com/goccy/spidermonkeywasm2go/p7.Fn2112
-func Fn2112(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2109 github.com/goccy/spidermonkeywasm2go/p7.Fn2109
+func Fn2109(m *base.Module, l0 int32, l1 int64, l2 int32) int32
 
-//go:linkname Fn2130 github.com/goccy/spidermonkeywasm2go/p4.Fn2130
-func Fn2130(m *base.Module, l0 int32)
+//go:linkname Fn2113 github.com/goccy/spidermonkeywasm2go/p7.Fn2113
+func Fn2113(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2133 github.com/goccy/spidermonkeywasm2go/p6.Fn2133
-func Fn2133(m *base.Module, l0 int32) int32
+//go:linkname Fn2135 github.com/goccy/spidermonkeywasm2go/p6.Fn2135
+func Fn2135(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2134 github.com/goccy/spidermonkeywasm2go/p6.Fn2134
-func Fn2134(m *base.Module, l0 int32) int32
+//go:linkname Fn2136 github.com/goccy/spidermonkeywasm2go/p0.Fn2136
+func Fn2136(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn2135 github.com/goccy/spidermonkeywasm2go/p0.Fn2135
-func Fn2135(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn2153 github.com/goccy/spidermonkeywasm2go/p0.Fn2153
+func Fn2153(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2152 github.com/goccy/spidermonkeywasm2go/p0.Fn2152
-func Fn2152(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2194 github.com/goccy/spidermonkeywasm2go/p7.Fn2194
+func Fn2194(m *base.Module, l0 int32)
 
-//go:linkname Fn2193 github.com/goccy/spidermonkeywasm2go/p7.Fn2193
-func Fn2193(m *base.Module, l0 int32)
+//go:linkname Fn2195 github.com/goccy/spidermonkeywasm2go/p4.Fn2195
+func Fn2195(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2194 github.com/goccy/spidermonkeywasm2go/p4.Fn2194
-func Fn2194(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2196 github.com/goccy/spidermonkeywasm2go/p0.Fn2196
+func Fn2196(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2195 github.com/goccy/spidermonkeywasm2go/p0.Fn2195
-func Fn2195(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn2197 github.com/goccy/spidermonkeywasm2go/p6.Fn2197
-func Fn2197(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn2198 github.com/goccy/spidermonkeywasm2go/p7.Fn2198
+//go:linkname Fn2198 github.com/goccy/spidermonkeywasm2go/p6.Fn2198
 func Fn2198(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2200 github.com/goccy/spidermonkeywasm2go/p7.Fn2200
-func Fn2200(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2199 github.com/goccy/spidermonkeywasm2go/p7.Fn2199
+func Fn2199(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2206 github.com/goccy/spidermonkeywasm2go/p4.Fn2206
-func Fn2206(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2207 github.com/goccy/spidermonkeywasm2go/p4.Fn2207
+func Fn2207(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2207 github.com/goccy/spidermonkeywasm2go/p0.Fn2207
-func Fn2207(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32, l9 int32, l10 int32) int32
+//go:linkname Fn2208 github.com/goccy/spidermonkeywasm2go/p0.Fn2208
+func Fn2208(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32, l9 int32, l10 int32) int32
 
-//go:linkname Fn2217 github.com/goccy/spidermonkeywasm2go/p6.Fn2217
-func Fn2217(m *base.Module, l0 int32)
+//go:linkname Fn2218 github.com/goccy/spidermonkeywasm2go/p6.Fn2218
+func Fn2218(m *base.Module, l0 int32)
 
-//go:linkname Fn2221 github.com/goccy/spidermonkeywasm2go/p6.Fn2221
-func Fn2221(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2222 github.com/goccy/spidermonkeywasm2go/p6.Fn2222
+func Fn2222(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2223 github.com/goccy/spidermonkeywasm2go/p4.Fn2223
-func Fn2223(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2224 github.com/goccy/spidermonkeywasm2go/p4.Fn2224
+func Fn2224(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2231 github.com/goccy/spidermonkeywasm2go/p6.Fn2231
-func Fn2231(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2232 github.com/goccy/spidermonkeywasm2go/p6.Fn2232
+func Fn2232(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn2232 github.com/goccy/spidermonkeywasm2go/p4.Fn2232
-func Fn2232(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2233 github.com/goccy/spidermonkeywasm2go/p4.Fn2233
+func Fn2233(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2234 github.com/goccy/spidermonkeywasm2go/p6.Fn2234
-func Fn2234(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2246 github.com/goccy/spidermonkeywasm2go/p6.Fn2246
+func Fn2246(m *base.Module, l0 int32)
 
-//go:linkname Fn2245 github.com/goccy/spidermonkeywasm2go/p6.Fn2245
-func Fn2245(m *base.Module, l0 int32)
+//go:linkname Fn2256 github.com/goccy/spidermonkeywasm2go/p0.Fn2256
+func Fn2256(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2255 github.com/goccy/spidermonkeywasm2go/p0.Fn2255
-func Fn2255(m *base.Module, l0 int32) int32
+//go:linkname Fn2261 github.com/goccy/spidermonkeywasm2go/p0.Fn2261
+func Fn2261(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2260 github.com/goccy/spidermonkeywasm2go/p0.Fn2260
-func Fn2260(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2263 github.com/goccy/spidermonkeywasm2go/p0.Fn2263
+func Fn2263(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2262 github.com/goccy/spidermonkeywasm2go/p0.Fn2262
-func Fn2262(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2287 github.com/goccy/spidermonkeywasm2go/p6.Fn2287
+func Fn2287(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2286 github.com/goccy/spidermonkeywasm2go/p6.Fn2286
-func Fn2286(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2298 github.com/goccy/spidermonkeywasm2go/p3.Fn2298
+func Fn2298(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2297 github.com/goccy/spidermonkeywasm2go/p3.Fn2297
-func Fn2297(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2309 github.com/goccy/spidermonkeywasm2go/p0.Fn2309
+func Fn2309(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn2308 github.com/goccy/spidermonkeywasm2go/p0.Fn2308
-func Fn2308(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn2311 github.com/goccy/spidermonkeywasm2go/p0.Fn2311
+func Fn2311(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn2310 github.com/goccy/spidermonkeywasm2go/p0.Fn2310
-func Fn2310(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn2314 github.com/goccy/spidermonkeywasm2go/p6.Fn2314
+func Fn2314(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn2313 github.com/goccy/spidermonkeywasm2go/p6.Fn2313
-func Fn2313(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2315 github.com/goccy/spidermonkeywasm2go/p7.Fn2315
+func Fn2315(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn2314 github.com/goccy/spidermonkeywasm2go/p7.Fn2314
-func Fn2314(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn2329 github.com/goccy/spidermonkeywasm2go/p0.Fn2329
+func Fn2329(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2328 github.com/goccy/spidermonkeywasm2go/p0.Fn2328
-func Fn2328(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn2329 github.com/goccy/spidermonkeywasm2go/p6.Fn2329
-func Fn2329(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-
-//go:linkname Fn2330 github.com/goccy/spidermonkeywasm2go/p0.Fn2330
+//go:linkname Fn2330 github.com/goccy/spidermonkeywasm2go/p6.Fn2330
 func Fn2330(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
 //go:linkname Fn2331 github.com/goccy/spidermonkeywasm2go/p0.Fn2331
-func Fn2331(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn2331(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2334 github.com/goccy/spidermonkeywasm2go/p0.Fn2334
-func Fn2334(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2332 github.com/goccy/spidermonkeywasm2go/p0.Fn2332
+func Fn2332(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2341 github.com/goccy/spidermonkeywasm2go/p7.Fn2341
-func Fn2341(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2335 github.com/goccy/spidermonkeywasm2go/p0.Fn2335
+func Fn2335(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2344 github.com/goccy/spidermonkeywasm2go/p0.Fn2344
-func Fn2344(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2342 github.com/goccy/spidermonkeywasm2go/p7.Fn2342
+func Fn2342(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn2348 github.com/goccy/spidermonkeywasm2go/p6.Fn2348
-func Fn2348(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn2345 github.com/goccy/spidermonkeywasm2go/p0.Fn2345
+func Fn2345(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn2349 github.com/goccy/spidermonkeywasm2go/p6.Fn2349
-func Fn2349(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+func Fn2349(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn2350 github.com/goccy/spidermonkeywasm2go/p6.Fn2350
-func Fn2350(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn2350(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2409 github.com/goccy/spidermonkeywasm2go/p4.Fn2409
-func Fn2409(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2351 github.com/goccy/spidermonkeywasm2go/p6.Fn2351
+func Fn2351(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2440 github.com/goccy/spidermonkeywasm2go/p6.Fn2440
-func Fn2440(m *base.Module, l0 int32)
+//go:linkname Fn2410 github.com/goccy/spidermonkeywasm2go/p4.Fn2410
+func Fn2410(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn2447 github.com/goccy/spidermonkeywasm2go/p7.Fn2447
-func Fn2447(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2441 github.com/goccy/spidermonkeywasm2go/p6.Fn2441
+func Fn2441(m *base.Module, l0 int32)
 
-//go:linkname Fn2457 github.com/goccy/spidermonkeywasm2go/p0.Fn2457
-func Fn2457(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2448 github.com/goccy/spidermonkeywasm2go/p7.Fn2448
+func Fn2448(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2465 github.com/goccy/spidermonkeywasm2go/p6.Fn2465
-func Fn2465(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2458 github.com/goccy/spidermonkeywasm2go/p0.Fn2458
+func Fn2458(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2470 github.com/goccy/spidermonkeywasm2go/p0.Fn2470
-func Fn2470(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2471 github.com/goccy/spidermonkeywasm2go/p0.Fn2471
+func Fn2471(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2488 github.com/goccy/spidermonkeywasm2go/p4.Fn2488
-func Fn2488(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2489 github.com/goccy/spidermonkeywasm2go/p4.Fn2489
+func Fn2489(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn2493 github.com/goccy/spidermonkeywasm2go/p6.Fn2493
-func Fn2493(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2494 github.com/goccy/spidermonkeywasm2go/p6.Fn2494
+func Fn2494(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn2494 github.com/goccy/spidermonkeywasm2go/p4.Fn2494
-func Fn2494(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn2505 github.com/goccy/spidermonkeywasm2go/p6.Fn2505
-func Fn2505(m *base.Module, l0 int32) int32
+//go:linkname Fn2495 github.com/goccy/spidermonkeywasm2go/p4.Fn2495
+func Fn2495(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn2506 github.com/goccy/spidermonkeywasm2go/p6.Fn2506
-func Fn2506(m *base.Module, l0 int32, l1 int32)
+func Fn2506(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2508 github.com/goccy/spidermonkeywasm2go/p6.Fn2508
-func Fn2508(m *base.Module, l0 int32, l1 int32) float64
+//go:linkname Fn2507 github.com/goccy/spidermonkeywasm2go/p6.Fn2507
+func Fn2507(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn2515 github.com/goccy/spidermonkeywasm2go/p6.Fn2515
-func Fn2515(m *base.Module, l0 int32) int32
+//go:linkname Fn2516 github.com/goccy/spidermonkeywasm2go/p6.Fn2516
+func Fn2516(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2537 github.com/goccy/spidermonkeywasm2go/p6.Fn2537
-func Fn2537(m *base.Module, l0 int32)
+//go:linkname Fn2538 github.com/goccy/spidermonkeywasm2go/p6.Fn2538
+func Fn2538(m *base.Module, l0 int32)
 
-//go:linkname Fn2541 github.com/goccy/spidermonkeywasm2go/p7.Fn2541
-func Fn2541(m *base.Module, l0 int32)
-
-//go:linkname Fn2546 github.com/goccy/spidermonkeywasm2go/p7.Fn2546
-func Fn2546(m *base.Module, l0 int32)
-
-//go:linkname Fn2561 github.com/goccy/spidermonkeywasm2go/p0.Fn2561
-func Fn2561(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2547 github.com/goccy/spidermonkeywasm2go/p7.Fn2547
+func Fn2547(m *base.Module, l0 int32)
 
 //go:linkname Fn2562 github.com/goccy/spidermonkeywasm2go/p0.Fn2562
-func Fn2562(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+func Fn2562(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2581 github.com/goccy/spidermonkeywasm2go/p0.Fn2581
-func Fn2581(m *base.Module, l0 int32, l1 int64, l2 int32) int32
+//go:linkname Fn2563 github.com/goccy/spidermonkeywasm2go/p0.Fn2563
+func Fn2563(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2583 github.com/goccy/spidermonkeywasm2go/p0.Fn2583
-func Fn2583(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2582 github.com/goccy/spidermonkeywasm2go/p0.Fn2582
+func Fn2582(m *base.Module, l0 int32, l1 int64, l2 int32) int32
 
-//go:linkname Fn2585 github.com/goccy/spidermonkeywasm2go/p3.Fn2585
-func Fn2585(m *base.Module, l0 int32)
+//go:linkname Fn2584 github.com/goccy/spidermonkeywasm2go/p0.Fn2584
+func Fn2584(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2587 github.com/goccy/spidermonkeywasm2go/p0.Fn2587
-func Fn2587(m *base.Module, l0 int32)
+//go:linkname Fn2586 github.com/goccy/spidermonkeywasm2go/p3.Fn2586
+func Fn2586(m *base.Module, l0 int32)
 
 //go:linkname Fn2588 github.com/goccy/spidermonkeywasm2go/p0.Fn2588
 func Fn2588(m *base.Module, l0 int32)
 
-//go:linkname Fn2592 github.com/goccy/spidermonkeywasm2go/p0.Fn2592
-func Fn2592(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn2589 github.com/goccy/spidermonkeywasm2go/p0.Fn2589
+func Fn2589(m *base.Module, l0 int32)
 
-//go:linkname Fn2594 github.com/goccy/spidermonkeywasm2go/p7.Fn2594
-func Fn2594(m *base.Module, l0 int32)
+//go:linkname Fn2593 github.com/goccy/spidermonkeywasm2go/p0.Fn2593
+func Fn2593(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn2599 github.com/goccy/spidermonkeywasm2go/p0.Fn2599
-func Fn2599(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2595 github.com/goccy/spidermonkeywasm2go/p7.Fn2595
+func Fn2595(m *base.Module, l0 int32)
 
-//go:linkname Fn2603 github.com/goccy/spidermonkeywasm2go/p7.Fn2603
-func Fn2603(m *base.Module, l0 int32)
+//go:linkname Fn2600 github.com/goccy/spidermonkeywasm2go/p0.Fn2600
+func Fn2600(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2616 github.com/goccy/spidermonkeywasm2go/p6.Fn2616
-func Fn2616(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn2604 github.com/goccy/spidermonkeywasm2go/p7.Fn2604
+func Fn2604(m *base.Module, l0 int32)
 
 //go:linkname Fn2617 github.com/goccy/spidermonkeywasm2go/p6.Fn2617
-func Fn2617(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn2617(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn2619 github.com/goccy/spidermonkeywasm2go/p0.Fn2619
-func Fn2619(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2618 github.com/goccy/spidermonkeywasm2go/p6.Fn2618
+func Fn2618(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2621 github.com/goccy/spidermonkeywasm2go/p0.Fn2621
-func Fn2621(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2620 github.com/goccy/spidermonkeywasm2go/p0.Fn2620
+func Fn2620(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2627 github.com/goccy/spidermonkeywasm2go/p6.Fn2627
-func Fn2627(m *base.Module, l0 int32) int32
+//go:linkname Fn2622 github.com/goccy/spidermonkeywasm2go/p0.Fn2622
+func Fn2622(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2628 github.com/goccy/spidermonkeywasm2go/p6.Fn2628
-func Fn2628(m *base.Module, l0 int32) int32
+//go:linkname Fn2631 github.com/goccy/spidermonkeywasm2go/p0.Fn2631
+func Fn2631(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32) int32
 
-//go:linkname Fn2630 github.com/goccy/spidermonkeywasm2go/p0.Fn2630
-func Fn2630(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32) int32
-
-//go:linkname Fn2633 github.com/goccy/spidermonkeywasm2go/p0.Fn2633
-func Fn2633(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn2637 github.com/goccy/spidermonkeywasm2go/p6.Fn2637
-func Fn2637(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn2634 github.com/goccy/spidermonkeywasm2go/p0.Fn2634
+func Fn2634(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn2638 github.com/goccy/spidermonkeywasm2go/p6.Fn2638
-func Fn2638(m *base.Module, l0 int32, l1 int32)
+func Fn2638(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn2663 github.com/goccy/spidermonkeywasm2go/p6.Fn2663
-func Fn2663(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2639 github.com/goccy/spidermonkeywasm2go/p6.Fn2639
+func Fn2639(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn2665 github.com/goccy/spidermonkeywasm2go/p7.Fn2665
-func Fn2665(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2666 github.com/goccy/spidermonkeywasm2go/p7.Fn2666
+func Fn2666(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2701 github.com/goccy/spidermonkeywasm2go/p6.Fn2701
-func Fn2701(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2702 github.com/goccy/spidermonkeywasm2go/p6.Fn2702
+func Fn2702(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2716 github.com/goccy/spidermonkeywasm2go/p6.Fn2716
-func Fn2716(m *base.Module, l0 int32)
+//go:linkname Fn2717 github.com/goccy/spidermonkeywasm2go/p6.Fn2717
+func Fn2717(m *base.Module, l0 int32)
 
-//go:linkname Fn2717 github.com/goccy/spidermonkeywasm2go/p7.Fn2717
-func Fn2717(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2718 github.com/goccy/spidermonkeywasm2go/p7.Fn2718
+func Fn2718(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn2719 github.com/goccy/spidermonkeywasm2go/p0.Fn2719
-func Fn2719(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-
-//go:linkname Fn2720 github.com/goccy/spidermonkeywasm2go/p7.Fn2720
+//go:linkname Fn2720 github.com/goccy/spidermonkeywasm2go/p0.Fn2720
 func Fn2720(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
 //go:linkname Fn2721 github.com/goccy/spidermonkeywasm2go/p7.Fn2721
-func Fn2721(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+func Fn2721(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2726 github.com/goccy/spidermonkeywasm2go/p0.Fn2726
-func Fn2726(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2722 github.com/goccy/spidermonkeywasm2go/p7.Fn2722
+func Fn2722(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2730 github.com/goccy/spidermonkeywasm2go/p0.Fn2730
-func Fn2730(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2727 github.com/goccy/spidermonkeywasm2go/p0.Fn2727
+func Fn2727(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn2731 github.com/goccy/spidermonkeywasm2go/p0.Fn2731
-func Fn2731(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn2731(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn2732 github.com/goccy/spidermonkeywasm2go/p0.Fn2732
 func Fn2732(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn2734 github.com/goccy/spidermonkeywasm2go/p0.Fn2734
-func Fn2734(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2733 github.com/goccy/spidermonkeywasm2go/p0.Fn2733
+func Fn2733(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn2741 github.com/goccy/spidermonkeywasm2go/p4.Fn2741
-func Fn2741(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2735 github.com/goccy/spidermonkeywasm2go/p0.Fn2735
+func Fn2735(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2743 github.com/goccy/spidermonkeywasm2go/p6.Fn2743
-func Fn2743(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2742 github.com/goccy/spidermonkeywasm2go/p4.Fn2742
+func Fn2742(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2745 github.com/goccy/spidermonkeywasm2go/p0.Fn2745
-func Fn2745(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2744 github.com/goccy/spidermonkeywasm2go/p6.Fn2744
+func Fn2744(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2748 github.com/goccy/spidermonkeywasm2go/p0.Fn2748
-func Fn2748(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2746 github.com/goccy/spidermonkeywasm2go/p0.Fn2746
+func Fn2746(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn2749 github.com/goccy/spidermonkeywasm2go/p0.Fn2749
-func Fn2749(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+func Fn2749(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2751 github.com/goccy/spidermonkeywasm2go/p0.Fn2751
-func Fn2751(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2750 github.com/goccy/spidermonkeywasm2go/p0.Fn2750
+func Fn2750(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn2752 github.com/goccy/spidermonkeywasm2go/p0.Fn2752
 func Fn2752(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn2753 github.com/goccy/spidermonkeywasm2go/p0.Fn2753
-func Fn2753(m *base.Module, l0 int32, l1 int32) int32
+func Fn2753(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2760 github.com/goccy/spidermonkeywasm2go/p6.Fn2760
-func Fn2760(m *base.Module, l0 int32) int32
+//go:linkname Fn2754 github.com/goccy/spidermonkeywasm2go/p0.Fn2754
+func Fn2754(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2772 github.com/goccy/spidermonkeywasm2go/p7.Fn2772
-func Fn2772(m *base.Module, l0 int32) int32
+//go:linkname Fn2773 github.com/goccy/spidermonkeywasm2go/p7.Fn2773
+func Fn2773(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2773 github.com/goccy/spidermonkeywasm2go/p6.Fn2773
-func Fn2773(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2774 github.com/goccy/spidermonkeywasm2go/p6.Fn2774
+func Fn2774(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2774 github.com/goccy/spidermonkeywasm2go/p7.Fn2774
-func Fn2774(m *base.Module, l0 int32)
+//go:linkname Fn2775 github.com/goccy/spidermonkeywasm2go/p7.Fn2775
+func Fn2775(m *base.Module, l0 int32)
 
-//go:linkname Fn2787 github.com/goccy/spidermonkeywasm2go/p6.Fn2787
-func Fn2787(m *base.Module, l0 int32)
+//go:linkname Fn2788 github.com/goccy/spidermonkeywasm2go/p6.Fn2788
+func Fn2788(m *base.Module, l0 int32)
 
-//go:linkname Fn2788 github.com/goccy/spidermonkeywasm2go/p7.Fn2788
-func Fn2788(m *base.Module, l0 int32) int32
+//go:linkname Fn2794 github.com/goccy/spidermonkeywasm2go/p6.Fn2794
+func Fn2794(m *base.Module, l0 int32)
 
-//go:linkname Fn2793 github.com/goccy/spidermonkeywasm2go/p6.Fn2793
-func Fn2793(m *base.Module, l0 int32)
+//go:linkname Fn2797 github.com/goccy/spidermonkeywasm2go/p7.Fn2797
+func Fn2797(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn2794 github.com/goccy/spidermonkeywasm2go/p7.Fn2794
-func Fn2794(m *base.Module, l0 int32) int32
+//go:linkname Fn2800 github.com/goccy/spidermonkeywasm2go/p6.Fn2800
+func Fn2800(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2796 github.com/goccy/spidermonkeywasm2go/p7.Fn2796
-func Fn2796(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2803 github.com/goccy/spidermonkeywasm2go/p6.Fn2803
+func Fn2803(m *base.Module, l0 int32)
 
-//go:linkname Fn2799 github.com/goccy/spidermonkeywasm2go/p6.Fn2799
-func Fn2799(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2804 github.com/goccy/spidermonkeywasm2go/p7.Fn2804
+func Fn2804(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2802 github.com/goccy/spidermonkeywasm2go/p6.Fn2802
-func Fn2802(m *base.Module, l0 int32)
+//go:linkname Fn2806 github.com/goccy/spidermonkeywasm2go/p6.Fn2806
+func Fn2806(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2803 github.com/goccy/spidermonkeywasm2go/p7.Fn2803
-func Fn2803(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2839 github.com/goccy/spidermonkeywasm2go/p2.Fn2839
+func Fn2839(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2805 github.com/goccy/spidermonkeywasm2go/p6.Fn2805
-func Fn2805(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2846 github.com/goccy/spidermonkeywasm2go/p6.Fn2846
+func Fn2846(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2822 github.com/goccy/spidermonkeywasm2go/p6.Fn2822
-func Fn2822(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2849 github.com/goccy/spidermonkeywasm2go/p4.Fn2849
+func Fn2849(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2838 github.com/goccy/spidermonkeywasm2go/p2.Fn2838
-func Fn2838(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2851 github.com/goccy/spidermonkeywasm2go/p2.Fn2851
+func Fn2851(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2845 github.com/goccy/spidermonkeywasm2go/p6.Fn2845
-func Fn2845(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn2848 github.com/goccy/spidermonkeywasm2go/p4.Fn2848
-func Fn2848(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn2850 github.com/goccy/spidermonkeywasm2go/p2.Fn2850
-func Fn2850(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn2861 github.com/goccy/spidermonkeywasm2go/p0.Fn2861
-func Fn2861(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-
-//go:linkname Fn2862 github.com/goccy/spidermonkeywasm2go/p6.Fn2862
-func Fn2862(m *base.Module, l0 int32)
+//go:linkname Fn2862 github.com/goccy/spidermonkeywasm2go/p0.Fn2862
+func Fn2862(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
 //go:linkname Fn2863 github.com/goccy/spidermonkeywasm2go/p6.Fn2863
-func Fn2863(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn2863(m *base.Module, l0 int32)
 
-//go:linkname Fn2867 github.com/goccy/spidermonkeywasm2go/p6.Fn2867
-func Fn2867(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2864 github.com/goccy/spidermonkeywasm2go/p6.Fn2864
+func Fn2864(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn2869 github.com/goccy/spidermonkeywasm2go/p6.Fn2869
-func Fn2869(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2868 github.com/goccy/spidermonkeywasm2go/p6.Fn2868
+func Fn2868(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2875 github.com/goccy/spidermonkeywasm2go/p6.Fn2875
-func Fn2875(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn2870 github.com/goccy/spidermonkeywasm2go/p6.Fn2870
+func Fn2870(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2880 github.com/goccy/spidermonkeywasm2go/p0.Fn2880
-func Fn2880(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2876 github.com/goccy/spidermonkeywasm2go/p6.Fn2876
+func Fn2876(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn2884 github.com/goccy/spidermonkeywasm2go/p0.Fn2884
-func Fn2884(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2881 github.com/goccy/spidermonkeywasm2go/p0.Fn2881
+func Fn2881(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2885 github.com/goccy/spidermonkeywasm2go/p4.Fn2885
-func Fn2885(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2885 github.com/goccy/spidermonkeywasm2go/p0.Fn2885
+func Fn2885(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2886 github.com/goccy/spidermonkeywasm2go/p0.Fn2886
+//go:linkname Fn2886 github.com/goccy/spidermonkeywasm2go/p4.Fn2886
 func Fn2886(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2892 github.com/goccy/spidermonkeywasm2go/p0.Fn2892
-func Fn2892(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn2887 github.com/goccy/spidermonkeywasm2go/p0.Fn2887
+func Fn2887(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2896 github.com/goccy/spidermonkeywasm2go/p0.Fn2896
-func Fn2896(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2893 github.com/goccy/spidermonkeywasm2go/p0.Fn2893
+func Fn2893(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn2901 github.com/goccy/spidermonkeywasm2go/p6.Fn2901
-func Fn2901(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn2897 github.com/goccy/spidermonkeywasm2go/p0.Fn2897
+func Fn2897(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn2903 github.com/goccy/spidermonkeywasm2go/p4.Fn2903
-func Fn2903(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2902 github.com/goccy/spidermonkeywasm2go/p6.Fn2902
+func Fn2902(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn2904 github.com/goccy/spidermonkeywasm2go/p6.Fn2904
-func Fn2904(m *base.Module, l0 int32) int32
+//go:linkname Fn2904 github.com/goccy/spidermonkeywasm2go/p4.Fn2904
+func Fn2904(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2907 github.com/goccy/spidermonkeywasm2go/p6.Fn2907
-func Fn2907(m *base.Module, l0 int32) int32
+//go:linkname Fn2905 github.com/goccy/spidermonkeywasm2go/p6.Fn2905
+func Fn2905(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2909 github.com/goccy/spidermonkeywasm2go/p6.Fn2909
-func Fn2909(m *base.Module, l0 int32) int32
+//go:linkname Fn2908 github.com/goccy/spidermonkeywasm2go/p6.Fn2908
+func Fn2908(m *base.Module, l0 int32) int32
 
 //go:linkname Fn2910 github.com/goccy/spidermonkeywasm2go/p6.Fn2910
-func Fn2910(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn2910(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2913 github.com/goccy/spidermonkeywasm2go/p6.Fn2913
-func Fn2913(m *base.Module, l0 int32) int32
+//go:linkname Fn2911 github.com/goccy/spidermonkeywasm2go/p6.Fn2911
+func Fn2911(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn2914 github.com/goccy/spidermonkeywasm2go/p6.Fn2914
-func Fn2914(m *base.Module, l0 int32)
+func Fn2914(m *base.Module, l0 int32) int32
 
-//go:linkname Fn2918 github.com/goccy/spidermonkeywasm2go/p7.Fn2918
-func Fn2918(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2915 github.com/goccy/spidermonkeywasm2go/p6.Fn2915
+func Fn2915(m *base.Module, l0 int32)
 
-//go:linkname Fn2938 github.com/goccy/spidermonkeywasm2go/p0.Fn2938
-func Fn2938(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2919 github.com/goccy/spidermonkeywasm2go/p7.Fn2919
+func Fn2919(m *base.Module, l0 int32, l1 int32, l2 int32)
 
 //go:linkname Fn2939 github.com/goccy/spidermonkeywasm2go/p0.Fn2939
-func Fn2939(m *base.Module, l0 int32, l1 int32) int32
+func Fn2939(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn2940 github.com/goccy/spidermonkeywasm2go/p0.Fn2940
-func Fn2940(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn2940(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn2941 github.com/goccy/spidermonkeywasm2go/p0.Fn2941
 func Fn2941(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2949 github.com/goccy/spidermonkeywasm2go/p7.Fn2949
-func Fn2949(m *base.Module, l0 int32)
+//go:linkname Fn2942 github.com/goccy/spidermonkeywasm2go/p0.Fn2942
+func Fn2942(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn2952 github.com/goccy/spidermonkeywasm2go/p7.Fn2952
-func Fn2952(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn2953 github.com/goccy/spidermonkeywasm2go/p7.Fn2953
+func Fn2953(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn2957 github.com/goccy/spidermonkeywasm2go/p0.Fn2957
-func Fn2957(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn2965 github.com/goccy/spidermonkeywasm2go/p6.Fn2965
-func Fn2965(m *base.Module, l0 int32, l1 int32, l2 int32)
-
-//go:linkname Fn2972 github.com/goccy/spidermonkeywasm2go/p0.Fn2972
-func Fn2972(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn2958 github.com/goccy/spidermonkeywasm2go/p0.Fn2958
+func Fn2958(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn2973 github.com/goccy/spidermonkeywasm2go/p0.Fn2973
-func Fn2973(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
+func Fn2973(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn2981 github.com/goccy/spidermonkeywasm2go/p7.Fn2981
-func Fn2981(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn2974 github.com/goccy/spidermonkeywasm2go/p0.Fn2974
+func Fn2974(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
 
-//go:linkname Fn2983 github.com/goccy/spidermonkeywasm2go/p6.Fn2983
-func Fn2983(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn2982 github.com/goccy/spidermonkeywasm2go/p7.Fn2982
+func Fn2982(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn2984 github.com/goccy/spidermonkeywasm2go/p6.Fn2984
-func Fn2984(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+func Fn2984(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn2985 github.com/goccy/spidermonkeywasm2go/p0.Fn2985
-func Fn2985(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn2985 github.com/goccy/spidermonkeywasm2go/p6.Fn2985
+func Fn2985(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3003 github.com/goccy/spidermonkeywasm2go/p6.Fn3003
-func Fn3003(m *base.Module, l0 int32)
+//go:linkname Fn2986 github.com/goccy/spidermonkeywasm2go/p0.Fn2986
+func Fn2986(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3008 github.com/goccy/spidermonkeywasm2go/p6.Fn3008
-func Fn3008(m *base.Module, l0 int32) int32
+//go:linkname Fn3004 github.com/goccy/spidermonkeywasm2go/p6.Fn3004
+func Fn3004(m *base.Module, l0 int32)
 
-//go:linkname Fn3020 github.com/goccy/spidermonkeywasm2go/p6.Fn3020
-func Fn3020(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3009 github.com/goccy/spidermonkeywasm2go/p6.Fn3009
+func Fn3009(m *base.Module, l0 int32) int32
 
-//go:linkname Fn3036 github.com/goccy/spidermonkeywasm2go/p6.Fn3036
-func Fn3036(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3021 github.com/goccy/spidermonkeywasm2go/p6.Fn3021
+func Fn3021(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3045 github.com/goccy/spidermonkeywasm2go/p0.Fn3045
-func Fn3045(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3037 github.com/goccy/spidermonkeywasm2go/p6.Fn3037
+func Fn3037(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3046 github.com/goccy/spidermonkeywasm2go/p7.Fn3046
-func Fn3046(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn3046 github.com/goccy/spidermonkeywasm2go/p0.Fn3046
+func Fn3046(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3050 github.com/goccy/spidermonkeywasm2go/p6.Fn3050
-func Fn3050(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3047 github.com/goccy/spidermonkeywasm2go/p7.Fn3047
+func Fn3047(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn3051 github.com/goccy/spidermonkeywasm2go/p0.Fn3051
-func Fn3051(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3051 github.com/goccy/spidermonkeywasm2go/p6.Fn3051
+func Fn3051(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3054 github.com/goccy/spidermonkeywasm2go/p6.Fn3054
-func Fn3054(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn3052 github.com/goccy/spidermonkeywasm2go/p0.Fn3052
+func Fn3052(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3061 github.com/goccy/spidermonkeywasm2go/p6.Fn3061
-func Fn3061(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn3055 github.com/goccy/spidermonkeywasm2go/p6.Fn3055
+func Fn3055(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn3102 github.com/goccy/spidermonkeywasm2go/p0.Fn3102
-func Fn3102(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3062 github.com/goccy/spidermonkeywasm2go/p6.Fn3062
+func Fn3062(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn3104 github.com/goccy/spidermonkeywasm2go/p6.Fn3104
-func Fn3104(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3103 github.com/goccy/spidermonkeywasm2go/p0.Fn3103
+func Fn3103(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3139 github.com/goccy/spidermonkeywasm2go/p0.Fn3139
-func Fn3139(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3105 github.com/goccy/spidermonkeywasm2go/p6.Fn3105
+func Fn3105(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3158 github.com/goccy/spidermonkeywasm2go/p6.Fn3158
-func Fn3158(m *base.Module, l0 float64) float64
+//go:linkname Fn3140 github.com/goccy/spidermonkeywasm2go/p0.Fn3140
+func Fn3140(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3162 github.com/goccy/spidermonkeywasm2go/p7.Fn3162
-func Fn3162(m *base.Module, l0 int32)
+//go:linkname Fn3159 github.com/goccy/spidermonkeywasm2go/p6.Fn3159
+func Fn3159(m *base.Module, l0 float64) float64
 
-//go:linkname Fn3163 github.com/goccy/spidermonkeywasm2go/p0.Fn3163
-func Fn3163(m *base.Module, l0 int32) int32
+//go:linkname Fn3163 github.com/goccy/spidermonkeywasm2go/p7.Fn3163
+func Fn3163(m *base.Module, l0 int32)
 
-//go:linkname Fn3166 github.com/goccy/spidermonkeywasm2go/p7.Fn3166
-func Fn3166(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3164 github.com/goccy/spidermonkeywasm2go/p0.Fn3164
+func Fn3164(m *base.Module, l0 int32) int32
 
 //go:linkname Fn3167 github.com/goccy/spidermonkeywasm2go/p7.Fn3167
-func Fn3167(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+func Fn3167(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3176 github.com/goccy/spidermonkeywasm2go/p0.Fn3176
-func Fn3176(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn3168 github.com/goccy/spidermonkeywasm2go/p7.Fn3168
+func Fn3168(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3178 github.com/goccy/spidermonkeywasm2go/p0.Fn3178
-func Fn3178(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3177 github.com/goccy/spidermonkeywasm2go/p0.Fn3177
+func Fn3177(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn3180 github.com/goccy/spidermonkeywasm2go/p6.Fn3180
-func Fn3180(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3179 github.com/goccy/spidermonkeywasm2go/p0.Fn3179
+func Fn3179(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3196 github.com/goccy/spidermonkeywasm2go/p0.Fn3196
-func Fn3196(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3181 github.com/goccy/spidermonkeywasm2go/p6.Fn3181
+func Fn3181(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3203 github.com/goccy/spidermonkeywasm2go/p6.Fn3203
-func Fn3203(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn3197 github.com/goccy/spidermonkeywasm2go/p0.Fn3197
+func Fn3197(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3213 github.com/goccy/spidermonkeywasm2go/p0.Fn3213
-func Fn3213(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3204 github.com/goccy/spidermonkeywasm2go/p6.Fn3204
+func Fn3204(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn3217 github.com/goccy/spidermonkeywasm2go/p0.Fn3217
-func Fn3217(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn3214 github.com/goccy/spidermonkeywasm2go/p0.Fn3214
+func Fn3214(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3222 github.com/goccy/spidermonkeywasm2go/p6.Fn3222
-func Fn3222(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3218 github.com/goccy/spidermonkeywasm2go/p0.Fn3218
+func Fn3218(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn3224 github.com/goccy/spidermonkeywasm2go/p6.Fn3224
-func Fn3224(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3223 github.com/goccy/spidermonkeywasm2go/p6.Fn3223
+func Fn3223(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3226 github.com/goccy/spidermonkeywasm2go/p6.Fn3226
-func Fn3226(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3225 github.com/goccy/spidermonkeywasm2go/p6.Fn3225
+func Fn3225(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3228 github.com/goccy/spidermonkeywasm2go/p6.Fn3228
-func Fn3228(m *base.Module, l0 int32) int32
+//go:linkname Fn3227 github.com/goccy/spidermonkeywasm2go/p6.Fn3227
+func Fn3227(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3230 github.com/goccy/spidermonkeywasm2go/p6.Fn3230
-func Fn3230(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
+//go:linkname Fn3229 github.com/goccy/spidermonkeywasm2go/p6.Fn3229
+func Fn3229(m *base.Module, l0 int32) int32
 
-//go:linkname Fn3238 github.com/goccy/spidermonkeywasm2go/p0.Fn3238
-func Fn3238(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3231 github.com/goccy/spidermonkeywasm2go/p6.Fn3231
+func Fn3231(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
 
-//go:linkname Fn3244 github.com/goccy/spidermonkeywasm2go/p6.Fn3244
-func Fn3244(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3239 github.com/goccy/spidermonkeywasm2go/p0.Fn3239
+func Fn3239(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3254 github.com/goccy/spidermonkeywasm2go/p0.Fn3254
-func Fn3254(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3255 github.com/goccy/spidermonkeywasm2go/p0.Fn3255
+func Fn3255(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3265 github.com/goccy/spidermonkeywasm2go/p0.Fn3265
-func Fn3265(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn3509 github.com/goccy/spidermonkeywasm2go/p7.Fn3509
-func Fn3509(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3266 github.com/goccy/spidermonkeywasm2go/p0.Fn3266
+func Fn3266(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn3510 github.com/goccy/spidermonkeywasm2go/p7.Fn3510
-func Fn3510(m *base.Module, l0 int32)
+func Fn3510(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3511 github.com/goccy/spidermonkeywasm2go/p4.Fn3511
-func Fn3511(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3511 github.com/goccy/spidermonkeywasm2go/p7.Fn3511
+func Fn3511(m *base.Module, l0 int32)
 
-//go:linkname Fn3531 github.com/goccy/spidermonkeywasm2go/p7.Fn3531
-func Fn3531(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn3512 github.com/goccy/spidermonkeywasm2go/p4.Fn3512
+func Fn3512(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn3533 github.com/goccy/spidermonkeywasm2go/p2.Fn3533
-func Fn3533(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3532 github.com/goccy/spidermonkeywasm2go/p7.Fn3532
+func Fn3532(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn3536 github.com/goccy/spidermonkeywasm2go/p6.Fn3536
-func Fn3536(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3534 github.com/goccy/spidermonkeywasm2go/p2.Fn3534
+func Fn3534(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3538 github.com/goccy/spidermonkeywasm2go/p7.Fn3538
-func Fn3538(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3537 github.com/goccy/spidermonkeywasm2go/p6.Fn3537
+func Fn3537(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3541 github.com/goccy/spidermonkeywasm2go/p6.Fn3541
-func Fn3541(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3539 github.com/goccy/spidermonkeywasm2go/p7.Fn3539
+func Fn3539(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3543 github.com/goccy/spidermonkeywasm2go/p7.Fn3543
-func Fn3543(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3544 github.com/goccy/spidermonkeywasm2go/p7.Fn3544
+func Fn3544(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3546 github.com/goccy/spidermonkeywasm2go/p7.Fn3546
-func Fn3546(m *base.Module, l0 int32) int32
+//go:linkname Fn3552 github.com/goccy/spidermonkeywasm2go/p0.Fn3552
+func Fn3552(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3551 github.com/goccy/spidermonkeywasm2go/p0.Fn3551
-func Fn3551(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-
-//go:linkname Fn3557 github.com/goccy/spidermonkeywasm2go/p0.Fn3557
-func Fn3557(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn3560 github.com/goccy/spidermonkeywasm2go/p0.Fn3560
-func Fn3560(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3558 github.com/goccy/spidermonkeywasm2go/p0.Fn3558
+func Fn3558(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn3561 github.com/goccy/spidermonkeywasm2go/p0.Fn3561
 func Fn3561(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3565 github.com/goccy/spidermonkeywasm2go/p0.Fn3565
-func Fn3565(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3562 github.com/goccy/spidermonkeywasm2go/p0.Fn3562
+func Fn3562(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3573 github.com/goccy/spidermonkeywasm2go/p6.Fn3573
-func Fn3573(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3566 github.com/goccy/spidermonkeywasm2go/p0.Fn3566
+func Fn3566(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3574 github.com/goccy/spidermonkeywasm2go/p0.Fn3574
-func Fn3574(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3574 github.com/goccy/spidermonkeywasm2go/p6.Fn3574
+func Fn3574(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn3575 github.com/goccy/spidermonkeywasm2go/p0.Fn3575
-func Fn3575(m *base.Module, l0 int32, l1 int32) int32
+func Fn3575(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3577 github.com/goccy/spidermonkeywasm2go/p7.Fn3577
-func Fn3577(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3576 github.com/goccy/spidermonkeywasm2go/p0.Fn3576
+func Fn3576(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3579 github.com/goccy/spidermonkeywasm2go/p6.Fn3579
-func Fn3579(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn3578 github.com/goccy/spidermonkeywasm2go/p7.Fn3578
+func Fn3578(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3583 github.com/goccy/spidermonkeywasm2go/p6.Fn3583
-func Fn3583(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3580 github.com/goccy/spidermonkeywasm2go/p6.Fn3580
+func Fn3580(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn3586 github.com/goccy/spidermonkeywasm2go/p6.Fn3586
-func Fn3586(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3584 github.com/goccy/spidermonkeywasm2go/p6.Fn3584
+func Fn3584(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3599 github.com/goccy/spidermonkeywasm2go/p6.Fn3599
-func Fn3599(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3587 github.com/goccy/spidermonkeywasm2go/p6.Fn3587
+func Fn3587(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3603 github.com/goccy/spidermonkeywasm2go/p4.Fn3603
-func Fn3603(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3600 github.com/goccy/spidermonkeywasm2go/p6.Fn3600
+func Fn3600(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3606 github.com/goccy/spidermonkeywasm2go/p7.Fn3606
-func Fn3606(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn3604 github.com/goccy/spidermonkeywasm2go/p4.Fn3604
+func Fn3604(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3631 github.com/goccy/spidermonkeywasm2go/p6.Fn3631
-func Fn3631(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3607 github.com/goccy/spidermonkeywasm2go/p7.Fn3607
+func Fn3607(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn3643 github.com/goccy/spidermonkeywasm2go/p0.Fn3643
-func Fn3643(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3632 github.com/goccy/spidermonkeywasm2go/p6.Fn3632
+func Fn3632(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn3644 github.com/goccy/spidermonkeywasm2go/p0.Fn3644
-func Fn3644(m *base.Module, l0 int32, l1 int32) int32
+func Fn3644(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3651 github.com/goccy/spidermonkeywasm2go/p6.Fn3651
-func Fn3651(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn3645 github.com/goccy/spidermonkeywasm2go/p0.Fn3645
+func Fn3645(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3659 github.com/goccy/spidermonkeywasm2go/p0.Fn3659
-func Fn3659(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3652 github.com/goccy/spidermonkeywasm2go/p6.Fn3652
+func Fn3652(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn3716 github.com/goccy/spidermonkeywasm2go/p3.Fn3716
-func Fn3716(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn3660 github.com/goccy/spidermonkeywasm2go/p0.Fn3660
+func Fn3660(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3720 github.com/goccy/spidermonkeywasm2go/p0.Fn3720
-func Fn3720(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3717 github.com/goccy/spidermonkeywasm2go/p3.Fn3717
+func Fn3717(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn3733 github.com/goccy/spidermonkeywasm2go/p6.Fn3733
-func Fn3733(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3721 github.com/goccy/spidermonkeywasm2go/p0.Fn3721
+func Fn3721(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3747 github.com/goccy/spidermonkeywasm2go/p4.Fn3747
-func Fn3747(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3734 github.com/goccy/spidermonkeywasm2go/p6.Fn3734
+func Fn3734(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3876 github.com/goccy/spidermonkeywasm2go/p0.Fn3876
-func Fn3876(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3748 github.com/goccy/spidermonkeywasm2go/p4.Fn3748
+func Fn3748(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn3878 github.com/goccy/spidermonkeywasm2go/p0.Fn3878
-func Fn3878(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3877 github.com/goccy/spidermonkeywasm2go/p0.Fn3877
+func Fn3877(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3880 github.com/goccy/spidermonkeywasm2go/p0.Fn3880
-func Fn3880(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3879 github.com/goccy/spidermonkeywasm2go/p0.Fn3879
+func Fn3879(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3882 github.com/goccy/spidermonkeywasm2go/p0.Fn3882
-func Fn3882(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3881 github.com/goccy/spidermonkeywasm2go/p0.Fn3881
+func Fn3881(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3884 github.com/goccy/spidermonkeywasm2go/p0.Fn3884
-func Fn3884(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3883 github.com/goccy/spidermonkeywasm2go/p0.Fn3883
+func Fn3883(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3886 github.com/goccy/spidermonkeywasm2go/p0.Fn3886
-func Fn3886(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3885 github.com/goccy/spidermonkeywasm2go/p0.Fn3885
+func Fn3885(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3888 github.com/goccy/spidermonkeywasm2go/p0.Fn3888
-func Fn3888(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3887 github.com/goccy/spidermonkeywasm2go/p0.Fn3887
+func Fn3887(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3890 github.com/goccy/spidermonkeywasm2go/p0.Fn3890
-func Fn3890(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3889 github.com/goccy/spidermonkeywasm2go/p0.Fn3889
+func Fn3889(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3892 github.com/goccy/spidermonkeywasm2go/p0.Fn3892
-func Fn3892(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3891 github.com/goccy/spidermonkeywasm2go/p0.Fn3891
+func Fn3891(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3894 github.com/goccy/spidermonkeywasm2go/p0.Fn3894
-func Fn3894(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3893 github.com/goccy/spidermonkeywasm2go/p0.Fn3893
+func Fn3893(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3896 github.com/goccy/spidermonkeywasm2go/p0.Fn3896
-func Fn3896(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3895 github.com/goccy/spidermonkeywasm2go/p0.Fn3895
+func Fn3895(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3898 github.com/goccy/spidermonkeywasm2go/p0.Fn3898
-func Fn3898(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn3897 github.com/goccy/spidermonkeywasm2go/p0.Fn3897
+func Fn3897(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3908 github.com/goccy/spidermonkeywasm2go/p7.Fn3908
-func Fn3908(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn3899 github.com/goccy/spidermonkeywasm2go/p0.Fn3899
+func Fn3899(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3968 github.com/goccy/spidermonkeywasm2go/p4.Fn3968
-func Fn3968(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn3969 github.com/goccy/spidermonkeywasm2go/p4.Fn3969
-func Fn3969(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn3970 github.com/goccy/spidermonkeywasm2go/p4.Fn3970
-func Fn3970(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn3971 github.com/goccy/spidermonkeywasm2go/p4.Fn3971
-func Fn3971(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn3972 github.com/goccy/spidermonkeywasm2go/p4.Fn3972
-func Fn3972(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn3973 github.com/goccy/spidermonkeywasm2go/p4.Fn3973
-func Fn3973(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn3974 github.com/goccy/spidermonkeywasm2go/p4.Fn3974
-func Fn3974(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn3975 github.com/goccy/spidermonkeywasm2go/p0.Fn3975
-func Fn3975(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn3909 github.com/goccy/spidermonkeywasm2go/p7.Fn3909
+func Fn3909(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn3976 github.com/goccy/spidermonkeywasm2go/p0.Fn3976
-func Fn3976(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn3976(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn3977 github.com/goccy/spidermonkeywasm2go/p0.Fn3977
-func Fn3977(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn3977(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3980 github.com/goccy/spidermonkeywasm2go/p0.Fn3980
-func Fn3980(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn3978 github.com/goccy/spidermonkeywasm2go/p0.Fn3978
+func Fn3978(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn3981 github.com/goccy/spidermonkeywasm2go/p0.Fn3981
-func Fn3981(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn3981(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn3982 github.com/goccy/spidermonkeywasm2go/p0.Fn3982
-func Fn3982(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn3982(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3985 github.com/goccy/spidermonkeywasm2go/p0.Fn3985
-func Fn3985(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn3983 github.com/goccy/spidermonkeywasm2go/p0.Fn3983
+func Fn3983(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn3986 github.com/goccy/spidermonkeywasm2go/p0.Fn3986
-func Fn3986(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn3986(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn3987 github.com/goccy/spidermonkeywasm2go/p0.Fn3987
-func Fn3987(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn3987(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3990 github.com/goccy/spidermonkeywasm2go/p0.Fn3990
-func Fn3990(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn3988 github.com/goccy/spidermonkeywasm2go/p0.Fn3988
+func Fn3988(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn3991 github.com/goccy/spidermonkeywasm2go/p0.Fn3991
-func Fn3991(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn3991(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn3992 github.com/goccy/spidermonkeywasm2go/p0.Fn3992
-func Fn3992(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn3992(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn3995 github.com/goccy/spidermonkeywasm2go/p0.Fn3995
-func Fn3995(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn3993 github.com/goccy/spidermonkeywasm2go/p0.Fn3993
+func Fn3993(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn3996 github.com/goccy/spidermonkeywasm2go/p0.Fn3996
-func Fn3996(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn3996(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn3997 github.com/goccy/spidermonkeywasm2go/p0.Fn3997
-func Fn3997(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn3997(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4000 github.com/goccy/spidermonkeywasm2go/p0.Fn4000
-func Fn4000(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn3998 github.com/goccy/spidermonkeywasm2go/p0.Fn3998
+func Fn3998(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn4001 github.com/goccy/spidermonkeywasm2go/p0.Fn4001
-func Fn4001(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn4001(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn4002 github.com/goccy/spidermonkeywasm2go/p0.Fn4002
-func Fn4002(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn4002(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4005 github.com/goccy/spidermonkeywasm2go/p0.Fn4005
-func Fn4005(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn4003 github.com/goccy/spidermonkeywasm2go/p0.Fn4003
+func Fn4003(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn4006 github.com/goccy/spidermonkeywasm2go/p0.Fn4006
-func Fn4006(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn4006(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn4007 github.com/goccy/spidermonkeywasm2go/p0.Fn4007
-func Fn4007(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn4007(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4010 github.com/goccy/spidermonkeywasm2go/p0.Fn4010
-func Fn4010(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn4008 github.com/goccy/spidermonkeywasm2go/p0.Fn4008
+func Fn4008(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn4011 github.com/goccy/spidermonkeywasm2go/p0.Fn4011
-func Fn4011(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn4011(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn4012 github.com/goccy/spidermonkeywasm2go/p0.Fn4012
-func Fn4012(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn4012(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4015 github.com/goccy/spidermonkeywasm2go/p0.Fn4015
-func Fn4015(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn4013 github.com/goccy/spidermonkeywasm2go/p0.Fn4013
+func Fn4013(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn4016 github.com/goccy/spidermonkeywasm2go/p0.Fn4016
-func Fn4016(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn4016(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn4017 github.com/goccy/spidermonkeywasm2go/p0.Fn4017
-func Fn4017(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn4017(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4020 github.com/goccy/spidermonkeywasm2go/p0.Fn4020
-func Fn4020(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn4018 github.com/goccy/spidermonkeywasm2go/p0.Fn4018
+func Fn4018(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn4021 github.com/goccy/spidermonkeywasm2go/p0.Fn4021
-func Fn4021(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn4021(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn4022 github.com/goccy/spidermonkeywasm2go/p0.Fn4022
-func Fn4022(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn4022(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4025 github.com/goccy/spidermonkeywasm2go/p0.Fn4025
-func Fn4025(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn4023 github.com/goccy/spidermonkeywasm2go/p0.Fn4023
+func Fn4023(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn4026 github.com/goccy/spidermonkeywasm2go/p0.Fn4026
-func Fn4026(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn4026(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn4027 github.com/goccy/spidermonkeywasm2go/p0.Fn4027
-func Fn4027(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn4027(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4030 github.com/goccy/spidermonkeywasm2go/p0.Fn4030
-func Fn4030(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
+//go:linkname Fn4028 github.com/goccy/spidermonkeywasm2go/p0.Fn4028
+func Fn4028(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
 //go:linkname Fn4031 github.com/goccy/spidermonkeywasm2go/p0.Fn4031
-func Fn4031(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn4031(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int64, l4 int32, l5 int32) int32
 
 //go:linkname Fn4032 github.com/goccy/spidermonkeywasm2go/p0.Fn4032
-func Fn4032(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+func Fn4032(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4100 github.com/goccy/spidermonkeywasm2go/p0.Fn4100
-func Fn4100(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4033 github.com/goccy/spidermonkeywasm2go/p0.Fn4033
+func Fn4033(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn4101 github.com/goccy/spidermonkeywasm2go/p3.Fn4101
-func Fn4101(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn4101 github.com/goccy/spidermonkeywasm2go/p0.Fn4101
+func Fn4101(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4102 github.com/goccy/spidermonkeywasm2go/p6.Fn4102
-func Fn4102(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn4102 github.com/goccy/spidermonkeywasm2go/p3.Fn4102
+func Fn4102(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn4104 github.com/goccy/spidermonkeywasm2go/p3.Fn4104
-func Fn4104(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn4103 github.com/goccy/spidermonkeywasm2go/p6.Fn4103
+func Fn4103(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn4121 github.com/goccy/spidermonkeywasm2go/p6.Fn4121
-func Fn4121(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn4105 github.com/goccy/spidermonkeywasm2go/p3.Fn4105
+func Fn4105(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn4128 github.com/goccy/spidermonkeywasm2go/p6.Fn4128
-func Fn4128(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn4143 github.com/goccy/spidermonkeywasm2go/p0.Fn4143
+func Fn4143(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4142 github.com/goccy/spidermonkeywasm2go/p0.Fn4142
-func Fn4142(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4189 github.com/goccy/spidermonkeywasm2go/p6.Fn4189
+func Fn4189(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn4188 github.com/goccy/spidermonkeywasm2go/p6.Fn4188
-func Fn4188(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn4205 github.com/goccy/spidermonkeywasm2go/p6.Fn4205
+func Fn4205(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn4204 github.com/goccy/spidermonkeywasm2go/p6.Fn4204
-func Fn4204(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn4206 github.com/goccy/spidermonkeywasm2go/p7.Fn4206
+func Fn4206(m *base.Module, l0 int32)
 
-//go:linkname Fn4205 github.com/goccy/spidermonkeywasm2go/p7.Fn4205
-func Fn4205(m *base.Module, l0 int32)
+//go:linkname Fn4218 github.com/goccy/spidermonkeywasm2go/p6.Fn4218
+func Fn4218(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn4217 github.com/goccy/spidermonkeywasm2go/p6.Fn4217
-func Fn4217(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn4225 github.com/goccy/spidermonkeywasm2go/p6.Fn4225
+func Fn4225(m *base.Module, l0 int32) int32
 
-//go:linkname Fn4224 github.com/goccy/spidermonkeywasm2go/p6.Fn4224
-func Fn4224(m *base.Module, l0 int32) int32
-
-//go:linkname Fn4232 github.com/goccy/spidermonkeywasm2go/p6.Fn4232
-func Fn4232(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-
-//go:linkname Fn4234 github.com/goccy/spidermonkeywasm2go/p6.Fn4234
-func Fn4234(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4233 github.com/goccy/spidermonkeywasm2go/p6.Fn4233
+func Fn4233(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
 //go:linkname Fn4235 github.com/goccy/spidermonkeywasm2go/p6.Fn4235
 func Fn4235(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4237 github.com/goccy/spidermonkeywasm2go/p6.Fn4237
-func Fn4237(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4236 github.com/goccy/spidermonkeywasm2go/p6.Fn4236
+func Fn4236(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4241 github.com/goccy/spidermonkeywasm2go/p2.Fn4241
-func Fn4241(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4238 github.com/goccy/spidermonkeywasm2go/p6.Fn4238
+func Fn4238(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4253 github.com/goccy/spidermonkeywasm2go/p3.Fn4253
-func Fn4253(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn4242 github.com/goccy/spidermonkeywasm2go/p2.Fn4242
+func Fn4242(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4254 github.com/goccy/spidermonkeywasm2go/p4.Fn4254
-func Fn4254(m *base.Module, l0 int32, l1 int32, l2 float64, l3 int32, l4 int32) int32
+//go:linkname Fn4254 github.com/goccy/spidermonkeywasm2go/p3.Fn4254
+func Fn4254(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4256 github.com/goccy/spidermonkeywasm2go/p4.Fn4256
-func Fn4256(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4255 github.com/goccy/spidermonkeywasm2go/p4.Fn4255
+func Fn4255(m *base.Module, l0 int32, l1 int32, l2 float64, l3 int32, l4 int32) int32
 
-//go:linkname Fn4281 github.com/goccy/spidermonkeywasm2go/p6.Fn4281
-func Fn4281(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn4257 github.com/goccy/spidermonkeywasm2go/p4.Fn4257
+func Fn4257(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4299 github.com/goccy/spidermonkeywasm2go/p6.Fn4299
-func Fn4299(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4282 github.com/goccy/spidermonkeywasm2go/p6.Fn4282
+func Fn4282(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn4301 github.com/goccy/spidermonkeywasm2go/p7.Fn4301
-func Fn4301(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4300 github.com/goccy/spidermonkeywasm2go/p6.Fn4300
+func Fn4300(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4319 github.com/goccy/spidermonkeywasm2go/p4.Fn4319
-func Fn4319(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4302 github.com/goccy/spidermonkeywasm2go/p7.Fn4302
+func Fn4302(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4334 github.com/goccy/spidermonkeywasm2go/p6.Fn4334
-func Fn4334(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4320 github.com/goccy/spidermonkeywasm2go/p4.Fn4320
+func Fn4320(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4340 github.com/goccy/spidermonkeywasm2go/p4.Fn4340
-func Fn4340(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4335 github.com/goccy/spidermonkeywasm2go/p6.Fn4335
+func Fn4335(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4348 github.com/goccy/spidermonkeywasm2go/p6.Fn4348
-func Fn4348(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4341 github.com/goccy/spidermonkeywasm2go/p4.Fn4341
+func Fn4341(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4349 github.com/goccy/spidermonkeywasm2go/p2.Fn4349
-func Fn4349(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4349 github.com/goccy/spidermonkeywasm2go/p6.Fn4349
+func Fn4349(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4415 github.com/goccy/spidermonkeywasm2go/p3.Fn4415
-func Fn4415(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4350 github.com/goccy/spidermonkeywasm2go/p2.Fn4350
+func Fn4350(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4417 github.com/goccy/spidermonkeywasm2go/p6.Fn4417
-func Fn4417(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn4416 github.com/goccy/spidermonkeywasm2go/p3.Fn4416
+func Fn4416(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4422 github.com/goccy/spidermonkeywasm2go/p6.Fn4422
-func Fn4422(m *base.Module, l0 int32) int32
+//go:linkname Fn4418 github.com/goccy/spidermonkeywasm2go/p6.Fn4418
+func Fn4418(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4438 github.com/goccy/spidermonkeywasm2go/p4.Fn4438
-func Fn4438(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn4423 github.com/goccy/spidermonkeywasm2go/p6.Fn4423
+func Fn4423(m *base.Module, l0 int32) int32
 
-//go:linkname Fn4465 github.com/goccy/spidermonkeywasm2go/p6.Fn4465
-func Fn4465(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn4439 github.com/goccy/spidermonkeywasm2go/p4.Fn4439
+func Fn4439(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn4466 github.com/goccy/spidermonkeywasm2go/p6.Fn4466
-func Fn4466(m *base.Module, l0 int32, l1 int32) int32
+func Fn4466(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn4469 github.com/goccy/spidermonkeywasm2go/p6.Fn4469
-func Fn4469(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4467 github.com/goccy/spidermonkeywasm2go/p6.Fn4467
+func Fn4467(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4476 github.com/goccy/spidermonkeywasm2go/p6.Fn4476
-func Fn4476(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4470 github.com/goccy/spidermonkeywasm2go/p6.Fn4470
+func Fn4470(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4507 github.com/goccy/spidermonkeywasm2go/p2.Fn4507
-func Fn4507(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4477 github.com/goccy/spidermonkeywasm2go/p6.Fn4477
+func Fn4477(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4512 github.com/goccy/spidermonkeywasm2go/p4.Fn4512
-func Fn4512(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4508 github.com/goccy/spidermonkeywasm2go/p2.Fn4508
+func Fn4508(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4518 github.com/goccy/spidermonkeywasm2go/p4.Fn4518
-func Fn4518(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn4513 github.com/goccy/spidermonkeywasm2go/p4.Fn4513
+func Fn4513(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4525 github.com/goccy/spidermonkeywasm2go/p6.Fn4525
-func Fn4525(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn4519 github.com/goccy/spidermonkeywasm2go/p4.Fn4519
+func Fn4519(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn4527 github.com/goccy/spidermonkeywasm2go/p6.Fn4527
-func Fn4527(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn4526 github.com/goccy/spidermonkeywasm2go/p6.Fn4526
+func Fn4526(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn4532 github.com/goccy/spidermonkeywasm2go/p2.Fn4532
-func Fn4532(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4528 github.com/goccy/spidermonkeywasm2go/p6.Fn4528
+func Fn4528(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn4579 github.com/goccy/spidermonkeywasm2go/p4.Fn4579
-func Fn4579(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn4533 github.com/goccy/spidermonkeywasm2go/p2.Fn4533
+func Fn4533(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4580 github.com/goccy/spidermonkeywasm2go/p7.Fn4580
-func Fn4580(m *base.Module, l0 int32) int32
+//go:linkname Fn4580 github.com/goccy/spidermonkeywasm2go/p4.Fn4580
+func Fn4580(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn4585 github.com/goccy/spidermonkeywasm2go/p4.Fn4585
-func Fn4585(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+//go:linkname Fn4581 github.com/goccy/spidermonkeywasm2go/p7.Fn4581
+func Fn4581(m *base.Module, l0 int32) int32
 
-//go:linkname Fn4593 github.com/goccy/spidermonkeywasm2go/p4.Fn4593
-func Fn4593(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn4586 github.com/goccy/spidermonkeywasm2go/p4.Fn4586
+func Fn4586(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
 
-//go:linkname Fn4596 github.com/goccy/spidermonkeywasm2go/p6.Fn4596
-func Fn4596(m *base.Module, l0 int32) int32
+//go:linkname Fn4594 github.com/goccy/spidermonkeywasm2go/p4.Fn4594
+func Fn4594(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn4618 github.com/goccy/spidermonkeywasm2go/p6.Fn4618
-func Fn4618(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4597 github.com/goccy/spidermonkeywasm2go/p6.Fn4597
+func Fn4597(m *base.Module, l0 int32) int32
 
-//go:linkname Fn4625 github.com/goccy/spidermonkeywasm2go/p6.Fn4625
-func Fn4625(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32) int32
+//go:linkname Fn4619 github.com/goccy/spidermonkeywasm2go/p6.Fn4619
+func Fn4619(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4634 github.com/goccy/spidermonkeywasm2go/p7.Fn4634
-func Fn4634(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn4626 github.com/goccy/spidermonkeywasm2go/p6.Fn4626
+func Fn4626(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32) int32
 
-//go:linkname Fn4658 github.com/goccy/spidermonkeywasm2go/p6.Fn4658
-func Fn4658(m *base.Module, l0 int32)
+//go:linkname Fn4635 github.com/goccy/spidermonkeywasm2go/p7.Fn4635
+func Fn4635(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn4696 github.com/goccy/spidermonkeywasm2go/p4.Fn4696
-func Fn4696(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4659 github.com/goccy/spidermonkeywasm2go/p6.Fn4659
+func Fn4659(m *base.Module, l0 int32)
 
-//go:linkname Fn4701 github.com/goccy/spidermonkeywasm2go/p4.Fn4701
-func Fn4701(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4697 github.com/goccy/spidermonkeywasm2go/p4.Fn4697
+func Fn4697(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4720 github.com/goccy/spidermonkeywasm2go/p7.Fn4720
-func Fn4720(m *base.Module, l0 int32)
+//go:linkname Fn4702 github.com/goccy/spidermonkeywasm2go/p4.Fn4702
+func Fn4702(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4736 github.com/goccy/spidermonkeywasm2go/p6.Fn4736
-func Fn4736(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn4721 github.com/goccy/spidermonkeywasm2go/p7.Fn4721
+func Fn4721(m *base.Module, l0 int32)
 
-//go:linkname Fn4740 github.com/goccy/spidermonkeywasm2go/p6.Fn4740
-func Fn4740(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn4737 github.com/goccy/spidermonkeywasm2go/p6.Fn4737
+func Fn4737(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn4748 github.com/goccy/spidermonkeywasm2go/p4.Fn4748
-func Fn4748(m *base.Module, l0 int32)
+//go:linkname Fn4741 github.com/goccy/spidermonkeywasm2go/p6.Fn4741
+func Fn4741(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn4766 github.com/goccy/spidermonkeywasm2go/p7.Fn4766
-func Fn4766(m *base.Module, l0 int32)
+//go:linkname Fn4749 github.com/goccy/spidermonkeywasm2go/p4.Fn4749
+func Fn4749(m *base.Module, l0 int32)
 
-//go:linkname Fn4769 github.com/goccy/spidermonkeywasm2go/p6.Fn4769
-func Fn4769(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn4767 github.com/goccy/spidermonkeywasm2go/p7.Fn4767
+func Fn4767(m *base.Module, l0 int32)
 
-//go:linkname Fn4776 github.com/goccy/spidermonkeywasm2go/p4.Fn4776
-func Fn4776(m *base.Module, l0 int32)
+//go:linkname Fn4770 github.com/goccy/spidermonkeywasm2go/p6.Fn4770
+func Fn4770(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn4803 github.com/goccy/spidermonkeywasm2go/p6.Fn4803
-func Fn4803(m *base.Module, l0 int32, l1 int32, l2 int32)
-
-//go:linkname Fn4804 github.com/goccy/spidermonkeywasm2go/p6.Fn4804
-func Fn4804(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4777 github.com/goccy/spidermonkeywasm2go/p4.Fn4777
+func Fn4777(m *base.Module, l0 int32)
 
 //go:linkname Fn4805 github.com/goccy/spidermonkeywasm2go/p6.Fn4805
-func Fn4805(m *base.Module, l0 int32)
+func Fn4805(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4808 github.com/goccy/spidermonkeywasm2go/p7.Fn4808
-func Fn4808(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn4806 github.com/goccy/spidermonkeywasm2go/p6.Fn4806
+func Fn4806(m *base.Module, l0 int32)
 
-//go:linkname Fn4824 github.com/goccy/spidermonkeywasm2go/p7.Fn4824
-func Fn4824(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn4809 github.com/goccy/spidermonkeywasm2go/p7.Fn4809
+func Fn4809(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn4825 github.com/goccy/spidermonkeywasm2go/p6.Fn4825
-func Fn4825(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn4825 github.com/goccy/spidermonkeywasm2go/p7.Fn4825
+func Fn4825(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn4829 github.com/goccy/spidermonkeywasm2go/p7.Fn4829
-func Fn4829(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn4826 github.com/goccy/spidermonkeywasm2go/p6.Fn4826
+func Fn4826(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn4874 github.com/goccy/spidermonkeywasm2go/p7.Fn4874
-func Fn4874(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn4830 github.com/goccy/spidermonkeywasm2go/p7.Fn4830
+func Fn4830(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn4879 github.com/goccy/spidermonkeywasm2go/p7.Fn4879
-func Fn4879(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn4875 github.com/goccy/spidermonkeywasm2go/p7.Fn4875
+func Fn4875(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn4914 github.com/goccy/spidermonkeywasm2go/p6.Fn4914
-func Fn4914(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn4880 github.com/goccy/spidermonkeywasm2go/p7.Fn4880
+func Fn4880(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn4951 github.com/goccy/spidermonkeywasm2go/p6.Fn4951
-func Fn4951(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn4952 github.com/goccy/spidermonkeywasm2go/p6.Fn4952
+func Fn4952(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn5137 github.com/goccy/spidermonkeywasm2go/p7.Fn5137
-func Fn5137(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn5138 github.com/goccy/spidermonkeywasm2go/p7.Fn5138
+func Fn5138(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn5142 github.com/goccy/spidermonkeywasm2go/p6.Fn5142
-func Fn5142(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn5143 github.com/goccy/spidermonkeywasm2go/p6.Fn5143
+func Fn5143(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5148 github.com/goccy/spidermonkeywasm2go/p2.Fn5148
-func Fn5148(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
+//go:linkname Fn5149 github.com/goccy/spidermonkeywasm2go/p2.Fn5149
+func Fn5149(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
 
-//go:linkname Fn5196 github.com/goccy/spidermonkeywasm2go/p6.Fn5196
-func Fn5196(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn5278 github.com/goccy/spidermonkeywasm2go/p6.Fn5278
-func Fn5278(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn5197 github.com/goccy/spidermonkeywasm2go/p6.Fn5197
+func Fn5197(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn5279 github.com/goccy/spidermonkeywasm2go/p6.Fn5279
 func Fn5279(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5288 github.com/goccy/spidermonkeywasm2go/p0.Fn5288
-func Fn5288(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn5280 github.com/goccy/spidermonkeywasm2go/p6.Fn5280
+func Fn5280(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5334 github.com/goccy/spidermonkeywasm2go/p6.Fn5334
-func Fn5334(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn5289 github.com/goccy/spidermonkeywasm2go/p0.Fn5289
+func Fn5289(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn5352 github.com/goccy/spidermonkeywasm2go/p6.Fn5352
-func Fn5352(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn5335 github.com/goccy/spidermonkeywasm2go/p6.Fn5335
+func Fn5335(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn5355 github.com/goccy/spidermonkeywasm2go/p6.Fn5355
-func Fn5355(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn5353 github.com/goccy/spidermonkeywasm2go/p6.Fn5353
+func Fn5353(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn5360 github.com/goccy/spidermonkeywasm2go/p6.Fn5360
-func Fn5360(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn5356 github.com/goccy/spidermonkeywasm2go/p6.Fn5356
+func Fn5356(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn5363 github.com/goccy/spidermonkeywasm2go/p6.Fn5363
-func Fn5363(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn5361 github.com/goccy/spidermonkeywasm2go/p6.Fn5361
+func Fn5361(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5364 github.com/goccy/spidermonkeywasm2go/p4.Fn5364
-func Fn5364(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn5364 github.com/goccy/spidermonkeywasm2go/p6.Fn5364
+func Fn5364(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn5379 github.com/goccy/spidermonkeywasm2go/p7.Fn5379
-func Fn5379(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5365 github.com/goccy/spidermonkeywasm2go/p4.Fn5365
+func Fn5365(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn5413 github.com/goccy/spidermonkeywasm2go/p6.Fn5413
-func Fn5413(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn5380 github.com/goccy/spidermonkeywasm2go/p7.Fn5380
+func Fn5380(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5421 github.com/goccy/spidermonkeywasm2go/p4.Fn5421
-func Fn5421(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn5422 github.com/goccy/spidermonkeywasm2go/p4.Fn5422
+func Fn5422(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5448 github.com/goccy/spidermonkeywasm2go/p6.Fn5448
-func Fn5448(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn5449 github.com/goccy/spidermonkeywasm2go/p6.Fn5449
+func Fn5449(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5460 github.com/goccy/spidermonkeywasm2go/p6.Fn5460
-func Fn5460(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn5548 github.com/goccy/spidermonkeywasm2go/p7.Fn5548
-func Fn5548(m *base.Module, l0 int32) int32
-
-//go:linkname Fn5549 github.com/goccy/spidermonkeywasm2go/p7.Fn5549
-func Fn5549(m *base.Module, l0 int32) int32
-
-//go:linkname Fn5566 github.com/goccy/spidermonkeywasm2go/p6.Fn5566
-func Fn5566(m *base.Module, l0 int32)
+//go:linkname Fn5461 github.com/goccy/spidermonkeywasm2go/p6.Fn5461
+func Fn5461(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn5567 github.com/goccy/spidermonkeywasm2go/p6.Fn5567
 func Fn5567(m *base.Module, l0 int32)
 
 //go:linkname Fn5568 github.com/goccy/spidermonkeywasm2go/p6.Fn5568
-func Fn5568(m *base.Module, l0 int32, l1 int32) int32
+func Fn5568(m *base.Module, l0 int32)
 
-//go:linkname Fn5569 github.com/goccy/spidermonkeywasm2go/p7.Fn5569
-func Fn5569(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5569 github.com/goccy/spidermonkeywasm2go/p6.Fn5569
+func Fn5569(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn5572 github.com/goccy/spidermonkeywasm2go/p7.Fn5572
-func Fn5572(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn5570 github.com/goccy/spidermonkeywasm2go/p7.Fn5570
+func Fn5570(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5574 github.com/goccy/spidermonkeywasm2go/p4.Fn5574
-func Fn5574(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn5573 github.com/goccy/spidermonkeywasm2go/p7.Fn5573
+func Fn5573(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5575 github.com/goccy/spidermonkeywasm2go/p0.Fn5575
-func Fn5575(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn5575 github.com/goccy/spidermonkeywasm2go/p4.Fn5575
+func Fn5575(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn5576 github.com/goccy/spidermonkeywasm2go/p0.Fn5576
-func Fn5576(m *base.Module, l0 int32, l1 int32) int32
+func Fn5576(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn5577 github.com/goccy/spidermonkeywasm2go/p6.Fn5577
-func Fn5577(m *base.Module, l0 int32)
+//go:linkname Fn5577 github.com/goccy/spidermonkeywasm2go/p0.Fn5577
+func Fn5577(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn5583 github.com/goccy/spidermonkeywasm2go/p7.Fn5583
-func Fn5583(m *base.Module, l0 int32)
+//go:linkname Fn5578 github.com/goccy/spidermonkeywasm2go/p6.Fn5578
+func Fn5578(m *base.Module, l0 int32)
 
-//go:linkname Fn5584 github.com/goccy/spidermonkeywasm2go/p4.Fn5584
-func Fn5584(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5585 github.com/goccy/spidermonkeywasm2go/p4.Fn5585
+func Fn5585(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5586 github.com/goccy/spidermonkeywasm2go/p7.Fn5586
-func Fn5586(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn5587 github.com/goccy/spidermonkeywasm2go/p7.Fn5587
+func Fn5587(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn5588 github.com/goccy/spidermonkeywasm2go/p4.Fn5588
-func Fn5588(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn5589 github.com/goccy/spidermonkeywasm2go/p4.Fn5589
+func Fn5589(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5592 github.com/goccy/spidermonkeywasm2go/p6.Fn5592
-func Fn5592(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn5594 github.com/goccy/spidermonkeywasm2go/p6.Fn5594
-func Fn5594(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn5593 github.com/goccy/spidermonkeywasm2go/p6.Fn5593
+func Fn5593(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn5595 github.com/goccy/spidermonkeywasm2go/p6.Fn5595
-func Fn5595(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn5595(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn5596 github.com/goccy/spidermonkeywasm2go/p6.Fn5596
 func Fn5596(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn5604 github.com/goccy/spidermonkeywasm2go/p6.Fn5604
-func Fn5604(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5597 github.com/goccy/spidermonkeywasm2go/p6.Fn5597
+func Fn5597(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn5607 github.com/goccy/spidermonkeywasm2go/p6.Fn5607
-func Fn5607(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5605 github.com/goccy/spidermonkeywasm2go/p6.Fn5605
+func Fn5605(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5608 github.com/goccy/spidermonkeywasm2go/p3.Fn5608
-func Fn5608(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn5608 github.com/goccy/spidermonkeywasm2go/p6.Fn5608
+func Fn5608(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5611 github.com/goccy/spidermonkeywasm2go/p6.Fn5611
-func Fn5611(m *base.Module, l0 int32)
+//go:linkname Fn5609 github.com/goccy/spidermonkeywasm2go/p3.Fn5609
+func Fn5609(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5624 github.com/goccy/spidermonkeywasm2go/p6.Fn5624
-func Fn5624(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn5625 github.com/goccy/spidermonkeywasm2go/p6.Fn5625
-func Fn5625(m *base.Module, l0 int32)
-
-//go:linkname Fn5629 github.com/goccy/spidermonkeywasm2go/p6.Fn5629
-func Fn5629(m *base.Module, l0 int32, l1 int64)
+//go:linkname Fn5612 github.com/goccy/spidermonkeywasm2go/p6.Fn5612
+func Fn5612(m *base.Module, l0 int32)
 
 //go:linkname Fn5630 github.com/goccy/spidermonkeywasm2go/p6.Fn5630
 func Fn5630(m *base.Module, l0 int32, l1 int64)
 
-//go:linkname Fn5632 github.com/goccy/spidermonkeywasm2go/p6.Fn5632
-func Fn5632(m *base.Module, l0 int32)
+//go:linkname Fn5631 github.com/goccy/spidermonkeywasm2go/p6.Fn5631
+func Fn5631(m *base.Module, l0 int32, l1 int64)
 
-//go:linkname Fn5638 github.com/goccy/spidermonkeywasm2go/p6.Fn5638
-func Fn5638(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5633 github.com/goccy/spidermonkeywasm2go/p6.Fn5633
+func Fn5633(m *base.Module, l0 int32)
 
-//go:linkname Fn5639 github.com/goccy/spidermonkeywasm2go/p4.Fn5639
-func Fn5639(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn5639 github.com/goccy/spidermonkeywasm2go/p6.Fn5639
+func Fn5639(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5644 github.com/goccy/spidermonkeywasm2go/p6.Fn5644
-func Fn5644(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn5640 github.com/goccy/spidermonkeywasm2go/p4.Fn5640
+func Fn5640(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn5645 github.com/goccy/spidermonkeywasm2go/p6.Fn5645
-func Fn5645(m *base.Module, l0 int32, l1 int32)
+func Fn5645(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn5651 github.com/goccy/spidermonkeywasm2go/p6.Fn5651
-func Fn5651(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn5646 github.com/goccy/spidermonkeywasm2go/p6.Fn5646
+func Fn5646(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5662 github.com/goccy/spidermonkeywasm2go/p6.Fn5662
-func Fn5662(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn5652 github.com/goccy/spidermonkeywasm2go/p6.Fn5652
+func Fn5652(m *base.Module, l0 int32, l1 int32, l2 int32)
 
 //go:linkname Fn5663 github.com/goccy/spidermonkeywasm2go/p6.Fn5663
-func Fn5663(m *base.Module, l0 int32)
+func Fn5663(m *base.Module, l0 int32, l1 int32, l2 int32)
 
 //go:linkname Fn5664 github.com/goccy/spidermonkeywasm2go/p6.Fn5664
-func Fn5664(m *base.Module, l0 int32, l1 int32)
+func Fn5664(m *base.Module, l0 int32)
 
 //go:linkname Fn5665 github.com/goccy/spidermonkeywasm2go/p6.Fn5665
 func Fn5665(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5670 github.com/goccy/spidermonkeywasm2go/p6.Fn5670
-func Fn5670(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn5666 github.com/goccy/spidermonkeywasm2go/p6.Fn5666
+func Fn5666(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5672 github.com/goccy/spidermonkeywasm2go/p7.Fn5672
-func Fn5672(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn5671 github.com/goccy/spidermonkeywasm2go/p6.Fn5671
+func Fn5671(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn5675 github.com/goccy/spidermonkeywasm2go/p6.Fn5675
-func Fn5675(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn5673 github.com/goccy/spidermonkeywasm2go/p7.Fn5673
+func Fn5673(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn5678 github.com/goccy/spidermonkeywasm2go/p6.Fn5678
-func Fn5678(m *base.Module, l0 int32)
+//go:linkname Fn5676 github.com/goccy/spidermonkeywasm2go/p6.Fn5676
+func Fn5676(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn5703 github.com/goccy/spidermonkeywasm2go/p7.Fn5703
-func Fn5703(m *base.Module, l0 int32)
+//go:linkname Fn5679 github.com/goccy/spidermonkeywasm2go/p6.Fn5679
+func Fn5679(m *base.Module, l0 int32)
 
-//go:linkname Fn5705 github.com/goccy/spidermonkeywasm2go/p6.Fn5705
-func Fn5705(m *base.Module, l0 int32) int32
+//go:linkname Fn5704 github.com/goccy/spidermonkeywasm2go/p7.Fn5704
+func Fn5704(m *base.Module, l0 int32)
 
-//go:linkname Fn5712 github.com/goccy/spidermonkeywasm2go/p4.Fn5712
-func Fn5712(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn5706 github.com/goccy/spidermonkeywasm2go/p6.Fn5706
+func Fn5706(m *base.Module, l0 int32)
 
-//go:linkname Fn5715 github.com/goccy/spidermonkeywasm2go/p7.Fn5715
-func Fn5715(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5707 github.com/goccy/spidermonkeywasm2go/p6.Fn5707
+func Fn5707(m *base.Module, l0 int32) int32
 
-//go:linkname Fn5722 github.com/goccy/spidermonkeywasm2go/p7.Fn5722
-func Fn5722(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5714 github.com/goccy/spidermonkeywasm2go/p4.Fn5714
+func Fn5714(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn5724 github.com/goccy/spidermonkeywasm2go/p6.Fn5724
+//go:linkname Fn5717 github.com/goccy/spidermonkeywasm2go/p7.Fn5717
+func Fn5717(m *base.Module, l0 int32, l1 int32)
+
+//go:linkname Fn5724 github.com/goccy/spidermonkeywasm2go/p7.Fn5724
 func Fn5724(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn5725 github.com/goccy/spidermonkeywasm2go/p7.Fn5725
-func Fn5725(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn5726 github.com/goccy/spidermonkeywasm2go/p6.Fn5726
 func Fn5726(m *base.Module, l0 int32, l1 int32)
@@ -2302,29 +2059,29 @@ func Fn5727(m *base.Module, l0 int32, l1 int32)
 //go:linkname Fn5728 github.com/goccy/spidermonkeywasm2go/p6.Fn5728
 func Fn5728(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5729 github.com/goccy/spidermonkeywasm2go/p6.Fn5729
+//go:linkname Fn5729 github.com/goccy/spidermonkeywasm2go/p7.Fn5729
 func Fn5729(m *base.Module, l0 int32, l1 int32)
+
+//go:linkname Fn5730 github.com/goccy/spidermonkeywasm2go/p6.Fn5730
+func Fn5730(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn5731 github.com/goccy/spidermonkeywasm2go/p6.Fn5731
 func Fn5731(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5732 github.com/goccy/spidermonkeywasm2go/p7.Fn5732
-func Fn5732(m *base.Module, l0 int32, l1 int32) int32
-
 //go:linkname Fn5733 github.com/goccy/spidermonkeywasm2go/p6.Fn5733
 func Fn5733(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5734 github.com/goccy/spidermonkeywasm2go/p6.Fn5734
-func Fn5734(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5734 github.com/goccy/spidermonkeywasm2go/p7.Fn5734
+func Fn5734(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn5738 github.com/goccy/spidermonkeywasm2go/p7.Fn5738
-func Fn5738(m *base.Module, l0 int32)
+//go:linkname Fn5735 github.com/goccy/spidermonkeywasm2go/p6.Fn5735
+func Fn5735(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5740 github.com/goccy/spidermonkeywasm2go/p6.Fn5740
-func Fn5740(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn5736 github.com/goccy/spidermonkeywasm2go/p6.Fn5736
+func Fn5736(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5741 github.com/goccy/spidermonkeywasm2go/p6.Fn5741
-func Fn5741(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5740 github.com/goccy/spidermonkeywasm2go/p7.Fn5740
+func Fn5740(m *base.Module, l0 int32)
 
 //go:linkname Fn5742 github.com/goccy/spidermonkeywasm2go/p6.Fn5742
 func Fn5742(m *base.Module, l0 int32, l1 int32) int32
@@ -2332,1718 +2089,1529 @@ func Fn5742(m *base.Module, l0 int32, l1 int32) int32
 //go:linkname Fn5743 github.com/goccy/spidermonkeywasm2go/p6.Fn5743
 func Fn5743(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5745 github.com/goccy/spidermonkeywasm2go/p6.Fn5745
-func Fn5745(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5744 github.com/goccy/spidermonkeywasm2go/p6.Fn5744
+func Fn5744(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn5746 github.com/goccy/spidermonkeywasm2go/p6.Fn5746
-func Fn5746(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5747 github.com/goccy/spidermonkeywasm2go/p6.Fn5747
+func Fn5747(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5748 github.com/goccy/spidermonkeywasm2go/p3.Fn5748
-func Fn5748(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn5748 github.com/goccy/spidermonkeywasm2go/p6.Fn5748
+func Fn5748(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5751 github.com/goccy/spidermonkeywasm2go/p6.Fn5751
-func Fn5751(m *base.Module, l0 int32)
+//go:linkname Fn5750 github.com/goccy/spidermonkeywasm2go/p3.Fn5750
+func Fn5750(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn5759 github.com/goccy/spidermonkeywasm2go/p7.Fn5759
-func Fn5759(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn5753 github.com/goccy/spidermonkeywasm2go/p6.Fn5753
+func Fn5753(m *base.Module, l0 int32)
 
-//go:linkname Fn5761 github.com/goccy/spidermonkeywasm2go/p6.Fn5761
-func Fn5761(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn5761 github.com/goccy/spidermonkeywasm2go/p7.Fn5761
+func Fn5761(m *base.Module, l0 int32, l1 int32, l2 int32)
 
 //go:linkname Fn5763 github.com/goccy/spidermonkeywasm2go/p6.Fn5763
-func Fn5763(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn5763(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn5776 github.com/goccy/spidermonkeywasm2go/p6.Fn5776
-func Fn5776(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5765 github.com/goccy/spidermonkeywasm2go/p6.Fn5765
+func Fn5765(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn5778 github.com/goccy/spidermonkeywasm2go/p3.Fn5778
-func Fn5778(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn5778 github.com/goccy/spidermonkeywasm2go/p6.Fn5778
+func Fn5778(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5780 github.com/goccy/spidermonkeywasm2go/p6.Fn5780
-func Fn5780(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5780 github.com/goccy/spidermonkeywasm2go/p3.Fn5780
+func Fn5780(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn5819 github.com/goccy/spidermonkeywasm2go/p4.Fn5819
-func Fn5819(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn5782 github.com/goccy/spidermonkeywasm2go/p6.Fn5782
+func Fn5782(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5820 github.com/goccy/spidermonkeywasm2go/p3.Fn5820
-func Fn5820(m *base.Module, l0 int32)
+//go:linkname Fn5821 github.com/goccy/spidermonkeywasm2go/p4.Fn5821
+func Fn5821(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn5821 github.com/goccy/spidermonkeywasm2go/p6.Fn5821
-func Fn5821(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn5822 github.com/goccy/spidermonkeywasm2go/p6.Fn5822
-func Fn5822(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn5822 github.com/goccy/spidermonkeywasm2go/p3.Fn5822
+func Fn5822(m *base.Module, l0 int32)
 
 //go:linkname Fn5823 github.com/goccy/spidermonkeywasm2go/p6.Fn5823
 func Fn5823(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn5824 github.com/goccy/spidermonkeywasm2go/p6.Fn5824
-func Fn5824(m *base.Module, l0 int32)
+func Fn5824(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn5832 github.com/goccy/spidermonkeywasm2go/p7.Fn5832
-func Fn5832(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn5825 github.com/goccy/spidermonkeywasm2go/p6.Fn5825
+func Fn5825(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5833 github.com/goccy/spidermonkeywasm2go/p7.Fn5833
-func Fn5833(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn5826 github.com/goccy/spidermonkeywasm2go/p6.Fn5826
+func Fn5826(m *base.Module, l0 int32)
 
-//go:linkname Fn5842 github.com/goccy/spidermonkeywasm2go/p7.Fn5842
-func Fn5842(m *base.Module, l0 int32) int32
+//go:linkname Fn5834 github.com/goccy/spidermonkeywasm2go/p7.Fn5834
+func Fn5834(m *base.Module, l0 int32, l1 int32, l2 int32)
+
+//go:linkname Fn5835 github.com/goccy/spidermonkeywasm2go/p7.Fn5835
+func Fn5835(m *base.Module, l0 int32, l1 int32, l2 int32)
 
 //go:linkname Fn5844 github.com/goccy/spidermonkeywasm2go/p7.Fn5844
-func Fn5844(m *base.Module, l0 int32, l1 int32)
+func Fn5844(m *base.Module, l0 int32) int32
 
-//go:linkname Fn5846 github.com/goccy/spidermonkeywasm2go/p6.Fn5846
-func Fn5846(m *base.Module, l0 int32) int32
+//go:linkname Fn5846 github.com/goccy/spidermonkeywasm2go/p7.Fn5846
+func Fn5846(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn5876 github.com/goccy/spidermonkeywasm2go/p6.Fn5876
-func Fn5876(m *base.Module, l0 int32)
+//go:linkname Fn5848 github.com/goccy/spidermonkeywasm2go/p6.Fn5848
+func Fn5848(m *base.Module, l0 int32) int32
 
-//go:linkname Fn5912 github.com/goccy/spidermonkeywasm2go/p6.Fn5912
-func Fn5912(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn5914 github.com/goccy/spidermonkeywasm2go/p6.Fn5914
+func Fn5914(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5915 github.com/goccy/spidermonkeywasm2go/p4.Fn5915
-func Fn5915(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn5917 github.com/goccy/spidermonkeywasm2go/p4.Fn5917
+func Fn5917(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn5941 github.com/goccy/spidermonkeywasm2go/p6.Fn5941
-func Fn5941(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn5944 github.com/goccy/spidermonkeywasm2go/p6.Fn5944
+func Fn5944(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5942 github.com/goccy/spidermonkeywasm2go/p6.Fn5942
-func Fn5942(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn5945 github.com/goccy/spidermonkeywasm2go/p4.Fn5945
+func Fn5945(m *base.Module, l0 int32)
 
-//go:linkname Fn5943 github.com/goccy/spidermonkeywasm2go/p4.Fn5943
-func Fn5943(m *base.Module, l0 int32)
+//go:linkname Fn5946 github.com/goccy/spidermonkeywasm2go/p7.Fn5946
+func Fn5946(m *base.Module, l0 int32)
 
-//go:linkname Fn5944 github.com/goccy/spidermonkeywasm2go/p7.Fn5944
-func Fn5944(m *base.Module, l0 int32)
+//go:linkname Fn5955 github.com/goccy/spidermonkeywasm2go/p7.Fn5955
+func Fn5955(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn5953 github.com/goccy/spidermonkeywasm2go/p7.Fn5953
-func Fn5953(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn5961 github.com/goccy/spidermonkeywasm2go/p6.Fn5961
-func Fn5961(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn5971 github.com/goccy/spidermonkeywasm2go/p0.Fn5971
-func Fn5971(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn5963 github.com/goccy/spidermonkeywasm2go/p6.Fn5963
+func Fn5963(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn5973 github.com/goccy/spidermonkeywasm2go/p0.Fn5973
 func Fn5973(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn5982 github.com/goccy/spidermonkeywasm2go/p7.Fn5982
-func Fn5982(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5975 github.com/goccy/spidermonkeywasm2go/p0.Fn5975
+func Fn5975(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn5990 github.com/goccy/spidermonkeywasm2go/p6.Fn5990
-func Fn5990(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn5984 github.com/goccy/spidermonkeywasm2go/p7.Fn5984
+func Fn5984(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn6045 github.com/goccy/spidermonkeywasm2go/p4.Fn6045
-func Fn6045(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn5992 github.com/goccy/spidermonkeywasm2go/p6.Fn5992
+func Fn5992(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn6052 github.com/goccy/spidermonkeywasm2go/p6.Fn6052
-func Fn6052(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn6047 github.com/goccy/spidermonkeywasm2go/p4.Fn6047
+func Fn6047(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn6060 github.com/goccy/spidermonkeywasm2go/p7.Fn6060
-func Fn6060(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn6062 github.com/goccy/spidermonkeywasm2go/p7.Fn6062
+func Fn6062(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn6066 github.com/goccy/spidermonkeywasm2go/p7.Fn6066
-func Fn6066(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn6068 github.com/goccy/spidermonkeywasm2go/p7.Fn6068
+func Fn6068(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn6067 github.com/goccy/spidermonkeywasm2go/p6.Fn6067
-func Fn6067(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn6069 github.com/goccy/spidermonkeywasm2go/p6.Fn6069
+func Fn6069(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn6086 github.com/goccy/spidermonkeywasm2go/p3.Fn6086
-func Fn6086(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn6088 github.com/goccy/spidermonkeywasm2go/p3.Fn6088
+func Fn6088(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn6091 github.com/goccy/spidermonkeywasm2go/p7.Fn6091
-func Fn6091(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6093 github.com/goccy/spidermonkeywasm2go/p7.Fn6093
+func Fn6093(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6092 github.com/goccy/spidermonkeywasm2go/p7.Fn6092
-func Fn6092(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn6094 github.com/goccy/spidermonkeywasm2go/p7.Fn6094
+func Fn6094(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn6107 github.com/goccy/spidermonkeywasm2go/p7.Fn6107
-func Fn6107(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn6108 github.com/goccy/spidermonkeywasm2go/p6.Fn6108
-func Fn6108(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6109 github.com/goccy/spidermonkeywasm2go/p7.Fn6109
+func Fn6109(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn6110 github.com/goccy/spidermonkeywasm2go/p6.Fn6110
-func Fn6110(m *base.Module, l0 int32, l1 int32) int32
+func Fn6110(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6125 github.com/goccy/spidermonkeywasm2go/p7.Fn6125
-func Fn6125(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6112 github.com/goccy/spidermonkeywasm2go/p6.Fn6112
+func Fn6112(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6187 github.com/goccy/spidermonkeywasm2go/p6.Fn6187
-func Fn6187(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn6188 github.com/goccy/spidermonkeywasm2go/p3.Fn6188
-func Fn6188(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn6127 github.com/goccy/spidermonkeywasm2go/p7.Fn6127
+func Fn6127(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn6189 github.com/goccy/spidermonkeywasm2go/p6.Fn6189
-func Fn6189(m *base.Module, l0 int32, l1 int32)
+func Fn6189(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6209 github.com/goccy/spidermonkeywasm2go/p6.Fn6209
-func Fn6209(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn6190 github.com/goccy/spidermonkeywasm2go/p3.Fn6190
+func Fn6190(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn6221 github.com/goccy/spidermonkeywasm2go/p1.Fn6221
-func Fn6221(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6191 github.com/goccy/spidermonkeywasm2go/p6.Fn6191
+func Fn6191(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn6223 github.com/goccy/spidermonkeywasm2go/p6.Fn6223
-func Fn6223(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn6211 github.com/goccy/spidermonkeywasm2go/p6.Fn6211
+func Fn6211(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn6230 github.com/goccy/spidermonkeywasm2go/p6.Fn6230
-func Fn6230(m *base.Module, l0 int32) int32
+//go:linkname Fn6223 github.com/goccy/spidermonkeywasm2go/p1.Fn6223
+func Fn6223(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6234 github.com/goccy/spidermonkeywasm2go/p3.Fn6234
-func Fn6234(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn6225 github.com/goccy/spidermonkeywasm2go/p6.Fn6225
+func Fn6225(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn6239 github.com/goccy/spidermonkeywasm2go/p3.Fn6239
-func Fn6239(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6232 github.com/goccy/spidermonkeywasm2go/p6.Fn6232
+func Fn6232(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6249 github.com/goccy/spidermonkeywasm2go/p6.Fn6249
-func Fn6249(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6236 github.com/goccy/spidermonkeywasm2go/p3.Fn6236
+func Fn6236(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn6266 github.com/goccy/spidermonkeywasm2go/p6.Fn6266
-func Fn6266(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn6241 github.com/goccy/spidermonkeywasm2go/p3.Fn6241
+func Fn6241(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6272 github.com/goccy/spidermonkeywasm2go/p6.Fn6272
-func Fn6272(m *base.Module, l0 int32)
+//go:linkname Fn6251 github.com/goccy/spidermonkeywasm2go/p6.Fn6251
+func Fn6251(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6294 github.com/goccy/spidermonkeywasm2go/p3.Fn6294
-func Fn6294(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn6268 github.com/goccy/spidermonkeywasm2go/p6.Fn6268
+func Fn6268(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn6346 github.com/goccy/spidermonkeywasm2go/p2.Fn6346
-func Fn6346(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn6296 github.com/goccy/spidermonkeywasm2go/p3.Fn6296
+func Fn6296(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn6348 github.com/goccy/spidermonkeywasm2go/p6.Fn6348
-func Fn6348(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6348 github.com/goccy/spidermonkeywasm2go/p2.Fn6348
+func Fn6348(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn6358 github.com/goccy/spidermonkeywasm2go/p7.Fn6358
-func Fn6358(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn6350 github.com/goccy/spidermonkeywasm2go/p6.Fn6350
+func Fn6350(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6666 github.com/goccy/spidermonkeywasm2go/p7.Fn6666
-func Fn6666(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn6668 github.com/goccy/spidermonkeywasm2go/p7.Fn6668
+func Fn6668(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn6667 github.com/goccy/spidermonkeywasm2go/p6.Fn6667
-func Fn6667(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn6669 github.com/goccy/spidermonkeywasm2go/p6.Fn6669
+func Fn6669(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn6668 github.com/goccy/spidermonkeywasm2go/p6.Fn6668
-func Fn6668(m *base.Module, l0 int32) int32
+//go:linkname Fn6670 github.com/goccy/spidermonkeywasm2go/p6.Fn6670
+func Fn6670(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6681 github.com/goccy/spidermonkeywasm2go/p6.Fn6681
-func Fn6681(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn6683 github.com/goccy/spidermonkeywasm2go/p6.Fn6683
+func Fn6683(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn6690 github.com/goccy/spidermonkeywasm2go/p7.Fn6690
-func Fn6690(m *base.Module, l0 int32)
+//go:linkname Fn6692 github.com/goccy/spidermonkeywasm2go/p7.Fn6692
+func Fn6692(m *base.Module, l0 int32)
 
-//go:linkname Fn6691 github.com/goccy/spidermonkeywasm2go/p6.Fn6691
-func Fn6691(m *base.Module, l0 int32, l1 int64, l2 int32)
+//go:linkname Fn6693 github.com/goccy/spidermonkeywasm2go/p6.Fn6693
+func Fn6693(m *base.Module, l0 int32, l1 int64, l2 int32)
 
-//go:linkname Fn6692 github.com/goccy/spidermonkeywasm2go/p1.Fn6692
-func Fn6692(m *base.Module, l0 int32) int32
+//go:linkname Fn6694 github.com/goccy/spidermonkeywasm2go/p1.Fn6694
+func Fn6694(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6696 github.com/goccy/spidermonkeywasm2go/p7.Fn6696
-func Fn6696(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn6698 github.com/goccy/spidermonkeywasm2go/p7.Fn6698
+func Fn6698(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn6701 github.com/goccy/spidermonkeywasm2go/p6.Fn6701
-func Fn6701(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn6711 github.com/goccy/spidermonkeywasm2go/p7.Fn6711
-func Fn6711(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6703 github.com/goccy/spidermonkeywasm2go/p6.Fn6703
+func Fn6703(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn6713 github.com/goccy/spidermonkeywasm2go/p7.Fn6713
-func Fn6713(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn6713(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6717 github.com/goccy/spidermonkeywasm2go/p7.Fn6717
-func Fn6717(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn6715 github.com/goccy/spidermonkeywasm2go/p7.Fn6715
+func Fn6715(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn6722 github.com/goccy/spidermonkeywasm2go/p7.Fn6722
-func Fn6722(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn6723 github.com/goccy/spidermonkeywasm2go/p7.Fn6723
-func Fn6723(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6719 github.com/goccy/spidermonkeywasm2go/p7.Fn6719
+func Fn6719(m *base.Module, l0 int32, l1 int32, l2 int32)
 
 //go:linkname Fn6724 github.com/goccy/spidermonkeywasm2go/p7.Fn6724
-func Fn6724(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn6724(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6725 github.com/goccy/spidermonkeywasm2go/p6.Fn6725
-func Fn6725(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn6725 github.com/goccy/spidermonkeywasm2go/p7.Fn6725
+func Fn6725(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6726 github.com/goccy/spidermonkeywasm2go/p4.Fn6726
-func Fn6726(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
+//go:linkname Fn6726 github.com/goccy/spidermonkeywasm2go/p7.Fn6726
+func Fn6726(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn6727 github.com/goccy/spidermonkeywasm2go/p7.Fn6727
-func Fn6727(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6727 github.com/goccy/spidermonkeywasm2go/p6.Fn6727
+func Fn6727(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn6735 github.com/goccy/spidermonkeywasm2go/p7.Fn6735
-func Fn6735(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6728 github.com/goccy/spidermonkeywasm2go/p4.Fn6728
+func Fn6728(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
 
-//go:linkname Fn6766 github.com/goccy/spidermonkeywasm2go/p4.Fn6766
-func Fn6766(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn6729 github.com/goccy/spidermonkeywasm2go/p7.Fn6729
+func Fn6729(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6773 github.com/goccy/spidermonkeywasm2go/p7.Fn6773
-func Fn6773(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6737 github.com/goccy/spidermonkeywasm2go/p7.Fn6737
+func Fn6737(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6774 github.com/goccy/spidermonkeywasm2go/p7.Fn6774
-func Fn6774(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6768 github.com/goccy/spidermonkeywasm2go/p4.Fn6768
+func Fn6768(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn6775 github.com/goccy/spidermonkeywasm2go/p7.Fn6775
-func Fn6775(m *base.Module, l0 int32, l1 float64) int32
+func Fn6775(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn6776 github.com/goccy/spidermonkeywasm2go/p7.Fn6776
 func Fn6776(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn6777 github.com/goccy/spidermonkeywasm2go/p7.Fn6777
-func Fn6777(m *base.Module, l0 int32, l1 int32) int32
+func Fn6777(m *base.Module, l0 int32, l1 float64) int32
 
 //go:linkname Fn6778 github.com/goccy/spidermonkeywasm2go/p7.Fn6778
 func Fn6778(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn6779 github.com/goccy/spidermonkeywasm2go/p7.Fn6779
-func Fn6779(m *base.Module, l0 int32) int32
+func Fn6779(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6785 github.com/goccy/spidermonkeywasm2go/p4.Fn6785
-func Fn6785(m *base.Module, l0 int32) int32
+//go:linkname Fn6780 github.com/goccy/spidermonkeywasm2go/p7.Fn6780
+func Fn6780(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6786 github.com/goccy/spidermonkeywasm2go/p6.Fn6786
-func Fn6786(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6781 github.com/goccy/spidermonkeywasm2go/p7.Fn6781
+func Fn6781(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6792 github.com/goccy/spidermonkeywasm2go/p7.Fn6792
-func Fn6792(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6787 github.com/goccy/spidermonkeywasm2go/p4.Fn6787
+func Fn6787(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6796 github.com/goccy/spidermonkeywasm2go/p6.Fn6796
-func Fn6796(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6788 github.com/goccy/spidermonkeywasm2go/p6.Fn6788
+func Fn6788(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6799 github.com/goccy/spidermonkeywasm2go/p7.Fn6799
-func Fn6799(m *base.Module, l0 int32)
+//go:linkname Fn6794 github.com/goccy/spidermonkeywasm2go/p7.Fn6794
+func Fn6794(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6800 github.com/goccy/spidermonkeywasm2go/p7.Fn6800
-func Fn6800(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn6798 github.com/goccy/spidermonkeywasm2go/p6.Fn6798
+func Fn6798(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6802 github.com/goccy/spidermonkeywasm2go/p6.Fn6802
-func Fn6802(m *base.Module, l0 int32) int32
+//go:linkname Fn6801 github.com/goccy/spidermonkeywasm2go/p7.Fn6801
+func Fn6801(m *base.Module, l0 int32)
 
-//go:linkname Fn6866 github.com/goccy/spidermonkeywasm2go/p6.Fn6866
-func Fn6866(m *base.Module, l0 int32) int32
+//go:linkname Fn6802 github.com/goccy/spidermonkeywasm2go/p7.Fn6802
+func Fn6802(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn6867 github.com/goccy/spidermonkeywasm2go/p6.Fn6867
-func Fn6867(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6804 github.com/goccy/spidermonkeywasm2go/p6.Fn6804
+func Fn6804(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6868 github.com/goccy/spidermonkeywasm2go/p7.Fn6868
-func Fn6868(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6868 github.com/goccy/spidermonkeywasm2go/p6.Fn6868
+func Fn6868(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6874 github.com/goccy/spidermonkeywasm2go/p4.Fn6874
-func Fn6874(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn6870 github.com/goccy/spidermonkeywasm2go/p7.Fn6870
+func Fn6870(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6877 github.com/goccy/spidermonkeywasm2go/p4.Fn6877
-func Fn6877(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn6876 github.com/goccy/spidermonkeywasm2go/p4.Fn6876
+func Fn6876(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn6878 github.com/goccy/spidermonkeywasm2go/p6.Fn6878
-func Fn6878(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn6879 github.com/goccy/spidermonkeywasm2go/p4.Fn6879
+func Fn6879(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
 //go:linkname Fn6880 github.com/goccy/spidermonkeywasm2go/p6.Fn6880
-func Fn6880(m *base.Module, l0 int32)
+func Fn6880(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn6884 github.com/goccy/spidermonkeywasm2go/p6.Fn6884
-func Fn6884(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn6882 github.com/goccy/spidermonkeywasm2go/p6.Fn6882
+func Fn6882(m *base.Module, l0 int32)
 
-//go:linkname Fn6885 github.com/goccy/spidermonkeywasm2go/p6.Fn6885
-func Fn6885(m *base.Module, l0 int32)
+//go:linkname Fn6899 github.com/goccy/spidermonkeywasm2go/p3.Fn6899
+func Fn6899(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn6897 github.com/goccy/spidermonkeywasm2go/p3.Fn6897
-func Fn6897(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn6900 github.com/goccy/spidermonkeywasm2go/p6.Fn6900
+func Fn6900(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn6898 github.com/goccy/spidermonkeywasm2go/p6.Fn6898
-func Fn6898(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn6912 github.com/goccy/spidermonkeywasm2go/p6.Fn6912
+func Fn6912(m *base.Module, l0 int32, l1 int32) int64
 
-//go:linkname Fn6910 github.com/goccy/spidermonkeywasm2go/p6.Fn6910
-func Fn6910(m *base.Module, l0 int32, l1 int32) int64
+//go:linkname Fn6913 github.com/goccy/spidermonkeywasm2go/p7.Fn6913
+func Fn6913(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6911 github.com/goccy/spidermonkeywasm2go/p7.Fn6911
-func Fn6911(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6918 github.com/goccy/spidermonkeywasm2go/p3.Fn6918
+func Fn6918(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6918 github.com/goccy/spidermonkeywasm2go/p6.Fn6918
-func Fn6918(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn6921 github.com/goccy/spidermonkeywasm2go/p6.Fn6921
+func Fn6921(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn6930 github.com/goccy/spidermonkeywasm2go/p6.Fn6930
-func Fn6930(m *base.Module, l0 int32)
+//go:linkname Fn6933 github.com/goccy/spidermonkeywasm2go/p6.Fn6933
+func Fn6933(m *base.Module, l0 int32)
 
-//go:linkname Fn6932 github.com/goccy/spidermonkeywasm2go/p6.Fn6932
-func Fn6932(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn6935 github.com/goccy/spidermonkeywasm2go/p6.Fn6935
+func Fn6935(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn6940 github.com/goccy/spidermonkeywasm2go/p6.Fn6940
-func Fn6940(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6943 github.com/goccy/spidermonkeywasm2go/p6.Fn6943
+func Fn6943(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn6947 github.com/goccy/spidermonkeywasm2go/p7.Fn6947
-func Fn6947(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn6949 github.com/goccy/spidermonkeywasm2go/p0.Fn6949
-func Fn6949(m *base.Module, l0 int32) int32
+//go:linkname Fn6950 github.com/goccy/spidermonkeywasm2go/p7.Fn6950
+func Fn6950(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn6952 github.com/goccy/spidermonkeywasm2go/p0.Fn6952
-func Fn6952(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn6952(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6953 github.com/goccy/spidermonkeywasm2go/p0.Fn6953
-func Fn6953(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6955 github.com/goccy/spidermonkeywasm2go/p0.Fn6955
+func Fn6955(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6956 github.com/goccy/spidermonkeywasm2go/p6.Fn6956
-func Fn6956(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn6956 github.com/goccy/spidermonkeywasm2go/p0.Fn6956
+func Fn6956(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6957 github.com/goccy/spidermonkeywasm2go/p6.Fn6957
-func Fn6957(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn6958 github.com/goccy/spidermonkeywasm2go/p3.Fn6958
-func Fn6958(m *base.Module, l0 int32) int32
-
-//go:linkname Fn6959 github.com/goccy/spidermonkeywasm2go/p3.Fn6959
-func Fn6959(m *base.Module, l0 int32) int32
+//go:linkname Fn6959 github.com/goccy/spidermonkeywasm2go/p6.Fn6959
+func Fn6959(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn6960 github.com/goccy/spidermonkeywasm2go/p6.Fn6960
-func Fn6960(m *base.Module, l0 int32) int32
+func Fn6960(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn6961 github.com/goccy/spidermonkeywasm2go/p4.Fn6961
-func Fn6961(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn6961 github.com/goccy/spidermonkeywasm2go/p3.Fn6961
+func Fn6961(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6970 github.com/goccy/spidermonkeywasm2go/p6.Fn6970
-func Fn6970(m *base.Module, l0 int32) int32
+//go:linkname Fn6962 github.com/goccy/spidermonkeywasm2go/p3.Fn6962
+func Fn6962(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6978 github.com/goccy/spidermonkeywasm2go/p0.Fn6978
-func Fn6978(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6973 github.com/goccy/spidermonkeywasm2go/p6.Fn6973
+func Fn6973(m *base.Module, l0 int32) int32
 
-//go:linkname Fn6979 github.com/goccy/spidermonkeywasm2go/p7.Fn6979
-func Fn6979(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn6981 github.com/goccy/spidermonkeywasm2go/p7.Fn6981
+//go:linkname Fn6981 github.com/goccy/spidermonkeywasm2go/p0.Fn6981
 func Fn6981(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6993 github.com/goccy/spidermonkeywasm2go/p6.Fn6993
-func Fn6993(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6982 github.com/goccy/spidermonkeywasm2go/p7.Fn6982
+func Fn6982(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6994 github.com/goccy/spidermonkeywasm2go/p6.Fn6994
-func Fn6994(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn6984 github.com/goccy/spidermonkeywasm2go/p7.Fn6984
+func Fn6984(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn6997 github.com/goccy/spidermonkeywasm2go/p7.Fn6997
-func Fn6997(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn6996 github.com/goccy/spidermonkeywasm2go/p6.Fn6996
+func Fn6996(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7004 github.com/goccy/spidermonkeywasm2go/p6.Fn7004
-func Fn7004(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn6997 github.com/goccy/spidermonkeywasm2go/p6.Fn6997
+func Fn6997(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7014 github.com/goccy/spidermonkeywasm2go/p6.Fn7014
-func Fn7014(m *base.Module, l0 int32) int32
+//go:linkname Fn7000 github.com/goccy/spidermonkeywasm2go/p7.Fn7000
+func Fn7000(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn7023 github.com/goccy/spidermonkeywasm2go/p6.Fn7023
-func Fn7023(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7007 github.com/goccy/spidermonkeywasm2go/p6.Fn7007
+func Fn7007(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7032 github.com/goccy/spidermonkeywasm2go/p7.Fn7032
-func Fn7032(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7017 github.com/goccy/spidermonkeywasm2go/p6.Fn7017
+func Fn7017(m *base.Module, l0 int32) int32
 
-//go:linkname Fn7035 github.com/goccy/spidermonkeywasm2go/p6.Fn7035
+//go:linkname Fn7035 github.com/goccy/spidermonkeywasm2go/p7.Fn7035
 func Fn7035(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7063 github.com/goccy/spidermonkeywasm2go/p6.Fn7063
-func Fn7063(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7038 github.com/goccy/spidermonkeywasm2go/p6.Fn7038
+func Fn7038(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7080 github.com/goccy/spidermonkeywasm2go/p6.Fn7080
-func Fn7080(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7083 github.com/goccy/spidermonkeywasm2go/p6.Fn7083
+func Fn7083(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7118 github.com/goccy/spidermonkeywasm2go/p7.Fn7118
-func Fn7118(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7121 github.com/goccy/spidermonkeywasm2go/p7.Fn7121
+func Fn7121(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7120 github.com/goccy/spidermonkeywasm2go/p6.Fn7120
-func Fn7120(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7126 github.com/goccy/spidermonkeywasm2go/p6.Fn7126
+func Fn7126(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn7123 github.com/goccy/spidermonkeywasm2go/p6.Fn7123
-func Fn7123(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn7136 github.com/goccy/spidermonkeywasm2go/p6.Fn7136
+func Fn7136(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn7133 github.com/goccy/spidermonkeywasm2go/p6.Fn7133
-func Fn7133(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn7138 github.com/goccy/spidermonkeywasm2go/p4.Fn7138
+func Fn7138(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7135 github.com/goccy/spidermonkeywasm2go/p4.Fn7135
-func Fn7135(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7147 github.com/goccy/spidermonkeywasm2go/p6.Fn7147
+func Fn7147(m *base.Module, l0 int32) int32
 
-//go:linkname Fn7144 github.com/goccy/spidermonkeywasm2go/p6.Fn7144
-func Fn7144(m *base.Module, l0 int32) int32
+//go:linkname Fn7150 github.com/goccy/spidermonkeywasm2go/p4.Fn7150
+func Fn7150(m *base.Module, l0 int32)
 
-//go:linkname Fn7147 github.com/goccy/spidermonkeywasm2go/p4.Fn7147
-func Fn7147(m *base.Module, l0 int32)
+//go:linkname Fn7151 github.com/goccy/spidermonkeywasm2go/p6.Fn7151
+func Fn7151(m *base.Module, l0 int32) int32
 
-//go:linkname Fn7148 github.com/goccy/spidermonkeywasm2go/p6.Fn7148
-func Fn7148(m *base.Module, l0 int32) int32
+//go:linkname Fn7153 github.com/goccy/spidermonkeywasm2go/p7.Fn7153
+func Fn7153(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7150 github.com/goccy/spidermonkeywasm2go/p7.Fn7150
-func Fn7150(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7165 github.com/goccy/spidermonkeywasm2go/p6.Fn7165
+func Fn7165(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn7162 github.com/goccy/spidermonkeywasm2go/p6.Fn7162
-func Fn7162(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn7166 github.com/goccy/spidermonkeywasm2go/p3.Fn7166
+func Fn7166(m *base.Module, l0 int32)
 
-//go:linkname Fn7163 github.com/goccy/spidermonkeywasm2go/p3.Fn7163
-func Fn7163(m *base.Module, l0 int32)
+//go:linkname Fn7170 github.com/goccy/spidermonkeywasm2go/p6.Fn7170
+func Fn7170(m *base.Module, l0 int32) int32
 
-//go:linkname Fn7167 github.com/goccy/spidermonkeywasm2go/p6.Fn7167
-func Fn7167(m *base.Module, l0 int32) int32
+//go:linkname Fn7172 github.com/goccy/spidermonkeywasm2go/p7.Fn7172
+func Fn7172(m *base.Module, l0 int32) int32
 
-//go:linkname Fn7169 github.com/goccy/spidermonkeywasm2go/p7.Fn7169
-func Fn7169(m *base.Module, l0 int32) int32
+//go:linkname Fn7179 github.com/goccy/spidermonkeywasm2go/p6.Fn7179
+func Fn7179(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn7176 github.com/goccy/spidermonkeywasm2go/p6.Fn7176
-func Fn7176(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn7184 github.com/goccy/spidermonkeywasm2go/p6.Fn7184
+func Fn7184(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7181 github.com/goccy/spidermonkeywasm2go/p6.Fn7181
-func Fn7181(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7196 github.com/goccy/spidermonkeywasm2go/p4.Fn7196
+func Fn7196(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7193 github.com/goccy/spidermonkeywasm2go/p4.Fn7193
-func Fn7193(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7200 github.com/goccy/spidermonkeywasm2go/p6.Fn7200
+func Fn7200(m *base.Module, l0 int32) int32
 
-//go:linkname Fn7197 github.com/goccy/spidermonkeywasm2go/p6.Fn7197
-func Fn7197(m *base.Module, l0 int32) int32
+//go:linkname Fn7202 github.com/goccy/spidermonkeywasm2go/p6.Fn7202
+func Fn7202(m *base.Module, l0 int32) int32
 
-//go:linkname Fn7199 github.com/goccy/spidermonkeywasm2go/p6.Fn7199
-func Fn7199(m *base.Module, l0 int32) int32
+//go:linkname Fn7208 github.com/goccy/spidermonkeywasm2go/p2.Fn7208
+func Fn7208(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7205 github.com/goccy/spidermonkeywasm2go/p2.Fn7205
-func Fn7205(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7218 github.com/goccy/spidermonkeywasm2go/p6.Fn7218
+func Fn7218(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7215 github.com/goccy/spidermonkeywasm2go/p6.Fn7215
-func Fn7215(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7237 github.com/goccy/spidermonkeywasm2go/p6.Fn7237
+func Fn7237(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7234 github.com/goccy/spidermonkeywasm2go/p6.Fn7234
-func Fn7234(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7238 github.com/goccy/spidermonkeywasm2go/p4.Fn7238
+func Fn7238(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7235 github.com/goccy/spidermonkeywasm2go/p4.Fn7235
-func Fn7235(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7245 github.com/goccy/spidermonkeywasm2go/p6.Fn7245
+func Fn7245(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn7242 github.com/goccy/spidermonkeywasm2go/p6.Fn7242
-func Fn7242(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn7270 github.com/goccy/spidermonkeywasm2go/p6.Fn7270
+func Fn7270(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7267 github.com/goccy/spidermonkeywasm2go/p6.Fn7267
-func Fn7267(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7313 github.com/goccy/spidermonkeywasm2go/p4.Fn7313
+func Fn7313(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn7310 github.com/goccy/spidermonkeywasm2go/p4.Fn7310
-func Fn7310(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn7323 github.com/goccy/spidermonkeywasm2go/p7.Fn7323
+func Fn7323(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7320 github.com/goccy/spidermonkeywasm2go/p7.Fn7320
-func Fn7320(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7351 github.com/goccy/spidermonkeywasm2go/p6.Fn7351
+func Fn7351(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn7348 github.com/goccy/spidermonkeywasm2go/p6.Fn7348
-func Fn7348(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn7362 github.com/goccy/spidermonkeywasm2go/p7.Fn7362
+func Fn7362(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn7359 github.com/goccy/spidermonkeywasm2go/p7.Fn7359
-func Fn7359(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn7366 github.com/goccy/spidermonkeywasm2go/p1.Fn7366
+func Fn7366(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn7363 github.com/goccy/spidermonkeywasm2go/p1.Fn7363
-func Fn7363(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn7381 github.com/goccy/spidermonkeywasm2go/p6.Fn7381
+func Fn7381(m *base.Module, l0 int32) int32
 
-//go:linkname Fn7378 github.com/goccy/spidermonkeywasm2go/p6.Fn7378
-func Fn7378(m *base.Module, l0 int32) int32
+//go:linkname Fn7383 github.com/goccy/spidermonkeywasm2go/p4.Fn7383
+func Fn7383(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn7380 github.com/goccy/spidermonkeywasm2go/p4.Fn7380
-func Fn7380(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn7398 github.com/goccy/spidermonkeywasm2go/p4.Fn7398
+func Fn7398(m *base.Module, l0 int32) int32
 
-//go:linkname Fn7390 github.com/goccy/spidermonkeywasm2go/p6.Fn7390
-func Fn7390(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn7429 github.com/goccy/spidermonkeywasm2go/p1.Fn7429
+func Fn7429(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7395 github.com/goccy/spidermonkeywasm2go/p4.Fn7395
-func Fn7395(m *base.Module, l0 int32) int32
+//go:linkname Fn7438 github.com/goccy/spidermonkeywasm2go/p2.Fn7438
+func Fn7438(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7426 github.com/goccy/spidermonkeywasm2go/p1.Fn7426
-func Fn7426(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7443 github.com/goccy/spidermonkeywasm2go/p3.Fn7443
+func Fn7443(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn7435 github.com/goccy/spidermonkeywasm2go/p2.Fn7435
-func Fn7435(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7446 github.com/goccy/spidermonkeywasm2go/p6.Fn7446
+func Fn7446(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn7440 github.com/goccy/spidermonkeywasm2go/p3.Fn7440
-func Fn7440(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn7447 github.com/goccy/spidermonkeywasm2go/p6.Fn7447
+func Fn7447(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7443 github.com/goccy/spidermonkeywasm2go/p6.Fn7443
-func Fn7443(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn7452 github.com/goccy/spidermonkeywasm2go/p4.Fn7452
+func Fn7452(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7444 github.com/goccy/spidermonkeywasm2go/p6.Fn7444
-func Fn7444(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7457 github.com/goccy/spidermonkeywasm2go/p7.Fn7457
+func Fn7457(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7449 github.com/goccy/spidermonkeywasm2go/p4.Fn7449
-func Fn7449(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7460 github.com/goccy/spidermonkeywasm2go/p6.Fn7460
+func Fn7460(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7454 github.com/goccy/spidermonkeywasm2go/p7.Fn7454
-func Fn7454(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn7457 github.com/goccy/spidermonkeywasm2go/p6.Fn7457
-func Fn7457(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn7469 github.com/goccy/spidermonkeywasm2go/p6.Fn7469
-func Fn7469(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-
-//go:linkname Fn7471 github.com/goccy/spidermonkeywasm2go/p6.Fn7471
-func Fn7471(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn7473 github.com/goccy/spidermonkeywasm2go/p4.Fn7473
-func Fn7473(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7472 github.com/goccy/spidermonkeywasm2go/p6.Fn7472
+func Fn7472(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
 //go:linkname Fn7474 github.com/goccy/spidermonkeywasm2go/p6.Fn7474
-func Fn7474(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn7474(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7475 github.com/goccy/spidermonkeywasm2go/p6.Fn7475
-func Fn7475(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
+//go:linkname Fn7476 github.com/goccy/spidermonkeywasm2go/p4.Fn7476
+func Fn7476(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7480 github.com/goccy/spidermonkeywasm2go/p6.Fn7480
-func Fn7480(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn7477 github.com/goccy/spidermonkeywasm2go/p6.Fn7477
+func Fn7477(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn7481 github.com/goccy/spidermonkeywasm2go/p7.Fn7481
-func Fn7481(m *base.Module, l0 int32, l1 int32, l2 float64)
+//go:linkname Fn7478 github.com/goccy/spidermonkeywasm2go/p6.Fn7478
+func Fn7478(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
 
-//go:linkname Fn7482 github.com/goccy/spidermonkeywasm2go/p6.Fn7482
-func Fn7482(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+//go:linkname Fn7484 github.com/goccy/spidermonkeywasm2go/p7.Fn7484
+func Fn7484(m *base.Module, l0 int32, l1 int32, l2 float64)
 
-//go:linkname Fn7484 github.com/goccy/spidermonkeywasm2go/p6.Fn7484
-func Fn7484(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn7485 github.com/goccy/spidermonkeywasm2go/p6.Fn7485
+func Fn7485(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
 
 //go:linkname Fn7487 github.com/goccy/spidermonkeywasm2go/p6.Fn7487
-func Fn7487(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int32) int32
+func Fn7487(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn7488 github.com/goccy/spidermonkeywasm2go/p6.Fn7488
-func Fn7488(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7490 github.com/goccy/spidermonkeywasm2go/p6.Fn7490
+func Fn7490(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int32) int32
 
 //go:linkname Fn7491 github.com/goccy/spidermonkeywasm2go/p6.Fn7491
-func Fn7491(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int64, l4 int32, l5 int32, l6 int32) int32
+func Fn7491(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7494 github.com/goccy/spidermonkeywasm2go/p3.Fn7494
-func Fn7494(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn7494 github.com/goccy/spidermonkeywasm2go/p6.Fn7494
+func Fn7494(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int64, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn7496 github.com/goccy/spidermonkeywasm2go/p6.Fn7496
-func Fn7496(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn7497 github.com/goccy/spidermonkeywasm2go/p3.Fn7497
+func Fn7497(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn7497 github.com/goccy/spidermonkeywasm2go/p4.Fn7497
-func Fn7497(m *base.Module, l0 int32, l1 float64, l2 float64, l3 float64, l4 float64, l5 float64, l6 float64)
+//go:linkname Fn7499 github.com/goccy/spidermonkeywasm2go/p6.Fn7499
+func Fn7499(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn7504 github.com/goccy/spidermonkeywasm2go/p4.Fn7504
-func Fn7504(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7500 github.com/goccy/spidermonkeywasm2go/p4.Fn7500
+func Fn7500(m *base.Module, l0 int32, l1 float64, l2 float64, l3 float64, l4 float64, l5 float64, l6 float64)
 
-//go:linkname Fn7505 github.com/goccy/spidermonkeywasm2go/p2.Fn7505
-func Fn7505(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7507 github.com/goccy/spidermonkeywasm2go/p4.Fn7507
+func Fn7507(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7506 github.com/goccy/spidermonkeywasm2go/p6.Fn7506
-func Fn7506(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7508 github.com/goccy/spidermonkeywasm2go/p2.Fn7508
+func Fn7508(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn7509 github.com/goccy/spidermonkeywasm2go/p6.Fn7509
-func Fn7509(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn7509(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7517 github.com/goccy/spidermonkeywasm2go/p6.Fn7517
-func Fn7517(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn7512 github.com/goccy/spidermonkeywasm2go/p6.Fn7512
+func Fn7512(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32, l4 int32, l5 int32)
 
 //go:linkname Fn7520 github.com/goccy/spidermonkeywasm2go/p6.Fn7520
-func Fn7520(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+func Fn7520(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn7524 github.com/goccy/spidermonkeywasm2go/p7.Fn7524
-func Fn7524(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn7523 github.com/goccy/spidermonkeywasm2go/p6.Fn7523
+func Fn7523(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7590 github.com/goccy/spidermonkeywasm2go/p4.Fn7590
-func Fn7590(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7527 github.com/goccy/spidermonkeywasm2go/p7.Fn7527
+func Fn7527(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn7698 github.com/goccy/spidermonkeywasm2go/p6.Fn7698
-func Fn7698(m *base.Module, l0 int64, l1 int64, l2 int32) int64
+//go:linkname Fn7593 github.com/goccy/spidermonkeywasm2go/p4.Fn7593
+func Fn7593(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7706 github.com/goccy/spidermonkeywasm2go/p3.Fn7706
-func Fn7706(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7709 github.com/goccy/spidermonkeywasm2go/p3.Fn7709
+func Fn7709(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7707 github.com/goccy/spidermonkeywasm2go/p6.Fn7707
-func Fn7707(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7710 github.com/goccy/spidermonkeywasm2go/p6.Fn7710
+func Fn7710(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7708 github.com/goccy/spidermonkeywasm2go/p6.Fn7708
-func Fn7708(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7711 github.com/goccy/spidermonkeywasm2go/p6.Fn7711
+func Fn7711(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7715 github.com/goccy/spidermonkeywasm2go/p6.Fn7715
-func Fn7715(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int32) int32
+//go:linkname Fn7718 github.com/goccy/spidermonkeywasm2go/p6.Fn7718
+func Fn7718(m *base.Module, l0 int32, l1 int32, l2 int64, l3 int32) int32
 
-//go:linkname Fn7717 github.com/goccy/spidermonkeywasm2go/p6.Fn7717
-func Fn7717(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7720 github.com/goccy/spidermonkeywasm2go/p6.Fn7720
+func Fn7720(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7718 github.com/goccy/spidermonkeywasm2go/p4.Fn7718
-func Fn7718(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7721 github.com/goccy/spidermonkeywasm2go/p4.Fn7721
+func Fn7721(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7719 github.com/goccy/spidermonkeywasm2go/p7.Fn7719
-func Fn7719(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7722 github.com/goccy/spidermonkeywasm2go/p7.Fn7722
+func Fn7722(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7720 github.com/goccy/spidermonkeywasm2go/p7.Fn7720
-func Fn7720(m *base.Module, l0 int32) int32
+//go:linkname Fn7732 github.com/goccy/spidermonkeywasm2go/p4.Fn7732
+func Fn7732(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7725 github.com/goccy/spidermonkeywasm2go/p6.Fn7725
-func Fn7725(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn7734 github.com/goccy/spidermonkeywasm2go/p6.Fn7734
+func Fn7734(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7729 github.com/goccy/spidermonkeywasm2go/p4.Fn7729
-func Fn7729(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7927 github.com/goccy/spidermonkeywasm2go/p6.Fn7927
+func Fn7927(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn7731 github.com/goccy/spidermonkeywasm2go/p6.Fn7731
-func Fn7731(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn7921 github.com/goccy/spidermonkeywasm2go/p6.Fn7921
-func Fn7921(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn7923 github.com/goccy/spidermonkeywasm2go/p6.Fn7923
-func Fn7923(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn7924 github.com/goccy/spidermonkeywasm2go/p6.Fn7924
-func Fn7924(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn7929 github.com/goccy/spidermonkeywasm2go/p6.Fn7929
-func Fn7929(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn7941 github.com/goccy/spidermonkeywasm2go/p6.Fn7941
-func Fn7941(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn7942 github.com/goccy/spidermonkeywasm2go/p6.Fn7942
-func Fn7942(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn7945 github.com/goccy/spidermonkeywasm2go/p6.Fn7945
-func Fn7945(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn7932 github.com/goccy/spidermonkeywasm2go/p6.Fn7932
+func Fn7932(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn7948 github.com/goccy/spidermonkeywasm2go/p6.Fn7948
 func Fn7948(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn7950 github.com/goccy/spidermonkeywasm2go/p4.Fn7950
-func Fn7950(m *base.Module, l0 int32) int32
+//go:linkname Fn7951 github.com/goccy/spidermonkeywasm2go/p6.Fn7951
+func Fn7951(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn7952 github.com/goccy/spidermonkeywasm2go/p6.Fn7952
-func Fn7952(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7953 github.com/goccy/spidermonkeywasm2go/p4.Fn7953
+func Fn7953(m *base.Module, l0 int32) int32
 
-//go:linkname Fn7953 github.com/goccy/spidermonkeywasm2go/p6.Fn7953
-func Fn7953(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn7954 github.com/goccy/spidermonkeywasm2go/p4.Fn7954
-func Fn7954(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7955 github.com/goccy/spidermonkeywasm2go/p6.Fn7955
+func Fn7955(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn7956 github.com/goccy/spidermonkeywasm2go/p6.Fn7956
-func Fn7956(m *base.Module, l0 int32, l1 int32) int32
+func Fn7956(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7958 github.com/goccy/spidermonkeywasm2go/p6.Fn7958
-func Fn7958(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7957 github.com/goccy/spidermonkeywasm2go/p4.Fn7957
+func Fn7957(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7961 github.com/goccy/spidermonkeywasm2go/p4.Fn7961
-func Fn7961(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn7959 github.com/goccy/spidermonkeywasm2go/p6.Fn7959
+func Fn7959(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn7969 github.com/goccy/spidermonkeywasm2go/p6.Fn7969
-func Fn7969(m *base.Module, l0 int32, l1 int64, l2 int32) int32
+//go:linkname Fn7961 github.com/goccy/spidermonkeywasm2go/p6.Fn7961
+func Fn7961(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7970 github.com/goccy/spidermonkeywasm2go/p6.Fn7970
-func Fn7970(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn7964 github.com/goccy/spidermonkeywasm2go/p4.Fn7964
+func Fn7964(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn7973 github.com/goccy/spidermonkeywasm2go/p6.Fn7973
-func Fn7973(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn7972 github.com/goccy/spidermonkeywasm2go/p6.Fn7972
+func Fn7972(m *base.Module, l0 int32, l1 int64, l2 int32) int32
 
-//go:linkname Fn7978 github.com/goccy/spidermonkeywasm2go/p7.Fn7978
-func Fn7978(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn7976 github.com/goccy/spidermonkeywasm2go/p6.Fn7976
+func Fn7976(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn7984 github.com/goccy/spidermonkeywasm2go/p6.Fn7984
-func Fn7984(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn7981 github.com/goccy/spidermonkeywasm2go/p7.Fn7981
+func Fn7981(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn7986 github.com/goccy/spidermonkeywasm2go/p6.Fn7986
-func Fn7986(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn7987 github.com/goccy/spidermonkeywasm2go/p6.Fn7987
+func Fn7987(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn7988 github.com/goccy/spidermonkeywasm2go/p6.Fn7988
-func Fn7988(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn7989 github.com/goccy/spidermonkeywasm2go/p6.Fn7989
+func Fn7989(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn7992 github.com/goccy/spidermonkeywasm2go/p6.Fn7992
-func Fn7992(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn7993 github.com/goccy/spidermonkeywasm2go/p6.Fn7993
-func Fn7993(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn7994 github.com/goccy/spidermonkeywasm2go/p6.Fn7994
-func Fn7994(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn7995 github.com/goccy/spidermonkeywasm2go/p6.Fn7995
-func Fn7995(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7991 github.com/goccy/spidermonkeywasm2go/p6.Fn7991
+func Fn7991(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn7996 github.com/goccy/spidermonkeywasm2go/p6.Fn7996
 func Fn7996(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn8097 github.com/goccy/spidermonkeywasm2go/p7.Fn8097
-func Fn8097(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn7999 github.com/goccy/spidermonkeywasm2go/p6.Fn7999
+func Fn7999(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn8102 github.com/goccy/spidermonkeywasm2go/p6.Fn8102
-func Fn8102(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8100 github.com/goccy/spidermonkeywasm2go/p7.Fn8100
+func Fn8100(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8112 github.com/goccy/spidermonkeywasm2go/p7.Fn8112
-func Fn8112(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8105 github.com/goccy/spidermonkeywasm2go/p6.Fn8105
+func Fn8105(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8114 github.com/goccy/spidermonkeywasm2go/p6.Fn8114
-func Fn8114(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8115 github.com/goccy/spidermonkeywasm2go/p7.Fn8115
+func Fn8115(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8115 github.com/goccy/spidermonkeywasm2go/p6.Fn8115
-func Fn8115(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8117 github.com/goccy/spidermonkeywasm2go/p6.Fn8117
+func Fn8117(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8119 github.com/goccy/spidermonkeywasm2go/p6.Fn8119
-func Fn8119(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8118 github.com/goccy/spidermonkeywasm2go/p6.Fn8118
+func Fn8118(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn8122 github.com/goccy/spidermonkeywasm2go/p6.Fn8122
-func Fn8122(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn8122(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8149 github.com/goccy/spidermonkeywasm2go/p4.Fn8149
-func Fn8149(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8125 github.com/goccy/spidermonkeywasm2go/p6.Fn8125
+func Fn8125(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn8154 github.com/goccy/spidermonkeywasm2go/p1.Fn8154
-func Fn8154(m *base.Module, l0 int32) int32
+//go:linkname Fn8152 github.com/goccy/spidermonkeywasm2go/p4.Fn8152
+func Fn8152(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8157 github.com/goccy/spidermonkeywasm2go/p6.Fn8157
-func Fn8157(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn8157 github.com/goccy/spidermonkeywasm2go/p1.Fn8157
+func Fn8157(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8158 github.com/goccy/spidermonkeywasm2go/p1.Fn8158
-func Fn8158(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8160 github.com/goccy/spidermonkeywasm2go/p6.Fn8160
+func Fn8160(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn8159 github.com/goccy/spidermonkeywasm2go/p1.Fn8159
-func Fn8159(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8161 github.com/goccy/spidermonkeywasm2go/p1.Fn8161
+func Fn8161(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8162 github.com/goccy/spidermonkeywasm2go/p7.Fn8162
-func Fn8162(m *base.Module, l0 int32) int32
+//go:linkname Fn8162 github.com/goccy/spidermonkeywasm2go/p1.Fn8162
+func Fn8162(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8164 github.com/goccy/spidermonkeywasm2go/p1.Fn8164
-func Fn8164(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn8165 github.com/goccy/spidermonkeywasm2go/p7.Fn8165
+func Fn8165(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8165 github.com/goccy/spidermonkeywasm2go/p6.Fn8165
-func Fn8165(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8167 github.com/goccy/spidermonkeywasm2go/p1.Fn8167
+func Fn8167(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn8166 github.com/goccy/spidermonkeywasm2go/p7.Fn8166
-func Fn8166(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8168 github.com/goccy/spidermonkeywasm2go/p6.Fn8168
+func Fn8168(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8171 github.com/goccy/spidermonkeywasm2go/p2.Fn8171
-func Fn8171(m *base.Module) int32
+//go:linkname Fn8169 github.com/goccy/spidermonkeywasm2go/p7.Fn8169
+func Fn8169(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8175 github.com/goccy/spidermonkeywasm2go/p6.Fn8175
-func Fn8175(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn8174 github.com/goccy/spidermonkeywasm2go/p2.Fn8174
+func Fn8174(m *base.Module) int32
 
-//go:linkname Fn8176 github.com/goccy/spidermonkeywasm2go/p3.Fn8176
-func Fn8176(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn8178 github.com/goccy/spidermonkeywasm2go/p6.Fn8178
+func Fn8178(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn8194 github.com/goccy/spidermonkeywasm2go/p1.Fn8194
-func Fn8194(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8179 github.com/goccy/spidermonkeywasm2go/p3.Fn8179
+func Fn8179(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn8210 github.com/goccy/spidermonkeywasm2go/p6.Fn8210
-func Fn8210(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8197 github.com/goccy/spidermonkeywasm2go/p1.Fn8197
+func Fn8197(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8212 github.com/goccy/spidermonkeywasm2go/p4.Fn8212
-func Fn8212(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn8213 github.com/goccy/spidermonkeywasm2go/p6.Fn8213
+func Fn8213(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8220 github.com/goccy/spidermonkeywasm2go/p6.Fn8220
-func Fn8220(m *base.Module, l0 int32) int32
+//go:linkname Fn8215 github.com/goccy/spidermonkeywasm2go/p4.Fn8215
+func Fn8215(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn8264 github.com/goccy/spidermonkeywasm2go/p6.Fn8264
-func Fn8264(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8223 github.com/goccy/spidermonkeywasm2go/p6.Fn8223
+func Fn8223(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8265 github.com/goccy/spidermonkeywasm2go/p6.Fn8265
-func Fn8265(m *base.Module, l0 int32) int32
+//go:linkname Fn8267 github.com/goccy/spidermonkeywasm2go/p6.Fn8267
+func Fn8267(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8268 github.com/goccy/spidermonkeywasm2go/p4.Fn8268
-func Fn8268(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn8271 github.com/goccy/spidermonkeywasm2go/p4.Fn8271
+func Fn8271(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn8270 github.com/goccy/spidermonkeywasm2go/p6.Fn8270
-func Fn8270(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8273 github.com/goccy/spidermonkeywasm2go/p6.Fn8273
+func Fn8273(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8277 github.com/goccy/spidermonkeywasm2go/p7.Fn8277
-func Fn8277(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn8280 github.com/goccy/spidermonkeywasm2go/p7.Fn8280
+func Fn8280(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn8278 github.com/goccy/spidermonkeywasm2go/p6.Fn8278
-func Fn8278(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn8281 github.com/goccy/spidermonkeywasm2go/p6.Fn8281
+func Fn8281(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn8280 github.com/goccy/spidermonkeywasm2go/p6.Fn8280
-func Fn8280(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn8283 github.com/goccy/spidermonkeywasm2go/p6.Fn8283
+func Fn8283(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn8285 github.com/goccy/spidermonkeywasm2go/p6.Fn8285
-func Fn8285(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8288 github.com/goccy/spidermonkeywasm2go/p6.Fn8288
+func Fn8288(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8287 github.com/goccy/spidermonkeywasm2go/p3.Fn8287
-func Fn8287(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn8290 github.com/goccy/spidermonkeywasm2go/p3.Fn8290
+func Fn8290(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn8291 github.com/goccy/spidermonkeywasm2go/p4.Fn8291
-func Fn8291(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn8294 github.com/goccy/spidermonkeywasm2go/p4.Fn8294
+func Fn8294(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn8299 github.com/goccy/spidermonkeywasm2go/p7.Fn8299
-func Fn8299(m *base.Module) float64
+//go:linkname Fn8302 github.com/goccy/spidermonkeywasm2go/p7.Fn8302
+func Fn8302(m *base.Module) float64
 
-//go:linkname Fn8303 github.com/goccy/spidermonkeywasm2go/p6.Fn8303
-func Fn8303(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn8306 github.com/goccy/spidermonkeywasm2go/p6.Fn8306
+func Fn8306(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn8310 github.com/goccy/spidermonkeywasm2go/p3.Fn8310
-func Fn8310(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn8313 github.com/goccy/spidermonkeywasm2go/p3.Fn8313
+func Fn8313(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn8320 github.com/goccy/spidermonkeywasm2go/p7.Fn8320
-func Fn8320(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8343 github.com/goccy/spidermonkeywasm2go/p4.Fn8343
+func Fn8343(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8323 github.com/goccy/spidermonkeywasm2go/p6.Fn8323
-func Fn8323(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8350 github.com/goccy/spidermonkeywasm2go/p6.Fn8350
+func Fn8350(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn8324 github.com/goccy/spidermonkeywasm2go/p4.Fn8324
-func Fn8324(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8362 github.com/goccy/spidermonkeywasm2go/p7.Fn8362
+func Fn8362(m *base.Module, l0 int32)
 
-//go:linkname Fn8340 github.com/goccy/spidermonkeywasm2go/p4.Fn8340
-func Fn8340(m *base.Module, l0 int32) int32
-
-//go:linkname Fn8347 github.com/goccy/spidermonkeywasm2go/p6.Fn8347
-func Fn8347(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
-
-//go:linkname Fn8359 github.com/goccy/spidermonkeywasm2go/p7.Fn8359
-func Fn8359(m *base.Module, l0 int32)
-
-//go:linkname Fn8360 github.com/goccy/spidermonkeywasm2go/p7.Fn8360
-func Fn8360(m *base.Module, l0 int32)
-
-//go:linkname Fn8362 github.com/goccy/spidermonkeywasm2go/p6.Fn8362
-func Fn8362(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn8363 github.com/goccy/spidermonkeywasm2go/p7.Fn8363
+func Fn8363(m *base.Module, l0 int32)
 
 //go:linkname Fn8365 github.com/goccy/spidermonkeywasm2go/p6.Fn8365
-func Fn8365(m *base.Module, l0 int32)
+func Fn8365(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn8367 github.com/goccy/spidermonkeywasm2go/p6.Fn8367
-func Fn8367(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8368 github.com/goccy/spidermonkeywasm2go/p6.Fn8368
+func Fn8368(m *base.Module, l0 int32)
 
-//go:linkname Fn8369 github.com/goccy/spidermonkeywasm2go/p6.Fn8369
-func Fn8369(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8370 github.com/goccy/spidermonkeywasm2go/p6.Fn8370
+func Fn8370(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8390 github.com/goccy/spidermonkeywasm2go/p1.Fn8390
-func Fn8390(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn8372 github.com/goccy/spidermonkeywasm2go/p6.Fn8372
+func Fn8372(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8392 github.com/goccy/spidermonkeywasm2go/p3.Fn8392
-func Fn8392(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+//go:linkname Fn8393 github.com/goccy/spidermonkeywasm2go/p1.Fn8393
+func Fn8393(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn8393 github.com/goccy/spidermonkeywasm2go/p7.Fn8393
-func Fn8393(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8395 github.com/goccy/spidermonkeywasm2go/p3.Fn8395
+func Fn8395(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
 
-//go:linkname Fn8394 github.com/goccy/spidermonkeywasm2go/p7.Fn8394
-func Fn8394(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8396 github.com/goccy/spidermonkeywasm2go/p7.Fn8396
+func Fn8396(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8400 github.com/goccy/spidermonkeywasm2go/p1.Fn8400
-func Fn8400(m *base.Module) int32
+//go:linkname Fn8397 github.com/goccy/spidermonkeywasm2go/p7.Fn8397
+func Fn8397(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8401 github.com/goccy/spidermonkeywasm2go/p6.Fn8401
-func Fn8401(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8403 github.com/goccy/spidermonkeywasm2go/p1.Fn8403
+func Fn8403(m *base.Module) int32
 
-//go:linkname Fn8402 github.com/goccy/spidermonkeywasm2go/p1.Fn8402
-func Fn8402(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn8404 github.com/goccy/spidermonkeywasm2go/p6.Fn8404
+func Fn8404(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8403 github.com/goccy/spidermonkeywasm2go/p7.Fn8403
-func Fn8403(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8405 github.com/goccy/spidermonkeywasm2go/p1.Fn8405
+func Fn8405(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn8426 github.com/goccy/spidermonkeywasm2go/p6.Fn8426
-func Fn8426(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8406 github.com/goccy/spidermonkeywasm2go/p7.Fn8406
+func Fn8406(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8434 github.com/goccy/spidermonkeywasm2go/p6.Fn8434
-func Fn8434(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn8435 github.com/goccy/spidermonkeywasm2go/p6.Fn8435
-func Fn8435(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8429 github.com/goccy/spidermonkeywasm2go/p6.Fn8429
+func Fn8429(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
 //go:linkname Fn8437 github.com/goccy/spidermonkeywasm2go/p6.Fn8437
-func Fn8437(m *base.Module, l0 int32, l1 int32) int32
+func Fn8437(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8438 github.com/goccy/spidermonkeywasm2go/p4.Fn8438
-func Fn8438(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8438 github.com/goccy/spidermonkeywasm2go/p6.Fn8438
+func Fn8438(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8440 github.com/goccy/spidermonkeywasm2go/p7.Fn8440
-func Fn8440(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn8440 github.com/goccy/spidermonkeywasm2go/p6.Fn8440
+func Fn8440(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8442 github.com/goccy/spidermonkeywasm2go/p6.Fn8442
-func Fn8442(m *base.Module, l0 int32) int32
+//go:linkname Fn8441 github.com/goccy/spidermonkeywasm2go/p4.Fn8441
+func Fn8441(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8456 github.com/goccy/spidermonkeywasm2go/p6.Fn8456
-func Fn8456(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8443 github.com/goccy/spidermonkeywasm2go/p7.Fn8443
+func Fn8443(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn8460 github.com/goccy/spidermonkeywasm2go/p6.Fn8460
-func Fn8460(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8445 github.com/goccy/spidermonkeywasm2go/p6.Fn8445
+func Fn8445(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8461 github.com/goccy/spidermonkeywasm2go/p6.Fn8461
-func Fn8461(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn8459 github.com/goccy/spidermonkeywasm2go/p6.Fn8459
+func Fn8459(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8468 github.com/goccy/spidermonkeywasm2go/p6.Fn8468
-func Fn8468(m *base.Module, l0 int32) int32
+//go:linkname Fn8463 github.com/goccy/spidermonkeywasm2go/p6.Fn8463
+func Fn8463(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8469 github.com/goccy/spidermonkeywasm2go/p6.Fn8469
-func Fn8469(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8464 github.com/goccy/spidermonkeywasm2go/p6.Fn8464
+func Fn8464(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn8474 github.com/goccy/spidermonkeywasm2go/p1.Fn8474
-func Fn8474(m *base.Module, l0 int32) int32
+//go:linkname Fn8471 github.com/goccy/spidermonkeywasm2go/p6.Fn8471
+func Fn8471(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8488 github.com/goccy/spidermonkeywasm2go/p4.Fn8488
-func Fn8488(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8472 github.com/goccy/spidermonkeywasm2go/p6.Fn8472
+func Fn8472(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8491 github.com/goccy/spidermonkeywasm2go/p6.Fn8491
-func Fn8491(m *base.Module, l0 int32) int32
+//go:linkname Fn8477 github.com/goccy/spidermonkeywasm2go/p1.Fn8477
+func Fn8477(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8500 github.com/goccy/spidermonkeywasm2go/p4.Fn8500
-func Fn8500(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8491 github.com/goccy/spidermonkeywasm2go/p4.Fn8491
+func Fn8491(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8501 github.com/goccy/spidermonkeywasm2go/p6.Fn8501
-func Fn8501(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8494 github.com/goccy/spidermonkeywasm2go/p6.Fn8494
+func Fn8494(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8521 github.com/goccy/spidermonkeywasm2go/p6.Fn8521
-func Fn8521(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8503 github.com/goccy/spidermonkeywasm2go/p4.Fn8503
+func Fn8503(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8524 github.com/goccy/spidermonkeywasm2go/p7.Fn8524
-func Fn8524(m *base.Module, l0 int32)
+//go:linkname Fn8504 github.com/goccy/spidermonkeywasm2go/p6.Fn8504
+func Fn8504(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8528 github.com/goccy/spidermonkeywasm2go/p7.Fn8528
-func Fn8528(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8524 github.com/goccy/spidermonkeywasm2go/p6.Fn8524
+func Fn8524(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8529 github.com/goccy/spidermonkeywasm2go/p6.Fn8529
-func Fn8529(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8527 github.com/goccy/spidermonkeywasm2go/p7.Fn8527
+func Fn8527(m *base.Module, l0 int32)
 
-//go:linkname Fn8530 github.com/goccy/spidermonkeywasm2go/p6.Fn8530
-func Fn8530(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8532 github.com/goccy/spidermonkeywasm2go/p6.Fn8532
+func Fn8532(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8531 github.com/goccy/spidermonkeywasm2go/p3.Fn8531
-func Fn8531(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8533 github.com/goccy/spidermonkeywasm2go/p6.Fn8533
+func Fn8533(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8534 github.com/goccy/spidermonkeywasm2go/p7.Fn8534
-func Fn8534(m *base.Module, l0 int32) int32
+//go:linkname Fn8534 github.com/goccy/spidermonkeywasm2go/p3.Fn8534
+func Fn8534(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8546 github.com/goccy/spidermonkeywasm2go/p6.Fn8546
-func Fn8546(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8537 github.com/goccy/spidermonkeywasm2go/p7.Fn8537
+func Fn8537(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8547 github.com/goccy/spidermonkeywasm2go/p6.Fn8547
-func Fn8547(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn8548 github.com/goccy/spidermonkeywasm2go/p6.Fn8548
-func Fn8548(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn8553 github.com/goccy/spidermonkeywasm2go/p6.Fn8553
-func Fn8553(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-
-//go:linkname Fn8554 github.com/goccy/spidermonkeywasm2go/p7.Fn8554
-func Fn8554(m *base.Module, l0 int32) int32
-
-//go:linkname Fn8555 github.com/goccy/spidermonkeywasm2go/p6.Fn8555
-func Fn8555(m *base.Module, l0 int32, l1 int32, l2 int32)
-
-//go:linkname Fn8556 github.com/goccy/spidermonkeywasm2go/p7.Fn8556
+//go:linkname Fn8556 github.com/goccy/spidermonkeywasm2go/p6.Fn8556
 func Fn8556(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn8564 github.com/goccy/spidermonkeywasm2go/p7.Fn8564
-func Fn8564(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8557 github.com/goccy/spidermonkeywasm2go/p7.Fn8557
+func Fn8557(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8570 github.com/goccy/spidermonkeywasm2go/p4.Fn8570
-func Fn8570(m *base.Module, l0 int32) int32
+//go:linkname Fn8558 github.com/goccy/spidermonkeywasm2go/p6.Fn8558
+func Fn8558(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8574 github.com/goccy/spidermonkeywasm2go/p6.Fn8574
-func Fn8574(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8559 github.com/goccy/spidermonkeywasm2go/p7.Fn8559
+func Fn8559(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn8576 github.com/goccy/spidermonkeywasm2go/p6.Fn8576
-func Fn8576(m *base.Module, l0 int32) int32
+//go:linkname Fn8567 github.com/goccy/spidermonkeywasm2go/p7.Fn8567
+func Fn8567(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8579 github.com/goccy/spidermonkeywasm2go/p7.Fn8579
-func Fn8579(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8573 github.com/goccy/spidermonkeywasm2go/p4.Fn8573
+func Fn8573(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8585 github.com/goccy/spidermonkeywasm2go/p4.Fn8585
-func Fn8585(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8577 github.com/goccy/spidermonkeywasm2go/p6.Fn8577
+func Fn8577(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8625 github.com/goccy/spidermonkeywasm2go/p7.Fn8625
-func Fn8625(m *base.Module, l0 int32)
+//go:linkname Fn8582 github.com/goccy/spidermonkeywasm2go/p7.Fn8582
+func Fn8582(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8626 github.com/goccy/spidermonkeywasm2go/p7.Fn8626
-func Fn8626(m *base.Module, l0 int32)
+//go:linkname Fn8588 github.com/goccy/spidermonkeywasm2go/p4.Fn8588
+func Fn8588(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8630 github.com/goccy/spidermonkeywasm2go/p6.Fn8630
-func Fn8630(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8628 github.com/goccy/spidermonkeywasm2go/p7.Fn8628
+func Fn8628(m *base.Module, l0 int32)
 
-//go:linkname Fn8632 github.com/goccy/spidermonkeywasm2go/p6.Fn8632
-func Fn8632(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8629 github.com/goccy/spidermonkeywasm2go/p7.Fn8629
+func Fn8629(m *base.Module, l0 int32)
 
-//go:linkname Fn8633 github.com/goccy/spidermonkeywasm2go/p1.Fn8633
-func Fn8633(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8633 github.com/goccy/spidermonkeywasm2go/p6.Fn8633
+func Fn8633(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn8635 github.com/goccy/spidermonkeywasm2go/p6.Fn8635
 func Fn8635(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn8636 github.com/goccy/spidermonkeywasm2go/p1.Fn8636
-func Fn8636(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+func Fn8636(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8637 github.com/goccy/spidermonkeywasm2go/p6.Fn8637
-func Fn8637(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn8638 github.com/goccy/spidermonkeywasm2go/p1.Fn8638
+//go:linkname Fn8638 github.com/goccy/spidermonkeywasm2go/p6.Fn8638
 func Fn8638(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8642 github.com/goccy/spidermonkeywasm2go/p6.Fn8642
-func Fn8642(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn8639 github.com/goccy/spidermonkeywasm2go/p1.Fn8639
+func Fn8639(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn8643 github.com/goccy/spidermonkeywasm2go/p1.Fn8643
-func Fn8643(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8640 github.com/goccy/spidermonkeywasm2go/p6.Fn8640
+func Fn8640(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8645 github.com/goccy/spidermonkeywasm2go/p1.Fn8645
-func Fn8645(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8641 github.com/goccy/spidermonkeywasm2go/p1.Fn8641
+func Fn8641(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8682 github.com/goccy/spidermonkeywasm2go/p6.Fn8682
-func Fn8682(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8645 github.com/goccy/spidermonkeywasm2go/p6.Fn8645
+func Fn8645(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+
+//go:linkname Fn8646 github.com/goccy/spidermonkeywasm2go/p1.Fn8646
+func Fn8646(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+
+//go:linkname Fn8648 github.com/goccy/spidermonkeywasm2go/p1.Fn8648
+func Fn8648(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn8685 github.com/goccy/spidermonkeywasm2go/p6.Fn8685
-func Fn8685(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
+func Fn8685(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8690 github.com/goccy/spidermonkeywasm2go/p7.Fn8690
-func Fn8690(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
+//go:linkname Fn8688 github.com/goccy/spidermonkeywasm2go/p6.Fn8688
+func Fn8688(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
 
-//go:linkname Fn8691 github.com/goccy/spidermonkeywasm2go/p4.Fn8691
-func Fn8691(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn8693 github.com/goccy/spidermonkeywasm2go/p7.Fn8693
+func Fn8693(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
 
-//go:linkname Fn8705 github.com/goccy/spidermonkeywasm2go/p4.Fn8705
-func Fn8705(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8694 github.com/goccy/spidermonkeywasm2go/p4.Fn8694
+func Fn8694(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn8709 github.com/goccy/spidermonkeywasm2go/p3.Fn8709
-func Fn8709(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+//go:linkname Fn8708 github.com/goccy/spidermonkeywasm2go/p4.Fn8708
+func Fn8708(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8716 github.com/goccy/spidermonkeywasm2go/p6.Fn8716
-func Fn8716(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8726 github.com/goccy/spidermonkeywasm2go/p7.Fn8726
+func Fn8726(m *base.Module, l0 int32)
 
-//go:linkname Fn8723 github.com/goccy/spidermonkeywasm2go/p7.Fn8723
-func Fn8723(m *base.Module, l0 int32)
+//go:linkname Fn8729 github.com/goccy/spidermonkeywasm2go/p6.Fn8729
+func Fn8729(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8726 github.com/goccy/spidermonkeywasm2go/p6.Fn8726
-func Fn8726(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8731 github.com/goccy/spidermonkeywasm2go/p6.Fn8731
+func Fn8731(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn8728 github.com/goccy/spidermonkeywasm2go/p6.Fn8728
-func Fn8728(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn8737 github.com/goccy/spidermonkeywasm2go/p7.Fn8737
+func Fn8737(m *base.Module, l0 int32)
 
-//go:linkname Fn8734 github.com/goccy/spidermonkeywasm2go/p7.Fn8734
-func Fn8734(m *base.Module, l0 int32)
+//go:linkname Fn8738 github.com/goccy/spidermonkeywasm2go/p6.Fn8738
+func Fn8738(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn8735 github.com/goccy/spidermonkeywasm2go/p6.Fn8735
-func Fn8735(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn8745 github.com/goccy/spidermonkeywasm2go/p3.Fn8745
+func Fn8745(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn8742 github.com/goccy/spidermonkeywasm2go/p3.Fn8742
-func Fn8742(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn8753 github.com/goccy/spidermonkeywasm2go/p6.Fn8753
+func Fn8753(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8750 github.com/goccy/spidermonkeywasm2go/p6.Fn8750
-func Fn8750(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8754 github.com/goccy/spidermonkeywasm2go/p6.Fn8754
+func Fn8754(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8751 github.com/goccy/spidermonkeywasm2go/p6.Fn8751
-func Fn8751(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8755 github.com/goccy/spidermonkeywasm2go/p6.Fn8755
+func Fn8755(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8752 github.com/goccy/spidermonkeywasm2go/p6.Fn8752
-func Fn8752(m *base.Module, l0 int32) int32
+//go:linkname Fn8758 github.com/goccy/spidermonkeywasm2go/p7.Fn8758
+func Fn8758(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8755 github.com/goccy/spidermonkeywasm2go/p7.Fn8755
-func Fn8755(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8759 github.com/goccy/spidermonkeywasm2go/p3.Fn8759
+func Fn8759(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8756 github.com/goccy/spidermonkeywasm2go/p3.Fn8756
-func Fn8756(m *base.Module, l0 int32) int32
+//go:linkname Fn8764 github.com/goccy/spidermonkeywasm2go/p7.Fn8764
+func Fn8764(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8761 github.com/goccy/spidermonkeywasm2go/p7.Fn8761
-func Fn8761(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8766 github.com/goccy/spidermonkeywasm2go/p7.Fn8766
+func Fn8766(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn8763 github.com/goccy/spidermonkeywasm2go/p7.Fn8763
-func Fn8763(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn8774 github.com/goccy/spidermonkeywasm2go/p4.Fn8774
+func Fn8774(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn8771 github.com/goccy/spidermonkeywasm2go/p4.Fn8771
-func Fn8771(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn8776 github.com/goccy/spidermonkeywasm2go/p4.Fn8776
+func Fn8776(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn8773 github.com/goccy/spidermonkeywasm2go/p4.Fn8773
-func Fn8773(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn8777 github.com/goccy/spidermonkeywasm2go/p6.Fn8777
+func Fn8777(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32) int32
 
-//go:linkname Fn8774 github.com/goccy/spidermonkeywasm2go/p6.Fn8774
-func Fn8774(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32) int32
+//go:linkname Fn8798 github.com/goccy/spidermonkeywasm2go/p6.Fn8798
+func Fn8798(m *base.Module, l0 int32, l1 float64, l2 float64, l3 int32) int32
 
-//go:linkname Fn8793 github.com/goccy/spidermonkeywasm2go/p6.Fn8793
-func Fn8793(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8847 github.com/goccy/spidermonkeywasm2go/p6.Fn8847
+func Fn8847(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8795 github.com/goccy/spidermonkeywasm2go/p6.Fn8795
-func Fn8795(m *base.Module, l0 int32, l1 float64, l2 float64, l3 int32) int32
+//go:linkname Fn8859 github.com/goccy/spidermonkeywasm2go/p4.Fn8859
+func Fn8859(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn8844 github.com/goccy/spidermonkeywasm2go/p6.Fn8844
-func Fn8844(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8870 github.com/goccy/spidermonkeywasm2go/p6.Fn8870
+func Fn8870(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8856 github.com/goccy/spidermonkeywasm2go/p4.Fn8856
-func Fn8856(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8917 github.com/goccy/spidermonkeywasm2go/p6.Fn8917
+func Fn8917(m *base.Module, l0 int32) int32
 
-//go:linkname Fn8867 github.com/goccy/spidermonkeywasm2go/p6.Fn8867
-func Fn8867(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8924 github.com/goccy/spidermonkeywasm2go/p4.Fn8924
+func Fn8924(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn8914 github.com/goccy/spidermonkeywasm2go/p6.Fn8914
-func Fn8914(m *base.Module, l0 int32) int32
+//go:linkname Fn8930 github.com/goccy/spidermonkeywasm2go/p6.Fn8930
+func Fn8930(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int64
 
-//go:linkname Fn8921 github.com/goccy/spidermonkeywasm2go/p4.Fn8921
-func Fn8921(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn8931 github.com/goccy/spidermonkeywasm2go/p6.Fn8931
+func Fn8931(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32) int32
 
-//go:linkname Fn8922 github.com/goccy/spidermonkeywasm2go/p6.Fn8922
-func Fn8922(m *base.Module, l0 float64) float64
+//go:linkname Fn8932 github.com/goccy/spidermonkeywasm2go/p6.Fn8932
+func Fn8932(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8927 github.com/goccy/spidermonkeywasm2go/p6.Fn8927
-func Fn8927(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int64
+//go:linkname Fn8937 github.com/goccy/spidermonkeywasm2go/p7.Fn8937
+func Fn8937(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8928 github.com/goccy/spidermonkeywasm2go/p6.Fn8928
-func Fn8928(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32) int32
+//go:linkname Fn8938 github.com/goccy/spidermonkeywasm2go/p7.Fn8938
+func Fn8938(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn8929 github.com/goccy/spidermonkeywasm2go/p6.Fn8929
-func Fn8929(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn8941 github.com/goccy/spidermonkeywasm2go/p6.Fn8941
+func Fn8941(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn8934 github.com/goccy/spidermonkeywasm2go/p7.Fn8934
-func Fn8934(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn8935 github.com/goccy/spidermonkeywasm2go/p7.Fn8935
-func Fn8935(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn8938 github.com/goccy/spidermonkeywasm2go/p6.Fn8938
-func Fn8938(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn8952 github.com/goccy/spidermonkeywasm2go/p6.Fn8952
-func Fn8952(m *base.Module, l0 float64, l1 float64) float64
-
-//go:linkname Fn8953 github.com/goccy/spidermonkeywasm2go/p6.Fn8953
-func Fn8953(m *base.Module, l0 float64) float64
-
-//go:linkname Fn8954 github.com/goccy/spidermonkeywasm2go/p6.Fn8954
-func Fn8954(m *base.Module, l0 int32, l1 int32, l2 float64, l3 float64, l4 int32) float64
+//go:linkname Fn8955 github.com/goccy/spidermonkeywasm2go/p6.Fn8955
+func Fn8955(m *base.Module, l0 float64, l1 float64) float64
 
 //go:linkname Fn8957 github.com/goccy/spidermonkeywasm2go/p6.Fn8957
-func Fn8957(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn8957(m *base.Module, l0 int32, l1 int32, l2 float64, l3 float64, l4 int32) float64
 
-//go:linkname Fn8959 github.com/goccy/spidermonkeywasm2go/p7.Fn8959
-func Fn8959(m *base.Module, l0 int32)
+//go:linkname Fn8960 github.com/goccy/spidermonkeywasm2go/p6.Fn8960
+func Fn8960(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn8994 github.com/goccy/spidermonkeywasm2go/p7.Fn8994
-func Fn8994(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn8962 github.com/goccy/spidermonkeywasm2go/p7.Fn8962
+func Fn8962(m *base.Module, l0 int32)
 
-//go:linkname Fn8996 github.com/goccy/spidermonkeywasm2go/p3.Fn8996
-func Fn8996(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
+//go:linkname Fn8997 github.com/goccy/spidermonkeywasm2go/p7.Fn8997
+func Fn8997(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9068 github.com/goccy/spidermonkeywasm2go/p2.Fn9068
-func Fn9068(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn8999 github.com/goccy/spidermonkeywasm2go/p3.Fn8999
+func Fn8999(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
-//go:linkname Fn9077 github.com/goccy/spidermonkeywasm2go/p4.Fn9077
-func Fn9077(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn9071 github.com/goccy/spidermonkeywasm2go/p2.Fn9071
+func Fn9071(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn9080 github.com/goccy/spidermonkeywasm2go/p6.Fn9080
-func Fn9080(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn9080 github.com/goccy/spidermonkeywasm2go/p4.Fn9080
+func Fn9080(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn9100 github.com/goccy/spidermonkeywasm2go/p2.Fn9100
-func Fn9100(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn9103 github.com/goccy/spidermonkeywasm2go/p2.Fn9103
+func Fn9103(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn9102 github.com/goccy/spidermonkeywasm2go/p4.Fn9102
-func Fn9102(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn9105 github.com/goccy/spidermonkeywasm2go/p4.Fn9105
+func Fn9105(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9106 github.com/goccy/spidermonkeywasm2go/p4.Fn9106
-func Fn9106(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn9109 github.com/goccy/spidermonkeywasm2go/p4.Fn9109
+func Fn9109(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9125 github.com/goccy/spidermonkeywasm2go/p6.Fn9125
-func Fn9125(m *base.Module, l0 int32)
-
-//go:linkname Fn9130 github.com/goccy/spidermonkeywasm2go/p6.Fn9130
-func Fn9130(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn9132 github.com/goccy/spidermonkeywasm2go/p6.Fn9132
-func Fn9132(m *base.Module, l0 int32) int32
+//go:linkname Fn9128 github.com/goccy/spidermonkeywasm2go/p6.Fn9128
+func Fn9128(m *base.Module, l0 int32)
 
 //go:linkname Fn9133 github.com/goccy/spidermonkeywasm2go/p6.Fn9133
-func Fn9133(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn9134 github.com/goccy/spidermonkeywasm2go/p6.Fn9134
-func Fn9134(m *base.Module, l0 int32, l1 int32) int32
+func Fn9133(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn9135 github.com/goccy/spidermonkeywasm2go/p6.Fn9135
-func Fn9135(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn9135(m *base.Module, l0 int32) int32
 
-//go:linkname Fn9140 github.com/goccy/spidermonkeywasm2go/p6.Fn9140
-func Fn9140(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn9136 github.com/goccy/spidermonkeywasm2go/p6.Fn9136
+func Fn9136(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9153 github.com/goccy/spidermonkeywasm2go/p6.Fn9153
-func Fn9153(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn9137 github.com/goccy/spidermonkeywasm2go/p6.Fn9137
+func Fn9137(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9176 github.com/goccy/spidermonkeywasm2go/p7.Fn9176
-func Fn9176(m *base.Module, l0 int32, l1 int32) int64
+//go:linkname Fn9138 github.com/goccy/spidermonkeywasm2go/p6.Fn9138
+func Fn9138(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9177 github.com/goccy/spidermonkeywasm2go/p6.Fn9177
-func Fn9177(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+//go:linkname Fn9143 github.com/goccy/spidermonkeywasm2go/p6.Fn9143
+func Fn9143(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn9178 github.com/goccy/spidermonkeywasm2go/p6.Fn9178
-func Fn9178(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn9156 github.com/goccy/spidermonkeywasm2go/p6.Fn9156
+func Fn9156(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn9187 github.com/goccy/spidermonkeywasm2go/p6.Fn9187
-func Fn9187(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn9190 github.com/goccy/spidermonkeywasm2go/p6.Fn9190
+func Fn9190(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9238 github.com/goccy/spidermonkeywasm2go/p6.Fn9238
-func Fn9238(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn9241 github.com/goccy/spidermonkeywasm2go/p6.Fn9241
+func Fn9241(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9261 github.com/goccy/spidermonkeywasm2go/p6.Fn9261
-func Fn9261(m *base.Module, l0 int32)
+//go:linkname Fn9264 github.com/goccy/spidermonkeywasm2go/p6.Fn9264
+func Fn9264(m *base.Module, l0 int32)
 
-//go:linkname Fn9279 github.com/goccy/spidermonkeywasm2go/p6.Fn9279
-func Fn9279(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
+//go:linkname Fn9282 github.com/goccy/spidermonkeywasm2go/p6.Fn9282
+func Fn9282(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
 
-//go:linkname Fn9280 github.com/goccy/spidermonkeywasm2go/p6.Fn9280
-func Fn9280(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32)
+//go:linkname Fn9283 github.com/goccy/spidermonkeywasm2go/p6.Fn9283
+func Fn9283(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32)
 
-//go:linkname Fn9281 github.com/goccy/spidermonkeywasm2go/p6.Fn9281
-func Fn9281(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn9284 github.com/goccy/spidermonkeywasm2go/p6.Fn9284
+func Fn9284(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn9288 github.com/goccy/spidermonkeywasm2go/p4.Fn9288
-func Fn9288(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn9291 github.com/goccy/spidermonkeywasm2go/p4.Fn9291
+func Fn9291(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn9289 github.com/goccy/spidermonkeywasm2go/p6.Fn9289
-func Fn9289(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn9292 github.com/goccy/spidermonkeywasm2go/p6.Fn9292
+func Fn9292(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn9291 github.com/goccy/spidermonkeywasm2go/p6.Fn9291
-func Fn9291(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn9294 github.com/goccy/spidermonkeywasm2go/p6.Fn9294
+func Fn9294(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn9293 github.com/goccy/spidermonkeywasm2go/p6.Fn9293
-func Fn9293(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
-
-//go:linkname Fn9297 github.com/goccy/spidermonkeywasm2go/p6.Fn9297
-func Fn9297(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn9298 github.com/goccy/spidermonkeywasm2go/p6.Fn9298
-func Fn9298(m *base.Module, l0 int32, l1 int32, l2 int32)
-
-//go:linkname Fn9299 github.com/goccy/spidermonkeywasm2go/p7.Fn9299
-func Fn9299(m *base.Module, l0 int32) int32
+//go:linkname Fn9296 github.com/goccy/spidermonkeywasm2go/p6.Fn9296
+func Fn9296(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) int32
 
 //go:linkname Fn9300 github.com/goccy/spidermonkeywasm2go/p6.Fn9300
 func Fn9300(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9301 github.com/goccy/spidermonkeywasm2go/p7.Fn9301
-func Fn9301(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn9301 github.com/goccy/spidermonkeywasm2go/p6.Fn9301
+func Fn9301(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9304 github.com/goccy/spidermonkeywasm2go/p6.Fn9304
+//go:linkname Fn9302 github.com/goccy/spidermonkeywasm2go/p7.Fn9302
+func Fn9302(m *base.Module, l0 int32) int32
+
+//go:linkname Fn9303 github.com/goccy/spidermonkeywasm2go/p6.Fn9303
+func Fn9303(m *base.Module, l0 int32, l1 int32) int32
+
+//go:linkname Fn9304 github.com/goccy/spidermonkeywasm2go/p7.Fn9304
 func Fn9304(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9308 github.com/goccy/spidermonkeywasm2go/p6.Fn9308
-func Fn9308(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn9309 github.com/goccy/spidermonkeywasm2go/p6.Fn9309
-func Fn9309(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn9307 github.com/goccy/spidermonkeywasm2go/p6.Fn9307
+func Fn9307(m *base.Module, l0 int32, l1 int32) int32
 
 //go:linkname Fn9311 github.com/goccy/spidermonkeywasm2go/p6.Fn9311
-func Fn9311(m *base.Module, l0 int32, l1 int64)
+func Fn9311(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9313 github.com/goccy/spidermonkeywasm2go/p3.Fn9313
-func Fn9313(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn9312 github.com/goccy/spidermonkeywasm2go/p6.Fn9312
+func Fn9312(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn9314 github.com/goccy/spidermonkeywasm2go/p3.Fn9314
-func Fn9314(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn9314 github.com/goccy/spidermonkeywasm2go/p6.Fn9314
+func Fn9314(m *base.Module, l0 int32, l1 int64)
 
-//go:linkname Fn9315 github.com/goccy/spidermonkeywasm2go/p3.Fn9315
-func Fn9315(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn9316 github.com/goccy/spidermonkeywasm2go/p3.Fn9316
+func Fn9316(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9316 github.com/goccy/spidermonkeywasm2go/p6.Fn9316
-func Fn9316(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn9317 github.com/goccy/spidermonkeywasm2go/p3.Fn9317
+func Fn9317(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn9323 github.com/goccy/spidermonkeywasm2go/p6.Fn9323
-func Fn9323(m *base.Module, l0 int32, l1 float64)
+//go:linkname Fn9318 github.com/goccy/spidermonkeywasm2go/p3.Fn9318
+func Fn9318(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9325 github.com/goccy/spidermonkeywasm2go/p6.Fn9325
-func Fn9325(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn9319 github.com/goccy/spidermonkeywasm2go/p6.Fn9319
+func Fn9319(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn9326 github.com/goccy/spidermonkeywasm2go/p6.Fn9326
-func Fn9326(m *base.Module, l0 int32) int32
+func Fn9326(m *base.Module, l0 int32, l1 float64)
 
 //go:linkname Fn9328 github.com/goccy/spidermonkeywasm2go/p6.Fn9328
-func Fn9328(m *base.Module, l0 int32)
+func Fn9328(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn9336 github.com/goccy/spidermonkeywasm2go/p6.Fn9336
-func Fn9336(m *base.Module, l0 int32) int32
+//go:linkname Fn9329 github.com/goccy/spidermonkeywasm2go/p6.Fn9329
+func Fn9329(m *base.Module, l0 int32) int32
 
-//go:linkname Fn9337 github.com/goccy/spidermonkeywasm2go/p3.Fn9337
-func Fn9337(m *base.Module, l0 int32) int32
+//go:linkname Fn9331 github.com/goccy/spidermonkeywasm2go/p6.Fn9331
+func Fn9331(m *base.Module, l0 int32)
 
-//go:linkname Fn9341 github.com/goccy/spidermonkeywasm2go/p3.Fn9341
-func Fn9341(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn9339 github.com/goccy/spidermonkeywasm2go/p6.Fn9339
+func Fn9339(m *base.Module, l0 int32) int32
 
-//go:linkname Fn9342 github.com/goccy/spidermonkeywasm2go/p4.Fn9342
-func Fn9342(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn9340 github.com/goccy/spidermonkeywasm2go/p3.Fn9340
+func Fn9340(m *base.Module, l0 int32) int32
 
-//go:linkname Fn9347 github.com/goccy/spidermonkeywasm2go/p4.Fn9347
-func Fn9347(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn9344 github.com/goccy/spidermonkeywasm2go/p3.Fn9344
+func Fn9344(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9351 github.com/goccy/spidermonkeywasm2go/p6.Fn9351
-func Fn9351(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn9345 github.com/goccy/spidermonkeywasm2go/p4.Fn9345
+func Fn9345(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn9355 github.com/goccy/spidermonkeywasm2go/p3.Fn9355
-func Fn9355(m *base.Module, l0 int32)
+//go:linkname Fn9350 github.com/goccy/spidermonkeywasm2go/p4.Fn9350
+func Fn9350(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn9356 github.com/goccy/spidermonkeywasm2go/p4.Fn9356
-func Fn9356(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn9354 github.com/goccy/spidermonkeywasm2go/p6.Fn9354
+func Fn9354(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn9365 github.com/goccy/spidermonkeywasm2go/p6.Fn9365
-func Fn9365(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn9358 github.com/goccy/spidermonkeywasm2go/p3.Fn9358
+func Fn9358(m *base.Module, l0 int32)
 
-//go:linkname Fn9367 github.com/goccy/spidermonkeywasm2go/p7.Fn9367
-func Fn9367(m *base.Module, l0 int32, l1 int64, l2 int32)
+//go:linkname Fn9359 github.com/goccy/spidermonkeywasm2go/p4.Fn9359
+func Fn9359(m *base.Module, l0 int32, l1 int32)
 
 //go:linkname Fn9368 github.com/goccy/spidermonkeywasm2go/p6.Fn9368
 func Fn9368(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9381 github.com/goccy/spidermonkeywasm2go/p6.Fn9381
-func Fn9381(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn9370 github.com/goccy/spidermonkeywasm2go/p7.Fn9370
+func Fn9370(m *base.Module, l0 int32, l1 int64, l2 int32)
 
-//go:linkname Fn9402 github.com/goccy/spidermonkeywasm2go/p7.Fn9402
-func Fn9402(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn9371 github.com/goccy/spidermonkeywasm2go/p6.Fn9371
+func Fn9371(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9460 github.com/goccy/spidermonkeywasm2go/p7.Fn9460
-func Fn9460(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
+//go:linkname Fn9384 github.com/goccy/spidermonkeywasm2go/p6.Fn9384
+func Fn9384(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn9473 github.com/goccy/spidermonkeywasm2go/p3.Fn9473
-func Fn9473(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn9405 github.com/goccy/spidermonkeywasm2go/p7.Fn9405
+func Fn9405(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn9515 github.com/goccy/spidermonkeywasm2go/p6.Fn9515
-func Fn9515(m *base.Module, l0 int32) int32
+//go:linkname Fn9463 github.com/goccy/spidermonkeywasm2go/p7.Fn9463
+func Fn9463(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
 
-//go:linkname Fn9521 github.com/goccy/spidermonkeywasm2go/p6.Fn9521
-func Fn9521(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn9476 github.com/goccy/spidermonkeywasm2go/p3.Fn9476
+func Fn9476(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn9522 github.com/goccy/spidermonkeywasm2go/p6.Fn9522
-func Fn9522(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn9518 github.com/goccy/spidermonkeywasm2go/p6.Fn9518
+func Fn9518(m *base.Module, l0 int32) int32
 
-//go:linkname Fn9536 github.com/goccy/spidermonkeywasm2go/p6.Fn9536
-func Fn9536(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn9524 github.com/goccy/spidermonkeywasm2go/p6.Fn9524
+func Fn9524(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn9571 github.com/goccy/spidermonkeywasm2go/p7.Fn9571
-func Fn9571(m *base.Module, l0 int32) int32
+//go:linkname Fn9525 github.com/goccy/spidermonkeywasm2go/p6.Fn9525
+func Fn9525(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9609 github.com/goccy/spidermonkeywasm2go/p3.Fn9609
-func Fn9609(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn9539 github.com/goccy/spidermonkeywasm2go/p6.Fn9539
+func Fn9539(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn9644 github.com/goccy/spidermonkeywasm2go/p4.Fn9644
-func Fn9644(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn9574 github.com/goccy/spidermonkeywasm2go/p7.Fn9574
+func Fn9574(m *base.Module, l0 int32) int32
 
-//go:linkname Fn9690 github.com/goccy/spidermonkeywasm2go/p4.Fn9690
-func Fn9690(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn9612 github.com/goccy/spidermonkeywasm2go/p3.Fn9612
+func Fn9612(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn9691 github.com/goccy/spidermonkeywasm2go/p4.Fn9691
-func Fn9691(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn9647 github.com/goccy/spidermonkeywasm2go/p4.Fn9647
+func Fn9647(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn9692 github.com/goccy/spidermonkeywasm2go/p4.Fn9692
-func Fn9692(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn9693 github.com/goccy/spidermonkeywasm2go/p4.Fn9693
+func Fn9693(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9695 github.com/goccy/spidermonkeywasm2go/p6.Fn9695
-func Fn9695(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn9695 github.com/goccy/spidermonkeywasm2go/p4.Fn9695
+func Fn9695(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn9696 github.com/goccy/spidermonkeywasm2go/p6.Fn9696
-func Fn9696(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn9709 github.com/goccy/spidermonkeywasm2go/p2.Fn9709
+func Fn9709(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn9706 github.com/goccy/spidermonkeywasm2go/p2.Fn9706
-func Fn9706(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn9746 github.com/goccy/spidermonkeywasm2go/p6.Fn9746
+func Fn9746(m *base.Module) int32
 
-//go:linkname Fn9743 github.com/goccy/spidermonkeywasm2go/p6.Fn9743
-func Fn9743(m *base.Module) int32
+//go:linkname Fn9761 github.com/goccy/spidermonkeywasm2go/p6.Fn9761
+func Fn9761(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9758 github.com/goccy/spidermonkeywasm2go/p6.Fn9758
-func Fn9758(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn9774 github.com/goccy/spidermonkeywasm2go/p6.Fn9774
+func Fn9774(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9767 github.com/goccy/spidermonkeywasm2go/p6.Fn9767
-func Fn9767(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn9803 github.com/goccy/spidermonkeywasm2go/p6.Fn9803
+func Fn9803(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9771 github.com/goccy/spidermonkeywasm2go/p6.Fn9771
-func Fn9771(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn9854 github.com/goccy/spidermonkeywasm2go/p3.Fn9854
+func Fn9854(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn9800 github.com/goccy/spidermonkeywasm2go/p6.Fn9800
-func Fn9800(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn9855 github.com/goccy/spidermonkeywasm2go/p6.Fn9855
+func Fn9855(m *base.Module, l0 int32) int32
 
-//go:linkname Fn9851 github.com/goccy/spidermonkeywasm2go/p3.Fn9851
-func Fn9851(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn9856 github.com/goccy/spidermonkeywasm2go/p2.Fn9856
+func Fn9856(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn9852 github.com/goccy/spidermonkeywasm2go/p6.Fn9852
-func Fn9852(m *base.Module, l0 int32) int32
+//go:linkname Fn9869 github.com/goccy/spidermonkeywasm2go/p6.Fn9869
+func Fn9869(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn9853 github.com/goccy/spidermonkeywasm2go/p2.Fn9853
-func Fn9853(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn9947 github.com/goccy/spidermonkeywasm2go/p7.Fn9947
+func Fn9947(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn9866 github.com/goccy/spidermonkeywasm2go/p6.Fn9866
-func Fn9866(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn9961 github.com/goccy/spidermonkeywasm2go/p7.Fn9961
+func Fn9961(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9944 github.com/goccy/spidermonkeywasm2go/p7.Fn9944
-func Fn9944(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn9962 github.com/goccy/spidermonkeywasm2go/p7.Fn9962
+func Fn9962(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn9958 github.com/goccy/spidermonkeywasm2go/p7.Fn9958
-func Fn9958(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn9968 github.com/goccy/spidermonkeywasm2go/p6.Fn9968
+func Fn9968(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn9959 github.com/goccy/spidermonkeywasm2go/p7.Fn9959
-func Fn9959(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn9972 github.com/goccy/spidermonkeywasm2go/p2.Fn9972
+func Fn9972(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn9965 github.com/goccy/spidermonkeywasm2go/p6.Fn9965
-func Fn9965(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn9977 github.com/goccy/spidermonkeywasm2go/p4.Fn9977
+func Fn9977(m *base.Module, l0 int32)
 
-//go:linkname Fn9969 github.com/goccy/spidermonkeywasm2go/p2.Fn9969
-func Fn9969(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn10010 github.com/goccy/spidermonkeywasm2go/p6.Fn10010
+func Fn10010(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn9972 github.com/goccy/spidermonkeywasm2go/p6.Fn9972
-func Fn9972(m *base.Module, l0 int32)
+//go:linkname Fn10011 github.com/goccy/spidermonkeywasm2go/p6.Fn10011
+func Fn10011(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn9974 github.com/goccy/spidermonkeywasm2go/p4.Fn9974
-func Fn9974(m *base.Module, l0 int32)
+//go:linkname Fn10014 github.com/goccy/spidermonkeywasm2go/p4.Fn10014
+func Fn10014(m *base.Module, l0 int32, l1 int32, l2 int32, l3 float64, l4 int32, l5 int32, l6 int32)
 
-//go:linkname Fn10007 github.com/goccy/spidermonkeywasm2go/p6.Fn10007
-func Fn10007(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn10015 github.com/goccy/spidermonkeywasm2go/p3.Fn10015
+func Fn10015(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn10008 github.com/goccy/spidermonkeywasm2go/p6.Fn10008
-func Fn10008(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn10021 github.com/goccy/spidermonkeywasm2go/p6.Fn10021
+func Fn10021(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10009 github.com/goccy/spidermonkeywasm2go/p6.Fn10009
-func Fn10009(m *base.Module, l0 int32, l1 float64) int32
+//go:linkname Fn10024 github.com/goccy/spidermonkeywasm2go/p4.Fn10024
+func Fn10024(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn10011 github.com/goccy/spidermonkeywasm2go/p4.Fn10011
-func Fn10011(m *base.Module, l0 int32, l1 int32, l2 int32, l3 float64, l4 int32, l5 int32, l6 int32)
+//go:linkname Fn10037 github.com/goccy/spidermonkeywasm2go/p6.Fn10037
+func Fn10037(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn10012 github.com/goccy/spidermonkeywasm2go/p3.Fn10012
-func Fn10012(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn10038 github.com/goccy/spidermonkeywasm2go/p6.Fn10038
+func Fn10038(m *base.Module, l0 int32, l1 int32, l2 int32, l3 float64, l4 float64, l5 int32, l6 int32, l7 int32, l8 int32) int32
 
-//go:linkname Fn10018 github.com/goccy/spidermonkeywasm2go/p6.Fn10018
-func Fn10018(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10107 github.com/goccy/spidermonkeywasm2go/p6.Fn10107
+func Fn10107(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn10021 github.com/goccy/spidermonkeywasm2go/p4.Fn10021
-func Fn10021(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn10115 github.com/goccy/spidermonkeywasm2go/p6.Fn10115
+func Fn10115(m *base.Module, l0 int32) int32
 
-//go:linkname Fn10034 github.com/goccy/spidermonkeywasm2go/p6.Fn10034
-func Fn10034(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn10120 github.com/goccy/spidermonkeywasm2go/p1.Fn10120
+func Fn10120(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn10035 github.com/goccy/spidermonkeywasm2go/p6.Fn10035
-func Fn10035(m *base.Module, l0 int32, l1 int32, l2 int32, l3 float64, l4 float64, l5 int32, l6 int32, l7 int32, l8 int32) int32
+//go:linkname Fn10129 github.com/goccy/spidermonkeywasm2go/p4.Fn10129
+func Fn10129(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn10097 github.com/goccy/spidermonkeywasm2go/p6.Fn10097
-func Fn10097(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn10132 github.com/goccy/spidermonkeywasm2go/p3.Fn10132
+func Fn10132(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn10103 github.com/goccy/spidermonkeywasm2go/p6.Fn10103
-func Fn10103(m *base.Module, l0 int32) int32
+//go:linkname Fn10155 github.com/goccy/spidermonkeywasm2go/p6.Fn10155
+func Fn10155(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn10104 github.com/goccy/spidermonkeywasm2go/p6.Fn10104
-func Fn10104(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn10211 github.com/goccy/spidermonkeywasm2go/p3.Fn10211
+func Fn10211(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn10112 github.com/goccy/spidermonkeywasm2go/p6.Fn10112
-func Fn10112(m *base.Module, l0 int32) int32
+//go:linkname Fn10226 github.com/goccy/spidermonkeywasm2go/p6.Fn10226
+func Fn10226(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
 
-//go:linkname Fn10117 github.com/goccy/spidermonkeywasm2go/p1.Fn10117
-func Fn10117(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn10227 github.com/goccy/spidermonkeywasm2go/p6.Fn10227
+func Fn10227(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn10126 github.com/goccy/spidermonkeywasm2go/p4.Fn10126
-func Fn10126(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn10234 github.com/goccy/spidermonkeywasm2go/p4.Fn10234
+func Fn10234(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn10129 github.com/goccy/spidermonkeywasm2go/p3.Fn10129
-func Fn10129(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn10250 github.com/goccy/spidermonkeywasm2go/p6.Fn10250
+func Fn10250(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn10152 github.com/goccy/spidermonkeywasm2go/p6.Fn10152
-func Fn10152(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn10251 github.com/goccy/spidermonkeywasm2go/p6.Fn10251
+func Fn10251(m *base.Module, l0 int32)
 
-//go:linkname Fn10156 github.com/goccy/spidermonkeywasm2go/p7.Fn10156
-func Fn10156(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn10255 github.com/goccy/spidermonkeywasm2go/p6.Fn10255
+func Fn10255(m *base.Module, l0 int32) int32
 
-//go:linkname Fn10157 github.com/goccy/spidermonkeywasm2go/p7.Fn10157
-func Fn10157(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn10158 github.com/goccy/spidermonkeywasm2go/p7.Fn10158
-func Fn10158(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn10159 github.com/goccy/spidermonkeywasm2go/p4.Fn10159
-func Fn10159(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn10208 github.com/goccy/spidermonkeywasm2go/p3.Fn10208
-func Fn10208(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-
-//go:linkname Fn10223 github.com/goccy/spidermonkeywasm2go/p6.Fn10223
-func Fn10223(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
-
-//go:linkname Fn10224 github.com/goccy/spidermonkeywasm2go/p6.Fn10224
-func Fn10224(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn10231 github.com/goccy/spidermonkeywasm2go/p4.Fn10231
-func Fn10231(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
-
-//go:linkname Fn10247 github.com/goccy/spidermonkeywasm2go/p6.Fn10247
-func Fn10247(m *base.Module, l0 int32, l1 int32, l2 int32)
-
-//go:linkname Fn10248 github.com/goccy/spidermonkeywasm2go/p6.Fn10248
-func Fn10248(m *base.Module, l0 int32)
-
-//go:linkname Fn10252 github.com/goccy/spidermonkeywasm2go/p6.Fn10252
-func Fn10252(m *base.Module, l0 int32) int32
-
-//go:linkname Fn10254 github.com/goccy/spidermonkeywasm2go/p1.Fn10254
-func Fn10254(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
-
-//go:linkname Fn10259 github.com/goccy/spidermonkeywasm2go/p6.Fn10259
-func Fn10259(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn10257 github.com/goccy/spidermonkeywasm2go/p1.Fn10257
+func Fn10257(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn10262 github.com/goccy/spidermonkeywasm2go/p6.Fn10262
-func Fn10262(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+func Fn10262(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn10295 github.com/goccy/spidermonkeywasm2go/p6.Fn10295
-func Fn10295(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10265 github.com/goccy/spidermonkeywasm2go/p6.Fn10265
+func Fn10265(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn10315 github.com/goccy/spidermonkeywasm2go/p2.Fn10315
-func Fn10315(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn10298 github.com/goccy/spidermonkeywasm2go/p6.Fn10298
+func Fn10298(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10340 github.com/goccy/spidermonkeywasm2go/p1.Fn10340
-func Fn10340(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn10318 github.com/goccy/spidermonkeywasm2go/p2.Fn10318
+func Fn10318(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
 //go:linkname Fn10343 github.com/goccy/spidermonkeywasm2go/p1.Fn10343
-func Fn10343(m *base.Module, l0 int32, l1 int32)
+func Fn10343(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn10350 github.com/goccy/spidermonkeywasm2go/p6.Fn10350
-func Fn10350(m *base.Module, l0 int32) int32
+//go:linkname Fn10346 github.com/goccy/spidermonkeywasm2go/p1.Fn10346
+func Fn10346(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn10384 github.com/goccy/spidermonkeywasm2go/p6.Fn10384
-func Fn10384(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10353 github.com/goccy/spidermonkeywasm2go/p6.Fn10353
+func Fn10353(m *base.Module, l0 int32) int32
 
-//go:linkname Fn10415 github.com/goccy/spidermonkeywasm2go/p6.Fn10415
-func Fn10415(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn10387 github.com/goccy/spidermonkeywasm2go/p6.Fn10387
+func Fn10387(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10435 github.com/goccy/spidermonkeywasm2go/p2.Fn10435
-func Fn10435(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
+//go:linkname Fn10418 github.com/goccy/spidermonkeywasm2go/p6.Fn10418
+func Fn10418(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn10463 github.com/goccy/spidermonkeywasm2go/p2.Fn10463
-func Fn10463(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn10438 github.com/goccy/spidermonkeywasm2go/p2.Fn10438
+func Fn10438(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
 
-//go:linkname Fn10464 github.com/goccy/spidermonkeywasm2go/p6.Fn10464
-func Fn10464(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10466 github.com/goccy/spidermonkeywasm2go/p2.Fn10466
+func Fn10466(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn10472 github.com/goccy/spidermonkeywasm2go/p2.Fn10472
-func Fn10472(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
+//go:linkname Fn10467 github.com/goccy/spidermonkeywasm2go/p6.Fn10467
+func Fn10467(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10488 github.com/goccy/spidermonkeywasm2go/p6.Fn10488
-func Fn10488(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn10475 github.com/goccy/spidermonkeywasm2go/p2.Fn10475
+func Fn10475(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32)
 
-//go:linkname Fn10490 github.com/goccy/spidermonkeywasm2go/p3.Fn10490
-func Fn10490(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn10491 github.com/goccy/spidermonkeywasm2go/p6.Fn10491
+func Fn10491(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn10521 github.com/goccy/spidermonkeywasm2go/p6.Fn10521
-func Fn10521(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-
-//go:linkname Fn10559 github.com/goccy/spidermonkeywasm2go/p6.Fn10559
-func Fn10559(m *base.Module, l0 int32) int32
+//go:linkname Fn10524 github.com/goccy/spidermonkeywasm2go/p6.Fn10524
+func Fn10524(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
 //go:linkname Fn10562 github.com/goccy/spidermonkeywasm2go/p6.Fn10562
-func Fn10562(m *base.Module, l0 int32, l1 int32) int32
+func Fn10562(m *base.Module, l0 int32) int32
 
-//go:linkname Fn10563 github.com/goccy/spidermonkeywasm2go/p6.Fn10563
-func Fn10563(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10565 github.com/goccy/spidermonkeywasm2go/p6.Fn10565
+func Fn10565(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10564 github.com/goccy/spidermonkeywasm2go/p6.Fn10564
-func Fn10564(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn10566 github.com/goccy/spidermonkeywasm2go/p6.Fn10566
+func Fn10566(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10579 github.com/goccy/spidermonkeywasm2go/p3.Fn10579
-func Fn10579(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10567 github.com/goccy/spidermonkeywasm2go/p6.Fn10567
+func Fn10567(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn10585 github.com/goccy/spidermonkeywasm2go/p6.Fn10585
-func Fn10585(m *base.Module, l0 int32) int32
+//go:linkname Fn10582 github.com/goccy/spidermonkeywasm2go/p3.Fn10582
+func Fn10582(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10590 github.com/goccy/spidermonkeywasm2go/p4.Fn10590
-func Fn10590(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn10588 github.com/goccy/spidermonkeywasm2go/p6.Fn10588
+func Fn10588(m *base.Module, l0 int32) int32
 
-//go:linkname Fn10591 github.com/goccy/spidermonkeywasm2go/p4.Fn10591
-func Fn10591(m *base.Module, l0 int32, l1 int32)
-
-//go:linkname Fn10593 github.com/goccy/spidermonkeywasm2go/p6.Fn10593
+//go:linkname Fn10593 github.com/goccy/spidermonkeywasm2go/p4.Fn10593
 func Fn10593(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn10600 github.com/goccy/spidermonkeywasm2go/p6.Fn10600
-func Fn10600(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10594 github.com/goccy/spidermonkeywasm2go/p4.Fn10594
+func Fn10594(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn10610 github.com/goccy/spidermonkeywasm2go/p4.Fn10610
-func Fn10610(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn10596 github.com/goccy/spidermonkeywasm2go/p6.Fn10596
+func Fn10596(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn10629 github.com/goccy/spidermonkeywasm2go/p3.Fn10629
-func Fn10629(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn10603 github.com/goccy/spidermonkeywasm2go/p6.Fn10603
+func Fn10603(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10632 github.com/goccy/spidermonkeywasm2go/p4.Fn10632
-func Fn10632(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
+//go:linkname Fn10613 github.com/goccy/spidermonkeywasm2go/p4.Fn10613
+func Fn10613(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn10644 github.com/goccy/spidermonkeywasm2go/p4.Fn10644
-func Fn10644(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10632 github.com/goccy/spidermonkeywasm2go/p3.Fn10632
+func Fn10632(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn10645 github.com/goccy/spidermonkeywasm2go/p4.Fn10645
-func Fn10645(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn10635 github.com/goccy/spidermonkeywasm2go/p4.Fn10635
+func Fn10635(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) int32
 
-//go:linkname Fn10679 github.com/goccy/spidermonkeywasm2go/p6.Fn10679
-func Fn10679(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn10647 github.com/goccy/spidermonkeywasm2go/p4.Fn10647
+func Fn10647(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10683 github.com/goccy/spidermonkeywasm2go/p7.Fn10683
-func Fn10683(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+//go:linkname Fn10648 github.com/goccy/spidermonkeywasm2go/p4.Fn10648
+func Fn10648(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn10684 github.com/goccy/spidermonkeywasm2go/p4.Fn10684
-func Fn10684(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn10682 github.com/goccy/spidermonkeywasm2go/p6.Fn10682
+func Fn10682(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn10699 github.com/goccy/spidermonkeywasm2go/p6.Fn10699
-func Fn10699(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn10686 github.com/goccy/spidermonkeywasm2go/p7.Fn10686
+func Fn10686(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 
-//go:linkname Fn10774 github.com/goccy/spidermonkeywasm2go/p4.Fn10774
-func Fn10774(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10687 github.com/goccy/spidermonkeywasm2go/p4.Fn10687
+func Fn10687(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn10777 github.com/goccy/spidermonkeywasm2go/p6.Fn10777
+//go:linkname Fn10702 github.com/goccy/spidermonkeywasm2go/p6.Fn10702
+func Fn10702(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+
+//go:linkname Fn10777 github.com/goccy/spidermonkeywasm2go/p4.Fn10777
 func Fn10777(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10778 github.com/goccy/spidermonkeywasm2go/p4.Fn10778
-func Fn10778(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn10779 github.com/goccy/spidermonkeywasm2go/p4.Fn10779
-func Fn10779(m *base.Module, l0 int32, l1 int32) int32
-
-//go:linkname Fn10780 github.com/goccy/spidermonkeywasm2go/p4.Fn10780
+//go:linkname Fn10780 github.com/goccy/spidermonkeywasm2go/p6.Fn10780
 func Fn10780(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10790 github.com/goccy/spidermonkeywasm2go/p6.Fn10790
-func Fn10790(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32, l4 int32) int32
+//go:linkname Fn10781 github.com/goccy/spidermonkeywasm2go/p4.Fn10781
+func Fn10781(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10805 github.com/goccy/spidermonkeywasm2go/p7.Fn10805
-func Fn10805(m *base.Module, l0 int32) int32
+//go:linkname Fn10782 github.com/goccy/spidermonkeywasm2go/p4.Fn10782
+func Fn10782(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10825 github.com/goccy/spidermonkeywasm2go/p6.Fn10825
-func Fn10825(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn10783 github.com/goccy/spidermonkeywasm2go/p4.Fn10783
+func Fn10783(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10874 github.com/goccy/spidermonkeywasm2go/p6.Fn10874
-func Fn10874(m *base.Module, l0 int32) int32
+//go:linkname Fn10793 github.com/goccy/spidermonkeywasm2go/p6.Fn10793
+func Fn10793(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32, l4 int32) int32
 
-//go:linkname Fn10875 github.com/goccy/spidermonkeywasm2go/p4.Fn10875
-func Fn10875(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10808 github.com/goccy/spidermonkeywasm2go/p7.Fn10808
+func Fn10808(m *base.Module, l0 int32) int32
 
-//go:linkname Fn10882 github.com/goccy/spidermonkeywasm2go/p4.Fn10882
-func Fn10882(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10828 github.com/goccy/spidermonkeywasm2go/p6.Fn10828
+func Fn10828(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn10884 github.com/goccy/spidermonkeywasm2go/p7.Fn10884
-func Fn10884(m *base.Module, l0 int32) int32
+//go:linkname Fn10878 github.com/goccy/spidermonkeywasm2go/p4.Fn10878
+func Fn10878(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10889 github.com/goccy/spidermonkeywasm2go/p7.Fn10889
-func Fn10889(m *base.Module, l0 int32) int32
+//go:linkname Fn10885 github.com/goccy/spidermonkeywasm2go/p4.Fn10885
+func Fn10885(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10891 github.com/goccy/spidermonkeywasm2go/p6.Fn10891
-func Fn10891(m *base.Module, l0 int32) int32
+//go:linkname Fn10887 github.com/goccy/spidermonkeywasm2go/p7.Fn10887
+func Fn10887(m *base.Module, l0 int32) int32
 
-//go:linkname Fn10909 github.com/goccy/spidermonkeywasm2go/p3.Fn10909
-func Fn10909(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
+//go:linkname Fn10892 github.com/goccy/spidermonkeywasm2go/p7.Fn10892
+func Fn10892(m *base.Module, l0 int32) int32
 
-//go:linkname Fn10914 github.com/goccy/spidermonkeywasm2go/p6.Fn10914
-func Fn10914(m *base.Module, l0 float64, l1 float64, l2 int32) float64
+//go:linkname Fn10894 github.com/goccy/spidermonkeywasm2go/p6.Fn10894
+func Fn10894(m *base.Module, l0 int32) int32
 
-//go:linkname Fn10916 github.com/goccy/spidermonkeywasm2go/p6.Fn10916
-func Fn10916(m *base.Module, l0 int32)
+//go:linkname Fn10912 github.com/goccy/spidermonkeywasm2go/p3.Fn10912
+func Fn10912(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) int32
 
-//go:linkname Fn10924 github.com/goccy/spidermonkeywasm2go/p4.Fn10924
-func Fn10924(m *base.Module, l0 int32, l1 int32, l2 int32) int32
+//go:linkname Fn10919 github.com/goccy/spidermonkeywasm2go/p6.Fn10919
+func Fn10919(m *base.Module, l0 int32)
 
-//go:linkname Fn10928 github.com/goccy/spidermonkeywasm2go/p6.Fn10928
-func Fn10928(m *base.Module, l0 int32)
+//go:linkname Fn10941 github.com/goccy/spidermonkeywasm2go/p7.Fn10941
+func Fn10941(m *base.Module)
 
-//go:linkname Fn10938 github.com/goccy/spidermonkeywasm2go/p7.Fn10938
-func Fn10938(m *base.Module)
+//go:linkname Fn10942 github.com/goccy/spidermonkeywasm2go/p2.Fn10942
+func Fn10942(m *base.Module, l0 int32, l1 int32) int32
 
-//go:linkname Fn10939 github.com/goccy/spidermonkeywasm2go/p2.Fn10939
-func Fn10939(m *base.Module, l0 int32, l1 int32) int32
+//go:linkname Fn10943 github.com/goccy/spidermonkeywasm2go/p2.Fn10943
+func Fn10943(m *base.Module, l0 int32, l1 int32)
 
-//go:linkname Fn10940 github.com/goccy/spidermonkeywasm2go/p2.Fn10940
-func Fn10940(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn10944 github.com/goccy/spidermonkeywasm2go/p2.Fn10944
+func Fn10944(m *base.Module, l0 float64, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn10941 github.com/goccy/spidermonkeywasm2go/p2.Fn10941
-func Fn10941(m *base.Module, l0 float64, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+//go:linkname Fn10952 github.com/goccy/spidermonkeywasm2go/p6.Fn10952
+func Fn10952(m *base.Module, l0 int32, l1 int32, l2 int32)
 
-//go:linkname Fn10948 github.com/goccy/spidermonkeywasm2go/p6.Fn10948
-func Fn10948(m *base.Module, l0 int32, l1 int32)
+//go:linkname Fn10962 github.com/goccy/spidermonkeywasm2go/p2.Fn10962
+func Fn10962(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) float64
 
-//go:linkname Fn10949 github.com/goccy/spidermonkeywasm2go/p6.Fn10949
-func Fn10949(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn10968 github.com/goccy/spidermonkeywasm2go/p2.Fn10968
+func Fn10968(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) float64
 
-//go:linkname Fn10950 github.com/goccy/spidermonkeywasm2go/p6.Fn10950
-func Fn10950(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+//go:linkname Fn10972 github.com/goccy/spidermonkeywasm2go/p2.Fn10972
+func Fn10972(m *base.Module, l0 int32, l1 int32, l2 int32) int32
 
-//go:linkname Fn10951 github.com/goccy/spidermonkeywasm2go/p4.Fn10951
-func Fn10951(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-
-//go:linkname Fn10953 github.com/goccy/spidermonkeywasm2go/p3.Fn10953
-func Fn10953(m *base.Module, l0 float64, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) int32
-
-//go:linkname Fn10959 github.com/goccy/spidermonkeywasm2go/p2.Fn10959
-func Fn10959(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) float64
-
-//go:linkname Fn10965 github.com/goccy/spidermonkeywasm2go/p2.Fn10965
-func Fn10965(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) float64
-
-//go:linkname Fn10969 github.com/goccy/spidermonkeywasm2go/p2.Fn10969
-func Fn10969(m *base.Module, l0 int32, l1 int32, l2 int32) int32
-
-//go:linkname Fn10972 github.com/goccy/spidermonkeywasm2go/p6.Fn10972
-func Fn10972(m *base.Module, l0 int32, l1 int32, l2 int32)
+//go:linkname Fn10975 github.com/goccy/spidermonkeywasm2go/p6.Fn10975
+func Fn10975(m *base.Module, l0 int32, l1 int32, l2 int32)

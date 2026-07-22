@@ -6,6 +6,7 @@ package p3
 
 import (
 	"math"
+	"sync/atomic"
 	"unsafe"
 
 	base "github.com/goccy/spidermonkeywasm2go/base"
@@ -15,63 +16,61 @@ var _ = unsafe.Pointer(nil)
 
 var _ = base.Module{}
 
-func Fn10012(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn10017(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn10023(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn10025(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn10129(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn10130(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn10143(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn10173(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-func Fn10199(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn10204(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn10207(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn10208(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn10210(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn10240(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn10246(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn10253(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn10285(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn10302(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn10313(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn10355(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn10357(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn10015(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn10020(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn10026(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn10028(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn10132(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn10133(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn10146(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn10202(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn10207(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn10210(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn10211(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn10213(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn10243(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn10249(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn10256(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn10288(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn10305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn10316(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn10358(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn10360(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 func Fn1037(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn1039(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn10406(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn10409(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn1041(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn10419(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn10454(m *base.Module, l0 int32, l1 int32)
-func Fn10466(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn10457(m *base.Module, l0 int32, l1 int32)
+func Fn10469(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
 func Fn1048(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn10490(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn10519(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn10493(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn1052(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn10522(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 func Fn1053(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn10538(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
 func Fn1054(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn10548(m *base.Module, l0 int32, l1 int32, l2 int32, l3 float64, l4 int32)
+func Fn10541(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
 func Fn1055(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn10551(m *base.Module, l0 int32, l1 int32, l2 int32, l3 float64, l4 int32)
 func Fn1056(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn1057(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn10579(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn1058(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn10629(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn10646(m *base.Module, l0 int32, l1 int32, l2 int32, l3 float64, l4 int32)
-func Fn10651(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn10820(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn10821(m *base.Module, l0 int32, l1 int32, l2 float64, l3 int32, l4 int32)
-func Fn10834(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn10835(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn10909(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn10922(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn10931(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn10932(m *base.Module, l0 int32, l1 int32)
-func Fn10953(m *base.Module, l0 float64, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn10963(m *base.Module, l0 int32, l1 int32) (r0 float64)
-func Fn11159(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn11169(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn11197(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn10582(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn10632(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn10649(m *base.Module, l0 int32, l1 int32, l2 int32, l3 float64, l4 int32)
+func Fn10654(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn10823(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn10824(m *base.Module, l0 int32, l1 int32, l2 float64, l3 int32, l4 int32)
+func Fn10837(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn10838(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn10912(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn10925(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn10934(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn10935(m *base.Module, l0 int32, l1 int32)
+func Fn10956(m *base.Module, l0 float64, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn10966(m *base.Module, l0 int32, l1 int32) (r0 float64)
+func Fn11162(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn11172(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn11200(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
 func Fn115(m *base.Module, l0 int32) (r0 int32)
 func Fn1285(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn1316(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
@@ -83,416 +82,382 @@ func Fn1427(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn1450(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn1464(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn1496(m *base.Module, l0 int32, l1 int32)
-func Fn1521(m *base.Module, l0 int32)
-func Fn1526(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn1529(m *base.Module, l0 int32, l1 int32, l2 int32, l3 float64, l4 int32, l5 int32) (r0 int32)
-func Fn1592(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn1598(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn1522(m *base.Module, l0 int32)
+func Fn1527(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn1530(m *base.Module, l0 int32, l1 int32, l2 int32, l3 float64, l4 int32, l5 int32) (r0 int32)
+func Fn1593(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn1599(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn167(m *base.Module, l0 int32)
 func Fn168(m *base.Module, l0 int32, l1 int32)
 func Fn174(m *base.Module, l0 float64) (r0 float64)
 func Fn178(m *base.Module, l0 float64) (r0 float64)
-func Fn1787(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn1788(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn1788(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn1789(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
 func Fn182(m *base.Module, l0 float64, l1 int32) (r0 int32)
-func Fn1853(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn1854(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
 func Fn186(m *base.Module, l0 float64) (r0 float64)
-func Fn1878(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn1908(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn1879(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn1909(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn196(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn197(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn198(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn2007(m *base.Module, l0 int32) (r0 int32)
+func Fn2008(m *base.Module, l0 int32) (r0 int32)
 func Fn217(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn2274(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn2275(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn229(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn2292(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn2297(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn2293(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn2298(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn23(m *base.Module)
 func Fn232(m *base.Module, l0 int32, l1 int64)
-func Fn2320(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn2321(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn236(m *base.Module, l0 int32, l1 int64)
-func Fn2374(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn2499(m *base.Module, l0 int32, l1 int32)
+func Fn2375(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn2500(m *base.Module, l0 int32, l1 int32)
 func Fn257(m *base.Module, l0 int32) (r0 int32)
-func Fn2585(m *base.Module, l0 int32)
-func Fn2655(m *base.Module, l0 int32) (r0 int32)
-func Fn2658(m *base.Module, l0 int32) (r0 int32)
-func Fn2686(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn2586(m *base.Module, l0 int32)
+func Fn2656(m *base.Module, l0 int32) (r0 int32)
+func Fn2659(m *base.Module, l0 int32) (r0 int32)
+func Fn2687(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn274(m *base.Module, l0 int32) (r0 int32)
 func Fn276(m *base.Module, l0 int32) (r0 int32)
 func Fn282(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn2837(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn2846(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn2851(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn2852(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn2924(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn2838(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn2847(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn2852(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn2853(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn2925(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn297(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn3004(m *base.Module, l0 int32) (r0 int32)
+func Fn3005(m *base.Module, l0 int32) (r0 int32)
 func Fn308(m *base.Module, l0 int32, l1 int32)
-func Fn3107(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3108(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn312(m *base.Module, l0 int32, l1 int32)
 func Fn316(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 func Fn317(m *base.Module, l0 int32)
 func Fn319(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn321(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn3210(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn3501(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn3211(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn3502(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn351(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn3535(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3536(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn354(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 func Fn357(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
 func Fn360(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn3609(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3610(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn363(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn3653(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3654(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn366(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn3684(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3685(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn369(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn3698(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn3699(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn3716(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn3718(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3700(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3717(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
 func Fn3719(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 func Fn372(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn3722(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn3836(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn3857(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn3859(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn3861(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn3949(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn3952(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn3955(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn3957(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn3959(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn3961(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn4064(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn4065(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn4101(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn4104(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn4108(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn4118(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn4144(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn4172(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn4189(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn4195(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn4211(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn4240(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn4253(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn4351(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn4357(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn4412(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3720(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3723(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3727(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn3837(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn3858(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn3860(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn3950(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn3953(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn3956(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn3958(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn3960(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn3962(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn4066(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn4102(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn4105(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn4109(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn4119(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn4145(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn4173(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn4190(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn4196(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn4212(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn4241(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn4254(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn4352(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn4358(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn4413(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn4415(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn4419(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn4475(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn4489(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn4496(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn4551(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn4554(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn4560(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn4571(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn4574(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn4577(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn4582(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn4583(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-func Fn4587(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn4414(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn4416(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn4420(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn4476(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn4490(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn4497(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn4552(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn4555(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn4561(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn4572(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn4575(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn4578(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn4583(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn4584(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+func Fn4588(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 func Fn465(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn466(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn467(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn4671(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn4672(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn468(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn4686(m *base.Module, l0 int32, l1 int32)
+func Fn4687(m *base.Module, l0 int32, l1 int32)
 func Fn470(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
 func Fn471(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn4744(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn4746(m *base.Module, l0 int32) (r0 int32)
-func Fn4753(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn4755(m *base.Module, l0 int32) (r0 int32)
-func Fn4757(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn4758(m *base.Module, l0 int32) (r0 int32)
-func Fn4760(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn4761(m *base.Module, l0 int32) (r0 int32)
+func Fn4745(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn4747(m *base.Module, l0 int32) (r0 int32)
+func Fn4754(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn4756(m *base.Module, l0 int32) (r0 int32)
+func Fn4758(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn4759(m *base.Module, l0 int32) (r0 int32)
+func Fn4761(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn4762(m *base.Module, l0 int32) (r0 int32)
 func Fn483(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn485(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn486(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn487(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn489(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
 func Fn490(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn5150(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn5157(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn5217(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn5151(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn5158(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn5218(m *base.Module, l0 int32, l1 int32) (r0 int32)
 func Fn533(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) (r0 int32)
-func Fn5357(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn5358(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
 func Fn541(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) (r0 int32)
-func Fn5417(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn5597(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn5608(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn5618(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
-func Fn5620(m *base.Module, l0 int32, l1 int32, l2 int64)
-func Fn5747(m *base.Module, l0 int32, l1 int32)
-func Fn5748(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn5778(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn5820(m *base.Module, l0 int32)
-func Fn5869(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn5887(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn5893(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn5901(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn5924(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn5954(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn5955(m *base.Module, l0 int32) (r0 int32)
-func Fn5967(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn6059(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn6086(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn6103(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-func Fn6111(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn6188(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn6201(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn6205(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) (r0 int32)
-func Fn6234(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) (r0 int32)
-func Fn6239(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn6294(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn6304(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
-func Fn6305(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
-func Fn6308(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
-func Fn6312(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
+func Fn5418(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn5598(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn5609(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn5619(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
+func Fn5621(m *base.Module, l0 int32, l1 int32, l2 int64)
+func Fn5749(m *base.Module, l0 int32, l1 int32)
+func Fn5750(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn5780(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn5822(m *base.Module, l0 int32)
+func Fn5871(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn5889(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn5895(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn5903(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn5926(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn5956(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn5957(m *base.Module, l0 int32) (r0 int32)
+func Fn5969(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn6061(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn6088(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn6105(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+func Fn6113(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn6190(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn6203(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn6207(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) (r0 int32)
+func Fn6236(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) (r0 int32)
+func Fn6241(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn6296(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn6306(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
+func Fn6307(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
+func Fn6310(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
 func Fn6314(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
-func Fn6317(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
+func Fn6316(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
 func Fn6319(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
 func Fn6321(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
-func Fn6322(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
 func Fn6323(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
 func Fn6324(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
 func Fn6325(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
 func Fn6326(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
 func Fn6327(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
-func Fn6333(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
-func Fn6334(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
+func Fn6328(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
+func Fn6329(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
 func Fn6335(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
 func Fn6336(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
-func Fn6360(m *base.Module, l0 int32, l1 int32)
-func Fn6459(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn6337(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
+func Fn6338(m *base.Module, l0 int64, l1 int64, l2 int32, l3 int32) (r0 int64)
+func Fn6362(m *base.Module, l0 int32, l1 int32)
 func Fn6461(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn6746(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn6782(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn6807(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn6838(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn6897(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn6958(m *base.Module, l0 int32) (r0 int32)
-func Fn6959(m *base.Module, l0 int32) (r0 int32)
-func Fn7163(m *base.Module, l0 int32)
+func Fn6463(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn6748(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn6784(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn6840(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn6899(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn6918(m *base.Module, l0 int32) (r0 int32)
+func Fn6961(m *base.Module, l0 int32) (r0 int32)
+func Fn6962(m *base.Module, l0 int32) (r0 int32)
+func Fn7166(m *base.Module, l0 int32)
 func Fn717(m *base.Module, l0 float64, l1 int32) (r0 int32)
-func Fn7177(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn7241(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn7261(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn7332(m *base.Module, l0 int32)
-func Fn7431(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn7440(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn7450(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn7461(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn7479(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn7489(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn7494(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) (r0 int32)
-func Fn7501(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn7515(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn7527(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn7553(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn7555(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn7563(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn7623(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn7180(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn7244(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn7264(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn7335(m *base.Module, l0 int32)
+func Fn7434(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn7443(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn7453(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn7464(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn7482(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn7492(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn7497(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) (r0 int32)
+func Fn7504(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn7518(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn7556(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn7558(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn7566(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn7626(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
 func Fn763(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn7703(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn7706(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn7722(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn7736(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn7818(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn7876(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn7882(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn7887(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn7919(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn7998(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
-func Fn8021(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn8123(m *base.Module, l0 int32)
-func Fn8176(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn8196(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn8287(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) (r0 int32)
-func Fn8289(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) (r0 int32)
-func Fn8310(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn8331(m *base.Module) (r0 int32)
-func Fn8345(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn8352(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-func Fn8392(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-func Fn8480(m *base.Module, l0 int32, l1 int32)
-func Fn8531(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn7706(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn7709(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn7725(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn7739(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn7821(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn7879(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn7885(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn7890(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn7922(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn8001(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+func Fn8024(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn8126(m *base.Module, l0 int32)
+func Fn8179(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn8199(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn8290(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) (r0 int32)
+func Fn8292(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) (r0 int32)
+func Fn8313(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn8334(m *base.Module) (r0 int32)
+func Fn8348(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn8355(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn8395(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+func Fn8483(m *base.Module, l0 int32, l1 int32)
+func Fn8534(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn8578(m *base.Module, l0 int32, l1 int32, l2 int32)
 func Fn865(m *base.Module, l0 int32) (r0 int32)
-func Fn8689(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) (r0 int32)
-func Fn8709(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-func Fn8742(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn8756(m *base.Module, l0 int32) (r0 int32)
+func Fn8692(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) (r0 int32)
+func Fn8712(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+func Fn8745(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn8759(m *base.Module, l0 int32) (r0 int32)
 func Fn889(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn8992(m *base.Module, l0 int32) (r0 int32)
-func Fn8996(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) (r0 int32)
-func Fn8997(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) (r0 int32)
-func Fn8998(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
-func Fn9009(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn9065(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn9066(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn9079(m *base.Module, l0 int32) (r0 int32)
-func Fn9083(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn9085(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn9097(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn9104(m *base.Module, l0 int32) (r0 int32)
-func Fn9107(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn9274(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn9313(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn9314(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn9315(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn9335(m *base.Module, l0 int32, l1 int32)
-func Fn9337(m *base.Module, l0 int32) (r0 int32)
-func Fn9341(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn9355(m *base.Module, l0 int32)
-func Fn9404(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
-func Fn9406(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+func Fn8995(m *base.Module, l0 int32) (r0 int32)
+func Fn8999(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32) (r0 int32)
+func Fn9000(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32) (r0 int32)
+func Fn9001(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32)
+func Fn9012(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn9068(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn9069(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn9072(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn9082(m *base.Module, l0 int32) (r0 int32)
+func Fn9086(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn9088(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn9100(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn9107(m *base.Module, l0 int32) (r0 int32)
+func Fn9110(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn9277(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn9316(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn9317(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn9318(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn9338(m *base.Module, l0 int32, l1 int32)
+func Fn9340(m *base.Module, l0 int32) (r0 int32)
+func Fn9344(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn9358(m *base.Module, l0 int32)
+func Fn9407(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32) (r0 int32)
+func Fn9409(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 func Fn942(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn9429(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
-func Fn9445(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn9465(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn9473(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn9474(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn9488(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn9579(m *base.Module, l0 int32, l1 int32) (r0 int32)
-func Fn9608(m *base.Module, l0 int32, l1 int32)
-func Fn9609(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
-func Fn9648(m *base.Module, l0 int32, l1 int32, l2 int32)
-func Fn9707(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
-func Fn9732(m *base.Module, l0 int32, l1 int32)
-func Fn9836(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn9851(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
-func Fn9945(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn9432(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32)
+func Fn9448(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn9468(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn9476(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn9477(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn9491(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn9582(m *base.Module, l0 int32, l1 int32) (r0 int32)
+func Fn9611(m *base.Module, l0 int32, l1 int32)
+func Fn9612(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+func Fn9651(m *base.Module, l0 int32, l1 int32, l2 int32)
+func Fn9710(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
+func Fn9735(m *base.Module, l0 int32, l1 int32)
+func Fn9839(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn9854(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+func Fn9948(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
 
-//go:linkname gcasmLNgcasmFwdFn10026 github.com/goccy/spidermonkeywasm2go/p6.Fn10026
-func gcasmLNgcasmFwdFn10026(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10002 github.com/goccy/spidermonkeywasm2go/p2.Fn10002
+func gcasmLNgcasmFwdFn10002(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn10026(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn10026(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn10002(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn10002(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10029 github.com/goccy/spidermonkeywasm2go/p5.Fn10029
+//go:linkname gcasmLNgcasmFwdFn10029 github.com/goccy/spidermonkeywasm2go/p6.Fn10029
 func gcasmLNgcasmFwdFn10029(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
 func gcasmFwdFn10029(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
 	return gcasmLNgcasmFwdFn10029(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1009 github.com/goccy/spidermonkeywasm2go/p7.Fn1009
-func gcasmLNgcasmFwdFn1009(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn10032 github.com/goccy/spidermonkeywasm2go/p5.Fn10032
+func gcasmLNgcasmFwdFn10032(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn1009(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn1009(a0, a1, a2, a3)
+func gcasmFwdFn10032(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn10032(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10093 github.com/goccy/spidermonkeywasm2go/p2.Fn10093
-func gcasmLNgcasmFwdFn10093(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10096 github.com/goccy/spidermonkeywasm2go/p2.Fn10096
+func gcasmLNgcasmFwdFn10096(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
 
-func gcasmFwdFn10093(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn10093(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn10096(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn10096(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10109 github.com/goccy/spidermonkeywasm2go/p5.Fn10109
-func gcasmLNgcasmFwdFn10109(a0 *base.Module, a1 int32, a2 int32) int64
+//go:linkname gcasmLNgcasmFwdFn10112 github.com/goccy/spidermonkeywasm2go/p5.Fn10112
+func gcasmLNgcasmFwdFn10112(a0 *base.Module, a1 int32, a2 int32) int64
 
-func gcasmFwdFn10109(a0 *base.Module, a1 int32, a2 int32) int64 {
-	return gcasmLNgcasmFwdFn10109(a0, a1, a2)
+func gcasmFwdFn10112(a0 *base.Module, a1 int32, a2 int32) int64 {
+	return gcasmLNgcasmFwdFn10112(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10112 github.com/goccy/spidermonkeywasm2go/p6.Fn10112
-func gcasmLNgcasmFwdFn10112(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10115 github.com/goccy/spidermonkeywasm2go/p6.Fn10115
+func gcasmLNgcasmFwdFn10115(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn10112(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn10112(a0, a1)
+func gcasmFwdFn10115(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn10115(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10119 github.com/goccy/spidermonkeywasm2go/p6.Fn10119
-func gcasmLNgcasmFwdFn10119(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10122 github.com/goccy/spidermonkeywasm2go/p6.Fn10122
+func gcasmLNgcasmFwdFn10122(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn10119(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10119(a0, a1, a2, a3)
+func gcasmFwdFn10122(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn10122(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10120 github.com/goccy/spidermonkeywasm2go/p7.Fn10120
-func gcasmLNgcasmFwdFn10120(a0 *base.Module, a1 int32, a2 int64) int32
+//go:linkname gcasmLNgcasmFwdFn10139 github.com/goccy/spidermonkeywasm2go/p5.Fn10139
+func gcasmLNgcasmFwdFn10139(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn10120(a0 *base.Module, a1 int32, a2 int64) int32 {
-	return gcasmLNgcasmFwdFn10120(a0, a1, a2)
+func gcasmFwdFn10139(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn10139(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10128 github.com/goccy/spidermonkeywasm2go/p7.Fn10128
-func gcasmLNgcasmFwdFn10128(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10143 github.com/goccy/spidermonkeywasm2go/p6.Fn10143
+func gcasmLNgcasmFwdFn10143(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn10128(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn10128(a0, a1, a2)
+func gcasmFwdFn10143(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn10143(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10131 github.com/goccy/spidermonkeywasm2go/p5.Fn10131
-func gcasmLNgcasmFwdFn10131(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10148 github.com/goccy/spidermonkeywasm2go/p6.Fn10148
+func gcasmLNgcasmFwdFn10148(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn10131(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn10131(a0, a1)
+func gcasmFwdFn10148(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn10148(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10136 github.com/goccy/spidermonkeywasm2go/p5.Fn10136
-func gcasmLNgcasmFwdFn10136(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10152 github.com/goccy/spidermonkeywasm2go/p6.Fn10152
+func gcasmLNgcasmFwdFn10152(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn10136(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn10136(a0, a1)
+func gcasmFwdFn10152(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn10152(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10140 github.com/goccy/spidermonkeywasm2go/p6.Fn10140
-func gcasmLNgcasmFwdFn10140(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn10158 github.com/goccy/spidermonkeywasm2go/p5.Fn10158
+func gcasmLNgcasmFwdFn10158(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn10140(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn10140(a0, a1)
+func gcasmFwdFn10158(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn10158(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10144 github.com/goccy/spidermonkeywasm2go/p7.Fn10144
-func gcasmLNgcasmFwdFn10144(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10165 github.com/goccy/spidermonkeywasm2go/p2.Fn10165
+func gcasmLNgcasmFwdFn10165(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
 
-func gcasmFwdFn10144(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn10144(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10145 github.com/goccy/spidermonkeywasm2go/p6.Fn10145
-func gcasmLNgcasmFwdFn10145(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn10145(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn10145(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10149 github.com/goccy/spidermonkeywasm2go/p6.Fn10149
-func gcasmLNgcasmFwdFn10149(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn10149(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn10149(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10155 github.com/goccy/spidermonkeywasm2go/p5.Fn10155
-func gcasmLNgcasmFwdFn10155(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
-
-func gcasmFwdFn10155(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn10155(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10159 github.com/goccy/spidermonkeywasm2go/p4.Fn10159
-func gcasmLNgcasmFwdFn10159(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn10159(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10159(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10162 github.com/goccy/spidermonkeywasm2go/p2.Fn10162
-func gcasmLNgcasmFwdFn10162(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
-
-func gcasmFwdFn10162(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn10162(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn10165(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn10165(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn102 github.com/goccy/spidermonkeywasm2go/p7.Fn102
@@ -502,109 +467,74 @@ func gcasmFwdFn102(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn102(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10200 github.com/goccy/spidermonkeywasm2go/p5.Fn10200
-func gcasmLNgcasmFwdFn10200(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10203 github.com/goccy/spidermonkeywasm2go/p5.Fn10203
+func gcasmLNgcasmFwdFn10203(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn10200(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn10200(a0, a1, a2, a3, a4)
+func gcasmFwdFn10203(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn10203(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10206 github.com/goccy/spidermonkeywasm2go/p7.Fn10206
-func gcasmLNgcasmFwdFn10206(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10209 github.com/goccy/spidermonkeywasm2go/p7.Fn10209
+func gcasmLNgcasmFwdFn10209(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn10206(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn10206(a0, a1, a2, a3, a4)
+func gcasmFwdFn10209(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn10209(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10209 github.com/goccy/spidermonkeywasm2go/p6.Fn10209
-func gcasmLNgcasmFwdFn10209(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10212 github.com/goccy/spidermonkeywasm2go/p6.Fn10212
+func gcasmLNgcasmFwdFn10212(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32
 
-func gcasmFwdFn10209(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10209(a0, a1, a2, a3)
+func gcasmFwdFn10212(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn10212(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10211 github.com/goccy/spidermonkeywasm2go/p5.Fn10211
-func gcasmLNgcasmFwdFn10211(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10214 github.com/goccy/spidermonkeywasm2go/p5.Fn10214
+func gcasmLNgcasmFwdFn10214(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn10211(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn10211(a0, a1, a2, a3, a4)
+func gcasmFwdFn10214(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn10214(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10212 github.com/goccy/spidermonkeywasm2go/p5.Fn10212
-func gcasmLNgcasmFwdFn10212(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10215 github.com/goccy/spidermonkeywasm2go/p5.Fn10215
+func gcasmLNgcasmFwdFn10215(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn10212(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn10212(a0, a1, a2, a3, a4)
+func gcasmFwdFn10215(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn10215(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10219 github.com/goccy/spidermonkeywasm2go/p5.Fn10219
-func gcasmLNgcasmFwdFn10219(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10227 github.com/goccy/spidermonkeywasm2go/p6.Fn10227
+func gcasmLNgcasmFwdFn10227(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn10219(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn10219(a0, a1, a2, a3, a4)
+func gcasmFwdFn10227(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn10227(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10224 github.com/goccy/spidermonkeywasm2go/p6.Fn10224
-func gcasmLNgcasmFwdFn10224(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10228 github.com/goccy/spidermonkeywasm2go/p7.Fn10228
+func gcasmLNgcasmFwdFn10228(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn10224(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10224(a0, a1, a2, a3)
+func gcasmFwdFn10228(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn10228(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10225 github.com/goccy/spidermonkeywasm2go/p7.Fn10225
-func gcasmLNgcasmFwdFn10225(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn10229 github.com/goccy/spidermonkeywasm2go/p4.Fn10229
+func gcasmLNgcasmFwdFn10229(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn10225(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn10225(a0, a1, a2, a3, a4)
+func gcasmFwdFn10229(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn10229(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10226 github.com/goccy/spidermonkeywasm2go/p4.Fn10226
-func gcasmLNgcasmFwdFn10226(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn10252 github.com/goccy/spidermonkeywasm2go/p5.Fn10252
+func gcasmLNgcasmFwdFn10252(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn10226(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn10226(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn10252(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn10252(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10238 github.com/goccy/spidermonkeywasm2go/p2.Fn10238
-func gcasmLNgcasmFwdFn10238(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10272 github.com/goccy/spidermonkeywasm2go/p7.Fn10272
+func gcasmLNgcasmFwdFn10272(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn10238(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10238(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10239 github.com/goccy/spidermonkeywasm2go/p6.Fn10239
-func gcasmLNgcasmFwdFn10239(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn10239(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn10239(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10244 github.com/goccy/spidermonkeywasm2go/p6.Fn10244
-func gcasmLNgcasmFwdFn10244(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn10244(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn10244(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10249 github.com/goccy/spidermonkeywasm2go/p5.Fn10249
-func gcasmLNgcasmFwdFn10249(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn10249(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn10249(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10269 github.com/goccy/spidermonkeywasm2go/p7.Fn10269
-func gcasmLNgcasmFwdFn10269(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn10269(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10269(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10274 github.com/goccy/spidermonkeywasm2go/p7.Fn10274
-func gcasmLNgcasmFwdFn10274(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn10274(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn10274(a0, a1, a2)
+func gcasmFwdFn10272(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn10272(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn10277 github.com/goccy/spidermonkeywasm2go/p7.Fn10277
@@ -615,17 +545,24 @@ func gcasmFwdFn10277(a0 *base.Module, a1 int32, a2 int32) int32 {
 }
 
 //go:linkname gcasmLNgcasmFwdFn10280 github.com/goccy/spidermonkeywasm2go/p7.Fn10280
-func gcasmLNgcasmFwdFn10280(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn10280(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn10280(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10280(a0, a1, a2, a3)
+func gcasmFwdFn10280(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn10280(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10282 github.com/goccy/spidermonkeywasm2go/p7.Fn10282
-func gcasmLNgcasmFwdFn10282(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10283 github.com/goccy/spidermonkeywasm2go/p7.Fn10283
+func gcasmLNgcasmFwdFn10283(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn10282(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10282(a0, a1, a2, a3)
+func gcasmFwdFn10283(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn10283(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn10285 github.com/goccy/spidermonkeywasm2go/p7.Fn10285
+func gcasmLNgcasmFwdFn10285(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn10285(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn10285(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn103 github.com/goccy/spidermonkeywasm2go/p7.Fn103
@@ -635,39 +572,39 @@ func gcasmFwdFn103(a0 *base.Module, a1 int64) {
 	gcasmLNgcasmFwdFn103(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10340 github.com/goccy/spidermonkeywasm2go/p1.Fn10340
-func gcasmLNgcasmFwdFn10340(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn10343 github.com/goccy/spidermonkeywasm2go/p1.Fn10343
+func gcasmLNgcasmFwdFn10343(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn10340(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn10340(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn10343(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn10343(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10342 github.com/goccy/spidermonkeywasm2go/p5.Fn10342
-func gcasmLNgcasmFwdFn10342(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10345 github.com/goccy/spidermonkeywasm2go/p5.Fn10345
+func gcasmLNgcasmFwdFn10345(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn10342(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn10342(a0, a1, a2)
+func gcasmFwdFn10345(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn10345(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10350 github.com/goccy/spidermonkeywasm2go/p6.Fn10350
-func gcasmLNgcasmFwdFn10350(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10353 github.com/goccy/spidermonkeywasm2go/p6.Fn10353
+func gcasmLNgcasmFwdFn10353(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn10350(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn10350(a0, a1)
+func gcasmFwdFn10353(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn10353(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10356 github.com/goccy/spidermonkeywasm2go/p5.Fn10356
-func gcasmLNgcasmFwdFn10356(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10359 github.com/goccy/spidermonkeywasm2go/p5.Fn10359
+func gcasmLNgcasmFwdFn10359(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn10356(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn10356(a0, a1, a2, a3, a4)
+func gcasmFwdFn10359(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn10359(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10401 github.com/goccy/spidermonkeywasm2go/p6.Fn10401
-func gcasmLNgcasmFwdFn10401(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10404 github.com/goccy/spidermonkeywasm2go/p6.Fn10404
+func gcasmLNgcasmFwdFn10404(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn10401(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10401(a0, a1, a2, a3)
+func gcasmFwdFn10404(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn10404(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1042 github.com/goccy/spidermonkeywasm2go/p6.Fn1042
@@ -677,11 +614,11 @@ func gcasmFwdFn1042(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64, a5 
 	return gcasmLNgcasmFwdFn1042(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10420 github.com/goccy/spidermonkeywasm2go/p4.Fn10420
-func gcasmLNgcasmFwdFn10420(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10423 github.com/goccy/spidermonkeywasm2go/p4.Fn10423
+func gcasmLNgcasmFwdFn10423(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn10420(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn10420(a0, a1, a2)
+func gcasmFwdFn10423(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn10423(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1043 github.com/goccy/spidermonkeywasm2go/p5.Fn1043
@@ -691,18 +628,18 @@ func gcasmFwdFn1043(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn1043(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10431 github.com/goccy/spidermonkeywasm2go/p4.Fn10431
-func gcasmLNgcasmFwdFn10431(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10434 github.com/goccy/spidermonkeywasm2go/p4.Fn10434
+func gcasmLNgcasmFwdFn10434(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn10431(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn10431(a0, a1, a2, a3, a4)
+func gcasmFwdFn10434(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn10434(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10440 github.com/goccy/spidermonkeywasm2go/p7.Fn10440
-func gcasmLNgcasmFwdFn10440(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn10443 github.com/goccy/spidermonkeywasm2go/p7.Fn10443
+func gcasmLNgcasmFwdFn10443(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn10440(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn10440(a0, a1)
+func gcasmFwdFn10443(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn10443(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1045 github.com/goccy/spidermonkeywasm2go/p6.Fn1045
@@ -712,18 +649,18 @@ func gcasmFwdFn1045(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn1045(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10462 github.com/goccy/spidermonkeywasm2go/p5.Fn10462
-func gcasmLNgcasmFwdFn10462(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn10465 github.com/goccy/spidermonkeywasm2go/p5.Fn10465
+func gcasmLNgcasmFwdFn10465(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn10462(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn10462(a0, a1, a2, a3)
+func gcasmFwdFn10465(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn10465(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10471 github.com/goccy/spidermonkeywasm2go/p5.Fn10471
-func gcasmLNgcasmFwdFn10471(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10474 github.com/goccy/spidermonkeywasm2go/p5.Fn10474
+func gcasmLNgcasmFwdFn10474(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn10471(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn10471(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn10474(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn10474(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1049 github.com/goccy/spidermonkeywasm2go/p6.Fn1049
@@ -740,179 +677,165 @@ func gcasmFwdFn1050(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int
 	return gcasmLNgcasmFwdFn1050(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10503 github.com/goccy/spidermonkeywasm2go/p6.Fn10503
-func gcasmLNgcasmFwdFn10503(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10523 github.com/goccy/spidermonkeywasm2go/p4.Fn10523
+func gcasmLNgcasmFwdFn10523(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn10503(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn10503(a0, a1, a2)
+func gcasmFwdFn10523(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn10523(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10520 github.com/goccy/spidermonkeywasm2go/p4.Fn10520
-func gcasmLNgcasmFwdFn10520(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10524 github.com/goccy/spidermonkeywasm2go/p6.Fn10524
+func gcasmLNgcasmFwdFn10524(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn10520(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn10520(a0, a1, a2)
+func gcasmFwdFn10524(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn10524(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10521 github.com/goccy/spidermonkeywasm2go/p6.Fn10521
-func gcasmLNgcasmFwdFn10521(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn10581 github.com/goccy/spidermonkeywasm2go/p7.Fn10581
+func gcasmLNgcasmFwdFn10581(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn10521(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn10521(a0, a1, a2, a3, a4)
+func gcasmFwdFn10581(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn10581(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10560 github.com/goccy/spidermonkeywasm2go/p5.Fn10560
-func gcasmLNgcasmFwdFn10560(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10586 github.com/goccy/spidermonkeywasm2go/p5.Fn10586
+func gcasmLNgcasmFwdFn10586(a0 *base.Module) int32
 
-func gcasmFwdFn10560(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn10560(a0, a1)
+func gcasmFwdFn10586(a0 *base.Module) int32 {
+	return gcasmLNgcasmFwdFn10586(a0)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10578 github.com/goccy/spidermonkeywasm2go/p7.Fn10578
-func gcasmLNgcasmFwdFn10578(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10587 github.com/goccy/spidermonkeywasm2go/p7.Fn10587
+func gcasmLNgcasmFwdFn10587(a0 *base.Module) int32
 
-func gcasmFwdFn10578(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn10578(a0, a1)
+func gcasmFwdFn10587(a0 *base.Module) int32 {
+	return gcasmLNgcasmFwdFn10587(a0)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10583 github.com/goccy/spidermonkeywasm2go/p5.Fn10583
-func gcasmLNgcasmFwdFn10583(a0 *base.Module) int32
+//go:linkname gcasmLNgcasmFwdFn10588 github.com/goccy/spidermonkeywasm2go/p6.Fn10588
+func gcasmLNgcasmFwdFn10588(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn10583(a0 *base.Module) int32 {
-	return gcasmLNgcasmFwdFn10583(a0)
+func gcasmFwdFn10588(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn10588(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10584 github.com/goccy/spidermonkeywasm2go/p7.Fn10584
-func gcasmLNgcasmFwdFn10584(a0 *base.Module) int32
-
-func gcasmFwdFn10584(a0 *base.Module) int32 {
-	return gcasmLNgcasmFwdFn10584(a0)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10585 github.com/goccy/spidermonkeywasm2go/p6.Fn10585
-func gcasmLNgcasmFwdFn10585(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn10585(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn10585(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10590 github.com/goccy/spidermonkeywasm2go/p4.Fn10590
-func gcasmLNgcasmFwdFn10590(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn10590(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10590(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10593 github.com/goccy/spidermonkeywasm2go/p6.Fn10593
+//go:linkname gcasmLNgcasmFwdFn10593 github.com/goccy/spidermonkeywasm2go/p4.Fn10593
 func gcasmLNgcasmFwdFn10593(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
 func gcasmFwdFn10593(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn10593(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10633 github.com/goccy/spidermonkeywasm2go/p6.Fn10633
-func gcasmLNgcasmFwdFn10633(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10596 github.com/goccy/spidermonkeywasm2go/p6.Fn10596
+func gcasmLNgcasmFwdFn10596(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn10633(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn10633(a0, a1, a2, a3, a4)
+func gcasmFwdFn10596(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn10596(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10640 github.com/goccy/spidermonkeywasm2go/p7.Fn10640
-func gcasmLNgcasmFwdFn10640(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn10636 github.com/goccy/spidermonkeywasm2go/p6.Fn10636
+func gcasmLNgcasmFwdFn10636(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn10640(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn10640(a0, a1)
+func gcasmFwdFn10636(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn10636(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10641 github.com/goccy/spidermonkeywasm2go/p5.Fn10641
-func gcasmLNgcasmFwdFn10641(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn10643 github.com/goccy/spidermonkeywasm2go/p7.Fn10643
+func gcasmLNgcasmFwdFn10643(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn10641(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn10641(a0, a1, a2)
+func gcasmFwdFn10643(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn10643(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10645 github.com/goccy/spidermonkeywasm2go/p4.Fn10645
-func gcasmLNgcasmFwdFn10645(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10644 github.com/goccy/spidermonkeywasm2go/p5.Fn10644
+func gcasmLNgcasmFwdFn10644(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn10645(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn10645(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn10644(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn10644(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10647 github.com/goccy/spidermonkeywasm2go/p7.Fn10647
-func gcasmLNgcasmFwdFn10647(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn10648 github.com/goccy/spidermonkeywasm2go/p4.Fn10648
+func gcasmLNgcasmFwdFn10648(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn10647(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn10647(a0, a1, a2, a3)
+func gcasmFwdFn10648(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn10648(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10657 github.com/goccy/spidermonkeywasm2go/p5.Fn10657
-func gcasmLNgcasmFwdFn10657(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10650 github.com/goccy/spidermonkeywasm2go/p7.Fn10650
+func gcasmLNgcasmFwdFn10650(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn10657(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10657(a0, a1, a2, a3)
+func gcasmFwdFn10650(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn10650(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10758 github.com/goccy/spidermonkeywasm2go/p6.Fn10758
-func gcasmLNgcasmFwdFn10758(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn10660 github.com/goccy/spidermonkeywasm2go/p5.Fn10660
+func gcasmLNgcasmFwdFn10660(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn10758(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn10758(a0, a1, a2, a3, a4)
+func gcasmFwdFn10660(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn10660(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10777 github.com/goccy/spidermonkeywasm2go/p6.Fn10777
-func gcasmLNgcasmFwdFn10777(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10761 github.com/goccy/spidermonkeywasm2go/p6.Fn10761
+func gcasmLNgcasmFwdFn10761(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn10777(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn10777(a0, a1, a2)
+func gcasmFwdFn10761(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn10761(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10789 github.com/goccy/spidermonkeywasm2go/p4.Fn10789
-func gcasmLNgcasmFwdFn10789(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10780 github.com/goccy/spidermonkeywasm2go/p6.Fn10780
+func gcasmLNgcasmFwdFn10780(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn10789(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
-	return gcasmLNgcasmFwdFn10789(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+func gcasmFwdFn10780(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn10780(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10793 github.com/goccy/spidermonkeywasm2go/p5.Fn10793
-func gcasmLNgcasmFwdFn10793(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10792 github.com/goccy/spidermonkeywasm2go/p4.Fn10792
+func gcasmLNgcasmFwdFn10792(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
 
-func gcasmFwdFn10793(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn10793(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn10792(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
+	return gcasmLNgcasmFwdFn10792(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10824 github.com/goccy/spidermonkeywasm2go/p5.Fn10824
-func gcasmLNgcasmFwdFn10824(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10796 github.com/goccy/spidermonkeywasm2go/p5.Fn10796
+func gcasmLNgcasmFwdFn10796(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn10824(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn10824(a0, a1, a2, a3, a4)
+func gcasmFwdFn10796(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn10796(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10826 github.com/goccy/spidermonkeywasm2go/p6.Fn10826
-func gcasmLNgcasmFwdFn10826(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn10827 github.com/goccy/spidermonkeywasm2go/p5.Fn10827
+func gcasmLNgcasmFwdFn10827(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn10826(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn10826(a0, a1, a2, a3, a4)
+func gcasmFwdFn10827(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn10827(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10827 github.com/goccy/spidermonkeywasm2go/p4.Fn10827
-func gcasmLNgcasmFwdFn10827(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn10829 github.com/goccy/spidermonkeywasm2go/p6.Fn10829
+func gcasmLNgcasmFwdFn10829(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn10827(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn10827(a0, a1, a2, a3, a4)
+func gcasmFwdFn10829(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn10829(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10830 github.com/goccy/spidermonkeywasm2go/p6.Fn10830
-func gcasmLNgcasmFwdFn10830(a0 *base.Module, a1 int32, a2 float64) float64
+//go:linkname gcasmLNgcasmFwdFn10830 github.com/goccy/spidermonkeywasm2go/p4.Fn10830
+func gcasmLNgcasmFwdFn10830(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn10830(a0 *base.Module, a1 int32, a2 float64) float64 {
-	return gcasmLNgcasmFwdFn10830(a0, a1, a2)
+func gcasmFwdFn10830(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn10830(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10831 github.com/goccy/spidermonkeywasm2go/p6.Fn10831
-func gcasmLNgcasmFwdFn10831(a0 *base.Module, a1 int32, a2 float64) float64
+//go:linkname gcasmLNgcasmFwdFn10833 github.com/goccy/spidermonkeywasm2go/p6.Fn10833
+func gcasmLNgcasmFwdFn10833(a0 *base.Module, a1 int32, a2 float64) float64
 
-func gcasmFwdFn10831(a0 *base.Module, a1 int32, a2 float64) float64 {
-	return gcasmLNgcasmFwdFn10831(a0, a1, a2)
+func gcasmFwdFn10833(a0 *base.Module, a1 int32, a2 float64) float64 {
+	return gcasmLNgcasmFwdFn10833(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn10834 github.com/goccy/spidermonkeywasm2go/p6.Fn10834
+func gcasmLNgcasmFwdFn10834(a0 *base.Module, a1 int32, a2 float64) float64
+
+func gcasmFwdFn10834(a0 *base.Module, a1 int32, a2 float64) float64 {
+	return gcasmLNgcasmFwdFn10834(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1088 github.com/goccy/spidermonkeywasm2go/p0.Fn1088
@@ -922,18 +845,18 @@ func gcasmFwdFn1088(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 
 	return gcasmLNgcasmFwdFn1088(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10882 github.com/goccy/spidermonkeywasm2go/p4.Fn10882
-func gcasmLNgcasmFwdFn10882(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10885 github.com/goccy/spidermonkeywasm2go/p4.Fn10885
+func gcasmLNgcasmFwdFn10885(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn10882(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn10882(a0, a1, a2)
+func gcasmFwdFn10885(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn10885(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10884 github.com/goccy/spidermonkeywasm2go/p7.Fn10884
-func gcasmLNgcasmFwdFn10884(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10887 github.com/goccy/spidermonkeywasm2go/p7.Fn10887
+func gcasmLNgcasmFwdFn10887(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn10884(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn10884(a0, a1)
+func gcasmFwdFn10887(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn10887(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1090 github.com/goccy/spidermonkeywasm2go/p7.Fn1090
@@ -943,13 +866,6 @@ func gcasmFwdFn1090(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn1090(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10917 github.com/goccy/spidermonkeywasm2go/p5.Fn10917
-func gcasmLNgcasmFwdFn10917(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn10917(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn10917(a0, a1)
-}
-
 //go:linkname gcasmLNgcasmFwdFn1092 github.com/goccy/spidermonkeywasm2go/p0.Fn1092
 func gcasmLNgcasmFwdFn1092(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
@@ -957,46 +873,11 @@ func gcasmFwdFn1092(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int
 	return gcasmLNgcasmFwdFn1092(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10921 github.com/goccy/spidermonkeywasm2go/p6.Fn10921
-func gcasmLNgcasmFwdFn10921(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn10920 github.com/goccy/spidermonkeywasm2go/p5.Fn10920
+func gcasmLNgcasmFwdFn10920(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn10921(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn10921(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10928 github.com/goccy/spidermonkeywasm2go/p6.Fn10928
-func gcasmLNgcasmFwdFn10928(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn10928(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn10928(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10929 github.com/goccy/spidermonkeywasm2go/p6.Fn10929
-func gcasmLNgcasmFwdFn10929(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn10929(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn10929(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10933 github.com/goccy/spidermonkeywasm2go/p5.Fn10933
-func gcasmLNgcasmFwdFn10933(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn10933(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn10933(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10934 github.com/goccy/spidermonkeywasm2go/p4.Fn10934
-func gcasmLNgcasmFwdFn10934(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn10934(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn10934(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10938 github.com/goccy/spidermonkeywasm2go/p7.Fn10938
-func gcasmLNgcasmFwdFn10938(a0 *base.Module)
-
-func gcasmFwdFn10938(a0 *base.Module) {
-	gcasmLNgcasmFwdFn10938(a0)
+func gcasmFwdFn10920(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn10920(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1094 github.com/goccy/spidermonkeywasm2go/p0.Fn1094
@@ -1006,32 +887,25 @@ func gcasmFwdFn1094(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 
 	return gcasmLNgcasmFwdFn1094(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10940 github.com/goccy/spidermonkeywasm2go/p2.Fn10940
-func gcasmLNgcasmFwdFn10940(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn10941 github.com/goccy/spidermonkeywasm2go/p7.Fn10941
+func gcasmLNgcasmFwdFn10941(a0 *base.Module)
 
-func gcasmFwdFn10940(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn10940(a0, a1, a2)
+func gcasmFwdFn10941(a0 *base.Module) {
+	gcasmLNgcasmFwdFn10941(a0)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10941 github.com/goccy/spidermonkeywasm2go/p2.Fn10941
-func gcasmLNgcasmFwdFn10941(a0 *base.Module, a1 float64, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn10943 github.com/goccy/spidermonkeywasm2go/p2.Fn10943
+func gcasmLNgcasmFwdFn10943(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn10941(a0 *base.Module, a1 float64, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn10941(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn10943(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn10943(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10946 github.com/goccy/spidermonkeywasm2go/p4.Fn10946
-func gcasmLNgcasmFwdFn10946(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn10944 github.com/goccy/spidermonkeywasm2go/p2.Fn10944
+func gcasmLNgcasmFwdFn10944(a0 *base.Module, a1 float64, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn10946(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn10946(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn10947 github.com/goccy/spidermonkeywasm2go/p5.Fn10947
-func gcasmLNgcasmFwdFn10947(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn10947(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn10947(a0, a1, a2)
+func gcasmFwdFn10944(a0 *base.Module, a1 float64, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn10944(a0, a1, a2, a3, a4, a5, a6)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1095 github.com/goccy/spidermonkeywasm2go/p0.Fn1095
@@ -1048,13 +922,6 @@ func gcasmFwdFn1096(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn1096(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10969 github.com/goccy/spidermonkeywasm2go/p2.Fn10969
-func gcasmLNgcasmFwdFn10969(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn10969(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn10969(a0, a1, a2, a3)
-}
-
 //go:linkname gcasmLNgcasmFwdFn1097 github.com/goccy/spidermonkeywasm2go/p0.Fn1097
 func gcasmLNgcasmFwdFn1097(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
@@ -1062,25 +929,32 @@ func gcasmFwdFn1097(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int
 	return gcasmLNgcasmFwdFn1097(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10973 github.com/goccy/spidermonkeywasm2go/p7.Fn10973
-func gcasmLNgcasmFwdFn10973(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn10972 github.com/goccy/spidermonkeywasm2go/p2.Fn10972
+func gcasmLNgcasmFwdFn10972(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn10973(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn10973(a0, a1)
+func gcasmFwdFn10972(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn10972(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10974 github.com/goccy/spidermonkeywasm2go/p7.Fn10974
-func gcasmLNgcasmFwdFn10974(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn10976 github.com/goccy/spidermonkeywasm2go/p7.Fn10976
+func gcasmLNgcasmFwdFn10976(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn10974(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn10974(a0, a1)
+func gcasmFwdFn10976(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn10976(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn10975 github.com/goccy/spidermonkeywasm2go/p7.Fn10975
-func gcasmLNgcasmFwdFn10975(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn10977 github.com/goccy/spidermonkeywasm2go/p7.Fn10977
+func gcasmLNgcasmFwdFn10977(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn10975(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn10975(a0, a1)
+func gcasmFwdFn10977(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn10977(a0, a1)
+}
+
+//go:linkname gcasmLNgcasmFwdFn10978 github.com/goccy/spidermonkeywasm2go/p7.Fn10978
+func gcasmLNgcasmFwdFn10978(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn10978(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn10978(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1099 github.com/goccy/spidermonkeywasm2go/p0.Fn1099
@@ -1307,32 +1181,11 @@ func gcasmFwdFn1289(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn1289(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1290 github.com/goccy/spidermonkeywasm2go/p6.Fn1290
-func gcasmLNgcasmFwdFn1290(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn1290(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1290(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1305 github.com/goccy/spidermonkeywasm2go/p6.Fn1305
-func gcasmLNgcasmFwdFn1305(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn1305(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn1305(a0, a1, a2, a3)
-}
-
 //go:linkname gcasmLNgcasmFwdFn1306 github.com/goccy/spidermonkeywasm2go/p0.Fn1306
 func gcasmLNgcasmFwdFn1306(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
 func gcasmFwdFn1306(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn1306(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1320 github.com/goccy/spidermonkeywasm2go/p5.Fn1320
-func gcasmLNgcasmFwdFn1320(a0 *base.Module, a1 int64, a2 int64, a3 int64) int32
-
-func gcasmFwdFn1320(a0 *base.Module, a1 int64, a2 int64, a3 int64) int32 {
-	return gcasmLNgcasmFwdFn1320(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1322 github.com/goccy/spidermonkeywasm2go/p6.Fn1322
@@ -1552,53 +1405,11 @@ func gcasmFwdFn1482(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn1482(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1483 github.com/goccy/spidermonkeywasm2go/p7.Fn1483
-func gcasmLNgcasmFwdFn1483(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn1483(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn1483(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1484 github.com/goccy/spidermonkeywasm2go/p7.Fn1484
-func gcasmLNgcasmFwdFn1484(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn1484(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn1484(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1486 github.com/goccy/spidermonkeywasm2go/p7.Fn1486
-func gcasmLNgcasmFwdFn1486(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn1486(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1486(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1487 github.com/goccy/spidermonkeywasm2go/p7.Fn1487
-func gcasmLNgcasmFwdFn1487(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn1487(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn1487(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1494 github.com/goccy/spidermonkeywasm2go/p7.Fn1494
-func gcasmLNgcasmFwdFn1494(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn1494(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn1494(a0, a1)
-}
-
 //go:linkname gcasmLNgcasmFwdFn1495 github.com/goccy/spidermonkeywasm2go/p7.Fn1495
 func gcasmLNgcasmFwdFn1495(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
 func gcasmFwdFn1495(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn1495(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1499 github.com/goccy/spidermonkeywasm2go/p6.Fn1499
-func gcasmLNgcasmFwdFn1499(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn1499(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1499(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1501 github.com/goccy/spidermonkeywasm2go/p6.Fn1501
@@ -1636,98 +1447,70 @@ func gcasmFwdFn1510(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn1510(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1512 github.com/goccy/spidermonkeywasm2go/p7.Fn1512
-func gcasmLNgcasmFwdFn1512(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn1518 github.com/goccy/spidermonkeywasm2go/p7.Fn1518
+func gcasmLNgcasmFwdFn1518(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn1512(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn1512(a0, a1)
+func gcasmFwdFn1518(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn1518(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1516 github.com/goccy/spidermonkeywasm2go/p7.Fn1516
-func gcasmLNgcasmFwdFn1516(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn1519 github.com/goccy/spidermonkeywasm2go/p5.Fn1519
+func gcasmLNgcasmFwdFn1519(a0 *base.Module, a1 float64, a2 float64, a3 float64) float64
 
-func gcasmFwdFn1516(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn1516(a0, a1)
+func gcasmFwdFn1519(a0 *base.Module, a1 float64, a2 float64, a3 float64) float64 {
+	return gcasmLNgcasmFwdFn1519(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1517 github.com/goccy/spidermonkeywasm2go/p7.Fn1517
-func gcasmLNgcasmFwdFn1517(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1525 github.com/goccy/spidermonkeywasm2go/p6.Fn1525
+func gcasmLNgcasmFwdFn1525(a0 *base.Module, a1 int32, a2 float64) float64
 
-func gcasmFwdFn1517(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn1517(a0, a1)
+func gcasmFwdFn1525(a0 *base.Module, a1 int32, a2 float64) float64 {
+	return gcasmLNgcasmFwdFn1525(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1518 github.com/goccy/spidermonkeywasm2go/p5.Fn1518
-func gcasmLNgcasmFwdFn1518(a0 *base.Module, a1 float64, a2 float64, a3 float64) float64
+//go:linkname gcasmLNgcasmFwdFn1531 github.com/goccy/spidermonkeywasm2go/p6.Fn1531
+func gcasmLNgcasmFwdFn1531(a0 *base.Module, a1 int32, a2 int32, a3 float64) int32
 
-func gcasmFwdFn1518(a0 *base.Module, a1 float64, a2 float64, a3 float64) float64 {
-	return gcasmLNgcasmFwdFn1518(a0, a1, a2, a3)
+func gcasmFwdFn1531(a0 *base.Module, a1 int32, a2 int32, a3 float64) int32 {
+	return gcasmLNgcasmFwdFn1531(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1524 github.com/goccy/spidermonkeywasm2go/p6.Fn1524
-func gcasmLNgcasmFwdFn1524(a0 *base.Module, a1 int32, a2 float64) float64
+//go:linkname gcasmLNgcasmFwdFn1532 github.com/goccy/spidermonkeywasm2go/p1.Fn1532
+func gcasmLNgcasmFwdFn1532(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn1524(a0 *base.Module, a1 int32, a2 float64) float64 {
-	return gcasmLNgcasmFwdFn1524(a0, a1, a2)
+func gcasmFwdFn1532(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn1532(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1530 github.com/goccy/spidermonkeywasm2go/p6.Fn1530
-func gcasmLNgcasmFwdFn1530(a0 *base.Module, a1 int32, a2 int32, a3 float64) int32
-
-func gcasmFwdFn1530(a0 *base.Module, a1 int32, a2 int32, a3 float64) int32 {
-	return gcasmLNgcasmFwdFn1530(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1531 github.com/goccy/spidermonkeywasm2go/p1.Fn1531
-func gcasmLNgcasmFwdFn1531(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn1531(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn1531(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1532 github.com/goccy/spidermonkeywasm2go/p7.Fn1532
-func gcasmLNgcasmFwdFn1532(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn1532(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1532(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1533 github.com/goccy/spidermonkeywasm2go/p6.Fn1533
+//go:linkname gcasmLNgcasmFwdFn1533 github.com/goccy/spidermonkeywasm2go/p7.Fn1533
 func gcasmLNgcasmFwdFn1533(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn1533(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn1533(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1590 github.com/goccy/spidermonkeywasm2go/p4.Fn1590
-func gcasmLNgcasmFwdFn1590(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1591 github.com/goccy/spidermonkeywasm2go/p4.Fn1591
+func gcasmLNgcasmFwdFn1591(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1590(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1590(a0, a1, a2, a3)
+func gcasmFwdFn1591(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1591(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1603 github.com/goccy/spidermonkeywasm2go/p6.Fn1603
-func gcasmLNgcasmFwdFn1603(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1604 github.com/goccy/spidermonkeywasm2go/p6.Fn1604
+func gcasmLNgcasmFwdFn1604(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1603(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1603(a0, a1, a2, a3)
+func gcasmFwdFn1604(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1604(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1605 github.com/goccy/spidermonkeywasm2go/p7.Fn1605
-func gcasmLNgcasmFwdFn1605(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1606 github.com/goccy/spidermonkeywasm2go/p7.Fn1606
+func gcasmLNgcasmFwdFn1606(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1605(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1605(a0, a1, a2, a3)
+func gcasmFwdFn1606(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1606(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1627 github.com/goccy/spidermonkeywasm2go/p4.Fn1627
-func gcasmLNgcasmFwdFn1627(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn1627(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1627(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1628 github.com/goccy/spidermonkeywasm2go/p0.Fn1628
+//go:linkname gcasmLNgcasmFwdFn1628 github.com/goccy/spidermonkeywasm2go/p4.Fn1628
 func gcasmLNgcasmFwdFn1628(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
 func gcasmFwdFn1628(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
@@ -1735,52 +1518,59 @@ func gcasmFwdFn1628(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 }
 
 //go:linkname gcasmLNgcasmFwdFn1629 github.com/goccy/spidermonkeywasm2go/p0.Fn1629
-func gcasmLNgcasmFwdFn1629(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn1629(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1629(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1629(a0, a1, a2)
+func gcasmFwdFn1629(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1629(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1630 github.com/goccy/spidermonkeywasm2go/p6.Fn1630
-func gcasmLNgcasmFwdFn1630(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn1630 github.com/goccy/spidermonkeywasm2go/p0.Fn1630
+func gcasmLNgcasmFwdFn1630(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn1630(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn1630(a0, a1, a2)
+func gcasmFwdFn1630(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn1630(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1631 github.com/goccy/spidermonkeywasm2go/p6.Fn1631
-func gcasmLNgcasmFwdFn1631(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn1631(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn1631(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn1631(a0, a1, a2, a3)
+func gcasmFwdFn1631(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn1631(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1635 github.com/goccy/spidermonkeywasm2go/p7.Fn1635
-func gcasmLNgcasmFwdFn1635(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1632 github.com/goccy/spidermonkeywasm2go/p6.Fn1632
+func gcasmLNgcasmFwdFn1632(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn1635(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1635(a0, a1, a2)
+func gcasmFwdFn1632(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn1632(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1640 github.com/goccy/spidermonkeywasm2go/p0.Fn1640
-func gcasmLNgcasmFwdFn1640(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1636 github.com/goccy/spidermonkeywasm2go/p7.Fn1636
+func gcasmLNgcasmFwdFn1636(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn1640(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1640(a0, a1, a2, a3)
+func gcasmFwdFn1636(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn1636(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1650 github.com/goccy/spidermonkeywasm2go/p6.Fn1650
-func gcasmLNgcasmFwdFn1650(a0 *base.Module, a1 int32, a2 float64, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1641 github.com/goccy/spidermonkeywasm2go/p0.Fn1641
+func gcasmLNgcasmFwdFn1641(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1650(a0 *base.Module, a1 int32, a2 float64, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1650(a0, a1, a2, a3)
+func gcasmFwdFn1641(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1641(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1651 github.com/goccy/spidermonkeywasm2go/p7.Fn1651
-func gcasmLNgcasmFwdFn1651(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1651 github.com/goccy/spidermonkeywasm2go/p6.Fn1651
+func gcasmLNgcasmFwdFn1651(a0 *base.Module, a1 int32, a2 float64, a3 int32) int32
 
-func gcasmFwdFn1651(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+func gcasmFwdFn1651(a0 *base.Module, a1 int32, a2 float64, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn1651(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn1652 github.com/goccy/spidermonkeywasm2go/p7.Fn1652
+func gcasmLNgcasmFwdFn1652(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn1652(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1652(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn166 github.com/goccy/spidermonkeywasm2go/p7.Fn166
@@ -1790,18 +1580,18 @@ func gcasmFwdFn166(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn166(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1668 github.com/goccy/spidermonkeywasm2go/p0.Fn1668
-func gcasmLNgcasmFwdFn1668(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1669 github.com/goccy/spidermonkeywasm2go/p0.Fn1669
+func gcasmLNgcasmFwdFn1669(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1668(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1668(a0, a1, a2, a3)
+func gcasmFwdFn1669(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1669(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1670 github.com/goccy/spidermonkeywasm2go/p0.Fn1670
-func gcasmLNgcasmFwdFn1670(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1671 github.com/goccy/spidermonkeywasm2go/p0.Fn1671
+func gcasmLNgcasmFwdFn1671(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1670(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1670(a0, a1, a2, a3)
+func gcasmFwdFn1671(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1671(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn169 github.com/goccy/spidermonkeywasm2go/p6.Fn169
@@ -1811,13 +1601,6 @@ func gcasmFwdFn169(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn169(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn173 github.com/goccy/spidermonkeywasm2go/p4.Fn173
-func gcasmLNgcasmFwdFn173(a0 *base.Module, a1 float64) float64
-
-func gcasmFwdFn173(a0 *base.Module, a1 float64) float64 {
-	return gcasmLNgcasmFwdFn173(a0, a1)
-}
-
 //go:linkname gcasmLNgcasmFwdFn175 github.com/goccy/spidermonkeywasm2go/p5.Fn175
 func gcasmLNgcasmFwdFn175(a0 *base.Module, a1 float64) float64
 
@@ -1825,11 +1608,11 @@ func gcasmFwdFn175(a0 *base.Module, a1 float64) float64 {
 	return gcasmLNgcasmFwdFn175(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1757 github.com/goccy/spidermonkeywasm2go/p7.Fn1757
-func gcasmLNgcasmFwdFn1757(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1758 github.com/goccy/spidermonkeywasm2go/p7.Fn1758
+func gcasmLNgcasmFwdFn1758(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn1757(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1757(a0, a1, a2)
+func gcasmFwdFn1758(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn1758(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn176 github.com/goccy/spidermonkeywasm2go/p5.Fn176
@@ -1839,11 +1622,11 @@ func gcasmFwdFn176(a0 *base.Module, a1 float64) float64 {
 	return gcasmLNgcasmFwdFn176(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1768 github.com/goccy/spidermonkeywasm2go/p7.Fn1768
-func gcasmLNgcasmFwdFn1768(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1769 github.com/goccy/spidermonkeywasm2go/p7.Fn1769
+func gcasmLNgcasmFwdFn1769(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1768(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1768(a0, a1, a2, a3)
+func gcasmFwdFn1769(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1769(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn177 github.com/goccy/spidermonkeywasm2go/p5.Fn177
@@ -1853,39 +1636,32 @@ func gcasmFwdFn177(a0 *base.Module, a1 float64) int32 {
 	return gcasmLNgcasmFwdFn177(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1770 github.com/goccy/spidermonkeywasm2go/p7.Fn1770
-func gcasmLNgcasmFwdFn1770(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1771 github.com/goccy/spidermonkeywasm2go/p7.Fn1771
+func gcasmLNgcasmFwdFn1771(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn1770(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1770(a0, a1, a2)
+func gcasmFwdFn1771(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn1771(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1779 github.com/goccy/spidermonkeywasm2go/p6.Fn1779
-func gcasmLNgcasmFwdFn1779(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1780 github.com/goccy/spidermonkeywasm2go/p6.Fn1780
+func gcasmLNgcasmFwdFn1780(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn1779(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn1779(a0, a1, a2, a3, a4)
+func gcasmFwdFn1780(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn1780(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1780 github.com/goccy/spidermonkeywasm2go/p7.Fn1780
-func gcasmLNgcasmFwdFn1780(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1781 github.com/goccy/spidermonkeywasm2go/p7.Fn1781
+func gcasmLNgcasmFwdFn1781(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1780(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1780(a0, a1, a2, a3)
+func gcasmFwdFn1781(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1781(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1786 github.com/goccy/spidermonkeywasm2go/p6.Fn1786
-func gcasmLNgcasmFwdFn1786(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1787 github.com/goccy/spidermonkeywasm2go/p6.Fn1787
+func gcasmLNgcasmFwdFn1787(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn1786(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn1786(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1789 github.com/goccy/spidermonkeywasm2go/p6.Fn1789
-func gcasmLNgcasmFwdFn1789(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn1789(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn1789(a0, a1, a2, a3)
+func gcasmFwdFn1787(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn1787(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn179 github.com/goccy/spidermonkeywasm2go/p4.Fn179
@@ -1895,11 +1671,11 @@ func gcasmFwdFn179(a0 *base.Module, a1 int32) float64 {
 	return gcasmLNgcasmFwdFn179(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1790 github.com/goccy/spidermonkeywasm2go/p7.Fn1790
-func gcasmLNgcasmFwdFn1790(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn1791 github.com/goccy/spidermonkeywasm2go/p7.Fn1791
+func gcasmLNgcasmFwdFn1791(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn1790(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn1790(a0, a1, a2)
+func gcasmFwdFn1791(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn1791(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn180 github.com/goccy/spidermonkeywasm2go/p5.Fn180
@@ -1916,13 +1692,6 @@ func gcasmFwdFn181(a0 *base.Module, a1 float64) float64 {
 	return gcasmLNgcasmFwdFn181(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1814 github.com/goccy/spidermonkeywasm2go/p6.Fn1814
-func gcasmLNgcasmFwdFn1814(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn1814(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn1814(a0, a1)
-}
-
 //go:linkname gcasmLNgcasmFwdFn1815 github.com/goccy/spidermonkeywasm2go/p6.Fn1815
 func gcasmLNgcasmFwdFn1815(a0 *base.Module, a1 int32) int32
 
@@ -1931,31 +1700,38 @@ func gcasmFwdFn1815(a0 *base.Module, a1 int32) int32 {
 }
 
 //go:linkname gcasmLNgcasmFwdFn1816 github.com/goccy/spidermonkeywasm2go/p6.Fn1816
-func gcasmLNgcasmFwdFn1816(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn1816(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn1816(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1816(a0, a1, a2)
+func gcasmFwdFn1816(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn1816(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1823 github.com/goccy/spidermonkeywasm2go/p5.Fn1823
-func gcasmLNgcasmFwdFn1823(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn1817 github.com/goccy/spidermonkeywasm2go/p6.Fn1817
+func gcasmLNgcasmFwdFn1817(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn1823(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn1823(a0, a1, a2, a3)
+func gcasmFwdFn1817(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn1817(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1826 github.com/goccy/spidermonkeywasm2go/p5.Fn1826
-func gcasmLNgcasmFwdFn1826(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn1824 github.com/goccy/spidermonkeywasm2go/p5.Fn1824
+func gcasmLNgcasmFwdFn1824(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn1826(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn1826(a0, a1, a2, a3, a4)
+func gcasmFwdFn1824(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn1824(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1827 github.com/goccy/spidermonkeywasm2go/p0.Fn1827
-func gcasmLNgcasmFwdFn1827(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1827 github.com/goccy/spidermonkeywasm2go/p5.Fn1827
+func gcasmLNgcasmFwdFn1827(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn1827(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1827(a0, a1, a2)
+func gcasmFwdFn1827(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn1827(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn1828 github.com/goccy/spidermonkeywasm2go/p0.Fn1828
+func gcasmLNgcasmFwdFn1828(a0 *base.Module, a1 int32, a2 int32) int32
+
+func gcasmFwdFn1828(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn1828(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn183 github.com/goccy/spidermonkeywasm2go/p6.Fn183
@@ -1979,144 +1755,109 @@ func gcasmFwdFn185(a0 *base.Module, a1 float64) float64 {
 	return gcasmLNgcasmFwdFn185(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1854 github.com/goccy/spidermonkeywasm2go/p0.Fn1854
-func gcasmLNgcasmFwdFn1854(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1855 github.com/goccy/spidermonkeywasm2go/p0.Fn1855
+func gcasmLNgcasmFwdFn1855(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1854(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1854(a0, a1, a2, a3)
+func gcasmFwdFn1855(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1855(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1855 github.com/goccy/spidermonkeywasm2go/p7.Fn1855
-func gcasmLNgcasmFwdFn1855(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn1856 github.com/goccy/spidermonkeywasm2go/p7.Fn1856
+func gcasmLNgcasmFwdFn1856(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn1855(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn1855(a0, a1, a2, a3)
+func gcasmFwdFn1856(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn1856(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1856 github.com/goccy/spidermonkeywasm2go/p5.Fn1856
-func gcasmLNgcasmFwdFn1856(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn1857 github.com/goccy/spidermonkeywasm2go/p5.Fn1857
+func gcasmLNgcasmFwdFn1857(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn1856(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn1856(a0, a1, a2)
+func gcasmFwdFn1857(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn1857(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1857 github.com/goccy/spidermonkeywasm2go/p0.Fn1857
-func gcasmLNgcasmFwdFn1857(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn1858 github.com/goccy/spidermonkeywasm2go/p0.Fn1858
+func gcasmLNgcasmFwdFn1858(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn1857(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn1857(a0, a1, a2, a3, a4)
+func gcasmFwdFn1858(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn1858(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1862 github.com/goccy/spidermonkeywasm2go/p5.Fn1862
-func gcasmLNgcasmFwdFn1862(a0 *base.Module, a1 int64, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1863 github.com/goccy/spidermonkeywasm2go/p5.Fn1863
+func gcasmLNgcasmFwdFn1863(a0 *base.Module, a1 int64, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1862(a0 *base.Module, a1 int64, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1862(a0, a1, a2, a3)
+func gcasmFwdFn1863(a0 *base.Module, a1 int64, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1863(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn187 github.com/goccy/spidermonkeywasm2go/p6.Fn187
-func gcasmLNgcasmFwdFn187(a0 *base.Module, a1 float64) float64
+//go:linkname gcasmLNgcasmFwdFn1875 github.com/goccy/spidermonkeywasm2go/p6.Fn1875
+func gcasmLNgcasmFwdFn1875(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn187(a0 *base.Module, a1 float64) float64 {
-	return gcasmLNgcasmFwdFn187(a0, a1)
+func gcasmFwdFn1875(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn1875(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1874 github.com/goccy/spidermonkeywasm2go/p6.Fn1874
-func gcasmLNgcasmFwdFn1874(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn1878 github.com/goccy/spidermonkeywasm2go/p6.Fn1878
+func gcasmLNgcasmFwdFn1878(a0 *base.Module, a1 int32, a2 int64, a3 int64, a4 int32, a5 int32) int32
 
-func gcasmFwdFn1874(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn1874(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1877 github.com/goccy/spidermonkeywasm2go/p6.Fn1877
-func gcasmLNgcasmFwdFn1877(a0 *base.Module, a1 int32, a2 int64, a3 int64, a4 int32, a5 int32) int32
-
-func gcasmFwdFn1877(a0 *base.Module, a1 int32, a2 int64, a3 int64, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn1877(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn188 github.com/goccy/spidermonkeywasm2go/p6.Fn188
-func gcasmLNgcasmFwdFn188(a0 *base.Module, a1 float64) float64
-
-func gcasmFwdFn188(a0 *base.Module, a1 float64) float64 {
-	return gcasmLNgcasmFwdFn188(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1880 github.com/goccy/spidermonkeywasm2go/p7.Fn1880
-func gcasmLNgcasmFwdFn1880(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn1880(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn1880(a0, a1, a2, a3, a4)
+func gcasmFwdFn1878(a0 *base.Module, a1 int32, a2 int64, a3 int64, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn1878(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1881 github.com/goccy/spidermonkeywasm2go/p7.Fn1881
-func gcasmLNgcasmFwdFn1881(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn1881(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn1881(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1881(a0, a1, a2, a3)
+func gcasmFwdFn1881(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn1881(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn189 github.com/goccy/spidermonkeywasm2go/p6.Fn189
-func gcasmLNgcasmFwdFn189(a0 *base.Module, a1 int32, a2 int64)
+//go:linkname gcasmLNgcasmFwdFn1882 github.com/goccy/spidermonkeywasm2go/p7.Fn1882
+func gcasmLNgcasmFwdFn1882(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn189(a0 *base.Module, a1 int32, a2 int64) {
-	gcasmLNgcasmFwdFn189(a0, a1, a2)
+func gcasmFwdFn1882(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1882(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1896 github.com/goccy/spidermonkeywasm2go/p7.Fn1896
-func gcasmLNgcasmFwdFn1896(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1898 github.com/goccy/spidermonkeywasm2go/p6.Fn1898
+func gcasmLNgcasmFwdFn1898(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn1896(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn1896(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1897 github.com/goccy/spidermonkeywasm2go/p6.Fn1897
-func gcasmLNgcasmFwdFn1897(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
-
-func gcasmFwdFn1897(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn1897(a0, a1, a2, a3, a4, a5, a6)
-}
-
-//go:linkname gcasmLNgcasmFwdFn1898 github.com/goccy/spidermonkeywasm2go/p7.Fn1898
-func gcasmLNgcasmFwdFn1898(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
-
-func gcasmFwdFn1898(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn1898(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn1898(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn1898(a0, a1, a2, a3, a4, a5, a6)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1899 github.com/goccy/spidermonkeywasm2go/p7.Fn1899
-func gcasmLNgcasmFwdFn1899(a0 *base.Module, a1 int32) int32
+func gcasmLNgcasmFwdFn1899(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
 
-func gcasmFwdFn1899(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn1899(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn190 github.com/goccy/spidermonkeywasm2go/p6.Fn190
-func gcasmLNgcasmFwdFn190(a0 *base.Module, a1 int32, a2 int32, a3 int32) int64
-
-func gcasmFwdFn190(a0 *base.Module, a1 int32, a2 int32, a3 int32) int64 {
-	return gcasmLNgcasmFwdFn190(a0, a1, a2, a3)
+func gcasmFwdFn1899(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn1899(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn1900 github.com/goccy/spidermonkeywasm2go/p7.Fn1900
-func gcasmLNgcasmFwdFn1900(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn1900(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn1900(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn1900(a0, a1, a2)
+func gcasmFwdFn1900(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn1900(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1901 github.com/goccy/spidermonkeywasm2go/p5.Fn1901
-func gcasmLNgcasmFwdFn1901(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1901 github.com/goccy/spidermonkeywasm2go/p7.Fn1901
+func gcasmLNgcasmFwdFn1901(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn1901(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1901(a0, a1, a2, a3)
+func gcasmFwdFn1901(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn1901(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1902 github.com/goccy/spidermonkeywasm2go/p6.Fn1902
-func gcasmLNgcasmFwdFn1902(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1902 github.com/goccy/spidermonkeywasm2go/p5.Fn1902
+func gcasmLNgcasmFwdFn1902(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn1902(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn1902(a0, a1)
+func gcasmFwdFn1902(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1902(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn1903 github.com/goccy/spidermonkeywasm2go/p6.Fn1903
+func gcasmLNgcasmFwdFn1903(a0 *base.Module, a1 int32) int32
+
+func gcasmFwdFn1903(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn1903(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn192 github.com/goccy/spidermonkeywasm2go/p7.Fn192
@@ -2126,88 +1867,67 @@ func gcasmFwdFn192(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn192(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1922 github.com/goccy/spidermonkeywasm2go/p4.Fn1922
-func gcasmLNgcasmFwdFn1922(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn1923 github.com/goccy/spidermonkeywasm2go/p4.Fn1923
+func gcasmLNgcasmFwdFn1923(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn1922(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn1922(a0, a1, a2, a3, a4)
+func gcasmFwdFn1923(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn1923(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1963 github.com/goccy/spidermonkeywasm2go/p0.Fn1963
-func gcasmLNgcasmFwdFn1963(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1964 github.com/goccy/spidermonkeywasm2go/p0.Fn1964
+func gcasmLNgcasmFwdFn1964(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32
 
-func gcasmFwdFn1963(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn1963(a0, a1, a2, a3)
+func gcasmFwdFn1964(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn1964(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1978 github.com/goccy/spidermonkeywasm2go/p7.Fn1978
-func gcasmLNgcasmFwdFn1978(a0 *base.Module, a1 int32) int64
+//go:linkname gcasmLNgcasmFwdFn1986 github.com/goccy/spidermonkeywasm2go/p0.Fn1986
+func gcasmLNgcasmFwdFn1986(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn1978(a0 *base.Module, a1 int32) int64 {
-	return gcasmLNgcasmFwdFn1978(a0, a1)
+func gcasmFwdFn1986(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn1986(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1979 github.com/goccy/spidermonkeywasm2go/p7.Fn1979
-func gcasmLNgcasmFwdFn1979(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn1988 github.com/goccy/spidermonkeywasm2go/p0.Fn1988
+func gcasmLNgcasmFwdFn1988(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn1979(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1979(a0, a1, a2)
+func gcasmFwdFn1988(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn1988(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1985 github.com/goccy/spidermonkeywasm2go/p0.Fn1985
-func gcasmLNgcasmFwdFn1985(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2004 github.com/goccy/spidermonkeywasm2go/p0.Fn2004
+func gcasmLNgcasmFwdFn2004(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn1985(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn1985(a0, a1, a2)
+func gcasmFwdFn2004(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2004(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn1987 github.com/goccy/spidermonkeywasm2go/p0.Fn1987
-func gcasmLNgcasmFwdFn1987(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2009 github.com/goccy/spidermonkeywasm2go/p5.Fn2009
+func gcasmLNgcasmFwdFn2009(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn1987(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn1987(a0, a1, a2, a3, a4)
+func gcasmFwdFn2009(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2009(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2003 github.com/goccy/spidermonkeywasm2go/p0.Fn2003
-func gcasmLNgcasmFwdFn2003(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2035 github.com/goccy/spidermonkeywasm2go/p7.Fn2035
+func gcasmLNgcasmFwdFn2035(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2003(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2003(a0, a1, a2)
+func gcasmFwdFn2035(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2035(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2008 github.com/goccy/spidermonkeywasm2go/p5.Fn2008
-func gcasmLNgcasmFwdFn2008(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2042 github.com/goccy/spidermonkeywasm2go/p7.Fn2042
+func gcasmLNgcasmFwdFn2042(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2008(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2008(a0, a1, a2, a3, a4)
+func gcasmFwdFn2042(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2042(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2034 github.com/goccy/spidermonkeywasm2go/p7.Fn2034
-func gcasmLNgcasmFwdFn2034(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2058 github.com/goccy/spidermonkeywasm2go/p7.Fn2058
+func gcasmLNgcasmFwdFn2058(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2034(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2034(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2041 github.com/goccy/spidermonkeywasm2go/p7.Fn2041
-func gcasmLNgcasmFwdFn2041(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn2041(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2041(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2057 github.com/goccy/spidermonkeywasm2go/p7.Fn2057
-func gcasmLNgcasmFwdFn2057(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn2057(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2057(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2058 github.com/goccy/spidermonkeywasm2go/p6.Fn2058
-func gcasmLNgcasmFwdFn2058(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn2058(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2058(a0, a1)
+func gcasmFwdFn2058(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2058(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2059 github.com/goccy/spidermonkeywasm2go/p6.Fn2059
@@ -2217,18 +1937,18 @@ func gcasmFwdFn2059(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn2059(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2062 github.com/goccy/spidermonkeywasm2go/p7.Fn2062
-func gcasmLNgcasmFwdFn2062(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2060 github.com/goccy/spidermonkeywasm2go/p6.Fn2060
+func gcasmLNgcasmFwdFn2060(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2062(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2062(a0, a1)
+func gcasmFwdFn2060(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2060(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2063 github.com/goccy/spidermonkeywasm2go/p0.Fn2063
-func gcasmLNgcasmFwdFn2063(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2063 github.com/goccy/spidermonkeywasm2go/p7.Fn2063
+func gcasmLNgcasmFwdFn2063(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2063(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2063(a0, a1, a2, a3)
+func gcasmFwdFn2063(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2063(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2064 github.com/goccy/spidermonkeywasm2go/p0.Fn2064
@@ -2238,130 +1958,123 @@ func gcasmFwdFn2064(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn2064(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2065 github.com/goccy/spidermonkeywasm2go/p7.Fn2065
-func gcasmLNgcasmFwdFn2065(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2065 github.com/goccy/spidermonkeywasm2go/p0.Fn2065
+func gcasmLNgcasmFwdFn2065(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2065(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2065(a0, a1, a2)
+func gcasmFwdFn2065(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2065(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2066 github.com/goccy/spidermonkeywasm2go/p0.Fn2066
-func gcasmLNgcasmFwdFn2066(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2066 github.com/goccy/spidermonkeywasm2go/p7.Fn2066
+func gcasmLNgcasmFwdFn2066(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2066(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2066(a0, a1, a2, a3)
+func gcasmFwdFn2066(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2066(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2068 github.com/goccy/spidermonkeywasm2go/p0.Fn2068
-func gcasmLNgcasmFwdFn2068(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2067 github.com/goccy/spidermonkeywasm2go/p0.Fn2067
+func gcasmLNgcasmFwdFn2067(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2068(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2068(a0, a1, a2, a3)
+func gcasmFwdFn2067(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2067(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2075 github.com/goccy/spidermonkeywasm2go/p0.Fn2075
-func gcasmLNgcasmFwdFn2075(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2069 github.com/goccy/spidermonkeywasm2go/p0.Fn2069
+func gcasmLNgcasmFwdFn2069(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2075(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn2075(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn2069(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2069(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2083 github.com/goccy/spidermonkeywasm2go/p6.Fn2083
-func gcasmLNgcasmFwdFn2083(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2076 github.com/goccy/spidermonkeywasm2go/p0.Fn2076
+func gcasmLNgcasmFwdFn2076(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn2083(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2083(a0, a1, a2)
+func gcasmFwdFn2076(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn2076(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn209 github.com/goccy/spidermonkeywasm2go/p7.Fn209
-func gcasmLNgcasmFwdFn209(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn2084 github.com/goccy/spidermonkeywasm2go/p6.Fn2084
+func gcasmLNgcasmFwdFn2084(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn209(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn209(a0, a1, a2, a3)
+func gcasmFwdFn2084(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2084(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2092 github.com/goccy/spidermonkeywasm2go/p7.Fn2092
-func gcasmLNgcasmFwdFn2092(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2093 github.com/goccy/spidermonkeywasm2go/p7.Fn2093
+func gcasmLNgcasmFwdFn2093(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2092(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2092(a0, a1, a2)
+func gcasmFwdFn2093(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2093(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2094 github.com/goccy/spidermonkeywasm2go/p6.Fn2094
-func gcasmLNgcasmFwdFn2094(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2095 github.com/goccy/spidermonkeywasm2go/p6.Fn2095
+func gcasmLNgcasmFwdFn2095(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2094(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2094(a0, a1, a2, a3)
+func gcasmFwdFn2095(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2095(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2099 github.com/goccy/spidermonkeywasm2go/p6.Fn2099
-func gcasmLNgcasmFwdFn2099(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2100 github.com/goccy/spidermonkeywasm2go/p6.Fn2100
+func gcasmLNgcasmFwdFn2100(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2099(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2099(a0, a1)
+func gcasmFwdFn2100(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2100(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2101 github.com/goccy/spidermonkeywasm2go/p4.Fn2101
-func gcasmLNgcasmFwdFn2101(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2102 github.com/goccy/spidermonkeywasm2go/p4.Fn2102
+func gcasmLNgcasmFwdFn2102(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2101(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2101(a0, a1)
+func gcasmFwdFn2102(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2102(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2102 github.com/goccy/spidermonkeywasm2go/p7.Fn2102
-func gcasmLNgcasmFwdFn2102(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2103 github.com/goccy/spidermonkeywasm2go/p7.Fn2103
+func gcasmLNgcasmFwdFn2103(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2102(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2102(a0, a1)
+func gcasmFwdFn2103(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2103(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2105 github.com/goccy/spidermonkeywasm2go/p6.Fn2105
-func gcasmLNgcasmFwdFn2105(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2106 github.com/goccy/spidermonkeywasm2go/p6.Fn2106
+func gcasmLNgcasmFwdFn2106(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32
 
-func gcasmFwdFn2105(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2105(a0, a1, a2, a3, a4)
+func gcasmFwdFn2106(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2106(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2108 github.com/goccy/spidermonkeywasm2go/p7.Fn2108
-func gcasmLNgcasmFwdFn2108(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2109 github.com/goccy/spidermonkeywasm2go/p7.Fn2109
+func gcasmLNgcasmFwdFn2109(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32
 
-func gcasmFwdFn2108(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2108(a0, a1, a2, a3)
+func gcasmFwdFn2109(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2109(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2109 github.com/goccy/spidermonkeywasm2go/p4.Fn2109
-func gcasmLNgcasmFwdFn2109(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2110 github.com/goccy/spidermonkeywasm2go/p4.Fn2110
+func gcasmLNgcasmFwdFn2110(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32
 
-func gcasmFwdFn2109(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2109(a0, a1, a2, a3, a4)
+func gcasmFwdFn2110(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2110(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2112 github.com/goccy/spidermonkeywasm2go/p7.Fn2112
-func gcasmLNgcasmFwdFn2112(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2113 github.com/goccy/spidermonkeywasm2go/p7.Fn2113
+func gcasmLNgcasmFwdFn2113(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2112(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2112(a0, a1, a2)
+func gcasmFwdFn2113(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2113(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2123 github.com/goccy/spidermonkeywasm2go/p5.Fn2123
-func gcasmLNgcasmFwdFn2123(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2124 github.com/goccy/spidermonkeywasm2go/p5.Fn2124
+func gcasmLNgcasmFwdFn2124(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn2123(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn2123(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn2124(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn2124(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn213 github.com/goccy/spidermonkeywasm2go/p6.Fn213
-func gcasmLNgcasmFwdFn213(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2149 github.com/goccy/spidermonkeywasm2go/p6.Fn2149
+func gcasmLNgcasmFwdFn2149(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn213(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn213(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2148 github.com/goccy/spidermonkeywasm2go/p6.Fn2148
-func gcasmLNgcasmFwdFn2148(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn2148(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2148(a0, a1)
+func gcasmFwdFn2149(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2149(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn215 github.com/goccy/spidermonkeywasm2go/p6.Fn215
@@ -2371,32 +2084,32 @@ func gcasmFwdFn215(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn215(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2152 github.com/goccy/spidermonkeywasm2go/p0.Fn2152
-func gcasmLNgcasmFwdFn2152(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2153 github.com/goccy/spidermonkeywasm2go/p0.Fn2153
+func gcasmLNgcasmFwdFn2153(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn2152(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn2152(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn2153(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn2153(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2192 github.com/goccy/spidermonkeywasm2go/p6.Fn2192
-func gcasmLNgcasmFwdFn2192(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2193 github.com/goccy/spidermonkeywasm2go/p6.Fn2193
+func gcasmLNgcasmFwdFn2193(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2192(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2192(a0, a1)
+func gcasmFwdFn2193(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2193(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2197 github.com/goccy/spidermonkeywasm2go/p6.Fn2197
-func gcasmLNgcasmFwdFn2197(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2198 github.com/goccy/spidermonkeywasm2go/p6.Fn2198
+func gcasmLNgcasmFwdFn2198(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2197(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2197(a0, a1, a2, a3, a4)
+func gcasmFwdFn2198(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2198(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2199 github.com/goccy/spidermonkeywasm2go/p6.Fn2199
-func gcasmLNgcasmFwdFn2199(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2200 github.com/goccy/spidermonkeywasm2go/p6.Fn2200
+func gcasmLNgcasmFwdFn2200(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2199(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2199(a0, a1, a2, a3, a4)
+func gcasmFwdFn2200(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2200(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn221 github.com/goccy/spidermonkeywasm2go/p6.Fn221
@@ -2406,25 +2119,18 @@ func gcasmFwdFn221(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
 	gcasmLNgcasmFwdFn221(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2229 github.com/goccy/spidermonkeywasm2go/p6.Fn2229
-func gcasmLNgcasmFwdFn2229(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn2229(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2229(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2230 github.com/goccy/spidermonkeywasm2go/p0.Fn2230
+//go:linkname gcasmLNgcasmFwdFn2230 github.com/goccy/spidermonkeywasm2go/p6.Fn2230
 func gcasmLNgcasmFwdFn2230(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
 func gcasmFwdFn2230(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn2230(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2234 github.com/goccy/spidermonkeywasm2go/p6.Fn2234
-func gcasmLNgcasmFwdFn2234(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2231 github.com/goccy/spidermonkeywasm2go/p0.Fn2231
+func gcasmLNgcasmFwdFn2231(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2234(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2234(a0, a1, a2, a3, a4)
+func gcasmFwdFn2231(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2231(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn224 github.com/goccy/spidermonkeywasm2go/p7.Fn224
@@ -2434,81 +2140,81 @@ func gcasmFwdFn224(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn224(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2255 github.com/goccy/spidermonkeywasm2go/p0.Fn2255
-func gcasmLNgcasmFwdFn2255(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2256 github.com/goccy/spidermonkeywasm2go/p0.Fn2256
+func gcasmLNgcasmFwdFn2256(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2255(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2255(a0, a1)
+func gcasmFwdFn2256(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2256(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2256 github.com/goccy/spidermonkeywasm2go/p6.Fn2256
-func gcasmLNgcasmFwdFn2256(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2257 github.com/goccy/spidermonkeywasm2go/p6.Fn2257
+func gcasmLNgcasmFwdFn2257(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2256(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2256(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2260 github.com/goccy/spidermonkeywasm2go/p0.Fn2260
-func gcasmLNgcasmFwdFn2260(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn2260(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2260(a0, a1, a2, a3)
+func gcasmFwdFn2257(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2257(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2261 github.com/goccy/spidermonkeywasm2go/p0.Fn2261
-func gcasmLNgcasmFwdFn2261(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+func gcasmLNgcasmFwdFn2261(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2261(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2261(a0, a1, a2, a3, a4)
+func gcasmFwdFn2261(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2261(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2262 github.com/goccy/spidermonkeywasm2go/p0.Fn2262
-func gcasmLNgcasmFwdFn2262(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+func gcasmLNgcasmFwdFn2262(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2262(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn2262(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn2262(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2262(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2266 github.com/goccy/spidermonkeywasm2go/p6.Fn2266
-func gcasmLNgcasmFwdFn2266(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2263 github.com/goccy/spidermonkeywasm2go/p0.Fn2263
+func gcasmLNgcasmFwdFn2263(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn2266(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2266(a0, a1)
+func gcasmFwdFn2263(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn2263(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2277 github.com/goccy/spidermonkeywasm2go/p6.Fn2277
-func gcasmLNgcasmFwdFn2277(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2267 github.com/goccy/spidermonkeywasm2go/p6.Fn2267
+func gcasmLNgcasmFwdFn2267(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2277(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2277(a0, a1, a2)
+func gcasmFwdFn2267(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2267(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2278 github.com/goccy/spidermonkeywasm2go/p5.Fn2278
+//go:linkname gcasmLNgcasmFwdFn2278 github.com/goccy/spidermonkeywasm2go/p6.Fn2278
 func gcasmLNgcasmFwdFn2278(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn2278(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn2278(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2293 github.com/goccy/spidermonkeywasm2go/p0.Fn2293
-func gcasmLNgcasmFwdFn2293(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2279 github.com/goccy/spidermonkeywasm2go/p5.Fn2279
+func gcasmLNgcasmFwdFn2279(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2293(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2293(a0, a1, a2)
+func gcasmFwdFn2279(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2279(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2301 github.com/goccy/spidermonkeywasm2go/p0.Fn2301
-func gcasmLNgcasmFwdFn2301(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2294 github.com/goccy/spidermonkeywasm2go/p0.Fn2294
+func gcasmLNgcasmFwdFn2294(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2301(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2301(a0, a1, a2, a3, a4)
+func gcasmFwdFn2294(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2294(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2304 github.com/goccy/spidermonkeywasm2go/p6.Fn2304
-func gcasmLNgcasmFwdFn2304(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2302 github.com/goccy/spidermonkeywasm2go/p0.Fn2302
+func gcasmLNgcasmFwdFn2302(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2304(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2304(a0, a1, a2, a3)
+func gcasmFwdFn2302(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2302(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn2305 github.com/goccy/spidermonkeywasm2go/p6.Fn2305
+func gcasmLNgcasmFwdFn2305(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn2305(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2305(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn231 github.com/goccy/spidermonkeywasm2go/p4.Fn231
@@ -2518,53 +2224,53 @@ func gcasmFwdFn231(a0 *base.Module, a1 int64) int64 {
 	return gcasmLNgcasmFwdFn231(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2314 github.com/goccy/spidermonkeywasm2go/p7.Fn2314
-func gcasmLNgcasmFwdFn2314(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn2315 github.com/goccy/spidermonkeywasm2go/p7.Fn2315
+func gcasmLNgcasmFwdFn2315(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn2314(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn2314(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn2315(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn2315(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2318 github.com/goccy/spidermonkeywasm2go/p0.Fn2318
-func gcasmLNgcasmFwdFn2318(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2319 github.com/goccy/spidermonkeywasm2go/p0.Fn2319
+func gcasmLNgcasmFwdFn2319(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2318(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2318(a0, a1, a2)
+func gcasmFwdFn2319(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2319(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2337 github.com/goccy/spidermonkeywasm2go/p0.Fn2337
-func gcasmLNgcasmFwdFn2337(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn2337(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2337(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2338 github.com/goccy/spidermonkeywasm2go/p7.Fn2338
+//go:linkname gcasmLNgcasmFwdFn2338 github.com/goccy/spidermonkeywasm2go/p0.Fn2338
 func gcasmLNgcasmFwdFn2338(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn2338(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn2338(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2340 github.com/goccy/spidermonkeywasm2go/p5.Fn2340
-func gcasmLNgcasmFwdFn2340(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2339 github.com/goccy/spidermonkeywasm2go/p7.Fn2339
+func gcasmLNgcasmFwdFn2339(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2340(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2340(a0, a1, a2, a3, a4)
+func gcasmFwdFn2339(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2339(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2343 github.com/goccy/spidermonkeywasm2go/p7.Fn2343
-func gcasmLNgcasmFwdFn2343(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2341 github.com/goccy/spidermonkeywasm2go/p5.Fn2341
+func gcasmLNgcasmFwdFn2341(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2343(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2343(a0, a1, a2)
+func gcasmFwdFn2341(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2341(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2344 github.com/goccy/spidermonkeywasm2go/p0.Fn2344
-func gcasmLNgcasmFwdFn2344(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2344 github.com/goccy/spidermonkeywasm2go/p7.Fn2344
+func gcasmLNgcasmFwdFn2344(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2344(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2344(a0, a1, a2, a3)
+func gcasmFwdFn2344(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2344(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn2345 github.com/goccy/spidermonkeywasm2go/p0.Fn2345
+func gcasmLNgcasmFwdFn2345(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn2345(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2345(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn235 github.com/goccy/spidermonkeywasm2go/p5.Fn235
@@ -2574,158 +2280,102 @@ func gcasmFwdFn235(a0 *base.Module, a1 int64) int64 {
 	return gcasmLNgcasmFwdFn235(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn239 github.com/goccy/spidermonkeywasm2go/p5.Fn239
-func gcasmLNgcasmFwdFn239(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn2414 github.com/goccy/spidermonkeywasm2go/p6.Fn2414
+func gcasmLNgcasmFwdFn2414(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn239(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn239(a0, a1, a2)
+func gcasmFwdFn2414(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2414(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn240 github.com/goccy/spidermonkeywasm2go/p6.Fn240
-func gcasmLNgcasmFwdFn240(a0 *base.Module, a1 int32) int64
+//go:linkname gcasmLNgcasmFwdFn2438 github.com/goccy/spidermonkeywasm2go/p5.Fn2438
+func gcasmLNgcasmFwdFn2438(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn240(a0 *base.Module, a1 int32) int64 {
-	return gcasmLNgcasmFwdFn240(a0, a1)
+func gcasmFwdFn2438(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2438(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn241 github.com/goccy/spidermonkeywasm2go/p7.Fn241
-func gcasmLNgcasmFwdFn241(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2440 github.com/goccy/spidermonkeywasm2go/p5.Fn2440
+func gcasmLNgcasmFwdFn2440(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn241(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn241(a0, a1, a2)
+func gcasmFwdFn2440(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2440(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2413 github.com/goccy/spidermonkeywasm2go/p6.Fn2413
-func gcasmLNgcasmFwdFn2413(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2448 github.com/goccy/spidermonkeywasm2go/p7.Fn2448
+func gcasmLNgcasmFwdFn2448(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2413(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2413(a0, a1)
+func gcasmFwdFn2448(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2448(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn242 github.com/goccy/spidermonkeywasm2go/p7.Fn242
-func gcasmLNgcasmFwdFn242(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn2449 github.com/goccy/spidermonkeywasm2go/p0.Fn2449
+func gcasmLNgcasmFwdFn2449(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn242(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn242(a0, a1, a2)
+func gcasmFwdFn2449(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2449(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn243 github.com/goccy/spidermonkeywasm2go/p7.Fn243
-func gcasmLNgcasmFwdFn243(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2452 github.com/goccy/spidermonkeywasm2go/p6.Fn2452
+func gcasmLNgcasmFwdFn2452(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn243(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn243(a0, a1, a2)
+func gcasmFwdFn2452(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2452(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2437 github.com/goccy/spidermonkeywasm2go/p5.Fn2437
-func gcasmLNgcasmFwdFn2437(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2458 github.com/goccy/spidermonkeywasm2go/p0.Fn2458
+func gcasmLNgcasmFwdFn2458(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2437(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2437(a0, a1)
+func gcasmFwdFn2458(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2458(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2439 github.com/goccy/spidermonkeywasm2go/p5.Fn2439
-func gcasmLNgcasmFwdFn2439(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2462 github.com/goccy/spidermonkeywasm2go/p5.Fn2462
+func gcasmLNgcasmFwdFn2462(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2439(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2439(a0, a1)
+func gcasmFwdFn2462(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2462(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2442 github.com/goccy/spidermonkeywasm2go/p6.Fn2442
-func gcasmLNgcasmFwdFn2442(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2489 github.com/goccy/spidermonkeywasm2go/p4.Fn2489
+func gcasmLNgcasmFwdFn2489(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn2442(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2442(a0, a1)
+func gcasmFwdFn2489(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn2489(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2447 github.com/goccy/spidermonkeywasm2go/p7.Fn2447
-func gcasmLNgcasmFwdFn2447(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2495 github.com/goccy/spidermonkeywasm2go/p4.Fn2495
+func gcasmLNgcasmFwdFn2495(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn2447(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2447(a0, a1, a2)
+func gcasmFwdFn2495(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn2495(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2448 github.com/goccy/spidermonkeywasm2go/p0.Fn2448
-func gcasmLNgcasmFwdFn2448(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2497 github.com/goccy/spidermonkeywasm2go/p4.Fn2497
+func gcasmLNgcasmFwdFn2497(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn2448(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2448(a0, a1, a2, a3)
+func gcasmFwdFn2497(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn2497(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2449 github.com/goccy/spidermonkeywasm2go/p6.Fn2449
-func gcasmLNgcasmFwdFn2449(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2508 github.com/goccy/spidermonkeywasm2go/p2.Fn2508
+func gcasmLNgcasmFwdFn2508(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2449(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2449(a0, a1)
+func gcasmFwdFn2508(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2508(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2451 github.com/goccy/spidermonkeywasm2go/p6.Fn2451
-func gcasmLNgcasmFwdFn2451(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2514 github.com/goccy/spidermonkeywasm2go/p5.Fn2514
+func gcasmLNgcasmFwdFn2514(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn2451(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2451(a0, a1)
+func gcasmFwdFn2514(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn2514(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2457 github.com/goccy/spidermonkeywasm2go/p0.Fn2457
-func gcasmLNgcasmFwdFn2457(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2515 github.com/goccy/spidermonkeywasm2go/p6.Fn2515
+func gcasmLNgcasmFwdFn2515(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn2457(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2457(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2461 github.com/goccy/spidermonkeywasm2go/p5.Fn2461
-func gcasmLNgcasmFwdFn2461(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn2461(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2461(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2488 github.com/goccy/spidermonkeywasm2go/p4.Fn2488
-func gcasmLNgcasmFwdFn2488(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn2488(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn2488(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn249 github.com/goccy/spidermonkeywasm2go/p6.Fn249
-func gcasmLNgcasmFwdFn249(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn249(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn249(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2494 github.com/goccy/spidermonkeywasm2go/p4.Fn2494
-func gcasmLNgcasmFwdFn2494(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn2494(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn2494(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2496 github.com/goccy/spidermonkeywasm2go/p4.Fn2496
-func gcasmLNgcasmFwdFn2496(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn2496(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn2496(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2507 github.com/goccy/spidermonkeywasm2go/p2.Fn2507
-func gcasmLNgcasmFwdFn2507(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn2507(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2507(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2513 github.com/goccy/spidermonkeywasm2go/p5.Fn2513
-func gcasmLNgcasmFwdFn2513(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn2513(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn2513(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2514 github.com/goccy/spidermonkeywasm2go/p6.Fn2514
-func gcasmLNgcasmFwdFn2514(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn2514(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn2514(a0, a1, a2, a3)
+func gcasmFwdFn2515(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn2515(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn252 github.com/goccy/spidermonkeywasm2go/p7.Fn252
@@ -2742,88 +2392,81 @@ func gcasmFwdFn253(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn253(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2533 github.com/goccy/spidermonkeywasm2go/p0.Fn2533
-func gcasmLNgcasmFwdFn2533(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2534 github.com/goccy/spidermonkeywasm2go/p0.Fn2534
+func gcasmLNgcasmFwdFn2534(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2533(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2533(a0, a1, a2)
+func gcasmFwdFn2534(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2534(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2537 github.com/goccy/spidermonkeywasm2go/p6.Fn2537
-func gcasmLNgcasmFwdFn2537(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2538 github.com/goccy/spidermonkeywasm2go/p6.Fn2538
+func gcasmLNgcasmFwdFn2538(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2537(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2537(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2538 github.com/goccy/spidermonkeywasm2go/p0.Fn2538
-func gcasmLNgcasmFwdFn2538(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn2538(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2538(a0, a1, a2, a3, a4)
+func gcasmFwdFn2538(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2538(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2539 github.com/goccy/spidermonkeywasm2go/p0.Fn2539
-func gcasmLNgcasmFwdFn2539(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn2539(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2539(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2539(a0, a1, a2)
+func gcasmFwdFn2539(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2539(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2540 github.com/goccy/spidermonkeywasm2go/p0.Fn2540
-func gcasmLNgcasmFwdFn2540(a0 *base.Module, a1 int32) int32
+func gcasmLNgcasmFwdFn2540(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2540(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2540(a0, a1)
+func gcasmFwdFn2540(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2540(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2546 github.com/goccy/spidermonkeywasm2go/p7.Fn2546
-func gcasmLNgcasmFwdFn2546(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2541 github.com/goccy/spidermonkeywasm2go/p0.Fn2541
+func gcasmLNgcasmFwdFn2541(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2546(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2546(a0, a1)
+func gcasmFwdFn2541(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2541(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2555 github.com/goccy/spidermonkeywasm2go/p0.Fn2555
-func gcasmLNgcasmFwdFn2555(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2547 github.com/goccy/spidermonkeywasm2go/p7.Fn2547
+func gcasmLNgcasmFwdFn2547(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2555(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2555(a0, a1)
+func gcasmFwdFn2547(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2547(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2556 github.com/goccy/spidermonkeywasm2go/p0.Fn2556
-func gcasmLNgcasmFwdFn2556(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn2556(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2556(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2556(a0, a1)
+func gcasmFwdFn2556(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2556(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2561 github.com/goccy/spidermonkeywasm2go/p0.Fn2561
-func gcasmLNgcasmFwdFn2561(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2557 github.com/goccy/spidermonkeywasm2go/p0.Fn2557
+func gcasmLNgcasmFwdFn2557(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2561(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2561(a0, a1, a2)
+func gcasmFwdFn2557(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2557(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2562 github.com/goccy/spidermonkeywasm2go/p0.Fn2562
-func gcasmLNgcasmFwdFn2562(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+func gcasmLNgcasmFwdFn2562(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2562(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2562(a0, a1, a2, a3, a4)
+func gcasmFwdFn2562(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2562(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2570 github.com/goccy/spidermonkeywasm2go/p5.Fn2570
-func gcasmLNgcasmFwdFn2570(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2563 github.com/goccy/spidermonkeywasm2go/p0.Fn2563
+func gcasmLNgcasmFwdFn2563(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2570(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2570(a0, a1, a2)
+func gcasmFwdFn2563(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2563(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2576 github.com/goccy/spidermonkeywasm2go/p0.Fn2576
-func gcasmLNgcasmFwdFn2576(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2571 github.com/goccy/spidermonkeywasm2go/p5.Fn2571
+func gcasmLNgcasmFwdFn2571(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2576(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2576(a0, a1, a2, a3)
+func gcasmFwdFn2571(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2571(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2577 github.com/goccy/spidermonkeywasm2go/p0.Fn2577
@@ -2833,25 +2476,25 @@ func gcasmFwdFn2577(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn2577(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2581 github.com/goccy/spidermonkeywasm2go/p0.Fn2581
-func gcasmLNgcasmFwdFn2581(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2578 github.com/goccy/spidermonkeywasm2go/p0.Fn2578
+func gcasmLNgcasmFwdFn2578(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2581(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2581(a0, a1, a2, a3)
+func gcasmFwdFn2578(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2578(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2583 github.com/goccy/spidermonkeywasm2go/p0.Fn2583
-func gcasmLNgcasmFwdFn2583(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2582 github.com/goccy/spidermonkeywasm2go/p0.Fn2582
+func gcasmLNgcasmFwdFn2582(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32
 
-func gcasmFwdFn2583(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2583(a0, a1, a2, a3)
+func gcasmFwdFn2582(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2582(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2587 github.com/goccy/spidermonkeywasm2go/p0.Fn2587
-func gcasmLNgcasmFwdFn2587(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2584 github.com/goccy/spidermonkeywasm2go/p0.Fn2584
+func gcasmLNgcasmFwdFn2584(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2587(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2587(a0, a1)
+func gcasmFwdFn2584(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2584(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2588 github.com/goccy/spidermonkeywasm2go/p0.Fn2588
@@ -2861,6 +2504,13 @@ func gcasmFwdFn2588(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn2588(a0, a1)
 }
 
+//go:linkname gcasmLNgcasmFwdFn2589 github.com/goccy/spidermonkeywasm2go/p0.Fn2589
+func gcasmLNgcasmFwdFn2589(a0 *base.Module, a1 int32)
+
+func gcasmFwdFn2589(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2589(a0, a1)
+}
+
 //go:linkname gcasmLNgcasmFwdFn259 github.com/goccy/spidermonkeywasm2go/p6.Fn259
 func gcasmLNgcasmFwdFn259(a0 *base.Module, a1 int32) int32
 
@@ -2868,39 +2518,32 @@ func gcasmFwdFn259(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn259(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2591 github.com/goccy/spidermonkeywasm2go/p0.Fn2591
-func gcasmLNgcasmFwdFn2591(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn2591(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn2591(a0, a1, a2, a3, a4)
-}
-
 //go:linkname gcasmLNgcasmFwdFn2592 github.com/goccy/spidermonkeywasm2go/p0.Fn2592
-func gcasmLNgcasmFwdFn2592(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+func gcasmLNgcasmFwdFn2592(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn2592(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn2592(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn2592(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn2592(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2593 github.com/goccy/spidermonkeywasm2go/p6.Fn2593
-func gcasmLNgcasmFwdFn2593(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2593 github.com/goccy/spidermonkeywasm2go/p0.Fn2593
+func gcasmLNgcasmFwdFn2593(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn2593(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2593(a0, a1)
+func gcasmFwdFn2593(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn2593(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2594 github.com/goccy/spidermonkeywasm2go/p7.Fn2594
-func gcasmLNgcasmFwdFn2594(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2594 github.com/goccy/spidermonkeywasm2go/p6.Fn2594
+func gcasmLNgcasmFwdFn2594(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2594(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2594(a0, a1)
+func gcasmFwdFn2594(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2594(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2599 github.com/goccy/spidermonkeywasm2go/p0.Fn2599
-func gcasmLNgcasmFwdFn2599(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2595 github.com/goccy/spidermonkeywasm2go/p7.Fn2595
+func gcasmLNgcasmFwdFn2595(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2599(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2599(a0, a1, a2)
+func gcasmFwdFn2595(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2595(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn260 github.com/goccy/spidermonkeywasm2go/p7.Fn260
@@ -2910,18 +2553,25 @@ func gcasmFwdFn260(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn260(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2602 github.com/goccy/spidermonkeywasm2go/p4.Fn2602
-func gcasmLNgcasmFwdFn2602(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2600 github.com/goccy/spidermonkeywasm2go/p0.Fn2600
+func gcasmLNgcasmFwdFn2600(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2602(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2602(a0, a1)
+func gcasmFwdFn2600(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2600(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2605 github.com/goccy/spidermonkeywasm2go/p0.Fn2605
-func gcasmLNgcasmFwdFn2605(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn2603 github.com/goccy/spidermonkeywasm2go/p4.Fn2603
+func gcasmLNgcasmFwdFn2603(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2605(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn2605(a0, a1, a2, a3)
+func gcasmFwdFn2603(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2603(a0, a1)
+}
+
+//go:linkname gcasmLNgcasmFwdFn2606 github.com/goccy/spidermonkeywasm2go/p0.Fn2606
+func gcasmLNgcasmFwdFn2606(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn2606(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn2606(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn261 github.com/goccy/spidermonkeywasm2go/p7.Fn261
@@ -2931,53 +2581,53 @@ func gcasmFwdFn261(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn261(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2610 github.com/goccy/spidermonkeywasm2go/p0.Fn2610
-func gcasmLNgcasmFwdFn2610(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2611 github.com/goccy/spidermonkeywasm2go/p0.Fn2611
+func gcasmLNgcasmFwdFn2611(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2610(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2610(a0, a1, a2, a3)
+func gcasmFwdFn2611(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2611(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2619 github.com/goccy/spidermonkeywasm2go/p0.Fn2619
-func gcasmLNgcasmFwdFn2619(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2620 github.com/goccy/spidermonkeywasm2go/p0.Fn2620
+func gcasmLNgcasmFwdFn2620(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2619(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2619(a0, a1, a2)
+func gcasmFwdFn2620(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2620(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2621 github.com/goccy/spidermonkeywasm2go/p0.Fn2621
-func gcasmLNgcasmFwdFn2621(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2622 github.com/goccy/spidermonkeywasm2go/p0.Fn2622
+func gcasmLNgcasmFwdFn2622(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2621(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2621(a0, a1, a2)
+func gcasmFwdFn2622(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2622(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2630 github.com/goccy/spidermonkeywasm2go/p0.Fn2630
-func gcasmLNgcasmFwdFn2630(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2631 github.com/goccy/spidermonkeywasm2go/p0.Fn2631
+func gcasmLNgcasmFwdFn2631(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32
 
-func gcasmFwdFn2630(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32 {
-	return gcasmLNgcasmFwdFn2630(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+func gcasmFwdFn2631(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32 {
+	return gcasmLNgcasmFwdFn2631(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2641 github.com/goccy/spidermonkeywasm2go/p6.Fn2641
-func gcasmLNgcasmFwdFn2641(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2642 github.com/goccy/spidermonkeywasm2go/p6.Fn2642
+func gcasmLNgcasmFwdFn2642(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2641(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2641(a0, a1)
+func gcasmFwdFn2642(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2642(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2642 github.com/goccy/spidermonkeywasm2go/p0.Fn2642
-func gcasmLNgcasmFwdFn2642(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn2643 github.com/goccy/spidermonkeywasm2go/p0.Fn2643
+func gcasmLNgcasmFwdFn2643(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn2642(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn2642(a0, a1, a2, a3, a4)
+func gcasmFwdFn2643(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn2643(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2644 github.com/goccy/spidermonkeywasm2go/p0.Fn2644
-func gcasmLNgcasmFwdFn2644(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2645 github.com/goccy/spidermonkeywasm2go/p0.Fn2645
+func gcasmLNgcasmFwdFn2645(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2644(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2644(a0, a1, a2, a3)
+func gcasmFwdFn2645(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2645(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn265 github.com/goccy/spidermonkeywasm2go/p6.Fn265
@@ -2987,11 +2637,11 @@ func gcasmFwdFn265(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn265(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2651 github.com/goccy/spidermonkeywasm2go/p0.Fn2651
-func gcasmLNgcasmFwdFn2651(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2652 github.com/goccy/spidermonkeywasm2go/p0.Fn2652
+func gcasmLNgcasmFwdFn2652(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2651(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2651(a0, a1, a2, a3)
+func gcasmFwdFn2652(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2652(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn268 github.com/goccy/spidermonkeywasm2go/p7.Fn268
@@ -3001,35 +2651,28 @@ func gcasmFwdFn268(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn268(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2689 github.com/goccy/spidermonkeywasm2go/p6.Fn2689
-func gcasmLNgcasmFwdFn2689(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2690 github.com/goccy/spidermonkeywasm2go/p6.Fn2690
+func gcasmLNgcasmFwdFn2690(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2689(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2689(a0, a1)
+func gcasmFwdFn2690(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2690(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2708 github.com/goccy/spidermonkeywasm2go/p0.Fn2708
-func gcasmLNgcasmFwdFn2708(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2709 github.com/goccy/spidermonkeywasm2go/p0.Fn2709
+func gcasmLNgcasmFwdFn2709(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2708(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2708(a0, a1, a2, a3)
+func gcasmFwdFn2709(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2709(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2717 github.com/goccy/spidermonkeywasm2go/p7.Fn2717
-func gcasmLNgcasmFwdFn2717(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn2718 github.com/goccy/spidermonkeywasm2go/p7.Fn2718
+func gcasmLNgcasmFwdFn2718(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn2717(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn2717(a0, a1, a2, a3)
+func gcasmFwdFn2718(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn2718(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2719 github.com/goccy/spidermonkeywasm2go/p0.Fn2719
-func gcasmLNgcasmFwdFn2719(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn2719(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn2719(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2720 github.com/goccy/spidermonkeywasm2go/p7.Fn2720
+//go:linkname gcasmLNgcasmFwdFn2720 github.com/goccy/spidermonkeywasm2go/p0.Fn2720
 func gcasmLNgcasmFwdFn2720(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
 func gcasmFwdFn2720(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
@@ -3037,31 +2680,38 @@ func gcasmFwdFn2720(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 
 }
 
 //go:linkname gcasmLNgcasmFwdFn2721 github.com/goccy/spidermonkeywasm2go/p7.Fn2721
-func gcasmLNgcasmFwdFn2721(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+func gcasmLNgcasmFwdFn2721(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn2721(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2721(a0, a1, a2, a3, a4)
+func gcasmFwdFn2721(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn2721(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2722 github.com/goccy/spidermonkeywasm2go/p4.Fn2722
-func gcasmLNgcasmFwdFn2722(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2722 github.com/goccy/spidermonkeywasm2go/p7.Fn2722
+func gcasmLNgcasmFwdFn2722(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2722(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2722(a0, a1, a2, a3)
+func gcasmFwdFn2722(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2722(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2725 github.com/goccy/spidermonkeywasm2go/p0.Fn2725
-func gcasmLNgcasmFwdFn2725(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2723 github.com/goccy/spidermonkeywasm2go/p4.Fn2723
+func gcasmLNgcasmFwdFn2723(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2725(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2725(a0, a1, a2, a3)
+func gcasmFwdFn2723(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2723(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2727 github.com/goccy/spidermonkeywasm2go/p7.Fn2727
-func gcasmLNgcasmFwdFn2727(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2726 github.com/goccy/spidermonkeywasm2go/p0.Fn2726
+func gcasmLNgcasmFwdFn2726(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2727(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2727(a0, a1, a2, a3, a4)
+func gcasmFwdFn2726(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2726(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn2728 github.com/goccy/spidermonkeywasm2go/p7.Fn2728
+func gcasmLNgcasmFwdFn2728(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+
+func gcasmFwdFn2728(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2728(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn273 github.com/goccy/spidermonkeywasm2go/p6.Fn273
@@ -3071,18 +2721,11 @@ func gcasmFwdFn273(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn273(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2730 github.com/goccy/spidermonkeywasm2go/p0.Fn2730
-func gcasmLNgcasmFwdFn2730(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn2730(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2730(a0, a1, a2, a3, a4)
-}
-
 //go:linkname gcasmLNgcasmFwdFn2731 github.com/goccy/spidermonkeywasm2go/p0.Fn2731
-func gcasmLNgcasmFwdFn2731(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+func gcasmLNgcasmFwdFn2731(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2731(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn2731(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn2731(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2731(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2732 github.com/goccy/spidermonkeywasm2go/p0.Fn2732
@@ -3092,67 +2735,67 @@ func gcasmFwdFn2732(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 
 	return gcasmLNgcasmFwdFn2732(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2734 github.com/goccy/spidermonkeywasm2go/p0.Fn2734
-func gcasmLNgcasmFwdFn2734(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2733 github.com/goccy/spidermonkeywasm2go/p0.Fn2733
+func gcasmLNgcasmFwdFn2733(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn2734(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2734(a0, a1, a2, a3, a4)
+func gcasmFwdFn2733(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn2733(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2738 github.com/goccy/spidermonkeywasm2go/p0.Fn2738
-func gcasmLNgcasmFwdFn2738(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2735 github.com/goccy/spidermonkeywasm2go/p0.Fn2735
+func gcasmLNgcasmFwdFn2735(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2738(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2738(a0, a1, a2, a3)
+func gcasmFwdFn2735(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2735(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2740 github.com/goccy/spidermonkeywasm2go/p0.Fn2740
-func gcasmLNgcasmFwdFn2740(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2739 github.com/goccy/spidermonkeywasm2go/p0.Fn2739
+func gcasmLNgcasmFwdFn2739(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2740(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2740(a0, a1, a2, a3)
+func gcasmFwdFn2739(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2739(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2741 github.com/goccy/spidermonkeywasm2go/p4.Fn2741
-func gcasmLNgcasmFwdFn2741(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2741 github.com/goccy/spidermonkeywasm2go/p0.Fn2741
+func gcasmLNgcasmFwdFn2741(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2741(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn2741(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn2741(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2741(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2742 github.com/goccy/spidermonkeywasm2go/p4.Fn2742
-func gcasmLNgcasmFwdFn2742(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+func gcasmLNgcasmFwdFn2742(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn2742(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2742(a0, a1, a2, a3, a4)
+func gcasmFwdFn2742(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn2742(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2743 github.com/goccy/spidermonkeywasm2go/p6.Fn2743
+//go:linkname gcasmLNgcasmFwdFn2743 github.com/goccy/spidermonkeywasm2go/p4.Fn2743
 func gcasmLNgcasmFwdFn2743(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
 func gcasmFwdFn2743(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn2743(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2744 github.com/goccy/spidermonkeywasm2go/p7.Fn2744
+//go:linkname gcasmLNgcasmFwdFn2744 github.com/goccy/spidermonkeywasm2go/p6.Fn2744
 func gcasmLNgcasmFwdFn2744(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
 func gcasmFwdFn2744(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn2744(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2746 github.com/goccy/spidermonkeywasm2go/p0.Fn2746
-func gcasmLNgcasmFwdFn2746(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2745 github.com/goccy/spidermonkeywasm2go/p7.Fn2745
+func gcasmLNgcasmFwdFn2745(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2746(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2746(a0, a1, a2, a3)
+func gcasmFwdFn2745(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2745(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2751 github.com/goccy/spidermonkeywasm2go/p0.Fn2751
-func gcasmLNgcasmFwdFn2751(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2747 github.com/goccy/spidermonkeywasm2go/p0.Fn2747
+func gcasmLNgcasmFwdFn2747(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2751(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2751(a0, a1, a2, a3)
+func gcasmFwdFn2747(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2747(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2752 github.com/goccy/spidermonkeywasm2go/p0.Fn2752
@@ -3163,38 +2806,45 @@ func gcasmFwdFn2752(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 }
 
 //go:linkname gcasmLNgcasmFwdFn2753 github.com/goccy/spidermonkeywasm2go/p0.Fn2753
-func gcasmLNgcasmFwdFn2753(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn2753(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2753(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2753(a0, a1, a2)
+func gcasmFwdFn2753(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2753(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2755 github.com/goccy/spidermonkeywasm2go/p0.Fn2755
-func gcasmLNgcasmFwdFn2755(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2754 github.com/goccy/spidermonkeywasm2go/p0.Fn2754
+func gcasmLNgcasmFwdFn2754(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2755(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2755(a0, a1, a2, a3, a4)
+func gcasmFwdFn2754(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2754(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2762 github.com/goccy/spidermonkeywasm2go/p5.Fn2762
-func gcasmLNgcasmFwdFn2762(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn2756 github.com/goccy/spidermonkeywasm2go/p0.Fn2756
+func gcasmLNgcasmFwdFn2756(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2762(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn2762(a0, a1, a2)
+func gcasmFwdFn2756(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2756(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2763 github.com/goccy/spidermonkeywasm2go/p4.Fn2763
-func gcasmLNgcasmFwdFn2763(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2763 github.com/goccy/spidermonkeywasm2go/p5.Fn2763
+func gcasmLNgcasmFwdFn2763(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn2763(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2763(a0, a1, a2, a3, a4)
+func gcasmFwdFn2763(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn2763(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2765 github.com/goccy/spidermonkeywasm2go/p0.Fn2765
-func gcasmLNgcasmFwdFn2765(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2764 github.com/goccy/spidermonkeywasm2go/p4.Fn2764
+func gcasmLNgcasmFwdFn2764(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2765(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2765(a0, a1, a2, a3)
+func gcasmFwdFn2764(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2764(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn2766 github.com/goccy/spidermonkeywasm2go/p0.Fn2766
+func gcasmLNgcasmFwdFn2766(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn2766(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2766(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn277 github.com/goccy/spidermonkeywasm2go/p7.Fn277
@@ -3204,11 +2854,11 @@ func gcasmFwdFn277(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn277(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2774 github.com/goccy/spidermonkeywasm2go/p7.Fn2774
-func gcasmLNgcasmFwdFn2774(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2775 github.com/goccy/spidermonkeywasm2go/p7.Fn2775
+func gcasmLNgcasmFwdFn2775(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2774(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2774(a0, a1)
+func gcasmFwdFn2775(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2775(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn278 github.com/goccy/spidermonkeywasm2go/p7.Fn278
@@ -3218,81 +2868,53 @@ func gcasmFwdFn278(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn278(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2787 github.com/goccy/spidermonkeywasm2go/p6.Fn2787
-func gcasmLNgcasmFwdFn2787(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2788 github.com/goccy/spidermonkeywasm2go/p6.Fn2788
+func gcasmLNgcasmFwdFn2788(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2787(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2787(a0, a1)
+func gcasmFwdFn2788(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2788(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2788 github.com/goccy/spidermonkeywasm2go/p7.Fn2788
-func gcasmLNgcasmFwdFn2788(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2794 github.com/goccy/spidermonkeywasm2go/p6.Fn2794
+func gcasmLNgcasmFwdFn2794(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2788(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2788(a0, a1)
+func gcasmFwdFn2794(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2794(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2793 github.com/goccy/spidermonkeywasm2go/p6.Fn2793
-func gcasmLNgcasmFwdFn2793(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2800 github.com/goccy/spidermonkeywasm2go/p6.Fn2800
+func gcasmLNgcasmFwdFn2800(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2793(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2793(a0, a1)
+func gcasmFwdFn2800(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2800(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2794 github.com/goccy/spidermonkeywasm2go/p7.Fn2794
-func gcasmLNgcasmFwdFn2794(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2808 github.com/goccy/spidermonkeywasm2go/p4.Fn2808
+func gcasmLNgcasmFwdFn2808(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2794(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2794(a0, a1)
+func gcasmFwdFn2808(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2808(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2799 github.com/goccy/spidermonkeywasm2go/p6.Fn2799
-func gcasmLNgcasmFwdFn2799(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2813 github.com/goccy/spidermonkeywasm2go/p6.Fn2813
+func gcasmLNgcasmFwdFn2813(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn2799(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2799(a0, a1, a2, a3)
+func gcasmFwdFn2813(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn2813(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2807 github.com/goccy/spidermonkeywasm2go/p4.Fn2807
-func gcasmLNgcasmFwdFn2807(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2839 github.com/goccy/spidermonkeywasm2go/p2.Fn2839
+func gcasmLNgcasmFwdFn2839(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2807(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2807(a0, a1, a2)
+func gcasmFwdFn2839(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2839(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2812 github.com/goccy/spidermonkeywasm2go/p6.Fn2812
-func gcasmLNgcasmFwdFn2812(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn2840 github.com/goccy/spidermonkeywasm2go/p5.Fn2840
+func gcasmLNgcasmFwdFn2840(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2812(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn2812(a0, a1, a2, a3, a4, a5, a6)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2822 github.com/goccy/spidermonkeywasm2go/p6.Fn2822
-func gcasmLNgcasmFwdFn2822(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn2822(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2822(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2838 github.com/goccy/spidermonkeywasm2go/p2.Fn2838
-func gcasmLNgcasmFwdFn2838(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn2838(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2838(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2839 github.com/goccy/spidermonkeywasm2go/p5.Fn2839
-func gcasmLNgcasmFwdFn2839(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn2839(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2839(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2841 github.com/goccy/spidermonkeywasm2go/p0.Fn2841
-func gcasmLNgcasmFwdFn2841(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn2841(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2841(a0, a1, a2)
+func gcasmFwdFn2840(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2840(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2842 github.com/goccy/spidermonkeywasm2go/p0.Fn2842
@@ -3302,18 +2924,25 @@ func gcasmFwdFn2842(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn2842(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2843 github.com/goccy/spidermonkeywasm2go/p5.Fn2843
+//go:linkname gcasmLNgcasmFwdFn2843 github.com/goccy/spidermonkeywasm2go/p0.Fn2843
 func gcasmLNgcasmFwdFn2843(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn2843(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn2843(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2844 github.com/goccy/spidermonkeywasm2go/p6.Fn2844
-func gcasmLNgcasmFwdFn2844(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2844 github.com/goccy/spidermonkeywasm2go/p5.Fn2844
+func gcasmLNgcasmFwdFn2844(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2844(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2844(a0, a1)
+func gcasmFwdFn2844(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2844(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn2845 github.com/goccy/spidermonkeywasm2go/p6.Fn2845
+func gcasmLNgcasmFwdFn2845(a0 *base.Module, a1 int32) int32
+
+func gcasmFwdFn2845(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2845(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn285 github.com/goccy/spidermonkeywasm2go/p7.Fn285
@@ -3323,39 +2952,39 @@ func gcasmFwdFn285(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn285(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2850 github.com/goccy/spidermonkeywasm2go/p2.Fn2850
-func gcasmLNgcasmFwdFn2850(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2851 github.com/goccy/spidermonkeywasm2go/p2.Fn2851
+func gcasmLNgcasmFwdFn2851(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2850(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2850(a0, a1, a2)
+func gcasmFwdFn2851(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2851(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2853 github.com/goccy/spidermonkeywasm2go/p5.Fn2853
-func gcasmLNgcasmFwdFn2853(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn2854 github.com/goccy/spidermonkeywasm2go/p5.Fn2854
+func gcasmLNgcasmFwdFn2854(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn2853(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn2853(a0, a1, a2, a3, a4)
+func gcasmFwdFn2854(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn2854(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2854 github.com/goccy/spidermonkeywasm2go/p6.Fn2854
-func gcasmLNgcasmFwdFn2854(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2855 github.com/goccy/spidermonkeywasm2go/p6.Fn2855
+func gcasmLNgcasmFwdFn2855(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2854(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2854(a0, a1, a2)
+func gcasmFwdFn2855(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2855(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2857 github.com/goccy/spidermonkeywasm2go/p6.Fn2857
-func gcasmLNgcasmFwdFn2857(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2858 github.com/goccy/spidermonkeywasm2go/p6.Fn2858
+func gcasmLNgcasmFwdFn2858(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2857(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2857(a0, a1, a2, a3)
+func gcasmFwdFn2858(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2858(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2858 github.com/goccy/spidermonkeywasm2go/p5.Fn2858
-func gcasmLNgcasmFwdFn2858(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn2859 github.com/goccy/spidermonkeywasm2go/p5.Fn2859
+func gcasmLNgcasmFwdFn2859(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn2858(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn2858(a0, a1, a2, a3)
+func gcasmFwdFn2859(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn2859(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn286 github.com/goccy/spidermonkeywasm2go/p7.Fn286
@@ -3365,39 +2994,32 @@ func gcasmFwdFn286(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn286(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2861 github.com/goccy/spidermonkeywasm2go/p0.Fn2861
-func gcasmLNgcasmFwdFn2861(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2862 github.com/goccy/spidermonkeywasm2go/p0.Fn2862
+func gcasmLNgcasmFwdFn2862(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn2861(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn2861(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn2862(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn2862(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2862 github.com/goccy/spidermonkeywasm2go/p6.Fn2862
-func gcasmLNgcasmFwdFn2862(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2863 github.com/goccy/spidermonkeywasm2go/p6.Fn2863
+func gcasmLNgcasmFwdFn2863(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn2862(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2862(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2865 github.com/goccy/spidermonkeywasm2go/p5.Fn2865
-func gcasmLNgcasmFwdFn2865(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn2865(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn2865(a0, a1, a2, a3, a4)
+func gcasmFwdFn2863(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn2863(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn2866 github.com/goccy/spidermonkeywasm2go/p5.Fn2866
-func gcasmLNgcasmFwdFn2866(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn2866(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn2866(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn2866(a0, a1, a2, a3)
+func gcasmFwdFn2866(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn2866(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn287 github.com/goccy/spidermonkeywasm2go/p7.Fn287
-func gcasmLNgcasmFwdFn287(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2867 github.com/goccy/spidermonkeywasm2go/p5.Fn2867
+func gcasmLNgcasmFwdFn2867(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn287(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn287(a0, a1)
+func gcasmFwdFn2867(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn2867(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn288 github.com/goccy/spidermonkeywasm2go/p7.Fn288
@@ -3407,53 +3029,46 @@ func gcasmFwdFn288(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn288(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2880 github.com/goccy/spidermonkeywasm2go/p0.Fn2880
-func gcasmLNgcasmFwdFn2880(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2881 github.com/goccy/spidermonkeywasm2go/p0.Fn2881
+func gcasmLNgcasmFwdFn2881(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn2880(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn2880(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn2881(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn2881(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2885 github.com/goccy/spidermonkeywasm2go/p4.Fn2885
-func gcasmLNgcasmFwdFn2885(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn2885(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2885(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn2886 github.com/goccy/spidermonkeywasm2go/p0.Fn2886
+//go:linkname gcasmLNgcasmFwdFn2886 github.com/goccy/spidermonkeywasm2go/p4.Fn2886
 func gcasmLNgcasmFwdFn2886(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
 func gcasmFwdFn2886(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn2886(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2890 github.com/goccy/spidermonkeywasm2go/p4.Fn2890
-func gcasmLNgcasmFwdFn2890(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2887 github.com/goccy/spidermonkeywasm2go/p0.Fn2887
+func gcasmLNgcasmFwdFn2887(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2890(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2890(a0, a1, a2, a3, a4)
+func gcasmFwdFn2887(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2887(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2892 github.com/goccy/spidermonkeywasm2go/p0.Fn2892
-func gcasmLNgcasmFwdFn2892(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2891 github.com/goccy/spidermonkeywasm2go/p4.Fn2891
+func gcasmLNgcasmFwdFn2891(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2892(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn2892(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn2891(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2891(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2896 github.com/goccy/spidermonkeywasm2go/p0.Fn2896
-func gcasmLNgcasmFwdFn2896(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2893 github.com/goccy/spidermonkeywasm2go/p0.Fn2893
+func gcasmLNgcasmFwdFn2893(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn2896(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2896(a0, a1, a2, a3, a4)
+func gcasmFwdFn2893(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn2893(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2899 github.com/goccy/spidermonkeywasm2go/p4.Fn2899
-func gcasmLNgcasmFwdFn2899(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn2897 github.com/goccy/spidermonkeywasm2go/p0.Fn2897
+func gcasmLNgcasmFwdFn2897(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2899(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn2899(a0, a1, a2)
+func gcasmFwdFn2897(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2897(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn290 github.com/goccy/spidermonkeywasm2go/p7.Fn290
@@ -3463,81 +3078,81 @@ func gcasmFwdFn290(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn290(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2904 github.com/goccy/spidermonkeywasm2go/p6.Fn2904
-func gcasmLNgcasmFwdFn2904(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2900 github.com/goccy/spidermonkeywasm2go/p4.Fn2900
+func gcasmLNgcasmFwdFn2900(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn2904(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn2904(a0, a1)
+func gcasmFwdFn2900(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn2900(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2905 github.com/goccy/spidermonkeywasm2go/p5.Fn2905
-func gcasmLNgcasmFwdFn2905(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2905 github.com/goccy/spidermonkeywasm2go/p6.Fn2905
+func gcasmLNgcasmFwdFn2905(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn2905(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2905(a0, a1, a2)
+func gcasmFwdFn2905(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn2905(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2910 github.com/goccy/spidermonkeywasm2go/p6.Fn2910
-func gcasmLNgcasmFwdFn2910(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2906 github.com/goccy/spidermonkeywasm2go/p5.Fn2906
+func gcasmLNgcasmFwdFn2906(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2910(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2910(a0, a1, a2, a3)
+func gcasmFwdFn2906(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2906(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2921 github.com/goccy/spidermonkeywasm2go/p6.Fn2921
-func gcasmLNgcasmFwdFn2921(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn2911 github.com/goccy/spidermonkeywasm2go/p6.Fn2911
+func gcasmLNgcasmFwdFn2911(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2921(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn2921(a0, a1, a2)
+func gcasmFwdFn2911(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2911(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2923 github.com/goccy/spidermonkeywasm2go/p6.Fn2923
-func gcasmLNgcasmFwdFn2923(a0 *base.Module, a1 int32) int64
+//go:linkname gcasmLNgcasmFwdFn2922 github.com/goccy/spidermonkeywasm2go/p6.Fn2922
+func gcasmLNgcasmFwdFn2922(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn2923(a0 *base.Module, a1 int32) int64 {
-	return gcasmLNgcasmFwdFn2923(a0, a1)
+func gcasmFwdFn2922(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn2922(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2928 github.com/goccy/spidermonkeywasm2go/p4.Fn2928
-func gcasmLNgcasmFwdFn2928(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn2924 github.com/goccy/spidermonkeywasm2go/p6.Fn2924
+func gcasmLNgcasmFwdFn2924(a0 *base.Module, a1 int32) int64
 
-func gcasmFwdFn2928(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn2928(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn2924(a0 *base.Module, a1 int32) int64 {
+	return gcasmLNgcasmFwdFn2924(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2939 github.com/goccy/spidermonkeywasm2go/p0.Fn2939
-func gcasmLNgcasmFwdFn2939(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2929 github.com/goccy/spidermonkeywasm2go/p4.Fn2929
+func gcasmLNgcasmFwdFn2929(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn2939(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2939(a0, a1, a2)
+func gcasmFwdFn2929(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn2929(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2944 github.com/goccy/spidermonkeywasm2go/p4.Fn2944
-func gcasmLNgcasmFwdFn2944(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2940 github.com/goccy/spidermonkeywasm2go/p0.Fn2940
+func gcasmLNgcasmFwdFn2940(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2944(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn2944(a0, a1, a2)
+func gcasmFwdFn2940(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2940(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2949 github.com/goccy/spidermonkeywasm2go/p7.Fn2949
-func gcasmLNgcasmFwdFn2949(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn2945 github.com/goccy/spidermonkeywasm2go/p4.Fn2945
+func gcasmLNgcasmFwdFn2945(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn2949(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn2949(a0, a1)
+func gcasmFwdFn2945(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn2945(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2952 github.com/goccy/spidermonkeywasm2go/p7.Fn2952
-func gcasmLNgcasmFwdFn2952(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn2953 github.com/goccy/spidermonkeywasm2go/p7.Fn2953
+func gcasmLNgcasmFwdFn2953(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn2952(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn2952(a0, a1, a2, a3)
+func gcasmFwdFn2953(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn2953(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2957 github.com/goccy/spidermonkeywasm2go/p0.Fn2957
-func gcasmLNgcasmFwdFn2957(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2958 github.com/goccy/spidermonkeywasm2go/p0.Fn2958
+func gcasmLNgcasmFwdFn2958(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn2957(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn2957(a0, a1, a2, a3)
+func gcasmFwdFn2958(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn2958(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn298 github.com/goccy/spidermonkeywasm2go/p6.Fn298
@@ -3547,39 +3162,32 @@ func gcasmFwdFn298(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn298(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2984 github.com/goccy/spidermonkeywasm2go/p6.Fn2984
-func gcasmLNgcasmFwdFn2984(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2985 github.com/goccy/spidermonkeywasm2go/p6.Fn2985
+func gcasmLNgcasmFwdFn2985(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn2984(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn2984(a0, a1, a2, a3, a4)
+func gcasmFwdFn2985(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn2985(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn2986 github.com/goccy/spidermonkeywasm2go/p6.Fn2986
-func gcasmLNgcasmFwdFn2986(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn2987 github.com/goccy/spidermonkeywasm2go/p6.Fn2987
+func gcasmLNgcasmFwdFn2987(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn2986(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn2986(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn2987(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn2987(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3003 github.com/goccy/spidermonkeywasm2go/p6.Fn3003
-func gcasmLNgcasmFwdFn3003(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn3004 github.com/goccy/spidermonkeywasm2go/p6.Fn3004
+func gcasmLNgcasmFwdFn3004(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn3003(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn3003(a0, a1)
+func gcasmFwdFn3004(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn3004(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3005 github.com/goccy/spidermonkeywasm2go/p5.Fn3005
-func gcasmLNgcasmFwdFn3005(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn3006 github.com/goccy/spidermonkeywasm2go/p5.Fn3006
+func gcasmLNgcasmFwdFn3006(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn3005(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn3005(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3008 github.com/goccy/spidermonkeywasm2go/p6.Fn3008
-func gcasmLNgcasmFwdFn3008(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn3008(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn3008(a0, a1)
+func gcasmFwdFn3006(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn3006(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3009 github.com/goccy/spidermonkeywasm2go/p6.Fn3009
@@ -3589,144 +3197,144 @@ func gcasmFwdFn3009(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn3009(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn302 github.com/goccy/spidermonkeywasm2go/p5.Fn302
-func gcasmLNgcasmFwdFn302(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn3010 github.com/goccy/spidermonkeywasm2go/p6.Fn3010
+func gcasmLNgcasmFwdFn3010(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn302(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn302(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3044 github.com/goccy/spidermonkeywasm2go/p0.Fn3044
-func gcasmLNgcasmFwdFn3044(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn3044(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3044(a0, a1, a2)
+func gcasmFwdFn3010(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn3010(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3045 github.com/goccy/spidermonkeywasm2go/p0.Fn3045
-func gcasmLNgcasmFwdFn3045(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+func gcasmLNgcasmFwdFn3045(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3045(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn3045(a0, a1, a2, a3, a4)
+func gcasmFwdFn3045(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3045(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3047 github.com/goccy/spidermonkeywasm2go/p6.Fn3047
-func gcasmLNgcasmFwdFn3047(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn3046 github.com/goccy/spidermonkeywasm2go/p0.Fn3046
+func gcasmLNgcasmFwdFn3046(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn3047(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn3047(a0, a1, a2, a3)
+func gcasmFwdFn3046(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn3046(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3054 github.com/goccy/spidermonkeywasm2go/p6.Fn3054
-func gcasmLNgcasmFwdFn3054(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn3048 github.com/goccy/spidermonkeywasm2go/p6.Fn3048
+func gcasmLNgcasmFwdFn3048(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn3054(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn3054(a0, a1, a2)
+func gcasmFwdFn3048(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn3048(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3058 github.com/goccy/spidermonkeywasm2go/p6.Fn3058
-func gcasmLNgcasmFwdFn3058(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3055 github.com/goccy/spidermonkeywasm2go/p6.Fn3055
+func gcasmLNgcasmFwdFn3055(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn3058(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3058(a0, a1, a2, a3)
+func gcasmFwdFn3055(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn3055(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3061 github.com/goccy/spidermonkeywasm2go/p6.Fn3061
-func gcasmLNgcasmFwdFn3061(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn3059 github.com/goccy/spidermonkeywasm2go/p6.Fn3059
+func gcasmLNgcasmFwdFn3059(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn3061(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn3061(a0, a1, a2)
+func gcasmFwdFn3059(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3059(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3104 github.com/goccy/spidermonkeywasm2go/p6.Fn3104
-func gcasmLNgcasmFwdFn3104(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3062 github.com/goccy/spidermonkeywasm2go/p6.Fn3062
+func gcasmLNgcasmFwdFn3062(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn3104(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn3104(a0, a1, a2, a3, a4)
+func gcasmFwdFn3062(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn3062(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3105 github.com/goccy/spidermonkeywasm2go/p4.Fn3105
-func gcasmLNgcasmFwdFn3105(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3105 github.com/goccy/spidermonkeywasm2go/p6.Fn3105
+func gcasmLNgcasmFwdFn3105(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn3105(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3105(a0, a1, a2, a3)
+func gcasmFwdFn3105(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn3105(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3106 github.com/goccy/spidermonkeywasm2go/p5.Fn3106
+//go:linkname gcasmLNgcasmFwdFn3106 github.com/goccy/spidermonkeywasm2go/p4.Fn3106
 func gcasmLNgcasmFwdFn3106(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
 func gcasmFwdFn3106(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn3106(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3158 github.com/goccy/spidermonkeywasm2go/p6.Fn3158
-func gcasmLNgcasmFwdFn3158(a0 *base.Module, a1 float64) float64
+//go:linkname gcasmLNgcasmFwdFn3107 github.com/goccy/spidermonkeywasm2go/p5.Fn3107
+func gcasmLNgcasmFwdFn3107(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn3158(a0 *base.Module, a1 float64) float64 {
-	return gcasmLNgcasmFwdFn3158(a0, a1)
+func gcasmFwdFn3107(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3107(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3159 github.com/goccy/spidermonkeywasm2go/p2.Fn3159
-func gcasmLNgcasmFwdFn3159(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3159 github.com/goccy/spidermonkeywasm2go/p6.Fn3159
+func gcasmLNgcasmFwdFn3159(a0 *base.Module, a1 float64) float64
 
-func gcasmFwdFn3159(a0 *base.Module, a1 int32) int32 {
+func gcasmFwdFn3159(a0 *base.Module, a1 float64) float64 {
 	return gcasmLNgcasmFwdFn3159(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3161 github.com/goccy/spidermonkeywasm2go/p2.Fn3161
-func gcasmLNgcasmFwdFn3161(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn3160 github.com/goccy/spidermonkeywasm2go/p2.Fn3160
+func gcasmLNgcasmFwdFn3160(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn3161(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn3161(a0, a1)
+func gcasmFwdFn3160(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn3160(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3163 github.com/goccy/spidermonkeywasm2go/p0.Fn3163
-func gcasmLNgcasmFwdFn3163(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3162 github.com/goccy/spidermonkeywasm2go/p2.Fn3162
+func gcasmLNgcasmFwdFn3162(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn3163(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn3163(a0, a1)
+func gcasmFwdFn3162(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn3162(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3165 github.com/goccy/spidermonkeywasm2go/p6.Fn3165
-func gcasmLNgcasmFwdFn3165(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3164 github.com/goccy/spidermonkeywasm2go/p0.Fn3164
+func gcasmLNgcasmFwdFn3164(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn3165(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn3165(a0, a1)
+func gcasmFwdFn3164(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn3164(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3166 github.com/goccy/spidermonkeywasm2go/p7.Fn3166
-func gcasmLNgcasmFwdFn3166(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3166 github.com/goccy/spidermonkeywasm2go/p6.Fn3166
+func gcasmLNgcasmFwdFn3166(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn3166(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3166(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn3166(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn3166(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3167 github.com/goccy/spidermonkeywasm2go/p7.Fn3167
-func gcasmLNgcasmFwdFn3167(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+func gcasmLNgcasmFwdFn3167(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn3167(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn3167(a0, a1, a2, a3, a4)
+func gcasmFwdFn3167(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn3167(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3168 github.com/goccy/spidermonkeywasm2go/p6.Fn3168
-func gcasmLNgcasmFwdFn3168(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn3168 github.com/goccy/spidermonkeywasm2go/p7.Fn3168
+func gcasmLNgcasmFwdFn3168(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn3168(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn3168(a0, a1, a2)
+func gcasmFwdFn3168(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn3168(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3176 github.com/goccy/spidermonkeywasm2go/p0.Fn3176
-func gcasmLNgcasmFwdFn3176(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3169 github.com/goccy/spidermonkeywasm2go/p6.Fn3169
+func gcasmLNgcasmFwdFn3169(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn3176(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn3176(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn3169(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn3169(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3197 github.com/goccy/spidermonkeywasm2go/p0.Fn3197
-func gcasmLNgcasmFwdFn3197(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3177 github.com/goccy/spidermonkeywasm2go/p0.Fn3177
+func gcasmLNgcasmFwdFn3177(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn3197(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3197(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn3177(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn3177(a0, a1, a2, a3, a4, a5, a6)
+}
+
+//go:linkname gcasmLNgcasmFwdFn3198 github.com/goccy/spidermonkeywasm2go/p0.Fn3198
+func gcasmLNgcasmFwdFn3198(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+
+func gcasmFwdFn3198(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn3198(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn320 github.com/goccy/spidermonkeywasm2go/p7.Fn320
@@ -3736,11 +3344,11 @@ func gcasmFwdFn320(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn320(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3206 github.com/goccy/spidermonkeywasm2go/p6.Fn3206
-func gcasmLNgcasmFwdFn3206(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn3207 github.com/goccy/spidermonkeywasm2go/p6.Fn3207
+func gcasmLNgcasmFwdFn3207(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn3206(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn3206(a0, a1, a2)
+func gcasmFwdFn3207(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn3207(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn322 github.com/goccy/spidermonkeywasm2go/p7.Fn322
@@ -3750,172 +3358,109 @@ func gcasmFwdFn322(a0 *base.Module) {
 	gcasmLNgcasmFwdFn322(a0)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3238 github.com/goccy/spidermonkeywasm2go/p0.Fn3238
-func gcasmLNgcasmFwdFn3238(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3239 github.com/goccy/spidermonkeywasm2go/p0.Fn3239
+func gcasmLNgcasmFwdFn3239(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn3238(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3238(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn3239(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn3239(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3244 github.com/goccy/spidermonkeywasm2go/p6.Fn3244
-func gcasmLNgcasmFwdFn3244(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn3490 github.com/goccy/spidermonkeywasm2go/p6.Fn3490
+func gcasmLNgcasmFwdFn3490(a0 *base.Module, a1 int32, a2 int64, a3 int64, a4 int32, a5 int32) int32
 
-func gcasmFwdFn3244(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn3244(a0, a1, a2, a3)
+func gcasmFwdFn3490(a0 *base.Module, a1 int32, a2 int64, a3 int64, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn3490(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3246 github.com/goccy/spidermonkeywasm2go/p7.Fn3246
-func gcasmLNgcasmFwdFn3246(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3491 github.com/goccy/spidermonkeywasm2go/p7.Fn3491
+func gcasmLNgcasmFwdFn3491(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn3246(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3246(a0, a1, a2)
+func gcasmFwdFn3491(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn3491(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn347 github.com/goccy/spidermonkeywasm2go/p7.Fn347
-func gcasmLNgcasmFwdFn347(a0 *base.Module, a1 float64, a2 float64) float64
+//go:linkname gcasmLNgcasmFwdFn3503 github.com/goccy/spidermonkeywasm2go/p7.Fn3503
+func gcasmLNgcasmFwdFn3503(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn347(a0 *base.Module, a1 float64, a2 float64) float64 {
-	return gcasmLNgcasmFwdFn347(a0, a1, a2)
+func gcasmFwdFn3503(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn3503(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn348 github.com/goccy/spidermonkeywasm2go/p7.Fn348
-func gcasmLNgcasmFwdFn348(a0 *base.Module, a1 int32, a2 int64, a3 int64, a4 int64, a5 int64)
+//go:linkname gcasmLNgcasmFwdFn3511 github.com/goccy/spidermonkeywasm2go/p7.Fn3511
+func gcasmLNgcasmFwdFn3511(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn348(a0 *base.Module, a1 int32, a2 int64, a3 int64, a4 int64, a5 int64) {
-	gcasmLNgcasmFwdFn348(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn3511(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn3511(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3489 github.com/goccy/spidermonkeywasm2go/p6.Fn3489
-func gcasmLNgcasmFwdFn3489(a0 *base.Module, a1 int32, a2 int64, a3 int64, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3534 github.com/goccy/spidermonkeywasm2go/p2.Fn3534
+func gcasmLNgcasmFwdFn3534(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3489(a0 *base.Module, a1 int32, a2 int64, a3 int64, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3489(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn3534(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3534(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn349 github.com/goccy/spidermonkeywasm2go/p6.Fn349
-func gcasmLNgcasmFwdFn349(a0 *base.Module, a1 float64, a2 float64) float64
+//go:linkname gcasmLNgcasmFwdFn3535 github.com/goccy/spidermonkeywasm2go/p0.Fn3535
+func gcasmLNgcasmFwdFn3535(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn349(a0 *base.Module, a1 float64, a2 float64) float64 {
-	return gcasmLNgcasmFwdFn349(a0, a1, a2)
+func gcasmFwdFn3535(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3535(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3490 github.com/goccy/spidermonkeywasm2go/p7.Fn3490
-func gcasmLNgcasmFwdFn3490(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn3537 github.com/goccy/spidermonkeywasm2go/p6.Fn3537
+func gcasmLNgcasmFwdFn3537(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3490(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn3490(a0, a1)
+func gcasmFwdFn3537(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3537(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3502 github.com/goccy/spidermonkeywasm2go/p7.Fn3502
-func gcasmLNgcasmFwdFn3502(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3540 github.com/goccy/spidermonkeywasm2go/p7.Fn3540
+func gcasmLNgcasmFwdFn3540(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3502(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn3502(a0, a1, a2, a3, a4)
+func gcasmFwdFn3540(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3540(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3510 github.com/goccy/spidermonkeywasm2go/p7.Fn3510
-func gcasmLNgcasmFwdFn3510(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn3544 github.com/goccy/spidermonkeywasm2go/p7.Fn3544
+func gcasmLNgcasmFwdFn3544(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn3510(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn3510(a0, a1)
+func gcasmFwdFn3544(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3544(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn352 github.com/goccy/spidermonkeywasm2go/p5.Fn352
-func gcasmLNgcasmFwdFn352(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3548 github.com/goccy/spidermonkeywasm2go/p0.Fn3548
+func gcasmLNgcasmFwdFn3548(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn352(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn352(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3533 github.com/goccy/spidermonkeywasm2go/p2.Fn3533
-func gcasmLNgcasmFwdFn3533(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn3533(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3533(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3534 github.com/goccy/spidermonkeywasm2go/p0.Fn3534
-func gcasmLNgcasmFwdFn3534(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn3534(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3534(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3536 github.com/goccy/spidermonkeywasm2go/p6.Fn3536
-func gcasmLNgcasmFwdFn3536(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn3536(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3536(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3539 github.com/goccy/spidermonkeywasm2go/p7.Fn3539
-func gcasmLNgcasmFwdFn3539(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn3539(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3539(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3543 github.com/goccy/spidermonkeywasm2go/p7.Fn3543
-func gcasmLNgcasmFwdFn3543(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn3543(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3543(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3546 github.com/goccy/spidermonkeywasm2go/p7.Fn3546
-func gcasmLNgcasmFwdFn3546(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn3546(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn3546(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3547 github.com/goccy/spidermonkeywasm2go/p0.Fn3547
-func gcasmLNgcasmFwdFn3547(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn3547(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3547(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3549 github.com/goccy/spidermonkeywasm2go/p0.Fn3549
-func gcasmLNgcasmFwdFn3549(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn3549(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3549(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn355 github.com/goccy/spidermonkeywasm2go/p5.Fn355
-func gcasmLNgcasmFwdFn355(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn355(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn355(a0, a1, a2)
+func gcasmFwdFn3548(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3548(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3550 github.com/goccy/spidermonkeywasm2go/p0.Fn3550
-func gcasmLNgcasmFwdFn3550(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn3550(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3550(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3550(a0, a1, a2, a3)
+func gcasmFwdFn3550(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3550(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3551 github.com/goccy/spidermonkeywasm2go/p0.Fn3551
-func gcasmLNgcasmFwdFn3551(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+func gcasmLNgcasmFwdFn3551(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn3551(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3551(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn3551(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3551(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3557 github.com/goccy/spidermonkeywasm2go/p0.Fn3557
-func gcasmLNgcasmFwdFn3557(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3552 github.com/goccy/spidermonkeywasm2go/p0.Fn3552
+func gcasmLNgcasmFwdFn3552(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn3557(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn3557(a0, a1, a2, a3, a4)
+func gcasmFwdFn3552(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn3552(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3560 github.com/goccy/spidermonkeywasm2go/p0.Fn3560
-func gcasmLNgcasmFwdFn3560(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3558 github.com/goccy/spidermonkeywasm2go/p0.Fn3558
+func gcasmLNgcasmFwdFn3558(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn3560(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn3560(a0, a1, a2, a3, a4)
+func gcasmFwdFn3558(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn3558(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3561 github.com/goccy/spidermonkeywasm2go/p0.Fn3561
@@ -3925,11 +3470,11 @@ func gcasmFwdFn3561(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int
 	return gcasmLNgcasmFwdFn3561(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3567 github.com/goccy/spidermonkeywasm2go/p0.Fn3567
-func gcasmLNgcasmFwdFn3567(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3562 github.com/goccy/spidermonkeywasm2go/p0.Fn3562
+func gcasmLNgcasmFwdFn3562(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn3567(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn3567(a0, a1, a2, a3, a4)
+func gcasmFwdFn3562(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn3562(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3568 github.com/goccy/spidermonkeywasm2go/p0.Fn3568
@@ -3939,11 +3484,11 @@ func gcasmFwdFn3568(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int
 	return gcasmLNgcasmFwdFn3568(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3570 github.com/goccy/spidermonkeywasm2go/p0.Fn3570
-func gcasmLNgcasmFwdFn3570(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3569 github.com/goccy/spidermonkeywasm2go/p0.Fn3569
+func gcasmLNgcasmFwdFn3569(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn3570(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn3570(a0, a1, a2, a3, a4)
+func gcasmFwdFn3569(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn3569(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3571 github.com/goccy/spidermonkeywasm2go/p0.Fn3571
@@ -3953,67 +3498,67 @@ func gcasmFwdFn3571(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int
 	return gcasmLNgcasmFwdFn3571(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3573 github.com/goccy/spidermonkeywasm2go/p6.Fn3573
-func gcasmLNgcasmFwdFn3573(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3572 github.com/goccy/spidermonkeywasm2go/p0.Fn3572
+func gcasmLNgcasmFwdFn3572(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn3573(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3573(a0, a1, a2)
+func gcasmFwdFn3572(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn3572(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3575 github.com/goccy/spidermonkeywasm2go/p0.Fn3575
-func gcasmLNgcasmFwdFn3575(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3574 github.com/goccy/spidermonkeywasm2go/p6.Fn3574
+func gcasmLNgcasmFwdFn3574(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3575(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3575(a0, a1, a2)
+func gcasmFwdFn3574(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3574(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3577 github.com/goccy/spidermonkeywasm2go/p7.Fn3577
-func gcasmLNgcasmFwdFn3577(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3576 github.com/goccy/spidermonkeywasm2go/p0.Fn3576
+func gcasmLNgcasmFwdFn3576(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3577(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3577(a0, a1, a2)
+func gcasmFwdFn3576(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3576(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3578 github.com/goccy/spidermonkeywasm2go/p2.Fn3578
-func gcasmLNgcasmFwdFn3578(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3578 github.com/goccy/spidermonkeywasm2go/p7.Fn3578
+func gcasmLNgcasmFwdFn3578(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3578(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
-	return gcasmLNgcasmFwdFn3578(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+func gcasmFwdFn3578(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3578(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn358 github.com/goccy/spidermonkeywasm2go/p5.Fn358
-func gcasmLNgcasmFwdFn358(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3579 github.com/goccy/spidermonkeywasm2go/p2.Fn3579
+func gcasmLNgcasmFwdFn3579(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
 
-func gcasmFwdFn358(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn358(a0, a1, a2)
+func gcasmFwdFn3579(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
+	return gcasmLNgcasmFwdFn3579(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3586 github.com/goccy/spidermonkeywasm2go/p6.Fn3586
-func gcasmLNgcasmFwdFn3586(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3587 github.com/goccy/spidermonkeywasm2go/p6.Fn3587
+func gcasmLNgcasmFwdFn3587(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn3586(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3586(a0, a1, a2, a3)
+func gcasmFwdFn3587(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3587(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3588 github.com/goccy/spidermonkeywasm2go/p2.Fn3588
-func gcasmLNgcasmFwdFn3588(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3589 github.com/goccy/spidermonkeywasm2go/p2.Fn3589
+func gcasmLNgcasmFwdFn3589(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
 
-func gcasmFwdFn3588(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn3588(a0, a1, a2, a3, a4, a5, a6, a7)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3595 github.com/goccy/spidermonkeywasm2go/p6.Fn3595
-func gcasmLNgcasmFwdFn3595(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn3595(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3595(a0, a1, a2, a3)
+func gcasmFwdFn3589(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn3589(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3596 github.com/goccy/spidermonkeywasm2go/p6.Fn3596
-func gcasmLNgcasmFwdFn3596(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn3596(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn3596(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn3596(a0, a1, a2, a3)
+func gcasmFwdFn3596(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3596(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn3597 github.com/goccy/spidermonkeywasm2go/p6.Fn3597
+func gcasmLNgcasmFwdFn3597(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn3597(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn3597(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn36 github.com/goccy/spidermonkeywasm2go/p7.Fn36
@@ -4023,109 +3568,74 @@ func gcasmFwdFn36(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn36(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3600 github.com/goccy/spidermonkeywasm2go/p6.Fn3600
-func gcasmLNgcasmFwdFn3600(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn3601 github.com/goccy/spidermonkeywasm2go/p6.Fn3601
+func gcasmLNgcasmFwdFn3601(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn3600(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn3600(a0, a1)
+func gcasmFwdFn3601(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn3601(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn361 github.com/goccy/spidermonkeywasm2go/p5.Fn361
-func gcasmLNgcasmFwdFn361(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3616 github.com/goccy/spidermonkeywasm2go/p6.Fn3616
+func gcasmLNgcasmFwdFn3616(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn361(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn361(a0, a1, a2)
+func gcasmFwdFn3616(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn3616(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3615 github.com/goccy/spidermonkeywasm2go/p6.Fn3615
-func gcasmLNgcasmFwdFn3615(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn3633 github.com/goccy/spidermonkeywasm2go/p5.Fn3633
+func gcasmLNgcasmFwdFn3633(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3615(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn3615(a0, a1)
+func gcasmFwdFn3633(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3633(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3632 github.com/goccy/spidermonkeywasm2go/p5.Fn3632
-func gcasmLNgcasmFwdFn3632(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3640 github.com/goccy/spidermonkeywasm2go/p5.Fn3640
+func gcasmLNgcasmFwdFn3640(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn3632(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3632(a0, a1, a2)
+func gcasmFwdFn3640(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn3640(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3639 github.com/goccy/spidermonkeywasm2go/p5.Fn3639
-func gcasmLNgcasmFwdFn3639(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn3645 github.com/goccy/spidermonkeywasm2go/p0.Fn3645
+func gcasmLNgcasmFwdFn3645(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3639(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn3639(a0, a1, a2, a3)
+func gcasmFwdFn3645(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3645(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn364 github.com/goccy/spidermonkeywasm2go/p5.Fn364
-func gcasmLNgcasmFwdFn364(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3648 github.com/goccy/spidermonkeywasm2go/p0.Fn3648
+func gcasmLNgcasmFwdFn3648(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn364(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn364(a0, a1, a2)
+func gcasmFwdFn3648(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3648(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3644 github.com/goccy/spidermonkeywasm2go/p0.Fn3644
-func gcasmLNgcasmFwdFn3644(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3675 github.com/goccy/spidermonkeywasm2go/p5.Fn3675
+func gcasmLNgcasmFwdFn3675(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn3644(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3644(a0, a1, a2)
+func gcasmFwdFn3675(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3675(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3647 github.com/goccy/spidermonkeywasm2go/p0.Fn3647
-func gcasmLNgcasmFwdFn3647(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3721 github.com/goccy/spidermonkeywasm2go/p0.Fn3721
+func gcasmLNgcasmFwdFn3721(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3647(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3647(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn367 github.com/goccy/spidermonkeywasm2go/p5.Fn367
-func gcasmLNgcasmFwdFn367(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn367(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn367(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3674 github.com/goccy/spidermonkeywasm2go/p5.Fn3674
-func gcasmLNgcasmFwdFn3674(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn3674(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3674(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn370 github.com/goccy/spidermonkeywasm2go/p5.Fn370
-func gcasmLNgcasmFwdFn370(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn370(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn370(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3720 github.com/goccy/spidermonkeywasm2go/p0.Fn3720
-func gcasmLNgcasmFwdFn3720(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn3720(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3720(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn373 github.com/goccy/spidermonkeywasm2go/p5.Fn373
-func gcasmLNgcasmFwdFn373(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn373(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn373(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3732 github.com/goccy/spidermonkeywasm2go/p6.Fn3732
-func gcasmLNgcasmFwdFn3732(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn3732(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3732(a0, a1, a2, a3)
+func gcasmFwdFn3721(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3721(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3733 github.com/goccy/spidermonkeywasm2go/p6.Fn3733
-func gcasmLNgcasmFwdFn3733(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn3733(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn3733(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3733(a0, a1, a2)
+func gcasmFwdFn3733(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3733(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn3734 github.com/goccy/spidermonkeywasm2go/p6.Fn3734
+func gcasmLNgcasmFwdFn3734(a0 *base.Module, a1 int32, a2 int32) int32
+
+func gcasmFwdFn3734(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3734(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn374 github.com/goccy/spidermonkeywasm2go/p7.Fn374
@@ -4135,25 +3645,32 @@ func gcasmFwdFn374(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn374(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3746 github.com/goccy/spidermonkeywasm2go/p6.Fn3746
-func gcasmLNgcasmFwdFn3746(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3747 github.com/goccy/spidermonkeywasm2go/p6.Fn3747
+func gcasmLNgcasmFwdFn3747(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn3746(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn3746(a0, a1, a2, a3, a4)
+func gcasmFwdFn3747(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn3747(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3747 github.com/goccy/spidermonkeywasm2go/p4.Fn3747
-func gcasmLNgcasmFwdFn3747(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3748 github.com/goccy/spidermonkeywasm2go/p4.Fn3748
+func gcasmLNgcasmFwdFn3748(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn3747(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn3747(a0, a1, a2)
+func gcasmFwdFn3748(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn3748(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3766 github.com/goccy/spidermonkeywasm2go/p0.Fn3766
-func gcasmLNgcasmFwdFn3766(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int64, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3767 github.com/goccy/spidermonkeywasm2go/p0.Fn3767
+func gcasmLNgcasmFwdFn3767(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int64, a5 int32) int32
 
-func gcasmFwdFn3766(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int64, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3766(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn3767(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int64, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn3767(a0, a1, a2, a3, a4, a5)
+}
+
+//go:linkname gcasmLNgcasmFwdFn378 github.com/goccy/spidermonkeywasm2go/p7.Fn378
+func gcasmLNgcasmFwdFn378(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn378(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn378(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn380 github.com/goccy/spidermonkeywasm2go/p7.Fn380
@@ -4170,18 +3687,11 @@ func gcasmFwdFn382(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn382(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3822 github.com/goccy/spidermonkeywasm2go/p6.Fn3822
-func gcasmLNgcasmFwdFn3822(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3823 github.com/goccy/spidermonkeywasm2go/p6.Fn3823
+func gcasmLNgcasmFwdFn3823(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn3822(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3822(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3823 github.com/goccy/spidermonkeywasm2go/p0.Fn3823
-func gcasmLNgcasmFwdFn3823(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn3823(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn3823(a0, a1, a2, a3)
+func gcasmFwdFn3823(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn3823(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn3824 github.com/goccy/spidermonkeywasm2go/p0.Fn3824
@@ -4261,95 +3771,18 @@ func gcasmFwdFn3834(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn3834(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3876 github.com/goccy/spidermonkeywasm2go/p0.Fn3876
-func gcasmLNgcasmFwdFn3876(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3835 github.com/goccy/spidermonkeywasm2go/p0.Fn3835
+func gcasmLNgcasmFwdFn3835(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn3876(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3876(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn3835(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn3835(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn3878 github.com/goccy/spidermonkeywasm2go/p0.Fn3878
-func gcasmLNgcasmFwdFn3878(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn3880 github.com/goccy/spidermonkeywasm2go/p5.Fn3880
+func gcasmLNgcasmFwdFn3880(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int64, a5 int32) int32
 
-func gcasmFwdFn3878(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3878(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3879 github.com/goccy/spidermonkeywasm2go/p5.Fn3879
-func gcasmLNgcasmFwdFn3879(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int64, a5 int32) int32
-
-func gcasmFwdFn3879(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int64, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3879(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3880 github.com/goccy/spidermonkeywasm2go/p0.Fn3880
-func gcasmLNgcasmFwdFn3880(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn3880(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+func gcasmFwdFn3880(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int64, a5 int32) int32 {
 	return gcasmLNgcasmFwdFn3880(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3882 github.com/goccy/spidermonkeywasm2go/p0.Fn3882
-func gcasmLNgcasmFwdFn3882(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn3882(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3882(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3884 github.com/goccy/spidermonkeywasm2go/p0.Fn3884
-func gcasmLNgcasmFwdFn3884(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn3884(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3884(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3886 github.com/goccy/spidermonkeywasm2go/p0.Fn3886
-func gcasmLNgcasmFwdFn3886(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn3886(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3886(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3888 github.com/goccy/spidermonkeywasm2go/p0.Fn3888
-func gcasmLNgcasmFwdFn3888(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn3888(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3888(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3890 github.com/goccy/spidermonkeywasm2go/p0.Fn3890
-func gcasmLNgcasmFwdFn3890(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn3890(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3890(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3892 github.com/goccy/spidermonkeywasm2go/p0.Fn3892
-func gcasmLNgcasmFwdFn3892(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn3892(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3892(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3894 github.com/goccy/spidermonkeywasm2go/p0.Fn3894
-func gcasmLNgcasmFwdFn3894(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn3894(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3894(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3896 github.com/goccy/spidermonkeywasm2go/p0.Fn3896
-func gcasmLNgcasmFwdFn3896(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn3896(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3896(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn3898 github.com/goccy/spidermonkeywasm2go/p0.Fn3898
-func gcasmLNgcasmFwdFn3898(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn3898(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn3898(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn391 github.com/goccy/spidermonkeywasm2go/p5.Fn391
@@ -4373,7 +3806,7 @@ func gcasmFwdFn396(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn396(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn397 github.com/goccy/spidermonkeywasm2go/p7.Fn397
+//go:linkname gcasmLNgcasmFwdFn397 github.com/goccy/spidermonkeywasm2go/p1.Fn397
 func gcasmLNgcasmFwdFn397(a0 *base.Module, a1 int32)
 
 func gcasmFwdFn397(a0 *base.Module, a1 int32) {
@@ -4387,18 +3820,18 @@ func gcasmFwdFn399(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn399(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4036 github.com/goccy/spidermonkeywasm2go/p6.Fn4036
-func gcasmLNgcasmFwdFn4036(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn403 github.com/goccy/spidermonkeywasm2go/p6.Fn403
+func gcasmLNgcasmFwdFn403(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn4036(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn4036(a0, a1, a2, a3, a4)
+func gcasmFwdFn403(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn403(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4039 github.com/goccy/spidermonkeywasm2go/p5.Fn4039
-func gcasmLNgcasmFwdFn4039(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn4037 github.com/goccy/spidermonkeywasm2go/p6.Fn4037
+func gcasmLNgcasmFwdFn4037(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn4039(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn4039(a0, a1, a2, a3, a4)
+func gcasmFwdFn4037(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn4037(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4040 github.com/goccy/spidermonkeywasm2go/p5.Fn4040
@@ -4416,23 +3849,23 @@ func gcasmFwdFn4041(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32) {
 }
 
 //go:linkname gcasmLNgcasmFwdFn4042 github.com/goccy/spidermonkeywasm2go/p5.Fn4042
-func gcasmLNgcasmFwdFn4042(a0 *base.Module, a1 int32, a2 float32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn4042(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32)
 
-func gcasmFwdFn4042(a0 *base.Module, a1 int32, a2 float32, a3 int32, a4 int32) {
+func gcasmFwdFn4042(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32) {
 	gcasmLNgcasmFwdFn4042(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4043 github.com/goccy/spidermonkeywasm2go/p5.Fn4043
-func gcasmLNgcasmFwdFn4043(a0 *base.Module, a1 int32, a2 float64, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn4043(a0 *base.Module, a1 int32, a2 float32, a3 int32, a4 int32)
 
-func gcasmFwdFn4043(a0 *base.Module, a1 int32, a2 float64, a3 int32, a4 int32) {
+func gcasmFwdFn4043(a0 *base.Module, a1 int32, a2 float32, a3 int32, a4 int32) {
 	gcasmLNgcasmFwdFn4043(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4044 github.com/goccy/spidermonkeywasm2go/p5.Fn4044
-func gcasmLNgcasmFwdFn4044(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn4044(a0 *base.Module, a1 int32, a2 float64, a3 int32, a4 int32)
 
-func gcasmFwdFn4044(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32) {
+func gcasmFwdFn4044(a0 *base.Module, a1 int32, a2 float64, a3 int32, a4 int32) {
 	gcasmLNgcasmFwdFn4044(a0, a1, a2, a3, a4)
 }
 
@@ -4443,28 +3876,21 @@ func gcasmFwdFn4045(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32) {
 	gcasmLNgcasmFwdFn4045(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4046 github.com/goccy/spidermonkeywasm2go/p6.Fn4046
-func gcasmLNgcasmFwdFn4046(a0 *base.Module, a1 int64) int32
+//go:linkname gcasmLNgcasmFwdFn4046 github.com/goccy/spidermonkeywasm2go/p5.Fn4046
+func gcasmLNgcasmFwdFn4046(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32)
 
-func gcasmFwdFn4046(a0 *base.Module, a1 int64) int32 {
-	return gcasmLNgcasmFwdFn4046(a0, a1)
+func gcasmFwdFn4046(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn4046(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4047 github.com/goccy/spidermonkeywasm2go/p5.Fn4047
-func gcasmLNgcasmFwdFn4047(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn4048 github.com/goccy/spidermonkeywasm2go/p5.Fn4048
+func gcasmLNgcasmFwdFn4048(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn4047(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn4047(a0, a1, a2, a3, a4)
+func gcasmFwdFn4048(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn4048(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4048 github.com/goccy/spidermonkeywasm2go/p6.Fn4048
-func gcasmLNgcasmFwdFn4048(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int64
-
-func gcasmFwdFn4048(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int64 {
-	return gcasmLNgcasmFwdFn4048(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn4049 github.com/goccy/spidermonkeywasm2go/p5.Fn4049
+//go:linkname gcasmLNgcasmFwdFn4049 github.com/goccy/spidermonkeywasm2go/p6.Fn4049
 func gcasmLNgcasmFwdFn4049(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int64
 
 func gcasmFwdFn4049(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int64 {
@@ -4493,9 +3919,9 @@ func gcasmFwdFn4052(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int
 }
 
 //go:linkname gcasmLNgcasmFwdFn4053 github.com/goccy/spidermonkeywasm2go/p5.Fn4053
-func gcasmLNgcasmFwdFn4053(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64
+func gcasmLNgcasmFwdFn4053(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int64
 
-func gcasmFwdFn4053(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64 {
+func gcasmFwdFn4053(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int64 {
 	return gcasmLNgcasmFwdFn4053(a0, a1, a2, a3, a4)
 }
 
@@ -4513,32 +3939,39 @@ func gcasmFwdFn4055(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int
 	return gcasmLNgcasmFwdFn4055(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4056 github.com/goccy/spidermonkeywasm2go/p6.Fn4056
+//go:linkname gcasmLNgcasmFwdFn4056 github.com/goccy/spidermonkeywasm2go/p5.Fn4056
 func gcasmLNgcasmFwdFn4056(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64
 
 func gcasmFwdFn4056(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64 {
 	return gcasmLNgcasmFwdFn4056(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4057 github.com/goccy/spidermonkeywasm2go/p5.Fn4057
+//go:linkname gcasmLNgcasmFwdFn4057 github.com/goccy/spidermonkeywasm2go/p6.Fn4057
 func gcasmLNgcasmFwdFn4057(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64
 
 func gcasmFwdFn4057(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64 {
 	return gcasmLNgcasmFwdFn4057(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4058 github.com/goccy/spidermonkeywasm2go/p6.Fn4058
-func gcasmLNgcasmFwdFn4058(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int64
+//go:linkname gcasmLNgcasmFwdFn4058 github.com/goccy/spidermonkeywasm2go/p5.Fn4058
+func gcasmLNgcasmFwdFn4058(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64
 
-func gcasmFwdFn4058(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int64 {
+func gcasmFwdFn4058(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64) int64 {
 	return gcasmLNgcasmFwdFn4058(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4066 github.com/goccy/spidermonkeywasm2go/p6.Fn4066
-func gcasmLNgcasmFwdFn4066(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn4059 github.com/goccy/spidermonkeywasm2go/p6.Fn4059
+func gcasmLNgcasmFwdFn4059(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int64
 
-func gcasmFwdFn4066(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn4066(a0, a1, a2, a3)
+func gcasmFwdFn4059(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int64 {
+	return gcasmLNgcasmFwdFn4059(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn4065 github.com/goccy/spidermonkeywasm2go/p1.Fn4065
+func gcasmLNgcasmFwdFn4065(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn4065(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn4065(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4067 github.com/goccy/spidermonkeywasm2go/p6.Fn4067
@@ -4562,11 +3995,11 @@ func gcasmFwdFn4069(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn4069(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4098 github.com/goccy/spidermonkeywasm2go/p5.Fn4098
-func gcasmLNgcasmFwdFn4098(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4070 github.com/goccy/spidermonkeywasm2go/p6.Fn4070
+func gcasmLNgcasmFwdFn4070(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn4098(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn4098(a0, a1, a2, a3)
+func gcasmFwdFn4070(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn4070(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4099 github.com/goccy/spidermonkeywasm2go/p5.Fn4099
@@ -4576,60 +4009,39 @@ func gcasmFwdFn4099(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn4099(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4102 github.com/goccy/spidermonkeywasm2go/p6.Fn4102
-func gcasmLNgcasmFwdFn4102(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn4100 github.com/goccy/spidermonkeywasm2go/p5.Fn4100
+func gcasmLNgcasmFwdFn4100(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn4102(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn4102(a0, a1, a2, a3, a4)
+func gcasmFwdFn4100(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn4100(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4105 github.com/goccy/spidermonkeywasm2go/p6.Fn4105
-func gcasmLNgcasmFwdFn4105(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4103 github.com/goccy/spidermonkeywasm2go/p6.Fn4103
+func gcasmLNgcasmFwdFn4103(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn4105(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4105(a0, a1, a2)
+func gcasmFwdFn4103(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn4103(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4106 github.com/goccy/spidermonkeywasm2go/p7.Fn4106
+//go:linkname gcasmLNgcasmFwdFn4106 github.com/goccy/spidermonkeywasm2go/p6.Fn4106
 func gcasmLNgcasmFwdFn4106(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn4106(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn4106(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4127 github.com/goccy/spidermonkeywasm2go/p5.Fn4127
-func gcasmLNgcasmFwdFn4127(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4189 github.com/goccy/spidermonkeywasm2go/p6.Fn4189
+func gcasmLNgcasmFwdFn4189(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn4127(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4127(a0, a1, a2)
+func gcasmFwdFn4189(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn4189(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4155 github.com/goccy/spidermonkeywasm2go/p6.Fn4155
-func gcasmLNgcasmFwdFn4155(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn4197 github.com/goccy/spidermonkeywasm2go/p6.Fn4197
+func gcasmLNgcasmFwdFn4197(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn4155(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn4155(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn4188 github.com/goccy/spidermonkeywasm2go/p6.Fn4188
-func gcasmLNgcasmFwdFn4188(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn4188(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn4188(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn4196 github.com/goccy/spidermonkeywasm2go/p6.Fn4196
-func gcasmLNgcasmFwdFn4196(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn4196(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn4196(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn4197 github.com/goccy/spidermonkeywasm2go/p7.Fn4197
-func gcasmLNgcasmFwdFn4197(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn4197(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn4197(a0, a1)
+func gcasmFwdFn4197(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn4197(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4198 github.com/goccy/spidermonkeywasm2go/p7.Fn4198
@@ -4639,116 +4051,123 @@ func gcasmFwdFn4198(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn4198(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4204 github.com/goccy/spidermonkeywasm2go/p6.Fn4204
-func gcasmLNgcasmFwdFn4204(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn4199 github.com/goccy/spidermonkeywasm2go/p7.Fn4199
+func gcasmLNgcasmFwdFn4199(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn4204(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn4204(a0, a1, a2, a3, a4)
+func gcasmFwdFn4199(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn4199(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4205 github.com/goccy/spidermonkeywasm2go/p7.Fn4205
-func gcasmLNgcasmFwdFn4205(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn4205 github.com/goccy/spidermonkeywasm2go/p6.Fn4205
+func gcasmLNgcasmFwdFn4205(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn4205(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn4205(a0, a1)
+func gcasmFwdFn4205(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn4205(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4212 github.com/goccy/spidermonkeywasm2go/p6.Fn4212
-func gcasmLNgcasmFwdFn4212(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn4206 github.com/goccy/spidermonkeywasm2go/p7.Fn4206
+func gcasmLNgcasmFwdFn4206(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn4212(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn4212(a0, a1, a2, a3, a4)
+func gcasmFwdFn4206(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn4206(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4213 github.com/goccy/spidermonkeywasm2go/p6.Fn4213
-func gcasmLNgcasmFwdFn4213(a0 *base.Module, a1 int32) int32
+func gcasmLNgcasmFwdFn4213(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn4213(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4213(a0, a1)
+func gcasmFwdFn4213(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn4213(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4224 github.com/goccy/spidermonkeywasm2go/p6.Fn4224
-func gcasmLNgcasmFwdFn4224(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4214 github.com/goccy/spidermonkeywasm2go/p6.Fn4214
+func gcasmLNgcasmFwdFn4214(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn4224(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4224(a0, a1)
+func gcasmFwdFn4214(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn4214(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4228 github.com/goccy/spidermonkeywasm2go/p7.Fn4228
-func gcasmLNgcasmFwdFn4228(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn4225 github.com/goccy/spidermonkeywasm2go/p6.Fn4225
+func gcasmLNgcasmFwdFn4225(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn4228(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn4228(a0, a1, a2)
+func gcasmFwdFn4225(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn4225(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4234 github.com/goccy/spidermonkeywasm2go/p6.Fn4234
-func gcasmLNgcasmFwdFn4234(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4229 github.com/goccy/spidermonkeywasm2go/p7.Fn4229
+func gcasmLNgcasmFwdFn4229(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn4234(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4234(a0, a1, a2)
+func gcasmFwdFn4229(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn4229(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4241 github.com/goccy/spidermonkeywasm2go/p2.Fn4241
-func gcasmLNgcasmFwdFn4241(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4235 github.com/goccy/spidermonkeywasm2go/p6.Fn4235
+func gcasmLNgcasmFwdFn4235(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4241(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn4241(a0, a1, a2, a3)
+func gcasmFwdFn4235(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4235(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4242 github.com/goccy/spidermonkeywasm2go/p6.Fn4242
-func gcasmLNgcasmFwdFn4242(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4242 github.com/goccy/spidermonkeywasm2go/p2.Fn4242
+func gcasmLNgcasmFwdFn4242(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn4242(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn4242(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn4242(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn4242(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4256 github.com/goccy/spidermonkeywasm2go/p4.Fn4256
-func gcasmLNgcasmFwdFn4256(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4243 github.com/goccy/spidermonkeywasm2go/p6.Fn4243
+func gcasmLNgcasmFwdFn4243(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn4256(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4256(a0, a1, a2)
+func gcasmFwdFn4243(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn4243(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4278 github.com/goccy/spidermonkeywasm2go/p4.Fn4278
-func gcasmLNgcasmFwdFn4278(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4257 github.com/goccy/spidermonkeywasm2go/p4.Fn4257
+func gcasmLNgcasmFwdFn4257(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4278(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4278(a0, a1)
+func gcasmFwdFn4257(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4257(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4300 github.com/goccy/spidermonkeywasm2go/p7.Fn4300
-func gcasmLNgcasmFwdFn4300(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4279 github.com/goccy/spidermonkeywasm2go/p4.Fn4279
+func gcasmLNgcasmFwdFn4279(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn4300(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4300(a0, a1, a2)
+func gcasmFwdFn4279(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn4279(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4319 github.com/goccy/spidermonkeywasm2go/p4.Fn4319
-func gcasmLNgcasmFwdFn4319(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4301 github.com/goccy/spidermonkeywasm2go/p7.Fn4301
+func gcasmLNgcasmFwdFn4301(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4319(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn4319(a0, a1, a2, a3)
+func gcasmFwdFn4301(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4301(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4329 github.com/goccy/spidermonkeywasm2go/p6.Fn4329
-func gcasmLNgcasmFwdFn4329(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4320 github.com/goccy/spidermonkeywasm2go/p4.Fn4320
+func gcasmLNgcasmFwdFn4320(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn4329(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4329(a0, a1, a2)
+func gcasmFwdFn4320(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn4320(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4330 github.com/goccy/spidermonkeywasm2go/p6.Fn4330
+//go:linkname gcasmLNgcasmFwdFn4330 github.com/goccy/spidermonkeywasm2go/p7.Fn4330
 func gcasmLNgcasmFwdFn4330(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn4330(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn4330(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4331 github.com/goccy/spidermonkeywasm2go/p4.Fn4331
+//go:linkname gcasmLNgcasmFwdFn4331 github.com/goccy/spidermonkeywasm2go/p6.Fn4331
 func gcasmLNgcasmFwdFn4331(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn4331(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn4331(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn4332 github.com/goccy/spidermonkeywasm2go/p4.Fn4332
+func gcasmLNgcasmFwdFn4332(a0 *base.Module, a1 int32, a2 int32) int32
+
+func gcasmFwdFn4332(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4332(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn434 github.com/goccy/spidermonkeywasm2go/p7.Fn434
@@ -4758,105 +4177,91 @@ func gcasmFwdFn434(a0 *base.Module) {
 	gcasmLNgcasmFwdFn434(a0)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4342 github.com/goccy/spidermonkeywasm2go/p4.Fn4342
-func gcasmLNgcasmFwdFn4342(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4343 github.com/goccy/spidermonkeywasm2go/p4.Fn4343
+func gcasmLNgcasmFwdFn4343(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn4342(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn4342(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn4343(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn4343(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4344 github.com/goccy/spidermonkeywasm2go/p5.Fn4344
-func gcasmLNgcasmFwdFn4344(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4345 github.com/goccy/spidermonkeywasm2go/p5.Fn4345
+func gcasmLNgcasmFwdFn4345(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4344(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4344(a0, a1, a2)
+func gcasmFwdFn4345(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4345(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4347 github.com/goccy/spidermonkeywasm2go/p5.Fn4347
-func gcasmLNgcasmFwdFn4347(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4348 github.com/goccy/spidermonkeywasm2go/p5.Fn4348
+func gcasmLNgcasmFwdFn4348(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn4347(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn4347(a0, a1, a2, a3, a4)
+func gcasmFwdFn4348(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn4348(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4348 github.com/goccy/spidermonkeywasm2go/p6.Fn4348
-func gcasmLNgcasmFwdFn4348(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4349 github.com/goccy/spidermonkeywasm2go/p6.Fn4349
+func gcasmLNgcasmFwdFn4349(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4348(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4348(a0, a1, a2)
+func gcasmFwdFn4349(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4349(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4349 github.com/goccy/spidermonkeywasm2go/p2.Fn4349
-func gcasmLNgcasmFwdFn4349(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4350 github.com/goccy/spidermonkeywasm2go/p2.Fn4350
+func gcasmLNgcasmFwdFn4350(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn4349(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn4349(a0, a1, a2, a3)
+func gcasmFwdFn4350(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn4350(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4352 github.com/goccy/spidermonkeywasm2go/p6.Fn4352
-func gcasmLNgcasmFwdFn4352(a0 *base.Module, a1 int32, a2 int32, a3 float64, a4 float64)
+//go:linkname gcasmLNgcasmFwdFn4353 github.com/goccy/spidermonkeywasm2go/p6.Fn4353
+func gcasmLNgcasmFwdFn4353(a0 *base.Module, a1 int32, a2 int32, a3 float64, a4 float64)
 
-func gcasmFwdFn4352(a0 *base.Module, a1 int32, a2 int32, a3 float64, a4 float64) {
-	gcasmLNgcasmFwdFn4352(a0, a1, a2, a3, a4)
+func gcasmFwdFn4353(a0 *base.Module, a1 int32, a2 int32, a3 float64, a4 float64) {
+	gcasmLNgcasmFwdFn4353(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4358 github.com/goccy/spidermonkeywasm2go/p7.Fn4358
-func gcasmLNgcasmFwdFn4358(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4359 github.com/goccy/spidermonkeywasm2go/p7.Fn4359
+func gcasmLNgcasmFwdFn4359(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn4358(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn4358(a0, a1, a2, a3, a4)
+func gcasmFwdFn4359(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn4359(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4408 github.com/goccy/spidermonkeywasm2go/p7.Fn4408
-func gcasmLNgcasmFwdFn4408(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn4409 github.com/goccy/spidermonkeywasm2go/p7.Fn4409
+func gcasmLNgcasmFwdFn4409(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn4408(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn4408(a0, a1)
+func gcasmFwdFn4409(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn4409(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4414 github.com/goccy/spidermonkeywasm2go/p6.Fn4414
-func gcasmLNgcasmFwdFn4414(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4419 github.com/goccy/spidermonkeywasm2go/p4.Fn4419
+func gcasmLNgcasmFwdFn4419(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn4414(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4414(a0, a1, a2)
+func gcasmFwdFn4419(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn4419(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4418 github.com/goccy/spidermonkeywasm2go/p4.Fn4418
-func gcasmLNgcasmFwdFn4418(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4422 github.com/goccy/spidermonkeywasm2go/p5.Fn4422
+func gcasmLNgcasmFwdFn4422(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4418(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn4418(a0, a1, a2, a3)
+func gcasmFwdFn4422(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4422(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4421 github.com/goccy/spidermonkeywasm2go/p5.Fn4421
-func gcasmLNgcasmFwdFn4421(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4423 github.com/goccy/spidermonkeywasm2go/p6.Fn4423
+func gcasmLNgcasmFwdFn4423(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn4421(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4421(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn4422 github.com/goccy/spidermonkeywasm2go/p6.Fn4422
-func gcasmLNgcasmFwdFn4422(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn4422(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4422(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn4423 github.com/goccy/spidermonkeywasm2go/p7.Fn4423
-func gcasmLNgcasmFwdFn4423(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 float64) int32
-
-func gcasmFwdFn4423(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 float64) int32 {
-	return gcasmLNgcasmFwdFn4423(a0, a1, a2, a3, a4)
+func gcasmFwdFn4423(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn4423(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4424 github.com/goccy/spidermonkeywasm2go/p7.Fn4424
-func gcasmLNgcasmFwdFn4424(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn4424(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 float64) int32
 
-func gcasmFwdFn4424(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4424(a0, a1, a2)
+func gcasmFwdFn4424(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 float64) int32 {
+	return gcasmLNgcasmFwdFn4424(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4425 github.com/goccy/spidermonkeywasm2go/p6.Fn4425
+//go:linkname gcasmLNgcasmFwdFn4425 github.com/goccy/spidermonkeywasm2go/p7.Fn4425
 func gcasmLNgcasmFwdFn4425(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn4425(a0 *base.Module, a1 int32, a2 int32) int32 {
@@ -4871,83 +4276,83 @@ func gcasmFwdFn4426(a0 *base.Module, a1 int32, a2 int32) int32 {
 }
 
 //go:linkname gcasmLNgcasmFwdFn4427 github.com/goccy/spidermonkeywasm2go/p6.Fn4427
-func gcasmLNgcasmFwdFn4427(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn4427(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4427(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn4427(a0, a1, a2, a3)
+func gcasmFwdFn4427(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4427(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4428 github.com/goccy/spidermonkeywasm2go/p6.Fn4428
-func gcasmLNgcasmFwdFn4428(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+func gcasmLNgcasmFwdFn4428(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn4428(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn4428(a0, a1, a2, a3, a4)
+func gcasmFwdFn4428(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn4428(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4429 github.com/goccy/spidermonkeywasm2go/p6.Fn4429
-func gcasmLNgcasmFwdFn4429(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn4429(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn4429(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4429(a0, a1, a2)
+func gcasmFwdFn4429(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn4429(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4432 github.com/goccy/spidermonkeywasm2go/p6.Fn4432
-func gcasmLNgcasmFwdFn4432(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4430 github.com/goccy/spidermonkeywasm2go/p6.Fn4430
+func gcasmLNgcasmFwdFn4430(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4432(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn4432(a0, a1, a2, a3, a4)
+func gcasmFwdFn4430(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4430(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4435 github.com/goccy/spidermonkeywasm2go/p5.Fn4435
-func gcasmLNgcasmFwdFn4435(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4433 github.com/goccy/spidermonkeywasm2go/p6.Fn4433
+func gcasmLNgcasmFwdFn4433(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn4435(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4435(a0, a1, a2)
+func gcasmFwdFn4433(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn4433(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4437 github.com/goccy/spidermonkeywasm2go/p5.Fn4437
-func gcasmLNgcasmFwdFn4437(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn4436 github.com/goccy/spidermonkeywasm2go/p5.Fn4436
+func gcasmLNgcasmFwdFn4436(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4437(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn4437(a0, a1, a2)
+func gcasmFwdFn4436(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4436(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4438 github.com/goccy/spidermonkeywasm2go/p4.Fn4438
-func gcasmLNgcasmFwdFn4438(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4438 github.com/goccy/spidermonkeywasm2go/p5.Fn4438
+func gcasmLNgcasmFwdFn4438(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn4438(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn4438(a0, a1, a2, a3, a4)
+func gcasmFwdFn4438(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn4438(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4439 github.com/goccy/spidermonkeywasm2go/p6.Fn4439
-func gcasmLNgcasmFwdFn4439(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4439 github.com/goccy/spidermonkeywasm2go/p4.Fn4439
+func gcasmLNgcasmFwdFn4439(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn4439(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4439(a0, a1, a2)
+func gcasmFwdFn4439(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn4439(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4460 github.com/goccy/spidermonkeywasm2go/p6.Fn4460
-func gcasmLNgcasmFwdFn4460(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4440 github.com/goccy/spidermonkeywasm2go/p6.Fn4440
+func gcasmLNgcasmFwdFn4440(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4460(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4460(a0, a1, a2)
+func gcasmFwdFn4440(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4440(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4461 github.com/goccy/spidermonkeywasm2go/p7.Fn4461
+//go:linkname gcasmLNgcasmFwdFn4461 github.com/goccy/spidermonkeywasm2go/p6.Fn4461
 func gcasmLNgcasmFwdFn4461(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn4461(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn4461(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4464 github.com/goccy/spidermonkeywasm2go/p5.Fn4464
-func gcasmLNgcasmFwdFn4464(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4462 github.com/goccy/spidermonkeywasm2go/p7.Fn4462
+func gcasmLNgcasmFwdFn4462(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4464(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn4464(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn4462(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4462(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4465 github.com/goccy/spidermonkeywasm2go/p6.Fn4465
+//go:linkname gcasmLNgcasmFwdFn4465 github.com/goccy/spidermonkeywasm2go/p5.Fn4465
 func gcasmLNgcasmFwdFn4465(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
 func gcasmFwdFn4465(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
@@ -4955,45 +4360,45 @@ func gcasmFwdFn4465(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 
 }
 
 //go:linkname gcasmLNgcasmFwdFn4466 github.com/goccy/spidermonkeywasm2go/p6.Fn4466
-func gcasmLNgcasmFwdFn4466(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn4466(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn4466(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4466(a0, a1, a2)
+func gcasmFwdFn4466(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn4466(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4467 github.com/goccy/spidermonkeywasm2go/p5.Fn4467
+//go:linkname gcasmLNgcasmFwdFn4467 github.com/goccy/spidermonkeywasm2go/p6.Fn4467
 func gcasmLNgcasmFwdFn4467(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn4467(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn4467(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4506 github.com/goccy/spidermonkeywasm2go/p2.Fn4506
-func gcasmLNgcasmFwdFn4506(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4468 github.com/goccy/spidermonkeywasm2go/p5.Fn4468
+func gcasmLNgcasmFwdFn4468(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4506(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4506(a0, a1, a2)
+func gcasmFwdFn4468(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4468(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4513 github.com/goccy/spidermonkeywasm2go/p7.Fn4513
-func gcasmLNgcasmFwdFn4513(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn4507 github.com/goccy/spidermonkeywasm2go/p2.Fn4507
+func gcasmLNgcasmFwdFn4507(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4513(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn4513(a0, a1)
+func gcasmFwdFn4507(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4507(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4517 github.com/goccy/spidermonkeywasm2go/p5.Fn4517
-func gcasmLNgcasmFwdFn4517(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4514 github.com/goccy/spidermonkeywasm2go/p7.Fn4514
+func gcasmLNgcasmFwdFn4514(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn4517(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4517(a0, a1, a2)
+func gcasmFwdFn4514(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn4514(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4520 github.com/goccy/spidermonkeywasm2go/p7.Fn4520
-func gcasmLNgcasmFwdFn4520(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4518 github.com/goccy/spidermonkeywasm2go/p5.Fn4518
+func gcasmLNgcasmFwdFn4518(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4520(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn4520(a0, a1, a2, a3)
+func gcasmFwdFn4518(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4518(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4521 github.com/goccy/spidermonkeywasm2go/p7.Fn4521
@@ -5003,165 +4408,158 @@ func gcasmFwdFn4521(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn4521(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4522 github.com/goccy/spidermonkeywasm2go/p6.Fn4522
-func gcasmLNgcasmFwdFn4522(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4522 github.com/goccy/spidermonkeywasm2go/p7.Fn4522
+func gcasmLNgcasmFwdFn4522(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn4522(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4522(a0, a1)
+func gcasmFwdFn4522(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn4522(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4525 github.com/goccy/spidermonkeywasm2go/p6.Fn4525
-func gcasmLNgcasmFwdFn4525(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4523 github.com/goccy/spidermonkeywasm2go/p6.Fn4523
+func gcasmLNgcasmFwdFn4523(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn4525(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn4525(a0, a1, a2, a3, a4)
+func gcasmFwdFn4523(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn4523(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4526 github.com/goccy/spidermonkeywasm2go/p4.Fn4526
-func gcasmLNgcasmFwdFn4526(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 float64, a8 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4526 github.com/goccy/spidermonkeywasm2go/p6.Fn4526
+func gcasmLNgcasmFwdFn4526(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn4526(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 float64, a8 int32) int32 {
-	return gcasmLNgcasmFwdFn4526(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+func gcasmFwdFn4526(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn4526(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4527 github.com/goccy/spidermonkeywasm2go/p6.Fn4527
-func gcasmLNgcasmFwdFn4527(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4527 github.com/goccy/spidermonkeywasm2go/p4.Fn4527
+func gcasmLNgcasmFwdFn4527(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 float64, a8 int32) int32
 
-func gcasmFwdFn4527(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn4527(a0, a1, a2, a3, a4)
+func gcasmFwdFn4527(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 float64, a8 int32) int32 {
+	return gcasmLNgcasmFwdFn4527(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4533 github.com/goccy/spidermonkeywasm2go/p6.Fn4533
-func gcasmLNgcasmFwdFn4533(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4528 github.com/goccy/spidermonkeywasm2go/p6.Fn4528
+func gcasmLNgcasmFwdFn4528(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn4533(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4533(a0, a1, a2)
+func gcasmFwdFn4528(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn4528(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4546 github.com/goccy/spidermonkeywasm2go/p6.Fn4546
-func gcasmLNgcasmFwdFn4546(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn4534 github.com/goccy/spidermonkeywasm2go/p6.Fn4534
+func gcasmLNgcasmFwdFn4534(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4546(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn4546(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn4547 github.com/goccy/spidermonkeywasm2go/p6.Fn4547
-func gcasmLNgcasmFwdFn4547(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn4547(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn4547(a0, a1, a2, a3, a4)
+func gcasmFwdFn4534(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4534(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4548 github.com/goccy/spidermonkeywasm2go/p6.Fn4548
-func gcasmLNgcasmFwdFn4548(a0 *base.Module, a1 int32) int32
+func gcasmLNgcasmFwdFn4548(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn4548(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4548(a0, a1)
+func gcasmFwdFn4548(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn4548(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4553 github.com/goccy/spidermonkeywasm2go/p5.Fn4553
-func gcasmLNgcasmFwdFn4553(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn4549 github.com/goccy/spidermonkeywasm2go/p6.Fn4549
+func gcasmLNgcasmFwdFn4549(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn4553(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn4553(a0, a1, a2)
+func gcasmFwdFn4549(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn4549(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4557 github.com/goccy/spidermonkeywasm2go/p6.Fn4557
-func gcasmLNgcasmFwdFn4557(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4554 github.com/goccy/spidermonkeywasm2go/p5.Fn4554
+func gcasmLNgcasmFwdFn4554(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn4557(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4557(a0, a1, a2)
+func gcasmFwdFn4554(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn4554(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4558 github.com/goccy/spidermonkeywasm2go/p6.Fn4558
-func gcasmLNgcasmFwdFn4558(a0 *base.Module, a1 int32) int32
+func gcasmLNgcasmFwdFn4558(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4558(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4558(a0, a1)
+func gcasmFwdFn4558(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4558(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4559 github.com/goccy/spidermonkeywasm2go/p2.Fn4559
-func gcasmLNgcasmFwdFn4559(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn4559 github.com/goccy/spidermonkeywasm2go/p6.Fn4559
+func gcasmLNgcasmFwdFn4559(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn4559(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn4559(a0, a1, a2)
+func gcasmFwdFn4559(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn4559(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4569 github.com/goccy/spidermonkeywasm2go/p4.Fn4569
-func gcasmLNgcasmFwdFn4569(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn4560 github.com/goccy/spidermonkeywasm2go/p2.Fn4560
+func gcasmLNgcasmFwdFn4560(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn4569(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn4569(a0, a1, a2, a3, a4)
+func gcasmFwdFn4560(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn4560(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4575 github.com/goccy/spidermonkeywasm2go/p7.Fn4575
-func gcasmLNgcasmFwdFn4575(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4570 github.com/goccy/spidermonkeywasm2go/p4.Fn4570
+func gcasmLNgcasmFwdFn4570(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn4575(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4575(a0, a1, a2)
+func gcasmFwdFn4570(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn4570(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4576 github.com/goccy/spidermonkeywasm2go/p6.Fn4576
+//go:linkname gcasmLNgcasmFwdFn4576 github.com/goccy/spidermonkeywasm2go/p7.Fn4576
 func gcasmLNgcasmFwdFn4576(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn4576(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn4576(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4579 github.com/goccy/spidermonkeywasm2go/p4.Fn4579
-func gcasmLNgcasmFwdFn4579(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn4577 github.com/goccy/spidermonkeywasm2go/p6.Fn4577
+func gcasmLNgcasmFwdFn4577(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4579(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn4579(a0, a1, a2, a3)
+func gcasmFwdFn4577(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4577(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4580 github.com/goccy/spidermonkeywasm2go/p7.Fn4580
-func gcasmLNgcasmFwdFn4580(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4580 github.com/goccy/spidermonkeywasm2go/p4.Fn4580
+func gcasmLNgcasmFwdFn4580(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn4580(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4580(a0, a1)
+func gcasmFwdFn4580(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn4580(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4586 github.com/goccy/spidermonkeywasm2go/p6.Fn4586
-func gcasmLNgcasmFwdFn4586(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4581 github.com/goccy/spidermonkeywasm2go/p7.Fn4581
+func gcasmLNgcasmFwdFn4581(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn4586(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn4586(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn4581(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn4581(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4588 github.com/goccy/spidermonkeywasm2go/p4.Fn4588
-func gcasmLNgcasmFwdFn4588(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32)
+//go:linkname gcasmLNgcasmFwdFn4589 github.com/goccy/spidermonkeywasm2go/p4.Fn4589
+func gcasmLNgcasmFwdFn4589(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32)
 
-func gcasmFwdFn4588(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) {
-	gcasmLNgcasmFwdFn4588(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+func gcasmFwdFn4589(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) {
+	gcasmLNgcasmFwdFn4589(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4610 github.com/goccy/spidermonkeywasm2go/p2.Fn4610
-func gcasmLNgcasmFwdFn4610(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4611 github.com/goccy/spidermonkeywasm2go/p2.Fn4611
+func gcasmLNgcasmFwdFn4611(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn4610(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn4610(a0, a1, a2, a3)
+func gcasmFwdFn4611(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn4611(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4611 github.com/goccy/spidermonkeywasm2go/p5.Fn4611
-func gcasmLNgcasmFwdFn4611(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
+//go:linkname gcasmLNgcasmFwdFn4612 github.com/goccy/spidermonkeywasm2go/p5.Fn4612
+func gcasmLNgcasmFwdFn4612(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
 
-func gcasmFwdFn4611(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
-	gcasmLNgcasmFwdFn4611(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn4612(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
+	gcasmLNgcasmFwdFn4612(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4613 github.com/goccy/spidermonkeywasm2go/p6.Fn4613
-func gcasmLNgcasmFwdFn4613(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4614 github.com/goccy/spidermonkeywasm2go/p6.Fn4614
+func gcasmLNgcasmFwdFn4614(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn4613(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4613(a0, a1)
+func gcasmFwdFn4614(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn4614(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4634 github.com/goccy/spidermonkeywasm2go/p7.Fn4634
-func gcasmLNgcasmFwdFn4634(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn4635 github.com/goccy/spidermonkeywasm2go/p7.Fn4635
+func gcasmLNgcasmFwdFn4635(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn4634(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn4634(a0, a1, a2)
+func gcasmFwdFn4635(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn4635(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn464 github.com/goccy/spidermonkeywasm2go/p5.Fn464
@@ -5171,39 +4569,18 @@ func gcasmFwdFn464(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 i
 	return gcasmLNgcasmFwdFn464(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4657 github.com/goccy/spidermonkeywasm2go/p6.Fn4657
-func gcasmLNgcasmFwdFn4657(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn4657(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4657(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn4658 github.com/goccy/spidermonkeywasm2go/p6.Fn4658
-func gcasmLNgcasmFwdFn4658(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn4658(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn4658(a0, a1)
-}
-
 //go:linkname gcasmLNgcasmFwdFn4659 github.com/goccy/spidermonkeywasm2go/p6.Fn4659
-func gcasmLNgcasmFwdFn4659(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn4659(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn4659(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn4659(a0, a1, a2)
+func gcasmFwdFn4659(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn4659(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4662 github.com/goccy/spidermonkeywasm2go/p5.Fn4662
-func gcasmLNgcasmFwdFn4662(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4660 github.com/goccy/spidermonkeywasm2go/p6.Fn4660
+func gcasmLNgcasmFwdFn4660(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn4662(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn4662(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn4669 github.com/goccy/spidermonkeywasm2go/p6.Fn4669
-func gcasmLNgcasmFwdFn4669(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn4669(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn4669(a0, a1, a2)
+func gcasmFwdFn4660(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn4660(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn4670 github.com/goccy/spidermonkeywasm2go/p6.Fn4670
@@ -5213,67 +4590,74 @@ func gcasmFwdFn4670(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn4670(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4696 github.com/goccy/spidermonkeywasm2go/p4.Fn4696
-func gcasmLNgcasmFwdFn4696(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4671 github.com/goccy/spidermonkeywasm2go/p6.Fn4671
+func gcasmLNgcasmFwdFn4671(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn4696(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn4696(a0, a1, a2, a3)
+func gcasmFwdFn4671(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn4671(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4706 github.com/goccy/spidermonkeywasm2go/p5.Fn4706
-func gcasmLNgcasmFwdFn4706(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn4697 github.com/goccy/spidermonkeywasm2go/p4.Fn4697
+func gcasmLNgcasmFwdFn4697(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn4706(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn4706(a0, a1, a2)
+func gcasmFwdFn4697(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn4697(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4707 github.com/goccy/spidermonkeywasm2go/p0.Fn4707
-func gcasmLNgcasmFwdFn4707(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn4707 github.com/goccy/spidermonkeywasm2go/p5.Fn4707
+func gcasmLNgcasmFwdFn4707(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn4707(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn4707(a0, a1, a2, a3)
+func gcasmFwdFn4707(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn4707(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4720 github.com/goccy/spidermonkeywasm2go/p7.Fn4720
-func gcasmLNgcasmFwdFn4720(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn4708 github.com/goccy/spidermonkeywasm2go/p0.Fn4708
+func gcasmLNgcasmFwdFn4708(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn4720(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn4720(a0, a1)
+func gcasmFwdFn4708(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn4708(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4737 github.com/goccy/spidermonkeywasm2go/p7.Fn4737
-func gcasmLNgcasmFwdFn4737(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn4721 github.com/goccy/spidermonkeywasm2go/p7.Fn4721
+func gcasmLNgcasmFwdFn4721(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn4737(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn4737(a0, a1)
+func gcasmFwdFn4721(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn4721(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4740 github.com/goccy/spidermonkeywasm2go/p6.Fn4740
-func gcasmLNgcasmFwdFn4740(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn4738 github.com/goccy/spidermonkeywasm2go/p7.Fn4738
+func gcasmLNgcasmFwdFn4738(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn4740(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn4740(a0, a1, a2)
+func gcasmFwdFn4738(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn4738(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4745 github.com/goccy/spidermonkeywasm2go/p5.Fn4745
-func gcasmLNgcasmFwdFn4745(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn4741 github.com/goccy/spidermonkeywasm2go/p6.Fn4741
+func gcasmLNgcasmFwdFn4741(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn4745(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn4745(a0, a1, a2, a3, a4)
+func gcasmFwdFn4741(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn4741(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4747 github.com/goccy/spidermonkeywasm2go/p5.Fn4747
-func gcasmLNgcasmFwdFn4747(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn4746 github.com/goccy/spidermonkeywasm2go/p5.Fn4746
+func gcasmLNgcasmFwdFn4746(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn4747(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn4747(a0, a1, a2)
+func gcasmFwdFn4746(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn4746(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn4754 github.com/goccy/spidermonkeywasm2go/p5.Fn4754
-func gcasmLNgcasmFwdFn4754(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn4748 github.com/goccy/spidermonkeywasm2go/p5.Fn4748
+func gcasmLNgcasmFwdFn4748(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn4754(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn4754(a0, a1, a2, a3, a4)
+func gcasmFwdFn4748(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn4748(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn4755 github.com/goccy/spidermonkeywasm2go/p5.Fn4755
+func gcasmLNgcasmFwdFn4755(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+
+func gcasmFwdFn4755(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn4755(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn482 github.com/goccy/spidermonkeywasm2go/p5.Fn482
@@ -5290,25 +4674,18 @@ func gcasmFwdFn484(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn484(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5147 github.com/goccy/spidermonkeywasm2go/p6.Fn5147
-func gcasmLNgcasmFwdFn5147(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn5148 github.com/goccy/spidermonkeywasm2go/p6.Fn5148
+func gcasmLNgcasmFwdFn5148(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn5147(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn5147(a0, a1, a2, a3, a4)
+func gcasmFwdFn5148(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn5148(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5156 github.com/goccy/spidermonkeywasm2go/p0.Fn5156
-func gcasmLNgcasmFwdFn5156(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5157 github.com/goccy/spidermonkeywasm2go/p0.Fn5157
+func gcasmLNgcasmFwdFn5157(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn5156(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn5156(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn5160 github.com/goccy/spidermonkeywasm2go/p0.Fn5160
-func gcasmLNgcasmFwdFn5160(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32
-
-func gcasmFwdFn5160(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32 {
-	return gcasmLNgcasmFwdFn5160(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+func gcasmFwdFn5157(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn5157(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5161 github.com/goccy/spidermonkeywasm2go/p0.Fn5161
@@ -5318,18 +4695,25 @@ func gcasmFwdFn5161(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 
 	return gcasmLNgcasmFwdFn5161(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5162 github.com/goccy/spidermonkeywasm2go/p6.Fn5162
-func gcasmLNgcasmFwdFn5162(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn5162 github.com/goccy/spidermonkeywasm2go/p0.Fn5162
+func gcasmLNgcasmFwdFn5162(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32
 
-func gcasmFwdFn5162(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn5162(a0, a1, a2, a3, a4)
+func gcasmFwdFn5162(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32 {
+	return gcasmLNgcasmFwdFn5162(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5163 github.com/goccy/spidermonkeywasm2go/p2.Fn5163
-func gcasmLNgcasmFwdFn5163(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5163 github.com/goccy/spidermonkeywasm2go/p6.Fn5163
+func gcasmLNgcasmFwdFn5163(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn5163(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn5163(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn5163(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn5163(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn5164 github.com/goccy/spidermonkeywasm2go/p2.Fn5164
+func gcasmLNgcasmFwdFn5164(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+
+func gcasmFwdFn5164(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn5164(a0, a1, a2, a3, a4, a5, a6)
 }
 
 //go:linkname gcasmLNgcasmFwdFn525 github.com/goccy/spidermonkeywasm2go/p5.Fn525
@@ -5353,25 +4737,18 @@ func gcasmFwdFn534(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 i
 	return gcasmLNgcasmFwdFn534(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5350 github.com/goccy/spidermonkeywasm2go/p5.Fn5350
-func gcasmLNgcasmFwdFn5350(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn5350(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn5350(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn5351 github.com/goccy/spidermonkeywasm2go/p4.Fn5351
+//go:linkname gcasmLNgcasmFwdFn5351 github.com/goccy/spidermonkeywasm2go/p5.Fn5351
 func gcasmLNgcasmFwdFn5351(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
 func gcasmFwdFn5351(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn5351(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5353 github.com/goccy/spidermonkeywasm2go/p5.Fn5353
-func gcasmLNgcasmFwdFn5353(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5352 github.com/goccy/spidermonkeywasm2go/p4.Fn5352
+func gcasmLNgcasmFwdFn5352(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn5353(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn5353(a0, a1, a2, a3)
+func gcasmFwdFn5352(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn5352(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5354 github.com/goccy/spidermonkeywasm2go/p5.Fn5354
@@ -5381,18 +4758,18 @@ func gcasmFwdFn5354(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn5354(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5358 github.com/goccy/spidermonkeywasm2go/p4.Fn5358
-func gcasmLNgcasmFwdFn5358(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5355 github.com/goccy/spidermonkeywasm2go/p5.Fn5355
+func gcasmLNgcasmFwdFn5355(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn5358(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn5358(a0, a1, a2)
+func gcasmFwdFn5355(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn5355(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5360 github.com/goccy/spidermonkeywasm2go/p6.Fn5360
-func gcasmLNgcasmFwdFn5360(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5361 github.com/goccy/spidermonkeywasm2go/p6.Fn5361
+func gcasmLNgcasmFwdFn5361(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn5360(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn5360(a0, a1, a2, a3, a4)
+func gcasmFwdFn5361(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn5361(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn540 github.com/goccy/spidermonkeywasm2go/p5.Fn540
@@ -5402,109 +4779,95 @@ func gcasmFwdFn540(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 i
 	return gcasmLNgcasmFwdFn540(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5438 github.com/goccy/spidermonkeywasm2go/p7.Fn5438
-func gcasmLNgcasmFwdFn5438(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5439 github.com/goccy/spidermonkeywasm2go/p7.Fn5439
+func gcasmLNgcasmFwdFn5439(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn5438(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn5438(a0, a1, a2)
+func gcasmFwdFn5439(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn5439(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5470 github.com/goccy/spidermonkeywasm2go/p7.Fn5470
-func gcasmLNgcasmFwdFn5470(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5471 github.com/goccy/spidermonkeywasm2go/p7.Fn5471
+func gcasmLNgcasmFwdFn5471(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5470(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5470(a0, a1, a2)
+func gcasmFwdFn5471(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5471(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5550 github.com/goccy/spidermonkeywasm2go/p6.Fn5550
-func gcasmLNgcasmFwdFn5550(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5569 github.com/goccy/spidermonkeywasm2go/p6.Fn5569
+func gcasmLNgcasmFwdFn5569(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn5550(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn5550(a0, a1, a2, a3, a4)
+func gcasmFwdFn5569(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn5569(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5568 github.com/goccy/spidermonkeywasm2go/p6.Fn5568
-func gcasmLNgcasmFwdFn5568(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5570 github.com/goccy/spidermonkeywasm2go/p7.Fn5570
+func gcasmLNgcasmFwdFn5570(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5568(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn5568(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn5569 github.com/goccy/spidermonkeywasm2go/p7.Fn5569
-func gcasmLNgcasmFwdFn5569(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn5569(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5569(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn5572 github.com/goccy/spidermonkeywasm2go/p7.Fn5572
-func gcasmLNgcasmFwdFn5572(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn5572(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn5572(a0, a1, a2, a3, a4)
+func gcasmFwdFn5570(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5570(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5573 github.com/goccy/spidermonkeywasm2go/p7.Fn5573
-func gcasmLNgcasmFwdFn5573(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn5573(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn5573(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn5573(a0, a1, a2)
+func gcasmFwdFn5573(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn5573(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5574 github.com/goccy/spidermonkeywasm2go/p4.Fn5574
-func gcasmLNgcasmFwdFn5574(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5574 github.com/goccy/spidermonkeywasm2go/p7.Fn5574
+func gcasmLNgcasmFwdFn5574(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn5574(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn5574(a0, a1, a2, a3)
+func gcasmFwdFn5574(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn5574(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5575 github.com/goccy/spidermonkeywasm2go/p0.Fn5575
-func gcasmLNgcasmFwdFn5575(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5575 github.com/goccy/spidermonkeywasm2go/p4.Fn5575
+func gcasmLNgcasmFwdFn5575(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn5575(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn5575(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn5575(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn5575(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5576 github.com/goccy/spidermonkeywasm2go/p0.Fn5576
-func gcasmLNgcasmFwdFn5576(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn5576(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn5576(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn5576(a0, a1, a2)
+func gcasmFwdFn5576(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn5576(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5584 github.com/goccy/spidermonkeywasm2go/p4.Fn5584
-func gcasmLNgcasmFwdFn5584(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5577 github.com/goccy/spidermonkeywasm2go/p0.Fn5577
+func gcasmLNgcasmFwdFn5577(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn5584(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5584(a0, a1, a2)
+func gcasmFwdFn5577(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn5577(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5586 github.com/goccy/spidermonkeywasm2go/p7.Fn5586
-func gcasmLNgcasmFwdFn5586(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5585 github.com/goccy/spidermonkeywasm2go/p4.Fn5585
+func gcasmLNgcasmFwdFn5585(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5586(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn5586(a0, a1, a2, a3)
+func gcasmFwdFn5585(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5585(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5594 github.com/goccy/spidermonkeywasm2go/p6.Fn5594
-func gcasmLNgcasmFwdFn5594(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5587 github.com/goccy/spidermonkeywasm2go/p7.Fn5587
+func gcasmLNgcasmFwdFn5587(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn5594(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn5594(a0, a1, a2, a3)
+func gcasmFwdFn5587(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn5587(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5598 github.com/goccy/spidermonkeywasm2go/p5.Fn5598
-func gcasmLNgcasmFwdFn5598(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn5595 github.com/goccy/spidermonkeywasm2go/p6.Fn5595
+func gcasmLNgcasmFwdFn5595(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn5598(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn5598(a0, a1)
+func gcasmFwdFn5595(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn5595(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5599 github.com/goccy/spidermonkeywasm2go/p6.Fn5599
-func gcasmLNgcasmFwdFn5599(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn5599 github.com/goccy/spidermonkeywasm2go/p5.Fn5599
+func gcasmLNgcasmFwdFn5599(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5599(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn5599(a0, a1, a2, a3)
+func gcasmFwdFn5599(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn5599(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5600 github.com/goccy/spidermonkeywasm2go/p6.Fn5600
@@ -5522,59 +4885,59 @@ func gcasmFwdFn5601(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 }
 
 //go:linkname gcasmLNgcasmFwdFn5602 github.com/goccy/spidermonkeywasm2go/p6.Fn5602
-func gcasmLNgcasmFwdFn5602(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn5602(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn5602(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5602(a0, a1, a2)
+func gcasmFwdFn5602(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn5602(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5603 github.com/goccy/spidermonkeywasm2go/p4.Fn5603
+//go:linkname gcasmLNgcasmFwdFn5603 github.com/goccy/spidermonkeywasm2go/p6.Fn5603
 func gcasmLNgcasmFwdFn5603(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn5603(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn5603(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5606 github.com/goccy/spidermonkeywasm2go/p5.Fn5606
-func gcasmLNgcasmFwdFn5606(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn5604 github.com/goccy/spidermonkeywasm2go/p4.Fn5604
+func gcasmLNgcasmFwdFn5604(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5606(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn5606(a0, a1, a2, a3, a4)
+func gcasmFwdFn5604(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5604(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5607 github.com/goccy/spidermonkeywasm2go/p6.Fn5607
-func gcasmLNgcasmFwdFn5607(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5607 github.com/goccy/spidermonkeywasm2go/p5.Fn5607
+func gcasmLNgcasmFwdFn5607(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn5607(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5607(a0, a1, a2)
+func gcasmFwdFn5607(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn5607(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5609 github.com/goccy/spidermonkeywasm2go/p6.Fn5609
-func gcasmLNgcasmFwdFn5609(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn5608 github.com/goccy/spidermonkeywasm2go/p6.Fn5608
+func gcasmLNgcasmFwdFn5608(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5609(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn5609(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn5608(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5608(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5612 github.com/goccy/spidermonkeywasm2go/p6.Fn5612
-func gcasmLNgcasmFwdFn5612(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn5610 github.com/goccy/spidermonkeywasm2go/p6.Fn5610
+func gcasmLNgcasmFwdFn5610(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn5612(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn5612(a0, a1)
+func gcasmFwdFn5610(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn5610(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5626 github.com/goccy/spidermonkeywasm2go/p2.Fn5626
-func gcasmLNgcasmFwdFn5626(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5613 github.com/goccy/spidermonkeywasm2go/p6.Fn5613
+func gcasmLNgcasmFwdFn5613(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5626(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn5626(a0, a1, a2)
+func gcasmFwdFn5613(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn5613(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5627 github.com/goccy/spidermonkeywasm2go/p4.Fn5627
-func gcasmLNgcasmFwdFn5627(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5627 github.com/goccy/spidermonkeywasm2go/p2.Fn5627
+func gcasmLNgcasmFwdFn5627(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn5627(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5627(a0, a1, a2)
+func gcasmFwdFn5627(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn5627(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5628 github.com/goccy/spidermonkeywasm2go/p4.Fn5628
@@ -5584,10 +4947,10 @@ func gcasmFwdFn5628(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn5628(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5629 github.com/goccy/spidermonkeywasm2go/p6.Fn5629
-func gcasmLNgcasmFwdFn5629(a0 *base.Module, a1 int32, a2 int64)
+//go:linkname gcasmLNgcasmFwdFn5629 github.com/goccy/spidermonkeywasm2go/p4.Fn5629
+func gcasmLNgcasmFwdFn5629(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5629(a0 *base.Module, a1 int32, a2 int64) {
+func gcasmFwdFn5629(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn5629(a0, a1, a2)
 }
 
@@ -5598,11 +4961,11 @@ func gcasmFwdFn5630(a0 *base.Module, a1 int32, a2 int64) {
 	gcasmLNgcasmFwdFn5630(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5633 github.com/goccy/spidermonkeywasm2go/p6.Fn5633
-func gcasmLNgcasmFwdFn5633(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn5631 github.com/goccy/spidermonkeywasm2go/p6.Fn5631
+func gcasmLNgcasmFwdFn5631(a0 *base.Module, a1 int32, a2 int64)
 
-func gcasmFwdFn5633(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn5633(a0, a1, a2, a3)
+func gcasmFwdFn5631(a0 *base.Module, a1 int32, a2 int64) {
+	gcasmLNgcasmFwdFn5631(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5634 github.com/goccy/spidermonkeywasm2go/p6.Fn5634
@@ -5612,81 +4975,74 @@ func gcasmFwdFn5634(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn5634(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5635 github.com/goccy/spidermonkeywasm2go/p4.Fn5635
-func gcasmLNgcasmFwdFn5635(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5635 github.com/goccy/spidermonkeywasm2go/p6.Fn5635
+func gcasmLNgcasmFwdFn5635(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn5635(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn5635(a0, a1, a2, a3)
+func gcasmFwdFn5635(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn5635(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5636 github.com/goccy/spidermonkeywasm2go/p5.Fn5636
-func gcasmLNgcasmFwdFn5636(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5636 github.com/goccy/spidermonkeywasm2go/p4.Fn5636
+func gcasmLNgcasmFwdFn5636(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn5636(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn5636(a0, a1, a2, a3, a4)
+func gcasmFwdFn5636(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn5636(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5649 github.com/goccy/spidermonkeywasm2go/p7.Fn5649
-func gcasmLNgcasmFwdFn5649(a0 *base.Module, a1 float64) float64
+//go:linkname gcasmLNgcasmFwdFn5637 github.com/goccy/spidermonkeywasm2go/p5.Fn5637
+func gcasmLNgcasmFwdFn5637(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn5649(a0 *base.Module, a1 float64) float64 {
-	return gcasmLNgcasmFwdFn5649(a0, a1)
+func gcasmFwdFn5637(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn5637(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5651 github.com/goccy/spidermonkeywasm2go/p6.Fn5651
-func gcasmLNgcasmFwdFn5651(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn5652 github.com/goccy/spidermonkeywasm2go/p6.Fn5652
+func gcasmLNgcasmFwdFn5652(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn5651(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn5651(a0, a1, a2, a3)
+func gcasmFwdFn5652(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn5652(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5659 github.com/goccy/spidermonkeywasm2go/p5.Fn5659
-func gcasmLNgcasmFwdFn5659(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn5660 github.com/goccy/spidermonkeywasm2go/p5.Fn5660
+func gcasmLNgcasmFwdFn5660(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn5659(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn5659(a0, a1, a2, a3)
+func gcasmFwdFn5660(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn5660(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5663 github.com/goccy/spidermonkeywasm2go/p6.Fn5663
-func gcasmLNgcasmFwdFn5663(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn5664 github.com/goccy/spidermonkeywasm2go/p6.Fn5664
+func gcasmLNgcasmFwdFn5664(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5663(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn5663(a0, a1)
+func gcasmFwdFn5664(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn5664(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5665 github.com/goccy/spidermonkeywasm2go/p6.Fn5665
-func gcasmLNgcasmFwdFn5665(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5666 github.com/goccy/spidermonkeywasm2go/p6.Fn5666
+func gcasmLNgcasmFwdFn5666(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5665(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5665(a0, a1, a2)
+func gcasmFwdFn5666(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5666(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5670 github.com/goccy/spidermonkeywasm2go/p6.Fn5670
-func gcasmLNgcasmFwdFn5670(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn5671 github.com/goccy/spidermonkeywasm2go/p6.Fn5671
+func gcasmLNgcasmFwdFn5671(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn5670(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn5670(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn5671(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn5671(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5672 github.com/goccy/spidermonkeywasm2go/p7.Fn5672
-func gcasmLNgcasmFwdFn5672(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn5673 github.com/goccy/spidermonkeywasm2go/p7.Fn5673
+func gcasmLNgcasmFwdFn5673(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn5672(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn5672(a0, a1, a2, a3, a4)
+func gcasmFwdFn5673(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn5673(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5674 github.com/goccy/spidermonkeywasm2go/p0.Fn5674
-func gcasmLNgcasmFwdFn5674(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn5675 github.com/goccy/spidermonkeywasm2go/p0.Fn5675
+func gcasmLNgcasmFwdFn5675(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn5674(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn5674(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn5688 github.com/goccy/spidermonkeywasm2go/p5.Fn5688
-func gcasmLNgcasmFwdFn5688(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn5688(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn5688(a0, a1, a2, a3)
+func gcasmFwdFn5675(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn5675(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5689 github.com/goccy/spidermonkeywasm2go/p5.Fn5689
@@ -5696,105 +5052,105 @@ func gcasmFwdFn5689(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn5689(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5691 github.com/goccy/spidermonkeywasm2go/p6.Fn5691
-func gcasmLNgcasmFwdFn5691(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5690 github.com/goccy/spidermonkeywasm2go/p5.Fn5690
+func gcasmLNgcasmFwdFn5690(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn5691(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5691(a0, a1, a2)
+func gcasmFwdFn5690(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn5690(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5694 github.com/goccy/spidermonkeywasm2go/p5.Fn5694
-func gcasmLNgcasmFwdFn5694(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn5692 github.com/goccy/spidermonkeywasm2go/p6.Fn5692
+func gcasmLNgcasmFwdFn5692(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5694(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn5694(a0, a1, a2, a3)
+func gcasmFwdFn5692(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5692(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5699 github.com/goccy/spidermonkeywasm2go/p5.Fn5699
-func gcasmLNgcasmFwdFn5699(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn5695 github.com/goccy/spidermonkeywasm2go/p5.Fn5695
+func gcasmLNgcasmFwdFn5695(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn5699(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn5699(a0, a1)
+func gcasmFwdFn5695(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn5695(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5702 github.com/goccy/spidermonkeywasm2go/p6.Fn5702
-func gcasmLNgcasmFwdFn5702(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5700 github.com/goccy/spidermonkeywasm2go/p5.Fn5700
+func gcasmLNgcasmFwdFn5700(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5702(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5702(a0, a1, a2)
+func gcasmFwdFn5700(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn5700(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5703 github.com/goccy/spidermonkeywasm2go/p7.Fn5703
-func gcasmLNgcasmFwdFn5703(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn5703 github.com/goccy/spidermonkeywasm2go/p6.Fn5703
+func gcasmLNgcasmFwdFn5703(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5703(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn5703(a0, a1)
+func gcasmFwdFn5703(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5703(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5705 github.com/goccy/spidermonkeywasm2go/p6.Fn5705
-func gcasmLNgcasmFwdFn5705(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5704 github.com/goccy/spidermonkeywasm2go/p7.Fn5704
+func gcasmLNgcasmFwdFn5704(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5705(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn5705(a0, a1)
+func gcasmFwdFn5704(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn5704(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5706 github.com/goccy/spidermonkeywasm2go/p7.Fn5706
-func gcasmLNgcasmFwdFn5706(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5707 github.com/goccy/spidermonkeywasm2go/p6.Fn5707
+func gcasmLNgcasmFwdFn5707(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn5706(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn5706(a0, a1)
+func gcasmFwdFn5707(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn5707(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5712 github.com/goccy/spidermonkeywasm2go/p4.Fn5712
-func gcasmLNgcasmFwdFn5712(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn5708 github.com/goccy/spidermonkeywasm2go/p7.Fn5708
+func gcasmLNgcasmFwdFn5708(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn5712(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn5712(a0, a1, a2, a3)
+func gcasmFwdFn5708(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn5708(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5718 github.com/goccy/spidermonkeywasm2go/p5.Fn5718
-func gcasmLNgcasmFwdFn5718(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn571 github.com/goccy/spidermonkeywasm2go/p7.Fn571
+func gcasmLNgcasmFwdFn571(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5718(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5718(a0, a1, a2)
+func gcasmFwdFn571(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn571(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5719 github.com/goccy/spidermonkeywasm2go/p6.Fn5719
-func gcasmLNgcasmFwdFn5719(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5714 github.com/goccy/spidermonkeywasm2go/p4.Fn5714
+func gcasmLNgcasmFwdFn5714(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn5719(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5719(a0, a1, a2)
+func gcasmFwdFn5714(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn5714(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5720 github.com/goccy/spidermonkeywasm2go/p5.Fn5720
-func gcasmLNgcasmFwdFn5720(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn5720(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5720(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn5720(a0, a1, a2, a3)
+func gcasmFwdFn5720(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5720(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5722 github.com/goccy/spidermonkeywasm2go/p7.Fn5722
-func gcasmLNgcasmFwdFn5722(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5721 github.com/goccy/spidermonkeywasm2go/p6.Fn5721
+func gcasmLNgcasmFwdFn5721(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5722(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5722(a0, a1, a2)
+func gcasmFwdFn5721(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5721(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5723 github.com/goccy/spidermonkeywasm2go/p5.Fn5723
-func gcasmLNgcasmFwdFn5723(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5722 github.com/goccy/spidermonkeywasm2go/p5.Fn5722
+func gcasmLNgcasmFwdFn5722(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn5723(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5723(a0, a1, a2)
+func gcasmFwdFn5722(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn5722(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5724 github.com/goccy/spidermonkeywasm2go/p6.Fn5724
+//go:linkname gcasmLNgcasmFwdFn5724 github.com/goccy/spidermonkeywasm2go/p7.Fn5724
 func gcasmLNgcasmFwdFn5724(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn5724(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn5724(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5725 github.com/goccy/spidermonkeywasm2go/p7.Fn5725
+//go:linkname gcasmLNgcasmFwdFn5725 github.com/goccy/spidermonkeywasm2go/p5.Fn5725
 func gcasmLNgcasmFwdFn5725(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn5725(a0 *base.Module, a1 int32, a2 int32) {
@@ -5822,7 +5178,7 @@ func gcasmFwdFn5728(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn5728(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5729 github.com/goccy/spidermonkeywasm2go/p6.Fn5729
+//go:linkname gcasmLNgcasmFwdFn5729 github.com/goccy/spidermonkeywasm2go/p7.Fn5729
 func gcasmLNgcasmFwdFn5729(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn5729(a0 *base.Module, a1 int32, a2 int32) {
@@ -5836,7 +5192,7 @@ func gcasmFwdFn573(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn573(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5730 github.com/goccy/spidermonkeywasm2go/p5.Fn5730
+//go:linkname gcasmLNgcasmFwdFn5730 github.com/goccy/spidermonkeywasm2go/p6.Fn5730
 func gcasmLNgcasmFwdFn5730(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn5730(a0 *base.Module, a1 int32, a2 int32) {
@@ -5850,11 +5206,11 @@ func gcasmFwdFn5731(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn5731(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5732 github.com/goccy/spidermonkeywasm2go/p7.Fn5732
-func gcasmLNgcasmFwdFn5732(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5732 github.com/goccy/spidermonkeywasm2go/p5.Fn5732
+func gcasmLNgcasmFwdFn5732(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5732(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn5732(a0, a1, a2)
+func gcasmFwdFn5732(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5732(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5733 github.com/goccy/spidermonkeywasm2go/p6.Fn5733
@@ -5864,6 +5220,13 @@ func gcasmFwdFn5733(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn5733(a0, a1, a2)
 }
 
+//go:linkname gcasmLNgcasmFwdFn5734 github.com/goccy/spidermonkeywasm2go/p7.Fn5734
+func gcasmLNgcasmFwdFn5734(a0 *base.Module, a1 int32, a2 int32) int32
+
+func gcasmFwdFn5734(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn5734(a0, a1, a2)
+}
+
 //go:linkname gcasmLNgcasmFwdFn5735 github.com/goccy/spidermonkeywasm2go/p6.Fn5735
 func gcasmLNgcasmFwdFn5735(a0 *base.Module, a1 int32, a2 int32)
 
@@ -5871,60 +5234,53 @@ func gcasmFwdFn5735(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn5735(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5737 github.com/goccy/spidermonkeywasm2go/p7.Fn5737
-func gcasmLNgcasmFwdFn5737(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn5737 github.com/goccy/spidermonkeywasm2go/p6.Fn5737
+func gcasmLNgcasmFwdFn5737(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5737(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn5737(a0, a1)
+func gcasmFwdFn5737(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5737(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5738 github.com/goccy/spidermonkeywasm2go/p7.Fn5738
-func gcasmLNgcasmFwdFn5738(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn5739 github.com/goccy/spidermonkeywasm2go/p7.Fn5739
+func gcasmLNgcasmFwdFn5739(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5738(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn5738(a0, a1)
+func gcasmFwdFn5739(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn5739(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5743 github.com/goccy/spidermonkeywasm2go/p6.Fn5743
-func gcasmLNgcasmFwdFn5743(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn574 github.com/goccy/spidermonkeywasm2go/p7.Fn574
+func gcasmLNgcasmFwdFn574(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn5743(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5743(a0, a1, a2)
+func gcasmFwdFn574(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn574(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5751 github.com/goccy/spidermonkeywasm2go/p6.Fn5751
-func gcasmLNgcasmFwdFn5751(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn5740 github.com/goccy/spidermonkeywasm2go/p7.Fn5740
+func gcasmLNgcasmFwdFn5740(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5751(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn5751(a0, a1)
+func gcasmFwdFn5740(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn5740(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5755 github.com/goccy/spidermonkeywasm2go/p6.Fn5755
-func gcasmLNgcasmFwdFn5755(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5753 github.com/goccy/spidermonkeywasm2go/p6.Fn5753
+func gcasmLNgcasmFwdFn5753(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5755(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn5755(a0, a1, a2, a3, a4)
+func gcasmFwdFn5753(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn5753(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5756 github.com/goccy/spidermonkeywasm2go/p7.Fn5756
-func gcasmLNgcasmFwdFn5756(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5757 github.com/goccy/spidermonkeywasm2go/p6.Fn5757
+func gcasmLNgcasmFwdFn5757(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn5756(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn5756(a0, a1, a2, a3)
+func gcasmFwdFn5757(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn5757(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5775 github.com/goccy/spidermonkeywasm2go/p5.Fn5775
-func gcasmLNgcasmFwdFn5775(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5758 github.com/goccy/spidermonkeywasm2go/p7.Fn5758
+func gcasmLNgcasmFwdFn5758(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn5775(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5775(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn5776 github.com/goccy/spidermonkeywasm2go/p6.Fn5776
-func gcasmLNgcasmFwdFn5776(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn5776(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5776(a0, a1, a2)
+func gcasmFwdFn5758(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn5758(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5777 github.com/goccy/spidermonkeywasm2go/p5.Fn5777
@@ -5934,18 +5290,18 @@ func gcasmFwdFn5777(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn5777(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5821 github.com/goccy/spidermonkeywasm2go/p6.Fn5821
-func gcasmLNgcasmFwdFn5821(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5778 github.com/goccy/spidermonkeywasm2go/p6.Fn5778
+func gcasmLNgcasmFwdFn5778(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5821(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5821(a0, a1, a2)
+func gcasmFwdFn5778(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5778(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5822 github.com/goccy/spidermonkeywasm2go/p6.Fn5822
-func gcasmLNgcasmFwdFn5822(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5779 github.com/goccy/spidermonkeywasm2go/p5.Fn5779
+func gcasmLNgcasmFwdFn5779(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5822(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn5822(a0, a1, a2)
+func gcasmFwdFn5779(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5779(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn5823 github.com/goccy/spidermonkeywasm2go/p6.Fn5823
@@ -5956,325 +5312,262 @@ func gcasmFwdFn5823(a0 *base.Module, a1 int32, a2 int32) {
 }
 
 //go:linkname gcasmLNgcasmFwdFn5824 github.com/goccy/spidermonkeywasm2go/p6.Fn5824
-func gcasmLNgcasmFwdFn5824(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn5824(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn5824(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn5824(a0, a1)
+func gcasmFwdFn5824(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn5824(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5839 github.com/goccy/spidermonkeywasm2go/p6.Fn5839
-func gcasmLNgcasmFwdFn5839(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn5825 github.com/goccy/spidermonkeywasm2go/p6.Fn5825
+func gcasmLNgcasmFwdFn5825(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5839(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn5839(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn5825(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5825(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5840 github.com/goccy/spidermonkeywasm2go/p6.Fn5840
-func gcasmLNgcasmFwdFn5840(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn5826 github.com/goccy/spidermonkeywasm2go/p6.Fn5826
+func gcasmLNgcasmFwdFn5826(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5840(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn5840(a0, a1, a2, a3, a4)
+func gcasmFwdFn5826(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn5826(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5881 github.com/goccy/spidermonkeywasm2go/p6.Fn5881
-func gcasmLNgcasmFwdFn5881(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn5883 github.com/goccy/spidermonkeywasm2go/p6.Fn5883
+func gcasmLNgcasmFwdFn5883(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn5881(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn5881(a0, a1, a2, a3)
+func gcasmFwdFn5883(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn5883(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5882 github.com/goccy/spidermonkeywasm2go/p6.Fn5882
-func gcasmLNgcasmFwdFn5882(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn5884 github.com/goccy/spidermonkeywasm2go/p6.Fn5884
+func gcasmLNgcasmFwdFn5884(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn5882(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn5882(a0, a1, a2, a3)
+func gcasmFwdFn5884(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn5884(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5888 github.com/goccy/spidermonkeywasm2go/p6.Fn5888
-func gcasmLNgcasmFwdFn5888(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5890 github.com/goccy/spidermonkeywasm2go/p6.Fn5890
+func gcasmLNgcasmFwdFn5890(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn5888(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn5888(a0, a1)
+func gcasmFwdFn5890(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn5890(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5902 github.com/goccy/spidermonkeywasm2go/p4.Fn5902
-func gcasmLNgcasmFwdFn5902(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5904 github.com/goccy/spidermonkeywasm2go/p4.Fn5904
+func gcasmLNgcasmFwdFn5904(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn5902(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn5902(a0, a1, a2, a3, a4)
+func gcasmFwdFn5904(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn5904(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5916 github.com/goccy/spidermonkeywasm2go/p7.Fn5916
-func gcasmLNgcasmFwdFn5916(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn5919 github.com/goccy/spidermonkeywasm2go/p7.Fn5919
+func gcasmLNgcasmFwdFn5919(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn5916(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5916(a0, a1, a2)
+func gcasmFwdFn5919(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn5919(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5917 github.com/goccy/spidermonkeywasm2go/p7.Fn5917
-func gcasmLNgcasmFwdFn5917(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5922 github.com/goccy/spidermonkeywasm2go/p7.Fn5922
+func gcasmLNgcasmFwdFn5922(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn5917(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn5917(a0, a1)
+func gcasmFwdFn5922(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn5922(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5920 github.com/goccy/spidermonkeywasm2go/p7.Fn5920
-func gcasmLNgcasmFwdFn5920(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn5927 github.com/goccy/spidermonkeywasm2go/p5.Fn5927
+func gcasmLNgcasmFwdFn5927(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn5920(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn5920(a0, a1)
+func gcasmFwdFn5927(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn5927(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5925 github.com/goccy/spidermonkeywasm2go/p5.Fn5925
-func gcasmLNgcasmFwdFn5925(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn5954 github.com/goccy/spidermonkeywasm2go/p5.Fn5954
+func gcasmLNgcasmFwdFn5954(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn5925(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn5925(a0, a1, a2, a3, a4)
+func gcasmFwdFn5954(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn5954(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5952 github.com/goccy/spidermonkeywasm2go/p5.Fn5952
-func gcasmLNgcasmFwdFn5952(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5955 github.com/goccy/spidermonkeywasm2go/p7.Fn5955
+func gcasmLNgcasmFwdFn5955(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn5952(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn5952(a0, a1, a2, a3)
+func gcasmFwdFn5955(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn5955(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5953 github.com/goccy/spidermonkeywasm2go/p7.Fn5953
-func gcasmLNgcasmFwdFn5953(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5965 github.com/goccy/spidermonkeywasm2go/p4.Fn5965
+func gcasmLNgcasmFwdFn5965(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn5953(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn5953(a0, a1, a2, a3, a4)
+func gcasmFwdFn5965(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn5965(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5963 github.com/goccy/spidermonkeywasm2go/p4.Fn5963
-func gcasmLNgcasmFwdFn5963(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn5970 github.com/goccy/spidermonkeywasm2go/p6.Fn5970
+func gcasmLNgcasmFwdFn5970(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn5963(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn5963(a0, a1, a2)
+func gcasmFwdFn5970(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn5970(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn5968 github.com/goccy/spidermonkeywasm2go/p6.Fn5968
-func gcasmLNgcasmFwdFn5968(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn6062 github.com/goccy/spidermonkeywasm2go/p7.Fn6062
+func gcasmLNgcasmFwdFn6062(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn5968(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn5968(a0, a1, a2)
+func gcasmFwdFn6062(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6062(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6040 github.com/goccy/spidermonkeywasm2go/p4.Fn6040
-func gcasmLNgcasmFwdFn6040(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn6063 github.com/goccy/spidermonkeywasm2go/p7.Fn6063
+func gcasmLNgcasmFwdFn6063(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn6040(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6040(a0, a1, a2)
+func gcasmFwdFn6063(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn6063(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6052 github.com/goccy/spidermonkeywasm2go/p6.Fn6052
-func gcasmLNgcasmFwdFn6052(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn6066 github.com/goccy/spidermonkeywasm2go/p6.Fn6066
+func gcasmLNgcasmFwdFn6066(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn6052(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6052(a0, a1, a2)
+func gcasmFwdFn6066(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6066(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6060 github.com/goccy/spidermonkeywasm2go/p7.Fn6060
-func gcasmLNgcasmFwdFn6060(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn6079 github.com/goccy/spidermonkeywasm2go/p6.Fn6079
+func gcasmLNgcasmFwdFn6079(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6060(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6060(a0, a1, a2, a3)
+func gcasmFwdFn6079(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6079(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6061 github.com/goccy/spidermonkeywasm2go/p7.Fn6061
-func gcasmLNgcasmFwdFn6061(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6094 github.com/goccy/spidermonkeywasm2go/p7.Fn6094
+func gcasmLNgcasmFwdFn6094(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn6061(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn6061(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6064 github.com/goccy/spidermonkeywasm2go/p6.Fn6064
-func gcasmLNgcasmFwdFn6064(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn6064(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6064(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6077 github.com/goccy/spidermonkeywasm2go/p6.Fn6077
-func gcasmLNgcasmFwdFn6077(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn6077(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6077(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6092 github.com/goccy/spidermonkeywasm2go/p7.Fn6092
-func gcasmLNgcasmFwdFn6092(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn6092(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6092(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6104 github.com/goccy/spidermonkeywasm2go/p7.Fn6104
-func gcasmLNgcasmFwdFn6104(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn6104(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6104(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6105 github.com/goccy/spidermonkeywasm2go/p4.Fn6105
-func gcasmLNgcasmFwdFn6105(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32)
-
-func gcasmFwdFn6105(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) {
-	gcasmLNgcasmFwdFn6105(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+func gcasmFwdFn6094(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6094(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6106 github.com/goccy/spidermonkeywasm2go/p7.Fn6106
-func gcasmLNgcasmFwdFn6106(a0 *base.Module)
+func gcasmLNgcasmFwdFn6106(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6106(a0 *base.Module) {
-	gcasmLNgcasmFwdFn6106(a0)
+func gcasmFwdFn6106(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6106(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6125 github.com/goccy/spidermonkeywasm2go/p7.Fn6125
-func gcasmLNgcasmFwdFn6125(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6107 github.com/goccy/spidermonkeywasm2go/p4.Fn6107
+func gcasmLNgcasmFwdFn6107(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32)
 
-func gcasmFwdFn6125(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6125(a0, a1, a2, a3)
+func gcasmFwdFn6107(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) {
+	gcasmLNgcasmFwdFn6107(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6186 github.com/goccy/spidermonkeywasm2go/p5.Fn6186
-func gcasmLNgcasmFwdFn6186(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6108 github.com/goccy/spidermonkeywasm2go/p7.Fn6108
+func gcasmLNgcasmFwdFn6108(a0 *base.Module)
 
-func gcasmFwdFn6186(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6186(a0, a1, a2)
+func gcasmFwdFn6108(a0 *base.Module) {
+	gcasmLNgcasmFwdFn6108(a0)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6187 github.com/goccy/spidermonkeywasm2go/p6.Fn6187
-func gcasmLNgcasmFwdFn6187(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6127 github.com/goccy/spidermonkeywasm2go/p7.Fn6127
+func gcasmLNgcasmFwdFn6127(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6187(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6187(a0, a1, a2)
+func gcasmFwdFn6127(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6127(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn6188 github.com/goccy/spidermonkeywasm2go/p5.Fn6188
+func gcasmLNgcasmFwdFn6188(a0 *base.Module, a1 int32, a2 int32) int32
+
+func gcasmFwdFn6188(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6188(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6189 github.com/goccy/spidermonkeywasm2go/p6.Fn6189
-func gcasmLNgcasmFwdFn6189(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn6189(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6189(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6189(a0, a1, a2)
+func gcasmFwdFn6189(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6189(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6190 github.com/goccy/spidermonkeywasm2go/p5.Fn6190
-func gcasmLNgcasmFwdFn6190(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn6191 github.com/goccy/spidermonkeywasm2go/p6.Fn6191
+func gcasmLNgcasmFwdFn6191(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn6190(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn6190(a0, a1)
+func gcasmFwdFn6191(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6191(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6192 github.com/goccy/spidermonkeywasm2go/p6.Fn6192
-func gcasmLNgcasmFwdFn6192(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn6194 github.com/goccy/spidermonkeywasm2go/p6.Fn6194
+func gcasmLNgcasmFwdFn6194(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn6192(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6192(a0, a1, a2, a3)
+func gcasmFwdFn6194(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6194(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6210 github.com/goccy/spidermonkeywasm2go/p6.Fn6210
-func gcasmLNgcasmFwdFn6210(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn6212 github.com/goccy/spidermonkeywasm2go/p6.Fn6212
+func gcasmLNgcasmFwdFn6212(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn6210(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn6210(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6233 github.com/goccy/spidermonkeywasm2go/p4.Fn6233
-func gcasmLNgcasmFwdFn6233(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn6233(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6233(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6246 github.com/goccy/spidermonkeywasm2go/p6.Fn6246
-func gcasmLNgcasmFwdFn6246(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn6246(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn6246(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6260 github.com/goccy/spidermonkeywasm2go/p6.Fn6260
-func gcasmLNgcasmFwdFn6260(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn6260(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6260(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6261 github.com/goccy/spidermonkeywasm2go/p2.Fn6261
-func gcasmLNgcasmFwdFn6261(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
-
-func gcasmFwdFn6261(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn6261(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn6212(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn6212(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6262 github.com/goccy/spidermonkeywasm2go/p6.Fn6262
-func gcasmLNgcasmFwdFn6262(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+func gcasmLNgcasmFwdFn6262(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6262(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn6262(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn6262(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6262(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6263 github.com/goccy/spidermonkeywasm2go/p7.Fn6263
-func gcasmLNgcasmFwdFn6263(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6263 github.com/goccy/spidermonkeywasm2go/p2.Fn6263
+func gcasmLNgcasmFwdFn6263(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
 
-func gcasmFwdFn6263(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6263(a0, a1, a2)
+func gcasmFwdFn6263(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn6263(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6264 github.com/goccy/spidermonkeywasm2go/p6.Fn6264
-func gcasmLNgcasmFwdFn6264(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn6264(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn6264(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6264(a0, a1, a2, a3)
+func gcasmFwdFn6264(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn6264(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6265 github.com/goccy/spidermonkeywasm2go/p4.Fn6265
-func gcasmLNgcasmFwdFn6265(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6267 github.com/goccy/spidermonkeywasm2go/p4.Fn6267
+func gcasmLNgcasmFwdFn6267(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6265(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6265(a0, a1, a2)
+func gcasmFwdFn6267(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6267(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6284 github.com/goccy/spidermonkeywasm2go/p6.Fn6284
-func gcasmLNgcasmFwdFn6284(a0 *base.Module) int32
+//go:linkname gcasmLNgcasmFwdFn6286 github.com/goccy/spidermonkeywasm2go/p6.Fn6286
+func gcasmLNgcasmFwdFn6286(a0 *base.Module) int32
 
-func gcasmFwdFn6284(a0 *base.Module) int32 {
-	return gcasmLNgcasmFwdFn6284(a0)
+func gcasmFwdFn6286(a0 *base.Module) int32 {
+	return gcasmLNgcasmFwdFn6286(a0)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6292 github.com/goccy/spidermonkeywasm2go/p5.Fn6292
-func gcasmLNgcasmFwdFn6292(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn6294 github.com/goccy/spidermonkeywasm2go/p5.Fn6294
+func gcasmLNgcasmFwdFn6294(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn6292(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn6292(a0, a1, a2, a3, a4)
+func gcasmFwdFn6294(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn6294(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6293 github.com/goccy/spidermonkeywasm2go/p7.Fn6293
-func gcasmLNgcasmFwdFn6293(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn6295 github.com/goccy/spidermonkeywasm2go/p7.Fn6295
+func gcasmLNgcasmFwdFn6295(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn6293(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6293(a0, a1, a2, a3)
+func gcasmFwdFn6295(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6295(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6295 github.com/goccy/spidermonkeywasm2go/p5.Fn6295
-func gcasmLNgcasmFwdFn6295(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32)
+//go:linkname gcasmLNgcasmFwdFn6297 github.com/goccy/spidermonkeywasm2go/p5.Fn6297
+func gcasmLNgcasmFwdFn6297(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32)
 
-func gcasmFwdFn6295(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) {
-	gcasmLNgcasmFwdFn6295(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+func gcasmFwdFn6297(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) {
+	gcasmLNgcasmFwdFn6297(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6346 github.com/goccy/spidermonkeywasm2go/p2.Fn6346
-func gcasmLNgcasmFwdFn6346(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6348 github.com/goccy/spidermonkeywasm2go/p2.Fn6348
+func gcasmLNgcasmFwdFn6348(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn6346(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn6346(a0, a1, a2, a3, a4, a5, a6)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6358 github.com/goccy/spidermonkeywasm2go/p7.Fn6358
-func gcasmLNgcasmFwdFn6358(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn6358(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6358(a0, a1, a2)
+func gcasmFwdFn6348(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn6348(a0, a1, a2, a3, a4, a5, a6)
 }
 
 //go:linkname gcasmLNgcasmFwdFn662 github.com/goccy/spidermonkeywasm2go/p7.Fn662
@@ -6291,46 +5584,32 @@ func gcasmFwdFn663(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn663(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6655 github.com/goccy/spidermonkeywasm2go/p4.Fn6655
-func gcasmLNgcasmFwdFn6655(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn6666 github.com/goccy/spidermonkeywasm2go/p5.Fn6666
+func gcasmLNgcasmFwdFn6666(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn6655(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6655(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6664 github.com/goccy/spidermonkeywasm2go/p5.Fn6664
-func gcasmLNgcasmFwdFn6664(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn6664(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6664(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6665 github.com/goccy/spidermonkeywasm2go/p6.Fn6665
-func gcasmLNgcasmFwdFn6665(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn6665(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6665(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6666 github.com/goccy/spidermonkeywasm2go/p7.Fn6666
-func gcasmLNgcasmFwdFn6666(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn6666(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6666(a0, a1, a2, a3)
+func gcasmFwdFn6666(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6666(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6667 github.com/goccy/spidermonkeywasm2go/p6.Fn6667
-func gcasmLNgcasmFwdFn6667(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn6667(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6667(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6667(a0, a1, a2)
+func gcasmFwdFn6667(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6667(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6668 github.com/goccy/spidermonkeywasm2go/p6.Fn6668
-func gcasmLNgcasmFwdFn6668(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6668 github.com/goccy/spidermonkeywasm2go/p7.Fn6668
+func gcasmLNgcasmFwdFn6668(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn6668(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn6668(a0, a1)
+func gcasmFwdFn6668(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6668(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn6669 github.com/goccy/spidermonkeywasm2go/p6.Fn6669
+func gcasmLNgcasmFwdFn6669(a0 *base.Module, a1 int32, a2 int32)
+
+func gcasmFwdFn6669(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6669(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn667 github.com/goccy/spidermonkeywasm2go/p6.Fn667
@@ -6340,116 +5619,116 @@ func gcasmFwdFn667(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int3
 	return gcasmLNgcasmFwdFn667(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6681 github.com/goccy/spidermonkeywasm2go/p6.Fn6681
-func gcasmLNgcasmFwdFn6681(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn6670 github.com/goccy/spidermonkeywasm2go/p6.Fn6670
+func gcasmLNgcasmFwdFn6670(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn6681(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6681(a0, a1, a2)
+func gcasmFwdFn6670(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn6670(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6688 github.com/goccy/spidermonkeywasm2go/p1.Fn6688
-func gcasmLNgcasmFwdFn6688(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn6683 github.com/goccy/spidermonkeywasm2go/p6.Fn6683
+func gcasmLNgcasmFwdFn6683(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn6688(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn6688(a0, a1, a2, a3, a4)
+func gcasmFwdFn6683(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6683(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6690 github.com/goccy/spidermonkeywasm2go/p7.Fn6690
-func gcasmLNgcasmFwdFn6690(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn6690 github.com/goccy/spidermonkeywasm2go/p1.Fn6690
+func gcasmLNgcasmFwdFn6690(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn6690(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn6690(a0, a1)
+func gcasmFwdFn6690(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn6690(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6693 github.com/goccy/spidermonkeywasm2go/p6.Fn6693
-func gcasmLNgcasmFwdFn6693(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6692 github.com/goccy/spidermonkeywasm2go/p7.Fn6692
+func gcasmLNgcasmFwdFn6692(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn6693(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn6693(a0, a1, a2, a3, a4)
+func gcasmFwdFn6692(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn6692(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6695 github.com/goccy/spidermonkeywasm2go/p4.Fn6695
-func gcasmLNgcasmFwdFn6695(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn6695 github.com/goccy/spidermonkeywasm2go/p6.Fn6695
+func gcasmLNgcasmFwdFn6695(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn6695(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn6695(a0, a1, a2, a3, a4)
+func gcasmFwdFn6695(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn6695(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6696 github.com/goccy/spidermonkeywasm2go/p7.Fn6696
-func gcasmLNgcasmFwdFn6696(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn6697 github.com/goccy/spidermonkeywasm2go/p4.Fn6697
+func gcasmLNgcasmFwdFn6697(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn6696(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6696(a0, a1, a2, a3)
+func gcasmFwdFn6697(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn6697(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6699 github.com/goccy/spidermonkeywasm2go/p6.Fn6699
-func gcasmLNgcasmFwdFn6699(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6698 github.com/goccy/spidermonkeywasm2go/p7.Fn6698
+func gcasmLNgcasmFwdFn6698(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn6699(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn6699(a0, a1, a2, a3, a4, a5, a6)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6700 github.com/goccy/spidermonkeywasm2go/p6.Fn6700
-func gcasmLNgcasmFwdFn6700(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn6700(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6700(a0, a1, a2)
+func gcasmFwdFn6698(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6698(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6701 github.com/goccy/spidermonkeywasm2go/p6.Fn6701
-func gcasmLNgcasmFwdFn6701(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn6701(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn6701(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6701(a0, a1, a2)
+func gcasmFwdFn6701(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn6701(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6707 github.com/goccy/spidermonkeywasm2go/p6.Fn6707
-func gcasmLNgcasmFwdFn6707(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6702 github.com/goccy/spidermonkeywasm2go/p6.Fn6702
+func gcasmLNgcasmFwdFn6702(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn6707(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6707(a0, a1, a2, a3)
+func gcasmFwdFn6702(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6702(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6708 github.com/goccy/spidermonkeywasm2go/p7.Fn6708
-func gcasmLNgcasmFwdFn6708(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6703 github.com/goccy/spidermonkeywasm2go/p6.Fn6703
+func gcasmLNgcasmFwdFn6703(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6708(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6708(a0, a1, a2, a3)
+func gcasmFwdFn6703(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6703(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6709 github.com/goccy/spidermonkeywasm2go/p6.Fn6709
-func gcasmLNgcasmFwdFn6709(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn6709(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32
 
-func gcasmFwdFn6709(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn6709(a0, a1, a2, a3, a4)
+func gcasmFwdFn6709(a0 *base.Module, a1 int32, a2 int64, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6709(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6710 github.com/goccy/spidermonkeywasm2go/p7.Fn6710
-func gcasmLNgcasmFwdFn6710(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn6710(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6710(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6710(a0, a1, a2)
+func gcasmFwdFn6710(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6710(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6711 github.com/goccy/spidermonkeywasm2go/p7.Fn6711
-func gcasmLNgcasmFwdFn6711(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6711 github.com/goccy/spidermonkeywasm2go/p6.Fn6711
+func gcasmLNgcasmFwdFn6711(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn6711(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6711(a0, a1, a2)
+func gcasmFwdFn6711(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn6711(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6714 github.com/goccy/spidermonkeywasm2go/p7.Fn6714
-func gcasmLNgcasmFwdFn6714(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn6712 github.com/goccy/spidermonkeywasm2go/p7.Fn6712
+func gcasmLNgcasmFwdFn6712(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn6714(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6714(a0, a1, a2, a3)
+func gcasmFwdFn6712(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6712(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6715 github.com/goccy/spidermonkeywasm2go/p7.Fn6715
-func gcasmLNgcasmFwdFn6715(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn6713 github.com/goccy/spidermonkeywasm2go/p7.Fn6713
+func gcasmLNgcasmFwdFn6713(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6715(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6715(a0, a1, a2, a3)
+func gcasmFwdFn6713(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6713(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn6716 github.com/goccy/spidermonkeywasm2go/p7.Fn6716
+func gcasmLNgcasmFwdFn6716(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+
+func gcasmFwdFn6716(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6716(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6717 github.com/goccy/spidermonkeywasm2go/p7.Fn6717
@@ -6459,67 +5738,74 @@ func gcasmFwdFn6717(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn6717(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6722 github.com/goccy/spidermonkeywasm2go/p7.Fn6722
-func gcasmLNgcasmFwdFn6722(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6719 github.com/goccy/spidermonkeywasm2go/p7.Fn6719
+func gcasmLNgcasmFwdFn6719(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn6722(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6722(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6723 github.com/goccy/spidermonkeywasm2go/p7.Fn6723
-func gcasmLNgcasmFwdFn6723(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn6723(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6723(a0, a1, a2, a3)
+func gcasmFwdFn6719(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6719(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6724 github.com/goccy/spidermonkeywasm2go/p7.Fn6724
-func gcasmLNgcasmFwdFn6724(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn6724(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6724(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn6724(a0, a1, a2, a3, a4)
+func gcasmFwdFn6724(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6724(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6727 github.com/goccy/spidermonkeywasm2go/p7.Fn6727
-func gcasmLNgcasmFwdFn6727(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6725 github.com/goccy/spidermonkeywasm2go/p7.Fn6725
+func gcasmLNgcasmFwdFn6725(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6727(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6727(a0, a1, a2)
+func gcasmFwdFn6725(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6725(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6732 github.com/goccy/spidermonkeywasm2go/p7.Fn6732
-func gcasmLNgcasmFwdFn6732(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6726 github.com/goccy/spidermonkeywasm2go/p7.Fn6726
+func gcasmLNgcasmFwdFn6726(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn6732(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn6732(a0, a1, a2, a3, a4)
+func gcasmFwdFn6726(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn6726(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6733 github.com/goccy/spidermonkeywasm2go/p6.Fn6733
-func gcasmLNgcasmFwdFn6733(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6729 github.com/goccy/spidermonkeywasm2go/p7.Fn6729
+func gcasmLNgcasmFwdFn6729(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6733(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6733(a0, a1, a2, a3)
+func gcasmFwdFn6729(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6729(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6760 github.com/goccy/spidermonkeywasm2go/p7.Fn6760
-func gcasmLNgcasmFwdFn6760(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6734 github.com/goccy/spidermonkeywasm2go/p7.Fn6734
+func gcasmLNgcasmFwdFn6734(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn6760(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6760(a0, a1, a2)
+func gcasmFwdFn6734(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn6734(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6763 github.com/goccy/spidermonkeywasm2go/p7.Fn6763
-func gcasmLNgcasmFwdFn6763(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn6735 github.com/goccy/spidermonkeywasm2go/p6.Fn6735
+func gcasmLNgcasmFwdFn6735(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6763(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6763(a0, a1, a2)
+func gcasmFwdFn6735(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6735(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6765 github.com/goccy/spidermonkeywasm2go/p1.Fn6765
-func gcasmLNgcasmFwdFn6765(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6762 github.com/goccy/spidermonkeywasm2go/p7.Fn6762
+func gcasmLNgcasmFwdFn6762(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6765(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn6765(a0, a1)
+func gcasmFwdFn6762(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6762(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn6765 github.com/goccy/spidermonkeywasm2go/p7.Fn6765
+func gcasmLNgcasmFwdFn6765(a0 *base.Module, a1 int32, a2 int32)
+
+func gcasmFwdFn6765(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6765(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn6767 github.com/goccy/spidermonkeywasm2go/p1.Fn6767
+func gcasmLNgcasmFwdFn6767(a0 *base.Module, a1 int32) int32
+
+func gcasmFwdFn6767(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn6767(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn677 github.com/goccy/spidermonkeywasm2go/p7.Fn677
@@ -6529,46 +5815,46 @@ func gcasmFwdFn677(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn677(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6771 github.com/goccy/spidermonkeywasm2go/p7.Fn6771
-func gcasmLNgcasmFwdFn6771(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn6773 github.com/goccy/spidermonkeywasm2go/p7.Fn6773
+func gcasmLNgcasmFwdFn6773(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn6771(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6771(a0, a1, a2, a3)
+func gcasmFwdFn6773(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6773(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6779 github.com/goccy/spidermonkeywasm2go/p7.Fn6779
-func gcasmLNgcasmFwdFn6779(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6781 github.com/goccy/spidermonkeywasm2go/p7.Fn6781
+func gcasmLNgcasmFwdFn6781(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn6779(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn6779(a0, a1)
+func gcasmFwdFn6781(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn6781(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6783 github.com/goccy/spidermonkeywasm2go/p7.Fn6783
-func gcasmLNgcasmFwdFn6783(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn6785 github.com/goccy/spidermonkeywasm2go/p7.Fn6785
+func gcasmLNgcasmFwdFn6785(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn6783(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6783(a0, a1, a2, a3)
+func gcasmFwdFn6785(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6785(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6784 github.com/goccy/spidermonkeywasm2go/p7.Fn6784
-func gcasmLNgcasmFwdFn6784(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn6786 github.com/goccy/spidermonkeywasm2go/p7.Fn6786
+func gcasmLNgcasmFwdFn6786(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn6784(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6784(a0, a1, a2)
+func gcasmFwdFn6786(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6786(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6785 github.com/goccy/spidermonkeywasm2go/p4.Fn6785
-func gcasmLNgcasmFwdFn6785(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6787 github.com/goccy/spidermonkeywasm2go/p4.Fn6787
+func gcasmLNgcasmFwdFn6787(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn6785(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn6785(a0, a1)
+func gcasmFwdFn6787(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn6787(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6786 github.com/goccy/spidermonkeywasm2go/p6.Fn6786
-func gcasmLNgcasmFwdFn6786(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6788 github.com/goccy/spidermonkeywasm2go/p6.Fn6788
+func gcasmLNgcasmFwdFn6788(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6786(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6786(a0, a1, a2)
+func gcasmFwdFn6788(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6788(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn679 github.com/goccy/spidermonkeywasm2go/p7.Fn679
@@ -6578,25 +5864,25 @@ func gcasmFwdFn679(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn679(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6790 github.com/goccy/spidermonkeywasm2go/p7.Fn6790
-func gcasmLNgcasmFwdFn6790(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn6792 github.com/goccy/spidermonkeywasm2go/p7.Fn6792
+func gcasmLNgcasmFwdFn6792(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn6790(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn6790(a0, a1, a2, a3, a4)
+func gcasmFwdFn6792(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn6792(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6795 github.com/goccy/spidermonkeywasm2go/p5.Fn6795
-func gcasmLNgcasmFwdFn6795(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6797 github.com/goccy/spidermonkeywasm2go/p5.Fn6797
+func gcasmLNgcasmFwdFn6797(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6795(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6795(a0, a1, a2)
+func gcasmFwdFn6797(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6797(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6796 github.com/goccy/spidermonkeywasm2go/p6.Fn6796
-func gcasmLNgcasmFwdFn6796(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6798 github.com/goccy/spidermonkeywasm2go/p6.Fn6798
+func gcasmLNgcasmFwdFn6798(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6796(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6796(a0, a1, a2, a3)
+func gcasmFwdFn6798(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6798(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn680 github.com/goccy/spidermonkeywasm2go/p7.Fn680
@@ -6606,39 +5892,32 @@ func gcasmFwdFn680(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn680(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6835 github.com/goccy/spidermonkeywasm2go/p6.Fn6835
-func gcasmLNgcasmFwdFn6835(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn6837 github.com/goccy/spidermonkeywasm2go/p6.Fn6837
+func gcasmLNgcasmFwdFn6837(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn6835(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6835(a0, a1, a2)
+func gcasmFwdFn6837(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6837(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6836 github.com/goccy/spidermonkeywasm2go/p5.Fn6836
-func gcasmLNgcasmFwdFn6836(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn6838 github.com/goccy/spidermonkeywasm2go/p5.Fn6838
+func gcasmLNgcasmFwdFn6838(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn6836(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn6836(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn6838(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn6838(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6839 github.com/goccy/spidermonkeywasm2go/p1.Fn6839
-func gcasmLNgcasmFwdFn6839(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6841 github.com/goccy/spidermonkeywasm2go/p1.Fn6841
+func gcasmLNgcasmFwdFn6841(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn6839(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn6839(a0, a1)
+func gcasmFwdFn6841(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn6841(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6864 github.com/goccy/spidermonkeywasm2go/p5.Fn6864
-func gcasmLNgcasmFwdFn6864(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn6866 github.com/goccy/spidermonkeywasm2go/p5.Fn6866
+func gcasmLNgcasmFwdFn6866(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn6864(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn6864(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6898 github.com/goccy/spidermonkeywasm2go/p6.Fn6898
-func gcasmLNgcasmFwdFn6898(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn6898(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6898(a0, a1, a2)
+func gcasmFwdFn6866(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn6866(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn690 github.com/goccy/spidermonkeywasm2go/p6.Fn690
@@ -6648,25 +5927,32 @@ func gcasmFwdFn690(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn690(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6901 github.com/goccy/spidermonkeywasm2go/p5.Fn6901
-func gcasmLNgcasmFwdFn6901(a0 *base.Module, a1 int32, a2 int32, a3 int32) int64
+//go:linkname gcasmLNgcasmFwdFn6900 github.com/goccy/spidermonkeywasm2go/p6.Fn6900
+func gcasmLNgcasmFwdFn6900(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn6901(a0 *base.Module, a1 int32, a2 int32, a3 int32) int64 {
-	return gcasmLNgcasmFwdFn6901(a0, a1, a2, a3)
+func gcasmFwdFn6900(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6900(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6905 github.com/goccy/spidermonkeywasm2go/p7.Fn6905
-func gcasmLNgcasmFwdFn6905(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6903 github.com/goccy/spidermonkeywasm2go/p5.Fn6903
+func gcasmLNgcasmFwdFn6903(a0 *base.Module, a1 int32, a2 int32, a3 int32) int64
 
-func gcasmFwdFn6905(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn6905(a0, a1)
+func gcasmFwdFn6903(a0 *base.Module, a1 int32, a2 int32, a3 int32) int64 {
+	return gcasmLNgcasmFwdFn6903(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6911 github.com/goccy/spidermonkeywasm2go/p7.Fn6911
-func gcasmLNgcasmFwdFn6911(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6913 github.com/goccy/spidermonkeywasm2go/p7.Fn6913
+func gcasmLNgcasmFwdFn6913(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6911(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6911(a0, a1, a2)
+func gcasmFwdFn6913(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6913(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn6919 github.com/goccy/spidermonkeywasm2go/p7.Fn6919
+func gcasmLNgcasmFwdFn6919(a0 *base.Module, a1 int32, a2 int32) int32
+
+func gcasmFwdFn6919(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6919(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn692 github.com/goccy/spidermonkeywasm2go/p7.Fn692
@@ -6676,256 +5962,214 @@ func gcasmFwdFn692(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn692(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6924 github.com/goccy/spidermonkeywasm2go/p5.Fn6924
-func gcasmLNgcasmFwdFn6924(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn6927 github.com/goccy/spidermonkeywasm2go/p5.Fn6927
+func gcasmLNgcasmFwdFn6927(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn6924(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn6924(a0, a1, a2)
+func gcasmFwdFn6927(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn6927(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6927 github.com/goccy/spidermonkeywasm2go/p6.Fn6927
-func gcasmLNgcasmFwdFn6927(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6930 github.com/goccy/spidermonkeywasm2go/p6.Fn6930
+func gcasmLNgcasmFwdFn6930(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6927(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6927(a0, a1, a2, a3)
+func gcasmFwdFn6930(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6930(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6947 github.com/goccy/spidermonkeywasm2go/p7.Fn6947
-func gcasmLNgcasmFwdFn6947(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6950 github.com/goccy/spidermonkeywasm2go/p7.Fn6950
+func gcasmLNgcasmFwdFn6950(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn6947(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6947(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6949 github.com/goccy/spidermonkeywasm2go/p0.Fn6949
-func gcasmLNgcasmFwdFn6949(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn6949(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn6949(a0, a1)
+func gcasmFwdFn6950(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn6950(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6952 github.com/goccy/spidermonkeywasm2go/p0.Fn6952
-func gcasmLNgcasmFwdFn6952(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn6952(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn6952(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6952(a0, a1, a2, a3)
+func gcasmFwdFn6952(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn6952(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6953 github.com/goccy/spidermonkeywasm2go/p0.Fn6953
-func gcasmLNgcasmFwdFn6953(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6955 github.com/goccy/spidermonkeywasm2go/p0.Fn6955
+func gcasmLNgcasmFwdFn6955(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6953(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6953(a0, a1, a2, a3)
+func gcasmFwdFn6955(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6955(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6967 github.com/goccy/spidermonkeywasm2go/p7.Fn6967
-func gcasmLNgcasmFwdFn6967(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn6956 github.com/goccy/spidermonkeywasm2go/p0.Fn6956
+func gcasmLNgcasmFwdFn6956(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6967(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn6967(a0, a1)
+func gcasmFwdFn6956(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6956(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6968 github.com/goccy/spidermonkeywasm2go/p5.Fn6968
-func gcasmLNgcasmFwdFn6968(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6970 github.com/goccy/spidermonkeywasm2go/p7.Fn6970
+func gcasmLNgcasmFwdFn6970(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn6968(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6968(a0, a1, a2, a3)
+func gcasmFwdFn6970(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn6970(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn6971 github.com/goccy/spidermonkeywasm2go/p5.Fn6971
-func gcasmLNgcasmFwdFn6971(a0 *base.Module, a1 int32) int32
+func gcasmLNgcasmFwdFn6971(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6971(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn6971(a0, a1)
+func gcasmFwdFn6971(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6971(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6978 github.com/goccy/spidermonkeywasm2go/p0.Fn6978
-func gcasmLNgcasmFwdFn6978(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6974 github.com/goccy/spidermonkeywasm2go/p5.Fn6974
+func gcasmLNgcasmFwdFn6974(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn6978(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6978(a0, a1, a2, a3)
+func gcasmFwdFn6974(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn6974(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6979 github.com/goccy/spidermonkeywasm2go/p7.Fn6979
-func gcasmLNgcasmFwdFn6979(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn6979(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn6979(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn6981 github.com/goccy/spidermonkeywasm2go/p7.Fn6981
+//go:linkname gcasmLNgcasmFwdFn6981 github.com/goccy/spidermonkeywasm2go/p0.Fn6981
 func gcasmLNgcasmFwdFn6981(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
 func gcasmFwdFn6981(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn6981(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn6984 github.com/goccy/spidermonkeywasm2go/p6.Fn6984
-func gcasmLNgcasmFwdFn6984(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6982 github.com/goccy/spidermonkeywasm2go/p7.Fn6982
+func gcasmLNgcasmFwdFn6982(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn6984(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn6984(a0, a1, a2)
+func gcasmFwdFn6982(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6982(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7081 github.com/goccy/spidermonkeywasm2go/p4.Fn7081
-func gcasmLNgcasmFwdFn7081(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn6984 github.com/goccy/spidermonkeywasm2go/p7.Fn6984
+func gcasmLNgcasmFwdFn6984(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7081(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7081(a0, a1)
+func gcasmFwdFn6984(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn6984(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7115 github.com/goccy/spidermonkeywasm2go/p6.Fn7115
-func gcasmLNgcasmFwdFn7115(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7084 github.com/goccy/spidermonkeywasm2go/p4.Fn7084
+func gcasmLNgcasmFwdFn7084(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn7115(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7115(a0, a1, a2, a3)
+func gcasmFwdFn7084(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn7084(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7116 github.com/goccy/spidermonkeywasm2go/p6.Fn7116
-func gcasmLNgcasmFwdFn7116(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7118 github.com/goccy/spidermonkeywasm2go/p6.Fn7118
+func gcasmLNgcasmFwdFn7118(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7116(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7116(a0, a1, a2, a3, a4)
+func gcasmFwdFn7118(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7118(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7117 github.com/goccy/spidermonkeywasm2go/p6.Fn7117
-func gcasmLNgcasmFwdFn7117(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7119 github.com/goccy/spidermonkeywasm2go/p6.Fn7119
+func gcasmLNgcasmFwdFn7119(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn7117(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7117(a0, a1, a2)
+func gcasmFwdFn7119(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7119(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7118 github.com/goccy/spidermonkeywasm2go/p7.Fn7118
-func gcasmLNgcasmFwdFn7118(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn7118(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7118(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7121 github.com/goccy/spidermonkeywasm2go/p5.Fn7121
+//go:linkname gcasmLNgcasmFwdFn7121 github.com/goccy/spidermonkeywasm2go/p7.Fn7121
 func gcasmLNgcasmFwdFn7121(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn7121(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn7121(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7125 github.com/goccy/spidermonkeywasm2go/p5.Fn7125
-func gcasmLNgcasmFwdFn7125(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7128 github.com/goccy/spidermonkeywasm2go/p5.Fn7128
+func gcasmLNgcasmFwdFn7128(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn7125(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7125(a0, a1)
+func gcasmFwdFn7128(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn7128(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7127 github.com/goccy/spidermonkeywasm2go/p4.Fn7127
-func gcasmLNgcasmFwdFn7127(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7130 github.com/goccy/spidermonkeywasm2go/p4.Fn7130
+func gcasmLNgcasmFwdFn7130(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn7127(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7127(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7133 github.com/goccy/spidermonkeywasm2go/p6.Fn7133
-func gcasmLNgcasmFwdFn7133(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn7133(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7133(a0, a1, a2)
+func gcasmFwdFn7130(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn7130(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7136 github.com/goccy/spidermonkeywasm2go/p6.Fn7136
-func gcasmLNgcasmFwdFn7136(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn7136(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn7136(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7136(a0, a1, a2)
+func gcasmFwdFn7136(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn7136(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7144 github.com/goccy/spidermonkeywasm2go/p6.Fn7144
-func gcasmLNgcasmFwdFn7144(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7139 github.com/goccy/spidermonkeywasm2go/p6.Fn7139
+func gcasmLNgcasmFwdFn7139(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7144(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7144(a0, a1)
+func gcasmFwdFn7139(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7139(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7145 github.com/goccy/spidermonkeywasm2go/p6.Fn7145
-func gcasmLNgcasmFwdFn7145(a0 *base.Module, a1 int32, a2 int32, a3 int64) int32
+//go:linkname gcasmLNgcasmFwdFn7147 github.com/goccy/spidermonkeywasm2go/p6.Fn7147
+func gcasmLNgcasmFwdFn7147(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn7145(a0 *base.Module, a1 int32, a2 int32, a3 int64) int32 {
-	return gcasmLNgcasmFwdFn7145(a0, a1, a2, a3)
+func gcasmFwdFn7147(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn7147(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7162 github.com/goccy/spidermonkeywasm2go/p6.Fn7162
-func gcasmLNgcasmFwdFn7162(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7148 github.com/goccy/spidermonkeywasm2go/p6.Fn7148
+func gcasmLNgcasmFwdFn7148(a0 *base.Module, a1 int32, a2 int32, a3 int64) int32
 
-func gcasmFwdFn7162(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn7162(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn7148(a0 *base.Module, a1 int32, a2 int32, a3 int64) int32 {
+	return gcasmLNgcasmFwdFn7148(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7164 github.com/goccy/spidermonkeywasm2go/p6.Fn7164
-func gcasmLNgcasmFwdFn7164(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn7165 github.com/goccy/spidermonkeywasm2go/p6.Fn7165
+func gcasmLNgcasmFwdFn7165(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
 
-func gcasmFwdFn7164(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn7164(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7166 github.com/goccy/spidermonkeywasm2go/p5.Fn7166
-func gcasmLNgcasmFwdFn7166(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn7166(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7166(a0, a1)
+func gcasmFwdFn7165(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn7165(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7167 github.com/goccy/spidermonkeywasm2go/p6.Fn7167
-func gcasmLNgcasmFwdFn7167(a0 *base.Module, a1 int32) int32
+func gcasmLNgcasmFwdFn7167(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn7167(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7167(a0, a1)
+func gcasmFwdFn7167(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn7167(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7169 github.com/goccy/spidermonkeywasm2go/p7.Fn7169
+//go:linkname gcasmLNgcasmFwdFn7169 github.com/goccy/spidermonkeywasm2go/p5.Fn7169
 func gcasmLNgcasmFwdFn7169(a0 *base.Module, a1 int32) int32
 
 func gcasmFwdFn7169(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn7169(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7173 github.com/goccy/spidermonkeywasm2go/p7.Fn7173
-func gcasmLNgcasmFwdFn7173(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7170 github.com/goccy/spidermonkeywasm2go/p6.Fn7170
+func gcasmLNgcasmFwdFn7170(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn7173(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7173(a0, a1)
+func gcasmFwdFn7170(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn7170(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7175 github.com/goccy/spidermonkeywasm2go/p4.Fn7175
-func gcasmLNgcasmFwdFn7175(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7172 github.com/goccy/spidermonkeywasm2go/p7.Fn7172
+func gcasmLNgcasmFwdFn7172(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn7175(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn7175(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn7172(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn7172(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7176 github.com/goccy/spidermonkeywasm2go/p6.Fn7176
-func gcasmLNgcasmFwdFn7176(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn7176 github.com/goccy/spidermonkeywasm2go/p7.Fn7176
+func gcasmLNgcasmFwdFn7176(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn7176(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7176(a0, a1, a2)
+func gcasmFwdFn7176(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn7176(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7178 github.com/goccy/spidermonkeywasm2go/p6.Fn7178
-func gcasmLNgcasmFwdFn7178(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7178 github.com/goccy/spidermonkeywasm2go/p4.Fn7178
+func gcasmLNgcasmFwdFn7178(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn7178(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7178(a0, a1, a2, a3)
+func gcasmFwdFn7178(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn7178(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7179 github.com/goccy/spidermonkeywasm2go/p5.Fn7179
-func gcasmLNgcasmFwdFn7179(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7179 github.com/goccy/spidermonkeywasm2go/p6.Fn7179
+func gcasmLNgcasmFwdFn7179(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn7179(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7179(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7180 github.com/goccy/spidermonkeywasm2go/p5.Fn7180
-func gcasmLNgcasmFwdFn7180(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn7180(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7180(a0, a1, a2)
+func gcasmFwdFn7179(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn7179(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7181 github.com/goccy/spidermonkeywasm2go/p6.Fn7181
@@ -6935,7 +6179,7 @@ func gcasmFwdFn7181(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn7181(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7182 github.com/goccy/spidermonkeywasm2go/p7.Fn7182
+//go:linkname gcasmLNgcasmFwdFn7182 github.com/goccy/spidermonkeywasm2go/p5.Fn7182
 func gcasmLNgcasmFwdFn7182(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn7182(a0 *base.Module, a1 int32, a2 int32) int32 {
@@ -6950,13 +6194,13 @@ func gcasmFwdFn7183(a0 *base.Module, a1 int32, a2 int32) int32 {
 }
 
 //go:linkname gcasmLNgcasmFwdFn7184 github.com/goccy/spidermonkeywasm2go/p6.Fn7184
-func gcasmLNgcasmFwdFn7184(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn7184(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7184(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7184(a0, a1, a2)
+func gcasmFwdFn7184(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7184(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7185 github.com/goccy/spidermonkeywasm2go/p5.Fn7185
+//go:linkname gcasmLNgcasmFwdFn7185 github.com/goccy/spidermonkeywasm2go/p7.Fn7185
 func gcasmLNgcasmFwdFn7185(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn7185(a0 *base.Module, a1 int32, a2 int32) int32 {
@@ -6964,73 +6208,80 @@ func gcasmFwdFn7185(a0 *base.Module, a1 int32, a2 int32) int32 {
 }
 
 //go:linkname gcasmLNgcasmFwdFn7186 github.com/goccy/spidermonkeywasm2go/p5.Fn7186
-func gcasmLNgcasmFwdFn7186(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn7186(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7186(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7186(a0, a1, a2, a3)
+func gcasmFwdFn7186(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7186(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7187 github.com/goccy/spidermonkeywasm2go/p5.Fn7187
+//go:linkname gcasmLNgcasmFwdFn7187 github.com/goccy/spidermonkeywasm2go/p6.Fn7187
 func gcasmLNgcasmFwdFn7187(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn7187(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn7187(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7196 github.com/goccy/spidermonkeywasm2go/p6.Fn7196
-func gcasmLNgcasmFwdFn7196(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn7188 github.com/goccy/spidermonkeywasm2go/p5.Fn7188
+func gcasmLNgcasmFwdFn7188(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7196(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn7196(a0, a1)
+func gcasmFwdFn7188(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7188(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7197 github.com/goccy/spidermonkeywasm2go/p6.Fn7197
-func gcasmLNgcasmFwdFn7197(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7189 github.com/goccy/spidermonkeywasm2go/p5.Fn7189
+func gcasmLNgcasmFwdFn7189(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7197(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7197(a0, a1)
+func gcasmFwdFn7189(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7189(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn7190 github.com/goccy/spidermonkeywasm2go/p5.Fn7190
+func gcasmLNgcasmFwdFn7190(a0 *base.Module, a1 int32, a2 int32) int32
+
+func gcasmFwdFn7190(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7190(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7199 github.com/goccy/spidermonkeywasm2go/p6.Fn7199
-func gcasmLNgcasmFwdFn7199(a0 *base.Module, a1 int32) int32
+func gcasmLNgcasmFwdFn7199(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn7199(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7199(a0, a1)
+func gcasmFwdFn7199(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn7199(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn722 github.com/goccy/spidermonkeywasm2go/p7.Fn722
-func gcasmLNgcasmFwdFn722(a0 *base.Module, a1 float64, a2 int32) float64
+//go:linkname gcasmLNgcasmFwdFn7200 github.com/goccy/spidermonkeywasm2go/p6.Fn7200
+func gcasmLNgcasmFwdFn7200(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn722(a0 *base.Module, a1 float64, a2 int32) float64 {
-	return gcasmLNgcasmFwdFn722(a0, a1, a2)
+func gcasmFwdFn7200(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn7200(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7227 github.com/goccy/spidermonkeywasm2go/p5.Fn7227
-func gcasmLNgcasmFwdFn7227(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7202 github.com/goccy/spidermonkeywasm2go/p6.Fn7202
+func gcasmLNgcasmFwdFn7202(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn7227(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7227(a0, a1, a2)
+func gcasmFwdFn7202(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn7202(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7242 github.com/goccy/spidermonkeywasm2go/p6.Fn7242
-func gcasmLNgcasmFwdFn7242(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7230 github.com/goccy/spidermonkeywasm2go/p5.Fn7230
+func gcasmLNgcasmFwdFn7230(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7242(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn7242(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn7230(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7230(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7253 github.com/goccy/spidermonkeywasm2go/p6.Fn7253
-func gcasmLNgcasmFwdFn7253(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7245 github.com/goccy/spidermonkeywasm2go/p6.Fn7245
+func gcasmLNgcasmFwdFn7245(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn7253(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn7253(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn7245(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn7245(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn728 github.com/goccy/spidermonkeywasm2go/p6.Fn728
-func gcasmLNgcasmFwdFn728(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7256 github.com/goccy/spidermonkeywasm2go/p6.Fn7256
+func gcasmLNgcasmFwdFn7256(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn728(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn728(a0, a1, a2, a3, a4)
+func gcasmFwdFn7256(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn7256(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn732 github.com/goccy/spidermonkeywasm2go/p7.Fn732
@@ -7047,182 +6298,161 @@ func gcasmFwdFn733(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn733(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7359 github.com/goccy/spidermonkeywasm2go/p7.Fn7359
-func gcasmLNgcasmFwdFn7359(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn7362 github.com/goccy/spidermonkeywasm2go/p7.Fn7362
+func gcasmLNgcasmFwdFn7362(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn7359(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn7359(a0, a1, a2, a3)
+func gcasmFwdFn7362(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn7362(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7360 github.com/goccy/spidermonkeywasm2go/p5.Fn7360
-func gcasmLNgcasmFwdFn7360(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7363 github.com/goccy/spidermonkeywasm2go/p5.Fn7363
+func gcasmLNgcasmFwdFn7363(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7360(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7360(a0, a1, a2)
+func gcasmFwdFn7363(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7363(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7374 github.com/goccy/spidermonkeywasm2go/p6.Fn7374
-func gcasmLNgcasmFwdFn7374(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn7377 github.com/goccy/spidermonkeywasm2go/p6.Fn7377
+func gcasmLNgcasmFwdFn7377(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn7374(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn7374(a0, a1)
+func gcasmFwdFn7377(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn7377(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7381 github.com/goccy/spidermonkeywasm2go/p6.Fn7381
-func gcasmLNgcasmFwdFn7381(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7384 github.com/goccy/spidermonkeywasm2go/p6.Fn7384
+func gcasmLNgcasmFwdFn7384(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7381(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7381(a0, a1, a2)
+func gcasmFwdFn7384(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7384(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7389 github.com/goccy/spidermonkeywasm2go/p6.Fn7389
-func gcasmLNgcasmFwdFn7389(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn7392 github.com/goccy/spidermonkeywasm2go/p6.Fn7392
+func gcasmLNgcasmFwdFn7392(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn7389(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn7389(a0, a1)
+func gcasmFwdFn7392(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn7392(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7426 github.com/goccy/spidermonkeywasm2go/p1.Fn7426
-func gcasmLNgcasmFwdFn7426(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn742 github.com/goccy/spidermonkeywasm2go/p7.Fn742
+func gcasmLNgcasmFwdFn742(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn7426(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7426(a0, a1, a2, a3)
+func gcasmFwdFn742(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn742(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7435 github.com/goccy/spidermonkeywasm2go/p2.Fn7435
-func gcasmLNgcasmFwdFn7435(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7429 github.com/goccy/spidermonkeywasm2go/p1.Fn7429
+func gcasmLNgcasmFwdFn7429(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7435(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7435(a0, a1, a2, a3)
+func gcasmFwdFn7429(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7429(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7437 github.com/goccy/spidermonkeywasm2go/p4.Fn7437
-func gcasmLNgcasmFwdFn7437(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7438 github.com/goccy/spidermonkeywasm2go/p2.Fn7438
+func gcasmLNgcasmFwdFn7438(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7437(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7437(a0, a1, a2, a3)
+func gcasmFwdFn7438(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7438(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7441 github.com/goccy/spidermonkeywasm2go/p7.Fn7441
-func gcasmLNgcasmFwdFn7441(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7440 github.com/goccy/spidermonkeywasm2go/p4.Fn7440
+func gcasmLNgcasmFwdFn7440(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7441(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7441(a0, a1, a2, a3, a4)
+func gcasmFwdFn7440(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7440(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7444 github.com/goccy/spidermonkeywasm2go/p6.Fn7444
+//go:linkname gcasmLNgcasmFwdFn7444 github.com/goccy/spidermonkeywasm2go/p7.Fn7444
 func gcasmLNgcasmFwdFn7444(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
 func gcasmFwdFn7444(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn7444(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7445 github.com/goccy/spidermonkeywasm2go/p5.Fn7445
-func gcasmLNgcasmFwdFn7445(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7447 github.com/goccy/spidermonkeywasm2go/p6.Fn7447
+func gcasmLNgcasmFwdFn7447(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn7445(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7445(a0, a1, a2, a3, a4)
+func gcasmFwdFn7447(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7447(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7448 github.com/goccy/spidermonkeywasm2go/p7.Fn7448
-func gcasmLNgcasmFwdFn7448(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn7448 github.com/goccy/spidermonkeywasm2go/p5.Fn7448
+func gcasmLNgcasmFwdFn7448(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn7448(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7448(a0, a1, a2)
+func gcasmFwdFn7448(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7448(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7449 github.com/goccy/spidermonkeywasm2go/p4.Fn7449
-func gcasmLNgcasmFwdFn7449(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn7449(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7449(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7451 github.com/goccy/spidermonkeywasm2go/p6.Fn7451
-func gcasmLNgcasmFwdFn7451(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn7451(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7451(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7452 github.com/goccy/spidermonkeywasm2go/p6.Fn7452
+//go:linkname gcasmLNgcasmFwdFn7452 github.com/goccy/spidermonkeywasm2go/p4.Fn7452
 func gcasmLNgcasmFwdFn7452(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
 func gcasmFwdFn7452(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn7452(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7454 github.com/goccy/spidermonkeywasm2go/p7.Fn7454
-func gcasmLNgcasmFwdFn7454(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7454 github.com/goccy/spidermonkeywasm2go/p6.Fn7454
+func gcasmLNgcasmFwdFn7454(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7454(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7454(a0, a1, a2, a3, a4)
+func gcasmFwdFn7454(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7454(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7457 github.com/goccy/spidermonkeywasm2go/p6.Fn7457
-func gcasmLNgcasmFwdFn7457(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7455 github.com/goccy/spidermonkeywasm2go/p6.Fn7455
+func gcasmLNgcasmFwdFn7455(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7457(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7457(a0, a1, a2)
+func gcasmFwdFn7455(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7455(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn746 github.com/goccy/spidermonkeywasm2go/p2.Fn746
+//go:linkname gcasmLNgcasmFwdFn7457 github.com/goccy/spidermonkeywasm2go/p7.Fn7457
+func gcasmLNgcasmFwdFn7457(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+
+func gcasmFwdFn7457(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7457(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn746 github.com/goccy/spidermonkeywasm2go/p7.Fn746
 func gcasmLNgcasmFwdFn746(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn746(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn746(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7468 github.com/goccy/spidermonkeywasm2go/p5.Fn7468
-func gcasmLNgcasmFwdFn7468(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7460 github.com/goccy/spidermonkeywasm2go/p6.Fn7460
+func gcasmLNgcasmFwdFn7460(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7468(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn7468(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn7460(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7460(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7469 github.com/goccy/spidermonkeywasm2go/p6.Fn7469
-func gcasmLNgcasmFwdFn7469(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7471 github.com/goccy/spidermonkeywasm2go/p5.Fn7471
+func gcasmLNgcasmFwdFn7471(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn7469(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn7469(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn7471(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn7471(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7471 github.com/goccy/spidermonkeywasm2go/p6.Fn7471
-func gcasmLNgcasmFwdFn7471(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7472 github.com/goccy/spidermonkeywasm2go/p6.Fn7472
+func gcasmLNgcasmFwdFn7472(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn7471(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7471(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7472 github.com/goccy/spidermonkeywasm2go/p5.Fn7472
-func gcasmLNgcasmFwdFn7472(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64) int32
-
-func gcasmFwdFn7472(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64) int32 {
-	return gcasmLNgcasmFwdFn7472(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7473 github.com/goccy/spidermonkeywasm2go/p4.Fn7473
-func gcasmLNgcasmFwdFn7473(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn7473(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7473(a0, a1, a2, a3, a4)
+func gcasmFwdFn7472(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn7472(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7474 github.com/goccy/spidermonkeywasm2go/p6.Fn7474
-func gcasmLNgcasmFwdFn7474(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+func gcasmLNgcasmFwdFn7474(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7474(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn7474(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn7474(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7474(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7475 github.com/goccy/spidermonkeywasm2go/p6.Fn7475
-func gcasmLNgcasmFwdFn7475(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7475 github.com/goccy/spidermonkeywasm2go/p5.Fn7475
+func gcasmLNgcasmFwdFn7475(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64) int32
 
-func gcasmFwdFn7475(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
-	return gcasmLNgcasmFwdFn7475(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+func gcasmFwdFn7475(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64) int32 {
+	return gcasmLNgcasmFwdFn7475(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7476 github.com/goccy/spidermonkeywasm2go/p7.Fn7476
+//go:linkname gcasmLNgcasmFwdFn7476 github.com/goccy/spidermonkeywasm2go/p4.Fn7476
 func gcasmLNgcasmFwdFn7476(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
 func gcasmFwdFn7476(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
@@ -7236,53 +6466,53 @@ func gcasmFwdFn7477(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 
 	return gcasmLNgcasmFwdFn7477(a0, a1, a2, a3, a4, a5)
 }
 
+//go:linkname gcasmLNgcasmFwdFn7478 github.com/goccy/spidermonkeywasm2go/p6.Fn7478
+func gcasmLNgcasmFwdFn7478(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
+
+func gcasmFwdFn7478(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
+	return gcasmLNgcasmFwdFn7478(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+}
+
 //go:linkname gcasmLNgcasmFwdFn7480 github.com/goccy/spidermonkeywasm2go/p6.Fn7480
-func gcasmLNgcasmFwdFn7480(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn7480(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn7480(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn7480(a0, a1, a2, a3)
+func gcasmFwdFn7480(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn7480(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7481 github.com/goccy/spidermonkeywasm2go/p7.Fn7481
-func gcasmLNgcasmFwdFn7481(a0 *base.Module, a1 int32, a2 int32, a3 float64)
+//go:linkname gcasmLNgcasmFwdFn7484 github.com/goccy/spidermonkeywasm2go/p7.Fn7484
+func gcasmLNgcasmFwdFn7484(a0 *base.Module, a1 int32, a2 int32, a3 float64)
 
-func gcasmFwdFn7481(a0 *base.Module, a1 int32, a2 int32, a3 float64) {
-	gcasmLNgcasmFwdFn7481(a0, a1, a2, a3)
+func gcasmFwdFn7484(a0 *base.Module, a1 int32, a2 int32, a3 float64) {
+	gcasmLNgcasmFwdFn7484(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7482 github.com/goccy/spidermonkeywasm2go/p6.Fn7482
-func gcasmLNgcasmFwdFn7482(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
+//go:linkname gcasmLNgcasmFwdFn7485 github.com/goccy/spidermonkeywasm2go/p6.Fn7485
+func gcasmLNgcasmFwdFn7485(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
 
-func gcasmFwdFn7482(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
-	gcasmLNgcasmFwdFn7482(a0, a1, a2, a3, a4, a5, a6, a7)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7483 github.com/goccy/spidermonkeywasm2go/p5.Fn7483
-func gcasmLNgcasmFwdFn7483(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
-
-func gcasmFwdFn7483(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn7483(a0, a1, a2, a3, a4, a5, a6)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7485 github.com/goccy/spidermonkeywasm2go/p5.Fn7485
-func gcasmLNgcasmFwdFn7485(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int64, a6 int64, a7 int32) int32
-
-func gcasmFwdFn7485(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int64, a6 int64, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn7485(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn7485(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
+	gcasmLNgcasmFwdFn7485(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7486 github.com/goccy/spidermonkeywasm2go/p5.Fn7486
-func gcasmLNgcasmFwdFn7486(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+func gcasmLNgcasmFwdFn7486(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn7486(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn7486(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn7486(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn7486(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7488 github.com/goccy/spidermonkeywasm2go/p6.Fn7488
-func gcasmLNgcasmFwdFn7488(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7488 github.com/goccy/spidermonkeywasm2go/p5.Fn7488
+func gcasmLNgcasmFwdFn7488(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int64, a6 int64, a7 int32) int32
 
-func gcasmFwdFn7488(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7488(a0, a1, a2)
+func gcasmFwdFn7488(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int64, a6 int64, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn7488(a0, a1, a2, a3, a4, a5, a6, a7)
+}
+
+//go:linkname gcasmLNgcasmFwdFn7489 github.com/goccy/spidermonkeywasm2go/p5.Fn7489
+func gcasmLNgcasmFwdFn7489(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+
+func gcasmFwdFn7489(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn7489(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn749 github.com/goccy/spidermonkeywasm2go/p7.Fn749
@@ -7292,123 +6522,102 @@ func gcasmFwdFn749(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn749(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7490 github.com/goccy/spidermonkeywasm2go/p5.Fn7490
-func gcasmLNgcasmFwdFn7490(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn7490(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn7490(a0, a1, a2, a3, a4)
-}
-
 //go:linkname gcasmLNgcasmFwdFn7491 github.com/goccy/spidermonkeywasm2go/p6.Fn7491
-func gcasmLNgcasmFwdFn7491(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64, a5 int32, a6 int32, a7 int32) int32
+func gcasmLNgcasmFwdFn7491(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7491(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn7491(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn7491(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7491(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7492 github.com/goccy/spidermonkeywasm2go/p7.Fn7492
-func gcasmLNgcasmFwdFn7492(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7494 github.com/goccy/spidermonkeywasm2go/p6.Fn7494
+func gcasmLNgcasmFwdFn7494(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64, a5 int32, a6 int32, a7 int32) int32
 
-func gcasmFwdFn7492(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7492(a0, a1)
+func gcasmFwdFn7494(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn7494(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7495 github.com/goccy/spidermonkeywasm2go/p6.Fn7495
-func gcasmLNgcasmFwdFn7495(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn7495 github.com/goccy/spidermonkeywasm2go/p7.Fn7495
+func gcasmLNgcasmFwdFn7495(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn7495(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7495(a0, a1, a2)
+func gcasmFwdFn7495(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn7495(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7497 github.com/goccy/spidermonkeywasm2go/p4.Fn7497
-func gcasmLNgcasmFwdFn7497(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64, a5 float64, a6 float64, a7 float64)
+//go:linkname gcasmLNgcasmFwdFn7500 github.com/goccy/spidermonkeywasm2go/p4.Fn7500
+func gcasmLNgcasmFwdFn7500(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64, a5 float64, a6 float64, a7 float64)
 
-func gcasmFwdFn7497(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64, a5 float64, a6 float64, a7 float64) {
-	gcasmLNgcasmFwdFn7497(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn7500(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64, a5 float64, a6 float64, a7 float64) {
+	gcasmLNgcasmFwdFn7500(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7498 github.com/goccy/spidermonkeywasm2go/p7.Fn7498
-func gcasmLNgcasmFwdFn7498(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn7501 github.com/goccy/spidermonkeywasm2go/p7.Fn7501
+func gcasmLNgcasmFwdFn7501(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn7498(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7498(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7500 github.com/goccy/spidermonkeywasm2go/p7.Fn7500
-func gcasmLNgcasmFwdFn7500(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn7500(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7500(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7502 github.com/goccy/spidermonkeywasm2go/p6.Fn7502
-func gcasmLNgcasmFwdFn7502(a0 *base.Module, a1 int32, a2 int32, a3 float64, a4 int32) int32
-
-func gcasmFwdFn7502(a0 *base.Module, a1 int32, a2 int32, a3 float64, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7502(a0, a1, a2, a3, a4)
+func gcasmFwdFn7501(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn7501(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7503 github.com/goccy/spidermonkeywasm2go/p7.Fn7503
-func gcasmLNgcasmFwdFn7503(a0 *base.Module, a1 int32, a2 float64, a3 int32) int32
+func gcasmLNgcasmFwdFn7503(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn7503(a0 *base.Module, a1 int32, a2 float64, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7503(a0, a1, a2, a3)
+func gcasmFwdFn7503(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7503(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7504 github.com/goccy/spidermonkeywasm2go/p4.Fn7504
-func gcasmLNgcasmFwdFn7504(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7505 github.com/goccy/spidermonkeywasm2go/p6.Fn7505
+func gcasmLNgcasmFwdFn7505(a0 *base.Module, a1 int32, a2 int32, a3 float64, a4 int32) int32
 
-func gcasmFwdFn7504(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7504(a0, a1, a2)
+func gcasmFwdFn7505(a0 *base.Module, a1 int32, a2 int32, a3 float64, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7505(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7505 github.com/goccy/spidermonkeywasm2go/p2.Fn7505
-func gcasmLNgcasmFwdFn7505(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7506 github.com/goccy/spidermonkeywasm2go/p7.Fn7506
+func gcasmLNgcasmFwdFn7506(a0 *base.Module, a1 int32, a2 float64, a3 int32) int32
 
-func gcasmFwdFn7505(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7505(a0, a1, a2, a3)
+func gcasmFwdFn7506(a0 *base.Module, a1 int32, a2 float64, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7506(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7508 github.com/goccy/spidermonkeywasm2go/p7.Fn7508
-func gcasmLNgcasmFwdFn7508(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn7507 github.com/goccy/spidermonkeywasm2go/p4.Fn7507
+func gcasmLNgcasmFwdFn7507(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7508(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7508(a0, a1, a2)
+func gcasmFwdFn7507(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7507(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7509 github.com/goccy/spidermonkeywasm2go/p6.Fn7509
-func gcasmLNgcasmFwdFn7509(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn7508 github.com/goccy/spidermonkeywasm2go/p2.Fn7508
+func gcasmLNgcasmFwdFn7508(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7509(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn7509(a0, a1, a2, a3, a4, a5, a6)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7511 github.com/goccy/spidermonkeywasm2go/p4.Fn7511
-func gcasmLNgcasmFwdFn7511(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32) int32
-
-func gcasmFwdFn7511(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32) int32 {
-	return gcasmLNgcasmFwdFn7511(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
+func gcasmFwdFn7508(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7508(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7512 github.com/goccy/spidermonkeywasm2go/p6.Fn7512
-func gcasmLNgcasmFwdFn7512(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn7512(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn7512(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7512(a0, a1, a2)
+func gcasmFwdFn7512(a0 *base.Module, a1 int32, a2 int64, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn7512(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7521 github.com/goccy/spidermonkeywasm2go/p6.Fn7521
-func gcasmLNgcasmFwdFn7521(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn7514 github.com/goccy/spidermonkeywasm2go/p4.Fn7514
+func gcasmLNgcasmFwdFn7514(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32) int32
 
-func gcasmFwdFn7521(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn7521(a0, a1, a2, a3)
+func gcasmFwdFn7514(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32) int32 {
+	return gcasmLNgcasmFwdFn7514(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7564 github.com/goccy/spidermonkeywasm2go/p5.Fn7564
-func gcasmLNgcasmFwdFn7564(a0 *base.Module, a1 float64, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7530 github.com/goccy/spidermonkeywasm2go/p2.Fn7530
+func gcasmLNgcasmFwdFn7530(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn7564(a0 *base.Module, a1 float64, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7564(a0, a1, a2)
+func gcasmFwdFn7530(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7530(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn7567 github.com/goccy/spidermonkeywasm2go/p5.Fn7567
+func gcasmLNgcasmFwdFn7567(a0 *base.Module, a1 float64, a2 int32) int32
+
+func gcasmFwdFn7567(a0 *base.Module, a1 float64, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7567(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn759 github.com/goccy/spidermonkeywasm2go/p7.Fn759
@@ -7418,115 +6627,80 @@ func gcasmFwdFn759(a0 *base.Module, a1 int32) {
 	gcasmLNgcasmFwdFn759(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7693 github.com/goccy/spidermonkeywasm2go/p7.Fn7693
-func gcasmLNgcasmFwdFn7693(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn7693(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn7693(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7695 github.com/goccy/spidermonkeywasm2go/p6.Fn7695
-func gcasmLNgcasmFwdFn7695(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn7695(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn7695(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7696 github.com/goccy/spidermonkeywasm2go/p5.Fn7696
-func gcasmLNgcasmFwdFn7696(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64, a5 float64, a6 float64, a7 float64) int32
-
-func gcasmFwdFn7696(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64, a5 float64, a6 float64, a7 float64) int32 {
-	return gcasmLNgcasmFwdFn7696(a0, a1, a2, a3, a4, a5, a6, a7)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7697 github.com/goccy/spidermonkeywasm2go/p5.Fn7697
-func gcasmLNgcasmFwdFn7697(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
-
-func gcasmFwdFn7697(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn7697(a0, a1, a2, a3, a4, a5)
-}
-
 //go:linkname gcasmLNgcasmFwdFn7698 github.com/goccy/spidermonkeywasm2go/p6.Fn7698
-func gcasmLNgcasmFwdFn7698(a0 *base.Module, a1 int64, a2 int64, a3 int32) int64
+func gcasmLNgcasmFwdFn7698(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn7698(a0 *base.Module, a1 int64, a2 int64, a3 int32) int64 {
-	return gcasmLNgcasmFwdFn7698(a0, a1, a2, a3)
+func gcasmFwdFn7698(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn7698(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7699 github.com/goccy/spidermonkeywasm2go/p6.Fn7699
-func gcasmLNgcasmFwdFn7699(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7699 github.com/goccy/spidermonkeywasm2go/p5.Fn7699
+func gcasmLNgcasmFwdFn7699(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64, a5 float64, a6 float64, a7 float64) int32
 
-func gcasmFwdFn7699(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn7699(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn7699(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 float64, a5 float64, a6 float64, a7 float64) int32 {
+	return gcasmLNgcasmFwdFn7699(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7700 github.com/goccy/spidermonkeywasm2go/p6.Fn7700
-func gcasmLNgcasmFwdFn7700(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7700 github.com/goccy/spidermonkeywasm2go/p5.Fn7700
+func gcasmLNgcasmFwdFn7700(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn7700(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn7700(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn7700(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn7700(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7701 github.com/goccy/spidermonkeywasm2go/p4.Fn7701
-func gcasmLNgcasmFwdFn7701(a0 *base.Module, a1 int32, a2 int32) float64
+//go:linkname gcasmLNgcasmFwdFn7702 github.com/goccy/spidermonkeywasm2go/p6.Fn7702
+func gcasmLNgcasmFwdFn7702(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn7701(a0 *base.Module, a1 int32, a2 int32) float64 {
-	return gcasmLNgcasmFwdFn7701(a0, a1, a2)
+func gcasmFwdFn7702(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn7702(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7707 github.com/goccy/spidermonkeywasm2go/p6.Fn7707
-func gcasmLNgcasmFwdFn7707(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7703 github.com/goccy/spidermonkeywasm2go/p6.Fn7703
+func gcasmLNgcasmFwdFn7703(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn7707(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7707(a0, a1, a2, a3)
+func gcasmFwdFn7703(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn7703(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7708 github.com/goccy/spidermonkeywasm2go/p6.Fn7708
-func gcasmLNgcasmFwdFn7708(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7704 github.com/goccy/spidermonkeywasm2go/p4.Fn7704
+func gcasmLNgcasmFwdFn7704(a0 *base.Module, a1 int32, a2 int32) float64
 
-func gcasmFwdFn7708(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7708(a0, a1, a2, a3)
+func gcasmFwdFn7704(a0 *base.Module, a1 int32, a2 int32) float64 {
+	return gcasmLNgcasmFwdFn7704(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7713 github.com/goccy/spidermonkeywasm2go/p5.Fn7713
-func gcasmLNgcasmFwdFn7713(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7710 github.com/goccy/spidermonkeywasm2go/p6.Fn7710
+func gcasmLNgcasmFwdFn7710(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7713(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7713(a0, a1, a2, a3)
+func gcasmFwdFn7710(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7710(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7714 github.com/goccy/spidermonkeywasm2go/p7.Fn7714
-func gcasmLNgcasmFwdFn7714(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7711 github.com/goccy/spidermonkeywasm2go/p6.Fn7711
+func gcasmLNgcasmFwdFn7711(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7714(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7714(a0, a1, a2, a3, a4)
+func gcasmFwdFn7711(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7711(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7715 github.com/goccy/spidermonkeywasm2go/p6.Fn7715
-func gcasmLNgcasmFwdFn7715(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32
-
-func gcasmFwdFn7715(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7715(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7716 github.com/goccy/spidermonkeywasm2go/p7.Fn7716
+//go:linkname gcasmLNgcasmFwdFn7716 github.com/goccy/spidermonkeywasm2go/p5.Fn7716
 func gcasmLNgcasmFwdFn7716(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
 func gcasmFwdFn7716(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn7716(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7717 github.com/goccy/spidermonkeywasm2go/p6.Fn7717
+//go:linkname gcasmLNgcasmFwdFn7717 github.com/goccy/spidermonkeywasm2go/p7.Fn7717
 func gcasmLNgcasmFwdFn7717(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
 func gcasmFwdFn7717(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn7717(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7718 github.com/goccy/spidermonkeywasm2go/p4.Fn7718
-func gcasmLNgcasmFwdFn7718(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7718 github.com/goccy/spidermonkeywasm2go/p6.Fn7718
+func gcasmLNgcasmFwdFn7718(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32
 
-func gcasmFwdFn7718(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+func gcasmFwdFn7718(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn7718(a0, a1, a2, a3, a4)
 }
 
@@ -7537,25 +6711,39 @@ func gcasmFwdFn7719(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn7719(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7721 github.com/goccy/spidermonkeywasm2go/p5.Fn7721
-func gcasmLNgcasmFwdFn7721(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7720 github.com/goccy/spidermonkeywasm2go/p6.Fn7720
+func gcasmLNgcasmFwdFn7720(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn7721(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7721(a0, a1, a2, a3)
+func gcasmFwdFn7720(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7720(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7730 github.com/goccy/spidermonkeywasm2go/p5.Fn7730
-func gcasmLNgcasmFwdFn7730(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7721 github.com/goccy/spidermonkeywasm2go/p4.Fn7721
+func gcasmLNgcasmFwdFn7721(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn7730(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
-	return gcasmLNgcasmFwdFn7730(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+func gcasmFwdFn7721(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7721(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn776 github.com/goccy/spidermonkeywasm2go/p7.Fn776
-func gcasmLNgcasmFwdFn776(a0 *base.Module, a1 int32, a2 int64)
+//go:linkname gcasmLNgcasmFwdFn7722 github.com/goccy/spidermonkeywasm2go/p7.Fn7722
+func gcasmLNgcasmFwdFn7722(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn776(a0 *base.Module, a1 int32, a2 int64) {
-	gcasmLNgcasmFwdFn776(a0, a1, a2)
+func gcasmFwdFn7722(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7722(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn7724 github.com/goccy/spidermonkeywasm2go/p5.Fn7724
+func gcasmLNgcasmFwdFn7724(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn7724(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7724(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn7733 github.com/goccy/spidermonkeywasm2go/p5.Fn7733
+func gcasmLNgcasmFwdFn7733(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
+
+func gcasmFwdFn7733(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
+	return gcasmLNgcasmFwdFn7733(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 }
 
 //go:linkname gcasmLNgcasmFwdFn777 github.com/goccy/spidermonkeywasm2go/p7.Fn777
@@ -7579,39 +6767,11 @@ func gcasmFwdFn780(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn780(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn781 github.com/goccy/spidermonkeywasm2go/p6.Fn781
-func gcasmLNgcasmFwdFn781(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn781(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn781(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn782 github.com/goccy/spidermonkeywasm2go/p7.Fn782
-func gcasmLNgcasmFwdFn782(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn782(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn782(a0, a1, a2, a3)
-}
-
 //go:linkname gcasmLNgcasmFwdFn784 github.com/goccy/spidermonkeywasm2go/p7.Fn784
 func gcasmLNgcasmFwdFn784(a0 *base.Module, a1 int32, a2 int32) int32
 
 func gcasmFwdFn784(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn784(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn786 github.com/goccy/spidermonkeywasm2go/p7.Fn786
-func gcasmLNgcasmFwdFn786(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn786(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn786(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn787 github.com/goccy/spidermonkeywasm2go/p6.Fn787
-func gcasmLNgcasmFwdFn787(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn787(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn787(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn789 github.com/goccy/spidermonkeywasm2go/p7.Fn789
@@ -7621,34 +6781,6 @@ func gcasmFwdFn789(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn789(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn790 github.com/goccy/spidermonkeywasm2go/p7.Fn790
-func gcasmLNgcasmFwdFn790(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn790(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn790(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn791 github.com/goccy/spidermonkeywasm2go/p6.Fn791
-func gcasmLNgcasmFwdFn791(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn791(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn791(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7917 github.com/goccy/spidermonkeywasm2go/p5.Fn7917
-func gcasmLNgcasmFwdFn7917(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn7917(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7917(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7918 github.com/goccy/spidermonkeywasm2go/p5.Fn7918
-func gcasmLNgcasmFwdFn7918(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn7918(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7918(a0, a1, a2)
-}
-
 //go:linkname gcasmLNgcasmFwdFn7920 github.com/goccy/spidermonkeywasm2go/p5.Fn7920
 func gcasmLNgcasmFwdFn7920(a0 *base.Module, a1 int32, a2 int32)
 
@@ -7656,49 +6788,14 @@ func gcasmFwdFn7920(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn7920(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7921 github.com/goccy/spidermonkeywasm2go/p6.Fn7921
+//go:linkname gcasmLNgcasmFwdFn7921 github.com/goccy/spidermonkeywasm2go/p5.Fn7921
 func gcasmLNgcasmFwdFn7921(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn7921(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn7921(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7922 github.com/goccy/spidermonkeywasm2go/p5.Fn7922
-func gcasmLNgcasmFwdFn7922(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn7922(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7922(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7923 github.com/goccy/spidermonkeywasm2go/p6.Fn7923
-func gcasmLNgcasmFwdFn7923(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn7923(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7923(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7924 github.com/goccy/spidermonkeywasm2go/p6.Fn7924
-func gcasmLNgcasmFwdFn7924(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn7924(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7924(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7925 github.com/goccy/spidermonkeywasm2go/p5.Fn7925
-func gcasmLNgcasmFwdFn7925(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn7925(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7925(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7926 github.com/goccy/spidermonkeywasm2go/p5.Fn7926
-func gcasmLNgcasmFwdFn7926(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn7926(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7926(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7927 github.com/goccy/spidermonkeywasm2go/p5.Fn7927
+//go:linkname gcasmLNgcasmFwdFn7927 github.com/goccy/spidermonkeywasm2go/p6.Fn7927
 func gcasmLNgcasmFwdFn7927(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn7927(a0 *base.Module, a1 int32, a2 int32) {
@@ -7712,7 +6809,7 @@ func gcasmFwdFn7928(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn7928(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7929 github.com/goccy/spidermonkeywasm2go/p6.Fn7929
+//go:linkname gcasmLNgcasmFwdFn7929 github.com/goccy/spidermonkeywasm2go/p5.Fn7929
 func gcasmLNgcasmFwdFn7929(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn7929(a0 *base.Module, a1 int32, a2 int32) {
@@ -7740,7 +6837,7 @@ func gcasmFwdFn7931(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn7931(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7932 github.com/goccy/spidermonkeywasm2go/p5.Fn7932
+//go:linkname gcasmLNgcasmFwdFn7932 github.com/goccy/spidermonkeywasm2go/p6.Fn7932
 func gcasmLNgcasmFwdFn7932(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn7932(a0 *base.Module, a1 int32, a2 int32) {
@@ -7752,6 +6849,13 @@ func gcasmLNgcasmFwdFn7933(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn7933(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn7933(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn7934 github.com/goccy/spidermonkeywasm2go/p5.Fn7934
+func gcasmLNgcasmFwdFn7934(a0 *base.Module, a1 int32, a2 int32)
+
+func gcasmFwdFn7934(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn7934(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7935 github.com/goccy/spidermonkeywasm2go/p5.Fn7935
@@ -7768,32 +6872,25 @@ func gcasmFwdFn7936(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn7936(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7943 github.com/goccy/spidermonkeywasm2go/p5.Fn7943
-func gcasmLNgcasmFwdFn7943(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7938 github.com/goccy/spidermonkeywasm2go/p5.Fn7938
+func gcasmLNgcasmFwdFn7938(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn7943(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7943(a0, a1, a2, a3, a4)
+func gcasmFwdFn7938(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn7938(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7944 github.com/goccy/spidermonkeywasm2go/p5.Fn7944
-func gcasmLNgcasmFwdFn7944(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn7939 github.com/goccy/spidermonkeywasm2go/p5.Fn7939
+func gcasmLNgcasmFwdFn7939(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn7944(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn7944(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7945 github.com/goccy/spidermonkeywasm2go/p6.Fn7945
-func gcasmLNgcasmFwdFn7945(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn7945(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7945(a0, a1, a2)
+func gcasmFwdFn7939(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn7939(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7946 github.com/goccy/spidermonkeywasm2go/p5.Fn7946
-func gcasmLNgcasmFwdFn7946(a0 *base.Module, a1 int32, a2 int32)
+func gcasmLNgcasmFwdFn7946(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn7946(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7946(a0, a1, a2)
+func gcasmFwdFn7946(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7946(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7947 github.com/goccy/spidermonkeywasm2go/p5.Fn7947
@@ -7810,39 +6907,39 @@ func gcasmFwdFn7948(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn7948(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7949 github.com/goccy/spidermonkeywasm2go/p5.Fn7949
-func gcasmLNgcasmFwdFn7949(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn7950 github.com/goccy/spidermonkeywasm2go/p5.Fn7950
+func gcasmLNgcasmFwdFn7950(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn7949(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn7949(a0, a1, a2)
+func gcasmFwdFn7950(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn7950(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7952 github.com/goccy/spidermonkeywasm2go/p6.Fn7952
-func gcasmLNgcasmFwdFn7952(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7951 github.com/goccy/spidermonkeywasm2go/p6.Fn7951
+func gcasmLNgcasmFwdFn7951(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn7952(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7952(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7953 github.com/goccy/spidermonkeywasm2go/p6.Fn7953
-func gcasmLNgcasmFwdFn7953(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn7953(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7953(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7954 github.com/goccy/spidermonkeywasm2go/p4.Fn7954
-func gcasmLNgcasmFwdFn7954(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn7954(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7954(a0, a1, a2, a3, a4)
+func gcasmFwdFn7951(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn7951(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7955 github.com/goccy/spidermonkeywasm2go/p6.Fn7955
-func gcasmLNgcasmFwdFn7955(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn7955(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7955(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn7955(a0, a1, a2, a3)
+func gcasmFwdFn7955(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7955(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn7956 github.com/goccy/spidermonkeywasm2go/p6.Fn7956
+func gcasmLNgcasmFwdFn7956(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+
+func gcasmFwdFn7956(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7956(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn7957 github.com/goccy/spidermonkeywasm2go/p4.Fn7957
+func gcasmLNgcasmFwdFn7957(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+
+func gcasmFwdFn7957(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7957(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn7958 github.com/goccy/spidermonkeywasm2go/p6.Fn7958
@@ -7852,60 +6949,39 @@ func gcasmFwdFn7958(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn7958(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7959 github.com/goccy/spidermonkeywasm2go/p5.Fn7959
-func gcasmLNgcasmFwdFn7959(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7961 github.com/goccy/spidermonkeywasm2go/p6.Fn7961
+func gcasmLNgcasmFwdFn7961(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn7959(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn7959(a0, a1, a2)
+func gcasmFwdFn7961(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn7961(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7960 github.com/goccy/spidermonkeywasm2go/p5.Fn7960
-func gcasmLNgcasmFwdFn7960(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7962 github.com/goccy/spidermonkeywasm2go/p5.Fn7962
+func gcasmLNgcasmFwdFn7962(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn7960(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7960(a0, a1, a2, a3, a4)
+func gcasmFwdFn7962(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn7962(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7961 github.com/goccy/spidermonkeywasm2go/p4.Fn7961
-func gcasmLNgcasmFwdFn7961(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7963 github.com/goccy/spidermonkeywasm2go/p5.Fn7963
+func gcasmLNgcasmFwdFn7963(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn7961(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn7961(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn7963(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7963(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7962 github.com/goccy/spidermonkeywasm2go/p7.Fn7962
-func gcasmLNgcasmFwdFn7962(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7964 github.com/goccy/spidermonkeywasm2go/p4.Fn7964
+func gcasmLNgcasmFwdFn7964(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn7962(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7962(a0, a1, a2, a3, a4)
+func gcasmFwdFn7964(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn7964(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn797 github.com/goccy/spidermonkeywasm2go/p7.Fn797
-func gcasmLNgcasmFwdFn797(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7965 github.com/goccy/spidermonkeywasm2go/p7.Fn7965
+func gcasmLNgcasmFwdFn7965(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn797(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn797(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7977 github.com/goccy/spidermonkeywasm2go/p4.Fn7977
-func gcasmLNgcasmFwdFn7977(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32
-
-func gcasmFwdFn7977(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32 {
-	return gcasmLNgcasmFwdFn7977(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7978 github.com/goccy/spidermonkeywasm2go/p7.Fn7978
-func gcasmLNgcasmFwdFn7978(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn7978(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn7978(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn7979 github.com/goccy/spidermonkeywasm2go/p5.Fn7979
-func gcasmLNgcasmFwdFn7979(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn7979(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn7979(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn7965(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7965(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn798 github.com/goccy/spidermonkeywasm2go/p7.Fn798
@@ -7915,32 +6991,46 @@ func gcasmFwdFn798(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn798(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7980 github.com/goccy/spidermonkeywasm2go/p6.Fn7980
-func gcasmLNgcasmFwdFn7980(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7980 github.com/goccy/spidermonkeywasm2go/p4.Fn7980
+func gcasmLNgcasmFwdFn7980(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32
 
-func gcasmFwdFn7980(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn7980(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn7980(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32) int32 {
+	return gcasmLNgcasmFwdFn7980(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 }
 
-//go:linkname gcasmLNgcasmFwdFn7981 github.com/goccy/spidermonkeywasm2go/p4.Fn7981
-func gcasmLNgcasmFwdFn7981(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7981 github.com/goccy/spidermonkeywasm2go/p7.Fn7981
+func gcasmLNgcasmFwdFn7981(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn7981(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn7981(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn7981(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn7981(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn799 github.com/goccy/spidermonkeywasm2go/p7.Fn799
-func gcasmLNgcasmFwdFn799(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn7982 github.com/goccy/spidermonkeywasm2go/p5.Fn7982
+func gcasmLNgcasmFwdFn7982(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn799(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn799(a0, a1)
+func gcasmFwdFn7982(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn7982(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8000 github.com/goccy/spidermonkeywasm2go/p6.Fn8000
-func gcasmLNgcasmFwdFn8000(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn7983 github.com/goccy/spidermonkeywasm2go/p6.Fn7983
+func gcasmLNgcasmFwdFn7983(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn8000(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8000(a0, a1, a2, a3)
+func gcasmFwdFn7983(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn7983(a0, a1, a2, a3, a4, a5)
+}
+
+//go:linkname gcasmLNgcasmFwdFn7984 github.com/goccy/spidermonkeywasm2go/p4.Fn7984
+func gcasmLNgcasmFwdFn7984(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+
+func gcasmFwdFn7984(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn7984(a0, a1, a2, a3, a4, a5, a6, a7)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8003 github.com/goccy/spidermonkeywasm2go/p6.Fn8003
+func gcasmLNgcasmFwdFn8003(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn8003(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8003(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn805 github.com/goccy/spidermonkeywasm2go/p7.Fn805
@@ -7950,25 +7040,25 @@ func gcasmFwdFn805(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn805(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8097 github.com/goccy/spidermonkeywasm2go/p7.Fn8097
-func gcasmLNgcasmFwdFn8097(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8100 github.com/goccy/spidermonkeywasm2go/p7.Fn8100
+func gcasmLNgcasmFwdFn8100(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8097(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8097(a0, a1, a2)
+func gcasmFwdFn8100(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8100(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8103 github.com/goccy/spidermonkeywasm2go/p5.Fn8103
-func gcasmLNgcasmFwdFn8103(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn8106 github.com/goccy/spidermonkeywasm2go/p5.Fn8106
+func gcasmLNgcasmFwdFn8106(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn8103(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn8103(a0, a1, a2)
+func gcasmFwdFn8106(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn8106(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8106 github.com/goccy/spidermonkeywasm2go/p6.Fn8106
-func gcasmLNgcasmFwdFn8106(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn8109 github.com/goccy/spidermonkeywasm2go/p6.Fn8109
+func gcasmLNgcasmFwdFn8109(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn8106(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn8106(a0, a1)
+func gcasmFwdFn8109(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn8109(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn811 github.com/goccy/spidermonkeywasm2go/p7.Fn811
@@ -7978,60 +7068,53 @@ func gcasmFwdFn811(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn811(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8114 github.com/goccy/spidermonkeywasm2go/p6.Fn8114
-func gcasmLNgcasmFwdFn8114(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8117 github.com/goccy/spidermonkeywasm2go/p6.Fn8117
+func gcasmLNgcasmFwdFn8117(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8114(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8114(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8115 github.com/goccy/spidermonkeywasm2go/p6.Fn8115
-func gcasmLNgcasmFwdFn8115(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn8115(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8115(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8116 github.com/goccy/spidermonkeywasm2go/p7.Fn8116
-func gcasmLNgcasmFwdFn8116(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn8116(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8116(a0, a1, a2, a3)
+func gcasmFwdFn8117(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8117(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8118 github.com/goccy/spidermonkeywasm2go/p6.Fn8118
-func gcasmLNgcasmFwdFn8118(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn8118(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8118(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8118(a0, a1, a2, a3)
+func gcasmFwdFn8118(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8118(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8119 github.com/goccy/spidermonkeywasm2go/p6.Fn8119
-func gcasmLNgcasmFwdFn8119(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8119 github.com/goccy/spidermonkeywasm2go/p7.Fn8119
+func gcasmLNgcasmFwdFn8119(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8119(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8119(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8120 github.com/goccy/spidermonkeywasm2go/p7.Fn8120
-func gcasmLNgcasmFwdFn8120(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn8120(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8120(a0, a1, a2)
+func gcasmFwdFn8119(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8119(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8121 github.com/goccy/spidermonkeywasm2go/p6.Fn8121
-func gcasmLNgcasmFwdFn8121(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+func gcasmLNgcasmFwdFn8121(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8121(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn8121(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn8121(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8121(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8122 github.com/goccy/spidermonkeywasm2go/p6.Fn8122
-func gcasmLNgcasmFwdFn8122(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+func gcasmLNgcasmFwdFn8122(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8122(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn8122(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn8122(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8122(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8124 github.com/goccy/spidermonkeywasm2go/p6.Fn8124
+func gcasmLNgcasmFwdFn8124(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+
+func gcasmFwdFn8124(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn8124(a0, a1, a2, a3, a4, a5)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8125 github.com/goccy/spidermonkeywasm2go/p6.Fn8125
+func gcasmLNgcasmFwdFn8125(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+
+func gcasmFwdFn8125(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn8125(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn814 github.com/goccy/spidermonkeywasm2go/p6.Fn814
@@ -8041,60 +7124,46 @@ func gcasmFwdFn814(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn814(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8143 github.com/goccy/spidermonkeywasm2go/p6.Fn8143
-func gcasmLNgcasmFwdFn8143(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8146 github.com/goccy/spidermonkeywasm2go/p6.Fn8146
+func gcasmLNgcasmFwdFn8146(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn8143(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn8143(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8146(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn8146(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8144 github.com/goccy/spidermonkeywasm2go/p6.Fn8144
-func gcasmLNgcasmFwdFn8144(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn8147 github.com/goccy/spidermonkeywasm2go/p6.Fn8147
+func gcasmLNgcasmFwdFn8147(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn8144(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8144(a0, a1, a2, a3, a4)
+func gcasmFwdFn8147(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8147(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8145 github.com/goccy/spidermonkeywasm2go/p7.Fn8145
-func gcasmLNgcasmFwdFn8145(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8148 github.com/goccy/spidermonkeywasm2go/p7.Fn8148
+func gcasmLNgcasmFwdFn8148(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn8145(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn8145(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8148(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn8148(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8148 github.com/goccy/spidermonkeywasm2go/p5.Fn8148
-func gcasmLNgcasmFwdFn8148(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn8151 github.com/goccy/spidermonkeywasm2go/p5.Fn8151
+func gcasmLNgcasmFwdFn8151(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn8148(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn8148(a0, a1, a2)
+func gcasmFwdFn8151(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn8151(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8149 github.com/goccy/spidermonkeywasm2go/p4.Fn8149
-func gcasmLNgcasmFwdFn8149(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn8152 github.com/goccy/spidermonkeywasm2go/p4.Fn8152
+func gcasmLNgcasmFwdFn8152(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn8149(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn8149(a0, a1, a2, a3)
+func gcasmFwdFn8152(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn8152(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8154 github.com/goccy/spidermonkeywasm2go/p1.Fn8154
-func gcasmLNgcasmFwdFn8154(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8157 github.com/goccy/spidermonkeywasm2go/p1.Fn8157
+func gcasmLNgcasmFwdFn8157(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn8154(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8154(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8157 github.com/goccy/spidermonkeywasm2go/p6.Fn8157
-func gcasmLNgcasmFwdFn8157(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn8157(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn8157(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8159 github.com/goccy/spidermonkeywasm2go/p1.Fn8159
-func gcasmLNgcasmFwdFn8159(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn8159(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8159(a0, a1, a2, a3)
+func gcasmFwdFn8157(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8157(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn816 github.com/goccy/spidermonkeywasm2go/p6.Fn816
@@ -8104,158 +7173,158 @@ func gcasmFwdFn816(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn816(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8160 github.com/goccy/spidermonkeywasm2go/p7.Fn8160
-func gcasmLNgcasmFwdFn8160(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8160 github.com/goccy/spidermonkeywasm2go/p6.Fn8160
+func gcasmLNgcasmFwdFn8160(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn8160(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8160(a0, a1)
+func gcasmFwdFn8160(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn8160(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8162 github.com/goccy/spidermonkeywasm2go/p7.Fn8162
-func gcasmLNgcasmFwdFn8162(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8162 github.com/goccy/spidermonkeywasm2go/p1.Fn8162
+func gcasmLNgcasmFwdFn8162(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8162(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8162(a0, a1)
+func gcasmFwdFn8162(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8162(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8164 github.com/goccy/spidermonkeywasm2go/p1.Fn8164
-func gcasmLNgcasmFwdFn8164(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8163 github.com/goccy/spidermonkeywasm2go/p7.Fn8163
+func gcasmLNgcasmFwdFn8163(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn8164(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn8164(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn8163(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8163(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8165 github.com/goccy/spidermonkeywasm2go/p6.Fn8165
-func gcasmLNgcasmFwdFn8165(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8165 github.com/goccy/spidermonkeywasm2go/p7.Fn8165
+func gcasmLNgcasmFwdFn8165(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn8165(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8165(a0, a1, a2)
+func gcasmFwdFn8165(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8165(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8166 github.com/goccy/spidermonkeywasm2go/p7.Fn8166
-func gcasmLNgcasmFwdFn8166(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8167 github.com/goccy/spidermonkeywasm2go/p1.Fn8167
+func gcasmLNgcasmFwdFn8167(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn8166(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8166(a0, a1, a2)
+func gcasmFwdFn8167(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn8167(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8168 github.com/goccy/spidermonkeywasm2go/p7.Fn8168
-func gcasmLNgcasmFwdFn8168(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn8168 github.com/goccy/spidermonkeywasm2go/p6.Fn8168
+func gcasmLNgcasmFwdFn8168(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8168(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn8168(a0, a1, a2)
+func gcasmFwdFn8168(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8168(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8169 github.com/goccy/spidermonkeywasm2go/p1.Fn8169
-func gcasmLNgcasmFwdFn8169(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn8169 github.com/goccy/spidermonkeywasm2go/p7.Fn8169
+func gcasmLNgcasmFwdFn8169(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8169(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn8169(a0, a1, a2)
+func gcasmFwdFn8169(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8169(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8170 github.com/goccy/spidermonkeywasm2go/p1.Fn8170
-func gcasmLNgcasmFwdFn8170(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn8171 github.com/goccy/spidermonkeywasm2go/p7.Fn8171
+func gcasmLNgcasmFwdFn8171(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn8170(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn8170(a0, a1, a2)
+func gcasmFwdFn8171(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn8171(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8171 github.com/goccy/spidermonkeywasm2go/p2.Fn8171
-func gcasmLNgcasmFwdFn8171(a0 *base.Module) int32
+//go:linkname gcasmLNgcasmFwdFn8172 github.com/goccy/spidermonkeywasm2go/p1.Fn8172
+func gcasmLNgcasmFwdFn8172(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn8171(a0 *base.Module) int32 {
-	return gcasmLNgcasmFwdFn8171(a0)
+func gcasmFwdFn8172(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn8172(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8175 github.com/goccy/spidermonkeywasm2go/p6.Fn8175
-func gcasmLNgcasmFwdFn8175(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8173 github.com/goccy/spidermonkeywasm2go/p1.Fn8173
+func gcasmLNgcasmFwdFn8173(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn8175(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn8175(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn8173(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn8173(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8177 github.com/goccy/spidermonkeywasm2go/p7.Fn8177
-func gcasmLNgcasmFwdFn8177(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8174 github.com/goccy/spidermonkeywasm2go/p2.Fn8174
+func gcasmLNgcasmFwdFn8174(a0 *base.Module) int32
 
-func gcasmFwdFn8177(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8177(a0, a1)
+func gcasmFwdFn8174(a0 *base.Module) int32 {
+	return gcasmLNgcasmFwdFn8174(a0)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8189 github.com/goccy/spidermonkeywasm2go/p7.Fn8189
-func gcasmLNgcasmFwdFn8189(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn8178 github.com/goccy/spidermonkeywasm2go/p6.Fn8178
+func gcasmLNgcasmFwdFn8178(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn8189(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8189(a0, a1, a2, a3, a4)
+func gcasmFwdFn8178(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn8178(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8194 github.com/goccy/spidermonkeywasm2go/p1.Fn8194
-func gcasmLNgcasmFwdFn8194(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn8180 github.com/goccy/spidermonkeywasm2go/p7.Fn8180
+func gcasmLNgcasmFwdFn8180(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn8194(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn8194(a0, a1, a2, a3)
+func gcasmFwdFn8180(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8180(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8195 github.com/goccy/spidermonkeywasm2go/p6.Fn8195
-func gcasmLNgcasmFwdFn8195(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32, a12 int32)
+//go:linkname gcasmLNgcasmFwdFn8192 github.com/goccy/spidermonkeywasm2go/p7.Fn8192
+func gcasmLNgcasmFwdFn8192(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn8195(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32, a12 int32) {
-	gcasmLNgcasmFwdFn8195(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
+func gcasmFwdFn8192(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8192(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8197 github.com/goccy/spidermonkeywasm2go/p5.Fn8197
-func gcasmLNgcasmFwdFn8197(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn8197 github.com/goccy/spidermonkeywasm2go/p1.Fn8197
+func gcasmLNgcasmFwdFn8197(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn8197(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8197(a0, a1, a2, a3, a4)
+func gcasmFwdFn8197(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn8197(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8199 github.com/goccy/spidermonkeywasm2go/p1.Fn8199
-func gcasmLNgcasmFwdFn8199(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn8198 github.com/goccy/spidermonkeywasm2go/p6.Fn8198
+func gcasmLNgcasmFwdFn8198(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32, a12 int32)
 
-func gcasmFwdFn8199(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn8199(a0, a1)
+func gcasmFwdFn8198(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32, a11 int32, a12 int32) {
+	gcasmLNgcasmFwdFn8198(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8204 github.com/goccy/spidermonkeywasm2go/p1.Fn8204
-func gcasmLNgcasmFwdFn8204(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn8200 github.com/goccy/spidermonkeywasm2go/p5.Fn8200
+func gcasmLNgcasmFwdFn8200(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn8204(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn8204(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8200(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8200(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8205 github.com/goccy/spidermonkeywasm2go/p7.Fn8205
-func gcasmLNgcasmFwdFn8205(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn8202 github.com/goccy/spidermonkeywasm2go/p1.Fn8202
+func gcasmLNgcasmFwdFn8202(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn8205(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn8205(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8202(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn8202(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8214 github.com/goccy/spidermonkeywasm2go/p5.Fn8214
-func gcasmLNgcasmFwdFn8214(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn8207 github.com/goccy/spidermonkeywasm2go/p1.Fn8207
+func gcasmLNgcasmFwdFn8207(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn8214(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn8214(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8207(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn8207(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8216 github.com/goccy/spidermonkeywasm2go/p7.Fn8216
-func gcasmLNgcasmFwdFn8216(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8208 github.com/goccy/spidermonkeywasm2go/p7.Fn8208
+func gcasmLNgcasmFwdFn8208(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn8216(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8216(a0, a1, a2)
+func gcasmFwdFn8208(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn8208(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8220 github.com/goccy/spidermonkeywasm2go/p6.Fn8220
-func gcasmLNgcasmFwdFn8220(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8217 github.com/goccy/spidermonkeywasm2go/p5.Fn8217
+func gcasmLNgcasmFwdFn8217(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn8220(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8220(a0, a1)
+func gcasmFwdFn8217(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn8217(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8222 github.com/goccy/spidermonkeywasm2go/p4.Fn8222
-func gcasmLNgcasmFwdFn8222(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8219 github.com/goccy/spidermonkeywasm2go/p7.Fn8219
+func gcasmLNgcasmFwdFn8219(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8222(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn8222(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn8219(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8219(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8223 github.com/goccy/spidermonkeywasm2go/p6.Fn8223
@@ -8265,32 +7334,25 @@ func gcasmFwdFn8223(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn8223(a0, a1)
 }
 
+//go:linkname gcasmLNgcasmFwdFn8225 github.com/goccy/spidermonkeywasm2go/p4.Fn8225
+func gcasmLNgcasmFwdFn8225(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+
+func gcasmFwdFn8225(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn8225(a0, a1, a2, a3, a4, a5, a6, a7)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8226 github.com/goccy/spidermonkeywasm2go/p6.Fn8226
+func gcasmLNgcasmFwdFn8226(a0 *base.Module, a1 int32) int32
+
+func gcasmFwdFn8226(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8226(a0, a1)
+}
+
 //go:linkname gcasmLNgcasmFwdFn826 github.com/goccy/spidermonkeywasm2go/p7.Fn826
 func gcasmLNgcasmFwdFn826(a0 *base.Module)
 
 func gcasmFwdFn826(a0 *base.Module) {
 	gcasmLNgcasmFwdFn826(a0)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8266 github.com/goccy/spidermonkeywasm2go/p6.Fn8266
-func gcasmLNgcasmFwdFn8266(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn8266(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8266(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8267 github.com/goccy/spidermonkeywasm2go/p5.Fn8267
-func gcasmLNgcasmFwdFn8267(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn8267(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8267(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8269 github.com/goccy/spidermonkeywasm2go/p5.Fn8269
-func gcasmLNgcasmFwdFn8269(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn8269(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8269(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn827 github.com/goccy/spidermonkeywasm2go/p2.Fn827
@@ -8300,137 +7362,137 @@ func gcasmFwdFn827(a0 *base.Module, a1 int32, a2 int32, a3 int32) float64 {
 	return gcasmLNgcasmFwdFn827(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8270 github.com/goccy/spidermonkeywasm2go/p6.Fn8270
+//go:linkname gcasmLNgcasmFwdFn8270 github.com/goccy/spidermonkeywasm2go/p5.Fn8270
 func gcasmLNgcasmFwdFn8270(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
 func gcasmFwdFn8270(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn8270(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8274 github.com/goccy/spidermonkeywasm2go/p5.Fn8274
-func gcasmLNgcasmFwdFn8274(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8272 github.com/goccy/spidermonkeywasm2go/p5.Fn8272
+func gcasmLNgcasmFwdFn8272(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8274(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8274(a0, a1, a2)
+func gcasmFwdFn8272(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8272(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8281 github.com/goccy/spidermonkeywasm2go/p5.Fn8281
-func gcasmLNgcasmFwdFn8281(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8273 github.com/goccy/spidermonkeywasm2go/p6.Fn8273
+func gcasmLNgcasmFwdFn8273(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8281(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn8281(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn8273(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8273(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8283 github.com/goccy/spidermonkeywasm2go/p4.Fn8283
-func gcasmLNgcasmFwdFn8283(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8277 github.com/goccy/spidermonkeywasm2go/p5.Fn8277
+func gcasmLNgcasmFwdFn8277(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8283(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn8283(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn8277(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8277(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8284 github.com/goccy/spidermonkeywasm2go/p5.Fn8284
+func gcasmLNgcasmFwdFn8284(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+
+func gcasmFwdFn8284(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn8284(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8286 github.com/goccy/spidermonkeywasm2go/p4.Fn8286
-func gcasmLNgcasmFwdFn8286(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn8286(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
 
-func gcasmFwdFn8286(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8286(a0, a1, a2, a3, a4)
+func gcasmFwdFn8286(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn8286(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8290 github.com/goccy/spidermonkeywasm2go/p6.Fn8290
-func gcasmLNgcasmFwdFn8290(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8289 github.com/goccy/spidermonkeywasm2go/p4.Fn8289
+func gcasmLNgcasmFwdFn8289(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn8290(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8290(a0, a1, a2, a3)
+func gcasmFwdFn8289(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8289(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8294 github.com/goccy/spidermonkeywasm2go/p5.Fn8294
-func gcasmLNgcasmFwdFn8294(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8293 github.com/goccy/spidermonkeywasm2go/p6.Fn8293
+func gcasmLNgcasmFwdFn8293(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8294(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8294(a0, a1, a2, a3)
+func gcasmFwdFn8293(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8293(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8297 github.com/goccy/spidermonkeywasm2go/p6.Fn8297
-func gcasmLNgcasmFwdFn8297(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8297 github.com/goccy/spidermonkeywasm2go/p5.Fn8297
+func gcasmLNgcasmFwdFn8297(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8297(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8297(a0, a1, a2)
+func gcasmFwdFn8297(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8297(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8298 github.com/goccy/spidermonkeywasm2go/p6.Fn8298
-func gcasmLNgcasmFwdFn8298(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8300 github.com/goccy/spidermonkeywasm2go/p6.Fn8300
+func gcasmLNgcasmFwdFn8300(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8298(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8298(a0, a1, a2)
+func gcasmFwdFn8300(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8300(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8299 github.com/goccy/spidermonkeywasm2go/p7.Fn8299
-func gcasmLNgcasmFwdFn8299(a0 *base.Module) float64
+//go:linkname gcasmLNgcasmFwdFn8301 github.com/goccy/spidermonkeywasm2go/p6.Fn8301
+func gcasmLNgcasmFwdFn8301(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8299(a0 *base.Module) float64 {
-	return gcasmLNgcasmFwdFn8299(a0)
+func gcasmFwdFn8301(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8301(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8301 github.com/goccy/spidermonkeywasm2go/p7.Fn8301
-func gcasmLNgcasmFwdFn8301(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8302 github.com/goccy/spidermonkeywasm2go/p7.Fn8302
+func gcasmLNgcasmFwdFn8302(a0 *base.Module) float64
 
-func gcasmFwdFn8301(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8301(a0, a1)
+func gcasmFwdFn8302(a0 *base.Module) float64 {
+	return gcasmLNgcasmFwdFn8302(a0)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8302 github.com/goccy/spidermonkeywasm2go/p5.Fn8302
-func gcasmLNgcasmFwdFn8302(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn8304 github.com/goccy/spidermonkeywasm2go/p7.Fn8304
+func gcasmLNgcasmFwdFn8304(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn8302(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn8302(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn8304(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8304(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8303 github.com/goccy/spidermonkeywasm2go/p6.Fn8303
-func gcasmLNgcasmFwdFn8303(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn8303(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn8303(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8305 github.com/goccy/spidermonkeywasm2go/p6.Fn8305
+//go:linkname gcasmLNgcasmFwdFn8305 github.com/goccy/spidermonkeywasm2go/p5.Fn8305
 func gcasmLNgcasmFwdFn8305(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
 func gcasmFwdFn8305(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
 	gcasmLNgcasmFwdFn8305(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8308 github.com/goccy/spidermonkeywasm2go/p5.Fn8308
-func gcasmLNgcasmFwdFn8308(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn8306 github.com/goccy/spidermonkeywasm2go/p6.Fn8306
+func gcasmLNgcasmFwdFn8306(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn8308(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn8308(a0, a1, a2)
+func gcasmFwdFn8306(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn8306(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8311 github.com/goccy/spidermonkeywasm2go/p6.Fn8311
-func gcasmLNgcasmFwdFn8311(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8308 github.com/goccy/spidermonkeywasm2go/p6.Fn8308
+func gcasmLNgcasmFwdFn8308(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn8311(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8311(a0, a1, a2, a3)
+func gcasmFwdFn8308(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn8308(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8312 github.com/goccy/spidermonkeywasm2go/p5.Fn8312
-func gcasmLNgcasmFwdFn8312(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8311 github.com/goccy/spidermonkeywasm2go/p5.Fn8311
+func gcasmLNgcasmFwdFn8311(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn8312(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn8312(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8311(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn8311(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8313 github.com/goccy/spidermonkeywasm2go/p6.Fn8313
-func gcasmLNgcasmFwdFn8313(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8314 github.com/goccy/spidermonkeywasm2go/p6.Fn8314
+func gcasmLNgcasmFwdFn8314(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8313(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8313(a0, a1, a2)
+func gcasmFwdFn8314(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8314(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8317 github.com/goccy/spidermonkeywasm2go/p6.Fn8317
-func gcasmLNgcasmFwdFn8317(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8315 github.com/goccy/spidermonkeywasm2go/p5.Fn8315
+func gcasmLNgcasmFwdFn8315(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn8317(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8317(a0, a1)
+func gcasmFwdFn8315(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn8315(a0, a1, a2, a3, a4, a5, a6)
 }
 
 //go:linkname gcasmLNgcasmFwdFn832 github.com/goccy/spidermonkeywasm2go/p2.Fn832
@@ -8440,25 +7502,18 @@ func gcasmFwdFn832(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn832(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8320 github.com/goccy/spidermonkeywasm2go/p7.Fn8320
-func gcasmLNgcasmFwdFn8320(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8325 github.com/goccy/spidermonkeywasm2go/p6.Fn8325
+func gcasmLNgcasmFwdFn8325(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8320(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8320(a0, a1, a2)
+func gcasmFwdFn8325(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8325(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8321 github.com/goccy/spidermonkeywasm2go/p7.Fn8321
-func gcasmLNgcasmFwdFn8321(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8327 github.com/goccy/spidermonkeywasm2go/p4.Fn8327
+func gcasmLNgcasmFwdFn8327(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8321(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8321(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8322 github.com/goccy/spidermonkeywasm2go/p6.Fn8322
-func gcasmLNgcasmFwdFn8322(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn8322(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8322(a0, a1, a2, a3, a4)
+func gcasmFwdFn8327(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8327(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn833 github.com/goccy/spidermonkeywasm2go/p4.Fn833
@@ -8475,39 +7530,32 @@ func gcasmFwdFn834(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn834(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8340 github.com/goccy/spidermonkeywasm2go/p4.Fn8340
-func gcasmLNgcasmFwdFn8340(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8343 github.com/goccy/spidermonkeywasm2go/p4.Fn8343
+func gcasmLNgcasmFwdFn8343(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn8340(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8340(a0, a1)
+func gcasmFwdFn8343(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8343(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8342 github.com/goccy/spidermonkeywasm2go/p7.Fn8342
-func gcasmLNgcasmFwdFn8342(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8345 github.com/goccy/spidermonkeywasm2go/p7.Fn8345
+func gcasmLNgcasmFwdFn8345(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8342(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8342(a0, a1, a2)
+func gcasmFwdFn8345(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8345(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8344 github.com/goccy/spidermonkeywasm2go/p7.Fn8344
-func gcasmLNgcasmFwdFn8344(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8347 github.com/goccy/spidermonkeywasm2go/p7.Fn8347
+func gcasmLNgcasmFwdFn8347(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8344(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8344(a0, a1, a2, a3)
+func gcasmFwdFn8347(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8347(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8346 github.com/goccy/spidermonkeywasm2go/p7.Fn8346
-func gcasmLNgcasmFwdFn8346(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn8349 github.com/goccy/spidermonkeywasm2go/p7.Fn8349
+func gcasmLNgcasmFwdFn8349(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn8346(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn8346(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8349 github.com/goccy/spidermonkeywasm2go/p6.Fn8349
-func gcasmLNgcasmFwdFn8349(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn8349(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn8349(a0, a1, a2)
+func gcasmFwdFn8349(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn8349(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn835 github.com/goccy/spidermonkeywasm2go/p5.Fn835
@@ -8517,46 +7565,39 @@ func gcasmFwdFn835(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn835(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8353 github.com/goccy/spidermonkeywasm2go/p5.Fn8353
-func gcasmLNgcasmFwdFn8353(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8352 github.com/goccy/spidermonkeywasm2go/p6.Fn8352
+func gcasmLNgcasmFwdFn8352(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn8353(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32) int32 {
-	return gcasmLNgcasmFwdFn8353(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+func gcasmFwdFn8352(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn8352(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8354 github.com/goccy/spidermonkeywasm2go/p4.Fn8354
-func gcasmLNgcasmFwdFn8354(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8356 github.com/goccy/spidermonkeywasm2go/p5.Fn8356
+func gcasmLNgcasmFwdFn8356(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32) int32
 
-func gcasmFwdFn8354(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8354(a0, a1, a2, a3)
+func gcasmFwdFn8356(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32, a9 int32, a10 int32) int32 {
+	return gcasmLNgcasmFwdFn8356(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8362 github.com/goccy/spidermonkeywasm2go/p6.Fn8362
-func gcasmLNgcasmFwdFn8362(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8357 github.com/goccy/spidermonkeywasm2go/p4.Fn8357
+func gcasmLNgcasmFwdFn8357(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8362(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn8362(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn8357(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8357(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8365 github.com/goccy/spidermonkeywasm2go/p6.Fn8365
-func gcasmLNgcasmFwdFn8365(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn8365(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn8365(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn8365(a0, a1)
+func gcasmFwdFn8365(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn8365(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8367 github.com/goccy/spidermonkeywasm2go/p6.Fn8367
-func gcasmLNgcasmFwdFn8367(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8368 github.com/goccy/spidermonkeywasm2go/p6.Fn8368
+func gcasmLNgcasmFwdFn8368(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn8367(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8367(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8368 github.com/goccy/spidermonkeywasm2go/p5.Fn8368
-func gcasmLNgcasmFwdFn8368(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
-
-func gcasmFwdFn8368(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn8368(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8368(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn8368(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8370 github.com/goccy/spidermonkeywasm2go/p6.Fn8370
@@ -8566,6 +7607,20 @@ func gcasmFwdFn8370(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn8370(a0, a1, a2)
 }
 
+//go:linkname gcasmLNgcasmFwdFn8371 github.com/goccy/spidermonkeywasm2go/p5.Fn8371
+func gcasmLNgcasmFwdFn8371(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+
+func gcasmFwdFn8371(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn8371(a0, a1, a2, a3, a4, a5, a6)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8373 github.com/goccy/spidermonkeywasm2go/p6.Fn8373
+func gcasmLNgcasmFwdFn8373(a0 *base.Module, a1 int32, a2 int32) int32
+
+func gcasmFwdFn8373(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8373(a0, a1, a2)
+}
+
 //go:linkname gcasmLNgcasmFwdFn838 github.com/goccy/spidermonkeywasm2go/p6.Fn838
 func gcasmLNgcasmFwdFn838(a0 *base.Module, a1 int32) int32
 
@@ -8573,39 +7628,18 @@ func gcasmFwdFn838(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn838(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8381 github.com/goccy/spidermonkeywasm2go/p5.Fn8381
-func gcasmLNgcasmFwdFn8381(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
+//go:linkname gcasmLNgcasmFwdFn8384 github.com/goccy/spidermonkeywasm2go/p5.Fn8384
+func gcasmLNgcasmFwdFn8384(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
 
-func gcasmFwdFn8381(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
-	gcasmLNgcasmFwdFn8381(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn8384(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
+	gcasmLNgcasmFwdFn8384(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8390 github.com/goccy/spidermonkeywasm2go/p1.Fn8390
-func gcasmLNgcasmFwdFn8390(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn8394 github.com/goccy/spidermonkeywasm2go/p6.Fn8394
+func gcasmLNgcasmFwdFn8394(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn8390(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8390(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8391 github.com/goccy/spidermonkeywasm2go/p6.Fn8391
-func gcasmLNgcasmFwdFn8391(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn8391(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8391(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8396 github.com/goccy/spidermonkeywasm2go/p7.Fn8396
-func gcasmLNgcasmFwdFn8396(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn8396(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8396(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8397 github.com/goccy/spidermonkeywasm2go/p4.Fn8397
-func gcasmLNgcasmFwdFn8397(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn8397(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn8397(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn8394(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8394(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn840 github.com/goccy/spidermonkeywasm2go/p0.Fn840
@@ -8615,11 +7649,18 @@ func gcasmFwdFn840(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn840(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8402 github.com/goccy/spidermonkeywasm2go/p1.Fn8402
-func gcasmLNgcasmFwdFn8402(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn8400 github.com/goccy/spidermonkeywasm2go/p4.Fn8400
+func gcasmLNgcasmFwdFn8400(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn8402(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8402(a0, a1, a2, a3, a4)
+func gcasmFwdFn8400(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn8400(a0, a1, a2, a3, a4, a5)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8405 github.com/goccy/spidermonkeywasm2go/p1.Fn8405
+func gcasmLNgcasmFwdFn8405(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+
+func gcasmFwdFn8405(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8405(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn841 github.com/goccy/spidermonkeywasm2go/p0.Fn841
@@ -8629,11 +7670,11 @@ func gcasmFwdFn841(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int64, a5 i
 	return gcasmLNgcasmFwdFn841(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8415 github.com/goccy/spidermonkeywasm2go/p6.Fn8415
-func gcasmLNgcasmFwdFn8415(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn8418 github.com/goccy/spidermonkeywasm2go/p6.Fn8418
+func gcasmLNgcasmFwdFn8418(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn8415(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn8415(a0, a1, a2, a3)
+func gcasmFwdFn8418(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn8418(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn842 github.com/goccy/spidermonkeywasm2go/p5.Fn842
@@ -8650,88 +7691,88 @@ func gcasmFwdFn843(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
 	gcasmLNgcasmFwdFn843(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8434 github.com/goccy/spidermonkeywasm2go/p6.Fn8434
-func gcasmLNgcasmFwdFn8434(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn8434(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8434(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8435 github.com/goccy/spidermonkeywasm2go/p6.Fn8435
-func gcasmLNgcasmFwdFn8435(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn8435(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8435(a0, a1, a2)
-}
-
 //go:linkname gcasmLNgcasmFwdFn8437 github.com/goccy/spidermonkeywasm2go/p6.Fn8437
-func gcasmLNgcasmFwdFn8437(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn8437(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8437(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8437(a0, a1, a2)
+func gcasmFwdFn8437(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8437(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8438 github.com/goccy/spidermonkeywasm2go/p4.Fn8438
-func gcasmLNgcasmFwdFn8438(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8438 github.com/goccy/spidermonkeywasm2go/p6.Fn8438
+func gcasmLNgcasmFwdFn8438(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8438(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8438(a0, a1, a2, a3)
+func gcasmFwdFn8438(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8438(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8439 github.com/goccy/spidermonkeywasm2go/p5.Fn8439
-func gcasmLNgcasmFwdFn8439(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8440 github.com/goccy/spidermonkeywasm2go/p6.Fn8440
+func gcasmLNgcasmFwdFn8440(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8439(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8439(a0, a1, a2)
+func gcasmFwdFn8440(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8440(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8442 github.com/goccy/spidermonkeywasm2go/p6.Fn8442
-func gcasmLNgcasmFwdFn8442(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8441 github.com/goccy/spidermonkeywasm2go/p4.Fn8441
+func gcasmLNgcasmFwdFn8441(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8442(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8442(a0, a1)
+func gcasmFwdFn8441(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8441(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8448 github.com/goccy/spidermonkeywasm2go/p6.Fn8448
-func gcasmLNgcasmFwdFn8448(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8442 github.com/goccy/spidermonkeywasm2go/p5.Fn8442
+func gcasmLNgcasmFwdFn8442(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8448(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8448(a0, a1, a2)
+func gcasmFwdFn8442(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8442(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8456 github.com/goccy/spidermonkeywasm2go/p6.Fn8456
-func gcasmLNgcasmFwdFn8456(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8445 github.com/goccy/spidermonkeywasm2go/p6.Fn8445
+func gcasmLNgcasmFwdFn8445(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn8456(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8456(a0, a1, a2)
+func gcasmFwdFn8445(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8445(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8461 github.com/goccy/spidermonkeywasm2go/p6.Fn8461
-func gcasmLNgcasmFwdFn8461(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn8451 github.com/goccy/spidermonkeywasm2go/p6.Fn8451
+func gcasmLNgcasmFwdFn8451(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8461(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn8461(a0, a1, a2)
+func gcasmFwdFn8451(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8451(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8463 github.com/goccy/spidermonkeywasm2go/p6.Fn8463
-func gcasmLNgcasmFwdFn8463(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn8459 github.com/goccy/spidermonkeywasm2go/p6.Fn8459
+func gcasmLNgcasmFwdFn8459(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8463(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn8463(a0, a1, a2)
+func gcasmFwdFn8459(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8459(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8464 github.com/goccy/spidermonkeywasm2go/p6.Fn8464
-func gcasmLNgcasmFwdFn8464(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn8464(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn8464(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8464(a0, a1, a2)
+func gcasmFwdFn8464(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn8464(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8465 github.com/goccy/spidermonkeywasm2go/p5.Fn8465
-func gcasmLNgcasmFwdFn8465(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn8466 github.com/goccy/spidermonkeywasm2go/p6.Fn8466
+func gcasmLNgcasmFwdFn8466(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn8465(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8465(a0, a1, a2, a3, a4)
+func gcasmFwdFn8466(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn8466(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8467 github.com/goccy/spidermonkeywasm2go/p6.Fn8467
+func gcasmLNgcasmFwdFn8467(a0 *base.Module, a1 int32, a2 int32) int32
+
+func gcasmFwdFn8467(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8467(a0, a1, a2)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8468 github.com/goccy/spidermonkeywasm2go/p5.Fn8468
+func gcasmLNgcasmFwdFn8468(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+
+func gcasmFwdFn8468(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8468(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn847 github.com/goccy/spidermonkeywasm2go/p0.Fn847
@@ -8741,39 +7782,18 @@ func gcasmFwdFn847(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdFn847(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8474 github.com/goccy/spidermonkeywasm2go/p1.Fn8474
-func gcasmLNgcasmFwdFn8474(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8477 github.com/goccy/spidermonkeywasm2go/p1.Fn8477
+func gcasmLNgcasmFwdFn8477(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn8474(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8474(a0, a1)
+func gcasmFwdFn8477(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8477(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8490 github.com/goccy/spidermonkeywasm2go/p5.Fn8490
-func gcasmLNgcasmFwdFn8490(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8493 github.com/goccy/spidermonkeywasm2go/p5.Fn8493
+func gcasmLNgcasmFwdFn8493(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8490(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8490(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8497 github.com/goccy/spidermonkeywasm2go/p7.Fn8497
-func gcasmLNgcasmFwdFn8497(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn8497(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8497(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8498 github.com/goccy/spidermonkeywasm2go/p7.Fn8498
-func gcasmLNgcasmFwdFn8498(a0 *base.Module, a1 int32)
-
-func gcasmFwdFn8498(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn8498(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8499 github.com/goccy/spidermonkeywasm2go/p5.Fn8499
-func gcasmLNgcasmFwdFn8499(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn8499(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8499(a0, a1, a2)
+func gcasmFwdFn8493(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8493(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn850 github.com/goccy/spidermonkeywasm2go/p0.Fn850
@@ -8783,116 +7803,102 @@ func gcasmFwdFn850(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn850(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8501 github.com/goccy/spidermonkeywasm2go/p6.Fn8501
-func gcasmLNgcasmFwdFn8501(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8500 github.com/goccy/spidermonkeywasm2go/p7.Fn8500
+func gcasmLNgcasmFwdFn8500(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8501(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8501(a0, a1, a2, a3)
+func gcasmFwdFn8500(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8500(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8521 github.com/goccy/spidermonkeywasm2go/p6.Fn8521
-func gcasmLNgcasmFwdFn8521(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn8501 github.com/goccy/spidermonkeywasm2go/p7.Fn8501
+func gcasmLNgcasmFwdFn8501(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn8521(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn8521(a0, a1, a2, a3)
+func gcasmFwdFn8501(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn8501(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8522 github.com/goccy/spidermonkeywasm2go/p5.Fn8522
-func gcasmLNgcasmFwdFn8522(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8502 github.com/goccy/spidermonkeywasm2go/p5.Fn8502
+func gcasmLNgcasmFwdFn8502(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8522(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8522(a0, a1, a2, a3, a4)
+func gcasmFwdFn8502(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8502(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8523 github.com/goccy/spidermonkeywasm2go/p5.Fn8523
-func gcasmLNgcasmFwdFn8523(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8504 github.com/goccy/spidermonkeywasm2go/p6.Fn8504
+func gcasmLNgcasmFwdFn8504(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8523(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8523(a0, a1, a2, a3)
+func gcasmFwdFn8504(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8504(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8524 github.com/goccy/spidermonkeywasm2go/p7.Fn8524
-func gcasmLNgcasmFwdFn8524(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn8524 github.com/goccy/spidermonkeywasm2go/p6.Fn8524
+func gcasmLNgcasmFwdFn8524(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn8524(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn8524(a0, a1)
+func gcasmFwdFn8524(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn8524(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8527 github.com/goccy/spidermonkeywasm2go/p5.Fn8527
-func gcasmLNgcasmFwdFn8527(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8525 github.com/goccy/spidermonkeywasm2go/p5.Fn8525
+func gcasmLNgcasmFwdFn8525(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8527(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn8527(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8525(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8525(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8528 github.com/goccy/spidermonkeywasm2go/p7.Fn8528
-func gcasmLNgcasmFwdFn8528(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8526 github.com/goccy/spidermonkeywasm2go/p5.Fn8526
+func gcasmLNgcasmFwdFn8526(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8528(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8528(a0, a1, a2, a3, a4)
+func gcasmFwdFn8526(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8526(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8529 github.com/goccy/spidermonkeywasm2go/p6.Fn8529
-func gcasmLNgcasmFwdFn8529(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8527 github.com/goccy/spidermonkeywasm2go/p7.Fn8527
+func gcasmLNgcasmFwdFn8527(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn8529(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8529(a0, a1, a2, a3)
+func gcasmFwdFn8527(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn8527(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8530 github.com/goccy/spidermonkeywasm2go/p6.Fn8530
-func gcasmLNgcasmFwdFn8530(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8530 github.com/goccy/spidermonkeywasm2go/p5.Fn8530
+func gcasmLNgcasmFwdFn8530(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn8530(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8530(a0, a1, a2, a3, a4)
+func gcasmFwdFn8530(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn8530(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8532 github.com/goccy/spidermonkeywasm2go/p5.Fn8532
-func gcasmLNgcasmFwdFn8532(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8532 github.com/goccy/spidermonkeywasm2go/p6.Fn8532
+func gcasmLNgcasmFwdFn8532(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8532(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn8532(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8532(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8532(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8534 github.com/goccy/spidermonkeywasm2go/p7.Fn8534
-func gcasmLNgcasmFwdFn8534(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8533 github.com/goccy/spidermonkeywasm2go/p6.Fn8533
+func gcasmLNgcasmFwdFn8533(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8534(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8534(a0, a1)
+func gcasmFwdFn8533(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8533(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8536 github.com/goccy/spidermonkeywasm2go/p7.Fn8536
-func gcasmLNgcasmFwdFn8536(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8535 github.com/goccy/spidermonkeywasm2go/p5.Fn8535
+func gcasmLNgcasmFwdFn8535(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn8536(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8536(a0, a1, a2)
+func gcasmFwdFn8535(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn8535(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8539 github.com/goccy/spidermonkeywasm2go/p6.Fn8539
-func gcasmLNgcasmFwdFn8539(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8537 github.com/goccy/spidermonkeywasm2go/p7.Fn8537
+func gcasmLNgcasmFwdFn8537(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn8539(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn8539(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8537(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8537(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8542 github.com/goccy/spidermonkeywasm2go/p7.Fn8542
-func gcasmLNgcasmFwdFn8542(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8539 github.com/goccy/spidermonkeywasm2go/p7.Fn8539
+func gcasmLNgcasmFwdFn8539(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8542(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8542(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8543 github.com/goccy/spidermonkeywasm2go/p6.Fn8543
-func gcasmLNgcasmFwdFn8543(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn8543(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8543(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8548 github.com/goccy/spidermonkeywasm2go/p6.Fn8548
-func gcasmLNgcasmFwdFn8548(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn8548(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8548(a0, a1, a2, a3, a4)
+func gcasmFwdFn8539(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8539(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn855 github.com/goccy/spidermonkeywasm2go/p7.Fn855
@@ -8902,60 +7908,60 @@ func gcasmFwdFn855(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 i
 	gcasmLNgcasmFwdFn855(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8550 github.com/goccy/spidermonkeywasm2go/p5.Fn8550
-func gcasmLNgcasmFwdFn8550(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8554 github.com/goccy/spidermonkeywasm2go/p6.Fn8554
+func gcasmLNgcasmFwdFn8554(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8550(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8550(a0, a1, a2, a3, a4)
+func gcasmFwdFn8554(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8554(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8551 github.com/goccy/spidermonkeywasm2go/p6.Fn8551
-func gcasmLNgcasmFwdFn8551(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8555 github.com/goccy/spidermonkeywasm2go/p6.Fn8555
+func gcasmLNgcasmFwdFn8555(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8551(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8551(a0, a1, a2, a3, a4)
+func gcasmFwdFn8555(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8555(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8552 github.com/goccy/spidermonkeywasm2go/p6.Fn8552
-func gcasmLNgcasmFwdFn8552(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8556 github.com/goccy/spidermonkeywasm2go/p6.Fn8556
+func gcasmLNgcasmFwdFn8556(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn8552(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8552(a0, a1, a2, a3)
+func gcasmFwdFn8556(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn8556(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8553 github.com/goccy/spidermonkeywasm2go/p6.Fn8553
-func gcasmLNgcasmFwdFn8553(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn8560 github.com/goccy/spidermonkeywasm2go/p7.Fn8560
+func gcasmLNgcasmFwdFn8560(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8553(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn8553(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8560(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8560(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8557 github.com/goccy/spidermonkeywasm2go/p7.Fn8557
-func gcasmLNgcasmFwdFn8557(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8564 github.com/goccy/spidermonkeywasm2go/p6.Fn8564
+func gcasmLNgcasmFwdFn8564(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8557(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8557(a0, a1, a2, a3, a4)
+func gcasmFwdFn8564(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8564(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8561 github.com/goccy/spidermonkeywasm2go/p6.Fn8561
-func gcasmLNgcasmFwdFn8561(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn8561(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8561(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8570 github.com/goccy/spidermonkeywasm2go/p4.Fn8570
-func gcasmLNgcasmFwdFn8570(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn8570(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8570(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8573 github.com/goccy/spidermonkeywasm2go/p7.Fn8573
+//go:linkname gcasmLNgcasmFwdFn8573 github.com/goccy/spidermonkeywasm2go/p4.Fn8573
 func gcasmLNgcasmFwdFn8573(a0 *base.Module, a1 int32) int32
 
 func gcasmFwdFn8573(a0 *base.Module, a1 int32) int32 {
 	return gcasmLNgcasmFwdFn8573(a0, a1)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8576 github.com/goccy/spidermonkeywasm2go/p7.Fn8576
+func gcasmLNgcasmFwdFn8576(a0 *base.Module, a1 int32) int32
+
+func gcasmFwdFn8576(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8576(a0, a1)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8579 github.com/goccy/spidermonkeywasm2go/p6.Fn8579
+func gcasmLNgcasmFwdFn8579(a0 *base.Module, a1 int32) int32
+
+func gcasmFwdFn8579(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8579(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn858 github.com/goccy/spidermonkeywasm2go/p0.Fn858
@@ -8979,25 +7985,18 @@ func gcasmFwdFn860(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn860(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8625 github.com/goccy/spidermonkeywasm2go/p7.Fn8625
-func gcasmLNgcasmFwdFn8625(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn8628 github.com/goccy/spidermonkeywasm2go/p7.Fn8628
+func gcasmLNgcasmFwdFn8628(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn8625(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn8625(a0, a1)
+func gcasmFwdFn8628(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn8628(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8626 github.com/goccy/spidermonkeywasm2go/p7.Fn8626
-func gcasmLNgcasmFwdFn8626(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn8629 github.com/goccy/spidermonkeywasm2go/p7.Fn8629
+func gcasmLNgcasmFwdFn8629(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn8626(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn8626(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8629 github.com/goccy/spidermonkeywasm2go/p6.Fn8629
-func gcasmLNgcasmFwdFn8629(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn8629(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8629(a0, a1, a2, a3)
+func gcasmFwdFn8629(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn8629(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn863 github.com/goccy/spidermonkeywasm2go/p0.Fn863
@@ -9005,20 +8004,6 @@ func gcasmLNgcasmFwdFn863(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int3
 
 func gcasmFwdFn863(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn863(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8632 github.com/goccy/spidermonkeywasm2go/p6.Fn8632
-func gcasmLNgcasmFwdFn8632(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn8632(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8632(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8633 github.com/goccy/spidermonkeywasm2go/p1.Fn8633
-func gcasmLNgcasmFwdFn8633(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn8633(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8633(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8635 github.com/goccy/spidermonkeywasm2go/p6.Fn8635
@@ -9029,24 +8014,24 @@ func gcasmFwdFn8635(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int
 }
 
 //go:linkname gcasmLNgcasmFwdFn8636 github.com/goccy/spidermonkeywasm2go/p1.Fn8636
-func gcasmLNgcasmFwdFn8636(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+func gcasmLNgcasmFwdFn8636(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8636(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn8636(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn8636(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8636(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8637 github.com/goccy/spidermonkeywasm2go/p6.Fn8637
-func gcasmLNgcasmFwdFn8637(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn8637(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8637(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8638 github.com/goccy/spidermonkeywasm2go/p1.Fn8638
+//go:linkname gcasmLNgcasmFwdFn8638 github.com/goccy/spidermonkeywasm2go/p6.Fn8638
 func gcasmLNgcasmFwdFn8638(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
 func gcasmFwdFn8638(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn8638(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8639 github.com/goccy/spidermonkeywasm2go/p1.Fn8639
+func gcasmLNgcasmFwdFn8639(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+
+func gcasmFwdFn8639(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn8639(a0, a1, a2, a3, a4, a5)
 }
 
 //go:linkname gcasmLNgcasmFwdFn864 github.com/goccy/spidermonkeywasm2go/p6.Fn864
@@ -9057,38 +8042,45 @@ func gcasmFwdFn864(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 }
 
 //go:linkname gcasmLNgcasmFwdFn8640 github.com/goccy/spidermonkeywasm2go/p6.Fn8640
-func gcasmLNgcasmFwdFn8640(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+func gcasmLNgcasmFwdFn8640(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8640(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8640(a0, a1, a2, a3, a4)
+func gcasmFwdFn8640(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8640(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8642 github.com/goccy/spidermonkeywasm2go/p6.Fn8642
-func gcasmLNgcasmFwdFn8642(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn8641 github.com/goccy/spidermonkeywasm2go/p1.Fn8641
+func gcasmLNgcasmFwdFn8641(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8642(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8642(a0, a1, a2, a3, a4)
+func gcasmFwdFn8641(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8641(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8643 github.com/goccy/spidermonkeywasm2go/p1.Fn8643
-func gcasmLNgcasmFwdFn8643(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8643 github.com/goccy/spidermonkeywasm2go/p6.Fn8643
+func gcasmLNgcasmFwdFn8643(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn8643(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8643(a0, a1, a2, a3, a4)
+func gcasmFwdFn8643(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8643(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8645 github.com/goccy/spidermonkeywasm2go/p1.Fn8645
-func gcasmLNgcasmFwdFn8645(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8645 github.com/goccy/spidermonkeywasm2go/p6.Fn8645
+func gcasmLNgcasmFwdFn8645(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn8645(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8645(a0, a1, a2, a3, a4)
+func gcasmFwdFn8645(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8645(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8654 github.com/goccy/spidermonkeywasm2go/p2.Fn8654
-func gcasmLNgcasmFwdFn8654(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8646 github.com/goccy/spidermonkeywasm2go/p1.Fn8646
+func gcasmLNgcasmFwdFn8646(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8654(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
-	return gcasmLNgcasmFwdFn8654(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+func gcasmFwdFn8646(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8646(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8648 github.com/goccy/spidermonkeywasm2go/p1.Fn8648
+func gcasmLNgcasmFwdFn8648(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+
+func gcasmFwdFn8648(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8648(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn866 github.com/goccy/spidermonkeywasm2go/p5.Fn866
@@ -9105,60 +8097,39 @@ func gcasmFwdFn867(a0 *base.Module, a1 int32, a2 int32, a3 int64) int32 {
 	return gcasmLNgcasmFwdFn867(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8685 github.com/goccy/spidermonkeywasm2go/p6.Fn8685
-func gcasmLNgcasmFwdFn8685(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8688 github.com/goccy/spidermonkeywasm2go/p6.Fn8688
+func gcasmLNgcasmFwdFn8688(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32
 
-func gcasmFwdFn8685(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
-	return gcasmLNgcasmFwdFn8685(a0, a1, a2, a3, a4, a5, a6, a7, a8)
+func gcasmFwdFn8688(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) int32 {
+	return gcasmLNgcasmFwdFn8688(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8691 github.com/goccy/spidermonkeywasm2go/p4.Fn8691
-func gcasmLNgcasmFwdFn8691(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8694 github.com/goccy/spidermonkeywasm2go/p4.Fn8694
+func gcasmLNgcasmFwdFn8694(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
 
-func gcasmFwdFn8691(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn8691(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn8694(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn8694(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8692 github.com/goccy/spidermonkeywasm2go/p6.Fn8692
-func gcasmLNgcasmFwdFn8692(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8695 github.com/goccy/spidermonkeywasm2go/p6.Fn8695
+func gcasmLNgcasmFwdFn8695(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn8692(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn8692(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8695(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn8695(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8693 github.com/goccy/spidermonkeywasm2go/p6.Fn8693
-func gcasmLNgcasmFwdFn8693(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8696 github.com/goccy/spidermonkeywasm2go/p6.Fn8696
+func gcasmLNgcasmFwdFn8696(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn8693(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn8693(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn8696(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn8696(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8705 github.com/goccy/spidermonkeywasm2go/p4.Fn8705
-func gcasmLNgcasmFwdFn8705(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8708 github.com/goccy/spidermonkeywasm2go/p4.Fn8708
+func gcasmLNgcasmFwdFn8708(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8705(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8705(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8710 github.com/goccy/spidermonkeywasm2go/p5.Fn8710
-func gcasmLNgcasmFwdFn8710(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn8710(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn8710(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8711 github.com/goccy/spidermonkeywasm2go/p5.Fn8711
-func gcasmLNgcasmFwdFn8711(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn8711(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8711(a0, a1, a2, a3, a4)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8716 github.com/goccy/spidermonkeywasm2go/p6.Fn8716
-func gcasmLNgcasmFwdFn8716(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn8716(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8716(a0, a1, a2)
+func gcasmFwdFn8708(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8708(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn872 github.com/goccy/spidermonkeywasm2go/p6.Fn872
@@ -9168,46 +8139,39 @@ func gcasmFwdFn872(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int32) int3
 	return gcasmLNgcasmFwdFn872(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8723 github.com/goccy/spidermonkeywasm2go/p7.Fn8723
-func gcasmLNgcasmFwdFn8723(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn8726 github.com/goccy/spidermonkeywasm2go/p7.Fn8726
+func gcasmLNgcasmFwdFn8726(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn8723(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn8723(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8726 github.com/goccy/spidermonkeywasm2go/p6.Fn8726
-func gcasmLNgcasmFwdFn8726(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn8726(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn8726(a0, a1, a2, a3)
+func gcasmFwdFn8726(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn8726(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn8729 github.com/goccy/spidermonkeywasm2go/p6.Fn8729
-func gcasmLNgcasmFwdFn8729(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn8729(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn8729(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8729(a0, a1, a2)
+func gcasmFwdFn8729(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn8729(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8754 github.com/goccy/spidermonkeywasm2go/p5.Fn8754
-func gcasmLNgcasmFwdFn8754(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8732 github.com/goccy/spidermonkeywasm2go/p6.Fn8732
+func gcasmLNgcasmFwdFn8732(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn8754(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8754(a0, a1, a2, a3)
+func gcasmFwdFn8732(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8732(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8755 github.com/goccy/spidermonkeywasm2go/p7.Fn8755
-func gcasmLNgcasmFwdFn8755(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn8757 github.com/goccy/spidermonkeywasm2go/p5.Fn8757
+func gcasmLNgcasmFwdFn8757(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn8755(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn8755(a0, a1, a2, a3)
+func gcasmFwdFn8757(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8757(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8758 github.com/goccy/spidermonkeywasm2go/p6.Fn8758
-func gcasmLNgcasmFwdFn8758(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn8758 github.com/goccy/spidermonkeywasm2go/p7.Fn8758
+func gcasmLNgcasmFwdFn8758(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn8758(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8758(a0, a1, a2, a3, a4)
+func gcasmFwdFn8758(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn8758(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn876 github.com/goccy/spidermonkeywasm2go/p6.Fn876
@@ -9217,11 +8181,18 @@ func gcasmFwdFn876(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 i
 	gcasmLNgcasmFwdFn876(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8761 github.com/goccy/spidermonkeywasm2go/p7.Fn8761
-func gcasmLNgcasmFwdFn8761(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8761 github.com/goccy/spidermonkeywasm2go/p6.Fn8761
+func gcasmLNgcasmFwdFn8761(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn8761(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn8761(a0, a1, a2, a3)
+func gcasmFwdFn8761(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8761(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn8764 github.com/goccy/spidermonkeywasm2go/p7.Fn8764
+func gcasmLNgcasmFwdFn8764(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn8764(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn8764(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn877 github.com/goccy/spidermonkeywasm2go/p6.Fn877
@@ -9259,11 +8230,11 @@ func gcasmFwdFn883(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int3
 	return gcasmLNgcasmFwdFn883(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8833 github.com/goccy/spidermonkeywasm2go/p7.Fn8833
-func gcasmLNgcasmFwdFn8833(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn8836 github.com/goccy/spidermonkeywasm2go/p7.Fn8836
+func gcasmLNgcasmFwdFn8836(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn8833(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn8833(a0, a1, a2, a3, a4)
+func gcasmFwdFn8836(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn8836(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn884 github.com/goccy/spidermonkeywasm2go/p0.Fn884
@@ -9280,18 +8251,18 @@ func gcasmFwdFn885(a0 *base.Module, a1 int32, a2 int32, a3 int64, a4 int64, a5 i
 	return gcasmLNgcasmFwdFn885(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8868 github.com/goccy/spidermonkeywasm2go/p6.Fn8868
-func gcasmLNgcasmFwdFn8868(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8871 github.com/goccy/spidermonkeywasm2go/p6.Fn8871
+func gcasmLNgcasmFwdFn8871(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn8868(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn8868(a0, a1, a2, a3, a4)
+func gcasmFwdFn8871(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn8871(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn8914 github.com/goccy/spidermonkeywasm2go/p6.Fn8914
-func gcasmLNgcasmFwdFn8914(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8917 github.com/goccy/spidermonkeywasm2go/p6.Fn8917
+func gcasmLNgcasmFwdFn8917(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn8914(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn8914(a0, a1)
+func gcasmFwdFn8917(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn8917(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn893 github.com/goccy/spidermonkeywasm2go/p6.Fn893
@@ -9315,18 +8286,11 @@ func gcasmFwdFn896(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn896(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn898 github.com/goccy/spidermonkeywasm2go/p7.Fn898
-func gcasmLNgcasmFwdFn898(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn8997 github.com/goccy/spidermonkeywasm2go/p7.Fn8997
+func gcasmLNgcasmFwdFn8997(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn898(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn898(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn8994 github.com/goccy/spidermonkeywasm2go/p7.Fn8994
-func gcasmLNgcasmFwdFn8994(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn8994(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn8994(a0, a1, a2)
+func gcasmFwdFn8997(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn8997(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn900 github.com/goccy/spidermonkeywasm2go/p5.Fn900
@@ -9336,102 +8300,102 @@ func gcasmFwdFn900(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn900(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9010 github.com/goccy/spidermonkeywasm2go/p4.Fn9010
-func gcasmLNgcasmFwdFn9010(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9013 github.com/goccy/spidermonkeywasm2go/p4.Fn9013
+func gcasmLNgcasmFwdFn9013(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9010(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9010(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9025 github.com/goccy/spidermonkeywasm2go/p7.Fn9025
-func gcasmLNgcasmFwdFn9025(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn9025(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9025(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9026 github.com/goccy/spidermonkeywasm2go/p4.Fn9026
-func gcasmLNgcasmFwdFn9026(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn9026(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn9026(a0, a1, a2, a3)
+func gcasmFwdFn9013(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9013(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn9028 github.com/goccy/spidermonkeywasm2go/p7.Fn9028
-func gcasmLNgcasmFwdFn9028(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+func gcasmLNgcasmFwdFn9028(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9028(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn9028(a0, a1, a2, a3)
+func gcasmFwdFn9028(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9028(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9054 github.com/goccy/spidermonkeywasm2go/p6.Fn9054
-func gcasmLNgcasmFwdFn9054(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn9029 github.com/goccy/spidermonkeywasm2go/p4.Fn9029
+func gcasmLNgcasmFwdFn9029(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn9054(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9054(a0, a1)
+func gcasmFwdFn9029(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn9029(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9060 github.com/goccy/spidermonkeywasm2go/p6.Fn9060
-func gcasmLNgcasmFwdFn9060(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn9031 github.com/goccy/spidermonkeywasm2go/p7.Fn9031
+func gcasmLNgcasmFwdFn9031(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn9060(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9060(a0, a1, a2)
+func gcasmFwdFn9031(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn9031(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9068 github.com/goccy/spidermonkeywasm2go/p2.Fn9068
-func gcasmLNgcasmFwdFn9068(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9057 github.com/goccy/spidermonkeywasm2go/p6.Fn9057
+func gcasmLNgcasmFwdFn9057(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9068(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn9068(a0, a1, a2, a3, a4)
+func gcasmFwdFn9057(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9057(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9075 github.com/goccy/spidermonkeywasm2go/p4.Fn9075
-func gcasmLNgcasmFwdFn9075(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn9063 github.com/goccy/spidermonkeywasm2go/p6.Fn9063
+func gcasmLNgcasmFwdFn9063(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn9075(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn9075(a0, a1, a2, a3, a4)
+func gcasmFwdFn9063(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9063(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9076 github.com/goccy/spidermonkeywasm2go/p6.Fn9076
-func gcasmLNgcasmFwdFn9076(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9071 github.com/goccy/spidermonkeywasm2go/p2.Fn9071
+func gcasmLNgcasmFwdFn9071(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn9076(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9076(a0, a1, a2, a3)
+func gcasmFwdFn9071(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn9071(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9084 github.com/goccy/spidermonkeywasm2go/p5.Fn9084
-func gcasmLNgcasmFwdFn9084(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9078 github.com/goccy/spidermonkeywasm2go/p4.Fn9078
+func gcasmLNgcasmFwdFn9078(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn9084(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn9084(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn9078(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn9078(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9086 github.com/goccy/spidermonkeywasm2go/p4.Fn9086
-func gcasmLNgcasmFwdFn9086(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn9079 github.com/goccy/spidermonkeywasm2go/p6.Fn9079
+func gcasmLNgcasmFwdFn9079(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9086(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn9086(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn9079(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9079(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9098 github.com/goccy/spidermonkeywasm2go/p6.Fn9098
-func gcasmLNgcasmFwdFn9098(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9081 github.com/goccy/spidermonkeywasm2go/p5.Fn9081
+func gcasmLNgcasmFwdFn9081(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9098(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn9098(a0, a1)
+func gcasmFwdFn9081(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9081(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9100 github.com/goccy/spidermonkeywasm2go/p2.Fn9100
-func gcasmLNgcasmFwdFn9100(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn9087 github.com/goccy/spidermonkeywasm2go/p5.Fn9087
+func gcasmLNgcasmFwdFn9087(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn9100(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn9100(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn9087(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn9087(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9103 github.com/goccy/spidermonkeywasm2go/p5.Fn9103
-func gcasmLNgcasmFwdFn9103(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9089 github.com/goccy/spidermonkeywasm2go/p4.Fn9089
+func gcasmLNgcasmFwdFn9089(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
 
-func gcasmFwdFn9103(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn9103(a0, a1, a2, a3)
+func gcasmFwdFn9089(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
+	gcasmLNgcasmFwdFn9089(a0, a1, a2, a3, a4, a5, a6)
+}
+
+//go:linkname gcasmLNgcasmFwdFn9103 github.com/goccy/spidermonkeywasm2go/p2.Fn9103
+func gcasmLNgcasmFwdFn9103(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+
+func gcasmFwdFn9103(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn9103(a0, a1, a2, a3, a4, a5)
+}
+
+//go:linkname gcasmLNgcasmFwdFn9106 github.com/goccy/spidermonkeywasm2go/p5.Fn9106
+func gcasmLNgcasmFwdFn9106(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn9106(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn9106(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn912 github.com/goccy/spidermonkeywasm2go/p6.Fn912
@@ -9441,60 +8405,46 @@ func gcasmFwdFn912(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn912(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9125 github.com/goccy/spidermonkeywasm2go/p6.Fn9125
-func gcasmLNgcasmFwdFn9125(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn9128 github.com/goccy/spidermonkeywasm2go/p6.Fn9128
+func gcasmLNgcasmFwdFn9128(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9125(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9125(a0, a1)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9126 github.com/goccy/spidermonkeywasm2go/p5.Fn9126
-func gcasmLNgcasmFwdFn9126(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn9126(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9126(a0, a1, a2)
+func gcasmFwdFn9128(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9128(a0, a1)
 }
 
 //go:linkname gcasmLNgcasmFwdFn9129 github.com/goccy/spidermonkeywasm2go/p5.Fn9129
-func gcasmLNgcasmFwdFn9129(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn9129(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn9129(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9129(a0, a1, a2, a3)
+func gcasmFwdFn9129(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9129(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9133 github.com/goccy/spidermonkeywasm2go/p6.Fn9133
-func gcasmLNgcasmFwdFn9133(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9132 github.com/goccy/spidermonkeywasm2go/p5.Fn9132
+func gcasmLNgcasmFwdFn9132(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9133(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9133(a0, a1, a2)
+func gcasmFwdFn9132(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9132(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9135 github.com/goccy/spidermonkeywasm2go/p6.Fn9135
-func gcasmLNgcasmFwdFn9135(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9136 github.com/goccy/spidermonkeywasm2go/p6.Fn9136
+func gcasmLNgcasmFwdFn9136(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9135(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9135(a0, a1, a2, a3)
+func gcasmFwdFn9136(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9136(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9140 github.com/goccy/spidermonkeywasm2go/p6.Fn9140
-func gcasmLNgcasmFwdFn9140(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9138 github.com/goccy/spidermonkeywasm2go/p6.Fn9138
+func gcasmLNgcasmFwdFn9138(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9140(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn9140(a0, a1, a2, a3)
+func gcasmFwdFn9138(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9138(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9176 github.com/goccy/spidermonkeywasm2go/p7.Fn9176
-func gcasmLNgcasmFwdFn9176(a0 *base.Module, a1 int32, a2 int32) int64
+//go:linkname gcasmLNgcasmFwdFn9143 github.com/goccy/spidermonkeywasm2go/p6.Fn9143
+func gcasmLNgcasmFwdFn9143(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn9176(a0 *base.Module, a1 int32, a2 int32) int64 {
-	return gcasmLNgcasmFwdFn9176(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9177 github.com/goccy/spidermonkeywasm2go/p6.Fn9177
-func gcasmLNgcasmFwdFn9177(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
-
-func gcasmFwdFn9177(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
-	gcasmLNgcasmFwdFn9177(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn9143(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn9143(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn924 github.com/goccy/spidermonkeywasm2go/p6.Fn924
@@ -9504,67 +8454,39 @@ func gcasmFwdFn924(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdFn924(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9273 github.com/goccy/spidermonkeywasm2go/p6.Fn9273
-func gcasmLNgcasmFwdFn9273(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn9273(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn9273(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9290 github.com/goccy/spidermonkeywasm2go/p6.Fn9290
-func gcasmLNgcasmFwdFn9290(a0 *base.Module, a1 int32, a2 int32)
-
-func gcasmFwdFn9290(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9290(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9291 github.com/goccy/spidermonkeywasm2go/p6.Fn9291
-func gcasmLNgcasmFwdFn9291(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
-
-func gcasmFwdFn9291(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn9291(a0, a1, a2, a3, a4, a5)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9292 github.com/goccy/spidermonkeywasm2go/p5.Fn9292
-func gcasmLNgcasmFwdFn9292(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
-
-func gcasmFwdFn9292(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn9292(a0, a1, a2, a3, a4)
-}
-
 //go:linkname gcasmLNgcasmFwdFn9293 github.com/goccy/spidermonkeywasm2go/p6.Fn9293
-func gcasmLNgcasmFwdFn9293(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+func gcasmLNgcasmFwdFn9293(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn9293(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn9293(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn9293(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9293(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9295 github.com/goccy/spidermonkeywasm2go/p6.Fn9295
+//go:linkname gcasmLNgcasmFwdFn9294 github.com/goccy/spidermonkeywasm2go/p6.Fn9294
+func gcasmLNgcasmFwdFn9294(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+
+func gcasmFwdFn9294(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn9294(a0, a1, a2, a3, a4, a5)
+}
+
+//go:linkname gcasmLNgcasmFwdFn9295 github.com/goccy/spidermonkeywasm2go/p5.Fn9295
 func gcasmLNgcasmFwdFn9295(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
 func gcasmFwdFn9295(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
 	return gcasmLNgcasmFwdFn9295(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9297 github.com/goccy/spidermonkeywasm2go/p6.Fn9297
-func gcasmLNgcasmFwdFn9297(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9296 github.com/goccy/spidermonkeywasm2go/p6.Fn9296
+func gcasmLNgcasmFwdFn9296(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
 
-func gcasmFwdFn9297(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9297(a0, a1, a2)
+func gcasmFwdFn9296(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
+	return gcasmLNgcasmFwdFn9296(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
 //go:linkname gcasmLNgcasmFwdFn9298 github.com/goccy/spidermonkeywasm2go/p6.Fn9298
-func gcasmLNgcasmFwdFn9298(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+func gcasmLNgcasmFwdFn9298(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn9298(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9298(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9299 github.com/goccy/spidermonkeywasm2go/p7.Fn9299
-func gcasmLNgcasmFwdFn9299(a0 *base.Module, a1 int32) int32
-
-func gcasmFwdFn9299(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn9299(a0, a1)
+func gcasmFwdFn9298(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn9298(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdFn9300 github.com/goccy/spidermonkeywasm2go/p6.Fn9300
@@ -9574,179 +8496,193 @@ func gcasmFwdFn9300(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdFn9300(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9301 github.com/goccy/spidermonkeywasm2go/p7.Fn9301
-func gcasmLNgcasmFwdFn9301(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9301 github.com/goccy/spidermonkeywasm2go/p6.Fn9301
+func gcasmLNgcasmFwdFn9301(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9301(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9301(a0, a1, a2)
+func gcasmFwdFn9301(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9301(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9305 github.com/goccy/spidermonkeywasm2go/p5.Fn9305
-func gcasmLNgcasmFwdFn9305(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn9302 github.com/goccy/spidermonkeywasm2go/p7.Fn9302
+func gcasmLNgcasmFwdFn9302(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn9305(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9305(a0, a1, a2)
+func gcasmFwdFn9302(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn9302(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9308 github.com/goccy/spidermonkeywasm2go/p6.Fn9308
-func gcasmLNgcasmFwdFn9308(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9303 github.com/goccy/spidermonkeywasm2go/p6.Fn9303
+func gcasmLNgcasmFwdFn9303(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9308(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9308(a0, a1, a2)
+func gcasmFwdFn9303(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9303(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9309 github.com/goccy/spidermonkeywasm2go/p6.Fn9309
-func gcasmLNgcasmFwdFn9309(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn9304 github.com/goccy/spidermonkeywasm2go/p7.Fn9304
+func gcasmLNgcasmFwdFn9304(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9309(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9309(a0, a1, a2)
+func gcasmFwdFn9304(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9304(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9310 github.com/goccy/spidermonkeywasm2go/p5.Fn9310
-func gcasmLNgcasmFwdFn9310(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn9308 github.com/goccy/spidermonkeywasm2go/p5.Fn9308
+func gcasmLNgcasmFwdFn9308(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn9310(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9310(a0, a1)
+func gcasmFwdFn9308(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9308(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn9311 github.com/goccy/spidermonkeywasm2go/p6.Fn9311
-func gcasmLNgcasmFwdFn9311(a0 *base.Module, a1 int32, a2 int64)
+func gcasmLNgcasmFwdFn9311(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9311(a0 *base.Module, a1 int32, a2 int64) {
-	gcasmLNgcasmFwdFn9311(a0, a1, a2)
+func gcasmFwdFn9311(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9311(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9312 github.com/goccy/spidermonkeywasm2go/p5.Fn9312
-func gcasmLNgcasmFwdFn9312(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9312 github.com/goccy/spidermonkeywasm2go/p6.Fn9312
+func gcasmLNgcasmFwdFn9312(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn9312(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn9312(a0, a1, a2, a3)
+func gcasmFwdFn9312(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9312(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9316 github.com/goccy/spidermonkeywasm2go/p6.Fn9316
-func gcasmLNgcasmFwdFn9316(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn9313 github.com/goccy/spidermonkeywasm2go/p5.Fn9313
+func gcasmLNgcasmFwdFn9313(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9316(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9316(a0, a1, a2)
+func gcasmFwdFn9313(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9313(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9318 github.com/goccy/spidermonkeywasm2go/p5.Fn9318
-func gcasmLNgcasmFwdFn9318(a0 *base.Module, a1 int32) float64
+//go:linkname gcasmLNgcasmFwdFn9314 github.com/goccy/spidermonkeywasm2go/p6.Fn9314
+func gcasmLNgcasmFwdFn9314(a0 *base.Module, a1 int32, a2 int64)
 
-func gcasmFwdFn9318(a0 *base.Module, a1 int32) float64 {
-	return gcasmLNgcasmFwdFn9318(a0, a1)
+func gcasmFwdFn9314(a0 *base.Module, a1 int32, a2 int64) {
+	gcasmLNgcasmFwdFn9314(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9323 github.com/goccy/spidermonkeywasm2go/p6.Fn9323
-func gcasmLNgcasmFwdFn9323(a0 *base.Module, a1 int32, a2 float64)
+//go:linkname gcasmLNgcasmFwdFn9315 github.com/goccy/spidermonkeywasm2go/p5.Fn9315
+func gcasmLNgcasmFwdFn9315(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn9323(a0 *base.Module, a1 int32, a2 float64) {
-	gcasmLNgcasmFwdFn9323(a0, a1, a2)
+func gcasmFwdFn9315(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn9315(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9324 github.com/goccy/spidermonkeywasm2go/p6.Fn9324
-func gcasmLNgcasmFwdFn9324(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn9319 github.com/goccy/spidermonkeywasm2go/p6.Fn9319
+func gcasmLNgcasmFwdFn9319(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn9324(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn9324(a0, a1, a2, a3, a4)
+func gcasmFwdFn9319(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9319(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9325 github.com/goccy/spidermonkeywasm2go/p6.Fn9325
-func gcasmLNgcasmFwdFn9325(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9321 github.com/goccy/spidermonkeywasm2go/p5.Fn9321
+func gcasmLNgcasmFwdFn9321(a0 *base.Module, a1 int32) float64
 
-func gcasmFwdFn9325(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn9325(a0, a1, a2, a3)
+func gcasmFwdFn9321(a0 *base.Module, a1 int32) float64 {
+	return gcasmLNgcasmFwdFn9321(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9327 github.com/goccy/spidermonkeywasm2go/p7.Fn9327
-func gcasmLNgcasmFwdFn9327(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn9326 github.com/goccy/spidermonkeywasm2go/p6.Fn9326
+func gcasmLNgcasmFwdFn9326(a0 *base.Module, a1 int32, a2 float64)
 
-func gcasmFwdFn9327(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9327(a0, a1, a2)
+func gcasmFwdFn9326(a0 *base.Module, a1 int32, a2 float64) {
+	gcasmLNgcasmFwdFn9326(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9329 github.com/goccy/spidermonkeywasm2go/p6.Fn9329
-func gcasmLNgcasmFwdFn9329(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn9327 github.com/goccy/spidermonkeywasm2go/p6.Fn9327
+func gcasmLNgcasmFwdFn9327(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn9329(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9329(a0, a1, a2)
+func gcasmFwdFn9327(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn9327(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9330 github.com/goccy/spidermonkeywasm2go/p6.Fn9330
+//go:linkname gcasmLNgcasmFwdFn9328 github.com/goccy/spidermonkeywasm2go/p6.Fn9328
+func gcasmLNgcasmFwdFn9328(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+
+func gcasmFwdFn9328(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn9328(a0, a1, a2, a3)
+}
+
+//go:linkname gcasmLNgcasmFwdFn9330 github.com/goccy/spidermonkeywasm2go/p7.Fn9330
 func gcasmLNgcasmFwdFn9330(a0 *base.Module, a1 int32, a2 int32)
 
 func gcasmFwdFn9330(a0 *base.Module, a1 int32, a2 int32) {
 	gcasmLNgcasmFwdFn9330(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9332 github.com/goccy/spidermonkeywasm2go/p5.Fn9332
-func gcasmLNgcasmFwdFn9332(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9332 github.com/goccy/spidermonkeywasm2go/p6.Fn9332
+func gcasmLNgcasmFwdFn9332(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn9332(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn9332(a0, a1, a2, a3)
+func gcasmFwdFn9332(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9332(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9336 github.com/goccy/spidermonkeywasm2go/p6.Fn9336
-func gcasmLNgcasmFwdFn9336(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9333 github.com/goccy/spidermonkeywasm2go/p6.Fn9333
+func gcasmLNgcasmFwdFn9333(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn9336(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn9336(a0, a1)
+func gcasmFwdFn9333(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9333(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9338 github.com/goccy/spidermonkeywasm2go/p5.Fn9338
-func gcasmLNgcasmFwdFn9338(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9335 github.com/goccy/spidermonkeywasm2go/p5.Fn9335
+func gcasmLNgcasmFwdFn9335(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn9338(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn9338(a0, a1)
+func gcasmFwdFn9335(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn9335(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9340 github.com/goccy/spidermonkeywasm2go/p5.Fn9340
-func gcasmLNgcasmFwdFn9340(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn9339 github.com/goccy/spidermonkeywasm2go/p6.Fn9339
+func gcasmLNgcasmFwdFn9339(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn9340(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9340(a0, a1)
+func gcasmFwdFn9339(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn9339(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9346 github.com/goccy/spidermonkeywasm2go/p1.Fn9346
-func gcasmLNgcasmFwdFn9346(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9343 github.com/goccy/spidermonkeywasm2go/p5.Fn9343
+func gcasmLNgcasmFwdFn9343(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9346(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn9346(a0, a1, a2, a3, a4)
+func gcasmFwdFn9343(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9343(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9347 github.com/goccy/spidermonkeywasm2go/p4.Fn9347
-func gcasmLNgcasmFwdFn9347(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9349 github.com/goccy/spidermonkeywasm2go/p1.Fn9349
+func gcasmLNgcasmFwdFn9349(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn9347(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
-	return gcasmLNgcasmFwdFn9347(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn9349(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn9349(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9356 github.com/goccy/spidermonkeywasm2go/p4.Fn9356
-func gcasmLNgcasmFwdFn9356(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn9350 github.com/goccy/spidermonkeywasm2go/p4.Fn9350
+func gcasmLNgcasmFwdFn9350(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32
 
-func gcasmFwdFn9356(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9356(a0, a1, a2)
+func gcasmFwdFn9350(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) int32 {
+	return gcasmLNgcasmFwdFn9350(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9359 github.com/goccy/spidermonkeywasm2go/p7.Fn9359
-func gcasmLNgcasmFwdFn9359(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn9359 github.com/goccy/spidermonkeywasm2go/p4.Fn9359
+func gcasmLNgcasmFwdFn9359(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn9359(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9359(a0, a1)
+func gcasmFwdFn9359(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9359(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9381 github.com/goccy/spidermonkeywasm2go/p6.Fn9381
-func gcasmLNgcasmFwdFn9381(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9362 github.com/goccy/spidermonkeywasm2go/p7.Fn9362
+func gcasmLNgcasmFwdFn9362(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9381(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn9381(a0, a1, a2, a3, a4)
+func gcasmFwdFn9362(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9362(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9382 github.com/goccy/spidermonkeywasm2go/p6.Fn9382
-func gcasmLNgcasmFwdFn9382(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn9384 github.com/goccy/spidermonkeywasm2go/p6.Fn9384
+func gcasmLNgcasmFwdFn9384(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn9382(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9382(a0, a1, a2)
+func gcasmFwdFn9384(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn9384(a0, a1, a2, a3, a4)
+}
+
+//go:linkname gcasmLNgcasmFwdFn9385 github.com/goccy/spidermonkeywasm2go/p6.Fn9385
+func gcasmLNgcasmFwdFn9385(a0 *base.Module, a1 int32, a2 int32)
+
+func gcasmFwdFn9385(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9385(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn940 github.com/goccy/spidermonkeywasm2go/p7.Fn940
@@ -9763,403 +8699,347 @@ func gcasmFwdFn941(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 i
 	return gcasmLNgcasmFwdFn941(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9437 github.com/goccy/spidermonkeywasm2go/p5.Fn9437
-func gcasmLNgcasmFwdFn9437(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9440 github.com/goccy/spidermonkeywasm2go/p5.Fn9440
+func gcasmLNgcasmFwdFn9440(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9437(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9437(a0, a1, a2)
+func gcasmFwdFn9440(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9440(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9487 github.com/goccy/spidermonkeywasm2go/p4.Fn9487
-func gcasmLNgcasmFwdFn9487(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9490 github.com/goccy/spidermonkeywasm2go/p4.Fn9490
+func gcasmLNgcasmFwdFn9490(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9487(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9487(a0, a1, a2, a3)
+func gcasmFwdFn9490(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9490(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9498 github.com/goccy/spidermonkeywasm2go/p5.Fn9498
-func gcasmLNgcasmFwdFn9498(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9501 github.com/goccy/spidermonkeywasm2go/p5.Fn9501
+func gcasmLNgcasmFwdFn9501(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9498(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9498(a0, a1, a2)
+func gcasmFwdFn9501(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9501(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9499 github.com/goccy/spidermonkeywasm2go/p5.Fn9499
-func gcasmLNgcasmFwdFn9499(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn9502 github.com/goccy/spidermonkeywasm2go/p5.Fn9502
+func gcasmLNgcasmFwdFn9502(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9499(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9499(a0, a1)
+func gcasmFwdFn9502(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9502(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9515 github.com/goccy/spidermonkeywasm2go/p6.Fn9515
-func gcasmLNgcasmFwdFn9515(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9518 github.com/goccy/spidermonkeywasm2go/p6.Fn9518
+func gcasmLNgcasmFwdFn9518(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn9515(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn9515(a0, a1)
+func gcasmFwdFn9518(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn9518(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9519 github.com/goccy/spidermonkeywasm2go/p5.Fn9519
-func gcasmLNgcasmFwdFn9519(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9522 github.com/goccy/spidermonkeywasm2go/p5.Fn9522
+func gcasmLNgcasmFwdFn9522(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn9519(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn9519(a0, a1, a2, a3)
+func gcasmFwdFn9522(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn9522(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9520 github.com/goccy/spidermonkeywasm2go/p7.Fn9520
-func gcasmLNgcasmFwdFn9520(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9523 github.com/goccy/spidermonkeywasm2go/p7.Fn9523
+func gcasmLNgcasmFwdFn9523(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9520(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9520(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9522 github.com/goccy/spidermonkeywasm2go/p6.Fn9522
-func gcasmLNgcasmFwdFn9522(a0 *base.Module, a1 int32, a2 int32, a3 int32)
-
-func gcasmFwdFn9522(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9522(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9523 github.com/goccy/spidermonkeywasm2go/p6.Fn9523
-func gcasmLNgcasmFwdFn9523(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
-
-func gcasmFwdFn9523(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn9523(a0, a1, a2, a3, a4)
+func gcasmFwdFn9523(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9523(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn9525 github.com/goccy/spidermonkeywasm2go/p6.Fn9525
-func gcasmLNgcasmFwdFn9525(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn9525(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9525(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9525(a0, a1, a2)
+func gcasmFwdFn9525(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9525(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9527 github.com/goccy/spidermonkeywasm2go/p5.Fn9527
-func gcasmLNgcasmFwdFn9527(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9526 github.com/goccy/spidermonkeywasm2go/p6.Fn9526
+func gcasmLNgcasmFwdFn9526(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn9527(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn9527(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn9526(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn9526(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9533 github.com/goccy/spidermonkeywasm2go/p5.Fn9533
-func gcasmLNgcasmFwdFn9533(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9530 github.com/goccy/spidermonkeywasm2go/p5.Fn9530
+func gcasmLNgcasmFwdFn9530(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn9533(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9533(a0, a1, a2)
+func gcasmFwdFn9530(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn9530(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9536 github.com/goccy/spidermonkeywasm2go/p6.Fn9536
-func gcasmLNgcasmFwdFn9536(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9536 github.com/goccy/spidermonkeywasm2go/p5.Fn9536
+func gcasmLNgcasmFwdFn9536(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9536(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn9536(a0, a1, a2, a3, a4)
+func gcasmFwdFn9536(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9536(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9552 github.com/goccy/spidermonkeywasm2go/p5.Fn9552
-func gcasmLNgcasmFwdFn9552(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn9539 github.com/goccy/spidermonkeywasm2go/p6.Fn9539
+func gcasmLNgcasmFwdFn9539(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn9552(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn9552(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn9539(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn9539(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9571 github.com/goccy/spidermonkeywasm2go/p7.Fn9571
-func gcasmLNgcasmFwdFn9571(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9555 github.com/goccy/spidermonkeywasm2go/p5.Fn9555
+func gcasmLNgcasmFwdFn9555(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
 
-func gcasmFwdFn9571(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn9571(a0, a1)
+func gcasmFwdFn9555(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn9555(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9575 github.com/goccy/spidermonkeywasm2go/p6.Fn9575
-func gcasmLNgcasmFwdFn9575(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9574 github.com/goccy/spidermonkeywasm2go/p7.Fn9574
+func gcasmLNgcasmFwdFn9574(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn9575(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn9575(a0, a1)
+func gcasmFwdFn9574(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn9574(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9577 github.com/goccy/spidermonkeywasm2go/p5.Fn9577
-func gcasmLNgcasmFwdFn9577(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9578 github.com/goccy/spidermonkeywasm2go/p6.Fn9578
+func gcasmLNgcasmFwdFn9578(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn9577(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
-	return gcasmLNgcasmFwdFn9577(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn9578(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn9578(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9607 github.com/goccy/spidermonkeywasm2go/p6.Fn9607
-func gcasmLNgcasmFwdFn9607(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9580 github.com/goccy/spidermonkeywasm2go/p5.Fn9580
+func gcasmLNgcasmFwdFn9580(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32
 
-func gcasmFwdFn9607(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9607(a0, a1, a2, a3)
+func gcasmFwdFn9580(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) int32 {
+	return gcasmLNgcasmFwdFn9580(a0, a1, a2, a3, a4, a5, a6)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9620 github.com/goccy/spidermonkeywasm2go/p6.Fn9620
-func gcasmLNgcasmFwdFn9620(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9610 github.com/goccy/spidermonkeywasm2go/p6.Fn9610
+func gcasmLNgcasmFwdFn9610(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9620(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9620(a0, a1, a2, a3)
+func gcasmFwdFn9610(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9610(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9621 github.com/goccy/spidermonkeywasm2go/p6.Fn9621
-func gcasmLNgcasmFwdFn9621(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9623 github.com/goccy/spidermonkeywasm2go/p6.Fn9623
+func gcasmLNgcasmFwdFn9623(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9621(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9621(a0, a1, a2, a3)
+func gcasmFwdFn9623(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9623(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9626 github.com/goccy/spidermonkeywasm2go/p5.Fn9626
-func gcasmLNgcasmFwdFn9626(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32)
+//go:linkname gcasmLNgcasmFwdFn9624 github.com/goccy/spidermonkeywasm2go/p6.Fn9624
+func gcasmLNgcasmFwdFn9624(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9626(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) {
-	gcasmLNgcasmFwdFn9626(a0, a1, a2, a3, a4, a5, a6, a7, a8)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9627 github.com/goccy/spidermonkeywasm2go/p7.Fn9627
-func gcasmLNgcasmFwdFn9627(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn9627(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9627(a0, a1, a2)
+func gcasmFwdFn9624(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9624(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdFn9629 github.com/goccy/spidermonkeywasm2go/p5.Fn9629
-func gcasmLNgcasmFwdFn9629(a0 *base.Module, a1 int32)
+func gcasmLNgcasmFwdFn9629(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32)
 
-func gcasmFwdFn9629(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9629(a0, a1)
+func gcasmFwdFn9629(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32, a8 int32) {
+	gcasmLNgcasmFwdFn9629(a0, a1, a2, a3, a4, a5, a6, a7, a8)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9635 github.com/goccy/spidermonkeywasm2go/p5.Fn9635
-func gcasmLNgcasmFwdFn9635(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9630 github.com/goccy/spidermonkeywasm2go/p7.Fn9630
+func gcasmLNgcasmFwdFn9630(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9635(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9635(a0, a1, a2, a3)
+func gcasmFwdFn9630(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9630(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9646 github.com/goccy/spidermonkeywasm2go/p1.Fn9646
-func gcasmLNgcasmFwdFn9646(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn9632 github.com/goccy/spidermonkeywasm2go/p5.Fn9632
+func gcasmLNgcasmFwdFn9632(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9646(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn9646(a0, a1, a2, a3, a4)
+func gcasmFwdFn9632(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9632(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9654 github.com/goccy/spidermonkeywasm2go/p6.Fn9654
-func gcasmLNgcasmFwdFn9654(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9638 github.com/goccy/spidermonkeywasm2go/p5.Fn9638
+func gcasmLNgcasmFwdFn9638(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9654(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn9654(a0, a1, a2, a3, a4)
+func gcasmFwdFn9638(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9638(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9673 github.com/goccy/spidermonkeywasm2go/p7.Fn9673
-func gcasmLNgcasmFwdFn9673(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9649 github.com/goccy/spidermonkeywasm2go/p1.Fn9649
+func gcasmLNgcasmFwdFn9649(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn9673(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9673(a0, a1, a2)
+func gcasmFwdFn9649(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn9649(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9686 github.com/goccy/spidermonkeywasm2go/p6.Fn9686
-func gcasmLNgcasmFwdFn9686(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9657 github.com/goccy/spidermonkeywasm2go/p6.Fn9657
+func gcasmLNgcasmFwdFn9657(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn9686(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn9686(a0, a1, a2, a3, a4)
+func gcasmFwdFn9657(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn9657(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9691 github.com/goccy/spidermonkeywasm2go/p4.Fn9691
-func gcasmLNgcasmFwdFn9691(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32)
+//go:linkname gcasmLNgcasmFwdFn9676 github.com/goccy/spidermonkeywasm2go/p7.Fn9676
+func gcasmLNgcasmFwdFn9676(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9691(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32) {
-	gcasmLNgcasmFwdFn9691(a0, a1, a2, a3, a4, a5, a6)
+func gcasmFwdFn9676(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9676(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9692 github.com/goccy/spidermonkeywasm2go/p4.Fn9692
-func gcasmLNgcasmFwdFn9692(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn9689 github.com/goccy/spidermonkeywasm2go/p6.Fn9689
+func gcasmLNgcasmFwdFn9689(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdFn9692(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn9692(a0, a1, a2, a3, a4)
+func gcasmFwdFn9689(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn9689(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9696 github.com/goccy/spidermonkeywasm2go/p6.Fn9696
-func gcasmLNgcasmFwdFn9696(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn9695 github.com/goccy/spidermonkeywasm2go/p4.Fn9695
+func gcasmLNgcasmFwdFn9695(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn9696(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn9696(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn9695(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn9695(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9697 github.com/goccy/spidermonkeywasm2go/p5.Fn9697
-func gcasmLNgcasmFwdFn9697(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9702 github.com/goccy/spidermonkeywasm2go/p7.Fn9702
+func gcasmLNgcasmFwdFn9702(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9697(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) int32 {
-	return gcasmLNgcasmFwdFn9697(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn9702(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9702(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9699 github.com/goccy/spidermonkeywasm2go/p7.Fn9699
-func gcasmLNgcasmFwdFn9699(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn9704 github.com/goccy/spidermonkeywasm2go/p5.Fn9704
+func gcasmLNgcasmFwdFn9704(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 int32, a5 int32)
 
-func gcasmFwdFn9699(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9699(a0, a1)
+func gcasmFwdFn9704(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 int32, a5 int32) {
+	gcasmLNgcasmFwdFn9704(a0, a1, a2, a3, a4, a5)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9701 github.com/goccy/spidermonkeywasm2go/p5.Fn9701
-func gcasmLNgcasmFwdFn9701(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 int32, a5 int32)
+//go:linkname gcasmLNgcasmFwdFn9705 github.com/goccy/spidermonkeywasm2go/p6.Fn9705
+func gcasmLNgcasmFwdFn9705(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
 
-func gcasmFwdFn9701(a0 *base.Module, a1 int32, a2 float64, a3 float64, a4 int32, a5 int32) {
-	gcasmLNgcasmFwdFn9701(a0, a1, a2, a3, a4, a5)
+func gcasmFwdFn9705(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
+	gcasmLNgcasmFwdFn9705(a0, a1, a2, a3, a4, a5, a6, a7)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9702 github.com/goccy/spidermonkeywasm2go/p6.Fn9702
-func gcasmLNgcasmFwdFn9702(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32)
+//go:linkname gcasmLNgcasmFwdFn9706 github.com/goccy/spidermonkeywasm2go/p7.Fn9706
+func gcasmLNgcasmFwdFn9706(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9702(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32, a5 int32, a6 int32, a7 int32) {
-	gcasmLNgcasmFwdFn9702(a0, a1, a2, a3, a4, a5, a6, a7)
+func gcasmFwdFn9706(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9706(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9703 github.com/goccy/spidermonkeywasm2go/p7.Fn9703
-func gcasmLNgcasmFwdFn9703(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn9708 github.com/goccy/spidermonkeywasm2go/p7.Fn9708
+func gcasmLNgcasmFwdFn9708(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9703(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9703(a0, a1)
+func gcasmFwdFn9708(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9708(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9705 github.com/goccy/spidermonkeywasm2go/p7.Fn9705
-func gcasmLNgcasmFwdFn9705(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn9713 github.com/goccy/spidermonkeywasm2go/p4.Fn9713
+func gcasmLNgcasmFwdFn9713(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9705(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9705(a0, a1)
+func gcasmFwdFn9713(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9713(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9710 github.com/goccy/spidermonkeywasm2go/p4.Fn9710
-func gcasmLNgcasmFwdFn9710(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9720 github.com/goccy/spidermonkeywasm2go/p6.Fn9720
+func gcasmLNgcasmFwdFn9720(a0 *base.Module, a1 int32)
 
-func gcasmFwdFn9710(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9710(a0, a1, a2)
+func gcasmFwdFn9720(a0 *base.Module, a1 int32) {
+	gcasmLNgcasmFwdFn9720(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9717 github.com/goccy/spidermonkeywasm2go/p6.Fn9717
-func gcasmLNgcasmFwdFn9717(a0 *base.Module, a1 int32)
+//go:linkname gcasmLNgcasmFwdFn9761 github.com/goccy/spidermonkeywasm2go/p6.Fn9761
+func gcasmLNgcasmFwdFn9761(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9717(a0 *base.Module, a1 int32) {
-	gcasmLNgcasmFwdFn9717(a0, a1)
+func gcasmFwdFn9761(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9761(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9758 github.com/goccy/spidermonkeywasm2go/p6.Fn9758
-func gcasmLNgcasmFwdFn9758(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9772 github.com/goccy/spidermonkeywasm2go/p7.Fn9772
+func gcasmLNgcasmFwdFn9772(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9758(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9758(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9767 github.com/goccy/spidermonkeywasm2go/p6.Fn9767
-func gcasmLNgcasmFwdFn9767(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn9767(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn9767(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9769 github.com/goccy/spidermonkeywasm2go/p7.Fn9769
-func gcasmLNgcasmFwdFn9769(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn9769(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9769(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9770 github.com/goccy/spidermonkeywasm2go/p7.Fn9770
-func gcasmLNgcasmFwdFn9770(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdFn9770(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdFn9770(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9771 github.com/goccy/spidermonkeywasm2go/p6.Fn9771
-func gcasmLNgcasmFwdFn9771(a0 *base.Module, a1 int32, a2 int32) int32
-
-func gcasmFwdFn9771(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9771(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdFn9772 github.com/goccy/spidermonkeywasm2go/p5.Fn9772
-func gcasmLNgcasmFwdFn9772(a0 *base.Module, a1 int32, a2 int32, a3 float64)
-
-func gcasmFwdFn9772(a0 *base.Module, a1 int32, a2 int32, a3 float64) {
-	gcasmLNgcasmFwdFn9772(a0, a1, a2, a3)
+func gcasmFwdFn9772(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9772(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdFn9773 github.com/goccy/spidermonkeywasm2go/p7.Fn9773
-func gcasmLNgcasmFwdFn9773(a0 *base.Module, a1 int32, a2 int32) int32
+func gcasmLNgcasmFwdFn9773(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
-func gcasmFwdFn9773(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9773(a0, a1, a2)
+func gcasmFwdFn9773(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
+	return gcasmLNgcasmFwdFn9773(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9852 github.com/goccy/spidermonkeywasm2go/p6.Fn9852
-func gcasmLNgcasmFwdFn9852(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9774 github.com/goccy/spidermonkeywasm2go/p6.Fn9774
+func gcasmLNgcasmFwdFn9774(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9852(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn9852(a0, a1)
+func gcasmFwdFn9774(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9774(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9853 github.com/goccy/spidermonkeywasm2go/p2.Fn9853
-func gcasmLNgcasmFwdFn9853(a0 *base.Module, a1 int32, a2 int32)
+//go:linkname gcasmLNgcasmFwdFn9775 github.com/goccy/spidermonkeywasm2go/p5.Fn9775
+func gcasmLNgcasmFwdFn9775(a0 *base.Module, a1 int32, a2 int32, a3 float64)
 
-func gcasmFwdFn9853(a0 *base.Module, a1 int32, a2 int32) {
-	gcasmLNgcasmFwdFn9853(a0, a1, a2)
+func gcasmFwdFn9775(a0 *base.Module, a1 int32, a2 int32, a3 float64) {
+	gcasmLNgcasmFwdFn9775(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9855 github.com/goccy/spidermonkeywasm2go/p7.Fn9855
-func gcasmLNgcasmFwdFn9855(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9776 github.com/goccy/spidermonkeywasm2go/p7.Fn9776
+func gcasmLNgcasmFwdFn9776(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9855(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9855(a0, a1, a2, a3)
+func gcasmFwdFn9776(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9776(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9944 github.com/goccy/spidermonkeywasm2go/p7.Fn9944
-func gcasmLNgcasmFwdFn9944(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9855 github.com/goccy/spidermonkeywasm2go/p6.Fn9855
+func gcasmLNgcasmFwdFn9855(a0 *base.Module, a1 int32) int32
 
-func gcasmFwdFn9944(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9944(a0, a1, a2)
+func gcasmFwdFn9855(a0 *base.Module, a1 int32) int32 {
+	return gcasmLNgcasmFwdFn9855(a0, a1)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9946 github.com/goccy/spidermonkeywasm2go/p7.Fn9946
-func gcasmLNgcasmFwdFn9946(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9856 github.com/goccy/spidermonkeywasm2go/p2.Fn9856
+func gcasmLNgcasmFwdFn9856(a0 *base.Module, a1 int32, a2 int32)
 
-func gcasmFwdFn9946(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9946(a0, a1, a2)
+func gcasmFwdFn9856(a0 *base.Module, a1 int32, a2 int32) {
+	gcasmLNgcasmFwdFn9856(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9958 github.com/goccy/spidermonkeywasm2go/p7.Fn9958
-func gcasmLNgcasmFwdFn9958(a0 *base.Module, a1 int32, a2 int32, a3 int32)
+//go:linkname gcasmLNgcasmFwdFn9858 github.com/goccy/spidermonkeywasm2go/p7.Fn9858
+func gcasmLNgcasmFwdFn9858(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9958(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
-	gcasmLNgcasmFwdFn9958(a0, a1, a2, a3)
+func gcasmFwdFn9858(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9858(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9959 github.com/goccy/spidermonkeywasm2go/p7.Fn9959
-func gcasmLNgcasmFwdFn9959(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
+//go:linkname gcasmLNgcasmFwdFn9947 github.com/goccy/spidermonkeywasm2go/p7.Fn9947
+func gcasmLNgcasmFwdFn9947(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9959(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
-	gcasmLNgcasmFwdFn9959(a0, a1, a2, a3, a4)
+func gcasmFwdFn9947(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9947(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9960 github.com/goccy/spidermonkeywasm2go/p6.Fn9960
-func gcasmLNgcasmFwdFn9960(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9949 github.com/goccy/spidermonkeywasm2go/p7.Fn9949
+func gcasmLNgcasmFwdFn9949(a0 *base.Module, a1 int32, a2 int32) int32
 
-func gcasmFwdFn9960(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdFn9960(a0, a1, a2)
+func gcasmFwdFn9949(a0 *base.Module, a1 int32, a2 int32) int32 {
+	return gcasmLNgcasmFwdFn9949(a0, a1, a2)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9973 github.com/goccy/spidermonkeywasm2go/p5.Fn9973
-func gcasmLNgcasmFwdFn9973(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9961 github.com/goccy/spidermonkeywasm2go/p7.Fn9961
+func gcasmLNgcasmFwdFn9961(a0 *base.Module, a1 int32, a2 int32, a3 int32)
 
-func gcasmFwdFn9973(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
-	return gcasmLNgcasmFwdFn9973(a0, a1, a2, a3, a4)
+func gcasmFwdFn9961(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
+	gcasmLNgcasmFwdFn9961(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdFn9999 github.com/goccy/spidermonkeywasm2go/p2.Fn9999
-func gcasmLNgcasmFwdFn9999(a0 *base.Module, a1 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9962 github.com/goccy/spidermonkeywasm2go/p7.Fn9962
+func gcasmLNgcasmFwdFn9962(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32)
 
-func gcasmFwdFn9999(a0 *base.Module, a1 int32) int32 {
-	return gcasmLNgcasmFwdFn9999(a0, a1)
+func gcasmFwdFn9962(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) {
+	gcasmLNgcasmFwdFn9962(a0, a1, a2, a3, a4)
 }
 
-//go:linkname gcasmLNgcasmFwdH_base_AtomicLoad32 github.com/goccy/spidermonkeywasm2go/base.AtomicLoad32
-func gcasmLNgcasmFwdH_base_AtomicLoad32(a0 *base.Module, a1 int32, a2 int32) int32
+//go:linkname gcasmLNgcasmFwdFn9976 github.com/goccy/spidermonkeywasm2go/p5.Fn9976
+func gcasmLNgcasmFwdFn9976(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32
 
-func gcasmFwdH_base_AtomicLoad32(a0 *base.Module, a1 int32, a2 int32) int32 {
-	return gcasmLNgcasmFwdH_base_AtomicLoad32(a0, a1, a2)
+func gcasmFwdFn9976(a0 *base.Module, a1 int32, a2 int32, a3 int32, a4 int32) int32 {
+	return gcasmLNgcasmFwdFn9976(a0, a1, a2, a3, a4)
 }
 
 //go:linkname gcasmLNgcasmFwdH_base_AtomicLoad32_8u github.com/goccy/spidermonkeywasm2go/base.AtomicLoad32_8u
@@ -10167,13 +9047,6 @@ func gcasmLNgcasmFwdH_base_AtomicLoad32_8u(a0 *base.Module, a1 int32, a2 int32) 
 
 func gcasmFwdH_base_AtomicLoad32_8u(a0 *base.Module, a1 int32, a2 int32) int32 {
 	return gcasmLNgcasmFwdH_base_AtomicLoad32_8u(a0, a1, a2)
-}
-
-//go:linkname gcasmLNgcasmFwdH_base_AtomicLoad64 github.com/goccy/spidermonkeywasm2go/base.AtomicLoad64
-func gcasmLNgcasmFwdH_base_AtomicLoad64(a0 *base.Module, a1 int32, a2 int32) int64
-
-func gcasmFwdH_base_AtomicLoad64(a0 *base.Module, a1 int32, a2 int32) int64 {
-	return gcasmLNgcasmFwdH_base_AtomicLoad64(a0, a1, a2)
 }
 
 //go:linkname gcasmLNgcasmFwdH_base_AtomicNotify github.com/goccy/spidermonkeywasm2go/base.AtomicNotify
@@ -10379,13 +9252,6 @@ func gcasmFwdH_base_AtomicRmwXor64(a0 *base.Module, a1 int32, a2 int32, a3 int64
 	return gcasmLNgcasmFwdH_base_AtomicRmwXor64(a0, a1, a2, a3)
 }
 
-//go:linkname gcasmLNgcasmFwdH_base_AtomicStore32 github.com/goccy/spidermonkeywasm2go/base.AtomicStore32
-func gcasmLNgcasmFwdH_base_AtomicStore32(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
-
-func gcasmFwdH_base_AtomicStore32(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
-	return gcasmLNgcasmFwdH_base_AtomicStore32(a0, a1, a2, a3)
-}
-
 //go:linkname gcasmLNgcasmFwdH_base_AtomicStore32_16 github.com/goccy/spidermonkeywasm2go/base.AtomicStore32_16
 func gcasmLNgcasmFwdH_base_AtomicStore32_16(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32
 
@@ -10398,13 +9264,6 @@ func gcasmLNgcasmFwdH_base_AtomicStore32_8(a0 *base.Module, a1 int32, a2 int32, 
 
 func gcasmFwdH_base_AtomicStore32_8(a0 *base.Module, a1 int32, a2 int32, a3 int32) int32 {
 	return gcasmLNgcasmFwdH_base_AtomicStore32_8(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdH_base_AtomicStore64 github.com/goccy/spidermonkeywasm2go/base.AtomicStore64
-func gcasmLNgcasmFwdH_base_AtomicStore64(a0 *base.Module, a1 int32, a2 int32, a3 int64) int32
-
-func gcasmFwdH_base_AtomicStore64(a0 *base.Module, a1 int32, a2 int32, a3 int64) int32 {
-	return gcasmLNgcasmFwdH_base_AtomicStore64(a0, a1, a2, a3)
 }
 
 //go:linkname gcasmLNgcasmFwdH_base_AtomicWait32 github.com/goccy/spidermonkeywasm2go/base.AtomicWait32
@@ -10477,6 +9336,13 @@ func gcasmFwdH_base_I64_rem_s(a0 int64, a1 int64) int64 {
 	return gcasmLNgcasmFwdH_base_I64_rem_s(a0, a1)
 }
 
+//go:linkname gcasmLNgcasmFwdH_base_I64_rem_u_s github.com/goccy/spidermonkeywasm2go/base.I64_rem_u_s
+func gcasmLNgcasmFwdH_base_I64_rem_u_s(a0 int64, a1 int64) int64
+
+func gcasmFwdH_base_I64_rem_u_s(a0 int64, a1 int64) int64 {
+	return gcasmLNgcasmFwdH_base_I64_rem_u_s(a0, a1)
+}
+
 //go:linkname gcasmLNgcasmFwdH_base_I64_trunc_sat_f64_s github.com/goccy/spidermonkeywasm2go/base.I64_trunc_sat_f64_s
 func gcasmLNgcasmFwdH_base_I64_trunc_sat_f64_s(a0 float64) int64
 
@@ -10496,13 +9362,6 @@ func gcasmLNgcasmFwdH_base_MemoryFill(a0 *base.Module, a1 int32, a2 int32, a3 in
 
 func gcasmFwdH_base_MemoryFill(a0 *base.Module, a1 int32, a2 int32, a3 int32) {
 	gcasmLNgcasmFwdH_base_MemoryFill(a0, a1, a2, a3)
-}
-
-//go:linkname gcasmLNgcasmFwdH_base_Wasm_trap_div_zero github.com/goccy/spidermonkeywasm2go/base.Wasm_trap_div_zero
-func gcasmLNgcasmFwdH_base_Wasm_trap_div_zero()
-
-func gcasmFwdH_base_Wasm_trap_div_zero() {
-	gcasmLNgcasmFwdH_base_Wasm_trap_div_zero()
 }
 
 //go:linkname gcasmLNgcasmFwdH_base_Wasm_trap_unreachable github.com/goccy/spidermonkeywasm2go/base.Wasm_trap_unreachable
@@ -10570,14 +9429,59 @@ func Fn1451(m *base.Module, l0 int32, l1 int32, l2 int32)
 //go:linkname Fn166 github.com/goccy/spidermonkeywasm2go/p7.Fn166
 func Fn166(m *base.Module, l0 int32, l1 int32)
 
+//go:linkname Fn1669 github.com/goccy/spidermonkeywasm2go/p0.Fn1669
+func Fn1669(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+
+//go:linkname Fn1900 github.com/goccy/spidermonkeywasm2go/p7.Fn1900
+func Fn1900(m *base.Module, l0 int32) (r0 int32)
+
 //go:linkname Fn205 github.com/goccy/spidermonkeywasm2go/p7.Fn205
 func Fn205(m *base.Module, l0 int32)
 
 //go:linkname Fn280 github.com/goccy/spidermonkeywasm2go/p6.Fn280
 func Fn280(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32)
 
-//go:linkname Fn306 github.com/goccy/spidermonkeywasm2go/p6.Fn306
-func Fn306(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 float32)
+//go:linkname Fn3747 github.com/goccy/spidermonkeywasm2go/p6.Fn3747
+func Fn3747(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+
+//go:linkname Fn4040 github.com/goccy/spidermonkeywasm2go/p5.Fn4040
+func Fn4040(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
+
+//go:linkname Fn4041 github.com/goccy/spidermonkeywasm2go/p5.Fn4041
+func Fn4041(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
+
+//go:linkname Fn4042 github.com/goccy/spidermonkeywasm2go/p5.Fn4042
+func Fn4042(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
+
+//go:linkname Fn4043 github.com/goccy/spidermonkeywasm2go/p5.Fn4043
+func Fn4043(m *base.Module, l0 int32, l1 float32, l2 int32, l3 int32)
+
+//go:linkname Fn4044 github.com/goccy/spidermonkeywasm2go/p5.Fn4044
+func Fn4044(m *base.Module, l0 int32, l1 float64, l2 int32, l3 int32)
+
+//go:linkname Fn4045 github.com/goccy/spidermonkeywasm2go/p5.Fn4045
+func Fn4045(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
+
+//go:linkname Fn4046 github.com/goccy/spidermonkeywasm2go/p5.Fn4046
+func Fn4046(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32)
+
+//go:linkname Fn4048 github.com/goccy/spidermonkeywasm2go/p5.Fn4048
+func Fn4048(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32)
+
+//go:linkname Fn4065 github.com/goccy/spidermonkeywasm2go/p1.Fn4065
+func Fn4065(m *base.Module, l0 int32, l1 int32, l2 int32) (r0 int32)
+
+//go:linkname Fn4067 github.com/goccy/spidermonkeywasm2go/p6.Fn4067
+func Fn4067(m *base.Module, l0 int32, l1 int32, l2 int32)
+
+//go:linkname Fn4068 github.com/goccy/spidermonkeywasm2go/p6.Fn4068
+func Fn4068(m *base.Module, l0 int32, l1 int32, l2 int32)
+
+//go:linkname Fn4069 github.com/goccy/spidermonkeywasm2go/p6.Fn4069
+func Fn4069(m *base.Module, l0 int32, l1 int32, l2 int32)
+
+//go:linkname Fn4070 github.com/goccy/spidermonkeywasm2go/p6.Fn4070
+func Fn4070(m *base.Module, l0 int32, l1 int32, l2 int32)
 
 //go:linkname Fn721 github.com/goccy/spidermonkeywasm2go/p7.Fn721
 func Fn721(m *base.Module, l0 float32) (r0 float32)
@@ -10585,26 +9489,23 @@ func Fn721(m *base.Module, l0 float32) (r0 float32)
 //go:linkname Fn727 github.com/goccy/spidermonkeywasm2go/p7.Fn727
 func Fn727(m *base.Module, l0 float32) (r0 float32)
 
-//go:linkname Fn7483 github.com/goccy/spidermonkeywasm2go/p5.Fn7483
-func Fn7483(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
-
-//go:linkname Fn7509 github.com/goccy/spidermonkeywasm2go/p6.Fn7509
-func Fn7509(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32, l4 int32, l5 int32)
-
-//go:linkname Fn7511 github.com/goccy/spidermonkeywasm2go/p4.Fn7511
-func Fn7511(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32, l9 int32, l10 int32) (r0 int32)
+//go:linkname Fn7486 github.com/goccy/spidermonkeywasm2go/p5.Fn7486
+func Fn7486(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
 
 //go:linkname Fn7512 github.com/goccy/spidermonkeywasm2go/p6.Fn7512
-func Fn7512(m *base.Module, l0 int32, l1 int32)
+func Fn7512(m *base.Module, l0 int32, l1 int64, l2 int32, l3 int32, l4 int32, l5 int32)
 
-//go:linkname Fn7954 github.com/goccy/spidermonkeywasm2go/p4.Fn7954
-func Fn7954(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+//go:linkname Fn7514 github.com/goccy/spidermonkeywasm2go/p4.Fn7514
+func Fn7514(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32, l9 int32, l10 int32) (r0 int32)
 
-//go:linkname Fn7961 github.com/goccy/spidermonkeywasm2go/p4.Fn7961
-func Fn7961(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+//go:linkname Fn7957 github.com/goccy/spidermonkeywasm2go/p4.Fn7957
+func Fn7957(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
 
-//go:linkname Fn7962 github.com/goccy/spidermonkeywasm2go/p7.Fn7962
-func Fn7962(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
+//go:linkname Fn7964 github.com/goccy/spidermonkeywasm2go/p4.Fn7964
+func Fn7964(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32) (r0 int32)
+
+//go:linkname Fn7965 github.com/goccy/spidermonkeywasm2go/p7.Fn7965
+func Fn7965(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32) (r0 int32)
 
 //go:linkname Fn832 github.com/goccy/spidermonkeywasm2go/p2.Fn832
 func Fn832(m *base.Module, l0 int32) (r0 int32)
@@ -10625,136 +9526,130 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 	_ = v41
 	var v43 int32
 	_ = v43
-	var v47 int32
-	_ = v47
 	var v48 int32
 	_ = v48
 	var v49 int32
 	_ = v49
-	var v53 int32
-	_ = v53
-	var v56 int32
-	_ = v56
-	var v58 int32
-	_ = v58
-	var v60 int32
-	_ = v60
-	var v63 int32
-	_ = v63
-	var v64 float32
+	var v50 int32
+	_ = v50
+	var v54 int32
+	_ = v54
+	var v57 int32
+	_ = v57
+	var v59 int32
+	_ = v59
+	var v61 int32
+	_ = v61
+	var v64 int32
 	_ = v64
-	var v70 int32
-	_ = v70
+	var v65 float32
+	_ = v65
 	var v72 int32
 	_ = v72
-	var v73 int32
-	_ = v73
 	var v75 int32
 	_ = v75
-	var v93 int32
-	_ = v93
-	var v94 int32
-	_ = v94
-	var v95 int32
-	_ = v95
-	var v100 int32
-	_ = v100
-	var v123 float32
-	_ = v123
-	var v124 int32
-	_ = v124
-	var v126 int32
+	var v76 int32
+	_ = v76
+	var v78 int32
+	_ = v78
+	var v96 int32
+	_ = v96
+	var v97 int32
+	_ = v97
+	var v98 int32
+	_ = v98
+	var v103 int32
+	_ = v103
+	var v126 float32
 	_ = v126
-	var v136 int32
-	_ = v136
-	var v137 int32
-	_ = v137
-	var v141 int32
-	_ = v141
-	var v143 int32
-	_ = v143
+	var v127 int32
+	_ = v127
+	var v129 int32
+	_ = v129
+	var v139 int32
+	_ = v139
+	var v140 int32
+	_ = v140
+	var v144 int32
+	_ = v144
 	var v146 int32
 	_ = v146
-	var v148 int32
-	_ = v148
-	var v150 int32
-	_ = v150
-	var v162 int32
-	_ = v162
-	var v167 int32
-	_ = v167
-	var v173 int32
-	_ = v173
-	var v189 int64
-	_ = v189
-	var v191 int64
-	_ = v191
-	var v192 int32
-	_ = v192
-	var v194 int32
-	_ = v194
+	var v149 int32
+	_ = v149
+	var v151 int32
+	_ = v151
+	var v154 int32
+	_ = v154
+	var v166 int32
+	_ = v166
+	var v171 int32
+	_ = v171
+	var v177 int32
+	_ = v177
+	var v193 int64
+	_ = v193
+	var v195 int64
+	_ = v195
 	var v196 int32
 	_ = v196
-	var v197 int32
-	_ = v197
 	var v198 int32
 	_ = v198
-	var v199 int32
-	_ = v199
-	var v200 int32
-	_ = v200
 	var v201 int32
 	_ = v201
+	var v202 int32
+	_ = v202
 	var v203 int32
 	_ = v203
+	var v204 int32
+	_ = v204
 	var v205 int32
 	_ = v205
 	var v206 int32
 	_ = v206
-	var v209 int32
-	_ = v209
+	var v208 int32
+	_ = v208
+	var v210 int32
+	_ = v210
 	var v211 int32
 	_ = v211
+	var v214 int32
+	_ = v214
 	var v216 int32
 	_ = v216
-	var v217 int32
-	_ = v217
-	var v219 int32
-	_ = v219
 	var v221 int32
 	_ = v221
-	var v237 int32
-	_ = v237
-	var __phi237 int32
-	_ = __phi237
-	var v238 int32
-	_ = v238
-	var __phi238 int32
-	_ = __phi238
-	var v266 int32
-	_ = v266
-	var v267 int32
-	_ = v267
-	var v269 int32
-	_ = v269
+	var v222 int32
+	_ = v222
+	var v224 int32
+	_ = v224
+	var v226 int32
+	_ = v226
+	var v242 int32
+	_ = v242
+	var __phi242 int32
+	_ = __phi242
+	var v243 int32
+	_ = v243
+	var __phi243 int32
+	_ = __phi243
 	var v271 int32
 	_ = v271
 	var v272 int32
 	_ = v272
-	var v279 int32
-	_ = v279
-	var v282 float32
-	_ = v282
-	var v283 int32
-	_ = v283
-	var v284 float32
+	var v274 int32
+	_ = v274
+	var v276 int32
+	_ = v276
+	var v277 int32
+	_ = v277
+	var v284 int32
 	_ = v284
-	var v285 float32
-	_ = v285
 	var v288 float32
 	_ = v288
-	var v289 float32
+	var v289 int32
 	_ = v289
+	var v290 float32
+	_ = v290
 	var v291 float32
 	_ = v291
 	var v294 float32
@@ -10775,504 +9670,672 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 	_ = v307
 	var v309 float32
 	_ = v309
-	var v310 float32
-	_ = v310
-	var v311 float32
-	_ = v311
+	var v312 float32
+	_ = v312
 	var v313 float32
 	_ = v313
-	var v314 float32
-	_ = v314
 	var v315 float32
 	_ = v315
+	var v316 float32
+	_ = v316
+	var v317 float32
+	_ = v317
+	var v319 float32
+	_ = v319
 	var v320 float32
 	_ = v320
-	var v322 int32
-	_ = v322
-	var v323 float32
-	_ = v323
-	var v325 float32
-	_ = v325
+	var v321 float32
+	_ = v321
+	var v326 float32
+	_ = v326
+	var v328 int32
+	_ = v328
 	var v329 float32
 	_ = v329
-	var v348 int32
-	_ = v348
-	var v350 int32
-	_ = v350
-	var v366 float32
-	_ = v366
-	var v367 float32
-	_ = v367
-	var v368 float32
-	_ = v368
-	var v369 float32
-	_ = v369
-	var v370 float32
-	_ = v370
-	var v371 float32
-	_ = v371
-	var v372 float32
-	_ = v372
+	var v332 float32
+	_ = v332
+	var v336 float32
+	_ = v336
+	var v355 int32
+	_ = v355
+	var v357 int32
+	_ = v357
 	var v373 float32
 	_ = v373
-	var v376 int32
+	var v374 float32
+	_ = v374
+	var v375 float32
+	_ = v375
+	var v376 float32
 	_ = v376
 	var v377 float32
 	_ = v377
-	var v378 int32
+	var v378 float32
 	_ = v378
 	var v379 float32
 	_ = v379
-	var v381 float32
-	_ = v381
-	var v382 int32
-	_ = v382
+	var v380 float32
+	_ = v380
+	var v383 int32
+	_ = v383
 	var v384 float32
 	_ = v384
-	var v387 float32
-	_ = v387
-	var v389 float32
+	var v385 int32
+	_ = v385
+	var v386 float32
+	_ = v386
+	var v388 float32
+	_ = v388
+	var v389 int32
 	_ = v389
-	var v390 int32
-	_ = v390
-	var v392 float32
-	_ = v392
-	var v395 float32
-	_ = v395
-	var v397 float32
+	var v391 float32
+	_ = v391
+	var v394 float32
+	_ = v394
+	var v396 float32
+	_ = v396
+	var v397 int32
 	_ = v397
-	var v398 int32
-	_ = v398
-	var v400 float32
-	_ = v400
-	var v403 float32
-	_ = v403
-	var v405 float32
+	var v399 float32
+	_ = v399
+	var v402 float32
+	_ = v402
+	var v404 float32
+	_ = v404
+	var v405 int32
 	_ = v405
-	var v406 int32
-	_ = v406
-	var v408 float32
-	_ = v408
-	var v411 float32
-	_ = v411
-	var v413 float32
+	var v407 float32
+	_ = v407
+	var v410 float32
+	_ = v410
+	var v412 float32
+	_ = v412
+	var v413 int32
 	_ = v413
-	var v414 int32
-	_ = v414
-	var v416 float32
-	_ = v416
-	var v419 float32
-	_ = v419
-	var v421 float32
+	var v415 float32
+	_ = v415
+	var v418 float32
+	_ = v418
+	var v420 float32
+	_ = v420
+	var v421 int32
 	_ = v421
-	var v422 int32
-	_ = v422
-	var v424 float32
-	_ = v424
-	var v427 float32
-	_ = v427
-	var v429 float32
+	var v423 float32
+	_ = v423
+	var v426 float32
+	_ = v426
+	var v428 float32
+	_ = v428
+	var v429 int32
 	_ = v429
-	var v430 int32
-	_ = v430
-	var v432 float32
-	_ = v432
-	var v435 float32
-	_ = v435
-	var v437 float32
+	var v431 float32
+	_ = v431
+	var v434 float32
+	_ = v434
+	var v436 float32
+	_ = v436
+	var v437 int32
 	_ = v437
-	var v441 int32
-	_ = v441
-	var v474 float32
-	_ = v474
-	var v475 float32
-	_ = v475
-	var v476 float32
-	_ = v476
-	var v484 float32
-	_ = v484
-	var v532 int32
-	_ = v532
-	var v535 int32
-	_ = v535
-	var v536 int32
-	_ = v536
-	var v537 int32
-	_ = v537
-	var v545 int32
-	_ = v545
-	var v548 int32
-	_ = v548
-	var v549 int32
-	_ = v549
-	var v551 int32
-	_ = v551
-	var v577 int32
-	_ = v577
-	var v584 float32
+	var v439 float32
+	_ = v439
+	var v442 float32
+	_ = v442
+	var v444 float32
+	_ = v444
+	var v448 int32
+	_ = v448
+	var v481 float32
+	_ = v481
+	var v482 float32
+	_ = v482
+	var v483 float32
+	_ = v483
+	var v491 float32
+	_ = v491
+	var v539 int32
+	_ = v539
+	var v542 int32
+	_ = v542
+	var v543 int32
+	_ = v543
+	var v544 int32
+	_ = v544
+	var v552 int32
+	_ = v552
+	var v555 int32
+	_ = v555
+	var v556 int32
+	_ = v556
+	var v558 int32
+	_ = v558
+	var v584 int32
 	_ = v584
-	var v585 float32
-	_ = v585
-	var v592 int32
-	_ = v592
-	var v598 int32
-	_ = v598
-	var v616 int32
-	_ = v616
-	var v639 int32
-	_ = v639
-	var v642 int32
-	_ = v642
-	var v643 int32
+	var v595 float32
+	_ = v595
+	var v605 int32
+	_ = v605
+	var v606 int32
+	_ = v606
+	var v608 int32
+	_ = v608
+	var v610 int32
+	_ = v610
+	var v613 int32
+	_ = v613
+	var v615 int32
+	_ = v615
+	var v617 int32
+	_ = v617
+	var v618 float32
+	_ = v618
+	var v623 int32
+	_ = v623
+	var v624 float32
+	_ = v624
+	var v625 float32
+	_ = v625
+	var v628 float32
+	_ = v628
+	var v629 float32
+	_ = v629
+	var v631 float32
+	_ = v631
+	var v634 float32
+	_ = v634
+	var v635 float32
+	_ = v635
+	var v637 float32
+	_ = v637
+	var v640 float32
+	_ = v640
+	var v641 float32
+	_ = v641
+	var v643 float32
 	_ = v643
-	var v645 int32
-	_ = v645
+	var v646 float32
+	_ = v646
+	var v647 float32
+	_ = v647
 	var v649 float32
 	_ = v649
-	var v650 float32
-	_ = v650
 	var v652 float32
 	_ = v652
-	var v659 int32
+	var v653 float32
+	_ = v653
+	var v655 float32
+	_ = v655
+	var v658 float32
+	_ = v658
+	var v659 float32
 	_ = v659
+	var v665 float32
+	_ = v665
+	var v666 int32
+	_ = v666
+	var v667 int32
+	_ = v667
 	var v669 int32
 	_ = v669
-	var v698 float32
-	_ = v698
-	var v699 float32
-	_ = v699
-	var v701 float32
-	_ = v701
-	var v707 int32
-	_ = v707
-	var v709 float32
-	_ = v709
-	var v711 float32
+	var v671 int32
+	_ = v671
+	var v677 int32
+	_ = v677
+	var v678 int32
+	_ = v678
+	var v681 float32
+	_ = v681
+	var v682 float32
+	_ = v682
+	var v683 float32
+	_ = v683
+	var v684 float32
+	_ = v684
+	var v685 float32
+	_ = v685
+	var v686 float32
+	_ = v686
+	var v687 float32
+	_ = v687
+	var v688 float32
+	_ = v688
+	var v689 int32
+	_ = v689
+	var v690 float32
+	_ = v690
+	var v691 int32
+	_ = v691
+	var v692 float32
+	_ = v692
+	var v694 float32
+	_ = v694
+	var v695 int32
+	_ = v695
+	var v697 float32
+	_ = v697
+	var v700 float32
+	_ = v700
+	var v702 float32
+	_ = v702
+	var v703 int32
+	_ = v703
+	var v705 float32
+	_ = v705
+	var v708 float32
+	_ = v708
+	var v710 float32
+	_ = v710
+	var v711 int32
 	_ = v711
-	var v717 int32
-	_ = v717
-	var v760 int32
-	_ = v760
-	var v765 float32
-	_ = v765
-	var v766 float32
-	_ = v766
-	var v768 float32
-	_ = v768
-	var v775 int32
-	_ = v775
+	var v713 float32
+	_ = v713
+	var v716 float32
+	_ = v716
+	var v718 float32
+	_ = v718
+	var v719 int32
+	_ = v719
+	var v721 float32
+	_ = v721
+	var v724 float32
+	_ = v724
+	var v726 float32
+	_ = v726
+	var v727 int32
+	_ = v727
+	var v729 float32
+	_ = v729
+	var v732 float32
+	_ = v732
+	var v734 float32
+	_ = v734
+	var v735 int32
+	_ = v735
+	var v737 float32
+	_ = v737
+	var v740 float32
+	_ = v740
+	var v742 float32
+	_ = v742
+	var v743 int32
+	_ = v743
+	var v745 float32
+	_ = v745
+	var v748 float32
+	_ = v748
+	var v750 float32
+	_ = v750
+	var v754 int32
+	_ = v754
+	var v769 float32
+	_ = v769
+	var v770 float32
+	_ = v770
+	var v771 float32
+	_ = v771
+	var v776 float32
+	_ = v776
+	var v781 float32
+	_ = v781
 	var v788 int32
 	_ = v788
-	var v817 float32
-	_ = v817
-	var v818 float32
-	_ = v818
-	var v820 float32
-	_ = v820
-	var v826 int32
-	_ = v826
-	var v828 float32
-	_ = v828
-	var v830 float32
-	_ = v830
-	var v836 int32
-	_ = v836
-	var v877 int32
-	_ = v877
-	var v883 int32
-	_ = v883
-	var v885 int32
-	_ = v885
-	var v895 int32
+	var v794 int32
+	_ = v794
+	var v812 int32
+	_ = v812
+	var v835 int32
+	_ = v835
+	var v838 int32
+	_ = v838
+	var v839 int32
+	_ = v839
+	var v841 int32
+	_ = v841
+	var v846 float32
+	_ = v846
+	var v847 float32
+	_ = v847
+	var v849 float32
+	_ = v849
+	var v856 int32
+	_ = v856
+	var v866 int32
+	_ = v866
+	var v895 float32
 	_ = v895
-	var v896 int32
+	var v896 float32
 	_ = v896
-	var v924 float32
-	_ = v924
-	var v925 float32
-	_ = v925
-	var v928 int32
-	_ = v928
-	var v930 int32
-	_ = v930
-	var v940 int32
-	_ = v940
-	var v983 int32
-	_ = v983
-	var v1012 float32
-	_ = v1012
-	var v1013 float32
-	_ = v1013
-	var v1016 int32
+	var v898 float32
+	_ = v898
+	var v904 int32
+	_ = v904
+	var v906 float32
+	_ = v906
+	var v908 float32
+	_ = v908
+	var v914 int32
+	_ = v914
+	var v957 int32
+	_ = v957
+	var v963 float32
+	_ = v963
+	var v964 float32
+	_ = v964
+	var v966 float32
+	_ = v966
+	var v973 int32
+	_ = v973
+	var v986 int32
+	_ = v986
+	var v1015 float32
+	_ = v1015
+	var v1016 float32
 	_ = v1016
-	var v1017 float32
-	_ = v1017
 	var v1018 float32
 	_ = v1018
-	var v1021 int32
-	_ = v1021
-	var v1022 float32
-	_ = v1022
-	var v1023 float32
-	_ = v1023
-	var v1026 int32
+	var v1024 int32
+	_ = v1024
+	var v1026 float32
 	_ = v1026
-	var v1027 float32
-	_ = v1027
 	var v1028 float32
 	_ = v1028
-	var v1031 int32
-	_ = v1031
-	var v1032 float32
-	_ = v1032
-	var v1033 float32
-	_ = v1033
-	var v1036 int32
-	_ = v1036
-	var v1037 float32
-	_ = v1037
-	var v1038 float32
-	_ = v1038
-	var v1041 int32
-	_ = v1041
-	var v1042 float32
-	_ = v1042
-	var v1043 float32
-	_ = v1043
-	var v1046 int32
-	_ = v1046
-	var v1047 float32
-	_ = v1047
-	var v1048 float32
-	_ = v1048
-	var v1051 int32
-	_ = v1051
-	var v1092 int32
-	_ = v1092
-	var v1099 int32
-	_ = v1099
-	var v1103 float32
-	_ = v1103
-	var v1104 float32
-	_ = v1104
-	var v1106 float32
-	_ = v1106
-	var v1113 int32
-	_ = v1113
-	var v1127 int32
-	_ = v1127
-	var v1156 float32
-	_ = v1156
-	var v1157 float32
-	_ = v1157
-	var v1159 float32
-	_ = v1159
-	var v1165 int32
-	_ = v1165
-	var v1167 float32
-	_ = v1167
-	var v1169 float32
-	_ = v1169
-	var v1175 int32
-	_ = v1175
-	var v1180 int32
-	_ = v1180
-	var v1188 int32
-	_ = v1188
-	var v1197 int32
-	_ = v1197
-	var v1223 int32
-	_ = v1223
-	var v1240 int32
+	var v1034 int32
+	_ = v1034
+	var v1075 int32
+	_ = v1075
+	var v1081 int32
+	_ = v1081
+	var v1083 int32
+	_ = v1083
+	var v1093 int32
+	_ = v1093
+	var v1094 int32
+	_ = v1094
+	var v1122 float32
+	_ = v1122
+	var v1123 float32
+	_ = v1123
+	var v1126 int32
+	_ = v1126
+	var v1128 int32
+	_ = v1128
+	var v1138 int32
+	_ = v1138
+	var v1181 int32
+	_ = v1181
+	var v1210 float32
+	_ = v1210
+	var v1211 float32
+	_ = v1211
+	var v1214 int32
+	_ = v1214
+	var v1215 float32
+	_ = v1215
+	var v1216 float32
+	_ = v1216
+	var v1219 int32
+	_ = v1219
+	var v1220 float32
+	_ = v1220
+	var v1221 float32
+	_ = v1221
+	var v1224 int32
+	_ = v1224
+	var v1225 float32
+	_ = v1225
+	var v1226 float32
+	_ = v1226
+	var v1229 int32
+	_ = v1229
+	var v1230 float32
+	_ = v1230
+	var v1231 float32
+	_ = v1231
+	var v1234 int32
+	_ = v1234
+	var v1235 float32
+	_ = v1235
+	var v1236 float32
+	_ = v1236
+	var v1239 int32
+	_ = v1239
+	var v1240 float32
 	_ = v1240
-	var v1241 int32
+	var v1241 float32
 	_ = v1241
-	var v1269 int32
-	_ = v1269
-	var v1270 int32
-	_ = v1270
-	var v1271 float32
-	_ = v1271
-	var v1272 int32
-	_ = v1272
-	var v1273 float32
-	_ = v1273
-	var v1275 float32
-	_ = v1275
-	var v1276 int32
-	_ = v1276
-	var v1277 float32
-	_ = v1277
-	var v1281 int32
-	_ = v1281
-	var v1282 int32
-	_ = v1282
-	var v1285 float32
-	_ = v1285
-	var v1288 float32
-	_ = v1288
-	var v1290 float32
+	var v1244 int32
+	_ = v1244
+	var v1245 float32
+	_ = v1245
+	var v1246 float32
+	_ = v1246
+	var v1249 int32
+	_ = v1249
+	var v1290 int32
 	_ = v1290
-	var v1293 float32
-	_ = v1293
-	var v1300 int32
-	_ = v1300
+	var v1298 int32
+	_ = v1298
+	var v1303 float32
+	_ = v1303
+	var v1304 float32
+	_ = v1304
+	var v1306 float32
+	_ = v1306
 	var v1313 int32
 	_ = v1313
-	var v1342 int32
-	_ = v1342
-	var v1343 int32
-	_ = v1343
-	var v1345 float32
-	_ = v1345
-	var v1347 float32
-	_ = v1347
-	var v1349 float32
-	_ = v1349
-	var v1351 float32
-	_ = v1351
-	var v1400 int32
-	_ = v1400
-	var v1401 int32
-	_ = v1401
-	var v1416 int32
-	_ = v1416
-	var v1417 int32
-	_ = v1417
-	var v1445 int32
-	_ = v1445
-	var v1446 int32
-	_ = v1446
-	var v1447 float32
-	_ = v1447
-	var v1448 float32
-	_ = v1448
-	var v1449 int32
-	_ = v1449
-	var v1450 float32
-	_ = v1450
-	var v1453 int32
-	_ = v1453
-	var v1457 float32
-	_ = v1457
-	var v1458 float32
-	_ = v1458
-	var v1461 float32
-	_ = v1461
-	var v1467 int32
-	_ = v1467
-	var v1479 int32
+	var v1328 int32
+	_ = v1328
+	var v1357 float32
+	_ = v1357
+	var v1358 float32
+	_ = v1358
+	var v1360 float32
+	_ = v1360
+	var v1366 int32
+	_ = v1366
+	var v1368 float32
+	_ = v1368
+	var v1370 float32
+	_ = v1370
+	var v1376 int32
+	_ = v1376
+	var v1381 int32
+	_ = v1381
+	var v1389 int32
+	_ = v1389
+	var v1398 int32
+	_ = v1398
+	var v1425 int32
+	_ = v1425
+	var v1442 int32
+	_ = v1442
+	var v1443 int32
+	_ = v1443
+	var v1471 int32
+	_ = v1471
+	var v1472 int32
+	_ = v1472
+	var v1473 float32
+	_ = v1473
+	var v1474 int32
+	_ = v1474
+	var v1475 float32
+	_ = v1475
+	var v1477 float32
+	_ = v1477
+	var v1478 int32
+	_ = v1478
+	var v1479 float32
 	_ = v1479
-	var v1511 int32
-	_ = v1511
-	var v1514 float32
-	_ = v1514
-	var v1515 float32
-	_ = v1515
-	var v1517 float32
-	_ = v1517
+	var v1483 int32
+	_ = v1483
+	var v1484 int32
+	_ = v1484
+	var v1487 float32
+	_ = v1487
+	var v1490 float32
+	_ = v1490
+	var v1492 float32
+	_ = v1492
+	var v1495 float32
+	_ = v1495
+	var v1502 int32
+	_ = v1502
+	var v1516 int32
+	_ = v1516
+	var v1545 int32
+	_ = v1545
+	var v1546 int32
+	_ = v1546
+	var v1548 float32
+	_ = v1548
+	var v1550 float32
+	_ = v1550
+	var v1552 float32
+	_ = v1552
+	var v1554 float32
+	_ = v1554
+	var v1604 int32
+	_ = v1604
+	var v1605 int32
+	_ = v1605
+	var v1620 int32
+	_ = v1620
+	var v1621 int32
+	_ = v1621
+	var v1649 int32
+	_ = v1649
+	var v1650 int32
+	_ = v1650
+	var v1651 float32
+	_ = v1651
+	var v1652 float32
+	_ = v1652
+	var v1653 int32
+	_ = v1653
+	var v1654 float32
+	_ = v1654
+	var v1657 int32
+	_ = v1657
+	var v1661 float32
+	_ = v1661
+	var v1662 float32
+	_ = v1662
+	var v1665 float32
+	_ = v1665
+	var v1671 int32
+	_ = v1671
+	var v1683 int32
+	_ = v1683
+	var v1716 int32
+	_ = v1716
+	var v1719 float32
+	_ = v1719
+	var v1720 float32
+	_ = v1720
+	var v1722 float32
+	_ = v1722
 	v10 = int32(0)
 	v39 = m.G0
 	v41 = v39 - int32(16)
 	m.G0 = v41
 	v43 = *(*int32)(unsafe.Add(mBase, uint32(l8)+4))
-	if base.I32_eqz(v43) != 0 {
-		v162 = int32(4)
-		v167 = v10
-		v173 = int32(1)
-		v189 = *(*int64)(unsafe.Add(mBase, uint32(l8)+8))
-		v191 = int64(base.Ui64(v189) >> (uint(int64(32)) % 64))
-		v192 = base.I32_wrap_i64(v191)
-		v194 = v192 * base.I32_wrap_i64(v189)
-		if base.I32_eqz(v194) != 0 {
-			v196 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
-			v197 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
-			v598 = v197
-			v616 = v196
+	if v43 == v10 {
+		v166 = int32(4)
+		v171 = v10
+		v177 = int32(1)
+		v193 = *(*int64)(unsafe.Add(mBase, uint32(l8)+8))
+		v195 = int64(base.Ui64(v193) >> (uint(int64(32)) % 64))
+		v196 = base.I32_wrap_i64(v195)
+		v198 = v196 * base.I32_wrap_i64(v193)
+		if v198 == int32(0) {
+			v201 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
+			v202 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
+			v794 = v202
+			v812 = v201
 		} else {
-			v198 = *(*int32)(unsafe.Add(mBase, uint32(l0)+8))
-			v199 = int32(3)
-			v200 = int32(base.Ui32(v198) >> (uint(v199) % 32))
-			v201 = *(*int32)(unsafe.Add(mBase, uint32(l0)+4))
-			v203 = int32(base.Ui32(v201) >> (uint(v199) % 32))
-			if base.Ui32(v200) < base.Ui32(v203) {
-				v205 = v200
+			v203 = *(*int32)(unsafe.Add(mBase, uint32(l0)+8))
+			v204 = int32(3)
+			v205 = int32(base.Ui32(v203) >> (uint(v204) % 32))
+			v206 = *(*int32)(unsafe.Add(mBase, uint32(l0)+4))
+			v208 = int32(base.Ui32(v206) >> (uint(v204) % 32))
+			if base.Ui32(v205) < base.Ui32(v208) {
+				v210 = v205
 			} else {
-				v205 = v203
+				v210 = v208
 			}
-			v206 = *(*int32)(unsafe.Add(mBase, uint32(l0)))
-			v209 = int32(2)
-			v211 = v206 + v201&int32(1073741816)<<(uint(v209)%32)
-			v216 = int32(7)
-			v217 = v198 & v216
-			v219 = v201 & v216
-			if base.Ui32(v217) < base.Ui32(v219) {
-				v221 = v217
+			v211 = *(*int32)(unsafe.Add(mBase, uint32(l0)))
+			v214 = int32(2)
+			v216 = v211 + v206&int32(1073741816)<<(uint(v214)%32)
+			v221 = int32(7)
+			v222 = v203 & v221
+			v224 = v206 & v221
+			if base.Ui32(v222) < base.Ui32(v224) {
+				v226 = v222
 			} else {
-				v221 = v219
+				v226 = v224
 			}
-			__phi237 = int32(0)
-			__phi238 = int32(1)
-			v237 = __phi237
-			v238 = __phi238
+			__phi242 = int32(0)
+			__phi243 = int32(1)
+			v242 = __phi242
+			v243 = __phi243
 			for {
-				v266 = base.B2i32(base.Ui32(v167) <= base.Ui32(v237))
-				if base.Ui32(v167) <= base.Ui32(v237) {
+				v271 = base.B2i32(base.Ui32(v171) <= base.Ui32(v242))
+				if base.Ui32(v171) <= base.Ui32(v242) {
 				} else {
-					v267 = v238 * v198
-					v269 = v237 * v198
-					v271 = base.B2i32(base.Ui32(l5) < base.Ui32(v267)) | base.B2i32(base.Ui32(v267) < base.Ui32(v269))
-					if v271 != 0 {
+					v272 = v243 * v203
+					v274 = v242 * v203
+					v276 = base.B2i32(base.Ui32(l5) < base.Ui32(v272)) | base.B2i32(base.Ui32(v272) < base.Ui32(v274))
+					if v276 != 0 {
 					} else {
-						v272 = int32(2)
-						if v271 != 0 {
-							v279 = int32(0)
+						v277 = int32(2)
+						if v276 != 0 {
+							v284 = int32(0)
 						} else {
-							v279 = l4 + v269<<(uint(v272)%32)
+							v284 = l4 + v274<<(uint(v277)%32)
 						}
-						if base.I32_eqz(v221) != 0 {
-							v320 = math.Float32frombits(uint32(0x80000000))
+						if v226 == int32(0) {
+							v326 = math.Float32frombits(uint32(0x80000000))
 						} else {
-							v282 = *(*float32)(unsafe.Add(mBase, uint32(v211)))
-							v283 = v279 + v198&int32(-8)<<(uint(v209)%32)
-							v284 = *(*float32)(unsafe.Add(mBase, uint32(v283)))
-							v285 = base.F32_mul(v282, v284)
-							if v221 == int32(1) {
-								v320 = v285
+							v288 = *(*float32)(unsafe.Add(mBase, uint32(v216)))
+							v289 = v284 + v203&int32(-8)<<(uint(v214)%32)
+							v290 = *(*float32)(unsafe.Add(mBase, uint32(v289)))
+							v291 = base.F32_mul(v288, v290)
+							if v226 == int32(1) {
+								v326 = v291
 							} else {
-								v288 = *(*float32)(unsafe.Add(mBase, uint32(v211)+4))
-								v289 = *(*float32)(unsafe.Add(mBase, uint32(v283)+4))
-								v291 = base.F32_add(v285, base.F32_mul(v288, v289))
-								if v221 == int32(2) {
-									v320 = v291
+								v294 = *(*float32)(unsafe.Add(mBase, uint32(v216)+4))
+								v295 = *(*float32)(unsafe.Add(mBase, uint32(v289)+4))
+								v297 = base.F32_add(v291, base.F32_mul(v294, v295))
+								if v226 == int32(2) {
+									v326 = v297
 								} else {
-									v294 = *(*float32)(unsafe.Add(mBase, uint32(v211)+8))
-									v295 = *(*float32)(unsafe.Add(mBase, uint32(v283)+8))
-									v297 = base.F32_add(v291, base.F32_mul(v294, v295))
-									if v221 == int32(3) {
-										v320 = v297
+									v300 = *(*float32)(unsafe.Add(mBase, uint32(v216)+8))
+									v301 = *(*float32)(unsafe.Add(mBase, uint32(v289)+8))
+									v303 = base.F32_add(v297, base.F32_mul(v300, v301))
+									if v226 == int32(3) {
+										v326 = v303
 									} else {
-										v300 = *(*float32)(unsafe.Add(mBase, uint32(v211)+12))
-										v301 = *(*float32)(unsafe.Add(mBase, uint32(v283)+12))
-										v303 = base.F32_add(v297, base.F32_mul(v300, v301))
-										if v221 == int32(4) {
-											v320 = v303
+										v306 = *(*float32)(unsafe.Add(mBase, uint32(v216)+12))
+										v307 = *(*float32)(unsafe.Add(mBase, uint32(v289)+12))
+										v309 = base.F32_add(v303, base.F32_mul(v306, v307))
+										if v226 == int32(4) {
+											v326 = v309
 										} else {
-											v306 = *(*float32)(unsafe.Add(mBase, uint32(v211)+16))
-											v307 = *(*float32)(unsafe.Add(mBase, uint32(v283)+16))
-											v309 = base.F32_add(v303, base.F32_mul(v306, v307))
-											if v221 == int32(5) {
-												v320 = v309
+											v312 = *(*float32)(unsafe.Add(mBase, uint32(v216)+16))
+											v313 = *(*float32)(unsafe.Add(mBase, uint32(v289)+16))
+											v315 = base.F32_add(v309, base.F32_mul(v312, v313))
+											if v226 == int32(5) {
+												v326 = v315
 											} else {
-												v310 = *(*float32)(unsafe.Add(mBase, uint32(v211)+20))
-												v311 = *(*float32)(unsafe.Add(mBase, uint32(v283)+20))
-												v313 = base.F32_add(v309, base.F32_mul(v310, v311))
-												if v221 == int32(6) {
-													v320 = v313
+												v316 = *(*float32)(unsafe.Add(mBase, uint32(v216)+20))
+												v317 = *(*float32)(unsafe.Add(mBase, uint32(v289)+20))
+												v319 = base.F32_add(v315, base.F32_mul(v316, v317))
+												if v226 == int32(6) {
+													v326 = v319
 												} else {
-													v314 = *(*float32)(unsafe.Add(mBase, uint32(v211)+24))
-													v315 = *(*float32)(unsafe.Add(mBase, uint32(v283)+24))
-													v320 = base.F32_add(v313, base.F32_mul(v314, v315))
+													v320 = *(*float32)(unsafe.Add(mBase, uint32(v216)+24))
+													v321 = *(*float32)(unsafe.Add(mBase, uint32(v289)+24))
+													v326 = base.F32_add(v319, base.F32_mul(v320, v321))
 												}
 											}
 										}
@@ -11280,165 +10343,306 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 								}
 							}
 						}
-						if base.Ui32(v167) <= base.Ui32(v237) {
-							v322 = int32(0)
+						if base.Ui32(v171) <= base.Ui32(v242) {
+							v328 = int32(0)
 						} else {
-							v322 = v162 + v237<<(uint(v272)%32)
+							v328 = v166 + v242<<(uint(v277)%32)
 						}
-						v323 = *(*float32)(unsafe.Add(mBase, uint32(v322)))
-						if base.I32_eqz(v205) != 0 {
-							v325 = float32(0)
-							v474 = v325
-							v475 = v325
-							v476 = v325
-							v484 = v325
+						v329 = *(*float32)(unsafe.Add(mBase, uint32(v328)))
+						if v210 == int32(0) {
+							v332 = float32(0)
+							v481 = v332
+							v482 = v332
+							v483 = v332
+							v491 = v332
 						} else {
-							v329 = float32(0)
-							v348 = v205
-							v350 = int32(0)
-							v366 = v329
-							v367 = v329
-							v368 = v329
-							v369 = v329
-							v370 = v329
-							v371 = v329
-							v372 = v329
-							v373 = v329
+							v336 = float32(0)
+							v355 = v210
+							v357 = int32(0)
+							v373 = v336
+							v374 = v336
+							v375 = v336
+							v376 = v336
+							v377 = v336
+							v378 = v336
+							v379 = v336
+							v380 = v336
 							for {
-								v376 = v350 + v206
-								v377 = *(*float32)(unsafe.Add(mBase, uint32(v376)))
-								v378 = v350 + v279
-								v379 = *(*float32)(unsafe.Add(mBase, uint32(v378)))
-								v381 = base.F32_add(v366, base.F32_mul(v377, v379))
-								v382 = int32(28)
-								v384 = *(*float32)(unsafe.Add(mBase, uint32(v376+v382)))
-								v387 = *(*float32)(unsafe.Add(mBase, uint32(v378+v382)))
-								v389 = base.F32_add(v373, base.F32_mul(v384, v387))
-								v390 = int32(24)
-								v392 = *(*float32)(unsafe.Add(mBase, uint32(v376+v390)))
-								v395 = *(*float32)(unsafe.Add(mBase, uint32(v378+v390)))
-								v397 = base.F32_add(v372, base.F32_mul(v392, v395))
-								v398 = int32(20)
-								v400 = *(*float32)(unsafe.Add(mBase, uint32(v376+v398)))
-								v403 = *(*float32)(unsafe.Add(mBase, uint32(v378+v398)))
-								v405 = base.F32_add(v371, base.F32_mul(v400, v403))
-								v406 = int32(16)
-								v408 = *(*float32)(unsafe.Add(mBase, uint32(v376+v406)))
-								v411 = *(*float32)(unsafe.Add(mBase, uint32(v378+v406)))
-								v413 = base.F32_add(v370, base.F32_mul(v408, v411))
-								v414 = int32(12)
-								v416 = *(*float32)(unsafe.Add(mBase, uint32(v376+v414)))
-								v419 = *(*float32)(unsafe.Add(mBase, uint32(v378+v414)))
-								v421 = base.F32_add(v369, base.F32_mul(v416, v419))
-								v422 = int32(8)
-								v424 = *(*float32)(unsafe.Add(mBase, uint32(v376+v422)))
-								v427 = *(*float32)(unsafe.Add(mBase, uint32(v378+v422)))
-								v429 = base.F32_add(v368, base.F32_mul(v424, v427))
-								v430 = int32(4)
-								v432 = *(*float32)(unsafe.Add(mBase, uint32(v376+v430)))
-								v435 = *(*float32)(unsafe.Add(mBase, uint32(v378+v430)))
-								v437 = base.F32_add(v367, base.F32_mul(v432, v435))
-								v441 = v348 - int32(1)
-								if v441 != 0 {
-									v348 = v441
-									v350 = v350 + int32(32)
-									v366 = v381
-									v367 = v437
-									v368 = v429
-									v369 = v421
-									v370 = v413
-									v371 = v405
-									v372 = v397
-									v373 = v389
+								v383 = v357 + v211
+								v384 = *(*float32)(unsafe.Add(mBase, uint32(v383)))
+								v385 = v357 + v284
+								v386 = *(*float32)(unsafe.Add(mBase, uint32(v385)))
+								v388 = base.F32_add(v373, base.F32_mul(v384, v386))
+								v389 = int32(28)
+								v391 = *(*float32)(unsafe.Add(mBase, uint32(v383+v389)))
+								v394 = *(*float32)(unsafe.Add(mBase, uint32(v385+v389)))
+								v396 = base.F32_add(v380, base.F32_mul(v391, v394))
+								v397 = int32(24)
+								v399 = *(*float32)(unsafe.Add(mBase, uint32(v383+v397)))
+								v402 = *(*float32)(unsafe.Add(mBase, uint32(v385+v397)))
+								v404 = base.F32_add(v379, base.F32_mul(v399, v402))
+								v405 = int32(20)
+								v407 = *(*float32)(unsafe.Add(mBase, uint32(v383+v405)))
+								v410 = *(*float32)(unsafe.Add(mBase, uint32(v385+v405)))
+								v412 = base.F32_add(v378, base.F32_mul(v407, v410))
+								v413 = int32(16)
+								v415 = *(*float32)(unsafe.Add(mBase, uint32(v383+v413)))
+								v418 = *(*float32)(unsafe.Add(mBase, uint32(v385+v413)))
+								v420 = base.F32_add(v377, base.F32_mul(v415, v418))
+								v421 = int32(12)
+								v423 = *(*float32)(unsafe.Add(mBase, uint32(v383+v421)))
+								v426 = *(*float32)(unsafe.Add(mBase, uint32(v385+v421)))
+								v428 = base.F32_add(v376, base.F32_mul(v423, v426))
+								v429 = int32(8)
+								v431 = *(*float32)(unsafe.Add(mBase, uint32(v383+v429)))
+								v434 = *(*float32)(unsafe.Add(mBase, uint32(v385+v429)))
+								v436 = base.F32_add(v375, base.F32_mul(v431, v434))
+								v437 = int32(4)
+								v439 = *(*float32)(unsafe.Add(mBase, uint32(v383+v437)))
+								v442 = *(*float32)(unsafe.Add(mBase, uint32(v385+v437)))
+								v444 = base.F32_add(v374, base.F32_mul(v439, v442))
+								v448 = v355 - int32(1)
+								if v448 != 0 {
+									v355 = v448
+									v357 = v357 + int32(32)
+									v373 = v388
+									v374 = v444
+									v375 = v436
+									v376 = v428
+									v377 = v420
+									v378 = v412
+									v379 = v404
+									v380 = v396
 									continue
 								} else {
 									break
 								}
 								break
 							}
-							v474 = base.F32_add(v381, v413)
-							v475 = base.F32_add(v437, v405)
-							v476 = base.F32_add(v429, v397)
-							v484 = base.F32_add(v421, v389)
+							v481 = base.F32_add(v388, v420)
+							v482 = base.F32_add(v444, v412)
+							v483 = base.F32_add(v436, v404)
+							v491 = base.F32_add(v428, v396)
 						}
-						*(*float32)(unsafe.Add(mBase, uint32(v322))) = base.F32_add(v323, base.F32_add(v484, base.F32_add(v476, base.F32_add(v475, base.F32_add(v320, v474)))))
+						*(*float32)(unsafe.Add(mBase, uint32(v328))) = base.F32_add(v329, base.F32_add(v491, base.F32_add(v483, base.F32_add(v482, base.F32_add(v326, v481)))))
 					}
 				}
-				if v238 != v194 {
-					__phi237 = v238
-					__phi238 = v238 + int32(1)
-					v237 = __phi237
-					v238 = __phi238
+				if v243 != v198 {
+					__phi242 = v243
+					__phi243 = v243 + int32(1)
+					v242 = __phi242
+					v243 = __phi243
 					continue
 				} else {
 					break
 				}
 				break
 			}
-			v532 = *(*int32)(unsafe.Add(mBase, uint32(l1)+8))
-			v535 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
-			v536 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
-			v537 = int32(0)
-			v545 = l6
-			v548 = v537
-			v549 = v537
-			v551 = v162
+			v539 = *(*int32)(unsafe.Add(mBase, uint32(l1)+8))
+			v542 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
+			v543 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
+			v544 = int32(0)
+			v552 = l6
+			v555 = v544
+			v556 = v544
+			v558 = v166
 			for {
-				v577 = v532 + v548
-				if base.I32_eqz(base.B2i32(base.Ui32(l7) < base.Ui32(v577))|base.B2i32(base.Ui32(v167) <= base.Ui32(v549))|base.B2i32(base.Ui32(v577) < base.Ui32(v532))) != 0 {
-					v584 = Fn306(m, v536, v535, v545, v532)
-					mBase = m.M
-					v585 = *(*float32)(unsafe.Add(mBase, uint32(v551)))
-					*(*float32)(unsafe.Add(mBase, uint32(v551))) = base.F32_add(v584, v585)
+				v584 = v539 + v555
+				if base.B2i32(base.Ui32(l7) < base.Ui32(v584))|base.B2i32(base.Ui32(v171) <= base.Ui32(v556))|base.B2i32(base.Ui32(v584) < base.Ui32(v539)) == int32(0) {
+					v595 = float32(0)
+					v605 = int32(7)
+					v606 = v539 & v605
+					v608 = v542 & v605
+					if base.Ui32(v606) < base.Ui32(v608) {
+						v610 = v606
+					} else {
+						v610 = v608
+					}
+					if v610 == int32(0) {
+						v665 = math.Float32frombits(uint32(0x80000000))
+					} else {
+						v613 = int32(1073741816)
+						v615 = int32(2)
+						v617 = v552 + v539&v613<<(uint(v615)%32)
+						v618 = *(*float32)(unsafe.Add(mBase, uint32(v617)))
+						v623 = v543 + v542&v613<<(uint(v615)%32)
+						v624 = *(*float32)(unsafe.Add(mBase, uint32(v623)))
+						v625 = base.F32_mul(v618, v624)
+						if v610 == int32(1) {
+							v665 = v625
+						} else {
+							v628 = *(*float32)(unsafe.Add(mBase, uint32(v617)+4))
+							v629 = *(*float32)(unsafe.Add(mBase, uint32(v623)+4))
+							v631 = base.F32_add(v625, base.F32_mul(v628, v629))
+							if v610 == int32(2) {
+								v665 = v631
+							} else {
+								v634 = *(*float32)(unsafe.Add(mBase, uint32(v617)+8))
+								v635 = *(*float32)(unsafe.Add(mBase, uint32(v623)+8))
+								v637 = base.F32_add(v631, base.F32_mul(v634, v635))
+								if v610 == int32(3) {
+									v665 = v637
+								} else {
+									v640 = *(*float32)(unsafe.Add(mBase, uint32(v617)+12))
+									v641 = *(*float32)(unsafe.Add(mBase, uint32(v623)+12))
+									v643 = base.F32_add(v637, base.F32_mul(v640, v641))
+									if v610 == int32(4) {
+										v665 = v643
+									} else {
+										v646 = *(*float32)(unsafe.Add(mBase, uint32(v617)+16))
+										v647 = *(*float32)(unsafe.Add(mBase, uint32(v623)+16))
+										v649 = base.F32_add(v643, base.F32_mul(v646, v647))
+										if v610 == int32(5) {
+											v665 = v649
+										} else {
+											v652 = *(*float32)(unsafe.Add(mBase, uint32(v617)+20))
+											v653 = *(*float32)(unsafe.Add(mBase, uint32(v623)+20))
+											v655 = base.F32_add(v649, base.F32_mul(v652, v653))
+											if v610 == int32(6) {
+												v665 = v655
+											} else {
+												v658 = *(*float32)(unsafe.Add(mBase, uint32(v617)+24))
+												v659 = *(*float32)(unsafe.Add(mBase, uint32(v623)+24))
+												v665 = base.F32_add(v655, base.F32_mul(v658, v659))
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					v666 = int32(3)
+					v667 = int32(base.Ui32(v539) >> (uint(v666) % 32))
+					v669 = int32(base.Ui32(v542) >> (uint(v666) % 32))
+					if base.Ui32(v667) < base.Ui32(v669) {
+						v671 = v667
+					} else {
+						v671 = v669
+					}
+					if v671 != 0 {
+						v677 = int32(0)
+						v678 = v671
+						v681 = v595
+						v682 = v595
+						v683 = v595
+						v684 = v595
+						v685 = v595
+						v686 = v595
+						v687 = v595
+						v688 = v595
+						for {
+							v689 = v543 + v677
+							v690 = *(*float32)(unsafe.Add(mBase, uint32(v689)))
+							v691 = v552 + v677
+							v692 = *(*float32)(unsafe.Add(mBase, uint32(v691)))
+							v694 = base.F32_add(v681, base.F32_mul(v690, v692))
+							v695 = int32(28)
+							v697 = *(*float32)(unsafe.Add(mBase, uint32(v689+v695)))
+							v700 = *(*float32)(unsafe.Add(mBase, uint32(v691+v695)))
+							v702 = base.F32_add(v685, base.F32_mul(v697, v700))
+							v703 = int32(24)
+							v705 = *(*float32)(unsafe.Add(mBase, uint32(v689+v703)))
+							v708 = *(*float32)(unsafe.Add(mBase, uint32(v691+v703)))
+							v710 = base.F32_add(v686, base.F32_mul(v705, v708))
+							v711 = int32(20)
+							v713 = *(*float32)(unsafe.Add(mBase, uint32(v689+v711)))
+							v716 = *(*float32)(unsafe.Add(mBase, uint32(v691+v711)))
+							v718 = base.F32_add(v687, base.F32_mul(v713, v716))
+							v719 = int32(16)
+							v721 = *(*float32)(unsafe.Add(mBase, uint32(v689+v719)))
+							v724 = *(*float32)(unsafe.Add(mBase, uint32(v691+v719)))
+							v726 = base.F32_add(v688, base.F32_mul(v721, v724))
+							v727 = int32(12)
+							v729 = *(*float32)(unsafe.Add(mBase, uint32(v689+v727)))
+							v732 = *(*float32)(unsafe.Add(mBase, uint32(v691+v727)))
+							v734 = base.F32_add(v682, base.F32_mul(v729, v732))
+							v735 = int32(8)
+							v737 = *(*float32)(unsafe.Add(mBase, uint32(v689+v735)))
+							v740 = *(*float32)(unsafe.Add(mBase, uint32(v691+v735)))
+							v742 = base.F32_add(v683, base.F32_mul(v737, v740))
+							v743 = int32(4)
+							v745 = *(*float32)(unsafe.Add(mBase, uint32(v689+v743)))
+							v748 = *(*float32)(unsafe.Add(mBase, uint32(v691+v743)))
+							v750 = base.F32_add(v684, base.F32_mul(v745, v748))
+							v754 = v678 - int32(1)
+							if v754 != 0 {
+								v677 = v677 + int32(32)
+								v678 = v754
+								v681 = v694
+								v682 = v734
+								v683 = v742
+								v684 = v750
+								v685 = v702
+								v686 = v710
+								v687 = v718
+								v688 = v726
+								continue
+							} else {
+								break
+							}
+							break
+						}
+						v769 = base.F32_add(v702, v734)
+						v770 = base.F32_add(v710, v742)
+						v771 = base.F32_add(v718, v750)
+						v776 = base.F32_add(v726, v694)
+					} else {
+						v769 = v595
+						v770 = v595
+						v771 = v595
+						v776 = float32(0)
+					}
+					v781 = *(*float32)(unsafe.Add(mBase, uint32(v558)))
+					*(*float32)(unsafe.Add(mBase, uint32(v558))) = base.F32_add(base.F32_add(v769, base.F32_add(v770, base.F32_add(v771, base.F32_add(v665, v776)))), v781)
 				} else {
 				}
-				v592 = v549 + int32(1)
-				if v592 != v194 {
-					v545 = v532<<(uint(int32(2))%32) + v545
-					v548 = v577
-					v549 = v592
-					v551 = v551 + int32(4)
+				v788 = v556 + int32(1)
+				if v788 != v198 {
+					v552 = v539<<(uint(int32(2))%32) + v552
+					v555 = v584
+					v556 = v788
+					v558 = v558 + int32(4)
 					continue
 				} else {
 					break
 				}
 				break
 			}
-			v598 = v536
-			v616 = v535
+			v794 = v543
+			v812 = v542
 		}
-		if base.Ui32(v192) <= base.Ui32(v167) {
-			v639 = v162 + v192<<(uint(int32(2))%32)
-			if base.Ui64(int64(4294967296)) <= base.Ui64(v189) {
-				v642 = int32(1073741823)
-				v643 = v192 + v642
-				v645 = v643 & v642
-				if base.I32_eqz(v643&int32(1)) != 0 {
-					v649 = float32(1)
-					v650 = *(*float32)(unsafe.Add(mBase, uint32(v162)))
-					v652 = Fn721(m, base.F32_neg(v650))
+		if base.Ui32(v196) <= base.Ui32(v171) {
+			v835 = v166 + v196<<(uint(int32(2))%32)
+			if base.Ui64(int64(4294967296)) <= base.Ui64(v193) {
+				v838 = int32(1073741823)
+				v839 = v196 + v838
+				v841 = v839 & v838
+				if v839&int32(1) == int32(0) {
+					v846 = float32(1)
+					v847 = *(*float32)(unsafe.Add(mBase, uint32(v166)))
+					v849 = Fn721(m, base.F32_neg(v847))
 					mBase = m.M
-					*(*float32)(unsafe.Add(mBase, uint32(v162))) = base.F32_div(v649, base.F32_add(v652, v649))
-					v659 = v162 + int32(4)
+					*(*float32)(unsafe.Add(mBase, uint32(v166))) = base.F32_div(v846, base.F32_add(v849, v846))
+					v856 = v166 + int32(4)
 				} else {
-					v659 = v162
+					v856 = v166
 				}
-				if v645 != 0 {
-					v669 = v659
+				if v841 != 0 {
+					v866 = v856
 					for {
-						v698 = float32(1)
-						v699 = *(*float32)(unsafe.Add(mBase, uint32(v669)))
-						v701 = Fn721(m, base.F32_neg(v699))
+						v895 = float32(1)
+						v896 = *(*float32)(unsafe.Add(mBase, uint32(v866)))
+						v898 = Fn721(m, base.F32_neg(v896))
 						mBase = m.M
-						*(*float32)(unsafe.Add(mBase, uint32(v669))) = base.F32_div(v698, base.F32_add(v701, v698))
-						v707 = v669 + int32(4)
-						v709 = *(*float32)(unsafe.Add(mBase, uint32(v707)))
-						v711 = Fn721(m, base.F32_neg(v709))
+						*(*float32)(unsafe.Add(mBase, uint32(v866))) = base.F32_div(v895, base.F32_add(v898, v895))
+						v904 = v866 + int32(4)
+						v906 = *(*float32)(unsafe.Add(mBase, uint32(v904)))
+						v908 = Fn721(m, base.F32_neg(v906))
 						mBase = m.M
-						*(*float32)(unsafe.Add(mBase, uint32(v707))) = base.F32_div(v698, base.F32_add(v711, v698))
-						v717 = v669 + int32(8)
-						if v717 != v639 {
-							v669 = v717
+						*(*float32)(unsafe.Add(mBase, uint32(v904))) = base.F32_div(v895, base.F32_add(v908, v895))
+						v914 = v866 + int32(8)
+						if v914 != v835 {
+							v866 = v914
 							continue
 						} else {
 							break
@@ -11447,47 +10651,47 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 					}
 				} else {
 				}
-				if v189 < int64(0) {
-					Fn205(m, int32(24289016))
+				if v193 < int64(0) {
+					Fn205(m, int32(24289400))
 					mBase = m.M
 					base.Wasm_trap_unreachable()
 					for {
 					}
 				} else {
-					v760 = v192 << (uint(int32(1)) % 32)
-					if base.Ui32(v167) < base.Ui32(v760) {
-						Fn205(m, int32(24289016))
+					v957 = v196 << (uint(int32(1)) % 32)
+					if base.Ui32(v171) < base.Ui32(v957) {
+						Fn205(m, int32(24289400))
 						mBase = m.M
 						base.Wasm_trap_unreachable()
 						for {
 						}
 					} else {
-						if base.I32_eqz(v643&int32(1)) != 0 {
-							v765 = float32(1)
-							v766 = *(*float32)(unsafe.Add(mBase, uint32(v639)))
-							v768 = Fn721(m, base.F32_neg(v766))
+						if v839&int32(1) == int32(0) {
+							v963 = float32(1)
+							v964 = *(*float32)(unsafe.Add(mBase, uint32(v835)))
+							v966 = Fn721(m, base.F32_neg(v964))
 							mBase = m.M
-							*(*float32)(unsafe.Add(mBase, uint32(v639))) = base.F32_div(v765, base.F32_add(v768, v765))
-							v775 = v639 + int32(4)
+							*(*float32)(unsafe.Add(mBase, uint32(v835))) = base.F32_div(v963, base.F32_add(v966, v963))
+							v973 = v835 + int32(4)
 						} else {
-							v775 = v639
+							v973 = v835
 						}
-						if v645 != 0 {
-							v788 = v775
+						if v841 != 0 {
+							v986 = v973
 							for {
-								v817 = float32(1)
-								v818 = *(*float32)(unsafe.Add(mBase, uint32(v788)))
-								v820 = Fn721(m, base.F32_neg(v818))
+								v1015 = float32(1)
+								v1016 = *(*float32)(unsafe.Add(mBase, uint32(v986)))
+								v1018 = Fn721(m, base.F32_neg(v1016))
 								mBase = m.M
-								*(*float32)(unsafe.Add(mBase, uint32(v788))) = base.F32_div(v817, base.F32_add(v820, v817))
-								v826 = v788 + int32(4)
-								v828 = *(*float32)(unsafe.Add(mBase, uint32(v826)))
-								v830 = Fn721(m, base.F32_neg(v828))
+								*(*float32)(unsafe.Add(mBase, uint32(v986))) = base.F32_div(v1015, base.F32_add(v1018, v1015))
+								v1024 = v986 + int32(4)
+								v1026 = *(*float32)(unsafe.Add(mBase, uint32(v1024)))
+								v1028 = Fn721(m, base.F32_neg(v1026))
 								mBase = m.M
-								*(*float32)(unsafe.Add(mBase, uint32(v826))) = base.F32_div(v817, base.F32_add(v830, v817))
-								v836 = v788 + int32(8)
-								if v836 != v639+v192<<(uint(int32(2))%32) {
-									v788 = v836
+								*(*float32)(unsafe.Add(mBase, uint32(v1024))) = base.F32_div(v1015, base.F32_add(v1028, v1015))
+								v1034 = v986 + int32(8)
+								if v1034 != v835+v196<<(uint(int32(2))%32) {
+									v986 = v1034
 									continue
 								} else {
 									break
@@ -11496,84 +10700,84 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 							}
 						} else {
 						}
-						v877 = v192 * int32(3)
-						if base.B2i32(base.Ui32(v877) < base.Ui32(v760))|base.B2i32(base.Ui32(v167) < base.Ui32(v877)) != 0 {
-							Fn205(m, int32(24289032))
+						v1075 = v196 * int32(3)
+						if base.B2i32(base.Ui32(v1075) < base.Ui32(v957))|base.B2i32(base.Ui32(v171) < base.Ui32(v1075)) != 0 {
+							Fn205(m, int32(24289416))
 							mBase = m.M
 							base.Wasm_trap_unreachable()
 							for {
 							}
 						} else {
-							v883 = v162 + v760<<(uint(int32(2))%32)
-							v885 = v192 & int32(7)
-							if v885 != 0 {
-								v895 = v883
-								v896 = v885
+							v1081 = v166 + v957<<(uint(int32(2))%32)
+							v1083 = v196 & int32(7)
+							if v1083 != 0 {
+								v1093 = v1081
+								v1094 = v1083
 								for {
-									v924 = *(*float32)(unsafe.Add(mBase, uint32(v895)))
-									v925 = Fn727(m, v924)
+									v1122 = *(*float32)(unsafe.Add(mBase, uint32(v1093)))
+									v1123 = Fn727(m, v1122)
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v895))) = v925
-									v928 = v895 + int32(4)
-									v930 = v896 - int32(1)
-									if v930 != 0 {
-										v895 = v928
-										v896 = v930
+									*(*float32)(unsafe.Add(mBase, uint32(v1093))) = v1123
+									v1126 = v1093 + int32(4)
+									v1128 = v1094 - int32(1)
+									if v1128 != 0 {
+										v1093 = v1126
+										v1094 = v1128
 										continue
 									} else {
 										break
 									}
 									break
 								}
-								v940 = v928
+								v1138 = v1126
 							} else {
-								v940 = v883
+								v1138 = v1081
 							}
-							if base.Ui32(int32(7)) <= base.Ui32(v645) {
-								v983 = v940
+							if base.Ui32(int32(7)) <= base.Ui32(v841) {
+								v1181 = v1138
 								for {
-									v1012 = *(*float32)(unsafe.Add(mBase, uint32(v983)))
-									v1013 = Fn727(m, v1012)
+									v1210 = *(*float32)(unsafe.Add(mBase, uint32(v1181)))
+									v1211 = Fn727(m, v1210)
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v983))) = v1013
-									v1016 = v983 + int32(4)
-									v1017 = *(*float32)(unsafe.Add(mBase, uint32(v1016)))
-									v1018 = Fn727(m, v1017)
+									*(*float32)(unsafe.Add(mBase, uint32(v1181))) = v1211
+									v1214 = v1181 + int32(4)
+									v1215 = *(*float32)(unsafe.Add(mBase, uint32(v1214)))
+									v1216 = Fn727(m, v1215)
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v1016))) = v1018
-									v1021 = v983 + int32(8)
-									v1022 = *(*float32)(unsafe.Add(mBase, uint32(v1021)))
-									v1023 = Fn727(m, v1022)
+									*(*float32)(unsafe.Add(mBase, uint32(v1214))) = v1216
+									v1219 = v1181 + int32(8)
+									v1220 = *(*float32)(unsafe.Add(mBase, uint32(v1219)))
+									v1221 = Fn727(m, v1220)
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v1021))) = v1023
-									v1026 = v983 + int32(12)
-									v1027 = *(*float32)(unsafe.Add(mBase, uint32(v1026)))
-									v1028 = Fn727(m, v1027)
+									*(*float32)(unsafe.Add(mBase, uint32(v1219))) = v1221
+									v1224 = v1181 + int32(12)
+									v1225 = *(*float32)(unsafe.Add(mBase, uint32(v1224)))
+									v1226 = Fn727(m, v1225)
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v1026))) = v1028
-									v1031 = v983 + int32(16)
-									v1032 = *(*float32)(unsafe.Add(mBase, uint32(v1031)))
-									v1033 = Fn727(m, v1032)
+									*(*float32)(unsafe.Add(mBase, uint32(v1224))) = v1226
+									v1229 = v1181 + int32(16)
+									v1230 = *(*float32)(unsafe.Add(mBase, uint32(v1229)))
+									v1231 = Fn727(m, v1230)
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v1031))) = v1033
-									v1036 = v983 + int32(20)
-									v1037 = *(*float32)(unsafe.Add(mBase, uint32(v1036)))
-									v1038 = Fn727(m, v1037)
+									*(*float32)(unsafe.Add(mBase, uint32(v1229))) = v1231
+									v1234 = v1181 + int32(20)
+									v1235 = *(*float32)(unsafe.Add(mBase, uint32(v1234)))
+									v1236 = Fn727(m, v1235)
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v1036))) = v1038
-									v1041 = v983 + int32(24)
-									v1042 = *(*float32)(unsafe.Add(mBase, uint32(v1041)))
-									v1043 = Fn727(m, v1042)
+									*(*float32)(unsafe.Add(mBase, uint32(v1234))) = v1236
+									v1239 = v1181 + int32(24)
+									v1240 = *(*float32)(unsafe.Add(mBase, uint32(v1239)))
+									v1241 = Fn727(m, v1240)
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v1041))) = v1043
-									v1046 = v983 + int32(28)
-									v1047 = *(*float32)(unsafe.Add(mBase, uint32(v1046)))
-									v1048 = Fn727(m, v1047)
+									*(*float32)(unsafe.Add(mBase, uint32(v1239))) = v1241
+									v1244 = v1181 + int32(28)
+									v1245 = *(*float32)(unsafe.Add(mBase, uint32(v1244)))
+									v1246 = Fn727(m, v1245)
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v1046))) = v1048
-									v1051 = v983 + int32(32)
-									if v1051 != v883+v192<<(uint(int32(2))%32) {
-										v983 = v1051
+									*(*float32)(unsafe.Add(mBase, uint32(v1244))) = v1246
+									v1249 = v1181 + int32(32)
+									if v1249 != v1081+v196<<(uint(int32(2))%32) {
+										v1181 = v1249
 										continue
 									} else {
 										break
@@ -11582,157 +10786,157 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 								}
 							} else {
 							}
-							v1092 = v192 << (uint(int32(2)) % 32)
-							if base.I32_eqz(base.B2i32(base.Ui32(v1092) < base.Ui32(v877))|base.B2i32(base.Ui32(v167) < base.Ui32(v1092))) != 0 {
-								v1099 = v162 + v877<<(uint(int32(2))%32)
-								if base.I32_eqz(v643&int32(1)) != 0 {
-									v1103 = float32(1)
-									v1104 = *(*float32)(unsafe.Add(mBase, uint32(v1099)))
-									v1106 = Fn721(m, base.F32_neg(v1104))
+							v1290 = v196 << (uint(int32(2)) % 32)
+							if base.B2i32(base.Ui32(v1290) < base.Ui32(v1075))|base.B2i32(base.Ui32(v171) < base.Ui32(v1290)) == int32(0) {
+								v1298 = v166 + v1075<<(uint(int32(2))%32)
+								if v839&int32(1) == int32(0) {
+									v1303 = float32(1)
+									v1304 = *(*float32)(unsafe.Add(mBase, uint32(v1298)))
+									v1306 = Fn721(m, base.F32_neg(v1304))
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v1099))) = base.F32_div(v1103, base.F32_add(v1106, v1103))
-									v1113 = v1099 + int32(4)
+									*(*float32)(unsafe.Add(mBase, uint32(v1298))) = base.F32_div(v1303, base.F32_add(v1306, v1303))
+									v1313 = v1298 + int32(4)
 								} else {
-									v1113 = v1099
+									v1313 = v1298
 								}
-								if base.I32_eqz(v645) != 0 {
-									v1188 = v883
-									v1197 = v877
+								if v841 == int32(0) {
+									v1389 = v1081
+									v1398 = v1075
 								} else {
-									v1127 = v1113
+									v1328 = v1313
 									for {
-										v1156 = float32(1)
-										v1157 = *(*float32)(unsafe.Add(mBase, uint32(v1127)))
-										v1159 = Fn721(m, base.F32_neg(v1157))
+										v1357 = float32(1)
+										v1358 = *(*float32)(unsafe.Add(mBase, uint32(v1328)))
+										v1360 = Fn721(m, base.F32_neg(v1358))
 										mBase = m.M
-										*(*float32)(unsafe.Add(mBase, uint32(v1127))) = base.F32_div(v1156, base.F32_add(v1159, v1156))
-										v1165 = v1127 + int32(4)
-										v1167 = *(*float32)(unsafe.Add(mBase, uint32(v1165)))
-										v1169 = Fn721(m, base.F32_neg(v1167))
+										*(*float32)(unsafe.Add(mBase, uint32(v1328))) = base.F32_div(v1357, base.F32_add(v1360, v1357))
+										v1366 = v1328 + int32(4)
+										v1368 = *(*float32)(unsafe.Add(mBase, uint32(v1366)))
+										v1370 = Fn721(m, base.F32_neg(v1368))
 										mBase = m.M
-										*(*float32)(unsafe.Add(mBase, uint32(v1165))) = base.F32_div(v1156, base.F32_add(v1169, v1156))
-										v1175 = v1127 + int32(8)
-										if v1175 != v1099+v192<<(uint(int32(2))%32) {
-											v1127 = v1175
+										*(*float32)(unsafe.Add(mBase, uint32(v1366))) = base.F32_div(v1357, base.F32_add(v1370, v1357))
+										v1376 = v1328 + int32(8)
+										if v1376 != v1298+v196<<(uint(int32(2))%32) {
+											v1328 = v1376
 											continue
 										} else {
 											break
 										}
 										break
 									}
-									v1188 = v883
-									v1197 = v877
+									v1389 = v1081
+									v1398 = v1075
 								}
-								if base.I32_eqz(l3)|base.B2i32(l3 != v192) != 0 {
+								if base.B2i32(l3 == int32(0))|base.B2i32(l3 != v196) != 0 {
 								} else {
-									v1223 = int32(0)
+									v1425 = int32(0)
 									if l3 != int32(1) {
-										v1240 = int32(0)
-										v1241 = v1223
+										v1442 = int32(0)
+										v1443 = v1425
 										for {
-											v1269 = l2 + v1240
-											v1270 = v1240 + v162
-											v1271 = *(*float32)(unsafe.Add(mBase, uint32(v1270)))
-											v1272 = v1188 + v1240
-											v1273 = *(*float32)(unsafe.Add(mBase, uint32(v1272)))
-											v1275 = *(*float32)(unsafe.Add(mBase, uint32(v1269)))
-											v1276 = v639 + v1240
-											v1277 = *(*float32)(unsafe.Add(mBase, uint32(v1276)))
-											*(*float32)(unsafe.Add(mBase, uint32(v1269))) = base.F32_add(base.F32_mul(v1271, v1273), base.F32_mul(v1275, v1277))
-											v1281 = int32(4)
-											v1282 = v1269 + v1281
-											v1285 = *(*float32)(unsafe.Add(mBase, uint32(v1270+v1281)))
-											v1288 = *(*float32)(unsafe.Add(mBase, uint32(v1272+v1281)))
-											v1290 = *(*float32)(unsafe.Add(mBase, uint32(v1282)))
-											v1293 = *(*float32)(unsafe.Add(mBase, uint32(v1276+v1281)))
-											*(*float32)(unsafe.Add(mBase, uint32(v1282))) = base.F32_add(base.F32_mul(v1285, v1288), base.F32_mul(v1290, v1293))
-											v1300 = v1241 + int32(2)
-											if l3&int32(-2) != v1300 {
-												v1240 = v1240 + int32(8)
-												v1241 = v1300
+											v1471 = l2 + v1442
+											v1472 = v1442 + v166
+											v1473 = *(*float32)(unsafe.Add(mBase, uint32(v1472)))
+											v1474 = v1389 + v1442
+											v1475 = *(*float32)(unsafe.Add(mBase, uint32(v1474)))
+											v1477 = *(*float32)(unsafe.Add(mBase, uint32(v1471)))
+											v1478 = v835 + v1442
+											v1479 = *(*float32)(unsafe.Add(mBase, uint32(v1478)))
+											*(*float32)(unsafe.Add(mBase, uint32(v1471))) = base.F32_add(base.F32_mul(v1473, v1475), base.F32_mul(v1477, v1479))
+											v1483 = int32(4)
+											v1484 = v1471 + v1483
+											v1487 = *(*float32)(unsafe.Add(mBase, uint32(v1472+v1483)))
+											v1490 = *(*float32)(unsafe.Add(mBase, uint32(v1474+v1483)))
+											v1492 = *(*float32)(unsafe.Add(mBase, uint32(v1484)))
+											v1495 = *(*float32)(unsafe.Add(mBase, uint32(v1478+v1483)))
+											*(*float32)(unsafe.Add(mBase, uint32(v1484))) = base.F32_add(base.F32_mul(v1487, v1490), base.F32_mul(v1492, v1495))
+											v1502 = v1443 + int32(2)
+											if l3&int32(-2) != v1502 {
+												v1442 = v1442 + int32(8)
+												v1443 = v1502
 												continue
 											} else {
 												break
 											}
 											break
 										}
-										if base.I32_eqz(l3&int32(1)) != 0 {
+										if l3&int32(1) == int32(0) {
 										} else {
-											v1313 = v1300
-											v1342 = v1313 << (uint(int32(2)) % 32)
-											v1343 = l2 + v1342
-											v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-											v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-											v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-											v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-											*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+											v1516 = v1502
+											v1545 = v1516 << (uint(int32(2)) % 32)
+											v1546 = l2 + v1545
+											v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+											v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+											v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+											v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+											*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 										}
 									} else {
-										v1313 = v1223
-										v1342 = v1313 << (uint(int32(2)) % 32)
-										v1343 = l2 + v1342
-										v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-										v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-										v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-										v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-										*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+										v1516 = v1425
+										v1545 = v1516 << (uint(int32(2)) % 32)
+										v1546 = l2 + v1545
+										v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+										v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+										v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+										v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+										*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 									}
 								}
-								if base.I32_eqz(v616)|base.B2i32(v192 != v616)|base.B2i32(l3 != v616) != 0 {
+								if base.B2i32(v812 == int32(0))|base.B2i32(v196 != v812)|base.B2i32(l3 != v812) != 0 {
 								} else {
-									v1400 = v162 + v1197<<(uint(int32(2))%32)
-									v1401 = int32(0)
-									if v191 != int64(1) {
-										v1416 = int32(0)
-										v1417 = v1401
+									v1604 = v166 + v1398<<(uint(int32(2))%32)
+									v1605 = int32(0)
+									if v195 != int64(1) {
+										v1620 = int32(0)
+										v1621 = v1605
 										for {
-											v1445 = v598 + v1416
-											v1446 = l2 + v1416
-											v1447 = *(*float32)(unsafe.Add(mBase, uint32(v1446)))
-											v1448 = Fn727(m, v1447)
+											v1649 = v794 + v1620
+											v1650 = l2 + v1620
+											v1651 = *(*float32)(unsafe.Add(mBase, uint32(v1650)))
+											v1652 = Fn727(m, v1651)
 											mBase = m.M
-											v1449 = v1400 + v1416
-											v1450 = *(*float32)(unsafe.Add(mBase, uint32(v1449)))
-											*(*float32)(unsafe.Add(mBase, uint32(v1445))) = base.F32_mul(v1448, v1450)
-											v1453 = int32(4)
-											v1457 = *(*float32)(unsafe.Add(mBase, uint32(v1446+v1453)))
-											v1458 = Fn727(m, v1457)
+											v1653 = v1604 + v1620
+											v1654 = *(*float32)(unsafe.Add(mBase, uint32(v1653)))
+											*(*float32)(unsafe.Add(mBase, uint32(v1649))) = base.F32_mul(v1652, v1654)
+											v1657 = int32(4)
+											v1661 = *(*float32)(unsafe.Add(mBase, uint32(v1650+v1657)))
+											v1662 = Fn727(m, v1661)
 											mBase = m.M
-											v1461 = *(*float32)(unsafe.Add(mBase, uint32(v1449+v1453)))
-											*(*float32)(unsafe.Add(mBase, uint32(v1445+v1453))) = base.F32_mul(v1458, v1461)
-											v1467 = v1417 + int32(2)
-											if v192&int32(-2) != v1467 {
-												v1416 = v1416 + int32(8)
-												v1417 = v1467
+											v1665 = *(*float32)(unsafe.Add(mBase, uint32(v1653+v1657)))
+											*(*float32)(unsafe.Add(mBase, uint32(v1649+v1657))) = base.F32_mul(v1662, v1665)
+											v1671 = v1621 + int32(2)
+											if v196&int32(-2) != v1671 {
+												v1620 = v1620 + int32(8)
+												v1621 = v1671
 												continue
 											} else {
 												break
 											}
 											break
 										}
-										v1479 = v1467
+										v1683 = v1671
 									} else {
-										v1479 = v1401
+										v1683 = v1605
 									}
-									if base.I32_eqz(v192&int32(1)) != 0 {
+									if v196&int32(1) == int32(0) {
 									} else {
-										v1511 = v1479 << (uint(int32(2)) % 32)
-										v1514 = *(*float32)(unsafe.Add(mBase, uint32(v1511+l2)))
-										v1515 = Fn727(m, v1514)
+										v1716 = v1683 << (uint(int32(2)) % 32)
+										v1719 = *(*float32)(unsafe.Add(mBase, uint32(v1716+l2)))
+										v1720 = Fn727(m, v1719)
 										mBase = m.M
-										v1517 = *(*float32)(unsafe.Add(mBase, uint32(v1511+v1400)))
-										*(*float32)(unsafe.Add(mBase, uint32(v598+v1511))) = base.F32_mul(v1515, v1517)
+										v1722 = *(*float32)(unsafe.Add(mBase, uint32(v1716+v1604)))
+										*(*float32)(unsafe.Add(mBase, uint32(v794+v1716))) = base.F32_mul(v1720, v1722)
 									}
 								}
-								if base.I32_eqz(v173) != 0 {
-									Fn833(m, v162)
+								if v177 == int32(0) {
+									Fn833(m, v166)
 									mBase = m.M
 								} else {
 								}
 								m.G0 = v41 + int32(16)
 								return
 							} else {
-								Fn205(m, int32(24289048))
+								Fn205(m, int32(24289432))
 								mBase = m.M
 								base.Wasm_trap_unreachable()
 								for {
@@ -11742,119 +10946,119 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 					}
 				}
 			} else {
-				v1180 = v192 * int32(3)
-				if base.Ui32(v167) < base.Ui32(v1180) {
-					Fn205(m, int32(24289032))
+				v1381 = v196 * int32(3)
+				if base.Ui32(v171) < base.Ui32(v1381) {
+					Fn205(m, int32(24289416))
 					mBase = m.M
 					base.Wasm_trap_unreachable()
 					for {
 					}
 				} else {
-					v1188 = v162
-					v1197 = v1180
-					if base.I32_eqz(l3)|base.B2i32(l3 != v192) != 0 {
+					v1389 = v166
+					v1398 = v1381
+					if base.B2i32(l3 == int32(0))|base.B2i32(l3 != v196) != 0 {
 					} else {
-						v1223 = int32(0)
+						v1425 = int32(0)
 						if l3 != int32(1) {
-							v1240 = int32(0)
-							v1241 = v1223
+							v1442 = int32(0)
+							v1443 = v1425
 							for {
-								v1269 = l2 + v1240
-								v1270 = v1240 + v162
-								v1271 = *(*float32)(unsafe.Add(mBase, uint32(v1270)))
-								v1272 = v1188 + v1240
-								v1273 = *(*float32)(unsafe.Add(mBase, uint32(v1272)))
-								v1275 = *(*float32)(unsafe.Add(mBase, uint32(v1269)))
-								v1276 = v639 + v1240
-								v1277 = *(*float32)(unsafe.Add(mBase, uint32(v1276)))
-								*(*float32)(unsafe.Add(mBase, uint32(v1269))) = base.F32_add(base.F32_mul(v1271, v1273), base.F32_mul(v1275, v1277))
-								v1281 = int32(4)
-								v1282 = v1269 + v1281
-								v1285 = *(*float32)(unsafe.Add(mBase, uint32(v1270+v1281)))
-								v1288 = *(*float32)(unsafe.Add(mBase, uint32(v1272+v1281)))
-								v1290 = *(*float32)(unsafe.Add(mBase, uint32(v1282)))
-								v1293 = *(*float32)(unsafe.Add(mBase, uint32(v1276+v1281)))
-								*(*float32)(unsafe.Add(mBase, uint32(v1282))) = base.F32_add(base.F32_mul(v1285, v1288), base.F32_mul(v1290, v1293))
-								v1300 = v1241 + int32(2)
-								if l3&int32(-2) != v1300 {
-									v1240 = v1240 + int32(8)
-									v1241 = v1300
+								v1471 = l2 + v1442
+								v1472 = v1442 + v166
+								v1473 = *(*float32)(unsafe.Add(mBase, uint32(v1472)))
+								v1474 = v1389 + v1442
+								v1475 = *(*float32)(unsafe.Add(mBase, uint32(v1474)))
+								v1477 = *(*float32)(unsafe.Add(mBase, uint32(v1471)))
+								v1478 = v835 + v1442
+								v1479 = *(*float32)(unsafe.Add(mBase, uint32(v1478)))
+								*(*float32)(unsafe.Add(mBase, uint32(v1471))) = base.F32_add(base.F32_mul(v1473, v1475), base.F32_mul(v1477, v1479))
+								v1483 = int32(4)
+								v1484 = v1471 + v1483
+								v1487 = *(*float32)(unsafe.Add(mBase, uint32(v1472+v1483)))
+								v1490 = *(*float32)(unsafe.Add(mBase, uint32(v1474+v1483)))
+								v1492 = *(*float32)(unsafe.Add(mBase, uint32(v1484)))
+								v1495 = *(*float32)(unsafe.Add(mBase, uint32(v1478+v1483)))
+								*(*float32)(unsafe.Add(mBase, uint32(v1484))) = base.F32_add(base.F32_mul(v1487, v1490), base.F32_mul(v1492, v1495))
+								v1502 = v1443 + int32(2)
+								if l3&int32(-2) != v1502 {
+									v1442 = v1442 + int32(8)
+									v1443 = v1502
 									continue
 								} else {
 									break
 								}
 								break
 							}
-							if base.I32_eqz(l3&int32(1)) != 0 {
+							if l3&int32(1) == int32(0) {
 							} else {
-								v1313 = v1300
-								v1342 = v1313 << (uint(int32(2)) % 32)
-								v1343 = l2 + v1342
-								v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-								v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-								v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-								v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-								*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+								v1516 = v1502
+								v1545 = v1516 << (uint(int32(2)) % 32)
+								v1546 = l2 + v1545
+								v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+								v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+								v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+								v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+								*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 							}
 						} else {
-							v1313 = v1223
-							v1342 = v1313 << (uint(int32(2)) % 32)
-							v1343 = l2 + v1342
-							v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-							v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-							v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-							v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-							*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+							v1516 = v1425
+							v1545 = v1516 << (uint(int32(2)) % 32)
+							v1546 = l2 + v1545
+							v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+							v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+							v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+							v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+							*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 						}
 					}
-					if base.I32_eqz(v616)|base.B2i32(v192 != v616)|base.B2i32(l3 != v616) != 0 {
+					if base.B2i32(v812 == int32(0))|base.B2i32(v196 != v812)|base.B2i32(l3 != v812) != 0 {
 					} else {
-						v1400 = v162 + v1197<<(uint(int32(2))%32)
-						v1401 = int32(0)
-						if v191 != int64(1) {
-							v1416 = int32(0)
-							v1417 = v1401
+						v1604 = v166 + v1398<<(uint(int32(2))%32)
+						v1605 = int32(0)
+						if v195 != int64(1) {
+							v1620 = int32(0)
+							v1621 = v1605
 							for {
-								v1445 = v598 + v1416
-								v1446 = l2 + v1416
-								v1447 = *(*float32)(unsafe.Add(mBase, uint32(v1446)))
-								v1448 = Fn727(m, v1447)
+								v1649 = v794 + v1620
+								v1650 = l2 + v1620
+								v1651 = *(*float32)(unsafe.Add(mBase, uint32(v1650)))
+								v1652 = Fn727(m, v1651)
 								mBase = m.M
-								v1449 = v1400 + v1416
-								v1450 = *(*float32)(unsafe.Add(mBase, uint32(v1449)))
-								*(*float32)(unsafe.Add(mBase, uint32(v1445))) = base.F32_mul(v1448, v1450)
-								v1453 = int32(4)
-								v1457 = *(*float32)(unsafe.Add(mBase, uint32(v1446+v1453)))
-								v1458 = Fn727(m, v1457)
+								v1653 = v1604 + v1620
+								v1654 = *(*float32)(unsafe.Add(mBase, uint32(v1653)))
+								*(*float32)(unsafe.Add(mBase, uint32(v1649))) = base.F32_mul(v1652, v1654)
+								v1657 = int32(4)
+								v1661 = *(*float32)(unsafe.Add(mBase, uint32(v1650+v1657)))
+								v1662 = Fn727(m, v1661)
 								mBase = m.M
-								v1461 = *(*float32)(unsafe.Add(mBase, uint32(v1449+v1453)))
-								*(*float32)(unsafe.Add(mBase, uint32(v1445+v1453))) = base.F32_mul(v1458, v1461)
-								v1467 = v1417 + int32(2)
-								if v192&int32(-2) != v1467 {
-									v1416 = v1416 + int32(8)
-									v1417 = v1467
+								v1665 = *(*float32)(unsafe.Add(mBase, uint32(v1653+v1657)))
+								*(*float32)(unsafe.Add(mBase, uint32(v1649+v1657))) = base.F32_mul(v1662, v1665)
+								v1671 = v1621 + int32(2)
+								if v196&int32(-2) != v1671 {
+									v1620 = v1620 + int32(8)
+									v1621 = v1671
 									continue
 								} else {
 									break
 								}
 								break
 							}
-							v1479 = v1467
+							v1683 = v1671
 						} else {
-							v1479 = v1401
+							v1683 = v1605
 						}
-						if base.I32_eqz(v192&int32(1)) != 0 {
+						if v196&int32(1) == int32(0) {
 						} else {
-							v1511 = v1479 << (uint(int32(2)) % 32)
-							v1514 = *(*float32)(unsafe.Add(mBase, uint32(v1511+l2)))
-							v1515 = Fn727(m, v1514)
+							v1716 = v1683 << (uint(int32(2)) % 32)
+							v1719 = *(*float32)(unsafe.Add(mBase, uint32(v1716+l2)))
+							v1720 = Fn727(m, v1719)
 							mBase = m.M
-							v1517 = *(*float32)(unsafe.Add(mBase, uint32(v1511+v1400)))
-							*(*float32)(unsafe.Add(mBase, uint32(v598+v1511))) = base.F32_mul(v1515, v1517)
+							v1722 = *(*float32)(unsafe.Add(mBase, uint32(v1716+v1604)))
+							*(*float32)(unsafe.Add(mBase, uint32(v794+v1716))) = base.F32_mul(v1720, v1722)
 						}
 					}
-					if base.I32_eqz(v173) != 0 {
-						Fn833(m, v162)
+					if v177 == int32(0) {
+						Fn833(m, v166)
 						mBase = m.M
 					} else {
 					}
@@ -11863,177 +11067,177 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 				}
 			}
 		} else {
-			Fn205(m, int32(24289000))
+			Fn205(m, int32(24289384))
 			mBase = m.M
 			base.Wasm_trap_unreachable()
 			for {
 			}
 		}
 	} else {
-		v47 = int32(3)
-		v48 = int32(2)
-		v49 = v43 << (uint(v48) % 32)
-		v53 = int32(base.Ui32(v49-int32(4)) >> (uint(v48) % 32))
-		if base.Ui32(v53) <= base.Ui32(v47) {
-			v56 = v47
+		v48 = int32(3)
+		v49 = int32(2)
+		v50 = v43 << (uint(v49) % 32)
+		v54 = int32(base.Ui32(v50-int32(4)) >> (uint(v49) % 32))
+		if base.Ui32(v54) <= base.Ui32(v48) {
+			v57 = v48
 		} else {
-			v56 = v53
+			v57 = v54
 		}
-		v58 = v56 + int32(1)
-		v60 = v58 << (uint(int32(2)) % 32)
-		if base.Ui32(int32(2147483645)) <= base.Ui32(v60) {
-			Fn167(m, int32(26655640))
+		v59 = v57 + int32(1)
+		v61 = v59 << (uint(int32(2)) % 32)
+		if base.Ui32(int32(2147483645)) <= base.Ui32(v61) {
+			Fn167(m, int32(26656024))
 			mBase = m.M
 			base.Wasm_trap_unreachable()
 			for {
 			}
 		} else {
-			v63 = *(*int32)(unsafe.Add(mBase, uint32(l8)))
-			v64 = *(*float32)(unsafe.Add(mBase, uint32(v63)))
-			if base.I32_eqz(v60) != 0 {
-				v72 = int32(0)
-				v73 = int32(4)
-				*(*float32)(unsafe.Add(mBase, uint32(v73))) = v64
-				v75 = int32(1)
-				*(*int32)(unsafe.Add(mBase, uint32(v41)+12)) = v75
-				*(*int32)(unsafe.Add(mBase, uint32(v41)+8)) = v73
-				*(*int32)(unsafe.Add(mBase, uint32(v41)+4)) = v72
-				if v43 == v75 {
-					v162 = v73
-					v167 = v75
-					v173 = v10
+			v64 = *(*int32)(unsafe.Add(mBase, uint32(l8)))
+			v65 = *(*float32)(unsafe.Add(mBase, uint32(v64)))
+			if v61 == int32(0) {
+				v75 = int32(0)
+				v76 = int32(4)
+				*(*float32)(unsafe.Add(mBase, uint32(v76))) = v65
+				v78 = int32(1)
+				*(*int32)(unsafe.Add(mBase, uint32(v41)+12)) = v78
+				*(*int32)(unsafe.Add(mBase, uint32(v41)+8)) = v76
+				*(*int32)(unsafe.Add(mBase, uint32(v41)+4)) = v75
+				if v43 == v78 {
+					v166 = v76
+					v171 = v78
+					v177 = v10
 				} else {
-					v93 = int32(4)
-					v94 = int32(-8)
-					v95 = v73
-					v100 = v75
+					v96 = int32(4)
+					v97 = int32(-8)
+					v98 = v76
+					v103 = v78
 					for {
-						v123 = *(*float32)(unsafe.Add(mBase, uint32(v93+v63)))
-						v124 = *(*int32)(unsafe.Add(mBase, uint32(v41)+4))
-						if v124 == v100 {
-							v126 = int32(4)
-							Fn280(m, v41+v126, v100, int32(base.Ui32(v94+v49)>>(uint(int32(2))%32))+int32(1), v126, v126)
+						v126 = *(*float32)(unsafe.Add(mBase, uint32(v96+v64)))
+						v127 = *(*int32)(unsafe.Add(mBase, uint32(v41)+4))
+						if v127 == v103 {
+							v129 = int32(4)
+							Fn280(m, v41+v129, v103, int32(base.Ui32(v97+v50)>>(uint(int32(2))%32))+int32(1), v129, v129)
 							mBase = m.M
-							v136 = *(*int32)(unsafe.Add(mBase, uint32(v41)+8))
-							v137 = v136
+							v139 = *(*int32)(unsafe.Add(mBase, uint32(v41)+8))
+							v140 = v139
 						} else {
-							v137 = v95
+							v140 = v98
 						}
-						*(*float32)(unsafe.Add(mBase, uint32(v93+v137))) = v123
-						v141 = v100 + int32(1)
-						*(*int32)(unsafe.Add(mBase, uint32(v41)+12)) = v141
-						v143 = int32(4)
-						v146 = v93 + v143
-						if v49 != v146 {
-							v93 = v146
-							v94 = v94 - v143
-							v95 = v137
-							v100 = v141
+						*(*float32)(unsafe.Add(mBase, uint32(v96+v140))) = v126
+						v144 = v103 + int32(1)
+						*(*int32)(unsafe.Add(mBase, uint32(v41)+12)) = v144
+						v146 = int32(4)
+						v149 = v96 + v146
+						if v50 != v149 {
+							v96 = v149
+							v97 = v97 - v146
+							v98 = v140
+							v103 = v144
 							continue
 						} else {
 							break
 						}
 						break
 					}
-					v148 = *(*int32)(unsafe.Add(mBase, uint32(v41)+4))
-					v150 = *(*int32)(unsafe.Add(mBase, uint32(v41)+8))
-					v162 = v150
-					v167 = v141
-					v173 = base.I32_eqz(v148)
+					v151 = *(*int32)(unsafe.Add(mBase, uint32(v41)+4))
+					v154 = *(*int32)(unsafe.Add(mBase, uint32(v41)+8))
+					v166 = v154
+					v171 = v144
+					v177 = base.B2i32(v151 == int32(0))
 				}
-				v189 = *(*int64)(unsafe.Add(mBase, uint32(l8)+8))
-				v191 = int64(base.Ui64(v189) >> (uint(int64(32)) % 64))
-				v192 = base.I32_wrap_i64(v191)
-				v194 = v192 * base.I32_wrap_i64(v189)
-				if base.I32_eqz(v194) != 0 {
-					v196 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
-					v197 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
-					v598 = v197
-					v616 = v196
+				v193 = *(*int64)(unsafe.Add(mBase, uint32(l8)+8))
+				v195 = int64(base.Ui64(v193) >> (uint(int64(32)) % 64))
+				v196 = base.I32_wrap_i64(v195)
+				v198 = v196 * base.I32_wrap_i64(v193)
+				if v198 == int32(0) {
+					v201 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
+					v202 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
+					v794 = v202
+					v812 = v201
 				} else {
-					v198 = *(*int32)(unsafe.Add(mBase, uint32(l0)+8))
-					v199 = int32(3)
-					v200 = int32(base.Ui32(v198) >> (uint(v199) % 32))
-					v201 = *(*int32)(unsafe.Add(mBase, uint32(l0)+4))
-					v203 = int32(base.Ui32(v201) >> (uint(v199) % 32))
-					if base.Ui32(v200) < base.Ui32(v203) {
-						v205 = v200
+					v203 = *(*int32)(unsafe.Add(mBase, uint32(l0)+8))
+					v204 = int32(3)
+					v205 = int32(base.Ui32(v203) >> (uint(v204) % 32))
+					v206 = *(*int32)(unsafe.Add(mBase, uint32(l0)+4))
+					v208 = int32(base.Ui32(v206) >> (uint(v204) % 32))
+					if base.Ui32(v205) < base.Ui32(v208) {
+						v210 = v205
 					} else {
-						v205 = v203
+						v210 = v208
 					}
-					v206 = *(*int32)(unsafe.Add(mBase, uint32(l0)))
-					v209 = int32(2)
-					v211 = v206 + v201&int32(1073741816)<<(uint(v209)%32)
-					v216 = int32(7)
-					v217 = v198 & v216
-					v219 = v201 & v216
-					if base.Ui32(v217) < base.Ui32(v219) {
-						v221 = v217
+					v211 = *(*int32)(unsafe.Add(mBase, uint32(l0)))
+					v214 = int32(2)
+					v216 = v211 + v206&int32(1073741816)<<(uint(v214)%32)
+					v221 = int32(7)
+					v222 = v203 & v221
+					v224 = v206 & v221
+					if base.Ui32(v222) < base.Ui32(v224) {
+						v226 = v222
 					} else {
-						v221 = v219
+						v226 = v224
 					}
-					__phi237 = int32(0)
-					__phi238 = int32(1)
-					v237 = __phi237
-					v238 = __phi238
+					__phi242 = int32(0)
+					__phi243 = int32(1)
+					v242 = __phi242
+					v243 = __phi243
 					for {
-						v266 = base.B2i32(base.Ui32(v167) <= base.Ui32(v237))
-						if base.Ui32(v167) <= base.Ui32(v237) {
+						v271 = base.B2i32(base.Ui32(v171) <= base.Ui32(v242))
+						if base.Ui32(v171) <= base.Ui32(v242) {
 						} else {
-							v267 = v238 * v198
-							v269 = v237 * v198
-							v271 = base.B2i32(base.Ui32(l5) < base.Ui32(v267)) | base.B2i32(base.Ui32(v267) < base.Ui32(v269))
-							if v271 != 0 {
+							v272 = v243 * v203
+							v274 = v242 * v203
+							v276 = base.B2i32(base.Ui32(l5) < base.Ui32(v272)) | base.B2i32(base.Ui32(v272) < base.Ui32(v274))
+							if v276 != 0 {
 							} else {
-								v272 = int32(2)
-								if v271 != 0 {
-									v279 = int32(0)
+								v277 = int32(2)
+								if v276 != 0 {
+									v284 = int32(0)
 								} else {
-									v279 = l4 + v269<<(uint(v272)%32)
+									v284 = l4 + v274<<(uint(v277)%32)
 								}
-								if base.I32_eqz(v221) != 0 {
-									v320 = math.Float32frombits(uint32(0x80000000))
+								if v226 == int32(0) {
+									v326 = math.Float32frombits(uint32(0x80000000))
 								} else {
-									v282 = *(*float32)(unsafe.Add(mBase, uint32(v211)))
-									v283 = v279 + v198&int32(-8)<<(uint(v209)%32)
-									v284 = *(*float32)(unsafe.Add(mBase, uint32(v283)))
-									v285 = base.F32_mul(v282, v284)
-									if v221 == int32(1) {
-										v320 = v285
+									v288 = *(*float32)(unsafe.Add(mBase, uint32(v216)))
+									v289 = v284 + v203&int32(-8)<<(uint(v214)%32)
+									v290 = *(*float32)(unsafe.Add(mBase, uint32(v289)))
+									v291 = base.F32_mul(v288, v290)
+									if v226 == int32(1) {
+										v326 = v291
 									} else {
-										v288 = *(*float32)(unsafe.Add(mBase, uint32(v211)+4))
-										v289 = *(*float32)(unsafe.Add(mBase, uint32(v283)+4))
-										v291 = base.F32_add(v285, base.F32_mul(v288, v289))
-										if v221 == int32(2) {
-											v320 = v291
+										v294 = *(*float32)(unsafe.Add(mBase, uint32(v216)+4))
+										v295 = *(*float32)(unsafe.Add(mBase, uint32(v289)+4))
+										v297 = base.F32_add(v291, base.F32_mul(v294, v295))
+										if v226 == int32(2) {
+											v326 = v297
 										} else {
-											v294 = *(*float32)(unsafe.Add(mBase, uint32(v211)+8))
-											v295 = *(*float32)(unsafe.Add(mBase, uint32(v283)+8))
-											v297 = base.F32_add(v291, base.F32_mul(v294, v295))
-											if v221 == int32(3) {
-												v320 = v297
+											v300 = *(*float32)(unsafe.Add(mBase, uint32(v216)+8))
+											v301 = *(*float32)(unsafe.Add(mBase, uint32(v289)+8))
+											v303 = base.F32_add(v297, base.F32_mul(v300, v301))
+											if v226 == int32(3) {
+												v326 = v303
 											} else {
-												v300 = *(*float32)(unsafe.Add(mBase, uint32(v211)+12))
-												v301 = *(*float32)(unsafe.Add(mBase, uint32(v283)+12))
-												v303 = base.F32_add(v297, base.F32_mul(v300, v301))
-												if v221 == int32(4) {
-													v320 = v303
+												v306 = *(*float32)(unsafe.Add(mBase, uint32(v216)+12))
+												v307 = *(*float32)(unsafe.Add(mBase, uint32(v289)+12))
+												v309 = base.F32_add(v303, base.F32_mul(v306, v307))
+												if v226 == int32(4) {
+													v326 = v309
 												} else {
-													v306 = *(*float32)(unsafe.Add(mBase, uint32(v211)+16))
-													v307 = *(*float32)(unsafe.Add(mBase, uint32(v283)+16))
-													v309 = base.F32_add(v303, base.F32_mul(v306, v307))
-													if v221 == int32(5) {
-														v320 = v309
+													v312 = *(*float32)(unsafe.Add(mBase, uint32(v216)+16))
+													v313 = *(*float32)(unsafe.Add(mBase, uint32(v289)+16))
+													v315 = base.F32_add(v309, base.F32_mul(v312, v313))
+													if v226 == int32(5) {
+														v326 = v315
 													} else {
-														v310 = *(*float32)(unsafe.Add(mBase, uint32(v211)+20))
-														v311 = *(*float32)(unsafe.Add(mBase, uint32(v283)+20))
-														v313 = base.F32_add(v309, base.F32_mul(v310, v311))
-														if v221 == int32(6) {
-															v320 = v313
+														v316 = *(*float32)(unsafe.Add(mBase, uint32(v216)+20))
+														v317 = *(*float32)(unsafe.Add(mBase, uint32(v289)+20))
+														v319 = base.F32_add(v315, base.F32_mul(v316, v317))
+														if v226 == int32(6) {
+															v326 = v319
 														} else {
-															v314 = *(*float32)(unsafe.Add(mBase, uint32(v211)+24))
-															v315 = *(*float32)(unsafe.Add(mBase, uint32(v283)+24))
-															v320 = base.F32_add(v313, base.F32_mul(v314, v315))
+															v320 = *(*float32)(unsafe.Add(mBase, uint32(v216)+24))
+															v321 = *(*float32)(unsafe.Add(mBase, uint32(v289)+24))
+															v326 = base.F32_add(v319, base.F32_mul(v320, v321))
 														}
 													}
 												}
@@ -12041,165 +11245,306 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 										}
 									}
 								}
-								if base.Ui32(v167) <= base.Ui32(v237) {
-									v322 = int32(0)
+								if base.Ui32(v171) <= base.Ui32(v242) {
+									v328 = int32(0)
 								} else {
-									v322 = v162 + v237<<(uint(v272)%32)
+									v328 = v166 + v242<<(uint(v277)%32)
 								}
-								v323 = *(*float32)(unsafe.Add(mBase, uint32(v322)))
-								if base.I32_eqz(v205) != 0 {
-									v325 = float32(0)
-									v474 = v325
-									v475 = v325
-									v476 = v325
-									v484 = v325
+								v329 = *(*float32)(unsafe.Add(mBase, uint32(v328)))
+								if v210 == int32(0) {
+									v332 = float32(0)
+									v481 = v332
+									v482 = v332
+									v483 = v332
+									v491 = v332
 								} else {
-									v329 = float32(0)
-									v348 = v205
-									v350 = int32(0)
-									v366 = v329
-									v367 = v329
-									v368 = v329
-									v369 = v329
-									v370 = v329
-									v371 = v329
-									v372 = v329
-									v373 = v329
+									v336 = float32(0)
+									v355 = v210
+									v357 = int32(0)
+									v373 = v336
+									v374 = v336
+									v375 = v336
+									v376 = v336
+									v377 = v336
+									v378 = v336
+									v379 = v336
+									v380 = v336
 									for {
-										v376 = v350 + v206
-										v377 = *(*float32)(unsafe.Add(mBase, uint32(v376)))
-										v378 = v350 + v279
-										v379 = *(*float32)(unsafe.Add(mBase, uint32(v378)))
-										v381 = base.F32_add(v366, base.F32_mul(v377, v379))
-										v382 = int32(28)
-										v384 = *(*float32)(unsafe.Add(mBase, uint32(v376+v382)))
-										v387 = *(*float32)(unsafe.Add(mBase, uint32(v378+v382)))
-										v389 = base.F32_add(v373, base.F32_mul(v384, v387))
-										v390 = int32(24)
-										v392 = *(*float32)(unsafe.Add(mBase, uint32(v376+v390)))
-										v395 = *(*float32)(unsafe.Add(mBase, uint32(v378+v390)))
-										v397 = base.F32_add(v372, base.F32_mul(v392, v395))
-										v398 = int32(20)
-										v400 = *(*float32)(unsafe.Add(mBase, uint32(v376+v398)))
-										v403 = *(*float32)(unsafe.Add(mBase, uint32(v378+v398)))
-										v405 = base.F32_add(v371, base.F32_mul(v400, v403))
-										v406 = int32(16)
-										v408 = *(*float32)(unsafe.Add(mBase, uint32(v376+v406)))
-										v411 = *(*float32)(unsafe.Add(mBase, uint32(v378+v406)))
-										v413 = base.F32_add(v370, base.F32_mul(v408, v411))
-										v414 = int32(12)
-										v416 = *(*float32)(unsafe.Add(mBase, uint32(v376+v414)))
-										v419 = *(*float32)(unsafe.Add(mBase, uint32(v378+v414)))
-										v421 = base.F32_add(v369, base.F32_mul(v416, v419))
-										v422 = int32(8)
-										v424 = *(*float32)(unsafe.Add(mBase, uint32(v376+v422)))
-										v427 = *(*float32)(unsafe.Add(mBase, uint32(v378+v422)))
-										v429 = base.F32_add(v368, base.F32_mul(v424, v427))
-										v430 = int32(4)
-										v432 = *(*float32)(unsafe.Add(mBase, uint32(v376+v430)))
-										v435 = *(*float32)(unsafe.Add(mBase, uint32(v378+v430)))
-										v437 = base.F32_add(v367, base.F32_mul(v432, v435))
-										v441 = v348 - int32(1)
-										if v441 != 0 {
-											v348 = v441
-											v350 = v350 + int32(32)
-											v366 = v381
-											v367 = v437
-											v368 = v429
-											v369 = v421
-											v370 = v413
-											v371 = v405
-											v372 = v397
-											v373 = v389
+										v383 = v357 + v211
+										v384 = *(*float32)(unsafe.Add(mBase, uint32(v383)))
+										v385 = v357 + v284
+										v386 = *(*float32)(unsafe.Add(mBase, uint32(v385)))
+										v388 = base.F32_add(v373, base.F32_mul(v384, v386))
+										v389 = int32(28)
+										v391 = *(*float32)(unsafe.Add(mBase, uint32(v383+v389)))
+										v394 = *(*float32)(unsafe.Add(mBase, uint32(v385+v389)))
+										v396 = base.F32_add(v380, base.F32_mul(v391, v394))
+										v397 = int32(24)
+										v399 = *(*float32)(unsafe.Add(mBase, uint32(v383+v397)))
+										v402 = *(*float32)(unsafe.Add(mBase, uint32(v385+v397)))
+										v404 = base.F32_add(v379, base.F32_mul(v399, v402))
+										v405 = int32(20)
+										v407 = *(*float32)(unsafe.Add(mBase, uint32(v383+v405)))
+										v410 = *(*float32)(unsafe.Add(mBase, uint32(v385+v405)))
+										v412 = base.F32_add(v378, base.F32_mul(v407, v410))
+										v413 = int32(16)
+										v415 = *(*float32)(unsafe.Add(mBase, uint32(v383+v413)))
+										v418 = *(*float32)(unsafe.Add(mBase, uint32(v385+v413)))
+										v420 = base.F32_add(v377, base.F32_mul(v415, v418))
+										v421 = int32(12)
+										v423 = *(*float32)(unsafe.Add(mBase, uint32(v383+v421)))
+										v426 = *(*float32)(unsafe.Add(mBase, uint32(v385+v421)))
+										v428 = base.F32_add(v376, base.F32_mul(v423, v426))
+										v429 = int32(8)
+										v431 = *(*float32)(unsafe.Add(mBase, uint32(v383+v429)))
+										v434 = *(*float32)(unsafe.Add(mBase, uint32(v385+v429)))
+										v436 = base.F32_add(v375, base.F32_mul(v431, v434))
+										v437 = int32(4)
+										v439 = *(*float32)(unsafe.Add(mBase, uint32(v383+v437)))
+										v442 = *(*float32)(unsafe.Add(mBase, uint32(v385+v437)))
+										v444 = base.F32_add(v374, base.F32_mul(v439, v442))
+										v448 = v355 - int32(1)
+										if v448 != 0 {
+											v355 = v448
+											v357 = v357 + int32(32)
+											v373 = v388
+											v374 = v444
+											v375 = v436
+											v376 = v428
+											v377 = v420
+											v378 = v412
+											v379 = v404
+											v380 = v396
 											continue
 										} else {
 											break
 										}
 										break
 									}
-									v474 = base.F32_add(v381, v413)
-									v475 = base.F32_add(v437, v405)
-									v476 = base.F32_add(v429, v397)
-									v484 = base.F32_add(v421, v389)
+									v481 = base.F32_add(v388, v420)
+									v482 = base.F32_add(v444, v412)
+									v483 = base.F32_add(v436, v404)
+									v491 = base.F32_add(v428, v396)
 								}
-								*(*float32)(unsafe.Add(mBase, uint32(v322))) = base.F32_add(v323, base.F32_add(v484, base.F32_add(v476, base.F32_add(v475, base.F32_add(v320, v474)))))
+								*(*float32)(unsafe.Add(mBase, uint32(v328))) = base.F32_add(v329, base.F32_add(v491, base.F32_add(v483, base.F32_add(v482, base.F32_add(v326, v481)))))
 							}
 						}
-						if v238 != v194 {
-							__phi237 = v238
-							__phi238 = v238 + int32(1)
-							v237 = __phi237
-							v238 = __phi238
+						if v243 != v198 {
+							__phi242 = v243
+							__phi243 = v243 + int32(1)
+							v242 = __phi242
+							v243 = __phi243
 							continue
 						} else {
 							break
 						}
 						break
 					}
-					v532 = *(*int32)(unsafe.Add(mBase, uint32(l1)+8))
-					v535 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
-					v536 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
-					v537 = int32(0)
-					v545 = l6
-					v548 = v537
-					v549 = v537
-					v551 = v162
+					v539 = *(*int32)(unsafe.Add(mBase, uint32(l1)+8))
+					v542 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
+					v543 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
+					v544 = int32(0)
+					v552 = l6
+					v555 = v544
+					v556 = v544
+					v558 = v166
 					for {
-						v577 = v532 + v548
-						if base.I32_eqz(base.B2i32(base.Ui32(l7) < base.Ui32(v577))|base.B2i32(base.Ui32(v167) <= base.Ui32(v549))|base.B2i32(base.Ui32(v577) < base.Ui32(v532))) != 0 {
-							v584 = Fn306(m, v536, v535, v545, v532)
-							mBase = m.M
-							v585 = *(*float32)(unsafe.Add(mBase, uint32(v551)))
-							*(*float32)(unsafe.Add(mBase, uint32(v551))) = base.F32_add(v584, v585)
+						v584 = v539 + v555
+						if base.B2i32(base.Ui32(l7) < base.Ui32(v584))|base.B2i32(base.Ui32(v171) <= base.Ui32(v556))|base.B2i32(base.Ui32(v584) < base.Ui32(v539)) == int32(0) {
+							v595 = float32(0)
+							v605 = int32(7)
+							v606 = v539 & v605
+							v608 = v542 & v605
+							if base.Ui32(v606) < base.Ui32(v608) {
+								v610 = v606
+							} else {
+								v610 = v608
+							}
+							if v610 == int32(0) {
+								v665 = math.Float32frombits(uint32(0x80000000))
+							} else {
+								v613 = int32(1073741816)
+								v615 = int32(2)
+								v617 = v552 + v539&v613<<(uint(v615)%32)
+								v618 = *(*float32)(unsafe.Add(mBase, uint32(v617)))
+								v623 = v543 + v542&v613<<(uint(v615)%32)
+								v624 = *(*float32)(unsafe.Add(mBase, uint32(v623)))
+								v625 = base.F32_mul(v618, v624)
+								if v610 == int32(1) {
+									v665 = v625
+								} else {
+									v628 = *(*float32)(unsafe.Add(mBase, uint32(v617)+4))
+									v629 = *(*float32)(unsafe.Add(mBase, uint32(v623)+4))
+									v631 = base.F32_add(v625, base.F32_mul(v628, v629))
+									if v610 == int32(2) {
+										v665 = v631
+									} else {
+										v634 = *(*float32)(unsafe.Add(mBase, uint32(v617)+8))
+										v635 = *(*float32)(unsafe.Add(mBase, uint32(v623)+8))
+										v637 = base.F32_add(v631, base.F32_mul(v634, v635))
+										if v610 == int32(3) {
+											v665 = v637
+										} else {
+											v640 = *(*float32)(unsafe.Add(mBase, uint32(v617)+12))
+											v641 = *(*float32)(unsafe.Add(mBase, uint32(v623)+12))
+											v643 = base.F32_add(v637, base.F32_mul(v640, v641))
+											if v610 == int32(4) {
+												v665 = v643
+											} else {
+												v646 = *(*float32)(unsafe.Add(mBase, uint32(v617)+16))
+												v647 = *(*float32)(unsafe.Add(mBase, uint32(v623)+16))
+												v649 = base.F32_add(v643, base.F32_mul(v646, v647))
+												if v610 == int32(5) {
+													v665 = v649
+												} else {
+													v652 = *(*float32)(unsafe.Add(mBase, uint32(v617)+20))
+													v653 = *(*float32)(unsafe.Add(mBase, uint32(v623)+20))
+													v655 = base.F32_add(v649, base.F32_mul(v652, v653))
+													if v610 == int32(6) {
+														v665 = v655
+													} else {
+														v658 = *(*float32)(unsafe.Add(mBase, uint32(v617)+24))
+														v659 = *(*float32)(unsafe.Add(mBase, uint32(v623)+24))
+														v665 = base.F32_add(v655, base.F32_mul(v658, v659))
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							v666 = int32(3)
+							v667 = int32(base.Ui32(v539) >> (uint(v666) % 32))
+							v669 = int32(base.Ui32(v542) >> (uint(v666) % 32))
+							if base.Ui32(v667) < base.Ui32(v669) {
+								v671 = v667
+							} else {
+								v671 = v669
+							}
+							if v671 != 0 {
+								v677 = int32(0)
+								v678 = v671
+								v681 = v595
+								v682 = v595
+								v683 = v595
+								v684 = v595
+								v685 = v595
+								v686 = v595
+								v687 = v595
+								v688 = v595
+								for {
+									v689 = v543 + v677
+									v690 = *(*float32)(unsafe.Add(mBase, uint32(v689)))
+									v691 = v552 + v677
+									v692 = *(*float32)(unsafe.Add(mBase, uint32(v691)))
+									v694 = base.F32_add(v681, base.F32_mul(v690, v692))
+									v695 = int32(28)
+									v697 = *(*float32)(unsafe.Add(mBase, uint32(v689+v695)))
+									v700 = *(*float32)(unsafe.Add(mBase, uint32(v691+v695)))
+									v702 = base.F32_add(v685, base.F32_mul(v697, v700))
+									v703 = int32(24)
+									v705 = *(*float32)(unsafe.Add(mBase, uint32(v689+v703)))
+									v708 = *(*float32)(unsafe.Add(mBase, uint32(v691+v703)))
+									v710 = base.F32_add(v686, base.F32_mul(v705, v708))
+									v711 = int32(20)
+									v713 = *(*float32)(unsafe.Add(mBase, uint32(v689+v711)))
+									v716 = *(*float32)(unsafe.Add(mBase, uint32(v691+v711)))
+									v718 = base.F32_add(v687, base.F32_mul(v713, v716))
+									v719 = int32(16)
+									v721 = *(*float32)(unsafe.Add(mBase, uint32(v689+v719)))
+									v724 = *(*float32)(unsafe.Add(mBase, uint32(v691+v719)))
+									v726 = base.F32_add(v688, base.F32_mul(v721, v724))
+									v727 = int32(12)
+									v729 = *(*float32)(unsafe.Add(mBase, uint32(v689+v727)))
+									v732 = *(*float32)(unsafe.Add(mBase, uint32(v691+v727)))
+									v734 = base.F32_add(v682, base.F32_mul(v729, v732))
+									v735 = int32(8)
+									v737 = *(*float32)(unsafe.Add(mBase, uint32(v689+v735)))
+									v740 = *(*float32)(unsafe.Add(mBase, uint32(v691+v735)))
+									v742 = base.F32_add(v683, base.F32_mul(v737, v740))
+									v743 = int32(4)
+									v745 = *(*float32)(unsafe.Add(mBase, uint32(v689+v743)))
+									v748 = *(*float32)(unsafe.Add(mBase, uint32(v691+v743)))
+									v750 = base.F32_add(v684, base.F32_mul(v745, v748))
+									v754 = v678 - int32(1)
+									if v754 != 0 {
+										v677 = v677 + int32(32)
+										v678 = v754
+										v681 = v694
+										v682 = v734
+										v683 = v742
+										v684 = v750
+										v685 = v702
+										v686 = v710
+										v687 = v718
+										v688 = v726
+										continue
+									} else {
+										break
+									}
+									break
+								}
+								v769 = base.F32_add(v702, v734)
+								v770 = base.F32_add(v710, v742)
+								v771 = base.F32_add(v718, v750)
+								v776 = base.F32_add(v726, v694)
+							} else {
+								v769 = v595
+								v770 = v595
+								v771 = v595
+								v776 = float32(0)
+							}
+							v781 = *(*float32)(unsafe.Add(mBase, uint32(v558)))
+							*(*float32)(unsafe.Add(mBase, uint32(v558))) = base.F32_add(base.F32_add(v769, base.F32_add(v770, base.F32_add(v771, base.F32_add(v665, v776)))), v781)
 						} else {
 						}
-						v592 = v549 + int32(1)
-						if v592 != v194 {
-							v545 = v532<<(uint(int32(2))%32) + v545
-							v548 = v577
-							v549 = v592
-							v551 = v551 + int32(4)
+						v788 = v556 + int32(1)
+						if v788 != v198 {
+							v552 = v539<<(uint(int32(2))%32) + v552
+							v555 = v584
+							v556 = v788
+							v558 = v558 + int32(4)
 							continue
 						} else {
 							break
 						}
 						break
 					}
-					v598 = v536
-					v616 = v535
+					v794 = v543
+					v812 = v542
 				}
-				if base.Ui32(v192) <= base.Ui32(v167) {
-					v639 = v162 + v192<<(uint(int32(2))%32)
-					if base.Ui64(int64(4294967296)) <= base.Ui64(v189) {
-						v642 = int32(1073741823)
-						v643 = v192 + v642
-						v645 = v643 & v642
-						if base.I32_eqz(v643&int32(1)) != 0 {
-							v649 = float32(1)
-							v650 = *(*float32)(unsafe.Add(mBase, uint32(v162)))
-							v652 = Fn721(m, base.F32_neg(v650))
+				if base.Ui32(v196) <= base.Ui32(v171) {
+					v835 = v166 + v196<<(uint(int32(2))%32)
+					if base.Ui64(int64(4294967296)) <= base.Ui64(v193) {
+						v838 = int32(1073741823)
+						v839 = v196 + v838
+						v841 = v839 & v838
+						if v839&int32(1) == int32(0) {
+							v846 = float32(1)
+							v847 = *(*float32)(unsafe.Add(mBase, uint32(v166)))
+							v849 = Fn721(m, base.F32_neg(v847))
 							mBase = m.M
-							*(*float32)(unsafe.Add(mBase, uint32(v162))) = base.F32_div(v649, base.F32_add(v652, v649))
-							v659 = v162 + int32(4)
+							*(*float32)(unsafe.Add(mBase, uint32(v166))) = base.F32_div(v846, base.F32_add(v849, v846))
+							v856 = v166 + int32(4)
 						} else {
-							v659 = v162
+							v856 = v166
 						}
-						if v645 != 0 {
-							v669 = v659
+						if v841 != 0 {
+							v866 = v856
 							for {
-								v698 = float32(1)
-								v699 = *(*float32)(unsafe.Add(mBase, uint32(v669)))
-								v701 = Fn721(m, base.F32_neg(v699))
+								v895 = float32(1)
+								v896 = *(*float32)(unsafe.Add(mBase, uint32(v866)))
+								v898 = Fn721(m, base.F32_neg(v896))
 								mBase = m.M
-								*(*float32)(unsafe.Add(mBase, uint32(v669))) = base.F32_div(v698, base.F32_add(v701, v698))
-								v707 = v669 + int32(4)
-								v709 = *(*float32)(unsafe.Add(mBase, uint32(v707)))
-								v711 = Fn721(m, base.F32_neg(v709))
+								*(*float32)(unsafe.Add(mBase, uint32(v866))) = base.F32_div(v895, base.F32_add(v898, v895))
+								v904 = v866 + int32(4)
+								v906 = *(*float32)(unsafe.Add(mBase, uint32(v904)))
+								v908 = Fn721(m, base.F32_neg(v906))
 								mBase = m.M
-								*(*float32)(unsafe.Add(mBase, uint32(v707))) = base.F32_div(v698, base.F32_add(v711, v698))
-								v717 = v669 + int32(8)
-								if v717 != v639 {
-									v669 = v717
+								*(*float32)(unsafe.Add(mBase, uint32(v904))) = base.F32_div(v895, base.F32_add(v908, v895))
+								v914 = v866 + int32(8)
+								if v914 != v835 {
+									v866 = v914
 									continue
 								} else {
 									break
@@ -12208,47 +11553,47 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 							}
 						} else {
 						}
-						if v189 < int64(0) {
-							Fn205(m, int32(24289016))
+						if v193 < int64(0) {
+							Fn205(m, int32(24289400))
 							mBase = m.M
 							base.Wasm_trap_unreachable()
 							for {
 							}
 						} else {
-							v760 = v192 << (uint(int32(1)) % 32)
-							if base.Ui32(v167) < base.Ui32(v760) {
-								Fn205(m, int32(24289016))
+							v957 = v196 << (uint(int32(1)) % 32)
+							if base.Ui32(v171) < base.Ui32(v957) {
+								Fn205(m, int32(24289400))
 								mBase = m.M
 								base.Wasm_trap_unreachable()
 								for {
 								}
 							} else {
-								if base.I32_eqz(v643&int32(1)) != 0 {
-									v765 = float32(1)
-									v766 = *(*float32)(unsafe.Add(mBase, uint32(v639)))
-									v768 = Fn721(m, base.F32_neg(v766))
+								if v839&int32(1) == int32(0) {
+									v963 = float32(1)
+									v964 = *(*float32)(unsafe.Add(mBase, uint32(v835)))
+									v966 = Fn721(m, base.F32_neg(v964))
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v639))) = base.F32_div(v765, base.F32_add(v768, v765))
-									v775 = v639 + int32(4)
+									*(*float32)(unsafe.Add(mBase, uint32(v835))) = base.F32_div(v963, base.F32_add(v966, v963))
+									v973 = v835 + int32(4)
 								} else {
-									v775 = v639
+									v973 = v835
 								}
-								if v645 != 0 {
-									v788 = v775
+								if v841 != 0 {
+									v986 = v973
 									for {
-										v817 = float32(1)
-										v818 = *(*float32)(unsafe.Add(mBase, uint32(v788)))
-										v820 = Fn721(m, base.F32_neg(v818))
+										v1015 = float32(1)
+										v1016 = *(*float32)(unsafe.Add(mBase, uint32(v986)))
+										v1018 = Fn721(m, base.F32_neg(v1016))
 										mBase = m.M
-										*(*float32)(unsafe.Add(mBase, uint32(v788))) = base.F32_div(v817, base.F32_add(v820, v817))
-										v826 = v788 + int32(4)
-										v828 = *(*float32)(unsafe.Add(mBase, uint32(v826)))
-										v830 = Fn721(m, base.F32_neg(v828))
+										*(*float32)(unsafe.Add(mBase, uint32(v986))) = base.F32_div(v1015, base.F32_add(v1018, v1015))
+										v1024 = v986 + int32(4)
+										v1026 = *(*float32)(unsafe.Add(mBase, uint32(v1024)))
+										v1028 = Fn721(m, base.F32_neg(v1026))
 										mBase = m.M
-										*(*float32)(unsafe.Add(mBase, uint32(v826))) = base.F32_div(v817, base.F32_add(v830, v817))
-										v836 = v788 + int32(8)
-										if v836 != v639+v192<<(uint(int32(2))%32) {
-											v788 = v836
+										*(*float32)(unsafe.Add(mBase, uint32(v1024))) = base.F32_div(v1015, base.F32_add(v1028, v1015))
+										v1034 = v986 + int32(8)
+										if v1034 != v835+v196<<(uint(int32(2))%32) {
+											v986 = v1034
 											continue
 										} else {
 											break
@@ -12257,84 +11602,84 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 									}
 								} else {
 								}
-								v877 = v192 * int32(3)
-								if base.B2i32(base.Ui32(v877) < base.Ui32(v760))|base.B2i32(base.Ui32(v167) < base.Ui32(v877)) != 0 {
-									Fn205(m, int32(24289032))
+								v1075 = v196 * int32(3)
+								if base.B2i32(base.Ui32(v1075) < base.Ui32(v957))|base.B2i32(base.Ui32(v171) < base.Ui32(v1075)) != 0 {
+									Fn205(m, int32(24289416))
 									mBase = m.M
 									base.Wasm_trap_unreachable()
 									for {
 									}
 								} else {
-									v883 = v162 + v760<<(uint(int32(2))%32)
-									v885 = v192 & int32(7)
-									if v885 != 0 {
-										v895 = v883
-										v896 = v885
+									v1081 = v166 + v957<<(uint(int32(2))%32)
+									v1083 = v196 & int32(7)
+									if v1083 != 0 {
+										v1093 = v1081
+										v1094 = v1083
 										for {
-											v924 = *(*float32)(unsafe.Add(mBase, uint32(v895)))
-											v925 = Fn727(m, v924)
+											v1122 = *(*float32)(unsafe.Add(mBase, uint32(v1093)))
+											v1123 = Fn727(m, v1122)
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v895))) = v925
-											v928 = v895 + int32(4)
-											v930 = v896 - int32(1)
-											if v930 != 0 {
-												v895 = v928
-												v896 = v930
+											*(*float32)(unsafe.Add(mBase, uint32(v1093))) = v1123
+											v1126 = v1093 + int32(4)
+											v1128 = v1094 - int32(1)
+											if v1128 != 0 {
+												v1093 = v1126
+												v1094 = v1128
 												continue
 											} else {
 												break
 											}
 											break
 										}
-										v940 = v928
+										v1138 = v1126
 									} else {
-										v940 = v883
+										v1138 = v1081
 									}
-									if base.Ui32(int32(7)) <= base.Ui32(v645) {
-										v983 = v940
+									if base.Ui32(int32(7)) <= base.Ui32(v841) {
+										v1181 = v1138
 										for {
-											v1012 = *(*float32)(unsafe.Add(mBase, uint32(v983)))
-											v1013 = Fn727(m, v1012)
+											v1210 = *(*float32)(unsafe.Add(mBase, uint32(v1181)))
+											v1211 = Fn727(m, v1210)
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v983))) = v1013
-											v1016 = v983 + int32(4)
-											v1017 = *(*float32)(unsafe.Add(mBase, uint32(v1016)))
-											v1018 = Fn727(m, v1017)
+											*(*float32)(unsafe.Add(mBase, uint32(v1181))) = v1211
+											v1214 = v1181 + int32(4)
+											v1215 = *(*float32)(unsafe.Add(mBase, uint32(v1214)))
+											v1216 = Fn727(m, v1215)
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v1016))) = v1018
-											v1021 = v983 + int32(8)
-											v1022 = *(*float32)(unsafe.Add(mBase, uint32(v1021)))
-											v1023 = Fn727(m, v1022)
+											*(*float32)(unsafe.Add(mBase, uint32(v1214))) = v1216
+											v1219 = v1181 + int32(8)
+											v1220 = *(*float32)(unsafe.Add(mBase, uint32(v1219)))
+											v1221 = Fn727(m, v1220)
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v1021))) = v1023
-											v1026 = v983 + int32(12)
-											v1027 = *(*float32)(unsafe.Add(mBase, uint32(v1026)))
-											v1028 = Fn727(m, v1027)
+											*(*float32)(unsafe.Add(mBase, uint32(v1219))) = v1221
+											v1224 = v1181 + int32(12)
+											v1225 = *(*float32)(unsafe.Add(mBase, uint32(v1224)))
+											v1226 = Fn727(m, v1225)
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v1026))) = v1028
-											v1031 = v983 + int32(16)
-											v1032 = *(*float32)(unsafe.Add(mBase, uint32(v1031)))
-											v1033 = Fn727(m, v1032)
+											*(*float32)(unsafe.Add(mBase, uint32(v1224))) = v1226
+											v1229 = v1181 + int32(16)
+											v1230 = *(*float32)(unsafe.Add(mBase, uint32(v1229)))
+											v1231 = Fn727(m, v1230)
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v1031))) = v1033
-											v1036 = v983 + int32(20)
-											v1037 = *(*float32)(unsafe.Add(mBase, uint32(v1036)))
-											v1038 = Fn727(m, v1037)
+											*(*float32)(unsafe.Add(mBase, uint32(v1229))) = v1231
+											v1234 = v1181 + int32(20)
+											v1235 = *(*float32)(unsafe.Add(mBase, uint32(v1234)))
+											v1236 = Fn727(m, v1235)
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v1036))) = v1038
-											v1041 = v983 + int32(24)
-											v1042 = *(*float32)(unsafe.Add(mBase, uint32(v1041)))
-											v1043 = Fn727(m, v1042)
+											*(*float32)(unsafe.Add(mBase, uint32(v1234))) = v1236
+											v1239 = v1181 + int32(24)
+											v1240 = *(*float32)(unsafe.Add(mBase, uint32(v1239)))
+											v1241 = Fn727(m, v1240)
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v1041))) = v1043
-											v1046 = v983 + int32(28)
-											v1047 = *(*float32)(unsafe.Add(mBase, uint32(v1046)))
-											v1048 = Fn727(m, v1047)
+											*(*float32)(unsafe.Add(mBase, uint32(v1239))) = v1241
+											v1244 = v1181 + int32(28)
+											v1245 = *(*float32)(unsafe.Add(mBase, uint32(v1244)))
+											v1246 = Fn727(m, v1245)
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v1046))) = v1048
-											v1051 = v983 + int32(32)
-											if v1051 != v883+v192<<(uint(int32(2))%32) {
-												v983 = v1051
+											*(*float32)(unsafe.Add(mBase, uint32(v1244))) = v1246
+											v1249 = v1181 + int32(32)
+											if v1249 != v1081+v196<<(uint(int32(2))%32) {
+												v1181 = v1249
 												continue
 											} else {
 												break
@@ -12343,157 +11688,157 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 										}
 									} else {
 									}
-									v1092 = v192 << (uint(int32(2)) % 32)
-									if base.I32_eqz(base.B2i32(base.Ui32(v1092) < base.Ui32(v877))|base.B2i32(base.Ui32(v167) < base.Ui32(v1092))) != 0 {
-										v1099 = v162 + v877<<(uint(int32(2))%32)
-										if base.I32_eqz(v643&int32(1)) != 0 {
-											v1103 = float32(1)
-											v1104 = *(*float32)(unsafe.Add(mBase, uint32(v1099)))
-											v1106 = Fn721(m, base.F32_neg(v1104))
+									v1290 = v196 << (uint(int32(2)) % 32)
+									if base.B2i32(base.Ui32(v1290) < base.Ui32(v1075))|base.B2i32(base.Ui32(v171) < base.Ui32(v1290)) == int32(0) {
+										v1298 = v166 + v1075<<(uint(int32(2))%32)
+										if v839&int32(1) == int32(0) {
+											v1303 = float32(1)
+											v1304 = *(*float32)(unsafe.Add(mBase, uint32(v1298)))
+											v1306 = Fn721(m, base.F32_neg(v1304))
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v1099))) = base.F32_div(v1103, base.F32_add(v1106, v1103))
-											v1113 = v1099 + int32(4)
+											*(*float32)(unsafe.Add(mBase, uint32(v1298))) = base.F32_div(v1303, base.F32_add(v1306, v1303))
+											v1313 = v1298 + int32(4)
 										} else {
-											v1113 = v1099
+											v1313 = v1298
 										}
-										if base.I32_eqz(v645) != 0 {
-											v1188 = v883
-											v1197 = v877
+										if v841 == int32(0) {
+											v1389 = v1081
+											v1398 = v1075
 										} else {
-											v1127 = v1113
+											v1328 = v1313
 											for {
-												v1156 = float32(1)
-												v1157 = *(*float32)(unsafe.Add(mBase, uint32(v1127)))
-												v1159 = Fn721(m, base.F32_neg(v1157))
+												v1357 = float32(1)
+												v1358 = *(*float32)(unsafe.Add(mBase, uint32(v1328)))
+												v1360 = Fn721(m, base.F32_neg(v1358))
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v1127))) = base.F32_div(v1156, base.F32_add(v1159, v1156))
-												v1165 = v1127 + int32(4)
-												v1167 = *(*float32)(unsafe.Add(mBase, uint32(v1165)))
-												v1169 = Fn721(m, base.F32_neg(v1167))
+												*(*float32)(unsafe.Add(mBase, uint32(v1328))) = base.F32_div(v1357, base.F32_add(v1360, v1357))
+												v1366 = v1328 + int32(4)
+												v1368 = *(*float32)(unsafe.Add(mBase, uint32(v1366)))
+												v1370 = Fn721(m, base.F32_neg(v1368))
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v1165))) = base.F32_div(v1156, base.F32_add(v1169, v1156))
-												v1175 = v1127 + int32(8)
-												if v1175 != v1099+v192<<(uint(int32(2))%32) {
-													v1127 = v1175
+												*(*float32)(unsafe.Add(mBase, uint32(v1366))) = base.F32_div(v1357, base.F32_add(v1370, v1357))
+												v1376 = v1328 + int32(8)
+												if v1376 != v1298+v196<<(uint(int32(2))%32) {
+													v1328 = v1376
 													continue
 												} else {
 													break
 												}
 												break
 											}
-											v1188 = v883
-											v1197 = v877
+											v1389 = v1081
+											v1398 = v1075
 										}
-										if base.I32_eqz(l3)|base.B2i32(l3 != v192) != 0 {
+										if base.B2i32(l3 == int32(0))|base.B2i32(l3 != v196) != 0 {
 										} else {
-											v1223 = int32(0)
+											v1425 = int32(0)
 											if l3 != int32(1) {
-												v1240 = int32(0)
-												v1241 = v1223
+												v1442 = int32(0)
+												v1443 = v1425
 												for {
-													v1269 = l2 + v1240
-													v1270 = v1240 + v162
-													v1271 = *(*float32)(unsafe.Add(mBase, uint32(v1270)))
-													v1272 = v1188 + v1240
-													v1273 = *(*float32)(unsafe.Add(mBase, uint32(v1272)))
-													v1275 = *(*float32)(unsafe.Add(mBase, uint32(v1269)))
-													v1276 = v639 + v1240
-													v1277 = *(*float32)(unsafe.Add(mBase, uint32(v1276)))
-													*(*float32)(unsafe.Add(mBase, uint32(v1269))) = base.F32_add(base.F32_mul(v1271, v1273), base.F32_mul(v1275, v1277))
-													v1281 = int32(4)
-													v1282 = v1269 + v1281
-													v1285 = *(*float32)(unsafe.Add(mBase, uint32(v1270+v1281)))
-													v1288 = *(*float32)(unsafe.Add(mBase, uint32(v1272+v1281)))
-													v1290 = *(*float32)(unsafe.Add(mBase, uint32(v1282)))
-													v1293 = *(*float32)(unsafe.Add(mBase, uint32(v1276+v1281)))
-													*(*float32)(unsafe.Add(mBase, uint32(v1282))) = base.F32_add(base.F32_mul(v1285, v1288), base.F32_mul(v1290, v1293))
-													v1300 = v1241 + int32(2)
-													if l3&int32(-2) != v1300 {
-														v1240 = v1240 + int32(8)
-														v1241 = v1300
+													v1471 = l2 + v1442
+													v1472 = v1442 + v166
+													v1473 = *(*float32)(unsafe.Add(mBase, uint32(v1472)))
+													v1474 = v1389 + v1442
+													v1475 = *(*float32)(unsafe.Add(mBase, uint32(v1474)))
+													v1477 = *(*float32)(unsafe.Add(mBase, uint32(v1471)))
+													v1478 = v835 + v1442
+													v1479 = *(*float32)(unsafe.Add(mBase, uint32(v1478)))
+													*(*float32)(unsafe.Add(mBase, uint32(v1471))) = base.F32_add(base.F32_mul(v1473, v1475), base.F32_mul(v1477, v1479))
+													v1483 = int32(4)
+													v1484 = v1471 + v1483
+													v1487 = *(*float32)(unsafe.Add(mBase, uint32(v1472+v1483)))
+													v1490 = *(*float32)(unsafe.Add(mBase, uint32(v1474+v1483)))
+													v1492 = *(*float32)(unsafe.Add(mBase, uint32(v1484)))
+													v1495 = *(*float32)(unsafe.Add(mBase, uint32(v1478+v1483)))
+													*(*float32)(unsafe.Add(mBase, uint32(v1484))) = base.F32_add(base.F32_mul(v1487, v1490), base.F32_mul(v1492, v1495))
+													v1502 = v1443 + int32(2)
+													if l3&int32(-2) != v1502 {
+														v1442 = v1442 + int32(8)
+														v1443 = v1502
 														continue
 													} else {
 														break
 													}
 													break
 												}
-												if base.I32_eqz(l3&int32(1)) != 0 {
+												if l3&int32(1) == int32(0) {
 												} else {
-													v1313 = v1300
-													v1342 = v1313 << (uint(int32(2)) % 32)
-													v1343 = l2 + v1342
-													v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-													v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-													v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-													v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-													*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+													v1516 = v1502
+													v1545 = v1516 << (uint(int32(2)) % 32)
+													v1546 = l2 + v1545
+													v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+													v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+													v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+													v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+													*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 												}
 											} else {
-												v1313 = v1223
-												v1342 = v1313 << (uint(int32(2)) % 32)
-												v1343 = l2 + v1342
-												v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-												v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-												v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-												v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-												*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+												v1516 = v1425
+												v1545 = v1516 << (uint(int32(2)) % 32)
+												v1546 = l2 + v1545
+												v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+												v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+												v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+												v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+												*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 											}
 										}
-										if base.I32_eqz(v616)|base.B2i32(v192 != v616)|base.B2i32(l3 != v616) != 0 {
+										if base.B2i32(v812 == int32(0))|base.B2i32(v196 != v812)|base.B2i32(l3 != v812) != 0 {
 										} else {
-											v1400 = v162 + v1197<<(uint(int32(2))%32)
-											v1401 = int32(0)
-											if v191 != int64(1) {
-												v1416 = int32(0)
-												v1417 = v1401
+											v1604 = v166 + v1398<<(uint(int32(2))%32)
+											v1605 = int32(0)
+											if v195 != int64(1) {
+												v1620 = int32(0)
+												v1621 = v1605
 												for {
-													v1445 = v598 + v1416
-													v1446 = l2 + v1416
-													v1447 = *(*float32)(unsafe.Add(mBase, uint32(v1446)))
-													v1448 = Fn727(m, v1447)
+													v1649 = v794 + v1620
+													v1650 = l2 + v1620
+													v1651 = *(*float32)(unsafe.Add(mBase, uint32(v1650)))
+													v1652 = Fn727(m, v1651)
 													mBase = m.M
-													v1449 = v1400 + v1416
-													v1450 = *(*float32)(unsafe.Add(mBase, uint32(v1449)))
-													*(*float32)(unsafe.Add(mBase, uint32(v1445))) = base.F32_mul(v1448, v1450)
-													v1453 = int32(4)
-													v1457 = *(*float32)(unsafe.Add(mBase, uint32(v1446+v1453)))
-													v1458 = Fn727(m, v1457)
+													v1653 = v1604 + v1620
+													v1654 = *(*float32)(unsafe.Add(mBase, uint32(v1653)))
+													*(*float32)(unsafe.Add(mBase, uint32(v1649))) = base.F32_mul(v1652, v1654)
+													v1657 = int32(4)
+													v1661 = *(*float32)(unsafe.Add(mBase, uint32(v1650+v1657)))
+													v1662 = Fn727(m, v1661)
 													mBase = m.M
-													v1461 = *(*float32)(unsafe.Add(mBase, uint32(v1449+v1453)))
-													*(*float32)(unsafe.Add(mBase, uint32(v1445+v1453))) = base.F32_mul(v1458, v1461)
-													v1467 = v1417 + int32(2)
-													if v192&int32(-2) != v1467 {
-														v1416 = v1416 + int32(8)
-														v1417 = v1467
+													v1665 = *(*float32)(unsafe.Add(mBase, uint32(v1653+v1657)))
+													*(*float32)(unsafe.Add(mBase, uint32(v1649+v1657))) = base.F32_mul(v1662, v1665)
+													v1671 = v1621 + int32(2)
+													if v196&int32(-2) != v1671 {
+														v1620 = v1620 + int32(8)
+														v1621 = v1671
 														continue
 													} else {
 														break
 													}
 													break
 												}
-												v1479 = v1467
+												v1683 = v1671
 											} else {
-												v1479 = v1401
+												v1683 = v1605
 											}
-											if base.I32_eqz(v192&int32(1)) != 0 {
+											if v196&int32(1) == int32(0) {
 											} else {
-												v1511 = v1479 << (uint(int32(2)) % 32)
-												v1514 = *(*float32)(unsafe.Add(mBase, uint32(v1511+l2)))
-												v1515 = Fn727(m, v1514)
+												v1716 = v1683 << (uint(int32(2)) % 32)
+												v1719 = *(*float32)(unsafe.Add(mBase, uint32(v1716+l2)))
+												v1720 = Fn727(m, v1719)
 												mBase = m.M
-												v1517 = *(*float32)(unsafe.Add(mBase, uint32(v1511+v1400)))
-												*(*float32)(unsafe.Add(mBase, uint32(v598+v1511))) = base.F32_mul(v1515, v1517)
+												v1722 = *(*float32)(unsafe.Add(mBase, uint32(v1716+v1604)))
+												*(*float32)(unsafe.Add(mBase, uint32(v794+v1716))) = base.F32_mul(v1720, v1722)
 											}
 										}
-										if base.I32_eqz(v173) != 0 {
-											Fn833(m, v162)
+										if v177 == int32(0) {
+											Fn833(m, v166)
 											mBase = m.M
 										} else {
 										}
 										m.G0 = v41 + int32(16)
 										return
 									} else {
-										Fn205(m, int32(24289048))
+										Fn205(m, int32(24289432))
 										mBase = m.M
 										base.Wasm_trap_unreachable()
 										for {
@@ -12503,119 +11848,119 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 							}
 						}
 					} else {
-						v1180 = v192 * int32(3)
-						if base.Ui32(v167) < base.Ui32(v1180) {
-							Fn205(m, int32(24289032))
+						v1381 = v196 * int32(3)
+						if base.Ui32(v171) < base.Ui32(v1381) {
+							Fn205(m, int32(24289416))
 							mBase = m.M
 							base.Wasm_trap_unreachable()
 							for {
 							}
 						} else {
-							v1188 = v162
-							v1197 = v1180
-							if base.I32_eqz(l3)|base.B2i32(l3 != v192) != 0 {
+							v1389 = v166
+							v1398 = v1381
+							if base.B2i32(l3 == int32(0))|base.B2i32(l3 != v196) != 0 {
 							} else {
-								v1223 = int32(0)
+								v1425 = int32(0)
 								if l3 != int32(1) {
-									v1240 = int32(0)
-									v1241 = v1223
+									v1442 = int32(0)
+									v1443 = v1425
 									for {
-										v1269 = l2 + v1240
-										v1270 = v1240 + v162
-										v1271 = *(*float32)(unsafe.Add(mBase, uint32(v1270)))
-										v1272 = v1188 + v1240
-										v1273 = *(*float32)(unsafe.Add(mBase, uint32(v1272)))
-										v1275 = *(*float32)(unsafe.Add(mBase, uint32(v1269)))
-										v1276 = v639 + v1240
-										v1277 = *(*float32)(unsafe.Add(mBase, uint32(v1276)))
-										*(*float32)(unsafe.Add(mBase, uint32(v1269))) = base.F32_add(base.F32_mul(v1271, v1273), base.F32_mul(v1275, v1277))
-										v1281 = int32(4)
-										v1282 = v1269 + v1281
-										v1285 = *(*float32)(unsafe.Add(mBase, uint32(v1270+v1281)))
-										v1288 = *(*float32)(unsafe.Add(mBase, uint32(v1272+v1281)))
-										v1290 = *(*float32)(unsafe.Add(mBase, uint32(v1282)))
-										v1293 = *(*float32)(unsafe.Add(mBase, uint32(v1276+v1281)))
-										*(*float32)(unsafe.Add(mBase, uint32(v1282))) = base.F32_add(base.F32_mul(v1285, v1288), base.F32_mul(v1290, v1293))
-										v1300 = v1241 + int32(2)
-										if l3&int32(-2) != v1300 {
-											v1240 = v1240 + int32(8)
-											v1241 = v1300
+										v1471 = l2 + v1442
+										v1472 = v1442 + v166
+										v1473 = *(*float32)(unsafe.Add(mBase, uint32(v1472)))
+										v1474 = v1389 + v1442
+										v1475 = *(*float32)(unsafe.Add(mBase, uint32(v1474)))
+										v1477 = *(*float32)(unsafe.Add(mBase, uint32(v1471)))
+										v1478 = v835 + v1442
+										v1479 = *(*float32)(unsafe.Add(mBase, uint32(v1478)))
+										*(*float32)(unsafe.Add(mBase, uint32(v1471))) = base.F32_add(base.F32_mul(v1473, v1475), base.F32_mul(v1477, v1479))
+										v1483 = int32(4)
+										v1484 = v1471 + v1483
+										v1487 = *(*float32)(unsafe.Add(mBase, uint32(v1472+v1483)))
+										v1490 = *(*float32)(unsafe.Add(mBase, uint32(v1474+v1483)))
+										v1492 = *(*float32)(unsafe.Add(mBase, uint32(v1484)))
+										v1495 = *(*float32)(unsafe.Add(mBase, uint32(v1478+v1483)))
+										*(*float32)(unsafe.Add(mBase, uint32(v1484))) = base.F32_add(base.F32_mul(v1487, v1490), base.F32_mul(v1492, v1495))
+										v1502 = v1443 + int32(2)
+										if l3&int32(-2) != v1502 {
+											v1442 = v1442 + int32(8)
+											v1443 = v1502
 											continue
 										} else {
 											break
 										}
 										break
 									}
-									if base.I32_eqz(l3&int32(1)) != 0 {
+									if l3&int32(1) == int32(0) {
 									} else {
-										v1313 = v1300
-										v1342 = v1313 << (uint(int32(2)) % 32)
-										v1343 = l2 + v1342
-										v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-										v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-										v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-										v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-										*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+										v1516 = v1502
+										v1545 = v1516 << (uint(int32(2)) % 32)
+										v1546 = l2 + v1545
+										v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+										v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+										v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+										v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+										*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 									}
 								} else {
-									v1313 = v1223
-									v1342 = v1313 << (uint(int32(2)) % 32)
-									v1343 = l2 + v1342
-									v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-									v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-									v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-									v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-									*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+									v1516 = v1425
+									v1545 = v1516 << (uint(int32(2)) % 32)
+									v1546 = l2 + v1545
+									v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+									v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+									v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+									v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+									*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 								}
 							}
-							if base.I32_eqz(v616)|base.B2i32(v192 != v616)|base.B2i32(l3 != v616) != 0 {
+							if base.B2i32(v812 == int32(0))|base.B2i32(v196 != v812)|base.B2i32(l3 != v812) != 0 {
 							} else {
-								v1400 = v162 + v1197<<(uint(int32(2))%32)
-								v1401 = int32(0)
-								if v191 != int64(1) {
-									v1416 = int32(0)
-									v1417 = v1401
+								v1604 = v166 + v1398<<(uint(int32(2))%32)
+								v1605 = int32(0)
+								if v195 != int64(1) {
+									v1620 = int32(0)
+									v1621 = v1605
 									for {
-										v1445 = v598 + v1416
-										v1446 = l2 + v1416
-										v1447 = *(*float32)(unsafe.Add(mBase, uint32(v1446)))
-										v1448 = Fn727(m, v1447)
+										v1649 = v794 + v1620
+										v1650 = l2 + v1620
+										v1651 = *(*float32)(unsafe.Add(mBase, uint32(v1650)))
+										v1652 = Fn727(m, v1651)
 										mBase = m.M
-										v1449 = v1400 + v1416
-										v1450 = *(*float32)(unsafe.Add(mBase, uint32(v1449)))
-										*(*float32)(unsafe.Add(mBase, uint32(v1445))) = base.F32_mul(v1448, v1450)
-										v1453 = int32(4)
-										v1457 = *(*float32)(unsafe.Add(mBase, uint32(v1446+v1453)))
-										v1458 = Fn727(m, v1457)
+										v1653 = v1604 + v1620
+										v1654 = *(*float32)(unsafe.Add(mBase, uint32(v1653)))
+										*(*float32)(unsafe.Add(mBase, uint32(v1649))) = base.F32_mul(v1652, v1654)
+										v1657 = int32(4)
+										v1661 = *(*float32)(unsafe.Add(mBase, uint32(v1650+v1657)))
+										v1662 = Fn727(m, v1661)
 										mBase = m.M
-										v1461 = *(*float32)(unsafe.Add(mBase, uint32(v1449+v1453)))
-										*(*float32)(unsafe.Add(mBase, uint32(v1445+v1453))) = base.F32_mul(v1458, v1461)
-										v1467 = v1417 + int32(2)
-										if v192&int32(-2) != v1467 {
-											v1416 = v1416 + int32(8)
-											v1417 = v1467
+										v1665 = *(*float32)(unsafe.Add(mBase, uint32(v1653+v1657)))
+										*(*float32)(unsafe.Add(mBase, uint32(v1649+v1657))) = base.F32_mul(v1662, v1665)
+										v1671 = v1621 + int32(2)
+										if v196&int32(-2) != v1671 {
+											v1620 = v1620 + int32(8)
+											v1621 = v1671
 											continue
 										} else {
 											break
 										}
 										break
 									}
-									v1479 = v1467
+									v1683 = v1671
 								} else {
-									v1479 = v1401
+									v1683 = v1605
 								}
-								if base.I32_eqz(v192&int32(1)) != 0 {
+								if v196&int32(1) == int32(0) {
 								} else {
-									v1511 = v1479 << (uint(int32(2)) % 32)
-									v1514 = *(*float32)(unsafe.Add(mBase, uint32(v1511+l2)))
-									v1515 = Fn727(m, v1514)
+									v1716 = v1683 << (uint(int32(2)) % 32)
+									v1719 = *(*float32)(unsafe.Add(mBase, uint32(v1716+l2)))
+									v1720 = Fn727(m, v1719)
 									mBase = m.M
-									v1517 = *(*float32)(unsafe.Add(mBase, uint32(v1511+v1400)))
-									*(*float32)(unsafe.Add(mBase, uint32(v598+v1511))) = base.F32_mul(v1515, v1517)
+									v1722 = *(*float32)(unsafe.Add(mBase, uint32(v1716+v1604)))
+									*(*float32)(unsafe.Add(mBase, uint32(v794+v1716))) = base.F32_mul(v1720, v1722)
 								}
 							}
-							if base.I32_eqz(v173) != 0 {
-								Fn833(m, v162)
+							if v177 == int32(0) {
+								Fn833(m, v166)
 								mBase = m.M
 							} else {
 							}
@@ -12624,165 +11969,165 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 						}
 					}
 				} else {
-					Fn205(m, int32(24289000))
+					Fn205(m, int32(24289384))
 					mBase = m.M
 					base.Wasm_trap_unreachable()
 					for {
 					}
 				}
 			} else {
-				v70 = Fn832(m, v60)
+				v72 = Fn832(m, v61)
 				mBase = m.M
-				if base.I32_eqz(v70) != 0 {
-					Fn166(m, int32(4), v60)
+				if v72 == int32(0) {
+					Fn166(m, int32(4), v61)
 					mBase = m.M
 					base.Wasm_trap_unreachable()
 					for {
 					}
 				} else {
-					v72 = v58
-					v73 = v70
-					*(*float32)(unsafe.Add(mBase, uint32(v73))) = v64
-					v75 = int32(1)
-					*(*int32)(unsafe.Add(mBase, uint32(v41)+12)) = v75
-					*(*int32)(unsafe.Add(mBase, uint32(v41)+8)) = v73
-					*(*int32)(unsafe.Add(mBase, uint32(v41)+4)) = v72
-					if v43 == v75 {
-						v162 = v73
-						v167 = v75
-						v173 = v10
+					v75 = v59
+					v76 = v72
+					*(*float32)(unsafe.Add(mBase, uint32(v76))) = v65
+					v78 = int32(1)
+					*(*int32)(unsafe.Add(mBase, uint32(v41)+12)) = v78
+					*(*int32)(unsafe.Add(mBase, uint32(v41)+8)) = v76
+					*(*int32)(unsafe.Add(mBase, uint32(v41)+4)) = v75
+					if v43 == v78 {
+						v166 = v76
+						v171 = v78
+						v177 = v10
 					} else {
-						v93 = int32(4)
-						v94 = int32(-8)
-						v95 = v73
-						v100 = v75
+						v96 = int32(4)
+						v97 = int32(-8)
+						v98 = v76
+						v103 = v78
 						for {
-							v123 = *(*float32)(unsafe.Add(mBase, uint32(v93+v63)))
-							v124 = *(*int32)(unsafe.Add(mBase, uint32(v41)+4))
-							if v124 == v100 {
-								v126 = int32(4)
-								Fn280(m, v41+v126, v100, int32(base.Ui32(v94+v49)>>(uint(int32(2))%32))+int32(1), v126, v126)
+							v126 = *(*float32)(unsafe.Add(mBase, uint32(v96+v64)))
+							v127 = *(*int32)(unsafe.Add(mBase, uint32(v41)+4))
+							if v127 == v103 {
+								v129 = int32(4)
+								Fn280(m, v41+v129, v103, int32(base.Ui32(v97+v50)>>(uint(int32(2))%32))+int32(1), v129, v129)
 								mBase = m.M
-								v136 = *(*int32)(unsafe.Add(mBase, uint32(v41)+8))
-								v137 = v136
+								v139 = *(*int32)(unsafe.Add(mBase, uint32(v41)+8))
+								v140 = v139
 							} else {
-								v137 = v95
+								v140 = v98
 							}
-							*(*float32)(unsafe.Add(mBase, uint32(v93+v137))) = v123
-							v141 = v100 + int32(1)
-							*(*int32)(unsafe.Add(mBase, uint32(v41)+12)) = v141
-							v143 = int32(4)
-							v146 = v93 + v143
-							if v49 != v146 {
-								v93 = v146
-								v94 = v94 - v143
-								v95 = v137
-								v100 = v141
+							*(*float32)(unsafe.Add(mBase, uint32(v96+v140))) = v126
+							v144 = v103 + int32(1)
+							*(*int32)(unsafe.Add(mBase, uint32(v41)+12)) = v144
+							v146 = int32(4)
+							v149 = v96 + v146
+							if v50 != v149 {
+								v96 = v149
+								v97 = v97 - v146
+								v98 = v140
+								v103 = v144
 								continue
 							} else {
 								break
 							}
 							break
 						}
-						v148 = *(*int32)(unsafe.Add(mBase, uint32(v41)+4))
-						v150 = *(*int32)(unsafe.Add(mBase, uint32(v41)+8))
-						v162 = v150
-						v167 = v141
-						v173 = base.I32_eqz(v148)
+						v151 = *(*int32)(unsafe.Add(mBase, uint32(v41)+4))
+						v154 = *(*int32)(unsafe.Add(mBase, uint32(v41)+8))
+						v166 = v154
+						v171 = v144
+						v177 = base.B2i32(v151 == int32(0))
 					}
-					v189 = *(*int64)(unsafe.Add(mBase, uint32(l8)+8))
-					v191 = int64(base.Ui64(v189) >> (uint(int64(32)) % 64))
-					v192 = base.I32_wrap_i64(v191)
-					v194 = v192 * base.I32_wrap_i64(v189)
-					if base.I32_eqz(v194) != 0 {
-						v196 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
-						v197 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
-						v598 = v197
-						v616 = v196
+					v193 = *(*int64)(unsafe.Add(mBase, uint32(l8)+8))
+					v195 = int64(base.Ui64(v193) >> (uint(int64(32)) % 64))
+					v196 = base.I32_wrap_i64(v195)
+					v198 = v196 * base.I32_wrap_i64(v193)
+					if v198 == int32(0) {
+						v201 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
+						v202 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
+						v794 = v202
+						v812 = v201
 					} else {
-						v198 = *(*int32)(unsafe.Add(mBase, uint32(l0)+8))
-						v199 = int32(3)
-						v200 = int32(base.Ui32(v198) >> (uint(v199) % 32))
-						v201 = *(*int32)(unsafe.Add(mBase, uint32(l0)+4))
-						v203 = int32(base.Ui32(v201) >> (uint(v199) % 32))
-						if base.Ui32(v200) < base.Ui32(v203) {
-							v205 = v200
+						v203 = *(*int32)(unsafe.Add(mBase, uint32(l0)+8))
+						v204 = int32(3)
+						v205 = int32(base.Ui32(v203) >> (uint(v204) % 32))
+						v206 = *(*int32)(unsafe.Add(mBase, uint32(l0)+4))
+						v208 = int32(base.Ui32(v206) >> (uint(v204) % 32))
+						if base.Ui32(v205) < base.Ui32(v208) {
+							v210 = v205
 						} else {
-							v205 = v203
+							v210 = v208
 						}
-						v206 = *(*int32)(unsafe.Add(mBase, uint32(l0)))
-						v209 = int32(2)
-						v211 = v206 + v201&int32(1073741816)<<(uint(v209)%32)
-						v216 = int32(7)
-						v217 = v198 & v216
-						v219 = v201 & v216
-						if base.Ui32(v217) < base.Ui32(v219) {
-							v221 = v217
+						v211 = *(*int32)(unsafe.Add(mBase, uint32(l0)))
+						v214 = int32(2)
+						v216 = v211 + v206&int32(1073741816)<<(uint(v214)%32)
+						v221 = int32(7)
+						v222 = v203 & v221
+						v224 = v206 & v221
+						if base.Ui32(v222) < base.Ui32(v224) {
+							v226 = v222
 						} else {
-							v221 = v219
+							v226 = v224
 						}
-						__phi237 = int32(0)
-						__phi238 = int32(1)
-						v237 = __phi237
-						v238 = __phi238
+						__phi242 = int32(0)
+						__phi243 = int32(1)
+						v242 = __phi242
+						v243 = __phi243
 						for {
-							v266 = base.B2i32(base.Ui32(v167) <= base.Ui32(v237))
-							if base.Ui32(v167) <= base.Ui32(v237) {
+							v271 = base.B2i32(base.Ui32(v171) <= base.Ui32(v242))
+							if base.Ui32(v171) <= base.Ui32(v242) {
 							} else {
-								v267 = v238 * v198
-								v269 = v237 * v198
-								v271 = base.B2i32(base.Ui32(l5) < base.Ui32(v267)) | base.B2i32(base.Ui32(v267) < base.Ui32(v269))
-								if v271 != 0 {
+								v272 = v243 * v203
+								v274 = v242 * v203
+								v276 = base.B2i32(base.Ui32(l5) < base.Ui32(v272)) | base.B2i32(base.Ui32(v272) < base.Ui32(v274))
+								if v276 != 0 {
 								} else {
-									v272 = int32(2)
-									if v271 != 0 {
-										v279 = int32(0)
+									v277 = int32(2)
+									if v276 != 0 {
+										v284 = int32(0)
 									} else {
-										v279 = l4 + v269<<(uint(v272)%32)
+										v284 = l4 + v274<<(uint(v277)%32)
 									}
-									if base.I32_eqz(v221) != 0 {
-										v320 = math.Float32frombits(uint32(0x80000000))
+									if v226 == int32(0) {
+										v326 = math.Float32frombits(uint32(0x80000000))
 									} else {
-										v282 = *(*float32)(unsafe.Add(mBase, uint32(v211)))
-										v283 = v279 + v198&int32(-8)<<(uint(v209)%32)
-										v284 = *(*float32)(unsafe.Add(mBase, uint32(v283)))
-										v285 = base.F32_mul(v282, v284)
-										if v221 == int32(1) {
-											v320 = v285
+										v288 = *(*float32)(unsafe.Add(mBase, uint32(v216)))
+										v289 = v284 + v203&int32(-8)<<(uint(v214)%32)
+										v290 = *(*float32)(unsafe.Add(mBase, uint32(v289)))
+										v291 = base.F32_mul(v288, v290)
+										if v226 == int32(1) {
+											v326 = v291
 										} else {
-											v288 = *(*float32)(unsafe.Add(mBase, uint32(v211)+4))
-											v289 = *(*float32)(unsafe.Add(mBase, uint32(v283)+4))
-											v291 = base.F32_add(v285, base.F32_mul(v288, v289))
-											if v221 == int32(2) {
-												v320 = v291
+											v294 = *(*float32)(unsafe.Add(mBase, uint32(v216)+4))
+											v295 = *(*float32)(unsafe.Add(mBase, uint32(v289)+4))
+											v297 = base.F32_add(v291, base.F32_mul(v294, v295))
+											if v226 == int32(2) {
+												v326 = v297
 											} else {
-												v294 = *(*float32)(unsafe.Add(mBase, uint32(v211)+8))
-												v295 = *(*float32)(unsafe.Add(mBase, uint32(v283)+8))
-												v297 = base.F32_add(v291, base.F32_mul(v294, v295))
-												if v221 == int32(3) {
-													v320 = v297
+												v300 = *(*float32)(unsafe.Add(mBase, uint32(v216)+8))
+												v301 = *(*float32)(unsafe.Add(mBase, uint32(v289)+8))
+												v303 = base.F32_add(v297, base.F32_mul(v300, v301))
+												if v226 == int32(3) {
+													v326 = v303
 												} else {
-													v300 = *(*float32)(unsafe.Add(mBase, uint32(v211)+12))
-													v301 = *(*float32)(unsafe.Add(mBase, uint32(v283)+12))
-													v303 = base.F32_add(v297, base.F32_mul(v300, v301))
-													if v221 == int32(4) {
-														v320 = v303
+													v306 = *(*float32)(unsafe.Add(mBase, uint32(v216)+12))
+													v307 = *(*float32)(unsafe.Add(mBase, uint32(v289)+12))
+													v309 = base.F32_add(v303, base.F32_mul(v306, v307))
+													if v226 == int32(4) {
+														v326 = v309
 													} else {
-														v306 = *(*float32)(unsafe.Add(mBase, uint32(v211)+16))
-														v307 = *(*float32)(unsafe.Add(mBase, uint32(v283)+16))
-														v309 = base.F32_add(v303, base.F32_mul(v306, v307))
-														if v221 == int32(5) {
-															v320 = v309
+														v312 = *(*float32)(unsafe.Add(mBase, uint32(v216)+16))
+														v313 = *(*float32)(unsafe.Add(mBase, uint32(v289)+16))
+														v315 = base.F32_add(v309, base.F32_mul(v312, v313))
+														if v226 == int32(5) {
+															v326 = v315
 														} else {
-															v310 = *(*float32)(unsafe.Add(mBase, uint32(v211)+20))
-															v311 = *(*float32)(unsafe.Add(mBase, uint32(v283)+20))
-															v313 = base.F32_add(v309, base.F32_mul(v310, v311))
-															if v221 == int32(6) {
-																v320 = v313
+															v316 = *(*float32)(unsafe.Add(mBase, uint32(v216)+20))
+															v317 = *(*float32)(unsafe.Add(mBase, uint32(v289)+20))
+															v319 = base.F32_add(v315, base.F32_mul(v316, v317))
+															if v226 == int32(6) {
+																v326 = v319
 															} else {
-																v314 = *(*float32)(unsafe.Add(mBase, uint32(v211)+24))
-																v315 = *(*float32)(unsafe.Add(mBase, uint32(v283)+24))
-																v320 = base.F32_add(v313, base.F32_mul(v314, v315))
+																v320 = *(*float32)(unsafe.Add(mBase, uint32(v216)+24))
+																v321 = *(*float32)(unsafe.Add(mBase, uint32(v289)+24))
+																v326 = base.F32_add(v319, base.F32_mul(v320, v321))
 															}
 														}
 													}
@@ -12790,165 +12135,306 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 											}
 										}
 									}
-									if base.Ui32(v167) <= base.Ui32(v237) {
-										v322 = int32(0)
+									if base.Ui32(v171) <= base.Ui32(v242) {
+										v328 = int32(0)
 									} else {
-										v322 = v162 + v237<<(uint(v272)%32)
+										v328 = v166 + v242<<(uint(v277)%32)
 									}
-									v323 = *(*float32)(unsafe.Add(mBase, uint32(v322)))
-									if base.I32_eqz(v205) != 0 {
-										v325 = float32(0)
-										v474 = v325
-										v475 = v325
-										v476 = v325
-										v484 = v325
+									v329 = *(*float32)(unsafe.Add(mBase, uint32(v328)))
+									if v210 == int32(0) {
+										v332 = float32(0)
+										v481 = v332
+										v482 = v332
+										v483 = v332
+										v491 = v332
 									} else {
-										v329 = float32(0)
-										v348 = v205
-										v350 = int32(0)
-										v366 = v329
-										v367 = v329
-										v368 = v329
-										v369 = v329
-										v370 = v329
-										v371 = v329
-										v372 = v329
-										v373 = v329
+										v336 = float32(0)
+										v355 = v210
+										v357 = int32(0)
+										v373 = v336
+										v374 = v336
+										v375 = v336
+										v376 = v336
+										v377 = v336
+										v378 = v336
+										v379 = v336
+										v380 = v336
 										for {
-											v376 = v350 + v206
-											v377 = *(*float32)(unsafe.Add(mBase, uint32(v376)))
-											v378 = v350 + v279
-											v379 = *(*float32)(unsafe.Add(mBase, uint32(v378)))
-											v381 = base.F32_add(v366, base.F32_mul(v377, v379))
-											v382 = int32(28)
-											v384 = *(*float32)(unsafe.Add(mBase, uint32(v376+v382)))
-											v387 = *(*float32)(unsafe.Add(mBase, uint32(v378+v382)))
-											v389 = base.F32_add(v373, base.F32_mul(v384, v387))
-											v390 = int32(24)
-											v392 = *(*float32)(unsafe.Add(mBase, uint32(v376+v390)))
-											v395 = *(*float32)(unsafe.Add(mBase, uint32(v378+v390)))
-											v397 = base.F32_add(v372, base.F32_mul(v392, v395))
-											v398 = int32(20)
-											v400 = *(*float32)(unsafe.Add(mBase, uint32(v376+v398)))
-											v403 = *(*float32)(unsafe.Add(mBase, uint32(v378+v398)))
-											v405 = base.F32_add(v371, base.F32_mul(v400, v403))
-											v406 = int32(16)
-											v408 = *(*float32)(unsafe.Add(mBase, uint32(v376+v406)))
-											v411 = *(*float32)(unsafe.Add(mBase, uint32(v378+v406)))
-											v413 = base.F32_add(v370, base.F32_mul(v408, v411))
-											v414 = int32(12)
-											v416 = *(*float32)(unsafe.Add(mBase, uint32(v376+v414)))
-											v419 = *(*float32)(unsafe.Add(mBase, uint32(v378+v414)))
-											v421 = base.F32_add(v369, base.F32_mul(v416, v419))
-											v422 = int32(8)
-											v424 = *(*float32)(unsafe.Add(mBase, uint32(v376+v422)))
-											v427 = *(*float32)(unsafe.Add(mBase, uint32(v378+v422)))
-											v429 = base.F32_add(v368, base.F32_mul(v424, v427))
-											v430 = int32(4)
-											v432 = *(*float32)(unsafe.Add(mBase, uint32(v376+v430)))
-											v435 = *(*float32)(unsafe.Add(mBase, uint32(v378+v430)))
-											v437 = base.F32_add(v367, base.F32_mul(v432, v435))
-											v441 = v348 - int32(1)
-											if v441 != 0 {
-												v348 = v441
-												v350 = v350 + int32(32)
-												v366 = v381
-												v367 = v437
-												v368 = v429
-												v369 = v421
-												v370 = v413
-												v371 = v405
-												v372 = v397
-												v373 = v389
+											v383 = v357 + v211
+											v384 = *(*float32)(unsafe.Add(mBase, uint32(v383)))
+											v385 = v357 + v284
+											v386 = *(*float32)(unsafe.Add(mBase, uint32(v385)))
+											v388 = base.F32_add(v373, base.F32_mul(v384, v386))
+											v389 = int32(28)
+											v391 = *(*float32)(unsafe.Add(mBase, uint32(v383+v389)))
+											v394 = *(*float32)(unsafe.Add(mBase, uint32(v385+v389)))
+											v396 = base.F32_add(v380, base.F32_mul(v391, v394))
+											v397 = int32(24)
+											v399 = *(*float32)(unsafe.Add(mBase, uint32(v383+v397)))
+											v402 = *(*float32)(unsafe.Add(mBase, uint32(v385+v397)))
+											v404 = base.F32_add(v379, base.F32_mul(v399, v402))
+											v405 = int32(20)
+											v407 = *(*float32)(unsafe.Add(mBase, uint32(v383+v405)))
+											v410 = *(*float32)(unsafe.Add(mBase, uint32(v385+v405)))
+											v412 = base.F32_add(v378, base.F32_mul(v407, v410))
+											v413 = int32(16)
+											v415 = *(*float32)(unsafe.Add(mBase, uint32(v383+v413)))
+											v418 = *(*float32)(unsafe.Add(mBase, uint32(v385+v413)))
+											v420 = base.F32_add(v377, base.F32_mul(v415, v418))
+											v421 = int32(12)
+											v423 = *(*float32)(unsafe.Add(mBase, uint32(v383+v421)))
+											v426 = *(*float32)(unsafe.Add(mBase, uint32(v385+v421)))
+											v428 = base.F32_add(v376, base.F32_mul(v423, v426))
+											v429 = int32(8)
+											v431 = *(*float32)(unsafe.Add(mBase, uint32(v383+v429)))
+											v434 = *(*float32)(unsafe.Add(mBase, uint32(v385+v429)))
+											v436 = base.F32_add(v375, base.F32_mul(v431, v434))
+											v437 = int32(4)
+											v439 = *(*float32)(unsafe.Add(mBase, uint32(v383+v437)))
+											v442 = *(*float32)(unsafe.Add(mBase, uint32(v385+v437)))
+											v444 = base.F32_add(v374, base.F32_mul(v439, v442))
+											v448 = v355 - int32(1)
+											if v448 != 0 {
+												v355 = v448
+												v357 = v357 + int32(32)
+												v373 = v388
+												v374 = v444
+												v375 = v436
+												v376 = v428
+												v377 = v420
+												v378 = v412
+												v379 = v404
+												v380 = v396
 												continue
 											} else {
 												break
 											}
 											break
 										}
-										v474 = base.F32_add(v381, v413)
-										v475 = base.F32_add(v437, v405)
-										v476 = base.F32_add(v429, v397)
-										v484 = base.F32_add(v421, v389)
+										v481 = base.F32_add(v388, v420)
+										v482 = base.F32_add(v444, v412)
+										v483 = base.F32_add(v436, v404)
+										v491 = base.F32_add(v428, v396)
 									}
-									*(*float32)(unsafe.Add(mBase, uint32(v322))) = base.F32_add(v323, base.F32_add(v484, base.F32_add(v476, base.F32_add(v475, base.F32_add(v320, v474)))))
+									*(*float32)(unsafe.Add(mBase, uint32(v328))) = base.F32_add(v329, base.F32_add(v491, base.F32_add(v483, base.F32_add(v482, base.F32_add(v326, v481)))))
 								}
 							}
-							if v238 != v194 {
-								__phi237 = v238
-								__phi238 = v238 + int32(1)
-								v237 = __phi237
-								v238 = __phi238
+							if v243 != v198 {
+								__phi242 = v243
+								__phi243 = v243 + int32(1)
+								v242 = __phi242
+								v243 = __phi243
 								continue
 							} else {
 								break
 							}
 							break
 						}
-						v532 = *(*int32)(unsafe.Add(mBase, uint32(l1)+8))
-						v535 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
-						v536 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
-						v537 = int32(0)
-						v545 = l6
-						v548 = v537
-						v549 = v537
-						v551 = v162
+						v539 = *(*int32)(unsafe.Add(mBase, uint32(l1)+8))
+						v542 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
+						v543 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
+						v544 = int32(0)
+						v552 = l6
+						v555 = v544
+						v556 = v544
+						v558 = v166
 						for {
-							v577 = v532 + v548
-							if base.I32_eqz(base.B2i32(base.Ui32(l7) < base.Ui32(v577))|base.B2i32(base.Ui32(v167) <= base.Ui32(v549))|base.B2i32(base.Ui32(v577) < base.Ui32(v532))) != 0 {
-								v584 = Fn306(m, v536, v535, v545, v532)
-								mBase = m.M
-								v585 = *(*float32)(unsafe.Add(mBase, uint32(v551)))
-								*(*float32)(unsafe.Add(mBase, uint32(v551))) = base.F32_add(v584, v585)
+							v584 = v539 + v555
+							if base.B2i32(base.Ui32(l7) < base.Ui32(v584))|base.B2i32(base.Ui32(v171) <= base.Ui32(v556))|base.B2i32(base.Ui32(v584) < base.Ui32(v539)) == int32(0) {
+								v595 = float32(0)
+								v605 = int32(7)
+								v606 = v539 & v605
+								v608 = v542 & v605
+								if base.Ui32(v606) < base.Ui32(v608) {
+									v610 = v606
+								} else {
+									v610 = v608
+								}
+								if v610 == int32(0) {
+									v665 = math.Float32frombits(uint32(0x80000000))
+								} else {
+									v613 = int32(1073741816)
+									v615 = int32(2)
+									v617 = v552 + v539&v613<<(uint(v615)%32)
+									v618 = *(*float32)(unsafe.Add(mBase, uint32(v617)))
+									v623 = v543 + v542&v613<<(uint(v615)%32)
+									v624 = *(*float32)(unsafe.Add(mBase, uint32(v623)))
+									v625 = base.F32_mul(v618, v624)
+									if v610 == int32(1) {
+										v665 = v625
+									} else {
+										v628 = *(*float32)(unsafe.Add(mBase, uint32(v617)+4))
+										v629 = *(*float32)(unsafe.Add(mBase, uint32(v623)+4))
+										v631 = base.F32_add(v625, base.F32_mul(v628, v629))
+										if v610 == int32(2) {
+											v665 = v631
+										} else {
+											v634 = *(*float32)(unsafe.Add(mBase, uint32(v617)+8))
+											v635 = *(*float32)(unsafe.Add(mBase, uint32(v623)+8))
+											v637 = base.F32_add(v631, base.F32_mul(v634, v635))
+											if v610 == int32(3) {
+												v665 = v637
+											} else {
+												v640 = *(*float32)(unsafe.Add(mBase, uint32(v617)+12))
+												v641 = *(*float32)(unsafe.Add(mBase, uint32(v623)+12))
+												v643 = base.F32_add(v637, base.F32_mul(v640, v641))
+												if v610 == int32(4) {
+													v665 = v643
+												} else {
+													v646 = *(*float32)(unsafe.Add(mBase, uint32(v617)+16))
+													v647 = *(*float32)(unsafe.Add(mBase, uint32(v623)+16))
+													v649 = base.F32_add(v643, base.F32_mul(v646, v647))
+													if v610 == int32(5) {
+														v665 = v649
+													} else {
+														v652 = *(*float32)(unsafe.Add(mBase, uint32(v617)+20))
+														v653 = *(*float32)(unsafe.Add(mBase, uint32(v623)+20))
+														v655 = base.F32_add(v649, base.F32_mul(v652, v653))
+														if v610 == int32(6) {
+															v665 = v655
+														} else {
+															v658 = *(*float32)(unsafe.Add(mBase, uint32(v617)+24))
+															v659 = *(*float32)(unsafe.Add(mBase, uint32(v623)+24))
+															v665 = base.F32_add(v655, base.F32_mul(v658, v659))
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								v666 = int32(3)
+								v667 = int32(base.Ui32(v539) >> (uint(v666) % 32))
+								v669 = int32(base.Ui32(v542) >> (uint(v666) % 32))
+								if base.Ui32(v667) < base.Ui32(v669) {
+									v671 = v667
+								} else {
+									v671 = v669
+								}
+								if v671 != 0 {
+									v677 = int32(0)
+									v678 = v671
+									v681 = v595
+									v682 = v595
+									v683 = v595
+									v684 = v595
+									v685 = v595
+									v686 = v595
+									v687 = v595
+									v688 = v595
+									for {
+										v689 = v543 + v677
+										v690 = *(*float32)(unsafe.Add(mBase, uint32(v689)))
+										v691 = v552 + v677
+										v692 = *(*float32)(unsafe.Add(mBase, uint32(v691)))
+										v694 = base.F32_add(v681, base.F32_mul(v690, v692))
+										v695 = int32(28)
+										v697 = *(*float32)(unsafe.Add(mBase, uint32(v689+v695)))
+										v700 = *(*float32)(unsafe.Add(mBase, uint32(v691+v695)))
+										v702 = base.F32_add(v685, base.F32_mul(v697, v700))
+										v703 = int32(24)
+										v705 = *(*float32)(unsafe.Add(mBase, uint32(v689+v703)))
+										v708 = *(*float32)(unsafe.Add(mBase, uint32(v691+v703)))
+										v710 = base.F32_add(v686, base.F32_mul(v705, v708))
+										v711 = int32(20)
+										v713 = *(*float32)(unsafe.Add(mBase, uint32(v689+v711)))
+										v716 = *(*float32)(unsafe.Add(mBase, uint32(v691+v711)))
+										v718 = base.F32_add(v687, base.F32_mul(v713, v716))
+										v719 = int32(16)
+										v721 = *(*float32)(unsafe.Add(mBase, uint32(v689+v719)))
+										v724 = *(*float32)(unsafe.Add(mBase, uint32(v691+v719)))
+										v726 = base.F32_add(v688, base.F32_mul(v721, v724))
+										v727 = int32(12)
+										v729 = *(*float32)(unsafe.Add(mBase, uint32(v689+v727)))
+										v732 = *(*float32)(unsafe.Add(mBase, uint32(v691+v727)))
+										v734 = base.F32_add(v682, base.F32_mul(v729, v732))
+										v735 = int32(8)
+										v737 = *(*float32)(unsafe.Add(mBase, uint32(v689+v735)))
+										v740 = *(*float32)(unsafe.Add(mBase, uint32(v691+v735)))
+										v742 = base.F32_add(v683, base.F32_mul(v737, v740))
+										v743 = int32(4)
+										v745 = *(*float32)(unsafe.Add(mBase, uint32(v689+v743)))
+										v748 = *(*float32)(unsafe.Add(mBase, uint32(v691+v743)))
+										v750 = base.F32_add(v684, base.F32_mul(v745, v748))
+										v754 = v678 - int32(1)
+										if v754 != 0 {
+											v677 = v677 + int32(32)
+											v678 = v754
+											v681 = v694
+											v682 = v734
+											v683 = v742
+											v684 = v750
+											v685 = v702
+											v686 = v710
+											v687 = v718
+											v688 = v726
+											continue
+										} else {
+											break
+										}
+										break
+									}
+									v769 = base.F32_add(v702, v734)
+									v770 = base.F32_add(v710, v742)
+									v771 = base.F32_add(v718, v750)
+									v776 = base.F32_add(v726, v694)
+								} else {
+									v769 = v595
+									v770 = v595
+									v771 = v595
+									v776 = float32(0)
+								}
+								v781 = *(*float32)(unsafe.Add(mBase, uint32(v558)))
+								*(*float32)(unsafe.Add(mBase, uint32(v558))) = base.F32_add(base.F32_add(v769, base.F32_add(v770, base.F32_add(v771, base.F32_add(v665, v776)))), v781)
 							} else {
 							}
-							v592 = v549 + int32(1)
-							if v592 != v194 {
-								v545 = v532<<(uint(int32(2))%32) + v545
-								v548 = v577
-								v549 = v592
-								v551 = v551 + int32(4)
+							v788 = v556 + int32(1)
+							if v788 != v198 {
+								v552 = v539<<(uint(int32(2))%32) + v552
+								v555 = v584
+								v556 = v788
+								v558 = v558 + int32(4)
 								continue
 							} else {
 								break
 							}
 							break
 						}
-						v598 = v536
-						v616 = v535
+						v794 = v543
+						v812 = v542
 					}
-					if base.Ui32(v192) <= base.Ui32(v167) {
-						v639 = v162 + v192<<(uint(int32(2))%32)
-						if base.Ui64(int64(4294967296)) <= base.Ui64(v189) {
-							v642 = int32(1073741823)
-							v643 = v192 + v642
-							v645 = v643 & v642
-							if base.I32_eqz(v643&int32(1)) != 0 {
-								v649 = float32(1)
-								v650 = *(*float32)(unsafe.Add(mBase, uint32(v162)))
-								v652 = Fn721(m, base.F32_neg(v650))
+					if base.Ui32(v196) <= base.Ui32(v171) {
+						v835 = v166 + v196<<(uint(int32(2))%32)
+						if base.Ui64(int64(4294967296)) <= base.Ui64(v193) {
+							v838 = int32(1073741823)
+							v839 = v196 + v838
+							v841 = v839 & v838
+							if v839&int32(1) == int32(0) {
+								v846 = float32(1)
+								v847 = *(*float32)(unsafe.Add(mBase, uint32(v166)))
+								v849 = Fn721(m, base.F32_neg(v847))
 								mBase = m.M
-								*(*float32)(unsafe.Add(mBase, uint32(v162))) = base.F32_div(v649, base.F32_add(v652, v649))
-								v659 = v162 + int32(4)
+								*(*float32)(unsafe.Add(mBase, uint32(v166))) = base.F32_div(v846, base.F32_add(v849, v846))
+								v856 = v166 + int32(4)
 							} else {
-								v659 = v162
+								v856 = v166
 							}
-							if v645 != 0 {
-								v669 = v659
+							if v841 != 0 {
+								v866 = v856
 								for {
-									v698 = float32(1)
-									v699 = *(*float32)(unsafe.Add(mBase, uint32(v669)))
-									v701 = Fn721(m, base.F32_neg(v699))
+									v895 = float32(1)
+									v896 = *(*float32)(unsafe.Add(mBase, uint32(v866)))
+									v898 = Fn721(m, base.F32_neg(v896))
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v669))) = base.F32_div(v698, base.F32_add(v701, v698))
-									v707 = v669 + int32(4)
-									v709 = *(*float32)(unsafe.Add(mBase, uint32(v707)))
-									v711 = Fn721(m, base.F32_neg(v709))
+									*(*float32)(unsafe.Add(mBase, uint32(v866))) = base.F32_div(v895, base.F32_add(v898, v895))
+									v904 = v866 + int32(4)
+									v906 = *(*float32)(unsafe.Add(mBase, uint32(v904)))
+									v908 = Fn721(m, base.F32_neg(v906))
 									mBase = m.M
-									*(*float32)(unsafe.Add(mBase, uint32(v707))) = base.F32_div(v698, base.F32_add(v711, v698))
-									v717 = v669 + int32(8)
-									if v717 != v639 {
-										v669 = v717
+									*(*float32)(unsafe.Add(mBase, uint32(v904))) = base.F32_div(v895, base.F32_add(v908, v895))
+									v914 = v866 + int32(8)
+									if v914 != v835 {
+										v866 = v914
 										continue
 									} else {
 										break
@@ -12957,47 +12443,47 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 								}
 							} else {
 							}
-							if v189 < int64(0) {
-								Fn205(m, int32(24289016))
+							if v193 < int64(0) {
+								Fn205(m, int32(24289400))
 								mBase = m.M
 								base.Wasm_trap_unreachable()
 								for {
 								}
 							} else {
-								v760 = v192 << (uint(int32(1)) % 32)
-								if base.Ui32(v167) < base.Ui32(v760) {
-									Fn205(m, int32(24289016))
+								v957 = v196 << (uint(int32(1)) % 32)
+								if base.Ui32(v171) < base.Ui32(v957) {
+									Fn205(m, int32(24289400))
 									mBase = m.M
 									base.Wasm_trap_unreachable()
 									for {
 									}
 								} else {
-									if base.I32_eqz(v643&int32(1)) != 0 {
-										v765 = float32(1)
-										v766 = *(*float32)(unsafe.Add(mBase, uint32(v639)))
-										v768 = Fn721(m, base.F32_neg(v766))
+									if v839&int32(1) == int32(0) {
+										v963 = float32(1)
+										v964 = *(*float32)(unsafe.Add(mBase, uint32(v835)))
+										v966 = Fn721(m, base.F32_neg(v964))
 										mBase = m.M
-										*(*float32)(unsafe.Add(mBase, uint32(v639))) = base.F32_div(v765, base.F32_add(v768, v765))
-										v775 = v639 + int32(4)
+										*(*float32)(unsafe.Add(mBase, uint32(v835))) = base.F32_div(v963, base.F32_add(v966, v963))
+										v973 = v835 + int32(4)
 									} else {
-										v775 = v639
+										v973 = v835
 									}
-									if v645 != 0 {
-										v788 = v775
+									if v841 != 0 {
+										v986 = v973
 										for {
-											v817 = float32(1)
-											v818 = *(*float32)(unsafe.Add(mBase, uint32(v788)))
-											v820 = Fn721(m, base.F32_neg(v818))
+											v1015 = float32(1)
+											v1016 = *(*float32)(unsafe.Add(mBase, uint32(v986)))
+											v1018 = Fn721(m, base.F32_neg(v1016))
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v788))) = base.F32_div(v817, base.F32_add(v820, v817))
-											v826 = v788 + int32(4)
-											v828 = *(*float32)(unsafe.Add(mBase, uint32(v826)))
-											v830 = Fn721(m, base.F32_neg(v828))
+											*(*float32)(unsafe.Add(mBase, uint32(v986))) = base.F32_div(v1015, base.F32_add(v1018, v1015))
+											v1024 = v986 + int32(4)
+											v1026 = *(*float32)(unsafe.Add(mBase, uint32(v1024)))
+											v1028 = Fn721(m, base.F32_neg(v1026))
 											mBase = m.M
-											*(*float32)(unsafe.Add(mBase, uint32(v826))) = base.F32_div(v817, base.F32_add(v830, v817))
-											v836 = v788 + int32(8)
-											if v836 != v639+v192<<(uint(int32(2))%32) {
-												v788 = v836
+											*(*float32)(unsafe.Add(mBase, uint32(v1024))) = base.F32_div(v1015, base.F32_add(v1028, v1015))
+											v1034 = v986 + int32(8)
+											if v1034 != v835+v196<<(uint(int32(2))%32) {
+												v986 = v1034
 												continue
 											} else {
 												break
@@ -13006,84 +12492,84 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 										}
 									} else {
 									}
-									v877 = v192 * int32(3)
-									if base.B2i32(base.Ui32(v877) < base.Ui32(v760))|base.B2i32(base.Ui32(v167) < base.Ui32(v877)) != 0 {
-										Fn205(m, int32(24289032))
+									v1075 = v196 * int32(3)
+									if base.B2i32(base.Ui32(v1075) < base.Ui32(v957))|base.B2i32(base.Ui32(v171) < base.Ui32(v1075)) != 0 {
+										Fn205(m, int32(24289416))
 										mBase = m.M
 										base.Wasm_trap_unreachable()
 										for {
 										}
 									} else {
-										v883 = v162 + v760<<(uint(int32(2))%32)
-										v885 = v192 & int32(7)
-										if v885 != 0 {
-											v895 = v883
-											v896 = v885
+										v1081 = v166 + v957<<(uint(int32(2))%32)
+										v1083 = v196 & int32(7)
+										if v1083 != 0 {
+											v1093 = v1081
+											v1094 = v1083
 											for {
-												v924 = *(*float32)(unsafe.Add(mBase, uint32(v895)))
-												v925 = Fn727(m, v924)
+												v1122 = *(*float32)(unsafe.Add(mBase, uint32(v1093)))
+												v1123 = Fn727(m, v1122)
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v895))) = v925
-												v928 = v895 + int32(4)
-												v930 = v896 - int32(1)
-												if v930 != 0 {
-													v895 = v928
-													v896 = v930
+												*(*float32)(unsafe.Add(mBase, uint32(v1093))) = v1123
+												v1126 = v1093 + int32(4)
+												v1128 = v1094 - int32(1)
+												if v1128 != 0 {
+													v1093 = v1126
+													v1094 = v1128
 													continue
 												} else {
 													break
 												}
 												break
 											}
-											v940 = v928
+											v1138 = v1126
 										} else {
-											v940 = v883
+											v1138 = v1081
 										}
-										if base.Ui32(int32(7)) <= base.Ui32(v645) {
-											v983 = v940
+										if base.Ui32(int32(7)) <= base.Ui32(v841) {
+											v1181 = v1138
 											for {
-												v1012 = *(*float32)(unsafe.Add(mBase, uint32(v983)))
-												v1013 = Fn727(m, v1012)
+												v1210 = *(*float32)(unsafe.Add(mBase, uint32(v1181)))
+												v1211 = Fn727(m, v1210)
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v983))) = v1013
-												v1016 = v983 + int32(4)
-												v1017 = *(*float32)(unsafe.Add(mBase, uint32(v1016)))
-												v1018 = Fn727(m, v1017)
+												*(*float32)(unsafe.Add(mBase, uint32(v1181))) = v1211
+												v1214 = v1181 + int32(4)
+												v1215 = *(*float32)(unsafe.Add(mBase, uint32(v1214)))
+												v1216 = Fn727(m, v1215)
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v1016))) = v1018
-												v1021 = v983 + int32(8)
-												v1022 = *(*float32)(unsafe.Add(mBase, uint32(v1021)))
-												v1023 = Fn727(m, v1022)
+												*(*float32)(unsafe.Add(mBase, uint32(v1214))) = v1216
+												v1219 = v1181 + int32(8)
+												v1220 = *(*float32)(unsafe.Add(mBase, uint32(v1219)))
+												v1221 = Fn727(m, v1220)
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v1021))) = v1023
-												v1026 = v983 + int32(12)
-												v1027 = *(*float32)(unsafe.Add(mBase, uint32(v1026)))
-												v1028 = Fn727(m, v1027)
+												*(*float32)(unsafe.Add(mBase, uint32(v1219))) = v1221
+												v1224 = v1181 + int32(12)
+												v1225 = *(*float32)(unsafe.Add(mBase, uint32(v1224)))
+												v1226 = Fn727(m, v1225)
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v1026))) = v1028
-												v1031 = v983 + int32(16)
-												v1032 = *(*float32)(unsafe.Add(mBase, uint32(v1031)))
-												v1033 = Fn727(m, v1032)
+												*(*float32)(unsafe.Add(mBase, uint32(v1224))) = v1226
+												v1229 = v1181 + int32(16)
+												v1230 = *(*float32)(unsafe.Add(mBase, uint32(v1229)))
+												v1231 = Fn727(m, v1230)
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v1031))) = v1033
-												v1036 = v983 + int32(20)
-												v1037 = *(*float32)(unsafe.Add(mBase, uint32(v1036)))
-												v1038 = Fn727(m, v1037)
+												*(*float32)(unsafe.Add(mBase, uint32(v1229))) = v1231
+												v1234 = v1181 + int32(20)
+												v1235 = *(*float32)(unsafe.Add(mBase, uint32(v1234)))
+												v1236 = Fn727(m, v1235)
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v1036))) = v1038
-												v1041 = v983 + int32(24)
-												v1042 = *(*float32)(unsafe.Add(mBase, uint32(v1041)))
-												v1043 = Fn727(m, v1042)
+												*(*float32)(unsafe.Add(mBase, uint32(v1234))) = v1236
+												v1239 = v1181 + int32(24)
+												v1240 = *(*float32)(unsafe.Add(mBase, uint32(v1239)))
+												v1241 = Fn727(m, v1240)
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v1041))) = v1043
-												v1046 = v983 + int32(28)
-												v1047 = *(*float32)(unsafe.Add(mBase, uint32(v1046)))
-												v1048 = Fn727(m, v1047)
+												*(*float32)(unsafe.Add(mBase, uint32(v1239))) = v1241
+												v1244 = v1181 + int32(28)
+												v1245 = *(*float32)(unsafe.Add(mBase, uint32(v1244)))
+												v1246 = Fn727(m, v1245)
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v1046))) = v1048
-												v1051 = v983 + int32(32)
-												if v1051 != v883+v192<<(uint(int32(2))%32) {
-													v983 = v1051
+												*(*float32)(unsafe.Add(mBase, uint32(v1244))) = v1246
+												v1249 = v1181 + int32(32)
+												if v1249 != v1081+v196<<(uint(int32(2))%32) {
+													v1181 = v1249
 													continue
 												} else {
 													break
@@ -13092,157 +12578,157 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 											}
 										} else {
 										}
-										v1092 = v192 << (uint(int32(2)) % 32)
-										if base.I32_eqz(base.B2i32(base.Ui32(v1092) < base.Ui32(v877))|base.B2i32(base.Ui32(v167) < base.Ui32(v1092))) != 0 {
-											v1099 = v162 + v877<<(uint(int32(2))%32)
-											if base.I32_eqz(v643&int32(1)) != 0 {
-												v1103 = float32(1)
-												v1104 = *(*float32)(unsafe.Add(mBase, uint32(v1099)))
-												v1106 = Fn721(m, base.F32_neg(v1104))
+										v1290 = v196 << (uint(int32(2)) % 32)
+										if base.B2i32(base.Ui32(v1290) < base.Ui32(v1075))|base.B2i32(base.Ui32(v171) < base.Ui32(v1290)) == int32(0) {
+											v1298 = v166 + v1075<<(uint(int32(2))%32)
+											if v839&int32(1) == int32(0) {
+												v1303 = float32(1)
+												v1304 = *(*float32)(unsafe.Add(mBase, uint32(v1298)))
+												v1306 = Fn721(m, base.F32_neg(v1304))
 												mBase = m.M
-												*(*float32)(unsafe.Add(mBase, uint32(v1099))) = base.F32_div(v1103, base.F32_add(v1106, v1103))
-												v1113 = v1099 + int32(4)
+												*(*float32)(unsafe.Add(mBase, uint32(v1298))) = base.F32_div(v1303, base.F32_add(v1306, v1303))
+												v1313 = v1298 + int32(4)
 											} else {
-												v1113 = v1099
+												v1313 = v1298
 											}
-											if base.I32_eqz(v645) != 0 {
-												v1188 = v883
-												v1197 = v877
+											if v841 == int32(0) {
+												v1389 = v1081
+												v1398 = v1075
 											} else {
-												v1127 = v1113
+												v1328 = v1313
 												for {
-													v1156 = float32(1)
-													v1157 = *(*float32)(unsafe.Add(mBase, uint32(v1127)))
-													v1159 = Fn721(m, base.F32_neg(v1157))
+													v1357 = float32(1)
+													v1358 = *(*float32)(unsafe.Add(mBase, uint32(v1328)))
+													v1360 = Fn721(m, base.F32_neg(v1358))
 													mBase = m.M
-													*(*float32)(unsafe.Add(mBase, uint32(v1127))) = base.F32_div(v1156, base.F32_add(v1159, v1156))
-													v1165 = v1127 + int32(4)
-													v1167 = *(*float32)(unsafe.Add(mBase, uint32(v1165)))
-													v1169 = Fn721(m, base.F32_neg(v1167))
+													*(*float32)(unsafe.Add(mBase, uint32(v1328))) = base.F32_div(v1357, base.F32_add(v1360, v1357))
+													v1366 = v1328 + int32(4)
+													v1368 = *(*float32)(unsafe.Add(mBase, uint32(v1366)))
+													v1370 = Fn721(m, base.F32_neg(v1368))
 													mBase = m.M
-													*(*float32)(unsafe.Add(mBase, uint32(v1165))) = base.F32_div(v1156, base.F32_add(v1169, v1156))
-													v1175 = v1127 + int32(8)
-													if v1175 != v1099+v192<<(uint(int32(2))%32) {
-														v1127 = v1175
+													*(*float32)(unsafe.Add(mBase, uint32(v1366))) = base.F32_div(v1357, base.F32_add(v1370, v1357))
+													v1376 = v1328 + int32(8)
+													if v1376 != v1298+v196<<(uint(int32(2))%32) {
+														v1328 = v1376
 														continue
 													} else {
 														break
 													}
 													break
 												}
-												v1188 = v883
-												v1197 = v877
+												v1389 = v1081
+												v1398 = v1075
 											}
-											if base.I32_eqz(l3)|base.B2i32(l3 != v192) != 0 {
+											if base.B2i32(l3 == int32(0))|base.B2i32(l3 != v196) != 0 {
 											} else {
-												v1223 = int32(0)
+												v1425 = int32(0)
 												if l3 != int32(1) {
-													v1240 = int32(0)
-													v1241 = v1223
+													v1442 = int32(0)
+													v1443 = v1425
 													for {
-														v1269 = l2 + v1240
-														v1270 = v1240 + v162
-														v1271 = *(*float32)(unsafe.Add(mBase, uint32(v1270)))
-														v1272 = v1188 + v1240
-														v1273 = *(*float32)(unsafe.Add(mBase, uint32(v1272)))
-														v1275 = *(*float32)(unsafe.Add(mBase, uint32(v1269)))
-														v1276 = v639 + v1240
-														v1277 = *(*float32)(unsafe.Add(mBase, uint32(v1276)))
-														*(*float32)(unsafe.Add(mBase, uint32(v1269))) = base.F32_add(base.F32_mul(v1271, v1273), base.F32_mul(v1275, v1277))
-														v1281 = int32(4)
-														v1282 = v1269 + v1281
-														v1285 = *(*float32)(unsafe.Add(mBase, uint32(v1270+v1281)))
-														v1288 = *(*float32)(unsafe.Add(mBase, uint32(v1272+v1281)))
-														v1290 = *(*float32)(unsafe.Add(mBase, uint32(v1282)))
-														v1293 = *(*float32)(unsafe.Add(mBase, uint32(v1276+v1281)))
-														*(*float32)(unsafe.Add(mBase, uint32(v1282))) = base.F32_add(base.F32_mul(v1285, v1288), base.F32_mul(v1290, v1293))
-														v1300 = v1241 + int32(2)
-														if l3&int32(-2) != v1300 {
-															v1240 = v1240 + int32(8)
-															v1241 = v1300
+														v1471 = l2 + v1442
+														v1472 = v1442 + v166
+														v1473 = *(*float32)(unsafe.Add(mBase, uint32(v1472)))
+														v1474 = v1389 + v1442
+														v1475 = *(*float32)(unsafe.Add(mBase, uint32(v1474)))
+														v1477 = *(*float32)(unsafe.Add(mBase, uint32(v1471)))
+														v1478 = v835 + v1442
+														v1479 = *(*float32)(unsafe.Add(mBase, uint32(v1478)))
+														*(*float32)(unsafe.Add(mBase, uint32(v1471))) = base.F32_add(base.F32_mul(v1473, v1475), base.F32_mul(v1477, v1479))
+														v1483 = int32(4)
+														v1484 = v1471 + v1483
+														v1487 = *(*float32)(unsafe.Add(mBase, uint32(v1472+v1483)))
+														v1490 = *(*float32)(unsafe.Add(mBase, uint32(v1474+v1483)))
+														v1492 = *(*float32)(unsafe.Add(mBase, uint32(v1484)))
+														v1495 = *(*float32)(unsafe.Add(mBase, uint32(v1478+v1483)))
+														*(*float32)(unsafe.Add(mBase, uint32(v1484))) = base.F32_add(base.F32_mul(v1487, v1490), base.F32_mul(v1492, v1495))
+														v1502 = v1443 + int32(2)
+														if l3&int32(-2) != v1502 {
+															v1442 = v1442 + int32(8)
+															v1443 = v1502
 															continue
 														} else {
 															break
 														}
 														break
 													}
-													if base.I32_eqz(l3&int32(1)) != 0 {
+													if l3&int32(1) == int32(0) {
 													} else {
-														v1313 = v1300
-														v1342 = v1313 << (uint(int32(2)) % 32)
-														v1343 = l2 + v1342
-														v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-														v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-														v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-														v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-														*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+														v1516 = v1502
+														v1545 = v1516 << (uint(int32(2)) % 32)
+														v1546 = l2 + v1545
+														v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+														v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+														v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+														v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+														*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 													}
 												} else {
-													v1313 = v1223
-													v1342 = v1313 << (uint(int32(2)) % 32)
-													v1343 = l2 + v1342
-													v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-													v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-													v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-													v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-													*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+													v1516 = v1425
+													v1545 = v1516 << (uint(int32(2)) % 32)
+													v1546 = l2 + v1545
+													v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+													v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+													v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+													v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+													*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 												}
 											}
-											if base.I32_eqz(v616)|base.B2i32(v192 != v616)|base.B2i32(l3 != v616) != 0 {
+											if base.B2i32(v812 == int32(0))|base.B2i32(v196 != v812)|base.B2i32(l3 != v812) != 0 {
 											} else {
-												v1400 = v162 + v1197<<(uint(int32(2))%32)
-												v1401 = int32(0)
-												if v191 != int64(1) {
-													v1416 = int32(0)
-													v1417 = v1401
+												v1604 = v166 + v1398<<(uint(int32(2))%32)
+												v1605 = int32(0)
+												if v195 != int64(1) {
+													v1620 = int32(0)
+													v1621 = v1605
 													for {
-														v1445 = v598 + v1416
-														v1446 = l2 + v1416
-														v1447 = *(*float32)(unsafe.Add(mBase, uint32(v1446)))
-														v1448 = Fn727(m, v1447)
+														v1649 = v794 + v1620
+														v1650 = l2 + v1620
+														v1651 = *(*float32)(unsafe.Add(mBase, uint32(v1650)))
+														v1652 = Fn727(m, v1651)
 														mBase = m.M
-														v1449 = v1400 + v1416
-														v1450 = *(*float32)(unsafe.Add(mBase, uint32(v1449)))
-														*(*float32)(unsafe.Add(mBase, uint32(v1445))) = base.F32_mul(v1448, v1450)
-														v1453 = int32(4)
-														v1457 = *(*float32)(unsafe.Add(mBase, uint32(v1446+v1453)))
-														v1458 = Fn727(m, v1457)
+														v1653 = v1604 + v1620
+														v1654 = *(*float32)(unsafe.Add(mBase, uint32(v1653)))
+														*(*float32)(unsafe.Add(mBase, uint32(v1649))) = base.F32_mul(v1652, v1654)
+														v1657 = int32(4)
+														v1661 = *(*float32)(unsafe.Add(mBase, uint32(v1650+v1657)))
+														v1662 = Fn727(m, v1661)
 														mBase = m.M
-														v1461 = *(*float32)(unsafe.Add(mBase, uint32(v1449+v1453)))
-														*(*float32)(unsafe.Add(mBase, uint32(v1445+v1453))) = base.F32_mul(v1458, v1461)
-														v1467 = v1417 + int32(2)
-														if v192&int32(-2) != v1467 {
-															v1416 = v1416 + int32(8)
-															v1417 = v1467
+														v1665 = *(*float32)(unsafe.Add(mBase, uint32(v1653+v1657)))
+														*(*float32)(unsafe.Add(mBase, uint32(v1649+v1657))) = base.F32_mul(v1662, v1665)
+														v1671 = v1621 + int32(2)
+														if v196&int32(-2) != v1671 {
+															v1620 = v1620 + int32(8)
+															v1621 = v1671
 															continue
 														} else {
 															break
 														}
 														break
 													}
-													v1479 = v1467
+													v1683 = v1671
 												} else {
-													v1479 = v1401
+													v1683 = v1605
 												}
-												if base.I32_eqz(v192&int32(1)) != 0 {
+												if v196&int32(1) == int32(0) {
 												} else {
-													v1511 = v1479 << (uint(int32(2)) % 32)
-													v1514 = *(*float32)(unsafe.Add(mBase, uint32(v1511+l2)))
-													v1515 = Fn727(m, v1514)
+													v1716 = v1683 << (uint(int32(2)) % 32)
+													v1719 = *(*float32)(unsafe.Add(mBase, uint32(v1716+l2)))
+													v1720 = Fn727(m, v1719)
 													mBase = m.M
-													v1517 = *(*float32)(unsafe.Add(mBase, uint32(v1511+v1400)))
-													*(*float32)(unsafe.Add(mBase, uint32(v598+v1511))) = base.F32_mul(v1515, v1517)
+													v1722 = *(*float32)(unsafe.Add(mBase, uint32(v1716+v1604)))
+													*(*float32)(unsafe.Add(mBase, uint32(v794+v1716))) = base.F32_mul(v1720, v1722)
 												}
 											}
-											if base.I32_eqz(v173) != 0 {
-												Fn833(m, v162)
+											if v177 == int32(0) {
+												Fn833(m, v166)
 												mBase = m.M
 											} else {
 											}
 											m.G0 = v41 + int32(16)
 											return
 										} else {
-											Fn205(m, int32(24289048))
+											Fn205(m, int32(24289432))
 											mBase = m.M
 											base.Wasm_trap_unreachable()
 											for {
@@ -13252,119 +12738,119 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 								}
 							}
 						} else {
-							v1180 = v192 * int32(3)
-							if base.Ui32(v167) < base.Ui32(v1180) {
-								Fn205(m, int32(24289032))
+							v1381 = v196 * int32(3)
+							if base.Ui32(v171) < base.Ui32(v1381) {
+								Fn205(m, int32(24289416))
 								mBase = m.M
 								base.Wasm_trap_unreachable()
 								for {
 								}
 							} else {
-								v1188 = v162
-								v1197 = v1180
-								if base.I32_eqz(l3)|base.B2i32(l3 != v192) != 0 {
+								v1389 = v166
+								v1398 = v1381
+								if base.B2i32(l3 == int32(0))|base.B2i32(l3 != v196) != 0 {
 								} else {
-									v1223 = int32(0)
+									v1425 = int32(0)
 									if l3 != int32(1) {
-										v1240 = int32(0)
-										v1241 = v1223
+										v1442 = int32(0)
+										v1443 = v1425
 										for {
-											v1269 = l2 + v1240
-											v1270 = v1240 + v162
-											v1271 = *(*float32)(unsafe.Add(mBase, uint32(v1270)))
-											v1272 = v1188 + v1240
-											v1273 = *(*float32)(unsafe.Add(mBase, uint32(v1272)))
-											v1275 = *(*float32)(unsafe.Add(mBase, uint32(v1269)))
-											v1276 = v639 + v1240
-											v1277 = *(*float32)(unsafe.Add(mBase, uint32(v1276)))
-											*(*float32)(unsafe.Add(mBase, uint32(v1269))) = base.F32_add(base.F32_mul(v1271, v1273), base.F32_mul(v1275, v1277))
-											v1281 = int32(4)
-											v1282 = v1269 + v1281
-											v1285 = *(*float32)(unsafe.Add(mBase, uint32(v1270+v1281)))
-											v1288 = *(*float32)(unsafe.Add(mBase, uint32(v1272+v1281)))
-											v1290 = *(*float32)(unsafe.Add(mBase, uint32(v1282)))
-											v1293 = *(*float32)(unsafe.Add(mBase, uint32(v1276+v1281)))
-											*(*float32)(unsafe.Add(mBase, uint32(v1282))) = base.F32_add(base.F32_mul(v1285, v1288), base.F32_mul(v1290, v1293))
-											v1300 = v1241 + int32(2)
-											if l3&int32(-2) != v1300 {
-												v1240 = v1240 + int32(8)
-												v1241 = v1300
+											v1471 = l2 + v1442
+											v1472 = v1442 + v166
+											v1473 = *(*float32)(unsafe.Add(mBase, uint32(v1472)))
+											v1474 = v1389 + v1442
+											v1475 = *(*float32)(unsafe.Add(mBase, uint32(v1474)))
+											v1477 = *(*float32)(unsafe.Add(mBase, uint32(v1471)))
+											v1478 = v835 + v1442
+											v1479 = *(*float32)(unsafe.Add(mBase, uint32(v1478)))
+											*(*float32)(unsafe.Add(mBase, uint32(v1471))) = base.F32_add(base.F32_mul(v1473, v1475), base.F32_mul(v1477, v1479))
+											v1483 = int32(4)
+											v1484 = v1471 + v1483
+											v1487 = *(*float32)(unsafe.Add(mBase, uint32(v1472+v1483)))
+											v1490 = *(*float32)(unsafe.Add(mBase, uint32(v1474+v1483)))
+											v1492 = *(*float32)(unsafe.Add(mBase, uint32(v1484)))
+											v1495 = *(*float32)(unsafe.Add(mBase, uint32(v1478+v1483)))
+											*(*float32)(unsafe.Add(mBase, uint32(v1484))) = base.F32_add(base.F32_mul(v1487, v1490), base.F32_mul(v1492, v1495))
+											v1502 = v1443 + int32(2)
+											if l3&int32(-2) != v1502 {
+												v1442 = v1442 + int32(8)
+												v1443 = v1502
 												continue
 											} else {
 												break
 											}
 											break
 										}
-										if base.I32_eqz(l3&int32(1)) != 0 {
+										if l3&int32(1) == int32(0) {
 										} else {
-											v1313 = v1300
-											v1342 = v1313 << (uint(int32(2)) % 32)
-											v1343 = l2 + v1342
-											v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-											v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-											v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-											v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-											*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+											v1516 = v1502
+											v1545 = v1516 << (uint(int32(2)) % 32)
+											v1546 = l2 + v1545
+											v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+											v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+											v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+											v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+											*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 										}
 									} else {
-										v1313 = v1223
-										v1342 = v1313 << (uint(int32(2)) % 32)
-										v1343 = l2 + v1342
-										v1345 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v162)))
-										v1347 = *(*float32)(unsafe.Add(mBase, uint32(v1342+v1188)))
-										v1349 = *(*float32)(unsafe.Add(mBase, uint32(v1343)))
-										v1351 = *(*float32)(unsafe.Add(mBase, uint32(v639+v1342)))
-										*(*float32)(unsafe.Add(mBase, uint32(v1343))) = base.F32_add(base.F32_mul(v1345, v1347), base.F32_mul(v1349, v1351))
+										v1516 = v1425
+										v1545 = v1516 << (uint(int32(2)) % 32)
+										v1546 = l2 + v1545
+										v1548 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v166)))
+										v1550 = *(*float32)(unsafe.Add(mBase, uint32(v1545+v1389)))
+										v1552 = *(*float32)(unsafe.Add(mBase, uint32(v1546)))
+										v1554 = *(*float32)(unsafe.Add(mBase, uint32(v835+v1545)))
+										*(*float32)(unsafe.Add(mBase, uint32(v1546))) = base.F32_add(base.F32_mul(v1548, v1550), base.F32_mul(v1552, v1554))
 									}
 								}
-								if base.I32_eqz(v616)|base.B2i32(v192 != v616)|base.B2i32(l3 != v616) != 0 {
+								if base.B2i32(v812 == int32(0))|base.B2i32(v196 != v812)|base.B2i32(l3 != v812) != 0 {
 								} else {
-									v1400 = v162 + v1197<<(uint(int32(2))%32)
-									v1401 = int32(0)
-									if v191 != int64(1) {
-										v1416 = int32(0)
-										v1417 = v1401
+									v1604 = v166 + v1398<<(uint(int32(2))%32)
+									v1605 = int32(0)
+									if v195 != int64(1) {
+										v1620 = int32(0)
+										v1621 = v1605
 										for {
-											v1445 = v598 + v1416
-											v1446 = l2 + v1416
-											v1447 = *(*float32)(unsafe.Add(mBase, uint32(v1446)))
-											v1448 = Fn727(m, v1447)
+											v1649 = v794 + v1620
+											v1650 = l2 + v1620
+											v1651 = *(*float32)(unsafe.Add(mBase, uint32(v1650)))
+											v1652 = Fn727(m, v1651)
 											mBase = m.M
-											v1449 = v1400 + v1416
-											v1450 = *(*float32)(unsafe.Add(mBase, uint32(v1449)))
-											*(*float32)(unsafe.Add(mBase, uint32(v1445))) = base.F32_mul(v1448, v1450)
-											v1453 = int32(4)
-											v1457 = *(*float32)(unsafe.Add(mBase, uint32(v1446+v1453)))
-											v1458 = Fn727(m, v1457)
+											v1653 = v1604 + v1620
+											v1654 = *(*float32)(unsafe.Add(mBase, uint32(v1653)))
+											*(*float32)(unsafe.Add(mBase, uint32(v1649))) = base.F32_mul(v1652, v1654)
+											v1657 = int32(4)
+											v1661 = *(*float32)(unsafe.Add(mBase, uint32(v1650+v1657)))
+											v1662 = Fn727(m, v1661)
 											mBase = m.M
-											v1461 = *(*float32)(unsafe.Add(mBase, uint32(v1449+v1453)))
-											*(*float32)(unsafe.Add(mBase, uint32(v1445+v1453))) = base.F32_mul(v1458, v1461)
-											v1467 = v1417 + int32(2)
-											if v192&int32(-2) != v1467 {
-												v1416 = v1416 + int32(8)
-												v1417 = v1467
+											v1665 = *(*float32)(unsafe.Add(mBase, uint32(v1653+v1657)))
+											*(*float32)(unsafe.Add(mBase, uint32(v1649+v1657))) = base.F32_mul(v1662, v1665)
+											v1671 = v1621 + int32(2)
+											if v196&int32(-2) != v1671 {
+												v1620 = v1620 + int32(8)
+												v1621 = v1671
 												continue
 											} else {
 												break
 											}
 											break
 										}
-										v1479 = v1467
+										v1683 = v1671
 									} else {
-										v1479 = v1401
+										v1683 = v1605
 									}
-									if base.I32_eqz(v192&int32(1)) != 0 {
+									if v196&int32(1) == int32(0) {
 									} else {
-										v1511 = v1479 << (uint(int32(2)) % 32)
-										v1514 = *(*float32)(unsafe.Add(mBase, uint32(v1511+l2)))
-										v1515 = Fn727(m, v1514)
+										v1716 = v1683 << (uint(int32(2)) % 32)
+										v1719 = *(*float32)(unsafe.Add(mBase, uint32(v1716+l2)))
+										v1720 = Fn727(m, v1719)
 										mBase = m.M
-										v1517 = *(*float32)(unsafe.Add(mBase, uint32(v1511+v1400)))
-										*(*float32)(unsafe.Add(mBase, uint32(v598+v1511))) = base.F32_mul(v1515, v1517)
+										v1722 = *(*float32)(unsafe.Add(mBase, uint32(v1716+v1604)))
+										*(*float32)(unsafe.Add(mBase, uint32(v794+v1716))) = base.F32_mul(v1720, v1722)
 									}
 								}
-								if base.I32_eqz(v173) != 0 {
-									Fn833(m, v162)
+								if v177 == int32(0) {
+									Fn833(m, v166)
 									mBase = m.M
 								} else {
 								}
@@ -13373,7 +12859,7 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 							}
 						}
 					} else {
-						Fn205(m, int32(24289000))
+						Fn205(m, int32(24289384))
 						mBase = m.M
 						base.Wasm_trap_unreachable()
 						for {
@@ -13385,7 +12871,2475 @@ func Fn305(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 
 	}
 }
 
-func Fn7510(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32, l9 int32, l10 int32, l11 int32) int32 {
+func Fn3862(m *base.Module, l0 int32, l1 int32) int32 {
+	mBase := m.M
+	var v3 int32
+	_ = v3
+	var v15 int32
+	_ = v15
+	var v17 int32
+	_ = v17
+	var v19 int32
+	_ = v19
+	var v22 int32
+	_ = v22
+	var v24 int32
+	_ = v24
+	var v29 int32
+	_ = v29
+	var v34 int32
+	_ = v34
+	var v35 int32
+	_ = v35
+	var v36 int32
+	_ = v36
+	var v37 int32
+	_ = v37
+	var v40 int32
+	_ = v40
+	var v47 int32
+	_ = v47
+	var v48 int32
+	_ = v48
+	var v49 int32
+	_ = v49
+	var v50 int32
+	_ = v50
+	var v55 int32
+	_ = v55
+	var v60 int32
+	_ = v60
+	var v62 int32
+	_ = v62
+	var v65 int32
+	_ = v65
+	var v67 int32
+	_ = v67
+	var v68 int32
+	_ = v68
+	var v69 int32
+	_ = v69
+	var v78 int32
+	_ = v78
+	var v81 int32
+	_ = v81
+	var v84 int32
+	_ = v84
+	var v87 int32
+	_ = v87
+	var v99 int32
+	_ = v99
+	var v101 int32
+	_ = v101
+	var v105 int32
+	_ = v105
+	var v106 int32
+	_ = v106
+	var v108 int32
+	_ = v108
+	var v110 int32
+	_ = v110
+	var v111 int32
+	_ = v111
+	var v112 int64
+	_ = v112
+	var v114 int64
+	_ = v114
+	var v119 int32
+	_ = v119
+	var v120 int32
+	_ = v120
+	var v123 int32
+	_ = v123
+	var v128 int64
+	_ = v128
+	var v133 int32
+	_ = v133
+	var v139 int32
+	_ = v139
+	var v147 int32
+	_ = v147
+	var v157 int32
+	_ = v157
+	var v168 int32
+	_ = v168
+	var v171 float64
+	_ = v171
+	var v173 float64
+	_ = v173
+	var v178 float64
+	_ = v178
+	var v189 float64
+	_ = v189
+	var v191 int32
+	_ = v191
+	var v201 int32
+	_ = v201
+	var v203 int32
+	_ = v203
+	var v206 int32
+	_ = v206
+	var v209 int32
+	_ = v209
+	var v211 int32
+	_ = v211
+	var v212 int32
+	_ = v212
+	var v216 float64
+	_ = v216
+	var v219 float64
+	_ = v219
+	var v220 float64
+	_ = v220
+	var v221 int32
+	_ = v221
+	var v224 int32
+	_ = v224
+	var v225 int32
+	_ = v225
+	var v226 int32
+	_ = v226
+	var v227 int32
+	_ = v227
+	var v230 int32
+	_ = v230
+	var v237 int32
+	_ = v237
+	var v238 int32
+	_ = v238
+	var v239 int32
+	_ = v239
+	var v240 int32
+	_ = v240
+	var v245 int32
+	_ = v245
+	var v250 int32
+	_ = v250
+	var v252 int32
+	_ = v252
+	var v255 int32
+	_ = v255
+	var v257 int32
+	_ = v257
+	var v258 int32
+	_ = v258
+	var v259 int32
+	_ = v259
+	var v268 int32
+	_ = v268
+	var v271 int32
+	_ = v271
+	var v274 int32
+	_ = v274
+	var v277 int32
+	_ = v277
+	var v289 int32
+	_ = v289
+	var v291 int32
+	_ = v291
+	var v295 int32
+	_ = v295
+	var v296 int32
+	_ = v296
+	var v303 int32
+	_ = v303
+	var v309 int32
+	_ = v309
+	var v312 int32
+	_ = v312
+	var v317 int32
+	_ = v317
+	var v322 int32
+	_ = v322
+	var v324 int32
+	_ = v324
+	var v329 int32
+	_ = v329
+	var v330 int32
+	_ = v330
+	var v331 int32
+	_ = v331
+	var v332 int32
+	_ = v332
+	var v335 int32
+	_ = v335
+	var v338 int32
+	_ = v338
+	var v341 int32
+	_ = v341
+	var v344 int32
+	_ = v344
+	var v355 int32
+	_ = v355
+	var v358 int32
+	_ = v358
+	var v359 int32
+	_ = v359
+	var v360 int32
+	_ = v360
+	var v363 int32
+	_ = v363
+	var v370 int32
+	_ = v370
+	var v371 int32
+	_ = v371
+	var v372 int32
+	_ = v372
+	var v373 int32
+	_ = v373
+	var v378 int32
+	_ = v378
+	var v383 int32
+	_ = v383
+	var v385 int32
+	_ = v385
+	var v388 int32
+	_ = v388
+	var v390 int32
+	_ = v390
+	var v391 int32
+	_ = v391
+	var v392 int32
+	_ = v392
+	var v401 int32
+	_ = v401
+	var v404 int32
+	_ = v404
+	var v407 int32
+	_ = v407
+	var v410 int32
+	_ = v410
+	var v422 int32
+	_ = v422
+	var v424 int32
+	_ = v424
+	var v428 int32
+	_ = v428
+	var v430 int32
+	_ = v430
+	var v434 int32
+	_ = v434
+	var v438 int64
+	_ = v438
+	var v444 float64
+	_ = v444
+	var v447 int32
+	_ = v447
+	var v450 int32
+	_ = v450
+	var v451 int32
+	_ = v451
+	var v452 int32
+	_ = v452
+	var v455 int32
+	_ = v455
+	var v462 int32
+	_ = v462
+	var v463 int32
+	_ = v463
+	var v464 int32
+	_ = v464
+	var v465 int32
+	_ = v465
+	var v470 int32
+	_ = v470
+	var v475 int32
+	_ = v475
+	var v477 int32
+	_ = v477
+	var v480 int32
+	_ = v480
+	var v482 int32
+	_ = v482
+	var v483 int32
+	_ = v483
+	var v484 int32
+	_ = v484
+	var v493 int32
+	_ = v493
+	var v496 int32
+	_ = v496
+	var v499 int32
+	_ = v499
+	var v502 int32
+	_ = v502
+	var v514 int32
+	_ = v514
+	var v516 int32
+	_ = v516
+	var v520 int32
+	_ = v520
+	var v522 int32
+	_ = v522
+	var v526 int32
+	_ = v526
+	var v530 int64
+	_ = v530
+	var v536 float64
+	_ = v536
+	var v538 int32
+	_ = v538
+	var v541 int32
+	_ = v541
+	var v542 int32
+	_ = v542
+	var v543 int32
+	_ = v543
+	var v546 int32
+	_ = v546
+	var v553 int32
+	_ = v553
+	var v554 int32
+	_ = v554
+	var v555 int32
+	_ = v555
+	var v556 int32
+	_ = v556
+	var v561 int32
+	_ = v561
+	var v566 int32
+	_ = v566
+	var v568 int32
+	_ = v568
+	var v571 int32
+	_ = v571
+	var v573 int32
+	_ = v573
+	var v574 int32
+	_ = v574
+	var v575 int32
+	_ = v575
+	var v584 int32
+	_ = v584
+	var v587 int32
+	_ = v587
+	var v590 int32
+	_ = v590
+	var v593 int32
+	_ = v593
+	var v605 int32
+	_ = v605
+	var v607 int32
+	_ = v607
+	var v611 int32
+	_ = v611
+	var v613 int32
+	_ = v613
+	var v617 int32
+	_ = v617
+	var v620 int64
+	_ = v620
+	var v626 float64
+	_ = v626
+	var v634 int32
+	_ = v634
+	var v636 float64
+	_ = v636
+	var v647 int32
+	_ = v647
+	var v653 int32
+	_ = v653
+	var v656 int32
+	_ = v656
+	var v657 int32
+	_ = v657
+	var v658 int32
+	_ = v658
+	var v661 int32
+	_ = v661
+	var v668 int32
+	_ = v668
+	var v669 int32
+	_ = v669
+	var v670 int32
+	_ = v670
+	var v671 int32
+	_ = v671
+	var v676 int32
+	_ = v676
+	var v681 int32
+	_ = v681
+	var v683 int32
+	_ = v683
+	var v686 int32
+	_ = v686
+	var v688 int32
+	_ = v688
+	var v689 int32
+	_ = v689
+	var v690 int32
+	_ = v690
+	var v699 int32
+	_ = v699
+	var v702 int32
+	_ = v702
+	var v705 int32
+	_ = v705
+	var v708 int32
+	_ = v708
+	var v720 int32
+	_ = v720
+	var v722 int32
+	_ = v722
+	var v726 int32
+	_ = v726
+	var v728 int32
+	_ = v728
+	var v732 int32
+	_ = v732
+	var v736 int64
+	_ = v736
+	var v747 int64
+	_ = v747
+	var v752 int32
+	_ = v752
+	var v755 int32
+	_ = v755
+	var v757 int32
+	_ = v757
+	var v771 int32
+	_ = v771
+	var v779 int32
+	_ = v779
+	var v783 int32
+	_ = v783
+	var v806 int32
+	_ = v806
+	var v809 int32
+	_ = v809
+	var v810 int32
+	_ = v810
+	var v814 int32
+	_ = v814
+	var v815 int32
+	_ = v815
+	var v832 int32
+	_ = v832
+	var v837 int32
+	_ = v837
+	var v850 int32
+	_ = v850
+	var v852 int32
+	_ = v852
+	var v855 int32
+	_ = v855
+	var v856 int32
+	_ = v856
+	var v857 int32
+	_ = v857
+	var v858 int32
+	_ = v858
+	var v861 int32
+	_ = v861
+	var v864 int32
+	_ = v864
+	var v867 int32
+	_ = v867
+	var v870 int32
+	_ = v870
+	var v871 int64
+	_ = v871
+	var v873 int64
+	_ = v873
+	var v875 int64
+	_ = v875
+	var v877 int64
+	_ = v877
+	var v879 int64
+	_ = v879
+	var v881 int64
+	_ = v881
+	var v887 float64
+	_ = v887
+	var v890 int64
+	_ = v890
+	var v896 float64
+	_ = v896
+	var v898 int64
+	_ = v898
+	var v900 int32
+	_ = v900
+	var v904 int32
+	_ = v904
+	var v912 int32
+	_ = v912
+	var v915 int32
+	_ = v915
+	var v918 int64
+	_ = v918
+	var v921 int64
+	_ = v921
+	var v925 int64
+	_ = v925
+	var v928 int32
+	_ = v928
+	var v931 int64
+	_ = v931
+	var v938 int64
+	_ = v938
+	var v940 int32
+	_ = v940
+	var v944 int32
+	_ = v944
+	var v952 int32
+	_ = v952
+	var v955 int32
+	_ = v955
+	var v958 int64
+	_ = v958
+	var v961 int64
+	_ = v961
+	var v965 int64
+	_ = v965
+	var v968 int32
+	_ = v968
+	var v971 int64
+	_ = v971
+	var v978 int64
+	_ = v978
+	var v980 int64
+	_ = v980
+	var v991 int64
+	_ = v991
+	var v996 int32
+	_ = v996
+	var v999 int32
+	_ = v999
+	var v1001 int32
+	_ = v1001
+	var v1015 int32
+	_ = v1015
+	var v1023 int32
+	_ = v1023
+	var v1027 int32
+	_ = v1027
+	var v1050 int32
+	_ = v1050
+	var v1053 int32
+	_ = v1053
+	var v1054 int32
+	_ = v1054
+	var v1058 int32
+	_ = v1058
+	var v1059 int32
+	_ = v1059
+	var v1076 int32
+	_ = v1076
+	var v1081 int32
+	_ = v1081
+	var v1086 int64
+	_ = v1086
+	var v1094 int32
+	_ = v1094
+	var v1097 int64
+	_ = v1097
+	var v1106 int32
+	_ = v1106
+	var v1109 int32
+	_ = v1109
+	var v1110 int32
+	_ = v1110
+	var v1117 int32
+	_ = v1117
+	var v1121 int32
+	_ = v1121
+	var v1122 int32
+	_ = v1122
+	var v1131 int32
+	_ = v1131
+	var v1136 int32
+	_ = v1136
+	var v1137 int32
+	_ = v1137
+	v3 = int32(0)
+	v15 = m.G0
+	v17 = v15 + int32(-64)
+	m.G0 = v17
+	v19 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
+	v22 = *(*int32)(unsafe.Add(mBase, uint32(v19-int32(8))))
+	*(*int32)(unsafe.Add(mBase, uint32(v17)+60)) = v22
+	v24 = *(*int32)(unsafe.Add(mBase, uint32(l0)+12))
+	*(*int32)(unsafe.Add(mBase, uint32(l0)+12)) = v17 + int32(52)
+	v29 = l0 + int32(12)
+	*(*int32)(unsafe.Add(mBase, uint32(v17)+52)) = v29
+	*(*int32)(unsafe.Add(mBase, uint32(v17)+56)) = v24
+	v34 = *(*int32)(unsafe.Add(mBase, uint32(v22+int32(24))))
+	if v34 != 0 {
+		v106 = v34
+		goto L6
+	} else {
+		goto L7
+	}
+L1:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8597222)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L2:
+	;
+	v1136 = *(*int32)(unsafe.Add(mBase, uint32(v17)+52))
+	v1137 = *(*int32)(unsafe.Add(mBase, uint32(v17)+56))
+	*(*int32)(unsafe.Add(mBase, uint32(v1136))) = v1137
+	m.G0 = v17 - int32(-64)
+	return v1131
+L3:
+	;
+	*(*float64)(unsafe.Add(mBase, uint32(v17)+40)) = v189
+	v191 = *(*int32)(unsafe.Add(mBase, uint32(l0)+52))
+	*(*int32)(unsafe.Add(mBase, uint32(l0)+52)) = v17 + int32(24)
+	*(*int32)(unsafe.Add(mBase, uint32(v17)+24)) = l0 + int32(52)
+	*(*int64)(unsafe.Add(mBase, uint32(v17)+32)) = int64(-536870912000)
+	*(*int32)(unsafe.Add(mBase, uint32(v17)+28)) = v191
+	v201 = *(*int32)(unsafe.Add(mBase, uint32(v17)+60))
+	v203 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
+	v206 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
+	if base.Ui32(v206) <= base.Ui32(int32(1)) {
+		goto L47
+	} else {
+		goto L48
+	}
+L4:
+	;
+	if base.Ui64(v112) < base.Ui64(int64(-545460846592)) {
+		goto L34
+	} else {
+		goto L35
+	}
+L5:
+	;
+	v119 = *(*int32)(unsafe.Add(mBase, uint32(v17)+60))
+	v120 = *(*int32)(unsafe.Add(mBase, uint32(v119)+12))
+	v123 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v120-int32(16)))))
+	if v123&int32(8) != 0 {
+		goto L29
+	} else {
+		goto L30
+	}
+L6:
+	;
+	v108 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
+	v110 = *(*int32)(unsafe.Add(mBase, uint32(l1)+4))
+	if v110 != 0 {
+		goto L24
+	} else {
+		goto L25
+	}
+L7:
+	;
+	v35 = Fn1900(m, v22)
+	mBase = m.M
+	if v35 != 0 {
+		goto L5
+	} else {
+		goto L8
+	}
+L8:
+	;
+	v36 = int32(0)
+	v37 = *(*int32)(unsafe.Add(mBase, uint32(v22)+12))
+	v40 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v37-int32(16)))))
+	if v40&int32(8) == v36 {
+		v106 = v36
+		goto L6
+	} else {
+		goto L9
+	}
+L9:
+	;
+	v47 = *(*int32)(unsafe.Add(mBase, uint32(v22+int32(16))))
+	v48 = *(*int32)(unsafe.Add(mBase, uint32(v47)))
+	v49 = *(*int32)(unsafe.Add(mBase, uint32(v48)))
+	v50 = *(*int32)(unsafe.Add(mBase, uint32(v49)))
+	if v50 != int32(26771008) {
+		v106 = v36
+		goto L6
+	} else {
+		goto L10
+	}
+L10:
+	;
+	v55 = *(*int32)(unsafe.Add(mBase, uint32(v22+int32(48))))
+	if v55 == int32(0) {
+		v106 = v36
+		goto L6
+	} else {
+		goto L11
+	}
+L11:
+	;
+	v60 = *(*int32)(unsafe.Add(mBase, uint32(v47+int32(16))))
+	v62 = int32(atomic.LoadUint32((*uint32)(unsafe.Add(mBase, uint32(v60)+8))))
+	v65 = *(*int32)(unsafe.Add(mBase, uint32(v22+int32(32))))
+	v67 = *(*int32)(unsafe.Add(mBase, uint32(v22)))
+	v68 = *(*int32)(unsafe.Add(mBase, uint32(v67)))
+	v69 = *(*int32)(unsafe.Add(mBase, uint32(v68)))
+	if base.B2i32(base.Ui32(v69) < base.Ui32(int32(26778448)))|base.B2i32(base.Ui32(int32(26779312)) <= base.Ui32(v69)) != 0 {
+		goto L14
+	} else {
+		goto L15
+	}
+L12:
+	;
+	v105 = base.I32_div_u_s(v62-v65, v101)
+	v106 = v105
+	goto L6
+L13:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8585258)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L14:
+	;
+	v101 = int32(1)
+	goto L16
+L15:
+	;
+	v78 = int32(26779024)
+	if base.Ui32(v69) < base.Ui32(v78) {
+		goto L17
+	} else {
+		goto L18
+	}
+L16:
+	;
+	goto L12
+L17:
+	;
+	v81 = int32(26778736)
+	goto L19
+L18:
+	;
+	v81 = v78
+	goto L19
+L19:
+	;
+	if base.Ui32(v69) < base.Ui32(int32(26778736)) {
+		goto L20
+	} else {
+		goto L21
+	}
+L20:
+	;
+	v84 = int32(26778448)
+	goto L22
+L21:
+	;
+	v84 = v81
+	goto L22
+L22:
+	;
+	v87 = base.I32_div_s(v69-v84, int32(24))
+	if base.B2i32(base.Ui32(int32(14)) < base.Ui32(v87))|base.B2i32(int32(base.Ui32(int32(28671))>>(uint(v87)%32))&int32(1) == int32(0)) != 0 {
+		goto L13
+	} else {
+		goto L23
+	}
+L23:
+	;
+	v99 = *(*int32)(unsafe.Add(mBase, uint32(v87<<(uint(int32(2))%32))+uint32(_consts[255])))
+	v101 = v99
+	goto L16
+L24:
+	;
+	v111 = v108
+	goto L26
+L25:
+	;
+	v111 = int32(26779584)
+	goto L26
+L26:
+	;
+	v112 = *(*int64)(unsafe.Add(mBase, uint32(v111)))
+	v114 = v112 & int64(-4294967296)
+	if v114 != int64(-545460846592) {
+		goto L4
+	} else {
+		goto L27
+	}
+L27:
+	;
+	v189 = base.F64_convert_i32_s(base.I32_wrap_i64(v112))
+	goto L3
+L28:
+	;
+	Fn1451(m, l0, v147, int32(0))
+	mBase = m.M
+	v1131 = v3
+	goto L2
+L29:
+	;
+	v147 = int32(601)
+	goto L28
+L30:
+	;
+	v128 = *(*int64)(unsafe.Add(mBase, uint32(v119+int32(16))))
+	if v128&int64(-4294967296) == int64(-541165879296) {
+		goto L29
+	} else {
+		goto L31
+	}
+L31:
+	;
+	v133 = base.I32_wrap_i64(v128)
+	if v133 == int32(0) {
+		goto L29
+	} else {
+		goto L32
+	}
+L32:
+	;
+	v139 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v133+int32(40)))))
+	if v139&int32(8) != 0 {
+		v147 = int32(598)
+		goto L28
+	} else {
+		goto L33
+	}
+L33:
+	;
+	goto L29
+L34:
+	;
+	v173 = base.F64_reinterpret_i64(v112)
+	goto L36
+L35:
+	;
+	if v114 != int64(-523986010112) {
+		goto L37
+	} else {
+		goto L38
+	}
+L36:
+	;
+	if base.F64_eq(v173, float64(0)) != 0 {
+		v189 = float64(0)
+		goto L3
+	} else {
+		goto L41
+	}
+L37:
+	;
+	v168 = Fn1669(m, l0, v111, v17+int32(40))
+	mBase = m.M
+	if v168 == int32(0) {
+		v1131 = v3
+		goto L2
+	} else {
+		goto L40
+	}
+L38:
+	;
+	v157 = *(*int32)(unsafe.Add(mBase, uint32(base.I32_wrap_i64(v112))))
+	if v157&int32(2048) == int32(0) {
+		goto L37
+	} else {
+		goto L39
+	}
+L39:
+	;
+	v189 = base.F64_convert_i32_u(int32(base.Ui32(v157) >> (uint(int32(16)) % 32)))
+	goto L3
+L40:
+	;
+	v171 = *(*float64)(unsafe.Add(mBase, uint32(v17)+40))
+	v173 = v171
+	goto L36
+L41:
+	;
+	if base.F64_eq(v173, v173) != 0 {
+		goto L42
+	} else {
+		goto L43
+	}
+L42:
+	;
+	v178 = v173
+	goto L44
+L43:
+	;
+	v178 = float64(0)
+	goto L44
+L44:
+	;
+	if base.Ui64(int64(9218868437227405312)) <= base.Ui64(base.I64_reinterpret_f64(v173)&int64(9223372036854775807)) {
+		v189 = v178
+		goto L3
+	} else {
+		goto L45
+	}
+L45:
+	;
+	v189 = base.F64_add(base.F64_trunc(v173), float64(0))
+	goto L3
+L46:
+	;
+	v1121 = *(*int32)(unsafe.Add(mBase, uint32(v17)+24))
+	v1122 = *(*int32)(unsafe.Add(mBase, uint32(v17)+28))
+	*(*int32)(unsafe.Add(mBase, uint32(v1121))) = v1122
+	v1131 = v1117
+	goto L2
+L47:
+	;
+	v209 = int32(26779584)
+	goto L49
+L48:
+	;
+	v209 = v203 + int32(8)
+	goto L49
+L49:
+	;
+	v211 = v17 + int32(32)
+	v212 = Fn3747(m, v201, l0, v209, v211)
+	mBase = m.M
+	if v212 == int32(0) {
+		v1117 = v3
+		goto L46
+	} else {
+		goto L50
+	}
+L50:
+	;
+	v216 = base.F64_convert_i32_u(v106)
+	if base.F64_ge(v189, float64(0)) != 0 {
+		goto L51
+	} else {
+		goto L52
+	}
+L51:
+	;
+	v219 = math.Float64frombits(uint64(0x8000000000000000))
+	goto L53
+L52:
+	;
+	v219 = v216
+	goto L53
+L53:
+	;
+	v220 = base.F64_add(v189, v219)
+	v221 = *(*int32)(unsafe.Add(mBase, uint32(v17)+60))
+	v224 = *(*int32)(unsafe.Add(mBase, uint32(v221+int32(24))))
+	if v224 != 0 {
+		v296 = v224
+		goto L54
+	} else {
+		goto L55
+	}
+L54:
+	;
+	if base.F64_lt(v220, float64(0))|base.F64_ge(v220, base.F64_convert_i32_u(v296)) != 0 {
+		goto L72
+	} else {
+		goto L73
+	}
+L55:
+	;
+	v225 = int32(0)
+	v226 = Fn1900(m, v221)
+	mBase = m.M
+	if v226 != 0 {
+		v296 = v225
+		goto L54
+	} else {
+		goto L56
+	}
+L56:
+	;
+	v227 = *(*int32)(unsafe.Add(mBase, uint32(v221)+12))
+	v230 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v227-int32(16)))))
+	if v230&int32(8) == int32(0) {
+		v296 = v225
+		goto L54
+	} else {
+		goto L57
+	}
+L57:
+	;
+	v237 = *(*int32)(unsafe.Add(mBase, uint32(v221+int32(16))))
+	v238 = *(*int32)(unsafe.Add(mBase, uint32(v237)))
+	v239 = *(*int32)(unsafe.Add(mBase, uint32(v238)))
+	v240 = *(*int32)(unsafe.Add(mBase, uint32(v239)))
+	if v240 != int32(26771008) {
+		v296 = v225
+		goto L54
+	} else {
+		goto L58
+	}
+L58:
+	;
+	v245 = *(*int32)(unsafe.Add(mBase, uint32(v221+int32(48))))
+	if v245 == int32(0) {
+		v296 = v225
+		goto L54
+	} else {
+		goto L59
+	}
+L59:
+	;
+	v250 = *(*int32)(unsafe.Add(mBase, uint32(v237+int32(16))))
+	v252 = int32(atomic.LoadUint32((*uint32)(unsafe.Add(mBase, uint32(v250)+8))))
+	v255 = *(*int32)(unsafe.Add(mBase, uint32(v221+int32(32))))
+	v257 = *(*int32)(unsafe.Add(mBase, uint32(v221)))
+	v258 = *(*int32)(unsafe.Add(mBase, uint32(v257)))
+	v259 = *(*int32)(unsafe.Add(mBase, uint32(v258)))
+	if base.B2i32(base.Ui32(v259) < base.Ui32(int32(26778448)))|base.B2i32(base.Ui32(int32(26779312)) <= base.Ui32(v259)) != 0 {
+		goto L62
+	} else {
+		goto L63
+	}
+L60:
+	;
+	v295 = base.I32_div_u_s(v252-v255, v291)
+	v296 = v295
+	goto L54
+L61:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8585258)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L62:
+	;
+	v291 = int32(1)
+	goto L64
+L63:
+	;
+	v268 = int32(26779024)
+	if base.Ui32(v259) < base.Ui32(v268) {
+		goto L65
+	} else {
+		goto L66
+	}
+L64:
+	;
+	goto L60
+L65:
+	;
+	v271 = int32(26778736)
+	goto L67
+L66:
+	;
+	v271 = v268
+	goto L67
+L67:
+	;
+	if base.Ui32(v259) < base.Ui32(int32(26778736)) {
+		goto L68
+	} else {
+		goto L69
+	}
+L68:
+	;
+	v274 = int32(26778448)
+	goto L70
+L69:
+	;
+	v274 = v271
+	goto L70
+L70:
+	;
+	v277 = base.I32_div_s(v259-v274, int32(24))
+	if base.B2i32(base.Ui32(int32(14)) < base.Ui32(v277))|base.B2i32(int32(base.Ui32(int32(28671))>>(uint(v277)%32))&int32(1) == int32(0)) != 0 {
+		goto L61
+	} else {
+		goto L71
+	}
+L71:
+	;
+	v289 = *(*int32)(unsafe.Add(mBase, uint32(v277<<(uint(int32(2))%32))+uint32(_consts[255])))
+	v291 = v289
+	goto L64
+L72:
+	;
+	v303 = int32(0)
+	Fn1451(m, l0, int32(592), v303)
+	mBase = m.M
+	v1117 = v303
+	goto L46
+L73:
+	;
+	goto L74
+L74:
+	;
+	v309 = Fn4065(m, l0, v17+int32(60), v106)
+	mBase = m.M
+	*(*int32)(unsafe.Add(mBase, uint32(v17)+12)) = v29
+	*(*int32)(unsafe.Add(mBase, uint32(v17)+20)) = v309
+	v312 = *(*int32)(unsafe.Add(mBase, uint32(l0)+12))
+	*(*int32)(unsafe.Add(mBase, uint32(l0)+12)) = v17 + int32(12)
+	*(*int32)(unsafe.Add(mBase, uint32(v17)+16)) = v312
+	v317 = int32(0)
+	if v309 == v317 {
+		v1106 = v317
+		goto L75
+	} else {
+		goto L76
+	}
+L75:
+	;
+	v1109 = *(*int32)(unsafe.Add(mBase, uint32(v17)+12))
+	v1110 = *(*int32)(unsafe.Add(mBase, uint32(v17)+16))
+	*(*int32)(unsafe.Add(mBase, uint32(v1109))) = v1110
+	v1117 = v1106
+	goto L46
+L76:
+	;
+	if v106 == int32(0) {
+		goto L77
+	} else {
+		goto L78
+	}
+L77:
+	;
+	v1094 = *(*int32)(unsafe.Add(mBase, uint32(l1)))
+	v1097 = int64(*(*uint32)(unsafe.Add(mBase, uint32(v17)+20)))
+	*(*int64)(unsafe.Add(mBase, uint32(v1094-int32(16)))) = v1097 | int64(-498216206336)
+	v1106 = int32(1)
+	goto L75
+L78:
+	;
+	v322 = *(*int32)(unsafe.Add(mBase, uint32(v17)+60))
+	if base.Ui32(v296) < base.Ui32(v106) {
+		goto L79
+	} else {
+		goto L80
+	}
+L79:
+	;
+	v324 = v296
+	goto L81
+L80:
+	;
+	v324 = v106
+	goto L81
+L81:
+	;
+	Fn4066(m, v322, v309, v324)
+	mBase = m.M
+	if base.F64_lt(v220, v216) == int32(0) {
+		goto L82
+	} else {
+		goto L83
+	}
+L82:
+	;
+	if base.Ui32(v106) <= base.Ui32(v296) {
+		goto L77
+	} else {
+		goto L217
+	}
+L83:
+	;
+	v329 = *(*int32)(unsafe.Add(mBase, uint32(v17)+20))
+	v330 = *(*int32)(unsafe.Add(mBase, uint32(v329)))
+	v331 = *(*int32)(unsafe.Add(mBase, uint32(v330)))
+	v332 = *(*int32)(unsafe.Add(mBase, uint32(v331)))
+	v335 = int32(26779024)
+	if base.Ui32(v332) < base.Ui32(v335) {
+		goto L97
+	} else {
+		goto L98
+	}
+L84:
+	;
+	Fn4067(m, v329, base.I32_trunc_sat_f64_u(v220), v211)
+	mBase = m.M
+	goto L82
+L85:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8584787)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L86:
+	;
+	v653 = base.I32_trunc_sat_f64_u(v220)
+	v656 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(24))))
+	if v656 != 0 {
+		goto L178
+	} else {
+		goto L179
+	}
+L87:
+	;
+	Fn4070(m, v329, base.I32_trunc_sat_f64_u(v220), v211)
+	mBase = m.M
+	goto L82
+L88:
+	;
+	Fn4070(m, v329, base.I32_trunc_sat_f64_u(v220), v211)
+	mBase = m.M
+	goto L82
+L89:
+	;
+	v538 = base.I32_trunc_sat_f64_u(v220)
+	v541 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(24))))
+	if v541 != 0 {
+		goto L149
+	} else {
+		goto L150
+	}
+L90:
+	;
+	v447 = base.I32_trunc_sat_f64_u(v220)
+	v450 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(24))))
+	if v450 != 0 {
+		goto L126
+	} else {
+		goto L127
+	}
+L91:
+	;
+	v355 = base.I32_trunc_sat_f64_u(v220)
+	v358 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(24))))
+	if v358 != 0 {
+		goto L103
+	} else {
+		goto L104
+	}
+L92:
+	;
+	Fn4069(m, v329, base.I32_trunc_sat_f64_u(v220), v211)
+	mBase = m.M
+	goto L82
+L93:
+	;
+	Fn4069(m, v329, base.I32_trunc_sat_f64_u(v220), v211)
+	mBase = m.M
+	goto L82
+L94:
+	;
+	Fn4068(m, v329, base.I32_trunc_sat_f64_u(v220), v211)
+	mBase = m.M
+	goto L82
+L95:
+	;
+	Fn4068(m, v329, base.I32_trunc_sat_f64_u(v220), v211)
+	mBase = m.M
+	goto L82
+L96:
+	;
+	Fn4067(m, v329, base.I32_trunc_sat_f64_u(v220), v211)
+	mBase = m.M
+	goto L82
+L97:
+	;
+	v338 = int32(26778736)
+	goto L99
+L98:
+	;
+	v338 = v335
+	goto L99
+L99:
+	;
+	if base.Ui32(v332) < base.Ui32(int32(26778736)) {
+		goto L100
+	} else {
+		goto L101
+	}
+L100:
+	;
+	v341 = int32(26778448)
+	goto L102
+L101:
+	;
+	v341 = v338
+	goto L102
+L102:
+	;
+	v344 = base.I32_div_s(v332-v341, int32(24))
+	switch v344 {
+	case 0:
+		goto L84
+	case 1:
+		goto L96
+	case 2:
+		goto L95
+	case 3:
+		goto L94
+	case 4:
+		goto L93
+	case 5:
+		goto L92
+	case 6:
+		goto L91
+	case 7:
+		goto L90
+	case 8:
+		goto L89
+	case 9:
+		goto L88
+	case 10:
+		goto L87
+	case 11:
+		goto L86
+	default:
+		goto L85
+	}
+L103:
+	;
+	v430 = v358
+	goto L105
+L104:
+	;
+	v359 = Fn1900(m, v329)
+	mBase = m.M
+	if v359 != 0 {
+		goto L1
+	} else {
+		goto L106
+	}
+L105:
+	;
+	if base.Ui32(v430) <= base.Ui32(v355) {
+		goto L1
+	} else {
+		goto L122
+	}
+L106:
+	;
+	v360 = *(*int32)(unsafe.Add(mBase, uint32(v329)+12))
+	v363 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v360-int32(16)))))
+	if v363&int32(8) == int32(0) {
+		goto L1
+	} else {
+		goto L107
+	}
+L107:
+	;
+	v370 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(16))))
+	v371 = *(*int32)(unsafe.Add(mBase, uint32(v370)))
+	v372 = *(*int32)(unsafe.Add(mBase, uint32(v371)))
+	v373 = *(*int32)(unsafe.Add(mBase, uint32(v372)))
+	if v373 != int32(26771008) {
+		goto L1
+	} else {
+		goto L108
+	}
+L108:
+	;
+	v378 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(48))))
+	if v378 == int32(0) {
+		goto L1
+	} else {
+		goto L109
+	}
+L109:
+	;
+	v383 = *(*int32)(unsafe.Add(mBase, uint32(v370+int32(16))))
+	v385 = int32(atomic.LoadUint32((*uint32)(unsafe.Add(mBase, uint32(v383)+8))))
+	v388 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(32))))
+	v390 = *(*int32)(unsafe.Add(mBase, uint32(v329)))
+	v391 = *(*int32)(unsafe.Add(mBase, uint32(v390)))
+	v392 = *(*int32)(unsafe.Add(mBase, uint32(v391)))
+	if base.B2i32(base.Ui32(v392) < base.Ui32(int32(26778448)))|base.B2i32(base.Ui32(int32(26779312)) <= base.Ui32(v392)) != 0 {
+		goto L112
+	} else {
+		goto L113
+	}
+L110:
+	;
+	v428 = base.I32_div_u_s(v385-v388, v424)
+	v430 = v428
+	goto L105
+L111:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8585258)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L112:
+	;
+	v424 = int32(1)
+	goto L114
+L113:
+	;
+	v401 = int32(26779024)
+	if base.Ui32(v392) < base.Ui32(v401) {
+		goto L115
+	} else {
+		goto L116
+	}
+L114:
+	;
+	goto L110
+L115:
+	;
+	v404 = int32(26778736)
+	goto L117
+L116:
+	;
+	v404 = v401
+	goto L117
+L117:
+	;
+	if base.Ui32(v392) < base.Ui32(int32(26778736)) {
+		goto L118
+	} else {
+		goto L119
+	}
+L118:
+	;
+	v407 = int32(26778448)
+	goto L120
+L119:
+	;
+	v407 = v404
+	goto L120
+L120:
+	;
+	v410 = base.I32_div_s(v392-v407, int32(24))
+	if base.B2i32(base.Ui32(int32(14)) < base.Ui32(v410))|base.B2i32(int32(base.Ui32(int32(28671))>>(uint(v410)%32))&int32(1) == int32(0)) != 0 {
+		goto L111
+	} else {
+		goto L121
+	}
+L121:
+	;
+	v422 = *(*int32)(unsafe.Add(mBase, uint32(v410<<(uint(int32(2))%32))+uint32(_consts[255])))
+	v424 = v422
+	goto L114
+L122:
+	;
+	v434 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(40))))
+	v438 = *(*int64)(unsafe.Add(mBase, uint32(v211)))
+	if base.Ui64(v438) < base.Ui64(int64(-545460846592)) {
+		goto L123
+	} else {
+		goto L124
+	}
+L123:
+	;
+	v444 = base.F64_reinterpret_i64(v438)
+	goto L125
+L124:
+	;
+	v444 = base.F64_convert_i32_s(base.I32_wrap_i64(v438))
+	goto L125
+L125:
+	;
+	*(*float32)(unsafe.Add(mBase, uint32(v434+v355<<(uint(int32(2))%32)))) = base.F32_demote_f64(v444)
+	goto L82
+L126:
+	;
+	v522 = v450
+	goto L128
+L127:
+	;
+	v451 = Fn1900(m, v329)
+	mBase = m.M
+	if v451 != 0 {
+		goto L1
+	} else {
+		goto L129
+	}
+L128:
+	;
+	if base.Ui32(v522) <= base.Ui32(v447) {
+		goto L1
+	} else {
+		goto L145
+	}
+L129:
+	;
+	v452 = *(*int32)(unsafe.Add(mBase, uint32(v329)+12))
+	v455 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v452-int32(16)))))
+	if v455&int32(8) == int32(0) {
+		goto L1
+	} else {
+		goto L130
+	}
+L130:
+	;
+	v462 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(16))))
+	v463 = *(*int32)(unsafe.Add(mBase, uint32(v462)))
+	v464 = *(*int32)(unsafe.Add(mBase, uint32(v463)))
+	v465 = *(*int32)(unsafe.Add(mBase, uint32(v464)))
+	if v465 != int32(26771008) {
+		goto L1
+	} else {
+		goto L131
+	}
+L131:
+	;
+	v470 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(48))))
+	if v470 == int32(0) {
+		goto L1
+	} else {
+		goto L132
+	}
+L132:
+	;
+	v475 = *(*int32)(unsafe.Add(mBase, uint32(v462+int32(16))))
+	v477 = int32(atomic.LoadUint32((*uint32)(unsafe.Add(mBase, uint32(v475)+8))))
+	v480 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(32))))
+	v482 = *(*int32)(unsafe.Add(mBase, uint32(v329)))
+	v483 = *(*int32)(unsafe.Add(mBase, uint32(v482)))
+	v484 = *(*int32)(unsafe.Add(mBase, uint32(v483)))
+	if base.B2i32(base.Ui32(v484) < base.Ui32(int32(26778448)))|base.B2i32(base.Ui32(int32(26779312)) <= base.Ui32(v484)) != 0 {
+		goto L135
+	} else {
+		goto L136
+	}
+L133:
+	;
+	v520 = base.I32_div_u_s(v477-v480, v516)
+	v522 = v520
+	goto L128
+L134:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8585258)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L135:
+	;
+	v516 = int32(1)
+	goto L137
+L136:
+	;
+	v493 = int32(26779024)
+	if base.Ui32(v484) < base.Ui32(v493) {
+		goto L138
+	} else {
+		goto L139
+	}
+L137:
+	;
+	goto L133
+L138:
+	;
+	v496 = int32(26778736)
+	goto L140
+L139:
+	;
+	v496 = v493
+	goto L140
+L140:
+	;
+	if base.Ui32(v484) < base.Ui32(int32(26778736)) {
+		goto L141
+	} else {
+		goto L142
+	}
+L141:
+	;
+	v499 = int32(26778448)
+	goto L143
+L142:
+	;
+	v499 = v496
+	goto L143
+L143:
+	;
+	v502 = base.I32_div_s(v484-v499, int32(24))
+	if base.B2i32(base.Ui32(int32(14)) < base.Ui32(v502))|base.B2i32(int32(base.Ui32(int32(28671))>>(uint(v502)%32))&int32(1) == int32(0)) != 0 {
+		goto L134
+	} else {
+		goto L144
+	}
+L144:
+	;
+	v514 = *(*int32)(unsafe.Add(mBase, uint32(v502<<(uint(int32(2))%32))+uint32(_consts[255])))
+	v516 = v514
+	goto L137
+L145:
+	;
+	v526 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(40))))
+	v530 = *(*int64)(unsafe.Add(mBase, uint32(v211)))
+	if base.Ui64(v530) < base.Ui64(int64(-545460846592)) {
+		goto L146
+	} else {
+		goto L147
+	}
+L146:
+	;
+	v536 = base.F64_reinterpret_i64(v530)
+	goto L148
+L147:
+	;
+	v536 = base.F64_convert_i32_s(base.I32_wrap_i64(v530))
+	goto L148
+L148:
+	;
+	*(*float64)(unsafe.Add(mBase, uint32(v526+v447<<(uint(int32(3))%32)))) = v536
+	goto L82
+L149:
+	;
+	v613 = v541
+	goto L151
+L150:
+	;
+	v542 = Fn1900(m, v329)
+	mBase = m.M
+	if v542 != 0 {
+		goto L1
+	} else {
+		goto L152
+	}
+L151:
+	;
+	if base.Ui32(v613) <= base.Ui32(v538) {
+		goto L1
+	} else {
+		goto L168
+	}
+L152:
+	;
+	v543 = *(*int32)(unsafe.Add(mBase, uint32(v329)+12))
+	v546 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v543-int32(16)))))
+	if v546&int32(8) == int32(0) {
+		goto L1
+	} else {
+		goto L153
+	}
+L153:
+	;
+	v553 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(16))))
+	v554 = *(*int32)(unsafe.Add(mBase, uint32(v553)))
+	v555 = *(*int32)(unsafe.Add(mBase, uint32(v554)))
+	v556 = *(*int32)(unsafe.Add(mBase, uint32(v555)))
+	if v556 != int32(26771008) {
+		goto L1
+	} else {
+		goto L154
+	}
+L154:
+	;
+	v561 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(48))))
+	if v561 == int32(0) {
+		goto L1
+	} else {
+		goto L155
+	}
+L155:
+	;
+	v566 = *(*int32)(unsafe.Add(mBase, uint32(v553+int32(16))))
+	v568 = int32(atomic.LoadUint32((*uint32)(unsafe.Add(mBase, uint32(v566)+8))))
+	v571 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(32))))
+	v573 = *(*int32)(unsafe.Add(mBase, uint32(v329)))
+	v574 = *(*int32)(unsafe.Add(mBase, uint32(v573)))
+	v575 = *(*int32)(unsafe.Add(mBase, uint32(v574)))
+	if base.B2i32(base.Ui32(v575) < base.Ui32(int32(26778448)))|base.B2i32(base.Ui32(int32(26779312)) <= base.Ui32(v575)) != 0 {
+		goto L158
+	} else {
+		goto L159
+	}
+L156:
+	;
+	v611 = base.I32_div_u_s(v568-v571, v607)
+	v613 = v611
+	goto L151
+L157:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8585258)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L158:
+	;
+	v607 = int32(1)
+	goto L160
+L159:
+	;
+	v584 = int32(26779024)
+	if base.Ui32(v575) < base.Ui32(v584) {
+		goto L161
+	} else {
+		goto L162
+	}
+L160:
+	;
+	goto L156
+L161:
+	;
+	v587 = int32(26778736)
+	goto L163
+L162:
+	;
+	v587 = v584
+	goto L163
+L163:
+	;
+	if base.Ui32(v575) < base.Ui32(int32(26778736)) {
+		goto L164
+	} else {
+		goto L165
+	}
+L164:
+	;
+	v590 = int32(26778448)
+	goto L166
+L165:
+	;
+	v590 = v587
+	goto L166
+L166:
+	;
+	v593 = base.I32_div_s(v575-v590, int32(24))
+	if base.B2i32(base.Ui32(int32(14)) < base.Ui32(v593))|base.B2i32(int32(base.Ui32(int32(28671))>>(uint(v593)%32))&int32(1) == int32(0)) != 0 {
+		goto L157
+	} else {
+		goto L167
+	}
+L167:
+	;
+	v605 = *(*int32)(unsafe.Add(mBase, uint32(v593<<(uint(int32(2))%32))+uint32(_consts[255])))
+	v607 = v605
+	goto L160
+L168:
+	;
+	v617 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(40))))
+	v620 = *(*int64)(unsafe.Add(mBase, uint32(v211)))
+	if base.Ui64(v620) < base.Ui64(int64(-545460846592)) {
+		goto L170
+	} else {
+		goto L171
+	}
+L169:
+	;
+	*(*uint8)(unsafe.Add(mBase, uint32(v617+v538))) = uint8(v647)
+	goto L82
+L170:
+	;
+	v626 = base.F64_reinterpret_i64(v620)
+	goto L172
+L171:
+	;
+	v626 = base.F64_convert_i32_s(base.I32_wrap_i64(v620))
+	goto L172
+L172:
+	;
+	if base.F64_gt(v626, float64(0)) == int32(0) {
+		v647 = int32(0)
+		goto L169
+	} else {
+		goto L173
+	}
+L173:
+	;
+	if base.F64_ge(v626, float64(255)) != 0 {
+		v647 = int32(255)
+		goto L169
+	} else {
+		goto L174
+	}
+L174:
+	;
+	v634 = base.I32_trunc_sat_f64_u(v626)
+	v636 = base.F64_sub(v626, base.F64_convert_i32_u(v634))
+	if base.F64_eq(v636, float64(0.5)) != 0 {
+		goto L175
+	} else {
+		goto L176
+	}
+L175:
+	;
+	v647 = v634&int32(1) + v634
+	goto L169
+L176:
+	;
+	goto L177
+L177:
+	;
+	v647 = base.F64_gt(v636, float64(0.5)) + v634
+	goto L169
+L178:
+	;
+	v728 = v656
+	goto L180
+L179:
+	;
+	v657 = Fn1900(m, v329)
+	mBase = m.M
+	if v657 != 0 {
+		goto L1
+	} else {
+		goto L181
+	}
+L180:
+	;
+	if base.Ui32(v728) <= base.Ui32(v653) {
+		goto L1
+	} else {
+		goto L197
+	}
+L181:
+	;
+	v658 = *(*int32)(unsafe.Add(mBase, uint32(v329)+12))
+	v661 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v658-int32(16)))))
+	if v661&int32(8) == int32(0) {
+		goto L1
+	} else {
+		goto L182
+	}
+L182:
+	;
+	v668 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(16))))
+	v669 = *(*int32)(unsafe.Add(mBase, uint32(v668)))
+	v670 = *(*int32)(unsafe.Add(mBase, uint32(v669)))
+	v671 = *(*int32)(unsafe.Add(mBase, uint32(v670)))
+	if v671 != int32(26771008) {
+		goto L1
+	} else {
+		goto L183
+	}
+L183:
+	;
+	v676 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(48))))
+	if v676 == int32(0) {
+		goto L1
+	} else {
+		goto L184
+	}
+L184:
+	;
+	v681 = *(*int32)(unsafe.Add(mBase, uint32(v668+int32(16))))
+	v683 = int32(atomic.LoadUint32((*uint32)(unsafe.Add(mBase, uint32(v681)+8))))
+	v686 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(32))))
+	v688 = *(*int32)(unsafe.Add(mBase, uint32(v329)))
+	v689 = *(*int32)(unsafe.Add(mBase, uint32(v688)))
+	v690 = *(*int32)(unsafe.Add(mBase, uint32(v689)))
+	if base.B2i32(base.Ui32(v690) < base.Ui32(int32(26778448)))|base.B2i32(base.Ui32(int32(26779312)) <= base.Ui32(v690)) != 0 {
+		goto L187
+	} else {
+		goto L188
+	}
+L185:
+	;
+	v726 = base.I32_div_u_s(v683-v686, v722)
+	v728 = v726
+	goto L180
+L186:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8585258)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L187:
+	;
+	v722 = int32(1)
+	goto L189
+L188:
+	;
+	v699 = int32(26779024)
+	if base.Ui32(v690) < base.Ui32(v699) {
+		goto L190
+	} else {
+		goto L191
+	}
+L189:
+	;
+	goto L185
+L190:
+	;
+	v702 = int32(26778736)
+	goto L192
+L191:
+	;
+	v702 = v699
+	goto L192
+L192:
+	;
+	if base.Ui32(v690) < base.Ui32(int32(26778736)) {
+		goto L193
+	} else {
+		goto L194
+	}
+L193:
+	;
+	v705 = int32(26778448)
+	goto L195
+L194:
+	;
+	v705 = v702
+	goto L195
+L195:
+	;
+	v708 = base.I32_div_s(v690-v705, int32(24))
+	if base.B2i32(base.Ui32(int32(14)) < base.Ui32(v708))|base.B2i32(int32(base.Ui32(int32(28671))>>(uint(v708)%32))&int32(1) == int32(0)) != 0 {
+		goto L186
+	} else {
+		goto L196
+	}
+L196:
+	;
+	v720 = *(*int32)(unsafe.Add(mBase, uint32(v708<<(uint(int32(2))%32))+uint32(_consts[255])))
+	v722 = v720
+	goto L189
+L197:
+	;
+	v732 = *(*int32)(unsafe.Add(mBase, uint32(v329+int32(40))))
+	v736 = *(*int64)(unsafe.Add(mBase, uint32(v211)))
+	if base.Ui64(v736) < base.Ui64(int64(-545460846592)) {
+		goto L199
+	} else {
+		goto L200
+	}
+L198:
+	;
+	*(*uint16)(unsafe.Add(mBase, uint32(v732+v653<<(uint(int32(1))%32)))) = uint16(v837)
+	goto L82
+L199:
+	;
+	v747 = v736
+	goto L201
+L200:
+	;
+	v747 = base.I64_reinterpret_f64(base.F64_convert_i32_s(base.I32_wrap_i64(v736)))
+	goto L201
+L201:
+	;
+	v752 = base.I32_wrap_i64(int64(base.Ui64(v747)>>(uint(int64(48))%64))) & int32(32768)
+	v755 = base.I32_wrap_i64(int64(base.Ui64(v747) >> (uint(int64(32)) % 64)))
+	v757 = v755 & int32(2147483647)
+	if base.Ui32(int32(2146435072)) <= base.Ui32(v757) {
+		goto L202
+	} else {
+		goto L203
+	}
+L202:
+	;
+	if v747&int64(4503599627370495) == int64(0) {
+		goto L205
+	} else {
+		goto L206
+	}
+L203:
+	;
+	goto L204
+L204:
+	;
+	if base.Ui32(int32(1089470464)) <= base.Ui32(v757) {
+		goto L208
+	} else {
+		goto L209
+	}
+L205:
+	;
+	v771 = int32(0)
+	goto L207
+L206:
+	;
+	v771 = int32(base.Ui32(v755)>>(uint(int32(10))%32))&int32(511) | int32(512)
+	goto L207
+L207:
+	;
+	v837 = v752 | v771 | int32(31744)
+	goto L198
+L208:
+	;
+	v837 = v752 | int32(31744)
+	goto L198
+L209:
+	;
+	goto L210
+L210:
+	;
+	v779 = base.I32_wrap_i64(v747)
+	if base.Ui32(int32(1058013184)) <= base.Ui32(v757) {
+		goto L211
+	} else {
+		goto L212
+	}
+L211:
+	;
+	v783 = int32(base.Ui32(v755) >> (uint(int32(10)) % 32))
+	v837 = (v783|base.B2i32(v755&int32(511)|v779 != int32(0)))&int32(base.Ui32(v755)>>(uint(int32(9))%32))&int32(1) + (v783&int32(2097151) - int32(1032192) | v752)
+	goto L198
+L212:
+	;
+	goto L213
+L213:
+	;
+	if base.Ui32(int32(1046478848)) <= base.Ui32(v757) {
+		goto L214
+	} else {
+		goto L215
+	}
+L214:
+	;
+	v806 = v755&int32(1048575) | int32(1048576)
+	v809 = int32(base.Ui32(v757) >> (uint(int32(20)) % 32))
+	v810 = int32(1018) - v809
+	v814 = int32(base.Ui32(v806) >> (uint(int32(1019)-v809) % 32))
+	v815 = int32(-1)
+	v832 = int32(base.Ui32(v806)>>(uint(v810)%32))&(v814|base.B2i32(v806&(v815<<(uint(v810)%32)^v815)|v779 != int32(0)))&int32(1) + (v814 | v752)
+	goto L216
+L215:
+	;
+	v832 = v752
+	goto L216
+L216:
+	;
+	v837 = v832
+	goto L198
+L217:
+	;
+	v850 = *(*int32)(unsafe.Add(mBase, uint32(v17)+20))
+	v852 = Fn3747(m, v850, l0, int32(26779584), v211)
+	mBase = m.M
+	if v852 == int32(0) {
+		v1106 = v317
+		goto L75
+	} else {
+		goto L218
+	}
+L218:
+	;
+	v855 = *(*int32)(unsafe.Add(mBase, uint32(v17)+20))
+	v856 = *(*int32)(unsafe.Add(mBase, uint32(v855)))
+	v857 = *(*int32)(unsafe.Add(mBase, uint32(v856)))
+	v858 = *(*int32)(unsafe.Add(mBase, uint32(v857)))
+	v861 = int32(26779024)
+	if base.Ui32(v858) < base.Ui32(v861) {
+		goto L232
+	} else {
+		goto L233
+	}
+L219:
+	;
+	v1086 = *(*int64)(unsafe.Add(mBase, uint32(v17)+32))
+	Fn4040(m, v855, v1086, v296, v106)
+	mBase = m.M
+	goto L77
+L220:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8584787)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L221:
+	;
+	v980 = *(*int64)(unsafe.Add(mBase, uint32(v17)+32))
+	if base.Ui64(v980) < base.Ui64(int64(-545460846592)) {
+		goto L277
+	} else {
+		goto L278
+	}
+L222:
+	;
+	v940 = *(*int32)(unsafe.Add(mBase, uint32(v17)+32))
+	v944 = *(*int32)(unsafe.Add(mBase, uint32(v940)+4))
+	if v944 == int32(0) {
+		goto L261
+	} else {
+		goto L262
+	}
+L223:
+	;
+	v900 = *(*int32)(unsafe.Add(mBase, uint32(v17)+32))
+	v904 = *(*int32)(unsafe.Add(mBase, uint32(v900)+4))
+	if v904 == int32(0) {
+		goto L245
+	} else {
+		goto L246
+	}
+L224:
+	;
+	v898 = *(*int64)(unsafe.Add(mBase, uint32(v17)+32))
+	Fn4045(m, v855, v898, v296, v106)
+	mBase = m.M
+	goto L77
+L225:
+	;
+	v890 = *(*int64)(unsafe.Add(mBase, uint32(v17)+32))
+	if base.Ui64(v890) < base.Ui64(int64(-545460846592)) {
+		goto L241
+	} else {
+		goto L242
+	}
+L226:
+	;
+	v881 = *(*int64)(unsafe.Add(mBase, uint32(v17)+32))
+	if base.Ui64(v881) < base.Ui64(int64(-545460846592)) {
+		goto L238
+	} else {
+		goto L239
+	}
+L227:
+	;
+	v879 = *(*int64)(unsafe.Add(mBase, uint32(v17)+32))
+	Fn4042(m, v855, v879, v296, v106)
+	mBase = m.M
+	goto L77
+L228:
+	;
+	v877 = *(*int64)(unsafe.Add(mBase, uint32(v17)+32))
+	Fn4042(m, v855, v877, v296, v106)
+	mBase = m.M
+	goto L77
+L229:
+	;
+	v875 = *(*int64)(unsafe.Add(mBase, uint32(v17)+32))
+	Fn4041(m, v855, v875, v296, v106)
+	mBase = m.M
+	goto L77
+L230:
+	;
+	v873 = *(*int64)(unsafe.Add(mBase, uint32(v17)+32))
+	Fn4041(m, v855, v873, v296, v106)
+	mBase = m.M
+	goto L77
+L231:
+	;
+	v871 = *(*int64)(unsafe.Add(mBase, uint32(v17)+32))
+	Fn4040(m, v855, v871, v296, v106)
+	mBase = m.M
+	goto L77
+L232:
+	;
+	v864 = int32(26778736)
+	goto L234
+L233:
+	;
+	v864 = v861
+	goto L234
+L234:
+	;
+	if base.Ui32(v858) < base.Ui32(int32(26778736)) {
+		goto L235
+	} else {
+		goto L236
+	}
+L235:
+	;
+	v867 = int32(26778448)
+	goto L237
+L236:
+	;
+	v867 = v864
+	goto L237
+L237:
+	;
+	v870 = base.I32_div_s(v858-v867, int32(24))
+	switch v870 {
+	case 0:
+		goto L219
+	case 1:
+		goto L231
+	case 2:
+		goto L230
+	case 3:
+		goto L229
+	case 4:
+		goto L228
+	case 5:
+		goto L227
+	case 6:
+		goto L226
+	case 7:
+		goto L225
+	case 8:
+		goto L224
+	case 9:
+		goto L223
+	case 10:
+		goto L222
+	case 11:
+		goto L221
+	default:
+		goto L220
+	}
+L238:
+	;
+	v887 = base.F64_reinterpret_i64(v881)
+	goto L240
+L239:
+	;
+	v887 = base.F64_convert_i32_s(base.I32_wrap_i64(v881))
+	goto L240
+L240:
+	;
+	Fn4043(m, v855, base.F32_demote_f64(v887), v296, v106)
+	mBase = m.M
+	goto L77
+L241:
+	;
+	v896 = base.F64_reinterpret_i64(v890)
+	goto L243
+L242:
+	;
+	v896 = base.F64_convert_i32_s(base.I32_wrap_i64(v890))
+	goto L243
+L243:
+	;
+	Fn4044(m, v855, v896, v296, v106)
+	mBase = m.M
+	goto L77
+L244:
+	;
+	Fn4046(m, v855, v938, v296, v106)
+	mBase = m.M
+	goto L77
+L245:
+	;
+	v938 = int64(0)
+	goto L244
+L246:
+	;
+	goto L247
+L247:
+	;
+	if v904 == int32(-1) {
+		goto L248
+	} else {
+		goto L249
+	}
+L248:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8596188)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L249:
+	;
+	v912 = *(*int32)(unsafe.Add(mBase, uint32(v900)+8))
+	if base.Ui32(v904) < base.Ui32(int32(3)) {
+		goto L250
+	} else {
+		goto L251
+	}
+L250:
+	;
+	v915 = v900 + int32(8)
+	goto L252
+L251:
+	;
+	v915 = v912
+	goto L252
+L252:
+	;
+	if v915 == int32(0) {
+		goto L248
+	} else {
+		goto L253
+	}
+L253:
+	;
+	v918 = int64(*(*uint32)(unsafe.Add(mBase, uint32(v915))))
+	if v904 != int32(1) {
+		goto L254
+	} else {
+		goto L255
+	}
+L254:
+	;
+	v921 = int64(*(*uint32)(unsafe.Add(mBase, uint32(v915)+4)))
+	v925 = v921<<(uint(int64(32))%64) | v918
+	goto L256
+L255:
+	;
+	v925 = v918
+	goto L256
+L256:
+	;
+	v928 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v900))))
+	if v928&int32(8) != 0 {
+		goto L257
+	} else {
+		goto L258
+	}
+L257:
+	;
+	v931 = int64(0) - v925
+	goto L259
+L258:
+	;
+	v931 = v925
+	goto L259
+L259:
+	;
+	v938 = v931
+	goto L244
+L260:
+	;
+	Fn4046(m, v855, v978, v296, v106)
+	mBase = m.M
+	goto L77
+L261:
+	;
+	v978 = int64(0)
+	goto L260
+L262:
+	;
+	goto L263
+L263:
+	;
+	if v944 == int32(-1) {
+		goto L264
+	} else {
+		goto L265
+	}
+L264:
+	;
+	*(*int32)(unsafe.Add(mBase, _consts[181])) = int32(8596188)
+	base.Wasm_trap_unreachable()
+	for {
+	}
+L265:
+	;
+	v952 = *(*int32)(unsafe.Add(mBase, uint32(v940)+8))
+	if base.Ui32(v944) < base.Ui32(int32(3)) {
+		goto L266
+	} else {
+		goto L267
+	}
+L266:
+	;
+	v955 = v940 + int32(8)
+	goto L268
+L267:
+	;
+	v955 = v952
+	goto L268
+L268:
+	;
+	if v955 == int32(0) {
+		goto L264
+	} else {
+		goto L269
+	}
+L269:
+	;
+	v958 = int64(*(*uint32)(unsafe.Add(mBase, uint32(v955))))
+	if v944 != int32(1) {
+		goto L270
+	} else {
+		goto L271
+	}
+L270:
+	;
+	v961 = int64(*(*uint32)(unsafe.Add(mBase, uint32(v955)+4)))
+	v965 = v961<<(uint(int64(32))%64) | v958
+	goto L272
+L271:
+	;
+	v965 = v958
+	goto L272
+L272:
+	;
+	v968 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v940))))
+	if v968&int32(8) != 0 {
+		goto L273
+	} else {
+		goto L274
+	}
+L273:
+	;
+	v971 = int64(0) - v965
+	goto L275
+L274:
+	;
+	v971 = v965
+	goto L275
+L275:
+	;
+	v978 = v971
+	goto L260
+L276:
+	;
+	Fn4048(m, v855, v1081, v296, v106)
+	mBase = m.M
+	goto L77
+L277:
+	;
+	v991 = v980
+	goto L279
+L278:
+	;
+	v991 = base.I64_reinterpret_f64(base.F64_convert_i32_s(base.I32_wrap_i64(v980)))
+	goto L279
+L279:
+	;
+	v996 = base.I32_wrap_i64(int64(base.Ui64(v991)>>(uint(int64(48))%64))) & int32(32768)
+	v999 = base.I32_wrap_i64(int64(base.Ui64(v991) >> (uint(int64(32)) % 64)))
+	v1001 = v999 & int32(2147483647)
+	if base.Ui32(int32(2146435072)) <= base.Ui32(v1001) {
+		goto L280
+	} else {
+		goto L281
+	}
+L280:
+	;
+	if v991&int64(4503599627370495) == int64(0) {
+		goto L283
+	} else {
+		goto L284
+	}
+L281:
+	;
+	goto L282
+L282:
+	;
+	if base.Ui32(int32(1089470464)) <= base.Ui32(v1001) {
+		goto L286
+	} else {
+		goto L287
+	}
+L283:
+	;
+	v1015 = int32(0)
+	goto L285
+L284:
+	;
+	v1015 = int32(base.Ui32(v999)>>(uint(int32(10))%32))&int32(511) | int32(512)
+	goto L285
+L285:
+	;
+	v1081 = v996 | v1015 | int32(31744)
+	goto L276
+L286:
+	;
+	v1081 = v996 | int32(31744)
+	goto L276
+L287:
+	;
+	goto L288
+L288:
+	;
+	v1023 = base.I32_wrap_i64(v991)
+	if base.Ui32(int32(1058013184)) <= base.Ui32(v1001) {
+		goto L289
+	} else {
+		goto L290
+	}
+L289:
+	;
+	v1027 = int32(base.Ui32(v999) >> (uint(int32(10)) % 32))
+	v1081 = (v1027|base.B2i32(v999&int32(511)|v1023 != int32(0)))&int32(base.Ui32(v999)>>(uint(int32(9))%32))&int32(1) + (v1027&int32(2097151) - int32(1032192) | v996)
+	goto L276
+L290:
+	;
+	goto L291
+L291:
+	;
+	if base.Ui32(int32(1046478848)) <= base.Ui32(v1001) {
+		goto L292
+	} else {
+		goto L293
+	}
+L292:
+	;
+	v1050 = v999&int32(1048575) | int32(1048576)
+	v1053 = int32(base.Ui32(v1001) >> (uint(int32(20)) % 32))
+	v1054 = int32(1018) - v1053
+	v1058 = int32(base.Ui32(v1050) >> (uint(int32(1019)-v1053) % 32))
+	v1059 = int32(-1)
+	v1076 = int32(base.Ui32(v1050)>>(uint(v1054)%32))&(v1058|base.B2i32(v1050&(v1059<<(uint(v1054)%32)^v1059)|v1023 != int32(0)))&int32(1) + (v1058 | v996)
+	goto L294
+L293:
+	;
+	v1076 = v996
+	goto L294
+L294:
+	;
+	v1081 = v1076
+	goto L276
+}
+
+func Fn7513(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5 int32, l6 int32, l7 int32, l8 int32, l9 int32, l10 int32, l11 int32) int32 {
 	mBase := m.M
 	var v13 int32
 	_ = v13
@@ -13401,588 +15355,676 @@ func Fn7510(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5
 	_ = v41
 	var v62 int32
 	_ = v62
-	var v64 int64
-	_ = v64
-	var v67 int32
-	_ = v67
-	var v69 int64
-	_ = v69
-	var v86 int32
-	_ = v86
-	var v88 int32
-	_ = v88
-	var v89 int32
-	_ = v89
-	var v90 int64
+	var v65 int64
+	_ = v65
+	var v68 int32
+	_ = v68
+	var v70 int64
+	_ = v70
+	var v87 int32
+	_ = v87
+	var v90 int32
 	_ = v90
-	var v91 int64
+	var v91 int32
 	_ = v91
 	var v92 int64
 	_ = v92
 	var v93 int64
 	_ = v93
-	var v96 int64
-	_ = v96
-	var v101 int64
-	_ = v101
-	var v106 int64
-	_ = v106
-	var v113 int64
-	_ = v113
-	var v116 int32
-	_ = v116
-	var v122 int64
-	_ = v122
-	var v123 int64
-	_ = v123
-	var v124 int64
-	_ = v124
+	var v94 int64
+	_ = v94
+	var v95 int64
+	_ = v95
+	var v100 int64
+	_ = v100
+	var v105 int64
+	_ = v105
+	var v110 int64
+	_ = v110
+	var v117 int64
+	_ = v117
+	var v120 int32
+	_ = v120
 	var v126 int64
 	_ = v126
 	var v127 int64
 	_ = v127
-	var v132 int64
-	_ = v132
-	var v133 int32
-	_ = v133
-	var v139 int64
-	_ = v139
-	var v142 int64
-	_ = v142
-	var v143 int32
+	var v128 int64
+	_ = v128
+	var v130 int64
+	_ = v130
+	var v131 int64
+	_ = v131
+	var v136 int64
+	_ = v136
+	var v137 int32
+	_ = v137
+	var v143 int64
 	_ = v143
-	var v144 int64
-	_ = v144
-	var v149 int64
-	_ = v149
-	var v150 int64
-	_ = v150
-	var v151 int64
-	_ = v151
-	var v156 int64
-	_ = v156
-	var v157 int32
-	_ = v157
-	var v158 int32
-	_ = v158
-	var v159 int32
-	_ = v159
-	var v164 int32
-	_ = v164
-	var v168 int64
+	var v146 int64
+	_ = v146
+	var v147 int32
+	_ = v147
+	var v148 int64
+	_ = v148
+	var v153 int64
+	_ = v153
+	var v154 int64
+	_ = v154
+	var v155 int64
+	_ = v155
+	var v160 int64
+	_ = v160
+	var v161 int32
+	_ = v161
+	var v162 int32
+	_ = v162
+	var v163 int32
+	_ = v163
+	var v168 int32
 	_ = v168
-	var v171 int64
-	_ = v171
-	var v174 int32
-	_ = v174
-	var v176 int64
-	_ = v176
-	var v177 int64
-	_ = v177
-	var v178 int64
+	var v172 int64
+	_ = v172
+	var v175 int64
+	_ = v175
+	var v178 int32
 	_ = v178
-	var v179 int64
-	_ = v179
-	var v184 int64
-	_ = v184
-	var v185 int32
-	_ = v185
-	var v186 int32
-	_ = v186
-	var v187 int32
-	_ = v187
-	var v192 int32
-	_ = v192
-	var v196 int64
+	var v180 int64
+	_ = v180
+	var v181 int64
+	_ = v181
+	var v182 int64
+	_ = v182
+	var v183 int64
+	_ = v183
+	var v188 int64
+	_ = v188
+	var v189 int32
+	_ = v189
+	var v190 int32
+	_ = v190
+	var v191 int32
+	_ = v191
+	var v196 int32
 	_ = v196
-	var v199 int64
-	_ = v199
-	var v202 int32
-	_ = v202
-	var v204 int64
-	_ = v204
-	var v210 int32
-	_ = v210
-	var v212 int64
-	_ = v212
-	var v217 int32
+	var v200 int64
+	_ = v200
+	var v203 int64
+	_ = v203
+	var v206 int32
+	_ = v206
+	var v208 int64
+	_ = v208
+	var v214 int32
+	_ = v214
+	var v216 int64
+	_ = v216
+	var v217 int64
 	_ = v217
-	var v226 int64
-	_ = v226
-	var v230 int64
-	_ = v230
-	var v232 int64
-	_ = v232
-	var v233 int64
-	_ = v233
+	var v222 int32
+	_ = v222
+	var v231 int64
+	_ = v231
+	var v235 int64
+	_ = v235
+	var v237 int64
+	_ = v237
 	var v238 int64
 	_ = v238
-	var v242 int64
-	_ = v242
-	var v245 int64
-	_ = v245
-	var v248 int32
-	_ = v248
-	var v249 int64
-	_ = v249
-	var v251 int32
-	_ = v251
-	var v252 int64
-	_ = v252
-	var v255 int64
-	_ = v255
-	var v268 int64
-	_ = v268
-	var v279 int32
-	_ = v279
-	var v281 int32
-	_ = v281
-	var v282 int32
-	_ = v282
-	var v289 int32
-	_ = v289
-	var v291 int32
-	_ = v291
-	var v293 int64
-	_ = v293
-	var v295 int64
-	_ = v295
-	var v297 int64
+	var v243 int64
+	_ = v243
+	var v247 int64
+	_ = v247
+	var v250 int64
+	_ = v250
+	var v253 int32
+	_ = v253
+	var v254 int64
+	_ = v254
+	var v256 int32
+	_ = v256
+	var v257 int64
+	_ = v257
+	var v260 int64
+	_ = v260
+	var v273 int64
+	_ = v273
+	var v284 int32
+	_ = v284
+	var v286 int32
+	_ = v286
+	var v287 int32
+	_ = v287
+	var v294 int32
+	_ = v294
+	var v297 int32
 	_ = v297
 	var v299 int64
 	_ = v299
-	var v302 int32
-	_ = v302
-	var v304 int32
-	_ = v304
-	var v309 int32
-	_ = v309
-	var v313 int32
-	_ = v313
-	var v314 int32
-	_ = v314
+	var v301 int64
+	_ = v301
+	var v303 int64
+	_ = v303
+	var v305 int64
+	_ = v305
+	var v308 int32
+	_ = v308
+	var v310 int32
+	_ = v310
 	var v315 int32
 	_ = v315
-	var v316 int32
-	_ = v316
-	var v317 int32
-	_ = v317
-	var v318 int64
-	_ = v318
-	var v320 int64
+	var v319 int32
+	_ = v319
+	var v320 int32
 	_ = v320
-	var v322 int64
+	var v321 int32
+	_ = v321
+	var v322 int32
 	_ = v322
-	var v324 int32
+	var v323 int32
+	_ = v323
+	var v324 int64
 	_ = v324
-	var v327 int32
-	_ = v327
-	var v329 int32
-	_ = v329
-	var v331 int32
-	_ = v331
+	var v326 int64
+	_ = v326
+	var v328 int64
+	_ = v328
+	var v330 int32
+	_ = v330
 	var v333 int32
 	_ = v333
 	var v335 int32
 	_ = v335
-	var v336 int32
-	_ = v336
 	var v337 int32
 	_ = v337
+	var v339 int32
+	_ = v339
+	var v341 int32
+	_ = v341
+	var v342 int32
+	_ = v342
 	var v343 int32
 	_ = v343
-	var v345 int32
-	_ = v345
+	var v349 int32
+	_ = v349
 	var v351 int32
 	_ = v351
-	var v354 int32
-	_ = v354
-	var v355 int32
-	_ = v355
-	var v370 int64
-	_ = v370
-	var v375 int64
-	_ = v375
-	var v379 int32
-	_ = v379
-	var v380 int32
-	_ = v380
-	var v381 int32
+	var v357 int32
+	_ = v357
+	var v360 int32
+	_ = v360
+	var v361 int32
+	_ = v361
+	var v376 int64
+	_ = v376
+	var v381 int64
 	_ = v381
-	var v382 int32
-	_ = v382
-	var v392 int64
-	_ = v392
-	var v397 int32
-	_ = v397
-	var v399 int32
-	_ = v399
-	var v400 int32
-	_ = v400
-	var v402 int32
-	_ = v402
+	var v385 int32
+	_ = v385
+	var v386 int32
+	_ = v386
+	var v387 int32
+	_ = v387
+	var v388 int32
+	_ = v388
+	var v398 int64
+	_ = v398
+	var v403 int32
+	_ = v403
 	var v405 int32
 	_ = v405
 	var v406 int32
 	_ = v406
-	var v409 int32
-	_ = v409
-	var v413 int32
-	_ = v413
+	var v408 int32
+	_ = v408
+	var v411 int32
+	_ = v411
+	var v412 int32
+	_ = v412
 	var v415 int32
 	_ = v415
-	var v418 int32
-	_ = v418
+	var v419 int32
+	_ = v419
 	var v421 int32
 	_ = v421
-	var v423 int32
-	_ = v423
-	var v434 int32
-	_ = v434
-	var v441 int32
-	_ = v441
-	var v442 int32
-	_ = v442
-	var v443 int32
-	_ = v443
-	var v444 int32
-	_ = v444
-	var v445 int32
-	_ = v445
-	var v446 int32
-	_ = v446
+	var v424 int32
+	_ = v424
+	var v427 int32
+	_ = v427
+	var v429 int32
+	_ = v429
+	var v440 int32
+	_ = v440
+	var v448 int32
+	_ = v448
+	var v449 int32
+	_ = v449
+	var v450 int32
+	_ = v450
+	var v451 int32
+	_ = v451
 	var v452 int32
 	_ = v452
-	var v456 int32
-	_ = v456
-	var v468 int32
-	_ = v468
-	var v470 int64
-	_ = v470
-	var v483 int32
-	_ = v483
-	var v485 int32
-	_ = v485
-	var v486 int32
-	_ = v486
-	var v490 int32
-	_ = v490
+	var v453 int32
+	_ = v453
+	var v460 int32
+	_ = v460
+	var v464 int32
+	_ = v464
+	var v477 int32
+	_ = v477
+	var v479 int64
+	_ = v479
 	var v492 int32
 	_ = v492
+	var v494 int32
+	_ = v494
+	var v495 int32
+	_ = v495
+	var v499 int32
+	_ = v499
 	var v501 int32
 	_ = v501
-	var v503 int64
-	_ = v503
-	var v504 int64
-	_ = v504
-	var v505 int64
-	_ = v505
-	var v506 int64
-	_ = v506
-	var v511 int64
-	_ = v511
-	var v512 int32
-	_ = v512
-	var v513 int32
+	var v510 int32
+	_ = v510
+	var v513 int64
 	_ = v513
-	var v514 int32
+	var v514 int64
 	_ = v514
-	var v515 int32
+	var v515 int64
 	_ = v515
-	var v520 int32
-	_ = v520
-	var v526 int64
-	_ = v526
-	var v529 int64
-	_ = v529
+	var v516 int64
+	_ = v516
+	var v521 int64
+	_ = v521
+	var v522 int32
+	_ = v522
+	var v523 int32
+	_ = v523
+	var v524 int32
+	_ = v524
+	var v525 int32
+	_ = v525
 	var v530 int32
 	_ = v530
-	var v531 int64
-	_ = v531
-	var v535 int64
-	_ = v535
-	var v536 int32
+	var v536 int64
 	_ = v536
-	var v538 int64
-	_ = v538
 	var v539 int64
 	_ = v539
-	var v540 int64
+	var v540 int32
 	_ = v540
+	var v541 int64
+	_ = v541
 	var v545 int64
 	_ = v545
 	var v546 int32
 	_ = v546
-	var v547 int32
-	_ = v547
-	var v548 int32
+	var v548 int64
 	_ = v548
-	var v553 int32
-	_ = v553
+	var v549 int64
+	_ = v549
+	var v550 int64
+	_ = v550
+	var v555 int64
+	_ = v555
+	var v556 int32
+	_ = v556
 	var v557 int32
 	_ = v557
-	var v559 int64
-	_ = v559
-	var v562 int32
-	_ = v562
-	var v563 int64
+	var v558 int32
+	_ = v558
+	var v563 int32
 	_ = v563
 	var v567 int32
 	_ = v567
-	var v568 int64
-	_ = v568
-	var v580 int32
-	_ = v580
-	var v581 int32
-	_ = v581
-	var v582 int64
-	_ = v582
-	var v583 int32
-	_ = v583
-	var v588 int32
-	_ = v588
-	var v590 int64
-	_ = v590
-	var v592 int64
-	_ = v592
-	var v593 int64
-	_ = v593
-	var v598 int64
-	_ = v598
-	var v599 int32
-	_ = v599
-	var v600 int32
-	_ = v600
-	var v605 int32
-	_ = v605
-	var v609 int64
-	_ = v609
+	var v569 int64
+	_ = v569
+	var v572 int32
+	_ = v572
+	var v573 int64
+	_ = v573
+	var v577 int32
+	_ = v577
+	var v578 int64
+	_ = v578
+	var v579 int32
+	_ = v579
+	var v594 int32
+	_ = v594
+	var v595 int32
+	_ = v595
+	var v596 int64
+	_ = v596
+	var v597 int32
+	_ = v597
+	var v602 int32
+	_ = v602
+	var v604 int64
+	_ = v604
+	var v606 int64
+	_ = v606
+	var v607 int64
+	_ = v607
 	var v612 int64
 	_ = v612
-	var v615 int32
-	_ = v615
-	var v616 int64
-	_ = v616
-	var v619 int64
+	var v613 int32
+	_ = v613
+	var v614 int32
+	_ = v614
+	var v619 int32
 	_ = v619
-	var v620 int64
-	_ = v620
-	var v625 int64
-	_ = v625
-	var v627 int32
-	_ = v627
-	var v628 int32
-	_ = v628
-	var v633 int32
+	var v623 int64
+	_ = v623
+	var v626 int64
+	_ = v626
+	var v629 int32
+	_ = v629
+	var v630 int64
+	_ = v630
+	var v633 int64
 	_ = v633
-	var v637 int64
-	_ = v637
-	var v640 int64
-	_ = v640
-	var v645 int32
-	_ = v645
-	var v647 int64
+	var v634 int64
+	_ = v634
+	var v639 int64
+	_ = v639
+	var v641 int32
+	_ = v641
+	var v642 int32
+	_ = v642
+	var v647 int32
 	_ = v647
-	var v650 int64
-	_ = v650
 	var v651 int64
 	_ = v651
-	var v653 int32
-	_ = v653
-	var v657 int64
-	_ = v657
-	var v665 int32
+	var v654 int64
+	_ = v654
+	var v659 int32
+	_ = v659
+	var v661 int64
+	_ = v661
+	var v664 int64
+	_ = v664
+	var v665 int64
 	_ = v665
-	var v676 int64
-	_ = v676
-	var v677 int32
-	_ = v677
-	var v678 int64
-	_ = v678
-	var v679 int64
+	var v667 int32
+	_ = v667
+	var v671 int64
+	_ = v671
+	var v679 int32
 	_ = v679
-	var v680 int64
-	_ = v680
-	var v685 int32
-	_ = v685
-	var v686 int32
-	_ = v686
+	var v690 int64
+	_ = v690
+	var v691 int32
+	_ = v691
+	var v692 int64
+	_ = v692
 	var v693 int64
 	_ = v693
-	var v696 int64
-	_ = v696
-	var v697 int64
-	_ = v697
-	var v698 int64
-	_ = v698
+	var v694 int64
+	_ = v694
 	var v699 int32
 	_ = v699
-	var v700 int64
+	var v700 int32
 	_ = v700
-	var v707 int32
+	var v707 int64
 	_ = v707
-	var v710 int32
+	var v710 int64
 	_ = v710
-	var v712 int32
+	var v711 int64
+	_ = v711
+	var v712 int64
 	_ = v712
-	var v713 int64
+	var v713 int32
 	_ = v713
-	var v719 int64
-	_ = v719
-	var v725 int64
+	var v714 int64
+	_ = v714
+	var v722 int32
+	_ = v722
+	var v725 int32
 	_ = v725
-	var v732 int64
-	_ = v732
-	var v739 int64
-	_ = v739
-	var v744 int32
-	_ = v744
-	var v745 int64
-	_ = v745
-	var v748 int32
-	_ = v748
-	var v754 int32
-	_ = v754
+	var v727 int32
+	_ = v727
+	var v728 int64
+	_ = v728
+	var v736 int64
+	_ = v736
+	var v742 int64
+	_ = v742
+	var v749 int64
+	_ = v749
 	var v756 int64
 	_ = v756
-	var v758 int32
-	_ = v758
-	var v760 int32
-	_ = v760
 	var v762 int32
 	_ = v762
-	var v764 int32
-	_ = v764
-	var v765 int32
-	_ = v765
-	var v766 int64
+	var v763 int64
+	_ = v763
+	var v766 int32
 	_ = v766
+	var v772 int32
+	_ = v772
+	var v774 int64
+	_ = v774
+	var v776 int32
+	_ = v776
 	var v778 int32
 	_ = v778
-	var v779 int32
-	_ = v779
-	var v788 int64
-	_ = v788
-	var v790 int64
-	_ = v790
-	var v794 int64
-	_ = v794
-	var v795 int64
-	_ = v795
-	var v797 int64
+	var v780 int32
+	_ = v780
+	var v782 int32
+	_ = v782
+	var v783 int32
+	_ = v783
+	var v784 int64
+	_ = v784
+	var v796 int32
+	_ = v796
+	var v797 int32
 	_ = v797
-	var v805 int64
-	_ = v805
+	var v806 int64
+	_ = v806
+	var v808 int64
+	_ = v808
+	var v812 int64
+	_ = v812
+	var v813 int64
+	_ = v813
 	var v815 int64
 	_ = v815
-	var v822 int64
-	_ = v822
+	var v818 int32
+	_ = v818
 	var v825 int64
 	_ = v825
-	var v831 int64
-	_ = v831
 	var v835 int64
 	_ = v835
-	var v837 int64
-	_ = v837
-	var v838 int64
-	_ = v838
-	var v839 int64
-	_ = v839
-	var v840 int64
-	_ = v840
-	var v841 int64
-	_ = v841
-	var v842 int32
+	var v842 int64
 	_ = v842
-	var v851 int32
+	var v845 int64
+	_ = v845
+	var v851 int64
 	_ = v851
-	var v854 int64
-	_ = v854
-	var v856 int64
-	_ = v856
+	var v855 int64
+	_ = v855
+	var v857 int64
+	_ = v857
 	var v858 int64
 	_ = v858
-	var v860 int32
+	var v859 int64
+	_ = v859
+	var v860 int64
 	_ = v860
-	var v862 int64
+	var v861 int64
+	_ = v861
+	var v862 int32
 	_ = v862
-	var v868 int32
-	_ = v868
-	var v875 int32
+	var v871 int32
+	_ = v871
+	var v875 int64
 	_ = v875
 	var v877 int64
 	_ = v877
-	var v881 int64
+	var v879 int64
+	_ = v879
+	var v881 int32
 	_ = v881
-	var v890 int32
-	_ = v890
-	var v892 int32
-	_ = v892
+	var v883 int64
+	_ = v883
+	var v885 int32
+	_ = v885
+	var v889 int32
+	_ = v889
 	var v893 int32
 	_ = v893
-	var v897 int32
-	_ = v897
-	var v901 int64
-	_ = v901
-	var v902 int64
-	_ = v902
+	var v895 int32
+	_ = v895
 	var v903 int64
 	_ = v903
-	var v908 int64
-	_ = v908
-	var v909 int32
-	_ = v909
-	var v910 int32
-	_ = v910
+	var v904 int32
+	_ = v904
+	var v906 int32
+	_ = v906
 	var v911 int32
 	_ = v911
+	var v915 int32
+	_ = v915
 	var v916 int32
 	_ = v916
-	var v920 int32
-	_ = v920
-	var v922 int64
+	var v917 int32
+	_ = v917
+	var v918 int32
+	_ = v918
+	var v919 int32
+	_ = v919
+	var v922 int32
 	_ = v922
 	var v924 int32
 	_ = v924
-	var v925 int64
-	_ = v925
+	var v926 int32
+	_ = v926
+	var v928 int32
+	_ = v928
+	var v930 int32
+	_ = v930
 	var v931 int32
 	_ = v931
+	var v932 int32
+	_ = v932
 	var v937 int32
 	_ = v937
-	var v939 int64
+	var v939 int32
 	_ = v939
-	var v943 int32
-	_ = v943
-	var v945 int64
+	var v945 int32
 	_ = v945
-	var v947 int64
-	_ = v947
-	var v950 int64
-	_ = v950
-	var v951 int64
-	_ = v951
-	var v953 int64
-	_ = v953
-	var v956 int32
-	_ = v956
-	var v968 int32
-	_ = v968
-	var v977 int64
-	_ = v977
-	var v979 int64
-	_ = v979
+	var v949 int32
+	_ = v949
+	var v966 int64
+	_ = v966
+	var v970 int64
+	_ = v970
+	var v974 int64
+	_ = v974
+	var v975 int64
+	_ = v975
+	var v978 int64
+	_ = v978
+	var v980 int64
+	_ = v980
 	var v983 int64
 	_ = v983
-	var v984 int64
+	var v984 int32
 	_ = v984
-	var v986 int64
-	_ = v986
+	var v989 int32
+	_ = v989
+	var v993 int32
+	_ = v993
+	var v994 int32
+	_ = v994
+	var v997 int32
+	_ = v997
 	var v998 int32
 	_ = v998
-	var v1015 int32
-	_ = v1015
+	var v1001 int32
+	_ = v1001
+	var v1004 int32
+	_ = v1004
+	var v1005 int32
+	_ = v1005
+	var v1009 int32
+	_ = v1009
+	var v1010 int32
+	_ = v1010
+	var v1018 int32
+	_ = v1018
+	var v1020 int64
+	_ = v1020
+	var v1024 int64
+	_ = v1024
+	var v1033 int32
+	_ = v1033
+	var v1035 int32
+	_ = v1035
+	var v1036 int32
+	_ = v1036
+	var v1040 int32
+	_ = v1040
+	var v1044 int64
+	_ = v1044
+	var v1045 int64
+	_ = v1045
+	var v1046 int64
+	_ = v1046
+	var v1051 int64
+	_ = v1051
+	var v1052 int32
+	_ = v1052
+	var v1053 int32
+	_ = v1053
+	var v1054 int32
+	_ = v1054
+	var v1059 int32
+	_ = v1059
+	var v1063 int32
+	_ = v1063
+	var v1065 int64
+	_ = v1065
+	var v1067 int32
+	_ = v1067
+	var v1068 int64
+	_ = v1068
+	var v1075 int32
+	_ = v1075
+	var v1081 int32
+	_ = v1081
+	var v1083 int64
+	_ = v1083
+	var v1087 int32
+	_ = v1087
+	var v1089 int64
+	_ = v1089
+	var v1091 int64
+	_ = v1091
+	var v1094 int64
+	_ = v1094
+	var v1095 int64
+	_ = v1095
+	var v1097 int64
+	_ = v1097
+	var v1100 int32
+	_ = v1100
+	var v1112 int32
+	_ = v1112
+	var v1121 int64
+	_ = v1121
+	var v1123 int64
+	_ = v1123
+	var v1127 int64
+	_ = v1127
+	var v1128 int64
+	_ = v1128
+	var v1130 int64
+	_ = v1130
+	var v1142 int32
+	_ = v1142
+	var v1159 int32
+	_ = v1159
 	v13 = int32(0)
 	v32 = m.G0
 	v34 = v32 - int32(256)
@@ -13995,89 +16037,89 @@ func Fn7510(m *base.Module, l0 int32, l1 int32, l2 int32, l3 int32, l4 int32, l5
 L1:
 	;
 	m.G0 = v34 + int32(256)
-	return v1015
+	return v1159
 L2:
 	;
-	v998 = int32(0)
-	Fn1451(m, l0, int32(799), v998)
+	v1142 = int32(0)
+	Fn1451(m, l0, int32(799), v1142)
 	mBase = m.M
-	v1015 = v998
+	v1159 = v1142
 	goto L1
 L3:
 	;
-	v699 = *(*int32)(unsafe.Add(mBase, uint32(v34)+40))
-	v700 = *(*int64)(unsafe.Add(mBase, uint32(v34)+32))
-	if base.I32_eqz(v685&int32(1))|base.B2i32(l9 == int32(4)) != 0 {
-		v968 = v699
-		v977 = v698
-		v979 = v693
-		v983 = v696
-		v984 = v697
-		v986 = v700
+	v713 = *(*int32)(unsafe.Add(mBase, uint32(v34)+40))
+	v714 = *(*int64)(unsafe.Add(mBase, uint32(v34)+32))
+	if base.B2i32(v699&int32(1) == int32(0))|base.B2i32(l9 == int32(4)) != 0 {
+		v1112 = v713
+		v1121 = v712
+		v1123 = v707
+		v1127 = v710
+		v1128 = v711
+		v1130 = v714
 		goto L182
 	} else {
 		goto L183
 	}
 L4:
 	;
-	v678 = *(*int64)(unsafe.Add(mBase, uint32(l1)+16))
-	v679 = *(*int64)(unsafe.Add(mBase, uint32(l1)+8))
-	v680 = *(*int64)(unsafe.Add(mBase, uint32(l1)))
-	v685 = v677
-	v686 = v665
-	v693 = v679
-	v696 = v678
-	v697 = v676
-	v698 = v680
+	v692 = *(*int64)(unsafe.Add(mBase, uint32(l1)+16))
+	v693 = *(*int64)(unsafe.Add(mBase, uint32(l1)+8))
+	v694 = *(*int64)(unsafe.Add(mBase, uint32(l1)))
+	v699 = v691
+	v700 = v679
+	v707 = v693
+	v710 = v692
+	v711 = v690
+	v712 = v694
 	goto L3
 L5:
 	;
-	v282 = int32(0)
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+156)) = v282
+	v287 = int32(0)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+156)) = v287
 	*(*int64)(unsafe.Add(mBase, uint32(v34)+148)) = int64(0)
-	v289 = Fn7483(m, l0, l6, l4, l1, v282, v34+int32(148))
+	v294 = Fn7486(m, l0, l6, l4, l1, v287, v34+int32(148))
 	mBase = m.M
-	if base.I32_eqz(v289) != 0 {
-		v1015 = v13
+	if v294 == v287 {
+		v1159 = v13
 		goto L1
 	} else {
 		goto L85
 	}
 L6:
 	;
-	v279 = int32(1)
-	v281 = int32(-1)
+	v284 = int32(1)
+	v286 = int32(-1)
 	goto L5
 L7:
 	;
-	v279 = int32(-1)
-	v281 = int32(1)
+	v284 = int32(-1)
+	v286 = int32(1)
 	goto L5
 L8:
 	;
-	v122 = int64(0)
-	v123 = *(*int64)(unsafe.Add(mBase, uint32(l1)+32))
-	v124 = *(*int64)(unsafe.Add(mBase, uint32(l1)+24))
-	v126 = v124 * int64(86400)
-	v127 = v123 + v126
-	if base.B2i32(v126 < v122)^base.B2i32(v127 < v123) != 0 {
+	v126 = int64(0)
+	v127 = *(*int64)(unsafe.Add(mBase, uint32(l1)+32))
+	v128 = *(*int64)(unsafe.Add(mBase, uint32(l1)+24))
+	v130 = v128 * int64(86400)
+	v131 = v127 + v130
+	if base.B2i32(v130 < v126)^base.B2i32(v131 < v127) != 0 {
 		goto L31
 	} else {
 		goto L32
 	}
 L9:
 	;
-	if base.I32_eqz(base.I64_eqz(v64)) != 0 {
+	if base.B2i32(v65 == int64(0)) == int32(0) {
 		goto L7
 	} else {
 		goto L21
 	}
 L10:
 	;
-	v86 = Fn7511(m, l0, l1, l2, l3, l4, l5, l6, l8, l9, l10, v34)
+	v87 = Fn7514(m, l0, l1, l2, l3, l4, l5, l6, l8, l9, l10, v34)
 	mBase = m.M
-	if base.I32_eqz(v86) != 0 {
-		v1015 = v13
+	if v87 == int32(0) {
+		v1159 = v13
 		goto L1
 	} else {
 		goto L20
@@ -14107,17 +16149,17 @@ L12:
 	goto L13
 L13:
 	;
-	v67 = int32(0)
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+40)) = v67
-	v69 = int64(0)
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+32)) = v69
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+24)) = v69
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+16)) = v69
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+8)) = v69
-	*(*int64)(unsafe.Add(mBase, uint32(v34))) = v69
-	*(*uint8)(unsafe.Add(mBase, uint32(v34)+72)) = uint8(v67)
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+56)) = v67
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+48)) = v69
+	v68 = int32(0)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+40)) = v68
+	v70 = int64(0)
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+32)) = v70
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+24)) = v70
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+16)) = v70
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+8)) = v70
+	*(*int64)(unsafe.Add(mBase, uint32(v34))) = v70
+	*(*uint8)(unsafe.Add(mBase, uint32(v34)+72)) = uint8(v68)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+56)) = v68
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+48)) = v70
 	goto L10
 L14:
 	;
@@ -14136,15 +16178,15 @@ L16:
 	}
 L17:
 	;
-	if base.I32_eqz(v38) != 0 {
+	if v38 == int32(0) {
 		goto L8
 	} else {
 		goto L18
 	}
 L18:
 	;
-	v64 = *(*int64)(unsafe.Add(mBase, uint32(l1)))
-	if int64(0) <= v64 {
+	v65 = *(*int64)(unsafe.Add(mBase, uint32(l1)))
+	if int64(0) <= v65 {
 		goto L9
 	} else {
 		goto L19
@@ -14154,315 +16196,316 @@ L19:
 	goto L6
 L20:
 	;
-	v88 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v34)+72)))
-	v89 = *(*int32)(unsafe.Add(mBase, uint32(v34)+44))
-	v90 = *(*int64)(unsafe.Add(mBase, uint32(v34)+24))
-	v91 = *(*int64)(unsafe.Add(mBase, uint32(v34)+16))
-	v92 = *(*int64)(unsafe.Add(mBase, uint32(v34)+8))
-	v93 = *(*int64)(unsafe.Add(mBase, uint32(v34)))
-	v685 = v88
-	v686 = v89
-	v693 = v92
-	v696 = v91
-	v697 = v90
-	v698 = v93
+	v90 = int32(*(*uint8)(unsafe.Add(mBase, uint32(v34)+72)))
+	v91 = *(*int32)(unsafe.Add(mBase, uint32(v34)+44))
+	v92 = *(*int64)(unsafe.Add(mBase, uint32(v34)+24))
+	v93 = *(*int64)(unsafe.Add(mBase, uint32(v34)+16))
+	v94 = *(*int64)(unsafe.Add(mBase, uint32(v34)+8))
+	v95 = *(*int64)(unsafe.Add(mBase, uint32(v34)))
+	v699 = v90
+	v700 = v91
+	v707 = v94
+	v710 = v93
+	v711 = v92
+	v712 = v95
 	goto L3
 L21:
 	;
-	v96 = *(*int64)(unsafe.Add(mBase, uint32(l1)+8))
-	if v96 < int64(0) {
+	v100 = *(*int64)(unsafe.Add(mBase, uint32(l1)+8))
+	if v100 < int64(0) {
 		goto L6
 	} else {
 		goto L22
 	}
 L22:
 	;
-	if v96 != int64(0) {
+	if v100 != int64(0) {
 		goto L7
 	} else {
 		goto L23
 	}
 L23:
 	;
-	v101 = *(*int64)(unsafe.Add(mBase, uint32(l1)+16))
-	if v101 < int64(0) {
+	v105 = *(*int64)(unsafe.Add(mBase, uint32(l1)+16))
+	if v105 < int64(0) {
 		goto L6
 	} else {
 		goto L24
 	}
 L24:
 	;
-	if v101 != int64(0) {
+	if v105 != int64(0) {
 		goto L7
 	} else {
 		goto L25
 	}
 L25:
 	;
-	v106 = *(*int64)(unsafe.Add(mBase, uint32(l1)+24))
-	if v106 < int64(0) {
+	v110 = *(*int64)(unsafe.Add(mBase, uint32(l1)+24))
+	if v110 < int64(0) {
 		goto L6
 	} else {
 		goto L26
 	}
 L26:
 	;
-	if v106 != int64(0) {
+	if v110 != int64(0) {
 		goto L7
 	} else {
 		goto L27
 	}
 L27:
 	;
-	v113 = *(*int64)(unsafe.Add(mBase, uint32(l1)+32))
-	if int64(0) <= v113 {
+	v117 = *(*int64)(unsafe.Add(mBase, uint32(l1)+32))
+	if int64(0) <= v117 {
 		goto L28
 	} else {
 		goto L29
 	}
 L28:
 	;
-	v116 = int32(-1)
+	v120 = int32(-1)
 	goto L30
 L29:
 	;
-	v116 = int32(1)
+	v120 = int32(1)
 	goto L30
 L30:
 	;
-	v279 = v116
-	v281 = base.I32_wrap_i64(v113>>(uint(int64(63))%64)) | int32(1)
+	v284 = v120
+	v286 = base.I32_wrap_i64(v117>>(uint(int64(63))%64)) | int32(1)
 	goto L5
 L31:
 	;
-	v132 = v122
+	v136 = v126
 	goto L33
 L32:
 	;
-	v132 = v127
+	v136 = v131
 	goto L33
 L33:
 	;
-	v133 = *(*int32)(unsafe.Add(mBase, uint32(l1)+40))
-	if int32(1000000000) <= v133 {
+	v137 = *(*int32)(unsafe.Add(mBase, uint32(l1)+40))
+	if int32(1000000000) <= v137 {
 		goto L34
 	} else {
 		goto L35
 	}
 L34:
 	;
-	v139 = v132 + int64(1)
-	if v132 <= v139 {
+	v143 = v136 + int64(1)
+	if v136 <= v143 {
 		goto L37
 	} else {
 		goto L38
 	}
 L35:
 	;
-	v143 = v133
-	v144 = v132
+	v147 = v137
+	v148 = v136
 	goto L36
 L36:
 	;
-	Fn7509(m, v34+int32(216), v144, v143, l9, l8, l10)
+	Fn7512(m, v34+int32(216), v148, v147, l9, l8, l10)
 	mBase = m.M
-	v149 = int64(0)
-	v150 = *(*int64)(unsafe.Add(mBase, uint32(v34)+216))
-	v151 = v150 - v144
-	if base.B2i32(v151 < v150)^base.B2i32(v149 < v144) != 0 {
+	v153 = int64(0)
+	v154 = *(*int64)(unsafe.Add(mBase, uint32(v34)+216))
+	v155 = v154 - v148
+	if base.B2i32(v155 < v154)^base.B2i32(v153 < v148) != 0 {
 		goto L40
 	} else {
 		goto L41
 	}
 L37:
 	;
-	v142 = v139
+	v146 = v143
 	goto L39
 L38:
 	;
-	v142 = int64(0)
+	v146 = int64(0)
 	goto L39
 L39:
 	;
-	v143 = v133 - int32(1000000000)
-	v144 = v142
+	v147 = v137 - int32(1000000000)
+	v148 = v146
 	goto L36
 L40:
 	;
-	v156 = v149
+	v160 = v153
 	goto L42
 L41:
 	;
-	v156 = v151
+	v160 = v155
 	goto L42
 L42:
 	;
-	v157 = int32(0)
-	v158 = *(*int32)(unsafe.Add(mBase, uint32(v34)+224))
-	v159 = v158 - v143
-	if base.B2i32(v159 < v158)^base.B2i32(v157 < v143) != 0 {
+	v161 = int32(0)
+	v162 = *(*int32)(unsafe.Add(mBase, uint32(v34)+224))
+	v163 = v162 - v147
+	if base.B2i32(v163 < v162)^base.B2i32(v161 < v147) != 0 {
 		goto L43
 	} else {
 		goto L44
 	}
 L43:
 	;
-	v164 = v157
+	v168 = v161
 	goto L45
 L44:
 	;
-	v164 = v159
+	v168 = v163
 	goto L45
 L45:
 	;
-	if v164 < int32(0) {
+	if v168 < int32(0) {
 		goto L46
 	} else {
 		goto L47
 	}
 L46:
 	;
-	v168 = v156 - int64(1)
-	if v168 < v156 {
+	v172 = v160 - int64(1)
+	if v172 < v160 {
 		goto L49
 	} else {
 		goto L50
 	}
 L47:
 	;
-	v174 = v164
-	v176 = v156
+	v178 = v168
+	v180 = v160
 	goto L48
 L48:
 	;
-	v177 = int64(0)
-	v178 = *(*int64)(unsafe.Add(mBase, uint32(l3)))
-	v179 = v178 + v176
-	if base.B2i32(v176 < v177)^base.B2i32(v179 < v178) != 0 {
+	v181 = int64(0)
+	v182 = *(*int64)(unsafe.Add(mBase, uint32(l3)))
+	v183 = v182 + v180
+	if base.B2i32(v180 < v181)^base.B2i32(v183 < v182) != 0 {
 		goto L52
 	} else {
 		goto L53
 	}
 L49:
 	;
-	v171 = v168
+	v175 = v172
 	goto L51
 L50:
 	;
-	v171 = int64(0)
+	v175 = int64(0)
 	goto L51
 L51:
 	;
-	v174 = v164 + int32(1000000000)
-	v176 = v171
+	v178 = v168 + int32(1000000000)
+	v180 = v175
 	goto L48
 L52:
 	;
-	v184 = v177
+	v188 = v181
 	goto L54
 L53:
 	;
-	v184 = v179
+	v188 = v183
 	goto L54
 L54:
 	;
-	v185 = int32(0)
-	v186 = *(*int32)(unsafe.Add(mBase, uint32(l3)+8))
-	v187 = v186 + v174
-	if base.B2i32(v174 < v185)^base.B2i32(v187 < v186) != 0 {
+	v189 = int32(0)
+	v190 = *(*int32)(unsafe.Add(mBase, uint32(l3)+8))
+	v191 = v190 + v178
+	if base.B2i32(v178 < v189)^base.B2i32(v191 < v190) != 0 {
 		goto L55
 	} else {
 		goto L56
 	}
 L55:
 	;
-	v192 = v185
+	v196 = v189
 	goto L57
 L56:
 	;
-	v192 = v187
+	v196 = v191
 	goto L57
 L57:
 	;
-	if int32(1000000000) <= v192 {
+	if int32(1000000000) <= v196 {
 		goto L58
 	} else {
 		goto L59
 	}
 L58:
 	;
-	v196 = v184 + int64(1)
-	if v184 <= v196 {
+	v200 = v188 + int64(1)
+	if v188 <= v200 {
 		goto L61
 	} else {
 		goto L62
 	}
 L59:
 	;
-	v202 = v192
-	v204 = v184
+	v206 = v196
+	v208 = v188
 	goto L60
 L60:
 	;
-	if v144 != int64(0) {
+	if v148 != int64(0) {
 		goto L64
 	} else {
 		goto L65
 	}
 L61:
 	;
-	v199 = v196
+	v203 = v200
 	goto L63
 L62:
 	;
-	v199 = int64(0)
+	v203 = int64(0)
 	goto L63
 L63:
 	;
-	v202 = v192 - int32(1000000000)
-	v204 = v199
+	v206 = v196 - int32(1000000000)
+	v208 = v203
 	goto L60
 L64:
 	;
-	v210 = int32(-1)
+	v214 = int32(-1)
 	goto L66
 L65:
 	;
-	v210 = int32(0)
+	v214 = int32(0)
 	goto L66
 L66:
 	;
-	if v143 != 0 {
+	if v147 != 0 {
 		goto L67
 	} else {
 		goto L68
 	}
 L67:
 	;
-	v212 = v144
+	v216 = v148
 	goto L69
 L68:
 	;
-	v212 = int64(1)
+	v216 = int64(1)
 	goto L69
 L69:
 	;
-	if base.I64_eqz(v212)|base.B2i32(int64(0) < v144) != 0 {
+	v217 = int64(0)
+	if base.B2i32(v216 == v217)|base.B2i32(v217 < v148) != 0 {
 		goto L70
 	} else {
 		goto L71
 	}
 L70:
 	;
-	v217 = int32(1)
+	v222 = int32(1)
 	goto L72
 L71:
 	;
-	v217 = v210
+	v222 = v214
 	goto L72
 L72:
 	;
-	v226 = base.I64_div_s(v150+base.I64_extend_i32_u(base.B2i32(int32(0) < v158)&base.B2i32(v150 < int64(0))), int64(86400))
+	v231 = base.I64_div_s(v154+base.I64_extend_i32_u(base.B2i32(int32(0) < v162)&base.B2i32(v154 < int64(0))), int64(86400))
 	if int32(5) < l7 {
 		goto L73
 	} else {
@@ -14470,235 +16513,235 @@ L72:
 	}
 L73:
 	;
-	v251 = v158
-	v252 = v150
-	v255 = int64(0)
+	v256 = v162
+	v257 = v154
+	v260 = int64(0)
 	goto L75
 L74:
 	;
-	v230 = int64(0)
-	v232 = v226 * int64(86400)
-	v233 = v150 - v232
-	if base.B2i32(v230 < v232)^base.B2i32(v233 < v150) != 0 {
+	v235 = int64(0)
+	v237 = v231 * int64(86400)
+	v238 = v154 - v237
+	if base.B2i32(v235 < v237)^base.B2i32(v238 < v154) != 0 {
 		goto L76
 	} else {
 		goto L77
 	}
 L75:
 	;
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+56)) = v202
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+48)) = v204
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+40)) = v251
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+32)) = v252
-	v268 = base.I64_div_s(v144+base.I64_extend_i32_u(base.B2i32(v143 != int32(0))&base.B2i32(v144 < int64(0))), int64(86400))
-	v665 = v13
-	v676 = v255
-	v677 = base.B2i32(base.B2i32(v268 < v226)-base.B2i32(v226 < v268) == v217)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+56)) = v206
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+48)) = v208
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+40)) = v256
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+32)) = v257
+	v273 = base.I64_div_s(v148+base.I64_extend_i32_u(base.B2i32(v147 != int32(0))&base.B2i32(v148 < int64(0))), int64(86400))
+	v679 = v13
+	v690 = v260
+	v691 = base.B2i32(base.B2i32(v273 < v231)-base.B2i32(v231 < v273) == v222)
 	goto L4
 L76:
 	;
-	v238 = v230
+	v243 = v235
 	goto L78
 L77:
 	;
-	v238 = v233
+	v243 = v238
 	goto L78
 L78:
 	;
-	if v158 < int32(0) {
+	if v162 < int32(0) {
 		goto L79
 	} else {
 		goto L80
 	}
 L79:
 	;
-	v242 = v238 - int64(1)
-	if v242 < v238 {
+	v247 = v243 - int64(1)
+	if v247 < v243 {
 		goto L82
 	} else {
 		goto L83
 	}
 L80:
 	;
-	v248 = v158
-	v249 = v238
+	v253 = v162
+	v254 = v243
 	goto L81
 L81:
 	;
-	v251 = v248
-	v252 = v249
-	v255 = v226
+	v256 = v253
+	v257 = v254
+	v260 = v231
 	goto L75
 L82:
 	;
-	v245 = v242
+	v250 = v247
 	goto L84
 L83:
 	;
-	v245 = int64(0)
+	v250 = int64(0)
 	goto L84
 L84:
 	;
-	v248 = v158 + int32(1000000000)
-	v249 = v245
+	v253 = v162 + int32(1000000000)
+	v254 = v250
 	goto L81
 L85:
 	;
-	v291 = *(*int32)(unsafe.Add(mBase, uint32(v34)+156))
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+184)) = v291
-	v293 = *(*int64)(unsafe.Add(mBase, uint32(v34)+148))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+176)) = v293
-	v295 = *(*int64)(unsafe.Add(mBase, uint32(l4)+12))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+188)) = v295
-	v297 = *(*int64)(unsafe.Add(mBase, uint32(l4)+20))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+196)) = v297
-	v299 = *(*int64)(unsafe.Add(mBase, uint32(l4)+28))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+204)) = v299
-	v302 = l4 + int32(12)
-	v304 = *(*int32)(unsafe.Add(mBase, uint32(v34)+148))
-	if v304&int32(3) != 0 {
-		v315 = int32(26853936)
+	v297 = *(*int32)(unsafe.Add(mBase, uint32(v34)+156))
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+184)) = v297
+	v299 = *(*int64)(unsafe.Add(mBase, uint32(v34)+148))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+176)) = v299
+	v301 = *(*int64)(unsafe.Add(mBase, uint32(l4)+12))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+188)) = v301
+	v303 = *(*int64)(unsafe.Add(mBase, uint32(l4)+20))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+196)) = v303
+	v305 = *(*int64)(unsafe.Add(mBase, uint32(l4)+28))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+204)) = v305
+	v308 = l4 + int32(12)
+	v310 = *(*int32)(unsafe.Add(mBase, uint32(v34)+148))
+	if v310&int32(3) != 0 {
+		v321 = int32(26854320)
 		goto L86
 	} else {
 		goto L87
 	}
 L86:
 	;
-	v316 = *(*int32)(unsafe.Add(mBase, uint32(v34)+156))
-	v317 = *(*int32)(unsafe.Add(mBase, uint32(v34)+152))
-	v318 = *(*int64)(unsafe.Add(mBase, uint32(v302)))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+124)) = v318
-	v320 = *(*int64)(unsafe.Add(mBase, uint32(v302)+8))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+132)) = v320
-	v322 = *(*int64)(unsafe.Add(mBase, uint32(v302)+16))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+140)) = v322
-	v324 = int32(2)
-	v327 = int32(4)
-	v329 = *(*int32)(unsafe.Add(mBase, uint32(v315+v317<<(uint(v324)%32)-v327)))
-	v331 = v304 - int32(1969)
-	v333 = base.I32_div_s(v331, v327)
-	v335 = v304 - int32(1601)
-	v336 = int32(400)
-	v337 = base.I32_div_s(v335, v336)
-	v343 = v304 - int32(1901)
-	v345 = base.I32_div_s(v343, int32(-100))
-	v351 = int32(31)
-	v354 = int32(100)
-	v355 = base.I32_rem_s(v343, v354)
-	v370 = int64(86400000)
-	v375 = base.I64_div_u_s(base.I64_extend_i32_s(v316+(v329+(v333+(v337+(v281+v304*int32(365))+v345)+(v335-v337*v336)>>(uint(v351)%32)+int32(base.Ui32(v355)>>(uint(v351)%32))+(v331-v333<<(uint(v324)%32))>>(uint(v351)%32)))-int32(719051))*v370+int64(46387767571200000), v370)
-	v379 = int32(3)
-	v380 = base.I32_wrap_i64(v375)<<(uint(v324)%32) | v379
-	v381 = int32(146097)
-	v382 = base.I32_div_u_s(v380, v381)
-	v392 = base.I64_extend_i32_u(v380-v382*v381|v379) * int64(2939745)
-	v397 = base.I32_wrap_i64(v392)
-	v399 = base.B2i32(base.Ui32(int32(-696719417)) < base.Ui32(v397))
-	v400 = v382*v354 + base.I32_wrap_i64(int64(base.Ui64(v392)>>(uint(int64(32))%64))) + v399
-	v402 = v400 - int32(1468000)
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+112)) = v402
-	v405 = base.I32_div_u_s(v397, int32(11758980))
-	v406 = int32(2141)
-	v409 = v405*v406 + int32(132377)
-	v413 = base.I32_div_u_s(v409&int32(65535), v406)
-	v415 = v413 + int32(1)
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+120)) = v415
-	v418 = int32(base.Ui32(v409) >> (uint(int32(16)) % 32))
-	if base.Ui32(int32(-696719417)) < base.Ui32(v397) {
+	v322 = *(*int32)(unsafe.Add(mBase, uint32(v34)+156))
+	v323 = *(*int32)(unsafe.Add(mBase, uint32(v34)+152))
+	v324 = *(*int64)(unsafe.Add(mBase, uint32(v308)))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+124)) = v324
+	v326 = *(*int64)(unsafe.Add(mBase, uint32(v308)+8))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+132)) = v326
+	v328 = *(*int64)(unsafe.Add(mBase, uint32(v308)+16))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+140)) = v328
+	v330 = int32(2)
+	v333 = int32(4)
+	v335 = *(*int32)(unsafe.Add(mBase, uint32(v321+v323<<(uint(v330)%32)-v333)))
+	v337 = v310 - int32(1969)
+	v339 = base.I32_div_s(v337, v333)
+	v341 = v310 - int32(1601)
+	v342 = int32(400)
+	v343 = base.I32_div_s(v341, v342)
+	v349 = v310 - int32(1901)
+	v351 = base.I32_div_s(v349, int32(-100))
+	v357 = int32(31)
+	v360 = int32(100)
+	v361 = base.I32_rem_s(v349, v360)
+	v376 = int64(86400000)
+	v381 = base.I64_div_u_s(base.I64_extend_i32_s(v322+(v335+(v339+(v343+(v286+v310*int32(365))+v351)+(v341-v343*v342)>>(uint(v357)%32)+int32(base.Ui32(v361)>>(uint(v357)%32))+(v337-v339<<(uint(v330)%32))>>(uint(v357)%32)))-int32(719051))*v376+int64(46387767571200000), v376)
+	v385 = int32(3)
+	v386 = base.I32_wrap_i64(v381)<<(uint(v330)%32) | v385
+	v387 = int32(146097)
+	v388 = base.I32_div_u_s(v386, v387)
+	v398 = base.I64_extend_i32_u(v386-v388*v387|v385) * int64(2939745)
+	v403 = base.I32_wrap_i64(v398)
+	v405 = base.B2i32(base.Ui32(int32(-696719417)) < base.Ui32(v403))
+	v406 = v388*v360 + base.I32_wrap_i64(int64(base.Ui64(v398)>>(uint(int64(32))%64))) + v405
+	v408 = v406 - int32(1468000)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+112)) = v408
+	v411 = base.I32_div_u_s(v403, int32(11758980))
+	v412 = int32(2141)
+	v415 = v411*v412 + int32(132377)
+	v419 = base.I32_div_u_s(v415&int32(65535), v412)
+	v421 = v419 + int32(1)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+120)) = v421
+	v424 = int32(base.Ui32(v415) >> (uint(int32(16)) % 32))
+	if base.Ui32(int32(-696719417)) < base.Ui32(v403) {
 		goto L92
 	} else {
 		goto L93
 	}
 L87:
 	;
-	v309 = base.I32_rem_s(v304, int32(100))
-	if v309 != 0 {
-		v315 = int32(26853988)
+	v315 = base.I32_rem_s(v310, int32(100))
+	if v315 != 0 {
+		v321 = int32(26854372)
 		goto L86
 	} else {
 		goto L88
 	}
 L88:
 	;
-	v313 = base.I32_rem_s(v304, int32(400))
-	if v313 != 0 {
+	v319 = base.I32_rem_s(v310, int32(400))
+	if v319 != 0 {
 		goto L89
 	} else {
 		goto L90
 	}
 L89:
 	;
-	v314 = int32(26853936)
+	v320 = int32(26854320)
 	goto L91
 L90:
 	;
-	v314 = int32(26853988)
+	v320 = int32(26854372)
 	goto L91
 L91:
 	;
-	v315 = v314
+	v321 = v320
 	goto L86
 L92:
 	;
-	v421 = v418 - int32(12)
+	v427 = v424 - int32(12)
 	goto L94
 L93:
 	;
-	v421 = v418
+	v427 = v424
 	goto L94
 L94:
 	;
-	v423 = v421 + int32(1)
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+116)) = v423
-	if base.Ui32(v400-int32(1196180)) < base.Ui32(int32(547580)) {
+	v429 = v427 + int32(1)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+116)) = v429
+	if base.Ui32(v406-int32(1196180)) < base.Ui32(int32(547580)) {
 		goto L95
 	} else {
 		goto L96
 	}
 L95:
 	;
-	v468 = int32(0)
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+168)) = v468
-	v470 = int64(0)
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+160)) = v470
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+248)) = v468
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+240)) = v470
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+232)) = v470
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+224)) = v470
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+216)) = v470
-	v483 = v34 + int32(176)
-	v485 = v34 + int32(216)
-	v486 = Fn7954(m, l0, l5, v483, v485)
+	v477 = int32(0)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+168)) = v477
+	v479 = int64(0)
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+160)) = v479
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+248)) = v477
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+240)) = v479
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+232)) = v479
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+224)) = v479
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+216)) = v479
+	v492 = v34 + int32(176)
+	v494 = v34 + int32(216)
+	v495 = Fn7957(m, l0, l5, v492, v494)
 	mBase = m.M
-	if v486 != 0 {
+	if v495 != 0 {
 		goto L121
 	} else {
 		goto L122
 	}
 L96:
 	;
-	if v402 < int32(0) {
+	if v408 < int32(0) {
 		goto L99
 	} else {
 		goto L100
 	}
 L97:
 	;
-	if base.Ui32(v409&int32(65535)) <= base.Ui32(int32(40678)) {
+	if base.Ui32(v415&int32(65535)) <= base.Ui32(int32(40678)) {
 		goto L2
 	} else {
 		goto L119
 	}
 L98:
 	;
-	if int32(-271821) < v402 {
+	if int32(-271821) < v408 {
 		goto L95
 	} else {
 		goto L118
 	}
 L99:
 	;
-	if v402 != int32(-271821) {
+	if v408 != int32(-271821) {
 		goto L98
 	} else {
 		goto L102
@@ -14708,23 +16751,23 @@ L100:
 	goto L101
 L101:
 	;
-	v452 = int32(9)
-	if v423 == v452 {
+	v460 = int32(9)
+	if v429 == v460 {
 		goto L114
 	} else {
 		goto L115
 	}
 L102:
 	;
-	v434 = base.B2i32(v423 == int32(4))
-	if base.I32_eqz(v434&base.B2i32(v415 == int32(19))) != 0 {
+	v440 = base.B2i32(v429 == int32(4))
+	if v440&base.B2i32(v421 == int32(19)) == int32(0) {
 		goto L103
 	} else {
 		goto L104
 	}
 L103:
 	;
-	if v423 == int32(4) {
+	if v429 == int32(4) {
 		goto L97
 	} else {
 		goto L106
@@ -14734,15 +16777,15 @@ L104:
 	goto L105
 L105:
 	;
-	v441 = *(*int32)(unsafe.Add(mBase, uint32(v34)+124))
-	if v441 != 0 {
+	v448 = *(*int32)(unsafe.Add(mBase, uint32(v34)+124))
+	if v448 != 0 {
 		goto L95
 	} else {
 		goto L108
 	}
 L106:
 	;
-	if v421 <= int32(3) {
+	if v427 <= int32(3) {
 		goto L2
 	} else {
 		goto L107
@@ -14752,40 +16795,40 @@ L107:
 	goto L95
 L108:
 	;
-	v442 = *(*int32)(unsafe.Add(mBase, uint32(v34)+128))
-	if v442 != 0 {
+	v449 = *(*int32)(unsafe.Add(mBase, uint32(v34)+128))
+	if v449 != 0 {
 		goto L95
 	} else {
 		goto L109
 	}
 L109:
 	;
-	v443 = *(*int32)(unsafe.Add(mBase, uint32(v34)+132))
-	if v443 != 0 {
+	v450 = *(*int32)(unsafe.Add(mBase, uint32(v34)+132))
+	if v450 != 0 {
 		goto L95
 	} else {
 		goto L110
 	}
 L110:
 	;
-	v444 = *(*int32)(unsafe.Add(mBase, uint32(v34)+136))
-	if v444 != 0 {
+	v451 = *(*int32)(unsafe.Add(mBase, uint32(v34)+136))
+	if v451 != 0 {
 		goto L95
 	} else {
 		goto L111
 	}
 L111:
 	;
-	v445 = *(*int32)(unsafe.Add(mBase, uint32(v34)+140))
-	if v445 != 0 {
+	v452 = *(*int32)(unsafe.Add(mBase, uint32(v34)+140))
+	if v452 != 0 {
 		goto L95
 	} else {
 		goto L112
 	}
 L112:
 	;
-	v446 = *(*int32)(unsafe.Add(mBase, uint32(v34)+144))
-	if base.I32_eqz(v446) != 0 {
+	v453 = *(*int32)(unsafe.Add(mBase, uint32(v34)+144))
+	if v453 == int32(0) {
 		goto L2
 	} else {
 		goto L113
@@ -14795,15 +16838,15 @@ L113:
 	goto L95
 L114:
 	;
-	v456 = base.B2i32(base.Ui32(v409&int32(65535)) < base.Ui32(int32(27833)))
+	v464 = base.B2i32(base.Ui32(v415&int32(65535)) < base.Ui32(int32(27833)))
 	goto L116
 L115:
 	;
-	v456 = base.B2i32(v421 < v452)
+	v464 = base.B2i32(v427 < v460)
 	goto L116
 L116:
 	;
-	if base.I32_eqz(v456)|base.B2i32(v402 != int32(275760)) != 0 {
+	if base.B2i32(v464 == int32(0))|base.B2i32(v408 != int32(275760)) != 0 {
 		goto L2
 	} else {
 		goto L117
@@ -14819,22 +16862,22 @@ L119:
 	goto L95
 L120:
 	;
-	v492 = int32(0)
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+224)) = v492
+	v501 = int32(0)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+224)) = v501
 	*(*int64)(unsafe.Add(mBase, uint32(v34)+216)) = int64(0)
-	v501 = Fn7962(m, l0, l5, v34+int32(112), v34+int32(216))
+	v510 = Fn7965(m, l0, l5, v34+int32(112), v34+int32(216))
 	mBase = m.M
-	if base.I32_eqz(v501) != 0 {
-		v1015 = v492
+	if v510 == v501 {
+		v1159 = v501
 		goto L1
 	} else {
 		goto L125
 	}
 L121:
 	;
-	v490 = Fn7961(m, l0, v485, l5, v483, int32(0), v34+int32(160))
+	v499 = Fn7964(m, l0, v494, l5, v492, int32(0), v34+int32(160))
 	mBase = m.M
-	if v490 != 0 {
+	if v499 != 0 {
 		goto L120
 	} else {
 		goto L124
@@ -14844,230 +16887,231 @@ L122:
 	goto L123
 L123:
 	;
-	v1015 = int32(0)
+	v1159 = int32(0)
 	goto L1
 L124:
 	;
 	goto L123
 L125:
 	;
-	v503 = int64(0)
-	v504 = *(*int64)(unsafe.Add(mBase, uint32(v34)+216))
-	v505 = *(*int64)(unsafe.Add(mBase, uint32(v34)+160))
-	v506 = v504 - v505
-	if base.B2i32(v506 < v504)^base.B2i32(v503 < v505) != 0 {
+	v513 = int64(0)
+	v514 = *(*int64)(unsafe.Add(mBase, uint32(v34)+216))
+	v515 = *(*int64)(unsafe.Add(mBase, uint32(v34)+160))
+	v516 = v514 - v515
+	if base.B2i32(v516 < v514)^base.B2i32(v513 < v515) != 0 {
 		goto L126
 	} else {
 		goto L127
 	}
 L126:
 	;
-	v511 = v503
+	v521 = v513
 	goto L128
 L127:
 	;
-	v511 = v506
+	v521 = v516
 	goto L128
 L128:
 	;
-	v512 = int32(0)
-	v513 = *(*int32)(unsafe.Add(mBase, uint32(v34)+224))
-	v514 = *(*int32)(unsafe.Add(mBase, uint32(v34)+168))
-	v515 = v513 - v514
-	if base.B2i32(v515 < v513)^base.B2i32(v512 < v514) != 0 {
+	v522 = int32(0)
+	v523 = *(*int32)(unsafe.Add(mBase, uint32(v34)+224))
+	v524 = *(*int32)(unsafe.Add(mBase, uint32(v34)+168))
+	v525 = v523 - v524
+	if base.B2i32(v525 < v523)^base.B2i32(v522 < v524) != 0 {
 		goto L129
 	} else {
 		goto L130
 	}
 L129:
 	;
-	v520 = v512
+	v530 = v522
 	goto L131
 L130:
 	;
-	v520 = v515
+	v530 = v525
 	goto L131
 L131:
 	;
-	if v520 < int32(0) {
+	if v530 < int32(0) {
 		goto L132
 	} else {
 		goto L133
 	}
 L132:
 	;
-	v526 = v511 - int64(1)
-	if v526 < v511 {
+	v536 = v521 - int64(1)
+	if v536 < v521 {
 		goto L135
 	} else {
 		goto L136
 	}
 L133:
 	;
-	v530 = v520
-	v531 = v511
+	v540 = v530
+	v541 = v521
 	goto L134
 L134:
 	;
-	v535 = *(*int64)(unsafe.Add(mBase, uint32(l1)+32))
-	v536 = *(*int32)(unsafe.Add(mBase, uint32(l1)+40))
-	Fn7509(m, v34+int32(96), v535, v536, l9, l8, l10)
+	v545 = *(*int64)(unsafe.Add(mBase, uint32(l1)+32))
+	v546 = *(*int32)(unsafe.Add(mBase, uint32(l1)+40))
+	Fn7512(m, v34+int32(96), v545, v546, l9, l8, l10)
 	mBase = m.M
-	v538 = int64(0)
-	v539 = *(*int64)(unsafe.Add(mBase, uint32(v34)+96))
-	v540 = v539 - v531
-	if base.B2i32(v540 < v539)^base.B2i32(v538 < v531) != 0 {
+	v548 = int64(0)
+	v549 = *(*int64)(unsafe.Add(mBase, uint32(v34)+96))
+	v550 = v549 - v541
+	if base.B2i32(v550 < v549)^base.B2i32(v548 < v541) != 0 {
 		goto L138
 	} else {
 		goto L139
 	}
 L135:
 	;
-	v529 = v526
+	v539 = v536
 	goto L137
 L136:
 	;
-	v529 = int64(0)
+	v539 = int64(0)
 	goto L137
 L137:
 	;
-	v530 = v520 + int32(1000000000)
-	v531 = v529
+	v540 = v530 + int32(1000000000)
+	v541 = v539
 	goto L134
 L138:
 	;
-	v545 = v538
+	v555 = v548
 	goto L140
 L139:
 	;
-	v545 = v540
+	v555 = v550
 	goto L140
 L140:
 	;
-	v546 = int32(0)
-	v547 = *(*int32)(unsafe.Add(mBase, uint32(v34)+104))
-	v548 = v547 - v530
-	if base.B2i32(v548 < v547)^base.B2i32(v546 < v530) != 0 {
+	v556 = int32(0)
+	v557 = *(*int32)(unsafe.Add(mBase, uint32(v34)+104))
+	v558 = v557 - v540
+	if base.B2i32(v558 < v557)^base.B2i32(v556 < v540) != 0 {
 		goto L145
 	} else {
 		goto L146
 	}
 L141:
 	;
-	v651 = *(*int64)(unsafe.Add(mBase, uint32(v34)+96))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+32)) = v651
-	v653 = *(*int32)(unsafe.Add(mBase, uint32(v34)+104))
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+40)) = v653
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+56)) = v645
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+48)) = v647
-	v657 = *(*int64)(unsafe.Add(mBase, uint32(l1)+24))
-	v665 = v547
-	v676 = v657 + v650
-	v677 = base.B2i32(v583 != v279)
+	v665 = *(*int64)(unsafe.Add(mBase, uint32(v34)+96))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+32)) = v665
+	v667 = *(*int32)(unsafe.Add(mBase, uint32(v34)+104))
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+40)) = v667
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+56)) = v659
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+48)) = v661
+	v671 = *(*int64)(unsafe.Add(mBase, uint32(l1)+24))
+	v679 = v557
+	v690 = v671 + v664
+	v691 = base.B2i32(v597 != v284)
 	goto L4
 L142:
 	;
-	if v279 != v583 {
+	if v284 != v597 {
 		goto L157
 	} else {
 		goto L158
 	}
 L143:
 	;
-	if base.I32_eqz(base.I32_eqz(v567)|base.I32_eqz(base.I64_eqz(v568))) != 0 {
+	v579 = int32(0)
+	if base.B2i32(v577 == v579)|base.B2i32(base.B2i32(v578 == int64(0)) == v579) == v579 {
 		goto L151
 	} else {
 		goto L152
 	}
 L144:
 	;
-	if v563 <= int64(0) {
-		v567 = v562
-		v568 = v563
+	if v573 <= int64(0) {
+		v577 = v572
+		v578 = v573
 		goto L143
 	} else {
 		goto L150
 	}
 L145:
 	;
-	v553 = v546
+	v563 = v556
 	goto L147
 L146:
 	;
-	v553 = v548
+	v563 = v558
 	goto L147
 L147:
 	;
-	if int32(0) <= v553 {
-		v562 = v553
-		v563 = v545
+	if int32(0) <= v563 {
+		v572 = v563
+		v573 = v555
 		goto L144
 	} else {
 		goto L148
 	}
 L148:
 	;
-	v557 = v553 + int32(1000000000)
-	v559 = v545 - int64(1)
-	if v559 < v545 {
-		v562 = v557
-		v563 = v559
+	v567 = v563 + int32(1000000000)
+	v569 = v555 - int64(1)
+	if v569 < v555 {
+		v572 = v567
+		v573 = v569
 		goto L144
 	} else {
 		goto L149
 	}
 L149:
 	;
-	v567 = v557
-	v568 = int64(0)
+	v577 = v567
+	v578 = int64(0)
 	goto L143
 L150:
 	;
-	v581 = v562
-	v582 = v563
-	v583 = int32(1)
+	v595 = v572
+	v596 = v573
+	v597 = int32(1)
 	goto L142
 L151:
 	;
-	v581 = v567
-	v582 = int64(0)
-	v583 = int32(1)
+	v595 = v577
+	v596 = int64(0)
+	v597 = int32(1)
 	goto L142
 L152:
 	;
 	goto L153
 L153:
 	;
-	if v568 != int64(0) {
+	if v578 != int64(0) {
 		goto L154
 	} else {
 		goto L155
 	}
 L154:
 	;
-	v580 = int32(-1)
+	v594 = int32(-1)
 	goto L156
 L155:
 	;
-	v580 = int32(0)
+	v594 = int32(0)
 	goto L156
 L156:
 	;
-	v581 = v567
-	v582 = v568
-	v583 = v580
+	v595 = v577
+	v596 = v578
+	v597 = v594
 	goto L142
 L157:
 	;
-	Fn7509(m, v34+int32(80), v582, v581, l9, l8, l10)
+	Fn7512(m, v34+int32(80), v596, v595, l9, l8, l10)
 	mBase = m.M
-	v588 = *(*int32)(unsafe.Add(mBase, uint32(v34)+88))
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+104)) = v588
-	v590 = *(*int64)(unsafe.Add(mBase, uint32(v34)+80))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+96)) = v590
-	v592 = int64(0)
-	v593 = v590 + v504
-	if base.B2i32(v590 < v592)^base.B2i32(v593 < v504) != 0 {
+	v602 = *(*int32)(unsafe.Add(mBase, uint32(v34)+88))
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+104)) = v602
+	v604 = *(*int64)(unsafe.Add(mBase, uint32(v34)+80))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+96)) = v604
+	v606 = int64(0)
+	v607 = v604 + v514
+	if base.B2i32(v604 < v606)^base.B2i32(v607 < v514) != 0 {
 		goto L160
 	} else {
 		goto L161
@@ -15077,352 +17121,353 @@ L158:
 	goto L159
 L159:
 	;
-	v619 = int64(0)
-	v620 = v505 + v539
-	if base.B2i32(v539 < v619)^base.B2i32(v620 < v505) != 0 {
+	v633 = int64(0)
+	v634 = v515 + v549
+	if base.B2i32(v549 < v633)^base.B2i32(v634 < v515) != 0 {
 		goto L172
 	} else {
 		goto L173
 	}
 L160:
 	;
-	v598 = v592
+	v612 = v606
 	goto L162
 L161:
 	;
-	v598 = v593
+	v612 = v607
 	goto L162
 L162:
 	;
-	v599 = int32(0)
-	v600 = v513 + v588
-	if base.B2i32(v588 < v599)^base.B2i32(v600 < v513) != 0 {
+	v613 = int32(0)
+	v614 = v523 + v602
+	if base.B2i32(v602 < v613)^base.B2i32(v614 < v523) != 0 {
 		goto L163
 	} else {
 		goto L164
 	}
 L163:
 	;
-	v605 = v599
+	v619 = v613
 	goto L165
 L164:
 	;
-	v605 = v600
+	v619 = v614
 	goto L165
 L165:
 	;
-	if int32(1000000000) <= v605 {
+	if int32(1000000000) <= v619 {
 		goto L166
 	} else {
 		goto L167
 	}
 L166:
 	;
-	v609 = v598 + int64(1)
-	if v598 <= v609 {
+	v623 = v612 + int64(1)
+	if v612 <= v623 {
 		goto L169
 	} else {
 		goto L170
 	}
 L167:
 	;
-	v615 = v605
-	v616 = v598
+	v629 = v619
+	v630 = v612
 	goto L168
 L168:
 	;
-	v645 = v615
-	v647 = v616
-	v650 = base.I64_extend_i32_s(v281)
+	v659 = v629
+	v661 = v630
+	v664 = base.I64_extend_i32_s(v286)
 	goto L141
 L169:
 	;
-	v612 = v609
+	v626 = v623
 	goto L171
 L170:
 	;
-	v612 = int64(0)
+	v626 = int64(0)
 	goto L171
 L171:
 	;
-	v615 = v605 - int32(1000000000)
-	v616 = v612
+	v629 = v619 - int32(1000000000)
+	v630 = v626
 	goto L168
 L172:
 	;
-	v625 = v619
+	v639 = v633
 	goto L174
 L173:
 	;
-	v625 = v620
+	v639 = v634
 	goto L174
 L174:
 	;
-	v627 = int32(0)
-	v628 = v547 + v514
-	if base.B2i32(v547 < v627)^base.B2i32(v628 < v514) != 0 {
+	v641 = int32(0)
+	v642 = v557 + v524
+	if base.B2i32(v557 < v641)^base.B2i32(v642 < v524) != 0 {
 		goto L175
 	} else {
 		goto L176
 	}
 L175:
 	;
-	v633 = v627
+	v647 = v641
 	goto L177
 L176:
 	;
-	v633 = v628
+	v647 = v642
 	goto L177
 L177:
 	;
-	if v633 < int32(1000000000) {
-		v645 = v633
-		v647 = v625
-		v650 = int64(0)
+	if v647 < int32(1000000000) {
+		v659 = v647
+		v661 = v639
+		v664 = int64(0)
 		goto L141
 	} else {
 		goto L178
 	}
 L178:
 	;
-	v637 = v625 + int64(1)
-	if v625 <= v637 {
+	v651 = v639 + int64(1)
+	if v639 <= v651 {
 		goto L179
 	} else {
 		goto L180
 	}
 L179:
 	;
-	v640 = v637
+	v654 = v651
 	goto L181
 L180:
 	;
-	v640 = int64(0)
+	v654 = int64(0)
 	goto L181
 L181:
 	;
-	v645 = v633 - int32(1000000000)
-	v647 = v640
-	v650 = int64(0)
+	v659 = v647 - int32(1000000000)
+	v661 = v654
+	v664 = int64(0)
 	goto L141
 L182:
 	;
-	*(*int32)(unsafe.Add(mBase, uint32(l11)+44)) = v686
-	*(*int32)(unsafe.Add(mBase, uint32(l11)+40)) = v968
-	*(*int64)(unsafe.Add(mBase, uint32(l11)+32)) = v986
-	*(*int64)(unsafe.Add(mBase, uint32(l11)+24)) = v984
-	*(*int64)(unsafe.Add(mBase, uint32(l11)+16)) = v983
-	*(*int64)(unsafe.Add(mBase, uint32(l11)+8)) = v979
-	*(*int64)(unsafe.Add(mBase, uint32(l11))) = v977
-	v1015 = int32(1)
+	*(*int32)(unsafe.Add(mBase, uint32(l11)+44)) = v700
+	*(*int32)(unsafe.Add(mBase, uint32(l11)+40)) = v1112
+	*(*int64)(unsafe.Add(mBase, uint32(l11)+32)) = v1130
+	*(*int64)(unsafe.Add(mBase, uint32(l11)+24)) = v1128
+	*(*int64)(unsafe.Add(mBase, uint32(l11)+16)) = v1127
+	*(*int64)(unsafe.Add(mBase, uint32(l11)+8)) = v1123
+	*(*int64)(unsafe.Add(mBase, uint32(l11))) = v1121
+	v1159 = int32(1)
 	goto L1
 L183:
 	;
-	v707 = int32(5)
-	if v707 <= l9 {
+	v722 = int32(5)
+	if v722 <= l9 {
 		goto L184
 	} else {
 		goto L185
 	}
 L184:
 	;
-	v710 = v707
+	v725 = v722
 	goto L186
 L185:
 	;
-	v710 = l9
+	v725 = l9
 	goto L186
 L186:
 	;
-	if v710 <= l7 {
-		v968 = v699
-		v977 = v698
-		v979 = v693
-		v983 = v696
-		v984 = v697
-		v986 = v700
+	if v725 <= l7 {
+		v1112 = v713
+		v1121 = v712
+		v1123 = v707
+		v1127 = v710
+		v1128 = v711
+		v1130 = v714
 		goto L182
 	} else {
 		goto L187
 	}
 L187:
 	;
-	v712 = int32(1)
-	v713 = *(*int64)(unsafe.Add(mBase, uint32(l1)))
-	if v713 < int64(0) {
+	v727 = int32(1)
+	v728 = *(*int64)(unsafe.Add(mBase, uint32(l1)))
+	if v728 < int64(0) {
 		goto L189
 	} else {
 		goto L190
 	}
 L188:
 	;
-	v758 = l4 + int32(12)
-	v760 = v34 + int32(188)
-	v762 = v34 + int32(128)
-	v764 = v34 + int32(120)
-	v765 = *(*int32)(unsafe.Add(mBase, uint32(v34)+56))
-	v766 = *(*int64)(unsafe.Add(mBase, uint32(v34)+48))
-	v778 = v710
-	v779 = v699
-	v788 = v698
-	v790 = v693
-	v794 = v696
-	v795 = v697
-	v797 = v700
+	v776 = l4 + int32(12)
+	v778 = v34 + int32(188)
+	v780 = v34 + int32(128)
+	v782 = v34 + int32(120)
+	v783 = *(*int32)(unsafe.Add(mBase, uint32(v34)+56))
+	v784 = *(*int64)(unsafe.Add(mBase, uint32(v34)+48))
+	v796 = v725
+	v797 = v713
+	v806 = v712
+	v808 = v707
+	v812 = v710
+	v813 = v711
+	v815 = v714
 	goto L211
 L189:
 	;
-	v754 = v712
-	v756 = int64(-1)
+	v772 = v727
+	v774 = int64(-1)
 	goto L188
 L190:
 	;
 	goto L191
 L191:
 	;
-	if base.I32_eqz(base.I64_eqz(v713)) != 0 {
+	if base.B2i32(v728 == int64(0)) == int32(0) {
 		goto L192
 	} else {
 		goto L193
 	}
 L192:
 	;
-	v754 = int32(-1)
-	v756 = int64(1)
+	v772 = int32(-1)
+	v774 = int64(1)
 	goto L188
 L193:
 	;
-	v719 = *(*int64)(unsafe.Add(mBase, uint32(l1)+8))
-	if v719 < int64(0) {
+	v736 = *(*int64)(unsafe.Add(mBase, uint32(l1)+8))
+	if v736 < int64(0) {
 		goto L194
 	} else {
 		goto L195
 	}
 L194:
 	;
-	v754 = v712
-	v756 = int64(-1)
+	v772 = v727
+	v774 = int64(-1)
 	goto L188
 L195:
 	;
 	goto L196
 L196:
 	;
-	if v719 != int64(0) {
+	if v736 != int64(0) {
 		goto L192
 	} else {
 		goto L197
 	}
 L197:
 	;
-	v725 = *(*int64)(unsafe.Add(mBase, uint32(l1)+16))
-	if v725 < int64(0) {
+	v742 = *(*int64)(unsafe.Add(mBase, uint32(l1)+16))
+	if v742 < int64(0) {
 		goto L198
 	} else {
 		goto L199
 	}
 L198:
 	;
-	v754 = v712
-	v756 = int64(-1)
+	v772 = v727
+	v774 = int64(-1)
 	goto L188
 L199:
 	;
 	goto L200
 L200:
 	;
-	if v725 != int64(0) {
+	if v742 != int64(0) {
 		goto L192
 	} else {
 		goto L201
 	}
 L201:
 	;
-	v732 = *(*int64)(unsafe.Add(mBase, uint32(l1)+24))
-	if v732 < int64(0) {
-		v754 = v712
-		v756 = int64(-1)
+	v749 = *(*int64)(unsafe.Add(mBase, uint32(l1)+24))
+	if v749 < int64(0) {
+		v772 = v727
+		v774 = int64(-1)
 		goto L188
 	} else {
 		goto L202
 	}
 L202:
 	;
-	if v732 != int64(0) {
+	if v749 != int64(0) {
 		goto L192
 	} else {
 		goto L203
 	}
 L203:
 	;
-	v739 = *(*int64)(unsafe.Add(mBase, uint32(l1)+32))
-	if int64(0) < v739 {
-		v754 = int32(-1)
-		v756 = int64(1)
+	v756 = *(*int64)(unsafe.Add(mBase, uint32(l1)+32))
+	if int64(0) < v756 {
+		v772 = int32(-1)
+		v774 = int64(1)
 		goto L188
 	} else {
 		goto L204
 	}
 L204:
 	;
-	v744 = base.I64_eqz(v739)
-	if v744 != 0 {
+	v762 = base.B2i32(v756 == int64(0))
+	if v756 == int64(0) {
 		goto L205
 	} else {
 		goto L206
 	}
 L205:
 	;
-	v745 = int64(1)
+	v763 = int64(1)
 	goto L207
 L206:
 	;
-	v745 = int64(-1)
+	v763 = int64(-1)
 	goto L207
 L207:
 	;
-	if v744 != 0 {
+	if v756 == int64(0) {
 		goto L208
 	} else {
 		goto L209
 	}
 L208:
 	;
-	v748 = int32(-1)
+	v766 = int32(-1)
 	goto L210
 L209:
 	;
-	v748 = int32(1)
+	v766 = int32(1)
 	goto L210
 L210:
 	;
-	v754 = v748
-	v756 = v745
+	v772 = v766
+	v774 = v763
 	goto L188
 L211:
 	;
-	if base.I32_eqz(base.I32_eqz(base.B2i32(l7 == int32(4)))&base.B2i32(v778 == int32(5))) != 0 {
+	v818 = int32(0)
+	if base.B2i32(base.B2i32(l7 == int32(4)) == v818)&base.B2i32(v796 == int32(5)) == v818 {
 		goto L213
 	} else {
 		goto L214
 	}
 L212:
 	;
-	v968 = v943
-	v977 = v945
-	v979 = v947
-	v983 = v950
-	v984 = v951
-	v986 = v953
+	v1112 = v1087
+	v1121 = v1089
+	v1123 = v1091
+	v1127 = v1094
+	v1128 = v1095
+	v1130 = v1097
 	goto L182
 L213:
 	;
-	v805 = int64(0)
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+136)) = v805
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+128)) = v805
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+120)) = v805
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+112)) = v805
-	switch v778 - int32(3) {
+	v825 = int64(0)
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+136)) = v825
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+128)) = v825
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+120)) = v825
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+112)) = v825
+	switch v796 - int32(3) {
 	case 0:
 		goto L220
 	case 1:
@@ -15432,264 +17477,397 @@ L213:
 	}
 L214:
 	;
-	v943 = v779
-	v945 = v788
-	v947 = v790
-	v950 = v794
-	v951 = v795
-	v953 = v797
+	v1087 = v797
+	v1089 = v806
+	v1091 = v808
+	v1094 = v812
+	v1095 = v813
+	v1097 = v815
 	goto L215
 L215:
 	;
-	v956 = v778 - int32(1)
-	if l7 < v956 {
-		v778 = v956
-		v779 = v943
-		v788 = v945
-		v790 = v947
-		v794 = v950
-		v795 = v951
-		v797 = v953
+	v1100 = v796 - int32(1)
+	if l7 < v1100 {
+		v796 = v1100
+		v797 = v1087
+		v806 = v1089
+		v808 = v1091
+		v812 = v1094
+		v813 = v1095
+		v815 = v1097
 		goto L211
 	} else {
-		goto L247
+		goto L266
 	}
 L216:
 	;
-	v842 = int32(0)
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+104)) = v842
+	v862 = int32(0)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+104)) = v862
 	*(*int64)(unsafe.Add(mBase, uint32(v34)+96)) = int64(0)
-	v851 = Fn7483(m, l0, l6, l4, v34+int32(112), v842, v34+int32(96))
+	v871 = Fn7486(m, l0, l6, l4, v34+int32(112), v862, v34+int32(96))
 	mBase = m.M
-	if base.I32_eqz(v851) != 0 {
+	if v871 == v862 {
 		goto L221
 	} else {
 		goto L222
 	}
 L217:
 	;
-	v839 = v837
-	v840 = v788
-	v841 = v838
+	v859 = v857
+	v860 = v806
+	v861 = v858
 	goto L216
 L218:
 	;
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+120)) = v790
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+112)) = v788
-	v835 = v756 + v794
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+128)) = v835
-	v837 = v790
-	v838 = v835
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+120)) = v808
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+112)) = v806
+	v855 = v774 + v812
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+128)) = v855
+	v857 = v808
+	v858 = v855
 	goto L217
 L219:
 	;
-	v825 = int64(0)
-	*(*int64)(unsafe.Add(mBase, uint32(v762))) = v825
-	*(*int64)(unsafe.Add(mBase, uint32(v762)+8)) = v825
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+112)) = v788
-	v831 = v790 + v756
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+120)) = v831
-	v837 = v831
-	v838 = v825
+	v845 = int64(0)
+	*(*int64)(unsafe.Add(mBase, uint32(v780))) = v845
+	*(*int64)(unsafe.Add(mBase, uint32(v780)+8)) = v845
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+112)) = v806
+	v851 = v808 + v774
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+120)) = v851
+	v857 = v851
+	v858 = v845
 	goto L217
 L220:
 	;
-	v815 = int64(0)
-	*(*int64)(unsafe.Add(mBase, uint32(v764))) = v815
-	*(*int64)(unsafe.Add(mBase, uint32(v764)+8)) = v815
-	*(*int64)(unsafe.Add(mBase, uint32(v764)+16)) = v815
-	v822 = v788 + v756
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+112)) = v822
-	v839 = v815
-	v840 = v822
-	v841 = v815
+	v835 = int64(0)
+	*(*int64)(unsafe.Add(mBase, uint32(v782))) = v835
+	*(*int64)(unsafe.Add(mBase, uint32(v782)+8)) = v835
+	*(*int64)(unsafe.Add(mBase, uint32(v782)+16)) = v835
+	v842 = v806 + v774
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+112)) = v842
+	v859 = v835
+	v860 = v842
+	v861 = v835
 	goto L216
 L221:
 	;
-	v1015 = int32(0)
+	v1159 = int32(0)
 	goto L1
 L222:
 	;
 	goto L223
 L223:
 	;
-	v854 = *(*int64)(unsafe.Add(mBase, uint32(v758)))
-	*(*int64)(unsafe.Add(mBase, uint32(v760))) = v854
-	v856 = *(*int64)(unsafe.Add(mBase, uint32(v758)+8))
-	*(*int64)(unsafe.Add(mBase, uint32(v760)+8)) = v856
-	v858 = *(*int64)(unsafe.Add(mBase, uint32(v758)+16))
-	*(*int64)(unsafe.Add(mBase, uint32(v760)+16)) = v858
-	v860 = *(*int32)(unsafe.Add(mBase, uint32(v34)+104))
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+184)) = v860
-	v862 = *(*int64)(unsafe.Add(mBase, uint32(v34)+96))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+176)) = v862
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+168)) = int32(0)
+	v875 = *(*int64)(unsafe.Add(mBase, uint32(v776)))
+	*(*int64)(unsafe.Add(mBase, uint32(v778))) = v875
+	v877 = *(*int64)(unsafe.Add(mBase, uint32(v776)+8))
+	*(*int64)(unsafe.Add(mBase, uint32(v778)+8)) = v877
+	v879 = *(*int64)(unsafe.Add(mBase, uint32(v776)+16))
+	*(*int64)(unsafe.Add(mBase, uint32(v778)+16)) = v879
+	v881 = *(*int32)(unsafe.Add(mBase, uint32(v34)+104))
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+184)) = v881
+	v883 = *(*int64)(unsafe.Add(mBase, uint32(v34)+96))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+176)) = v883
+	v885 = int32(0)
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+168)) = v885
 	*(*int64)(unsafe.Add(mBase, uint32(v34)+160)) = int64(0)
-	v868 = *(*int32)(unsafe.Add(mBase, uint32(l5)))
-	if base.I32_eqz(v868) != 0 {
+	v889 = *(*int32)(unsafe.Add(mBase, uint32(l5)))
+	if v889 == v885 {
 		goto L225
 	} else {
 		goto L226
 	}
 L224:
 	;
-	v901 = int64(0)
-	v902 = *(*int64)(unsafe.Add(mBase, uint32(v34)+160))
-	v903 = v766 - v902
-	if base.B2i32(v903 < v766)^base.B2i32(v901 < v902) != 0 {
-		goto L232
+	v1044 = int64(0)
+	v1045 = *(*int64)(unsafe.Add(mBase, uint32(v34)+160))
+	v1046 = v784 - v1045
+	if base.B2i32(v1046 < v784)^base.B2i32(v1044 < v1045) != 0 {
+		goto L251
 	} else {
-		goto L233
+		goto L252
 	}
 L225:
 	;
-	Fn7512(m, v34+int32(216), v34+int32(176))
-	mBase = m.M
-	v875 = *(*int32)(unsafe.Add(mBase, uint32(v34)+224))
-	*(*int32)(unsafe.Add(mBase, uint32(v34)+168)) = v875
-	v877 = *(*int64)(unsafe.Add(mBase, uint32(v34)+216))
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+160)) = v877
-	goto L224
+	v893 = v34 + int32(216)
+	v895 = v34 + int32(176)
+	v903 = int64(*(*int32)(unsafe.Add(mBase, uint32(v895)+24)))
+	v904 = *(*int32)(unsafe.Add(mBase, uint32(v895)+8))
+	v906 = *(*int32)(unsafe.Add(mBase, uint32(v895)))
+	if v906&int32(3) != 0 {
+		v917 = int32(26854320)
+		goto L229
+	} else {
+		goto L230
+	}
 L226:
 	;
 	goto L227
 L227:
 	;
 	*(*int32)(unsafe.Add(mBase, uint32(v34)+248)) = int32(0)
-	v881 = int64(0)
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+240)) = v881
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+232)) = v881
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+224)) = v881
-	*(*int64)(unsafe.Add(mBase, uint32(v34)+216)) = v881
-	v890 = v34 + int32(176)
-	v892 = v34 + int32(216)
-	v893 = Fn7954(m, l0, l5, v890, v892)
+	v1024 = int64(0)
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+240)) = v1024
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+232)) = v1024
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+224)) = v1024
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+216)) = v1024
+	v1033 = v34 + int32(176)
+	v1035 = v34 + int32(216)
+	v1036 = Fn7957(m, l0, l5, v1033, v1035)
 	mBase = m.M
-	if v893 != 0 {
-		goto L228
+	if v1036 != 0 {
+		goto L247
 	} else {
-		goto L229
+		goto L248
 	}
 L228:
 	;
-	v897 = Fn7961(m, l0, v892, l5, v890, int32(0), v34+int32(160))
-	mBase = m.M
-	if v897 != 0 {
-		goto L224
+	v1018 = *(*int32)(unsafe.Add(mBase, uint32(v34)+224))
+	*(*int32)(unsafe.Add(mBase, uint32(v34)+168)) = v1018
+	v1020 = *(*int64)(unsafe.Add(mBase, uint32(v34)+216))
+	*(*int64)(unsafe.Add(mBase, uint32(v34)+160)) = v1020
+	goto L224
+L229:
+	;
+	v918 = *(*int32)(unsafe.Add(mBase, uint32(v895)+4))
+	v919 = int32(2)
+	v922 = int32(4)
+	v924 = *(*int32)(unsafe.Add(mBase, uint32(v917+v918<<(uint(v919)%32)-v922)))
+	v926 = v906 - int32(1969)
+	v928 = base.I32_div_s(v926, v922)
+	v930 = v906 - int32(1601)
+	v931 = int32(400)
+	v932 = base.I32_div_s(v930, v931)
+	v937 = v906 - int32(1901)
+	v939 = base.I32_div_s(v937, int32(-100))
+	v945 = int32(31)
+	v949 = base.I32_rem_s(v937, int32(100))
+	v966 = int64(*(*int32)(unsafe.Add(mBase, uint32(v895)+12)))
+	v970 = int64(*(*int32)(unsafe.Add(mBase, uint32(v895)+16)))
+	v974 = int64(*(*int32)(unsafe.Add(mBase, uint32(v895)+20)))
+	v975 = int64(1000)
+	v978 = v903 + (base.I64_extend_i32_s(v904+(v924+(v928+(v932+v906*int32(365)+v939)+(v930-v932*v931)>>(uint(v945)%32)+int32(base.Ui32(v949)>>(uint(v945)%32))+(v926-v928<<(uint(v919)%32))>>(uint(v945)%32)))-int32(719051))*int64(86400000) + v966*int64(3600000) + v970*int64(60000) + v974*v975)
+	v980 = base.I64_div_s(v978, v975)
+	v983 = v978 - v980*v975
+	v984 = base.I32_wrap_i64(v983)
+	if v983 < int64(0) {
+		goto L235
+	} else {
+		goto L236
+	}
+L230:
+	;
+	v911 = base.I32_rem_s(v906, int32(100))
+	if v911 != 0 {
+		v917 = int32(26854372)
+		goto L229
 	} else {
 		goto L231
 	}
-L229:
-	;
-	goto L230
-L230:
-	;
-	v1015 = int32(0)
-	goto L1
 L231:
 	;
-	goto L230
+	v915 = base.I32_rem_s(v906, int32(400))
+	if v915 != 0 {
+		goto L232
+	} else {
+		goto L233
+	}
 L232:
 	;
-	v908 = v901
+	v916 = int32(26854320)
 	goto L234
 L233:
 	;
-	v908 = v903
+	v916 = int32(26854372)
 	goto L234
 L234:
 	;
-	v909 = int32(0)
-	v910 = *(*int32)(unsafe.Add(mBase, uint32(v34)+168))
-	v911 = v765 - v910
-	if base.B2i32(v911 < v765)^base.B2i32(v909 < v910) != 0 {
-		goto L237
-	} else {
-		goto L238
-	}
+	v917 = v916
+	goto L229
 L235:
 	;
-	if v937 == v754 {
-		v968 = v779
-		v977 = v788
-		v979 = v790
-		v983 = v794
-		v984 = v795
-		v986 = v797
-		goto L182
-	} else {
-		goto L246
-	}
+	v989 = v984 + int32(1000)
+	goto L237
 L236:
 	;
-	v937 = base.B2i32(v931 != int32(0))
-	goto L235
+	v989 = v984
+	goto L237
 L237:
 	;
-	v916 = v909
-	goto L239
+	v993 = *(*int32)(unsafe.Add(mBase, uint32(v895)+32))
+	v994 = *(*int32)(unsafe.Add(mBase, uint32(v895)+28))
+	v997 = v993 + v994*int32(1000)
+	v998 = int32(0)
+	if v998 < v997 {
+		goto L238
+	} else {
+		goto L239
+	}
 L238:
 	;
-	v916 = v911
-	goto L239
+	v1001 = v997
+	goto L240
 L239:
 	;
-	if v916 < int32(0) {
-		goto L240
-	} else {
-		goto L241
-	}
+	v1001 = v998
+	goto L240
 L240:
 	;
-	v920 = v916 + int32(1000000000)
-	v922 = v908 - int64(1)
-	if v908 <= v922 {
-		v931 = v920
-		goto L236
+	if int32(999999) <= v1001 {
+		goto L241
 	} else {
-		goto L243
+		goto L242
 	}
 L241:
 	;
-	v924 = v916
-	v925 = v908
-	goto L242
+	v1004 = int32(999999)
+	goto L243
 L242:
 	;
-	if v925 < int64(0) {
-		v937 = int32(-1)
-		goto L235
-	} else {
-		goto L244
-	}
+	v1004 = v1001
+	goto L243
 L243:
 	;
-	v924 = v920
-	v925 = v922
-	goto L242
-L244:
-	;
-	if base.I64_eqz(v925) != 0 {
-		v931 = v924
-		goto L236
+	v1005 = v989*int32(1000000) + v1004
+	v1009 = base.B2i32(base.Ui32(int32(999999999)) < base.Ui32(v1005))
+	if base.Ui32(int32(999999999)) < base.Ui32(v1005) {
+		goto L244
 	} else {
 		goto L245
 	}
+L244:
+	;
+	v1010 = v1005 - int32(1000000000)
+	goto L246
 L245:
 	;
-	v937 = int32(1)
-	goto L235
+	v1010 = v1005
+	goto L246
 L246:
 	;
-	v939 = int64(0)
-	v943 = int32(0)
-	v945 = v840
-	v947 = v839
-	v950 = v841
-	v951 = v939
-	v953 = v939
-	goto L215
+	*(*int32)(unsafe.Add(mBase, uint32(v893)+8)) = v1010
+	*(*int64)(unsafe.Add(mBase, uint32(v893))) = base.I64_extend_i32_u(v1009) + (v983>>(uint(int64(63))%64) + v980)
+	goto L228
 L247:
+	;
+	v1040 = Fn7964(m, l0, v1035, l5, v1033, int32(0), v34+int32(160))
+	mBase = m.M
+	if v1040 != 0 {
+		goto L224
+	} else {
+		goto L250
+	}
+L248:
+	;
+	goto L249
+L249:
+	;
+	v1159 = int32(0)
+	goto L1
+L250:
+	;
+	goto L249
+L251:
+	;
+	v1051 = v1044
+	goto L253
+L252:
+	;
+	v1051 = v1046
+	goto L253
+L253:
+	;
+	v1052 = int32(0)
+	v1053 = *(*int32)(unsafe.Add(mBase, uint32(v34)+168))
+	v1054 = v783 - v1053
+	if base.B2i32(v1054 < v783)^base.B2i32(v1052 < v1053) != 0 {
+		goto L256
+	} else {
+		goto L257
+	}
+L254:
+	;
+	if v1081 == v772 {
+		v1112 = v797
+		v1121 = v806
+		v1123 = v808
+		v1127 = v812
+		v1128 = v813
+		v1130 = v815
+		goto L182
+	} else {
+		goto L265
+	}
+L255:
+	;
+	v1081 = base.B2i32(v1075 != int32(0))
+	goto L254
+L256:
+	;
+	v1059 = v1052
+	goto L258
+L257:
+	;
+	v1059 = v1054
+	goto L258
+L258:
+	;
+	if v1059 < int32(0) {
+		goto L259
+	} else {
+		goto L260
+	}
+L259:
+	;
+	v1063 = v1059 + int32(1000000000)
+	v1065 = v1051 - int64(1)
+	if v1051 <= v1065 {
+		v1075 = v1063
+		goto L255
+	} else {
+		goto L262
+	}
+L260:
+	;
+	v1067 = v1059
+	v1068 = v1051
+	goto L261
+L261:
+	;
+	if v1068 < int64(0) {
+		v1081 = int32(-1)
+		goto L254
+	} else {
+		goto L263
+	}
+L262:
+	;
+	v1067 = v1063
+	v1068 = v1065
+	goto L261
+L263:
+	;
+	if v1068 == int64(0) {
+		v1075 = v1067
+		goto L255
+	} else {
+		goto L264
+	}
+L264:
+	;
+	v1081 = int32(1)
+	goto L254
+L265:
+	;
+	v1083 = int64(0)
+	v1087 = int32(0)
+	v1089 = v860
+	v1091 = v859
+	v1094 = v861
+	v1095 = v1083
+	v1097 = v1083
+	goto L215
+L266:
 	;
 	goto L212
 }

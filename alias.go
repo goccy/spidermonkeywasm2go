@@ -8,7 +8,7 @@ import (
 //go:linkname Fn22 github.com/goccy/spidermonkeywasm2go/p1.Fn22
 func Fn22(m *base.Module)
 
-//go:linkname Fn23 github.com/goccy/spidermonkeywasm2go/p2.Fn23
+//go:linkname Fn23 github.com/goccy/spidermonkeywasm2go/p3.Fn23
 func Fn23(m *base.Module)
 
 //go:linkname Fn24 github.com/goccy/spidermonkeywasm2go/p7.Fn24
@@ -113,7 +113,7 @@ func Fn72(m *base.Module, l0 int32, l1 int32) int64
 //go:linkname Fn74 github.com/goccy/spidermonkeywasm2go/p7.Fn74
 func Fn74(m *base.Module) int32
 
-//go:linkname Fn75 github.com/goccy/spidermonkeywasm2go/p1.Fn75
+//go:linkname Fn75 github.com/goccy/spidermonkeywasm2go/p7.Fn75
 func Fn75(m *base.Module)
 
 //go:linkname Fn820 github.com/goccy/spidermonkeywasm2go/p5.Fn820
